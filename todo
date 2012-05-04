@@ -1,0 +1,17 @@
+Webpage for gh-pages
+	tasks:
+		check tables
+		pictures
+		type tables
+OpenSCAD library
+FreeCAD GUI
+BOLT.scad: unified warning and error functions
+warning when superseeded standards are used
+license header
+generate TODO list
+
+DIN931/DIN933 Confusion with ISO272 and key width
+OpenSCAD parser to make base-args superfluous.
+
+OpenSCAD GUI?
+
