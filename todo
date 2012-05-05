@@ -30,7 +30,6 @@ BLT
 
 explore git integration (git repo url in collection header?, automatic updating?, submodules?)
 script: generate task list
-script: statistics for the database and the various backends
 script: check monotonicity of tables
 
 spec: define concepts and use them consistently: dimensions or measures, base definitions, dimension lookup
