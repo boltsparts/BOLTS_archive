@@ -1,0 +1,72 @@
+---
+collection:
+    name: BOLTS hexagon socket fasteners
+    description: various standard hex socket bolts and screws
+    author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+    license: CC-BY-NC-SA <http://creativecommons.org/licenses/by-nc-sa/3.0/>
+    blt-version: 0.1
+scad:
+    base-file: hex_socket.scad
+    base-functions:
+        hex_socket1: [d1, d2, b1, b2, b3, k_max, s, t, L, h_max, l]
+        hex_socket2: [d1, d2, b, k, s, t_min, L, l]
+parts:
+    - name: [ISO10642, DINISO10642, DINENISO10642, DIN7991]
+      description: hexagon socket countersunk head screw
+      base: hex_socket1
+      target-args: [key, l]
+      notes: The base module does not use alpha
+      table:
+        columns: [d1, d2, b1, b2, b3, k_max, s, t, alpha, L, h_max]
+        data:
+            #key   [  d1    d2   b1     b2     b3     k_max  s      t      alpha,  L      h_max  ]
+            M2:    [  2,    4,   None,  None,  None,  1.2,   1.25,  None,  90,     12,    None   ]
+            M2.5:  [  2.5,  5,   None,  None,  None,  1.5,   1.5,   None,  90,     16,    None   ]
+            M3:    [  3,    6,   12,    None,  None,  1.7,   2,     1.2,   90,     30,    3.2    ]
+            M4:    [  4,    8,   14,    None,  None,  2.3,   2.5,   1.8,   90,     30,    4.4    ]
+            M5:    [  5,    10,  16,    None,  None,  2.8,   3,     2.3,   90,     35,    5.2    ]
+            M6:    [  6,    12,  18,    24,    None,  3.3,   4,     2.5,   90,     40,    6.3    ]
+            M8:    [  8,    16,  22,    28,    None,  4.4,   5,     3.5,   90,     45,    8.2    ]
+            M10:   [  10,   20,  26,    32,    45,    5.5,   6,     4.4,   90,     55,    10     ]
+            M12:   [  12,   24,  30,    36,    49,    6.5,   8,     4.6,   90,     60,    11.8   ]
+            M14:   [  14,   27,  34,    40,    None,  7,     10,    4.8,   90,     65,    13     ]
+            M16:   [  16,   30,  38,    44,    57,    7.5,   10,    5.3,   90,     70,    13.5   ]
+            M18:   [  18,   33,  43,    None,  None,  8,     12,    None,  90,     60,    None   ]
+            M20:   [  20,   36,  46,    52,    65,    8.5,   12,    5.9,   90,     90,    16     ]
+            M22:   [  22,   36,  None,  None,  None,  13.1,  14,    None,  None,   None,  None   ]
+            M24:   [  24,   39,  54,    60,    None,  14,    14,    10.3,  60,     90,    23     ]
+    - name: [ISO4762,DINISO4762,DINENISO4762,DIN912]
+      description: hexagon socket head cap screw
+      base: hex_socket2
+      target-args: [key, l]
+      table:
+        columns: [d1, d2, b, k, s, t_min, L]
+        data:
+          #key   [  d1    d2     b      k     s      t_min  L     ]
+          M1.4:  [  1.4,  2.6,   None,  1.4,  1.25,  None,  12    ]
+          M1.6:  [  1.6,  3,     15,    1.6,  1.5,   0.7,   16    ]
+          M1.8:  [  1.8,  3.4,   None,  1.8,  1.5,   None,  16    ]
+          M2:    [  2,    3.8,   16,    2,    1.5,   1,     20    ]
+          M2.5:  [  2.5,  4.5,   17,    2.5,  2,     1.1,   25    ]
+          M3:    [  3,    5.5,   18,    3,    2.5,   1.3,   20    ]
+          M4:    [  4,    7,     20,    4,    3,     2,     25    ]
+          M5:    [  5,    8.5,   22,    5,    4,     2.5,   25    ]
+          M6:    [  6,    10,    24,    6,    5,     3,     30    ]
+          M8:    [  8,    13,    28,    8,    6,     4,     35    ]
+          M10:   [  10,   16,    32,    10,   8,     5,     40    ]
+          M12:   [  12,   18,    36,    12,   10,    6,     50    ]
+          M14:   [  14,   21,    40,    14,   12,    7,     55    ]
+          M16:   [  16,   24,    44,    16,   14,    8,     60    ]
+          M18:   [  18,   27,    48,    18,   14,    9,     65    ]
+          M20:   [  20,   30,    52,    20,   17,    10,    70    ]
+          M22:   [  22,   33,    56,    22,   17,    11,    75    ]
+          M24:   [  24,   36,    60,    24,   19,    12,    80    ]
+          M27:   [  27,   40,    66,    27,   19,    13.5,  90    ]
+          M30:   [  30,   45,    72,    30,   22,    15.5,  100   ]
+          M33:   [  33,   50,    78,    33,   24,    18,    100   ]
+          M36:   [  36,   54,    84,    36,   27,    19,    110   ]
+          M42:   [  42,   63,    96,    42,   32,    24,    130   ]
+          M48:   [  48,   72,    108,   48,   36,    28,    150   ]
+          M52:   [  52,   78,    116,   52,   36,    31,    None  ]
+          M56:   [  56,   84,    124,   56,   41,    34,    None  ]
+          M64:   [  64,   96,    140,   64,   46,    38,    None  ]

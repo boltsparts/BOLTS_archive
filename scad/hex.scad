@@ -35,3 +35,4 @@ module hex2(d1, k, s, b1, b2, b3, l){
 		color([255,0,0]) translate([0,0,k+l-b]) cylinder(r=d1/2,h= b);
 	}
 }
+
