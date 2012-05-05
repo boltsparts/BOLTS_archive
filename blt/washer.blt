@@ -2,7 +2,7 @@
 collection:
     name: BOLTS washers
     description: various standard washers
-    author: Johannes Reinhardt <jrienhardt@ist-dein-freund.de>
+    author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
     license: CC-BY-NC-SA <http://creativecommons.org/licenses/by-nc-sa/3.0/>
     blt-version: 0.1
 scad:

@@ -1,5 +1,4 @@
 module washer(d1,d2,s,chamfer){
-	echo(d1,d2,s,chamfer);
 	intersection(){
 		difference(){
 			cylinder(r=d2/2,h=s);
