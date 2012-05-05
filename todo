@@ -1,17 +1,39 @@
-Webpage for gh-pages
-	tasks:
-		check tables
-		pictures
-		type tables
+Webpage
+-------
+
+check out jekyll for blog
+write HTMLexporter
+automatic task list
+user guide and example
+
+FreeCAD Backend
+---------------
+
+write exporter
+FreeCAD GUI panel
+warning when superseeded standards are used
+license header
+
+
+OpenSCAD Backend
+----------------
+
+OpenSCAD parser to make base-args superfluous.
+OpenSCAD GUI?
 OpenSCAD library
-FreeCAD GUI
 BOLT.scad: unified warning and error functions
 warning when superseeded standards are used
 license header
-generate TODO list
 
-DIN931/DIN933 Confusion with ISO272 and key width
-OpenSCAD parser to make base-args superfluous.
+BLT
+---
 
-OpenSCAD GUI?
+explore git integration (git repo url in collection header?, automatic updating?, submodules?)
+script: generate task list
+script: statistics for the database and the various backends
+
+spec: define concepts and use them consistently: dimensions or measures, base definitions, dimension lookup
+
+Parts
+-----
 
