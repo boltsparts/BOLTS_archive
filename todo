@@ -1,7 +1,7 @@
 Webpage
 -------
 
-check out jekyll for blog
+check out jekyll for blog and site
 write HTMLexporter
 automatic task list
 user guide and example
@@ -14,7 +14,6 @@ FreeCAD GUI panel
 warning when superseeded standards are used
 license header
 
-
 OpenSCAD Backend
 ----------------
 
@@ -24,6 +23,7 @@ OpenSCAD library
 BOLT.scad: unified warning and error functions
 warning when superseeded standards are used
 license header
+NopHead assembly and bom mechanisms
 
 BLT
 ---
@@ -31,9 +31,11 @@ BLT
 explore git integration (git repo url in collection header?, automatic updating?, submodules?)
 script: generate task list
 script: statistics for the database and the various backends
+script: check monotonicity of tables
 
 spec: define concepts and use them consistently: dimensions or measures, base definitions, dimension lookup
 
 Parts
 -----
 
+change license to commercially share alike
