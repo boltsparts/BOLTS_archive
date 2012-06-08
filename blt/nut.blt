@@ -10,7 +10,7 @@ scad:
     base-functions:
         nut1: [d1, s, m_max]
 parts:
-    - name: [ISO4036, DINISO4036, DINENISO4036]
+    - name: [ISO4036, DINENISO4036]
       replaces: DIN439B  
       description: hexagon thin nuts
       base: nut1

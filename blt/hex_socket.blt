@@ -11,7 +11,7 @@ scad:
         hex_socket1: [d1, d2, b1, b2, b3, k_max, s, t, L, h_max, l]
         hex_socket2: [d1, d2, b, k, s, t_min, L, l]
 parts:
-    - name: [ISO10642, DINISO10642, DINENISO10642, DIN7991]
+    - name: [ISO10642, DINISO10642, DIN7991]
       description: hexagon socket countersunk head screw
       base: hex_socket1
       target-args: [key, l]
@@ -35,7 +35,7 @@ parts:
             M20:   [  20,   36,  46,    52,    65,    8.5,   12,    5.9,   90,     90,    16     ]
             M22:   [  22,   36,  None,  None,  None,  13.1,  14,    None,  None,   None,  None   ]
             M24:   [  24,   39,  54,    60,    None,  14,    14,    10.3,  60,     90,    23     ]
-    - name: [ISO4762,DINISO4762,DINENISO4762,DIN912]
+    - name: [ISO4762, DINENISO4762, DIN912]
       description: hexagon socket head cap screw
       base: hex_socket2
       target-args: [key, l]

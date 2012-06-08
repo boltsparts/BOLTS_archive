@@ -10,7 +10,7 @@ scad:
     base-functions:
         washer: [d1, d2, s, chamfer]
 parts:
-    - name: [ISO7089, EN7089, DINENISO7089, DIN125A]
+    - name: [ISO7089, EN7089, DINENISO7089, DINEN27089, DIN125A]
       description: plain washer
       base: washer
       target-args: [key]
