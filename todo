@@ -5,6 +5,10 @@ check out jekyll for blog and site
 write HTMLexporter
 automatic task list
 user guide and example
+	drawing with dimensions
+	collection entry
+	OpenSCAD base module
+	FreeCAD base function
 
 FreeCAD Backend
 ---------------
@@ -24,6 +28,8 @@ BOLT.scad: unified warning and error functions
 warning when superseeded standards are used
 license header
 NopHead assembly and bom mechanisms
+proper dependencies (bitmap font)
+maybe special mode for differencing (smaller diameter for threaded parts for tapping, larger diameter for hex traps, ...)
 
 BLT
 ---
@@ -33,8 +39,10 @@ script: generate task list
 script: check monotonicity of tables
 
 spec: define concepts and use them consistently: dimensions or measures, base definitions, dimension lookup
+spec: choices for parameters, for example the length of bolts.
 
 Parts
 -----
 
+DIN EN number is 20000 higher, check if all DIN EN norms exist
 change license to commercially share alike
