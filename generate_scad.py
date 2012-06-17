@@ -5,8 +5,7 @@ from blt_parser import load_collection
 class OpenSCADExporter:
 	def __init__(self,filename):
 		self.filename = filename
-		self.bases = ["base/conf.scad"]
-		self.bases = ["base/sketch.scad"]
+		self.bases = ["base/conf.scad","base/sketch.scad","base/common.scad"]
 		self.tables = []
 		self.stubs = []
 
