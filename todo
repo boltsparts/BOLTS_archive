@@ -25,6 +25,8 @@ OpenSCAD parser to make base-args superfluous.
 OpenSCAD GUI?
 OpenSCAD library
 BOLT.scad: unified warning and error functions
+add dimension checks everywhere
+zero coordinates for axis: cross doesn't work everywhere (see hex_socket1). dashed lines?
 warning when superseeded standards are used
 license header
 NopHead assembly and bom mechanisms
@@ -46,3 +48,4 @@ Parts
 
 DIN EN number is 20000 higher, check if all DIN EN norms exist
 change license to commercially share alike
+aluminum extrusion
