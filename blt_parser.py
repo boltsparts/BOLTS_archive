@@ -4,7 +4,8 @@ _specification = { 0.1: {
 	"root" : (["collection","parts"],["scad"]),
 	"collection" : (["author","license","blt-version"],["name","description"]),
 	"scad" : (["base-file","base-functions"],[]),
-	"part" : (["name","base","target-args"],["status","replaces","description","literal-args","url","table","notes"]),
+	"part" : (["standard","name","base","target-args"],["status","replaces","description","literal-args","url","table","notes"]),
+	"name" : (["template"],["parameters"]),
 	"table" : (["columns","data"],[])
 	},
 }
