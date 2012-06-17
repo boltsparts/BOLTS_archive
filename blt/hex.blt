@@ -11,11 +11,14 @@ scad:
         hex1: [d1, k, s, h, l]
         hex2: [d1, k, s, b1, b2, b3, l]
 parts:
-    - name: DIN933
+    - standard: DIN933
       status: withdrawn
       description: hexagon head screw
       base: hex1
       target-args: [key, l]
+      name:
+        template: Hexagon head screw %s - %s %d
+        parameters: [standard, key, l]
       table:
         columns: [d1, k, s, e, h]
         data:
@@ -48,10 +51,13 @@ parts:
             M48:   [  48,   30,    75,   82.60,   None  ]
             M52:   [  52,   33,    80,   88.25,   None  ]
             M64:   [  64,   40,    95,   104.86,  None  ]
-    - name: [ISO4017, DINENISO4017, DINEN24017]
+    - standard: [ISO4017, DINENISO4017, DINEN24017]
       description: hexagon head screw
       base: hex1
       target-args: [key, l]
+      name:
+        template: Hexagon head screw %s - %s %d
+        parameters: [standard, key, l]
       table:
         columns: [d1, k, s, e, h]
         data:
@@ -84,11 +90,14 @@ parts:
             M48:   [  48,   30,    75,   82.60,   None  ]
             M52:   [  52,   33,    80,   88.25,   None  ]
             M64:   [  64,   40,    95,   104.86,  None  ]
-    - name: DIN931
+    - standard: DIN931
       status: withdrawn
       description: hexagon head bolt
       base: hex2
       target-args: [key, l]
+      name:
+        template: Hexagon head bolt %s - %s %d
+        parameters: [standard, key, l]
       table:
         columns: [d1, k, s, b1, b2, b3, e]
         data:
@@ -119,11 +128,14 @@ parts:
             M56:  [  56.0,  35.0,   85.0,   None,   124.0,  137.0,  93.56   ]
             M60:  [  60.0,  38.0,   90.0,   None,   132.0,  145.0,  99.21   ]
             M64:  [  64.0,  40.0,   95.0,   None,   140.0,  153.0,  104.86  ]
-    - name: [ISO4014, DINENISO4014, DINEN24014]
+    - standard: [ISO4014, DINENISO4014, DINEN24014]
       replaces: DIN931
       description: hexagon head bolt
       base: hex2
       target-args: [key, l]
+      name:
+        template: Hexagon head bolt %s - %s %d
+        parameters: [standard, key, l]
       url: http://www.beuth.de/en/standard/din-en-iso-4014/140571988?SearchID=402255275
       table:
         columns: [d1, k, s, b1, b2, b3, e]

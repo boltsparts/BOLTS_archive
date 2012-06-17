@@ -10,11 +10,14 @@ scad:
     base-functions:
         nut1: [d1, s, m_max]
 parts:
-    - name: [ISO4036, DINENISO4036]
+    - standard: [ISO4036, DINENISO4036]
       replaces: DIN439B  
       description: hexagon thin nuts
       base: nut1
       target-args: [key]
+      name:
+        template: Hexagon thin nut %s - %s
+        parameters: [standard, key]
       table:
         columns: [d1, s, m_max, e_min]
         data:
