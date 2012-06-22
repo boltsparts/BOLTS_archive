@@ -8,14 +8,13 @@ collection:
 scad:
     base-file: washer.scad
     base-functions:
-        washer: [d1, d2, s, chamfer]
+        washer1: [d1, d2, s]
+        washer2: [d1, d2, s]
 parts:
     - standard: [ISO7089, EN7089, DINENISO7089, DINEN27089, DIN125A]
       description: plain washer
-      base: washer
+      base: washer1
       target-args: [key]
-      literal-args:
-        chamfer: "false"
       name:
         template: Plain washer %s - %s
         parameters: [standard, key]
@@ -69,20 +68,16 @@ parts:
             M100:  [  104,   175,  14    ]
     - standard: [ISO7090, DINISO7090, DINENISO7090, DIN125B]
       description: plain washer
-      base: washer
+      base: washer2
       target-args: [key]
-      literal-args:
-        chamfer: "true"
       name:
         template: Plain washer %s - %s
         parameters: [standard, key]
       table: *DIN125
     - standard: [DIN126, DINISO7091, DINENISO7091, ISO7091]
       description: plain washer
-      base: washer
+      base: washer1
       target-args: [key]
-      literal-args:
-        chamfer: "false"
       name:
         template: Plain washer %s - %s
         parameters: [standard, key]
@@ -120,10 +115,8 @@ parts:
     - standard: [DIN433, ISO7092, DINISO7092, DINENISO7092]
       description: plain washer for cheese head screws
       notes: unclear whether chamfered version exists
-      base: washer
+      base: washer1
       target-args: [key]
-      literal-args:
-        chamfer: "false"
       name:
         template: Plain washer %s - %s
         parameters: [standard, key]
@@ -158,10 +151,8 @@ parts:
           M36:   [  37.0,   60.0,   5.0   ]
     - standard: DIN7349
       description: heavy duty plain washer
-      base: washer
+      base: washer1
       target-args: [key]
-      literal-args:
-        chamfer: "false"
       name:
         template: Heavy duty plain washer %s - %s
         parameters: [standard, key]
