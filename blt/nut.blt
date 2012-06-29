@@ -11,7 +11,7 @@ scad:
         nut1: [d1, s, m_max]
 parts:
     - standard: [ISO4036, DINENISO4036]
-      replaces: DIN439B  
+      replaces: DIN439B
       description: hexagon thin nuts
       base: nut1
       target-args: [key]
