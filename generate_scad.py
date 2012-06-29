@@ -71,6 +71,8 @@ class OpenSCADExporter:
 						stub += '," "'
 				stub
 				stub += "));\n"
+				#To avoid problems with missing top level object
+				stub += "cube();\n"
 
 				stub += "\t} else {\n"
 
