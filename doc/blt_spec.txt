@@ -1,7 +1,7 @@
 BLT Format 0.1
 ##############
 
-A BOLT library consists of a directory containing a number of mandatory and optional subdirectories. THe mandatory ones are
+A BOLT library consists of a directory containing a number of mandatory and optional subdirectories. The mandatory ones are
 
 -blt: Contains the metadata files for the collections
 -drawings: Contains the svg files for the individual parts
