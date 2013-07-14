@@ -9,7 +9,8 @@ class OpenSCADExporter:
 		self.tables = []
 		self.stubs = []
 
-	def add_collection(self,blt):
+	def add_collection(self,filename):
+		blt = load_collection(filename)
 		base = blt['scad']['base-file']
 		if isinstance(base,str):
 			self.bases.append('base/'+base)
@@ -81,7 +82,7 @@ class OpenSCADExporter:
 				self.stubs.append(stub)
 
 	#we do not write modification date or similar stuff to keep vcs diffs clean
-	def write_file(self):
+	def finish(self):
 		fid = open('output/' + self.filename,'w')
 
 		for base in self.bases:
@@ -120,11 +121,11 @@ copytree("scad","output/base")
 files = listdir('blt')
 
 exporter = OpenSCADExporter("BOLTS.scad")
-for file in files:
-	if file[-4:] == ".blt":
-		print "Processing",file
-		coll = load_collection(file)
-		exporter.add_collection(coll)
+for filename in files:
+	if filename[-4:] == ".blt":
+		print "Processing",filename
+		coll = load_collection(filename)
 		check_conformity(coll)
+		exporter.add_collection(filename)
 
-exporter.write_file()
+exporter.finish()
