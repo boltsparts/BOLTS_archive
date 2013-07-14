@@ -15,6 +15,12 @@ _defaults = { 0.1: {
 	},
 }
 
+_unify = { 0.1: {
+	"scad" : ["base-file"],
+	"part" : ["standard","replaces"]
+	}
+}
+
 def check_dict(array,name,spec):
 	man = spec[0][:]
 	opt = spec[1][:]
@@ -51,9 +57,24 @@ def set_defaults(coll):
 			if not key in part.keys():
 				part[key] = value
 
+def unify_to_list(coll):
+	"""Replace fields that can be both name or list by lists to ease access"""
+	version = coll["collection"]["blt-version"]
+	unify = _unify[version]
+	for field in unify["scad"]:
+		if field in coll["scad"] and isinstance(coll["scad"][field],str):
+			coll["scad"][field] = [coll["scad"][field]]
+
+	for part in coll["parts"]:
+		for field in unify["part"]:
+			if field in part and isinstance(part[field],str):
+				part[field] = [part[field]]
+
+
 def load_collection(filename):
 	coll = list(yaml.load_all(open("blt/" + filename)))[0]
 	check_conformity(coll)
 	set_defaults(coll)
+	unify_to_list(coll)
 	return coll
 	

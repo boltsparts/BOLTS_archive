@@ -12,12 +12,7 @@ class OpenSCADExporter:
 	def add_collection(self,filename):
 		blt = load_collection(filename)
 		base = blt['scad']['base-file']
-		if isinstance(base,str):
-			self.bases.append('base/'+base)
-		elif isinstance(base,list):
-			self.bases += ['base/'+b for b in base]
-		else:
-			raise TypeError('scad/base-file must be a string or a list of strings')
+		self.bases += ['base/'+b for b in base]
 
 		parts = blt['parts']
 		for part in parts:
@@ -29,8 +24,6 @@ class OpenSCADExporter:
 			#write tables
 			if table_used:
 				standards = part['standard']
-				if isinstance(standards,str):
-					standards = [standards]
 				for standard in standards:
 					filename = "tables/%s_table.scad" % standard
 					self.write_table('output/' + filename, standard, part['table'])
