@@ -52,13 +52,44 @@ class TableChecker:
 
 				last_value = float(rows[j][i])
 
+class CollectionChecker:
+	#List of accepted licenses
+	licenses = {
+		"CC-BY-NC-SA" : "http://creativecommons.org/licenses/by-nc-sa/3.0/"
+	}
+	def __init__(self):
+		self.blts = []
+		self.errors = 0
+
+	def error(self,msg,coll):
+		print "%s coll: %s" % (msg,coll["name"])
+
+	def add_collection(self,blt):
+		self.blts.append(blt)
+
+	def check(self):
+		for blt in self.blts:
+			self._check_license(blt)
+
+	def _check_license(self,blt):
+		license = blt["collection"]["license"]
+		name, url = (part.strip("> ") for part in license.split("<"))
+		if not name in self.licenses.keys():
+			self.error("Unknown license: %s" % name,blt["collection"])
+		elif self.licenses[name] != url:
+			self.error("Wrong url for license %s: %s" % (name,url),blt["collection"])
+
+
 
 files = listdir('blt')
 
-checker = TableChecker()
+checkers = [TableChecker(),CollectionChecker()]
+
 for file in files:
 	if file[-4:] == ".blt":
 		coll = load_collection(file)
-		checker.add_collection(coll)
+		for checker in checkers:
+			checker.add_collection(coll)
 
-checker.check()
+for checker in checkers:
+	checker.check()
