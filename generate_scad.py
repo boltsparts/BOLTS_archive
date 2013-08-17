@@ -1,6 +1,6 @@
 from os import listdir,makedirs
 from shutil import rmtree,copytree
-from blt_parser import load_collection, check_conformity
+from blt_parser import load_collection
 
 class OpenSCADExporter:
 	def __init__(self,filename):
@@ -118,7 +118,6 @@ for filename in files:
 	if filename[-4:] == ".blt":
 		print "Processing",filename
 		coll = load_collection(filename)
-		check_conformity(coll)
 		exporter.add_collection(filename)
 
 exporter.finish()
