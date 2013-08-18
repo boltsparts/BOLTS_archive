@@ -21,6 +21,7 @@ class TableChecker:
 				table = part["table"]
 				self._check_row_length(blt,part,table)
 				self._check_monotonicity(blt,part,table)
+				self._check_order_of_magnitude(blt,part,table)
 
 	def _check_row_length(self,blt,part,table):
 		msg = "Inconsistent row sizes in row: %s"
@@ -52,6 +53,25 @@ class TableChecker:
 
 				last_value = float(rows[j][i])
 
+	def _check_order_of_magnitude(self,blt,part,table):
+		msg = "Unusually magnitude for entry in row: %s"
+		rows = [list(row[1]) for row in sorted(table["data"].iteritems(),key=lambda x: float(x[0][1:]))]
+		n = len(rows)
+		m = len(rows[0])
+
+		for i in range(1,m):
+			last_value = None
+			for j in range(1,n):
+				if rows[j][i] == "None":
+					last_value = None
+					continue
+				elif not last_value is None:
+					ratio = float(rows[j][i])/last_value
+					#threshholds are arbitrary, but small enough to catch shifted decimal points
+					if ratio > 7.5 or 40*ratio < 3.:
+						self.error(msg % j, blt["collection"],part)
+				last_value = float(rows[j][i])
+
 class CollectionChecker:
 	#List of accepted licenses
 	licenses = {
@@ -70,6 +90,7 @@ class CollectionChecker:
 	def check(self):
 		for blt in self.blts:
 			self._check_license(blt)
+			self._check_author(blt)
 
 	def _check_license(self,blt):
 		license = blt["collection"]["license"]
@@ -79,6 +100,12 @@ class CollectionChecker:
 		elif self.licenses[name] != url:
 			self.error("Wrong url for license %s: %s" % (name,url),blt["collection"])
 
+	def _check_author(self,blt):
+		author = blt["collection"]["author"]
+		name, email = (part.strip("> ") for part in author.split("<"))
+		#very rough check
+		if not "@" in email:
+			self.error("Invalid mail address in author: %s" % author, blt["collection"])
 
 
 files = listdir('blt')
