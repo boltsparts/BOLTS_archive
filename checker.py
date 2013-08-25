@@ -22,6 +22,7 @@ class TableChecker:
 				self._check_row_length(blt,part,table)
 				self._check_monotonicity(blt,part,table)
 				self._check_order_of_magnitude(blt,part,table)
+				self._check_positivity(blt,part,table)
 
 	def _check_row_length(self,blt,part,table):
 		msg = "Inconsistent row sizes in row: %s"
@@ -71,6 +72,18 @@ class TableChecker:
 					if ratio > 7.5 or 40*ratio < 3.:
 						self.error(msg % j, blt["collection"],part)
 				last_value = float(rows[j][i])
+
+	def _check_positivity(self,blt,part,table):
+		msg = "Negative entry in row: %s"
+		rows = [list(row[1]) for row in sorted(table["data"].iteritems(),key=lambda x: float(x[0][1:]))]
+		n = len(rows)
+		m = len(rows[0])
+
+		for i in range(1,m):
+			last_value = None
+			for j in range(1,n):
+				if rows[j][i] < 0:
+					self.error(msg % j, blt["collection"],part)
 
 class CollectionChecker:
 	#List of accepted licenses
