@@ -10,13 +10,16 @@ user guide and example
 	OpenSCAD base module
 	FreeCAD base function
 
+upload to github
+convert this file to issues
+
 FreeCAD Backend
 ---------------
 
-write exporter
-FreeCAD GUI panel
 warning when superseeded standards are used
 license header
+http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=19&t=4205&start=0
+explore fcstd bases
 
 OpenSCAD Backend
 ----------------
@@ -49,3 +52,11 @@ Parts
 DIN EN number is 20000 higher, check if all DIN EN norms exist
 change license to commercially share alike
 aluminum extrusion
+pipes
+check out what the FreeCAD guys have already done:
+https://github.com/yorikvanhavre/FreeCAD-library
+http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=10&t=4390&p=34900&hilit=bearing#p34900
+
+
+
+
