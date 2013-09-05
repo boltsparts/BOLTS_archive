@@ -1,0 +1,19 @@
+.bordered-list {
+  margin: 0;
+  padding: 0;
+  span {
+    display: inline-block;
+    text-align: right;
+    float: right;
+  }
+  li {
+    clear: both;
+    list-style: none;
+    padding: 0 0 4px;
+    margin: 0 0 4px;
+    border-bottom: 1px solid #EEE;
+    &:last-child {
+      border: none;
+    }
+  }
+}

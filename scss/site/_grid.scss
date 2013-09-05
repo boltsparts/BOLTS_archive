@@ -1,0 +1,21 @@
+/*
+  Grid using Susy
+*/
+
+// Susy default grid values
+$total-columns  : 6;
+$column-width   : 140px;
+$gutter-width   : 20px;
+$grid-padding   : 20px;
+
+// Fluid pages
+
+$container-style: magic;
+
+// Container
+#header > .inner-content,
+#content > .inner-content,
+#footer > .inner-content {
+  // page acts as a container for our grid.
+  @include container;
+}

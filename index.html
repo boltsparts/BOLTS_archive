@@ -1,0 +1,46 @@
+---
+  layout: base
+  title: Home
+---
+
+<div id="banner">
+  <div class="inner-content">
+    <div class="copy">
+      <h1>BOLTS</h1>
+      <p class="intro">BOLTS is  open library of technical specifications.</p>
+    </div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="inner-content">
+    <div class="cols">
+ <!--     <div class="col">
+        <h3>Features</h3>
+        <ul class="bordered-list">
+          <li>Built with platform independent technologies like <a href="http://www.python.org">Python</a> and <a href="http://yaml.org/">YAML</a></li>
+          <li>Support for <a href="http://www.openscad.org/">OpenSCAD</a> and <a href="http://freecadweb.org/">FreeCAD</a></li>
+          <li>Easy to contribute to</li>
+        </ul>
+      </div> -->
+      <div class="col">
+        <h3>Using BOLTS with OpenSCAD</h3>
+        <p>Download the files from the Github repository and put them in a folder. <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to include BOLTS.</p>
+        {% highlight python %}
+include <BOLTS/bolts.scad>
+{% endhighlight %}
+      </div>
+      <div class="col">
+        <h3>Using BOLTS with FreeCAD</h3>
+        <p>Download the files from the Github repository and put them in a folder. Start FreeCAD using the provided launcher script:</p>
+        {% highlight bash %}
+./launch_freecad
+{% endhighlight %}
+        <p>In the FreeCAD python console type
+        {% highlight python %}
+import bolts.py
+{% endhighlight %}
+      </div>
+    </div>
+  </div>
+</div>

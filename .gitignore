@@ -1,6 +1,1 @@
-*.swp
-*.pyc
-output
-output/**/*
-html
-html/**/*
+_site/
