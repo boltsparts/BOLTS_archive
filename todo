@@ -1,7 +1,6 @@
 Webpage
 -------
 
-check out jekyll for blog and site
 write HTMLexporter
 automatic task list
 user guide and example
@@ -9,6 +8,7 @@ user guide and example
 	collection entry
 	OpenSCAD base module
 	FreeCAD base function
+git hooks
 
 FreeCAD Backend
 ---------------
@@ -38,7 +38,6 @@ BLT
 
 explore git integration (git repo url in collection header?, automatic updating?, submodules?)
 script: generate task list
-script: check monotonicity of tables
 
 spec: define concepts and use them consistently: dimensions or measures, base definitions, dimension lookup
 spec: choices for parameters, for example the length of bolts.
