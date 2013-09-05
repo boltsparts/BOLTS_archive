@@ -1,17 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>$title</title>
-</head>
-<body>
-	<h1>$title</h1>
+---
+  layout: base
+  title: $title
+---
 
-	<table>
-		$table
-	</table>
+<div class="page-type-subnav">
+  <div id="subnav">
+    <h4>Navigation</h4>
+    <ul class="nav nav-tabs nav-stacked">
+      <li><a href=""../index.html"">Index</a></li>
+    </ul>
+  </div>
 
-<a href="../index.html">Index<a>
+  <div class="page-title-bar">
+    <div class="inner-content">
+      <h2>{{ page.title }}</h2>
+    </div>
+  </div>
 
-</body>
-</html>
+  <div id="content">
+    <div class="inner-content">
+      <div class="cols">
+        <div class="col">
+          <h1>$title</h1>
+            <table>
+              $table
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
