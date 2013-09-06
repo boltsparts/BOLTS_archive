@@ -1,24 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>$title</title>
-</head>
-<body>
-	<h1>$title</h1>
-	by $author<br>
-	generated $date<br>
-	under $license<br>
+---
+  layout: base
+  title: $title
+---
 
-	<div id='description'>
-		$description
-	</div>
+<div class="page-title-bar">
+  <div class="inner-content">
+    <h2>{{ page.title }}</h2>
+  </div>
+</div>
 
-	<table>
-		$parts
-	</table>
+<div id="content">
+  <div class="inner-content">
+    <div class="cols">
+      <div class="col">
+        <h1>$title</h1>
+        by $author<br>
+        generated $date<br>
+        under $license<br>
+      </div>
 
-<a href="../index.html">Index<a>
+      <div class="col">
+        <h1>Description</h1>
+        $description
+      </div>
 
-</body>
-</html>
+      <div class="col">
+        <h1>Parts</h1>
+        <table>
+          $parts
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

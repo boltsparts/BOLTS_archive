@@ -1,14 +1,24 @@
 Webpage
 -------
 
-write HTMLexporter
-automatic task list
 user guide and example
 	drawing with dimensions
 	collection entry
 	OpenSCAD base module
 	FreeCAD base function
 git hooks
+
+nicer layout for tables
+nicer layout for collection/part/(standard) pages
+
+
+Generated HTML
+--------------
+
+automatic task list: missing base function, short descriptions, check errors, missing images, proposed standards
+Add Openscad incantation to every part, collection and standard
+suppress empty properties
+part page: author with mail
 
 FreeCAD Backend
 ---------------
@@ -40,7 +50,8 @@ explore git integration (git repo url in collection header?, automatic updating?
 script: generate task list
 
 spec: define concepts and use them consistently: dimensions or measures, base definitions, dimension lookup
-spec: choices for parameters, for example the length of bolts.
+spec: clarify and use consistently (repo, collection, parts class, part)?
+spec: discrete choices for parameters, for example the length of bolts.
 
 Parts
 -----

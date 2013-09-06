@@ -78,7 +78,7 @@ class HTMLExporter:
 
 			args['title'] = standard
 
-			args['identical'] = " ".join(["<a href='%s.html'>%s</a>" % (p,p) for p in part['standard']])
+			args['identical'] = " ".join(["<a href='%s.html'>%s</a>" % (p,p) for p in part['standard'] if not p == standard])
 
 			#find standardisation organisation
 			args['org'] = None
@@ -110,8 +110,8 @@ class HTMLExporter:
 				args['notes'] = ''
 
 			args['table'] = enclose(
-				[enclose(part['table']['columns'],'th')] +
-				[enclose(part['table']['data'][r],'td') for r in sorted(part['table']['data'],cmp=msort)],
+				[enclose([''] + part['table']['columns'],'th')] +
+				[enclose([r] + part['table']['data'][r],'td') for r in sorted(part['table']['data'],cmp=msort)],
 				'tr')
 
 			args['collection'] = "<a href='../collections/%s.html'>%s</a>" % (collname,collection['collection']['name'])
@@ -174,7 +174,7 @@ class HTMLExporter:
 		fid = open('html/index.html','w')
 		args = {}
 		args['title'] = 'BOLTS Index'
-		args['collections'] = "<br>".join(["<a href='collections/%s.html'>%s</a>" % (k,k) for k in self.collections])
+		args['collections'] = "<br>".join(["<a href='collections/%s.html'>%s</a>" % (k,self.collections[k]['title']) for k in self.collections])
 
 		args['organisations'] = "<br>".join(["<a href='organisations/%s.html'>%s</a>" % (k,k) for k in self.orgs])
 
