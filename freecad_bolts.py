@@ -6,43 +6,11 @@ from os import listdir
 from  blt_parser import load_collection
 
 #get ui from designer file
+Ui_BoltsWidget,QBoltsWidget = uic.loadUiType('bolts_widget.ui')
+Ui_DimWidget,QDimWidget = uic.loadUiType('dim_widget.ui')
+Ui_KeyWidget,QKeyWidget = uic.loadUiType('key_widget.ui')
 
-##for development:
-##compile Qt Designer stuff into module
-#with open('bolts_widget.py','w') as pyfile:
-#	uic.compileUi(open('bolts_widget.ui'),pyfile)
-##by loading the module twice ui file changes are possible without restarting
-##freecad, which is very convenient for development
-#import bolts_widget
-#reload(bolts_widget)
-
-#for production:
-import bolts_widget, dim_widget, key_widget
-
-class DimWidget(QtGui.QWidget):
-	def __init__(self,parent,label):
-		QtGui.QWidget.__init__(self,parent)
-		self.ui = dim_widget.Ui_dim_widget()
-		self.ui.setupUi(self)
-		self.ui.label.setText(label)
-
-		self.validator = QtGui.QDoubleValidator(self)
-		self.ui.valueEdit.setValidator(self.validator)
-
-	def getValue(self):
-		return float(self.ui.valueEdit.text())
-
-class KeyWidget(QtGui.QWidget):
-	def __init__(self,parent,keys):
-		QtGui.QWidget.__init__(self,parent)
-		self.ui = key_widget.Ui_key_widget()
-		self.ui.setupUi(self)
-		for key in keys:
-			self.ui.comboBox.addItem(key)
-	def getValue(self):
-		return str(self.ui.comboBox.currentText())
-
-
+#classes to encapsulate the data from the blt collections
 class BOLTSStandard:
 	def __init__(self,standard,part):
 		self.standard = standard
@@ -91,10 +59,36 @@ class BOLTSCollection:
 		item.setData(0,32,self)
 		return item
 
-class BoltsWidget(QtGui.QDockWidget):
+#customm widgets
+
+class DimWidget(QDimWidget):
+	def __init__(self,parent,label):
+		QDimWidget.__init__(self,parent)
+		self.ui = Ui_DimWidget()
+		self.ui.setupUi(self)
+		self.ui.label.setText(label)
+
+		self.validator = QtGui.QDoubleValidator(self)
+		self.ui.valueEdit.setValidator(self.validator)
+
+	def getValue(self):
+		return float(self.ui.valueEdit.text())
+
+class KeyWidget(QKeyWidget):
+	def __init__(self,parent,keys):
+		QKeyWidget.__init__(self,parent)
+		self.ui = Ui_KeyWidget()
+		self.ui.setupUi(self)
+		for key in keys:
+			self.ui.comboBox.addItem(key)
+	def getValue(self):
+		return str(self.ui.comboBox.currentText())
+
+
+class BoltsWidget(QBoltsWidget):
 	def __init__(self,bases):
-		QtGui.QDockWidget.__init__(self)
-		self.ui = bolts_widget.Ui_BoltsWidget()
+		QBoltsWidget.__init__(self)
+		self.ui = Ui_BoltsWidget()
 		self.ui.setupUi(self)
 
 		self.bases = bases
@@ -193,13 +187,7 @@ class BoltsWidget(QtGui.QDockWidget):
 					standard.get_tree_item(self.std_coll_items["EN"])
 
 
-import washer
-reload(washer)
-
-widget = BoltsWidget(washer.bases)
-
 #get references to Freecad main window
-
 #from http://sourceforge.net/apps/mediawiki/free-cad/index.php?title=Code_snippets
 def getMainWindow():
 	"returns the main window"
@@ -215,8 +203,13 @@ def getMainWindow():
 app = QtGui.qApp
 mw = getMainWindow()
 
-#add parts
+#load bases
+import washer
+reload(washer)
 
+widget = BoltsWidget(washer.bases)
+
+#load parts
 files = listdir('blt')
 for file in files:
 	if file.startswith('.'):
