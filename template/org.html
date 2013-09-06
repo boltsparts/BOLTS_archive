@@ -3,29 +3,20 @@
   title: $title
 ---
 
-<div class="page-type-subnav">
-  <div id="subnav">
-    <h4>Navigation</h4>
-    <ul class="nav nav-tabs nav-stacked">
-      <li><a href=""../index.html"">Index</a></li>
-    </ul>
+<div class="page-title-bar">
+  <div class="inner-content">
+    <h2>{{ page.title }}</h2>
   </div>
+</div>
 
-  <div class="page-title-bar">
-    <div class="inner-content">
-      <h2>{{ page.title }}</h2>
-    </div>
-  </div>
-
-  <div id="content">
-    <div class="inner-content">
-      <div class="cols">
-        <div class="col">
-          <h1>$title</h1>
-            <table>
-              $table
-            </table>
-        </div>
+<div id="content">
+  <div class="inner-content">
+    <div class="cols">
+      <div class="col">
+        <h1>$title</h1>
+          <table>
+            $table
+          </table>
       </div>
     </div>
   </div>
