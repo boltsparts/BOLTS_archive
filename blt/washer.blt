@@ -67,13 +67,14 @@ parts:
             M90:   [  93,    160,  12    ]
             M100:  [  104,   175,  14    ]
     - standard: [ISO7090, DINISO7090, DINENISO7090, DIN125B]
-      description: plain washer
+      description: plain washer with chamfer
       base: washer2
       target-args: [key]
       name:
-        template: Plain washer %s - %s
+        template: Plain washer with chamfer %s - %s
         parameters: [standard, key]
       table: *DIN125
+      notes: Are there precise specifications about the chamfer?
     - standard: [DIN126, DINISO7091, DINENISO7091, ISO7091]
       description: plain washer
       base: washer1
