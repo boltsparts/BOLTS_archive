@@ -10,7 +10,7 @@ def washer1(params,document):
 	part = document.addObject("Part::Feature",name)
 	outer = Part.makeCylinder(d2,s)
 	inner = Part.makeCylinder(d1,s)
-	shape = outer.cut(inner)
+	part.Shape = outer.cut(inner)
 
 def washer2(params,document):
 	key = params['key']
