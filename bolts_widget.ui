@@ -23,7 +23,7 @@
       <x>10</x>
       <y>10</y>
       <width>258</width>
-      <height>322</height>
+      <height>297</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -78,25 +78,9 @@
      </item>
      <item>
       <widget class="QWidget" name="params" native="true">
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QComboBox" name="key_combobox"/>
-        </item>
-        <item>
-         <widget class="QLabel" name="param_label">
-          <property name="minimumSize">
-           <size>
-            <width>20</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="param_lineedit"/>
+         <layout class="QVBoxLayout" name="param_layout"/>
         </item>
        </layout>
       </widget>

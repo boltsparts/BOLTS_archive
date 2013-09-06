@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bolts_widget.ui'
 #
-# Created: Thu Sep  5 17:19:49 2013
+# Created: Fri Sep  6 15:11:37 2013
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,7 +31,7 @@ class Ui_BoltsWidget(object):
         self.content.setEnabled(True)
         self.content.setObjectName(_fromUtf8("content"))
         self.gridLayoutWidget = QtGui.QWidget(self.content)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 258, 322))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 258, 297))
         self.gridLayoutWidget.setObjectName(_fromUtf8("gridLayoutWidget"))
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.gridLayoutWidget)
         self.verticalLayout_2.setMargin(0)
@@ -57,20 +57,12 @@ class Ui_BoltsWidget(object):
         self.verticalLayout_2.addWidget(self.description)
         self.params = QtGui.QWidget(self.gridLayoutWidget)
         self.params.setObjectName(_fromUtf8("params"))
-        self.horizontalLayout = QtGui.QHBoxLayout(self.params)
-        self.horizontalLayout.setMargin(0)
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.key_combobox = QtGui.QComboBox(self.params)
-        self.key_combobox.setObjectName(_fromUtf8("key_combobox"))
-        self.horizontalLayout.addWidget(self.key_combobox)
-        self.param_label = QtGui.QLabel(self.params)
-        self.param_label.setMinimumSize(QtCore.QSize(20, 0))
-        self.param_label.setText(_fromUtf8(""))
-        self.param_label.setObjectName(_fromUtf8("param_label"))
-        self.horizontalLayout.addWidget(self.param_label)
-        self.param_lineedit = QtGui.QLineEdit(self.params)
-        self.param_lineedit.setObjectName(_fromUtf8("param_lineedit"))
-        self.horizontalLayout.addWidget(self.param_lineedit)
+        self.verticalLayout_3 = QtGui.QVBoxLayout(self.params)
+        self.verticalLayout_3.setMargin(0)
+        self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
+        self.param_layout = QtGui.QVBoxLayout()
+        self.param_layout.setObjectName(_fromUtf8("param_layout"))
+        self.verticalLayout_3.addLayout(self.param_layout)
         self.verticalLayout_2.addWidget(self.params)
         self.addButton = QtGui.QPushButton(self.gridLayoutWidget)
         self.addButton.setObjectName(_fromUtf8("addButton"))

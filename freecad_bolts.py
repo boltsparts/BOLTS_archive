@@ -17,7 +17,31 @@ from  blt_parser import load_collection
 #reload(bolts_widget)
 
 #for production:
-import bolts_widget
+import bolts_widget, dim_widget, key_widget
+
+class DimWidget(QtGui.QWidget):
+	def __init__(self,parent,label):
+		QtGui.QWidget.__init__(self,parent)
+		self.ui = dim_widget.Ui_dim_widget()
+		self.ui.setupUi(self)
+		self.ui.label.setText(label)
+
+		self.validator = QtGui.QDoubleValidator(self)
+		self.ui.valueEdit.setValidator(self.validator)
+
+	def getValue(self):
+		return float(self.ui.valueEdit.text())
+
+class KeyWidget(QtGui.QWidget):
+	def __init__(self,parent,keys):
+		QtGui.QWidget.__init__(self,parent)
+		self.ui = key_widget.Ui_key_widget()
+		self.ui.setupUi(self)
+		for key in keys:
+			self.ui.comboBox.addItem(key)
+	def getValue(self):
+		return str(self.ui.comboBox.currentText())
+
 
 class BOLTSStandard:
 	def __init__(self,standard,part):
@@ -29,17 +53,14 @@ class BOLTSStandard:
 		self.name_parameters = part['name']['parameters']
 		self.columns = part['table']['columns']
 		self.data = part['table']['data']
-	def setup_param_widget(self,ui):
-		if 'key' in self.target_args:
-			ui.key_combobox.clear()
-			keys = [row[0] for row in sorted(self.data.iteritems(),key=lambda x: float(x[0][1:]))]
-			for key in keys:
-				ui.key_combobox.addItem(key)
+	def setup_param_widget(self,bolts_widget):
+
 		for arg in self.target_args:
 			if arg == 'key':
-				continue
-			ui.param_label.setText(arg)
-			ui.param_lineedit.setText('')
+				keys = [row[0] for row in sorted(self.data.iteritems(),key=lambda x: float(x[0][1:]))]
+				bolts_widget.add_param_widget(arg,lambda p: KeyWidget(p,keys))
+			else:
+				bolts_widget.add_param_widget(arg,lambda p: DimWidget(p,arg))
 
 	def get_tree_item(self,parent_item):
 		item = QtGui.QTreeWidgetItem(parent_item,[self.standard,self.description])
@@ -78,6 +99,8 @@ class BoltsWidget(QtGui.QDockWidget):
 
 		self.bases = bases
 
+		self.param_widgets = {}
+
 		self.std_root = QtGui.QTreeWidgetItem(self.ui.partsTree,['Standards','Ordered by organisation'])
 		self.std_root.setData(0,32,None)
 		self.std_coll_items = {}
@@ -88,28 +111,44 @@ class BoltsWidget(QtGui.QDockWidget):
 		self.coll_root = QtGui.QTreeWidgetItem(self.ui.partsTree,['Collections','Ordered by collections'])
 		self.coll_root.setData(0,32,None)
 
-		self.debug = ''
+	def clear_param_widgets(self):
+		for key in self.param_widgets:
+			self.ui.param_layout.removeWidget(self.param_widgets[key])
+			self.param_widgets[key].setParent(None)
+		self.param_widgets = {}
+
+	def add_param_widget(self,key,constructor_callback):
+		self.param_widgets[key] = constructor_callback(self.ui.params)
+		self.ui.param_layout.addWidget(self.param_widgets[key])
 
 	def on_addButton_clicked(self,checked):
+		if FreeCAD.activeDocument is None:
+			return
+
 		items = self.ui.partsTree.selectedItems()
+
 		if len(items) < 1:
 			return
-		item = items[0]
-		data = item.data(0,32).toPyObject()
 
-		if isinstance(data,BOLTSStandard):
-			if data.base in self.bases:
-				document = FreeCAD.ActiveDocument
-				#assemble parameters
-				params = {}
-				key = str(self.ui.key_combobox.currentText())
-				params['key'] = key
-				params['name'] = data.name_template % (data.standard,key)
-				for dim,val in zip(data.columns,data.data[key]):
-					params[dim] = val
-				params[self.ui.param_label.text()] = float(self.ui.param_lineedit.text())
-				self.bases[data.base](params,document)
+		data = items[0].data(0,32).toPyObject()
 
+		if not isinstance(data,BOLTSStandard):
+			return
+
+		if not data.base in self.bases:
+			return
+
+		params = {}
+		#read parameters from widgets
+		for key in self.param_widgets:
+			params[key] = self.param_widgets[key].getValue()
+		#additional parameters from table
+		if 'key' in params:
+			params.update(dict(zip(data.columns,data.data[params['key']])))
+		params['name'] = data.name_template % (data.standard, params['key'])
+
+		#add part
+		self.bases[data.base](params,FreeCAD.ActiveDocument)
 
 	def on_partsTree_itemSelectionChanged(self):
 		items = self.ui.partsTree.selectedItems()
@@ -124,7 +163,8 @@ class BoltsWidget(QtGui.QDockWidget):
 		elif isinstance(data,BOLTSStandard):
 			self.ui.name.setText(data.standard)
 			self.ui.description.setText(data.description)
-			self.debug = data.setup_param_widget(self.ui)
+			self.clear_param_widgets()
+			data.setup_param_widget(self)
 		elif isinstance(data,StandardCollection):
 			self.ui.name.setText(data.org)
 			self.ui.description.setText(data.description)
@@ -179,6 +219,8 @@ mw = getMainWindow()
 
 files = listdir('blt')
 for file in files:
+	if file.startswith('.'):
+		continue
 	blt = load_collection(file)
 	widget.addCollection(blt)
 
