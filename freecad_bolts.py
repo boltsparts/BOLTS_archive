@@ -139,7 +139,9 @@ class BoltsWidget(QBoltsWidget):
 		#additional parameters from table
 		if 'key' in params:
 			params.update(dict(zip(data.columns,data.data[params['key']])))
-		params['name'] = data.name_template % (data.standard, params['key'])
+		params['standard'] = data.standard
+
+		params['name'] = data.name_template % tuple(params[k] for k in data.name_parameters)
 
 		#add part
 		self.bases[data.base](params,FreeCAD.ActiveDocument)
@@ -205,9 +207,13 @@ mw = getMainWindow()
 
 #load bases
 import washer
-reload(washer)
+import hex
 
-widget = BoltsWidget(washer.bases)
+bases = {}
+bases.update(washer.bases)
+bases.update(hex.bases)
+
+widget = BoltsWidget(bases)
 
 #load parts
 files = listdir('blt')
