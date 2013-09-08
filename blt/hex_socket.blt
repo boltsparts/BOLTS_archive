@@ -3,7 +3,7 @@ collection:
     name: BOLTS hexagon socket fasteners
     description: various standard hex socket bolts and screws
     author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-    license: CC-BY-NC-SA <http://creativecommons.org/licenses/by-nc-sa/3.0/>
+    license: CC-BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
     blt-version: 0.1
 scad:
     base-file: hex_socket.scad

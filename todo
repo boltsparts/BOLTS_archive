@@ -58,13 +58,37 @@ Parts
 -----
 
 DIN EN number is 20000 higher, check if all DIN EN norms exist
-change license to commercially share alike
 aluminum extrusion
 pipes
 check out what the FreeCAD guys have already done:
 https://github.com/yorikvanhavre/FreeCAD-library
 http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=10&t=4390&p=34900&hilit=bearing#p34900
 
+
+Both announcements
+------------------
+legal stuff
+images
+contributions!
+very much proof of concept, suggestions, idea, criticism welcome
+data comes from part vendors, can probably be improved
+
+
+FreeCAD
+-------
+
+coming from OpenSCAD
+GUI programming, base part scripting can probably be done better
+possible to generate images automatically?
+possible to use fcstd base parts?
+
+
+OpenSCAD mail
+-------------
+
+inspired by MCAD and Nophead
+orientation and positioning
+diff mode
 
 
 
