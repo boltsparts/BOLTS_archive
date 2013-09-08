@@ -11,6 +11,8 @@ upload to github
 convert this file to issues
 nicer layout for tables
 nicer layout for collection/part/(standard) pages
+all parts as step/iges/stl?
+downloads
 
 
 Generated HTML
@@ -20,11 +22,14 @@ automatic task list: missing base function, short descriptions, check errors, mi
 Add Openscad incantation to every part, collection and standard
 suppress empty properties
 part page: author with mail
+add total numbers of parts/standards/collections
+tables in inches?
 
 FreeCAD Backend
 ---------------
 
 warning when superseeded standards are used
+suppress empty
 license header
 http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=19&t=4205&start=0
 explore fcstd bases
@@ -40,7 +45,7 @@ add dimension checks everywhere
 zero coordinates for axis: cross doesn't work everywhere (see hex_socket1). dashed lines?
 warning when superseeded standards are used
 license header
-NopHead assembly and bom mechanisms
+NopHead assembly and bom mechanisms, or alternative bom mechanisms
 proper dependencies (bitmap font)
 maybe special mode for differencing (smaller diameter for threaded parts for tapping, larger diameter for hex traps, ...)
 
