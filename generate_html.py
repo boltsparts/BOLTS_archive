@@ -3,7 +3,6 @@ import os.path
 from shutil import rmtree,copytree
 from blt_parser import load_collection, check_conformity
 import string
-import datetime
 
 def msort(a,b):
 	val_a, val_b = float(a[1:]),float(b[1:])
@@ -63,8 +62,6 @@ class HTMLExporter:
 				)
 		args['parts'] = "\n".join(args['parts'])
 
-		args['date'] = str(datetime.date.today())
-
 		self.collections[base] = args
 
 		#generate part pages
@@ -118,8 +115,6 @@ class HTMLExporter:
 			args['author'] = collection['collection']['author']
 
 			args['license'] = license
-
-			args['date'] = str(datetime.date.today())
 
 			self.parts[standard] = args
 
