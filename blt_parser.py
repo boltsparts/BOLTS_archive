@@ -70,11 +70,20 @@ def unify_to_list(coll):
 			if field in part and isinstance(part[field],str):
 				part[field] = [part[field]]
 
+def convert_table(coll):
+	"""Convert table data to float and None"""
+	for part in coll["parts"]:
+		if "table" in part:
+			data = part["table"]["data"]
+			for key in data:
+				data[key] = [float(v) if not v == "None" else None for v in data[key]]
+
 
 def load_collection(filename):
 	coll = list(yaml.load_all(open("blt/" + filename)))[0]
 	check_conformity(coll)
 	set_defaults(coll)
 	unify_to_list(coll)
+	convert_table(coll)
 	return coll
 	
