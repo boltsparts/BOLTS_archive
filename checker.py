@@ -41,9 +41,9 @@ class TableChecker:
 			direction = None
 			last_value = None
 			for j in range(1,n):
-				if rows[j][i] == "None":
+				if rows[j][i] is None:
 					continue
-				current_value = float(rows[j][i])
+				current_value = rows[j][i]
 
 				if direction is None and not last_value is None:
 					#positive if ascending, negative if descending
@@ -52,7 +52,7 @@ class TableChecker:
 				elif (not direction is None) and direction*current_value < direction*last_value:
 					self.error(msg % j,blt["collection"],part)
 
-				last_value = float(rows[j][i])
+				last_value = rows[j][i]
 
 	def _check_order_of_magnitude(self,blt,part,table):
 		msg = "Unusually magnitude for entry in row: %s"
@@ -63,15 +63,15 @@ class TableChecker:
 		for i in range(1,m):
 			last_value = None
 			for j in range(1,n):
-				if rows[j][i] == "None":
+				if rows[j][i] is None:
 					last_value = None
 					continue
 				elif not last_value is None:
-					ratio = float(rows[j][i])/last_value
+					ratio = rows[j][i]/last_value
 					#threshholds are arbitrary, but small enough to catch shifted decimal points
 					if ratio > 7.5 or 40*ratio < 3.:
 						self.error(msg % j, blt["collection"],part)
-				last_value = float(rows[j][i])
+				last_value = rows[j][i]
 
 	def _check_positivity(self,blt,part,table):
 		msg = "Negative entry in row: %s"
@@ -80,15 +80,17 @@ class TableChecker:
 		m = len(rows[0])
 
 		for i in range(1,m):
-			last_value = None
 			for j in range(1,n):
+				if rows[j][i] is None:
+					continue
 				if rows[j][i] < 0:
 					self.error(msg % j, blt["collection"],part)
 
 class CollectionChecker:
 	#List of accepted licenses
 	licenses = {
-		"CC-BY-NC-SA" : "http://creativecommons.org/licenses/by-nc-sa/3.0/"
+		"CC-BY-NC-SA" : "http://creativecommons.org/licenses/by-nc-sa/3.0/",
+		"CC-BY-SA" : "http://creativecommons.org/licenses/by-sa/3.0/"
 	}
 	def __init__(self):
 		self.blts = []
