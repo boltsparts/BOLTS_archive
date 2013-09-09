@@ -25,21 +25,26 @@
       </div> -->
       <div class="col">
         <h3>Using BOLTS with OpenSCAD</h3>
-        <p>Download the files from the Github repository and put them in a folder. <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to include BOLTS.</p>
+        <p>Download the OpenSCAD tarball from the <a href="{site.baseurl}/html/downloads.html">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or<a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to include BOLTS. Then add this at the top of your scad file:</p>
         {% highlight python %}
-include <BOLTS/bolts.scad>
+include <bolts.scad>
 {% endhighlight %}
+      <p> You can now use BOLTS to add standard parts like a washer:</p>
+      {% highlight python %}
+      ISO7089("M4");
+      {% endhighlight %}
       </div>
       <div class="col">
         <h3>Using BOLTS with FreeCAD</h3>
-        <p>Download the files from the Github repository and put them in a folder. Start FreeCAD using the provided launcher script:</p>
+        <p>Download the FreeCAD tarball from the <a href="{site.baseurl}/html/downloads.html">Downloads page</a> and extract it into a folder. Start FreeCAD using the supplied script:</p>
         {% highlight bash %}
 ./launch_freecad
 {% endhighlight %}
-        <p>In the FreeCAD python console type
+        <p>This adjusts the module search paths to include the BOLTS widget. The widget can be started by typing into the FreeCAD python console:</p>
         {% highlight python %}
-import bolts.py
+import freecad_bolts
 {% endhighlight %}
+        <p> There you can select a part from the tree, give values for the parameters and add it to the current document.</p>
       </div>
     </div>
   </div>
