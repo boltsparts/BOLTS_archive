@@ -9,7 +9,7 @@ def hex1(params,document):
 	k = params['k']
 	s = params['s']
 	h = params['h']
-	if h == 'None':
+	if h is None:
 		h = 0.
 	l = params['l']
 	name = params['name']
