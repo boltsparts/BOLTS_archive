@@ -12,7 +12,6 @@ convert this file to issues
 nicer layout for tables
 nicer layout for collection/part/(standard) pages
 all parts as step/iges/stl?
-downloads
 
 
 Generated HTML
@@ -30,7 +29,6 @@ FreeCAD Backend
 
 warning when superseeded standards are used
 images
-suppress empty
 license header
 http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=19&t=4205&start=0
 explore fcstd bases
