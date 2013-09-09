@@ -18,7 +18,7 @@ downloads
 Generated HTML
 --------------
 
-automatic task list: missing base function, short descriptions, check errors, missing images, proposed standards
+automatic task list: short descriptions, check errors, missing images, proposed standards
 Add Openscad incantation to every part, collection and standard
 suppress empty properties
 part page: author with mail
@@ -37,6 +37,7 @@ explore fcstd bases
 OpenSCAD Backend
 ----------------
 
+attach library http://www.thingiverse.com/thing:30136
 OpenSCAD parser to make base-args superfluous.
 OpenSCAD GUI?
 OpenSCAD library

@@ -116,6 +116,8 @@ class HTMLExporter:
 
 			args['license'] = license
 
+			args['drawing'] = part['base']
+
 			self.parts[standard] = args
 
 	def finish(self):
