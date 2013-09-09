@@ -14,8 +14,11 @@ def msort(a,b):
 	else:
 		return 0
 
-def enclose(seq,tag):
-	return ''.join("<%s>%s</%s>" % (tag,s,tag) for s in seq)
+def enclose(seq,tag,cls=None):
+	if cls is None:
+		return ''.join('<%s>%s</%s>' % (tag,s,tag) for s in seq)
+	else:
+		return ''.join('<%s class="%s">%s</%s>' % (tag,c,s,tag) for s,c in zip(seq,cls))
 
 class HTMLExporter:
 	def __init__(self):
@@ -151,12 +154,10 @@ class HTMLExporter:
 
 		for org in self.orgs:
 			args = {}
-			args['table'] = enclose(
-					[enclose(['name','description','status'],'th')] + 
-					[enclose(["<a href='../parts/%s.html'>%s</a>" % (s,s),
-						self.parts[s]['description'],
-						self.parts[s]['status']],'td') for s in self.orgs[org]],'tr'
-					)
+			args['parts'] = ['<tr><th>Name</ts><th>Description</th><th>Status</th>']
+			for s in self.orgs[org]:
+				args['parts'].append('<tr class="%s"><td><a href="../parts/%s.html">%s</a></td><td>%s</td><td>%s</td>' % (self.parts[s]['status'],s,s,self.parts[s]['description'],self.parts[s]['status']))
+			args['parts'] = "\n".join(args['parts'])
 
 			args['title'] = org
 			fid = open('html/organisations/%s.html' % org,'w')
