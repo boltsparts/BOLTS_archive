@@ -1,2 +1,4 @@
 _site/
 *.pyc
+.*.swp
+.sass-cache

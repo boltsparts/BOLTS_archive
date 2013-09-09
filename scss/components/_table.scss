@@ -47,6 +47,9 @@ table {
   tbody + tbody {
     border-top: 2px solid $light-bg;
   }
+  tr.withdrawn {
+    background-color: $muted-text;
+  }
 }
 
 // CONDENSED TABLE W/ HALF PADDING
