@@ -1,3 +1,48 @@
+Until Announcement
+------------------
+
+license header in generated OpenSCAD code
+license header in FreeCAD code
+license file
+readme
+upload to Github
+fix GitHub link in header
+convert this file to issues
+ask for inclusion in planet.arcol.hu
+thingiverse?
+
+All announcements
+------------------
+legal stuff
+http://www.gnu.org/licenses/gpl-faq.html#GPLOutput
+http://opendatacommons.org/licenses/odbl/1.0/
+drawings, ugly homegrown tools before discovering dimlines, long term doing them in FreeCAD is probably best
+contributions!
+very much proof of concept, suggestions, idea, criticism welcome
+data comes from part vendors, can probably be improved
+
+OpenSCAD mail
+-------------
+
+inspired by MCAD and Nophead
+orientation and positioning
+diff mode
+
+FreeCAD Announcement
+--------------------
+
+coming from OpenSCAD
+GUI programming, base part scripting can probably be done better
+possible to generate images automatically?
+possible to use fcstd base parts?
+
+
+Blog announcement
+-----------------
+
+more CAD systems welcome
+
+
 Webpage
 -------
 
@@ -7,8 +52,6 @@ user guide and example
 	OpenSCAD base module
 	FreeCAD base function
 git hooks
-upload to github
-convert this file to issues
 nicer layout for tables
 nicer layout for collection/part/(standard) pages
 all parts as step/iges/stl?
@@ -18,7 +61,7 @@ Generated HTML
 --------------
 
 automatic task list: short descriptions, check errors, missing images, proposed standards
-Add Openscad incantation to every part, collection and standard
+add Openscad incantation to every part, collection and standard
 suppress empty properties
 part page: author with mail
 add total numbers of parts/standards/collections
@@ -29,7 +72,6 @@ FreeCAD Backend
 
 warning when superseeded standards are used
 images
-license header
 http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=19&t=4205&start=0
 explore fcstd bases
 
@@ -39,6 +81,7 @@ OpenSCAD Backend
 attach library http://www.thingiverse.com/thing:30136
 OpenSCAD parser to make base-args superfluous?
 OpenSCAD GUI?
+Collection.scad and Standard.scad to partially import parts
 BOLT.scad: unified warning and error functions
 add dimension checks everywhere?
 zero coordinates for axis: cross doesn't work everywhere (see hex_socket1). dashed lines?
@@ -66,29 +109,4 @@ check out what the FreeCAD guys have already done:
 https://github.com/yorikvanhavre/FreeCAD-library
 http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=10&t=4390&p=34900&hilit=bearing#p34900
 
-
-Both announcements
-------------------
-legal stuff
-drawings, ugly homegrown tools before discovering dimlines, long term doing them in FreeCAD is probably best
-contributions!
-very much proof of concept, suggestions, idea, criticism welcome
-data comes from part vendors, can probably be improved
-
-
-FreeCAD
--------
-
-coming from OpenSCAD
-GUI programming, base part scripting can probably be done better
-possible to generate images automatically?
-possible to use fcstd base parts?
-
-
-OpenSCAD mail
--------------
-
-inspired by MCAD and Nophead
-orientation and positioning
-diff mode
 
