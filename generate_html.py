@@ -259,3 +259,15 @@ for filename in files:
 
 pages.finish()
 tasks.finish()
+
+#generate downloads 
+download_template = string.Template(open("template/downloads.html").read())
+content = {}
+content['devdistopenscad'] = sorted(listdir('downloads/openscad'))[-1]
+content['devdistfreecad'] = sorted(listdir('downloads/freecad'))[-1]
+content['devdisthtml'] = sorted(listdir('downloads/html'))[-1]
+
+with open('html/downloads.html','w') as fid:
+	fid.write(download_template.substitute(content))
+
+

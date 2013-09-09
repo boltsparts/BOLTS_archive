@@ -26,7 +26,7 @@ class OpenSCADExporter:
 				standards = part['standard']
 				for standard in standards:
 					filename = "tables/%s_table.scad" % standard
-					self.write_table('output/' + filename, standard, part['table'])
+					self.write_table('output/scad/' + filename, standard, part['table'])
 					self.tables.append(filename)
 				columns = part['table']['columns']
 				for col,i in zip(columns,range(len(columns))):
@@ -76,7 +76,7 @@ class OpenSCADExporter:
 
 	#we do not write modification date or similar stuff to keep vcs diffs clean
 	def finish(self):
-		fid = open('output/' + self.filename,'w')
+		fid = open('output/scad/' + self.filename,'w')
 
 		for base in self.bases:
 			fid.write('include <%s>\n' % base)
@@ -107,9 +107,9 @@ class OpenSCADExporter:
 
 
 #clear output
-rmtree("output",True)
-makedirs("output/tables")
-copytree("scad","output/base")
+rmtree("output/scad",True)
+makedirs("output/scad/tables")
+copytree("scad","output/scad/base")
 
 files = listdir('blt')
 
