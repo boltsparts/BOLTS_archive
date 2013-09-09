@@ -105,6 +105,17 @@ class BoltsWidget(QBoltsWidget):
 		self.coll_root = QtGui.QTreeWidgetItem(self.ui.partsTree,['Collections','Ordered by collections'])
 		self.coll_root.setData(0,32,None)
 
+	def remove_empty_items(self,root_item):
+		children = [root_item.child(i) for i in range(root_item.childCount())]
+		for child in children:
+			print child.childCount()
+			self.remove_empty_items(child)
+			data = child.data(0,32).toPyObject()
+			if not isinstance(data,BOLTSStandard) and child.childCount() == 0:
+				print 'removing', child.data(0,0).toPyObject()
+				root_item.removeChild(child)
+
+
 	def clear_param_widgets(self):
 		for key in self.param_widgets:
 			self.ui.param_layout.removeWidget(self.param_widgets[key])
@@ -172,6 +183,8 @@ class BoltsWidget(QBoltsWidget):
 		coll = BOLTSCollection(blt)
 		coll_item = coll.get_tree_item(self.coll_root)
 		for part in blt['parts']:
+			if not part['base'] in self.bases:
+				continue
 			for standard_name in part['standard']:
 				standard = BOLTSStandard(standard_name,part)
 				standard.get_tree_item(coll_item)
@@ -222,5 +235,8 @@ for file in files:
 		continue
 	blt = load_collection(file)
 	widget.addCollection(blt)
+
+widget.remove_empty_items(widget.std_root)
+widget.remove_empty_items(widget.coll_root)
 
 mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
