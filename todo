@@ -29,6 +29,7 @@ FreeCAD Backend
 ---------------
 
 warning when superseeded standards are used
+images
 suppress empty
 license header
 http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=19&t=4205&start=0
@@ -38,27 +39,24 @@ OpenSCAD Backend
 ----------------
 
 attach library http://www.thingiverse.com/thing:30136
-OpenSCAD parser to make base-args superfluous.
+OpenSCAD parser to make base-args superfluous?
 OpenSCAD GUI?
-OpenSCAD library
 BOLT.scad: unified warning and error functions
-add dimension checks everywhere
+add dimension checks everywhere?
 zero coordinates for axis: cross doesn't work everywhere (see hex_socket1). dashed lines?
 warning when superseeded standards are used
 license header
 NopHead assembly and bom mechanisms, or alternative bom mechanisms
-proper dependencies (bitmap font)
 maybe special mode for differencing (smaller diameter for threaded parts for tapping, larger diameter for hex traps, ...)
 
 BLT
 ---
 
 explore git integration (git repo url in collection header?, automatic updating?, submodules?)
-script: generate task list
 
 spec: define concepts and use them consistently: dimensions or measures, base definitions, dimension lookup
 spec: clarify and use consistently (repo, collection, parts class, part)?
-spec: discrete choices for parameters, for example the length of bolts.
+spec: selection of discrete choices for parameters, for example the length of bolts?
 
 Parts
 -----
@@ -74,7 +72,7 @@ http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=10&t=4390&p=34900&hil
 Both announcements
 ------------------
 legal stuff
-images
+drawings, ugly homegrown tools before discovering dimlines, long term doing them in FreeCAD is probably best
 contributions!
 very much proof of concept, suggestions, idea, criticism welcome
 data comes from part vendors, can probably be improved
@@ -95,6 +93,4 @@ OpenSCAD mail
 inspired by MCAD and Nophead
 orientation and positioning
 diff mode
-
-
 
