@@ -21,7 +21,7 @@ tar -caf downloads/html/BOLTS-HTML-`date +'%Y-%m-%d'`.tar.gz html drawings
 python generate_html.py
 
 #commit to master
-git -m "Automatic page update" commit html drawings downloads
+git commit -m "Automatic page update" html drawings downloads
 
 #rebuild pages
 git checkout gh-pages
