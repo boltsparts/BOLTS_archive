@@ -1,15 +1,10 @@
 Until Announcement
 ------------------
 
-license header in generated OpenSCAD code
-license header in FreeCAD code
-license file
-readme
 upload to Github
 fix GitHub link in header
 convert this file to issues
 ask for inclusion in planet.arcol.hu
-thingiverse?
 
 All announcements
 ------------------
@@ -25,6 +20,7 @@ OpenSCAD mail
 -------------
 
 inspired by MCAD and Nophead
+general flow (data in blt, base modules, table generation)
 orientation and positioning
 diff mode
 
@@ -41,6 +37,11 @@ Blog announcement
 -----------------
 
 more CAD systems welcome
+
+Thingiverse announcement
+------------------------
+
+?
 
 
 Webpage
