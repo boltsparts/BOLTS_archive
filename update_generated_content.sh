@@ -31,3 +31,5 @@ git checkout master -- downloads
 git add html drawings downloads
 git commit -m "Automatic page update"
 make local
+
+git checkout master
