@@ -25,18 +25,18 @@
       </div> -->
       <div class="col">
         <h3>Using BOLTS with OpenSCAD</h3>
-        <p>Download the OpenSCAD tarball from the <a href="{{site.baseurl}}/html/downloads.html">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to include BOLTS. Then add this at the top of your scad file:</p>
+        <p>Download the tarball with BOLTS for OpenSCAD from the <a href="{{site.baseurl}}/html/downloads.html">Downloads page</a> and extract it into a folder. Start <a href="http://www.openscad.org/">OpenSCAD</a> from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS. Then add this at the top of your scad file:</p>
         {% highlight python %}
 include <bolts.scad>
 {% endhighlight %}
-      <p> You can now use BOLTS to add standard parts like a <a href="{{site.baseurl}}/html/parts/parts/ISO7089.html">washer</a>:</p>
+      <p> You can now use BOLTS to add standard parts like a <a href="{{site.baseurl}}/html/parts/ISO7089.html">washer</a>:</p>
       {% highlight python %}
 ISO7089("M4");
 {% endhighlight %}
       </div>
       <div class="col">
         <h3>Using BOLTS with FreeCAD</h3>
-        <p>Download the FreeCAD tarball from the <a href="{{site.baseurl}}/html/downloads.html">Downloads page</a> and extract it into a folder. Start FreeCAD using the supplied script:</p>
+        <p>Download the tarball with BOLTS for FreeCAD from the <a href="{{site.baseurl}}/html/downloads.html">Downloads page</a> and extract it into a folder. Start <a href="http://freecadweb.org/">FreeCAD</a> using the supplied script:</p>
         {% highlight bash %}
 ./launch_freecad
 {% endhighlight %}
