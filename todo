@@ -16,22 +16,6 @@ contributions!
 very much proof of concept, suggestions, idea, criticism welcome
 data comes from part vendors, can probably be improved
 
-OpenSCAD mail
--------------
-
-inspired by MCAD and Nophead
-general flow (data in blt, base modules, table generation)
-orientation and positioning
-diff mode
-
-FreeCAD Announcement
---------------------
-
-coming from OpenSCAD
-GUI programming, base part scripting can probably be done better
-possible to generate images automatically?
-possible to use fcstd base parts?
-
 
 Blog announcement
 -----------------
@@ -53,8 +37,6 @@ user guide and example
 	OpenSCAD base module
 	FreeCAD base function
 git hooks
-nicer layout for tables
-nicer layout for collection/part/(standard) pages
 all parts as step/iges/stl?
 comments for blog
 
@@ -73,6 +55,7 @@ FreeCAD Backend
 ---------------
 
 warning when superseeded standards are used
+make a macro
 images
 http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=19&t=4205&start=0
 explore fcstd bases
