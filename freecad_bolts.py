@@ -123,11 +123,9 @@ class BoltsWidget(QBoltsWidget):
 	def remove_empty_items(self,root_item):
 		children = [root_item.child(i) for i in range(root_item.childCount())]
 		for child in children:
-			print child.childCount()
 			self.remove_empty_items(child)
 			data = child.data(0,32).toPyObject()
 			if not isinstance(data,BOLTSStandard) and child.childCount() == 0:
-				print 'removing', child.data(0,0).toPyObject()
 				root_item.removeChild(child)
 
 
