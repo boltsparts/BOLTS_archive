@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 #update OpenSCAD distribution
 python generate_scad.py
@@ -6,7 +7,7 @@ python generate_scad.py
 #update FreeCAD distribution
 rm -rf output/freecad
 mkdir output/freecad
-cp freecad_bolts.py *.ui launch_freecad output/freecad
+cp blt_parser.py freecad_bolts.py *.ui launch_freecad output/freecad
 cp -r blt freecad output/freecad
 
 #make tarballs
