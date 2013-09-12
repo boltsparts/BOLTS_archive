@@ -92,7 +92,9 @@ directories can be present, this is specified by the backend_.
 Backends, Processing and Distributions
 ======================================
 
-BOLTS tries to separate the backend independent data and metadata from the backend specific data. The former is held in blt-files_, the latter in base-files_.
+BOLTS tries to separate the backend independent data and metadata from the
+backend specific data. The former is held in blt-files_, the latter in
+base-files_.
 
 .. _backend:
 
@@ -137,7 +139,10 @@ with the extension .blt with exactly one YAML document and containing an
 associative array with the following keys:
 
 - collection: mandatory. The collection-header_
-- classes: mandatory. A list with at least one class-element_
+- classes: mandatory. An associative array with class ids as keys and
+  class-element_ as values. Class ids are short identifiers, which should be
+  unique within the collection. This class id is only used as a way to refer to
+  the class within the collection and carries no semantics.
 
 .. _collection-header:
 
@@ -177,7 +182,8 @@ class_. It has the following keys:
 - status: optional, string. This can be used to indicate the status of the
   standard.  Possible values are "active" and "withdrawn", if absent, "active"
   is assumed.
-- replaces: optional, string or list of strings. Standards that are superseded by this standard.
+- replaces: optional, string or list of strings. Standards that are superseded
+  by this standard.
 - parameters: optional, parameter-element_: Parameters for this class.
 - url: optional, string or list of strings. A url with relevant information
   regarding the parts of this class. For example a link to a vendor, or to the
@@ -211,6 +217,8 @@ restricted to be. The following keys are contained in a parameter element.
   (in)", "Number", "Bool", "Table Index", "String". If no entry is present for
   a parameter, "Length (mm)" is assumed.
 
+Some parameter names are forbidden: standard.
+
 .. Limits on parameters could go here
 
 .. _table-element:
@@ -218,7 +226,11 @@ restricted to be. The following keys are contained in a parameter element.
 Table element
 -------------
 
-Tables of data are very common in standards and very useful for specifying a class_ of parts. A table element describes a table of values, where the row is specified by the value an index parameter, and each column contains the value for a parameter. A table element is an associative array that has the following keys:
+Tables of data are very common in standards and very useful for specifying a
+class_ of parts. A table element describes a table of values, where the row is
+specified by the value an index parameter, and each column contains the value
+for a parameter. A table element is an associative array that has the following
+keys:
 
 - index: mandatory, string: name of the index parameter. Has to specified to be
   of type "Table Index" in the parameter-element_.
@@ -240,8 +252,10 @@ class. It has the keys:
 
 - template: mandatory, string. A name template, can contain placeholders for
   strings "%s" and numbers "s".
-- placeholders: optional, list. List of parameter names that should be filled in
-  for the placeholders in the template. I missing default to empty list.
+- placeholders: optional, list. List of parameter names and that should be
+  filled in for the placeholders in the template. If missing defaults to empty
+  list. Besides the parameter names from the parameter-element_, also the
+  special name "standard" can be used.
 
 
 .. _parameter-collection:
@@ -270,8 +284,8 @@ Then a value is assigned to each parameter. This can happen by:
 It is an error condition if a parameter is not assigned a value or if there are
 more than one way to assign a value.
 
-The parameter values collected in this way are used for example to populate the
-template given in the naming-element_.
+For example are the parameter values collected in this way used (among other
+properties) to populate the template given in the naming-element_.
 
 
 .. _list-of-backends:
