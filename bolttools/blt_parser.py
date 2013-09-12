@@ -22,10 +22,11 @@ _re_angled = re.compile("([^<]*)<([^>]*)")
 
 current_version = 0.2
 
+#this is not super-precise, but allows to do some rough checks
 _specification = {
 	"root" : (["collection","classes"],[]),
 	"collection" : (["author","license","blt-version"],["name","description"]),
-	"class" : (["naming","source"],["drawing","description","standard","status","parameters","url","notes"]),
+	"class" : (["naming","source"],["drawing","description","standard","status","replaces","parameters","url","notes"]),
 	"naming" : (["template"],["placeholder"]),
 	"parameters" : ([],["literal","free","tables","types"]),
 	"table" : (["index","columns","data"],[])
@@ -80,9 +81,9 @@ class BOLTSRepository:
 		self.collections = []
 
 		#load collection data
-		for filename in os.listdir(path+"/data"):
-			if splitext(filename) == ".blt":
-				self.collections.append(BOLTCollection(path + "/data/" + filename))
+		for filename in os.listdir(path + "/data"):
+			if splitext(filename)[1] == ".blt":
+				self.collections.append(BOLTSCollection(path + "/data/" + filename))
 
 		if not os.path.exists(path + "/drawings"):
 			raise MalformedRepositoryError("drawings folder is missing")
@@ -118,13 +119,13 @@ class BOLTSCollection:
 			print "In file %s, field %s" % (bltname,"collection")
 			raise
 		classes = coll["classes"]
-		if not isinstance(classes,list):
+		if not isinstance(classes,dict):
 			raise MalformedCollectionError("No class in collection %s"% bltname)
-		for cl,i in zip(classes,range(len(classes))):
+		for id,cl in classes.iteritems():
 			try:
 				check_dict(cl,spec["class"])
 			except (UnknownFieldError, MissingFieldError):
-				print "In file %s, class %d" % (bltname,i)
+				print "In file %s, class %s" % (bltname,id)
 				raise
 			if "tables" in cl.keys():
 				tables = cl["tables"]
@@ -132,7 +133,7 @@ class BOLTSCollection:
 					try:
 						check_dict(table,spec["table"])
 					except (UnknownFieldError, MissingFieldError):
-						print "In file %s, class %d table %d" % (bltname,i,j)
+						print "In file %s, class %s table %d" % (bltname,id,j)
 						raise
 
 		#parse header
@@ -162,9 +163,9 @@ class BOLTSCollection:
 		self.license_url = match.group(2).strip()
 
 		#parse classes
-		self.classes = []
-		for cl in coll["classes"]:
-			self.classes.append(BOLTSClass(cl))
+		self.classes = {}
+		for id,cl in coll["classes"].iteritems():
+			self.classes[id] = BOLTSClass(cl)
 
 class BOLTSClass:
 	def __init__(self,cl):
@@ -272,14 +273,15 @@ class BOLTSTable:
 				row = self.data[key]
 				if row[i] == "None":
 					row[i] = None
-				if t in numbers:
-					row[i] = float(row[i])
-				elif not t in rest:
-					raise ValueError("Unknown Type in table")
-				if t in positive and row[i] < 0:
-					raise ValueError("Negative length in table")
-				if t == "Bool":
-					row[i] = bool(row[i])
+				else:
+					if t in numbers:
+						row[i] = float(row[i])
+					elif not t in rest:
+						raise ValueError("Unknown Type in table")
+					if t in positive and row[i] < 0:
+						raise ValueError("Negative length in table")
+					if t == "Bool":
+						row[i] = bool(row[i])
 
 class BOLTSNaming:
 	def __init__(self,name):
