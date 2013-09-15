@@ -29,7 +29,6 @@ class OpenSCADBackend:
 	def __init__(self,path):
 
 		#get application independent data
-
 		self.repo = blt_parser.BOLTSRepository(path)
 
 		#maps class id to base module
@@ -59,7 +58,7 @@ class OpenSCADBackend:
 								raise NonUniqueClassIdentifier
 							self.getbase[id] = module
 
-	def write_output(self,path):
+	def write_output(self):
 		out_path = join(self.backend_root,"output")
 
 

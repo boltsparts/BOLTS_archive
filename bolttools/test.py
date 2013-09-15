@@ -84,11 +84,12 @@ class TestOpenSCADGeneration(unittest.TestCase):
 	def test_init(self):
 		scad = openscad.OpenSCADBackend("test_repos/small")
 		self.assertEqual(len(scad.getbase),4)
+		scad.write_output()
 
 	def test_multi_table(self):
 		scad = openscad.OpenSCADBackend("test_repos/multi_table")
 		self.assertEqual(len(scad.getbase),4)
-		scad.write_output("test_repos/multi_table")
+		scad.write_output()
 
 
 
