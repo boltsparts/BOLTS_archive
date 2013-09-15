@@ -26,8 +26,8 @@ current_version = 0.2
 _specification = {
 	"root" : (["collection","classes"],[]),
 	"collection" : (["author","license","blt-version"],["name","description"]),
-	"class" : (["naming","source"],["drawing","description","standard","status","replaces","parameters","url","notes"]),
-	"naming" : (["template"],["placeholder"]),
+	"class" : (["naming","source","id"],["drawing","description","standard","status","replaces","parameters","url","notes"]),
+	"naming" : (["template"],["substitute"]),
 	"parameters" : ([],["literal","free","tables","types"]),
 	"table" : (["index","columns","data"],[])
 }
@@ -119,13 +119,13 @@ class BOLTSCollection:
 			print "In file %s, field %s" % (bltname,"collection")
 			raise
 		classes = coll["classes"]
-		if not isinstance(classes,dict):
+		if not isinstance(classes,list):
 			raise MalformedCollectionError("No class in collection %s"% bltname)
-		for id,cl in classes.iteritems():
+		for cl in classes:
 			try:
 				check_dict(cl,spec["class"])
 			except (UnknownFieldError, MissingFieldError):
-				print "In file %s, class %s" % (bltname,id)
+				print "In file %s, class %s" % (bltname,cl["id"])
 				raise
 			if "tables" in cl.keys():
 				tables = cl["tables"]
@@ -163,12 +163,13 @@ class BOLTSCollection:
 		self.license_url = match.group(2).strip()
 
 		#parse classes
-		self.classes = {}
-		for id,cl in coll["classes"].iteritems():
-			self.classes[id] = BOLTSClass(cl)
+		self.classes = []
+		for cl in coll["classes"]:
+			self.classes.append(BOLTSClass(cl))
 
 class BOLTSClass:
 	def __init__(self,cl):
+		self.id = cl["id"]
 		self.naming = BOLTSNaming(cl["naming"])
 
 		self.drawing = None
@@ -184,6 +185,8 @@ class BOLTSClass:
 		self.replaces = None
 		if "standard" in cl:
 			self.standard = cl["standard"]
+			if isinstance(self.standard,str):
+				self.standard = [self.standard]
 			if "status" in cl:
 				self.status = cl["status"]
 				if not self.status in ["active","withdrawn"]:
@@ -205,6 +208,9 @@ class BOLTSClass:
 			self.notes = cl["notes"]
 
 		self.source = cl["source"]
+
+		#the names under which this class is known
+		self.names = self.standard or self.id
 
 class BOLTSParameters:
 	def __init__(self,param):
@@ -286,6 +292,6 @@ class BOLTSTable:
 class BOLTSNaming:
 	def __init__(self,name):
 		self.template = name["template"]
-		self.placeholders = []
-		if "placeholders" in name:
-			self.placeholders = name["placeholders"]
+		self.substitute = []
+		if "substitute" in name:
+			self.substitute = name["substitute"]
