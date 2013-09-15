@@ -15,7 +15,7 @@
 
 import yaml
 import os
-from os.path import splitext
+from os.path import splitext, split
 import re
 
 _re_angled = re.compile("([^<]*)<([^>]*)")
@@ -93,6 +93,10 @@ class BOLTSRepository:
 
 class BOLTSCollection:
 	def __init__(self,bltname):
+		self.id = splitext(split(bltname)[1])[0]
+		if self.id in ["common","output","data"]:
+			raise MalformedCollectionError(
+					"Forbidden collection id: %s" % self.id)
 		coll = list(yaml.load_all(open(bltname)))
 		if len(coll) == 0:
 			raise MalformedCollectionError(
