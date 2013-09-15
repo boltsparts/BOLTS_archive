@@ -49,6 +49,8 @@ collections. A collection usually has one or few authors, the parts contained
 are in some sense related to each other and all the data of a collection is
 under the same licence.
 
+Each collection has a one word identifier, the collection id
+
 .. _repository:
 
 The repository
@@ -139,10 +141,14 @@ with the extension .blt with exactly one YAML document and containing an
 associative array with the following keys:
 
 - collection: mandatory. The collection-header_
-- classes: mandatory. An associative array with class ids as keys and
-  class-element_ as values. Class ids are short identifiers, which should be
-  unique within the collection. This class id is only used as a way to refer to
-  the class within the collection and carries no semantics.
+- classes: mandatory. An list of class-element_ as values. 
+
+The filename without the .blt extension is called the collection id. Collection
+ids are one word identifiers, which must be unique within the repository. This
+class id is used as a way to refer to the class, when the standard field is not
+set.  They should contain only letters, numbers and underscores, and should be
+descriptive, as they may be visible to the user. Some names can not be
+collection ids: common, output
 
 .. _collection-header:
 
@@ -171,6 +177,11 @@ Class element
 A class element is an associative array that holds information about a
 class_. It has the following keys:
 
+- id: mandatory, string. The id of the class. Class ids are one word
+  identifiers, which must be unique within the repository. This class id is
+  used as a way to refer to the class, when the standard field is not set.
+  They should contain only letters, numbers and underscores, and should be
+  descriptive, as they may be visible to the user.
 - naming: mandatory, naming-element_. A naming convention for the parts of this
   class.
 - drawing: optional, string. Filename of a drawing for this class. Without
@@ -252,7 +263,7 @@ class. It has the keys:
 
 - template: mandatory, string. A name template, can contain placeholders for
   strings "%s" and numbers "s".
-- placeholders: optional, list. List of parameter names and that should be
+- substitute: optional, list. List of parameter names and that should be
   filled in for the placeholders in the template. If missing defaults to empty
   list. Besides the parameter names from the parameter-element_, also the
   special name "standard" can be used.
@@ -288,15 +299,77 @@ For example are the parameter values collected in this way used (among other
 properties) to populate the template given in the naming-element_.
 
 
+.. _base-files:
+
+Base Files
+==========
+
+Base files are `yaml <http://yaml.org/>`_ files, that store backend specific
+data about additional files for a collection. They consist of a list of
+base-file-element_.
+
+.. _base-file-element:
+
+Base file element
+-----------------
+
+A base file element is an associative array containing at least.
+
+- filename: The filename of the 
+- type: A string describing the type of file, this is specific to the backend.
+
 .. _list-of-backends:
 
 List of Backends
 ================
 
 
+OpenSCAD
+--------
+
+The files containing informations required by the OpenSCAD backend as well as
+the generated files (the distribution) reside in the backend directory with the
+name openscad.
+
+This backend directory contains a folder for each collection_ that contains
+files related to this collection, and the folder is named like the
+collection-id.
+
+The OpenSCAD backend generates a OpenSCAD library with modules for all parts
+from all collections for which the base modules are specified. Base modules are
+openscad modules that take as parameters a subset of all  the parameters of the
+part (see parameter-collection_), and construct the part according to these
+dimensions.
+
+These modules can be placed in one or several files residing in the respective
+collection directory within the openscad backend directory. Each files is
+specified with a base-file-element_ containing the following keys and values:
+
+- type: module
+- modules: a list of base-module-element_
+
+Common files that contain code that is used in several collections or base
+files can be placed in a folder called common in the openscad backend
+directory. They will be automatically included into the main file and copied to
+the distribution.
+
+.. _base-module-element:
+
+Base module element
+-------------------
+
+A base module element is a associative array describing a openscad base module with the following keys:
+
+- name: name of the base module
+- arguments: a list with the arguments that need to be supplied to the module.
+  Can be a subset of the parameters of the class, see parameter-collection_.
+- ids: a list of class ids, for which code should be generated using this base
+  module.
 
 
-.. _base-files:
+
+
+
 
 
 
