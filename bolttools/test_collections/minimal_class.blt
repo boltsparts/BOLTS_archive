@@ -4,8 +4,8 @@ collection:
     license: CC-BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
     blt-version: 0.2
 classes:
-    min1:
-        naming:
-            template: Partname
-        source: Invented for testpurposes
+    - id: min1
+      naming:
+          template: Partname
+      source: Invented for testpurposes
 ...

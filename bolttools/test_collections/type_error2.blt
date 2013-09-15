@@ -4,7 +4,7 @@ collection:
   license: CC-BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
   blt-version: 0.2
 classes:
-  pn1:
+  - id: partname
     naming:
       template: Partname
     source: Invented for testpurposes

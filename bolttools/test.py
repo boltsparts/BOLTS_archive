@@ -1,4 +1,5 @@
 import blt_parser
+import openscad
 import unittest
 
 class TestRepositoryLoad(unittest.TestCase):
@@ -48,7 +49,7 @@ class TestCollectionLoad(unittest.TestCase):
 		self.assertEqual(coll.license_name,"CC-BY-SA")
 		self.assertEqual(coll.license_url,"http://creativecommons.org/licenses/by-sa/3.0/")
 
-		cl = coll.classes['min1']
+		cl = coll.classes[0]
 		self.assertEqual(cl.naming.template,"Partname")
 		self.assertEqual(cl.source,"Invented for testpurposes")
 		self.assertEqual(cl.parameters.free,[])
@@ -56,7 +57,7 @@ class TestCollectionLoad(unittest.TestCase):
 	def test_parameters(self):
 		coll = blt_parser.BOLTSCollection("test_collections/parameters.blt")
 
-		cl = coll.classes['pn1']
+		cl = coll.classes[0]
 		self.assertEqual(cl.parameters.free,['key','l'])
 		self.assertEqual(cl.parameters.free,['key','l'])
 		self.assertEqual(type(cl.parameters.tables[0].data['M2.5'][2]),float)
@@ -78,6 +79,18 @@ class TestCollectionLoad(unittest.TestCase):
 					"test_collections/table_error1.blt"))
 		#negative value for parameter of type number
 		blt_parser.BOLTSCollection("test_collections/table_error2.blt")
+
+class TestOpenSCADGeneration(unittest.TestCase):
+	def test_init(self):
+		scad = openscad.OpenSCADBackend("test_repos/small")
+		self.assertEqual(len(scad.getbase),4)
+
+	def test_multi_table(self):
+		scad = openscad.OpenSCADBackend("test_repos/multi_table")
+		self.assertEqual(len(scad.getbase),4)
+		scad.write_output("test_repos/multi_table")
+
+
 
 
 if __name__ == '__main__':
