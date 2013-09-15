@@ -1,0 +1,11 @@
+---
+-  filename: hex.scad
+   type: module
+   modules:
+      - name: hex1
+        arguments: [d1, k, s, h, l]
+        ids: [hexscrew1, hexscrew2]
+      - name: hex2
+        arguments: [d1, k, s, b1, b2, b3, l]
+        ids: [hexbolt1, hexbolt2]
+...
