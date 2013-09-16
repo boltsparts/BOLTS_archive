@@ -86,6 +86,33 @@ class BOLTSRepository:
 			if splitext(filename)[1] == ".blt":
 				self.collections.append(BOLTSCollection(path + "/data/" + filename))
 
+		self.standards = {}
+		self.standards['DIN'] = []
+		self.standards['EN'] = []
+		self.standards['DINENISO'] = []
+		self.standards['DINISO'] = []
+		self.standards['ISO'] = []
+		self.standards['DINEN'] = []
+
+		#find standard parts
+		for coll in self.collections:
+			for cl in coll.classes:
+				name = cl.name
+				#order is important
+				if name.startswith("DINENISO"):
+					self.standards["DINENISO"].append(cl)
+				elif name.startswith("DINEN"):
+					self.standards["DINEN"].append(cl)
+				elif name.startswith("DINISO"):
+					self.standards["DINISO"].append(cl)
+				elif name.startswith("DIN"):
+					self.standards["DIN"].append(cl)
+				elif name.startswith("EN"):
+					self.standards["EN"].append(cl)
+				elif name.startswith("ISO"):
+					self.standards["ISO"].append(cl)
+
+
 		if not os.path.exists(path + "/drawings"):
 			raise MalformedRepositoryError("drawings folder is missing")
 
@@ -169,14 +196,6 @@ class BOLTSCollection:
 
 		#standardization organisations
 
-		self.standards = {}
-		self.standards['DIN'] = []
-		self.standards['EN'] = []
-		self.standards['DINENISO'] = []
-		self.standards['DINISO'] = []
-		self.standards['ISO'] = []
-		self.standards['DINEN'] = []
-
 		#parse classes
 		self.classes = []
 		for cl in coll["classes"]:
@@ -186,20 +205,7 @@ class BOLTSCollection:
 			if isinstance(names,str):
 				names = [names]
 			for name in names:
-				bcl = BOLTSClass(cl,name)
-				self.classes.append(bcl)
-				if name.startswith("DINENISO"):
-					self.standards["DINENISO"].append(bcl)
-				elif name.startswith("DINEN"):
-					self.standards["DINEN"].append(bcl)
-				elif name.startswith("DINISO"):
-					self.standards["DINISO"].append(bcl)
-				elif name.startswith("DIN"):
-					self.standards["DIN"].append(bcl)
-				elif name.startswith("EN"):
-					self.standards["EN"].append(bcl)
-				elif name.startswith("ISO"):
-					self.standards["ISO"].append(bcl)
+				self.classes.append(BOLTSClass(cl,name))
 
 #In contrast to the class-element specified in the blt, this structure has only
 #one name, a blt class element gets split into several BOLTSClasses during
