@@ -1,0 +1,2 @@
+#!/bin/sh
+freecad -P . -P freecad

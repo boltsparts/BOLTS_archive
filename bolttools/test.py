@@ -1,5 +1,6 @@
 import blt_parser
 import openscad
+import freecad
 import unittest
 
 class TestRepositoryLoad(unittest.TestCase):
@@ -61,6 +62,8 @@ class TestCollectionLoad(unittest.TestCase):
 		self.assertEqual(cl.parameters.free,['key','l'])
 		self.assertEqual(cl.parameters.free,['key','l'])
 		self.assertEqual(type(cl.parameters.tables[0].data['M2.5'][2]),float)
+		params = cl.parameters.collect({'key' : 'M2.5', 'l' : 37.4})
+		self.assertEqual(params['s'],12.0)
 
 	def test_type_error(self):
 		#additional parameter name in types
@@ -91,6 +94,10 @@ class TestOpenSCADGeneration(unittest.TestCase):
 		self.assertEqual(len(scad.getbase),4)
 		scad.write_output()
 
+class TestFreeCADGeneration(unittest.TestCase):
+	def test_init(self):
+		scad = freecad.FreeCADBackend("test_repos/small")
+		scad.write_output()
 
 
 

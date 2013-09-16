@@ -17,6 +17,7 @@ import yaml
 import os
 from os.path import splitext, split
 import re
+import copy
 
 _re_angled = re.compile("([^<]*)<([^>]*)")
 
@@ -166,13 +167,45 @@ class BOLTSCollection:
 		self.license_name = match.group(1).strip()
 		self.license_url = match.group(2).strip()
 
+		#standardization organisations
+
+		self.standards = {}
+		self.standards['DIN'] = []
+		self.standards['EN'] = []
+		self.standards['DINENISO'] = []
+		self.standards['DINISO'] = []
+		self.standards['ISO'] = []
+		self.standards['DINEN'] = []
+
 		#parse classes
 		self.classes = []
 		for cl in coll["classes"]:
-			self.classes.append(BOLTSClass(cl))
+			names = cl["id"]
+			if "standard" in cl:
+				names = cl["standard"]
+			if isinstance(names,str):
+				names = [names]
+			for name in names:
+				bcl = BOLTSClass(cl,name)
+				self.classes.append(bcl)
+				if name.startswith("DINENISO"):
+					self.standards["DINENISO"].append(bcl)
+				elif name.startswith("DINEN"):
+					self.standards["DINEN"].append(bcl)
+				elif name.startswith("DINISO"):
+					self.standards["DINISO"].append(bcl)
+				elif name.startswith("DIN"):
+					self.standards["DIN"].append(bcl)
+				elif name.startswith("EN"):
+					self.standards["EN"].append(bcl)
+				elif name.startswith("ISO"):
+					self.standards["ISO"].append(bcl)
 
+#In contrast to the class-element specified in the blt, this structure has only
+#one name, a blt class element gets split into several BOLTSClasses during
+#parsing
 class BOLTSClass:
-	def __init__(self,cl):
+	def __init__(self,cl,name):
 		self.id = cl["id"]
 		self.naming = BOLTSNaming(cl["naming"])
 
@@ -213,8 +246,7 @@ class BOLTSClass:
 
 		self.source = cl["source"]
 
-		#the names under which this class is known
-		self.names = self.standard or self.id
+		self.name = name
 
 class BOLTSParameters:
 	def __init__(self,param):
@@ -242,7 +274,7 @@ class BOLTSParameters:
 		self.parameters += self.literal.keys()
 		self.parameters += self.free
 		for t in self.tables:
-			self.parameters.append(t)
+			self.parameters.append(t.index)
 			self.parameters += t.columns
 		#remove duplicates
 		self.parameters = list(set(self.parameters))
@@ -265,12 +297,22 @@ class BOLTSParameters:
 		#check and normalize tables
 		for t in self.tables:
 			t._normalize_and_check_types(self.types)
+	def collect(self,free):
+		res = {}
+		res.update(self.literal)
+		res.update(free)
+		for table in self.tables:
+			res.update(dict(zip(table.columns,table.data[res[table.index]])))
+		for p in self.parameters:
+			if not p in res:
+				raise KeyError("Parameter value not collected: %s" % p)
+		return res
 
 class BOLTSTable:
 	def __init__(self,table):
 		self.index = table["index"]
 		self.columns = table["columns"]
-		self.data = table["data"]
+		self.data = copy.deepcopy(table["data"])
 
 	def _normalize_and_check_types(self,types):
 		numbers = ["Length (mm)", "Length (in)", "Number"]
@@ -279,8 +321,8 @@ class BOLTSTable:
 		col_types = [types[col] for col in self.columns]
 		idx = range(len(self.columns))
 		for key in self.data:
+			row = self.data[key]
 			for i,t in zip(idx,col_types):
-				row = self.data[key]
 				if row[i] == "None":
 					row[i] = None
 				else:
@@ -299,3 +341,5 @@ class BOLTSNaming:
 		self.substitute = []
 		if "substitute" in name:
 			self.substitute = name["substitute"]
+	def get_name(self,params):
+		return self.template % (params[s] for s in self.substitute)
