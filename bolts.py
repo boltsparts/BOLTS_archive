@@ -14,5 +14,9 @@ if argv[1] == "export":
 		openscad.OpenSCADExporter().write_output(repo)
 	elif argv[2] == "freecad" and (not repo.freecad is None):
 		openscad.FreeCADExporter().write_output(repo)
+	else:
+		print "unknwon export target: %s" % argv[2]
+else:
+	print "unknwon command: %s" % argv[1]
 
 
