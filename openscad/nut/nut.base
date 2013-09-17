@@ -1,0 +1,9 @@
+---
+-  filename: nut.scad
+   type: module
+   modules:
+      - name: hex1
+        arguments: [d1, s, m_max]
+        ids: [hexagonthinnut1, hexagonthinnut2 hexagonnut1, hexagonnut2]
+...
+

@@ -1,0 +1,12 @@
+---
+-  filename: washer.scad
+   type: module
+   modules:
+      - name: washer1
+        arguments: [d1, d2, s]
+        ids: [plainwasher1, plainwasher2, plainwasherforcheesehead, heavydutyplainwasher]
+      - name: washer2
+        arguments: [d1, d2, s]
+        ids: [plainwasherchamfered]
+...
+

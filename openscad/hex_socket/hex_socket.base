@@ -1,0 +1,10 @@
+---
+- filename: hex_socket.scad
+  type: module
+  modules:
+    - name: hex_socket1
+      arguments: [d1, d2, b1, b2, b3, k_max, s, t, L, h_max, l]
+      ids: [hexsocketcountersunk]
+    - name: hex_socket2
+      arguments: [d1, d2, b, k, s, t_min, L, l]
+      ids: [hexsocketheadcap]
