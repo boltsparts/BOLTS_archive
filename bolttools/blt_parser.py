@@ -156,23 +156,46 @@ class BOLTSCollection:
 		except (UnknownFieldError, MissingFieldError):
 			print "In file %s, field %s" % (bltname,"collection")
 			raise
+		try:
+			check_dict(coll["collection"],spec["collection"])
+		except (UnknownFieldError, MissingFieldError):
+			print "In file %s, field %s" % (bltname,"collection")
+			raise
 		classes = coll["classes"]
 		if not isinstance(classes,list):
 			raise MalformedCollectionError("No class in collection %s"% bltname)
 		for cl in classes:
 			try:
 				check_dict(cl,spec["class"])
-			except (UnknownFieldError, MissingFieldError):
-				print "In file %s, class %s" % (bltname,cl["id"])
-				raise
-			if "tables" in cl.keys():
-				tables = cl["tables"]
+			except UnknownFieldError as e:
+				raise UnknownFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+			except MissingFieldError as e:
+				raise MissingFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+
+			try:
+				check_dict(cl["naming"],spec["naming"])
+			except UnknownFieldError as e:
+				raise UnknownFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+			except MissingFieldError as e:
+				raise MissingFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+
+			if "parameters" in cl.keys():
+				try:
+					check_dict(cl["parameters"],spec["parameters"])
+				except UnknownFieldError as e:
+					raise UnknownFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+				except MissingFieldError as e:
+					raise MissingFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+				tables = cl["parameters"]["tables"]
+				if isinstance(tables,dict):
+					tables = [tables]
 				for table,j in zip(tables,range(len(tables))):
 					try:
 						check_dict(table,spec["table"])
-					except (UnknownFieldError, MissingFieldError):
-						print "In file %s, class %s table %d" % (bltname,id,j)
-						raise
+					except UnknownFieldError as e:
+						raise UnknownFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+					except MissingFieldError as e:
+						raise MissingFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
 
 		#parse header
 		header = coll["collection"]
@@ -297,9 +320,9 @@ class BOLTSParameters:
 		
 		for k,t in self.types.iteritems():
 			if not k in self.parameters:
-				raise ValueError("Unknown parameter in types")
+				raise ValueError("Unknown parameter in types: %s" % k)
 			if not t in all_types:
-				raise ValueError("Unknown type in types")
+				raise ValueError("Unknown type in types: %s" % t)
 
 		#fill in defaults for types
 		for p in self.parameters:
@@ -341,9 +364,9 @@ class BOLTSTable:
 					if t in numbers:
 						row[i] = float(row[i])
 					elif not t in rest:
-						raise ValueError("Unknown Type in table")
+						raise ValueError("Unknown Type in table: %s" % t)
 					if t in positive and row[i] < 0:
-						raise ValueError("Negative length in table")
+						raise ValueError("Negative length in table: %f" % row[i])
 					if t == "Bool":
 						row[i] = bool(row[i])
 
