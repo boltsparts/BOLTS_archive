@@ -1,7 +1,13 @@
+#!/usr/bin/env python
 from bolttools import blt_parser, openscad, freecad
-from sys import argv
+from sys import argv, exit
+from os import getcwd
 
-repo = blt_parser.BOLTSRepository(".")
+if len(argv) < 2:
+	print "bolts.py <command>"
+	exit(2)
+
+repo = blt_parser.BOLTSRepository(getcwd())
 
 if argv[1] == "export":
 	if argv[2] == "openscad" and (not repo.openscad is None):
