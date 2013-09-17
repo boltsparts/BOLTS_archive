@@ -56,7 +56,7 @@ class OpenSCADData:
 class OpenSCADExporter:
 	def write_output(self,repo):
 		oscad = repo.openscad
-		out_path = join(oscad.backend_root,"output")
+		out_path = join(repo.path,"output","openscad")
 
 		#clear output and copy files
 		rmtree(out_path,True)
