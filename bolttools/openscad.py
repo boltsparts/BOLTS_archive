@@ -86,6 +86,8 @@ class OpenSCADExporter:
 		#write tables
 		for collection in repo.collections:
 			for cl in collection.classes:
+				if not cl.id in repo.openscad.getbase:
+					continue
 				table_path = join("tables","%s_table.scad" % cl.name)
 				table_filename = join(out_path,table_path)
 				fid = open(table_filename,"w")
@@ -101,6 +103,8 @@ class OpenSCADExporter:
 		#write stubs
 		for collection in repo.collections:
 			for cl in collection.classes:
+				if not cl.id in repo.openscad.getbase:
+					continue
 				self.write_stub(repo,bolts_fid,cl)
 				for std in standard_fids:
 					if cl in repo.standards[std]:
