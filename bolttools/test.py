@@ -84,20 +84,19 @@ class TestCollectionLoad(unittest.TestCase):
 		blt_parser.BOLTSCollection("test_collections/table_error2.blt")
 
 class TestOpenSCADGeneration(unittest.TestCase):
-	def test_init(self):
-		scad = openscad.OpenSCADBackend("test_repos/small")
-		self.assertEqual(len(scad.getbase),4)
-		scad.write_output()
+	def test_data_init(self):
+		repo = blt_parser.BOLTSRepository("test_repos/small")
+		self.assertEqual(len(repo.openscad.getbase),4)
+		openscad.OpenSCADExporter().write_output(repo)
 
 	def test_multi_table(self):
-		scad = openscad.OpenSCADBackend("test_repos/multi_table")
-		self.assertEqual(len(scad.getbase),4)
-		scad.write_output()
+		repo = blt_parser.BOLTSRepository("test_repos/multi_table")
+		self.assertEqual(len(repo.openscad.getbase),4)
+		openscad.OpenSCADExporter().write_output(repo)
 
 class TestFreeCADGeneration(unittest.TestCase):
-	def test_init(self):
-		scad = freecad.FreeCADBackend("test_repos/small")
-		scad.write_output()
+	def test_data_init(self):
+		scad = freecad.FreeCADData("test_repos/small")
 
 
 

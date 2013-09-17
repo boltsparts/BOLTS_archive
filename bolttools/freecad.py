@@ -16,18 +16,14 @@
 from os import listdir,makedirs
 from os.path import join, exists, basename,splitext
 from shutil import rmtree,copy,copytree
-import blt_parser
 import yaml
 
-#This does not much more than copy files around and set up macro loading
-class FreeCADBackend:
+class FreeCADData:
 	def __init__(self,path):
 		self.repo_root = path
 
-		#get application independent data
-		self.repo = blt_parser.BOLTSRepository(path)
 		self.basefiles = []
-
+		self.getbase = {}
 		self.backend_root = join(path,"freecad")
 
 		for coll in listdir(self.backend_root):
@@ -43,37 +39,55 @@ class FreeCADBackend:
 			for basefile in base:
 				if basefile["type"] == "function":
 					self.basefiles.append((coll,basefile["filename"]))
+				for mod in basefile["modules"]:
+					for id in mod["ids"]:
+						self.getbase[id] = mod["name"]
 
-	def write_output(self):
-		out_path = join(self.backend_root,"output")
-		bolts_path = join(out_path,"bolts")
-
-		#clear output and copy files
-		rmtree(out_path,True)
-
-		makedirs(bolts_path)
-		#copy blt files
-		copytree(join(self.repo_root,"data"),join(bolts_path,"data"))
-		#copy gui stuff
-		copytree(join(self.backend_root,"common"),join(bolts_path,"common"))
-		for coll,filename in self.basefiles:
-			makedirs(join(bolts_path,coll))
-			copy(join(self.backend_root,coll,filename),join(bolts_path,coll))
-
-		init_fid = open(join(bolts_path,"__init__.py"),"w")
-		init_fid.write("import sys\n")
-
-		#collect bases
-		init_fid.write("bases = {}\n")
-		for coll,filename in self.basefiles:
-			modname = splitext(filename)[0]
-			init_fid.write("sys.path.append('bolts/%s')\n" % coll)
-			init_fid.write("import %s\n" % modname)
-			init_fid.write("bases.update(%s.bases)\n\n" % modname)
-
-
-		init_fid.write("sys.path.append('bolts/common')\n")
-		init_fid.write("from freecad_bolts import BoltsWidget, getMainWindow\n")
-
-
-
+class FreeCADExporter:
+	def write_output(self,repo):
+		pass
+#
+#		out_path = join(self.backend_root,"output")
+#		bolts_path = join(out_path,"bolts")
+#
+#		#clear output and copy files
+#		rmtree(out_path,True)
+#
+#		makedirs(bolts_path)
+#		#copy blt files
+#		copytree(join(self.repo_root,"data"),join(bolts_path,"data"))
+#		#copy drawings
+#		copytree(join(self.repo_root,"drawings"),join(bolts_path,"drawings"))
+#		#copy blt parser
+#		copy(join(self.repo_root,"bolttools","blt_parser.py"),bolts_path)
+#		#copy gui stuff
+#		copytree(join(self.backend_root,"common"),join(bolts_path,"common"))
+#		open(join(bolts_path,"common","__init__.py"),"w").close()
+#		for coll,filename in self.basefiles:
+#			makedirs(join(bolts_path,coll))
+#			open(join(bolts_path,coll,"__init__.py"),"w").close()
+#			copy(join(self.backend_root,coll,filename),join(bolts_path,coll))
+#
+#		init_fid = open(join(bolts_path,"__init__.py"),"w")
+#
+#		#collect bases
+#		init_fid.write("bases = {}\n")
+#		for coll,filename in self.basefiles:
+#			modname = splitext(filename)[0]
+#			init_fid.write("import %s.%s\n" % (coll,modname))
+#			init_fid.write("bases.update(%s.%s.bases)\n" % (coll,modname))
+#
+#
+#		init_fid.write("""
+##start gui
+#from common.freecad_bolts import addWidget, BoltsWidget, bolts_path
+#
+#from blt_parser import BOLTSRepository
+#
+#repo = BOLTSRepository(bolts_path)
+#
+#widget = BoltsWidget(repo,bases)
+#addWidget(widget)
+#""")
+#
+#

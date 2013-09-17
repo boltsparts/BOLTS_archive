@@ -14,79 +14,30 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtGui, QtCore, uic
-from QtGui import QTreeWidgetItem
 import FreeCAD
 import sys
 from os import listdir
-import blt_parser
-from blt_parser import BOLTSClass, BOLTSCollection, BOLTSRepository
+from os.path import dirname, join
+from .. import  blt_parser
+bolts_path = dirname(blt_parser.__file__)
+from ..blt_parser import BOLTSClass, BOLTSCollection, BOLTSRepository
 
 #get ui from designer file
-Ui_BoltsWidget,QBoltsWidget = uic.loadUiType('bolts_widget.ui')
-Ui_ValueWidget,QValueWidget = uic.loadUiType('value_widget.ui')
-Ui_BoolWidget,QBoolWidget = uic.loadUiType('value_widget.ui')
-Ui_TableIndexWidget,QTableIndexWidget = uic.loadUiType('tableindex_widget.ui')
+Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'common/bolts_widget.ui'))
+Ui_ValueWidget,QValueWidget = uic.loadUiType(join(bolts_path,'common/value_widget.ui'))
+Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'common/value_widget.ui'))
+Ui_TableIndexWidget,QTableIndexWidget = uic.loadUiType(join(bolts_path,'common/tableindex_widget.ui'))
 
+#custom widgets
 
-##classes to encapsulate the data from the blt collections
-#class BOLTSStandard:
-#	def __init__(self,standard,part):
-#		self.standard = standard
-#		self.description = part['description']
-#		self.base = part['base']
-#		self.target_args = part['target-args']
-#		self.name_template = part['name']['template']
-#		self.name_parameters = part['name']['parameters']
-#		self.columns = part['table']['columns']
-#		self.data = part['table']['data']
-#	def setup_param_widget(self,bolts_widget):
-#
-#		for arg in self.target_args:
-#			if arg == 'key':
-#				keys = [row[0] for row in sorted(self.data.iteritems(),key=lambda x: float(x[0][1:]))]
-#				bolts_widget.add_param_widget(arg,lambda p: KeyWidget(p,keys))
-#			else:
-#				bolts_widget.add_param_widget(arg,lambda p: DimWidget(p,arg))
-#
-#	def get_tree_item(self,parent_item):
-#		item = QtGui.QTreeWidgetItem(parent_item,[self.standard,self.description])
-#		item.setData(0,32,self)
-#		return item
-#
-#class StandardCollection:
-#	def __init__(self,org, description):
-#		self.org = org
-#		self.description = description
-#	def get_tree_item(self,parent_item):
-#		item = QtGui.QTreeWidgetItem(parent_item,[self.org,self.description])
-#		item.setChildIndicatorPolicy(QtGui.QTreeWidgetItem.ShowIndicator)
-#		item.setExpanded(False)
-#		item.setData(0,32,self)
-#		return item
-#
-#class BOLTSCollection:
-#	def __init__(self,blt):
-#		coll = blt['collection']
-#		self.name = coll['name']
-#		self.description = coll['description']
-#		self.author = coll['author']
-#		self.license = coll['license']
-#		self.blt_version = coll['blt-version']
-#	def get_tree_item(self,parent_item):
-#		item = QtGui.QTreeWidgetItem(parent_item,[self.name,self.description])
-#		item.setData(0,32,self)
-#		return item
-
-#customm widgets
-
-class DimWidget(QValueWidget):
+class LengthWidget(QValueWidget):
 	def __init__(self,parent,label):
 		QValueWidget.__init__(self,parent)
 		self.ui = Ui_ValueWidget()
 		self.ui.setupUi(self)
 		self.ui.label.setText(label)
 
-		self.validator = QtGui.QDoubleValidator(self,0,sys.floatinfo.max)
+		self.validator = QtGui.QDoubleValidator(0,sys.float_info.max,4,self)
 		self.ui.valueEdit.setValidator(self.validator)
 
 	def getValue(self):
@@ -126,11 +77,13 @@ class BoolWidget(QBoolWidget):
 		self.ui.checkBox.isChecked()
 
 class TableIndexWidget(QTableIndexWidget):
-	def __init__(self,parent,label):
+	def __init__(self,parent,label,keys):
 		QTableIndexWidget.__init__(self,parent)
 		self.ui = Ui_TableIndexWidget()
 		self.ui.setupUi(self)
 		self.ui.label.setText(label)
+		for key in keys:
+			self.ui.comboBox.addItem(key)
 
 	def getValue(self):
 		return str(self.ui.comboBox.currentText())
@@ -146,16 +99,15 @@ class BoltsWidget(QBoltsWidget):
 
 		self.param_widgets = {}
 
-		self.coll_root = QTreeWidgetItem(self.ui.partsTree,['Collections','Ordered by collections'])
+		self.coll_root = QtGui.QTreeWidgetItem(self.ui.partsTree,['Collections','Ordered by collections'])
 		self.coll_root.setData(0,32,None)
 
 		for coll in self.repo.collections:
-			coll_item = QTreeWidgetItem(self.coll_root,[coll.name, coll.description])
+			coll_item = QtGui.QTreeWidgetItem(self.coll_root,[coll.name, coll.description])
 			coll_item.setData(0,32,coll)
-			for cl in collection.classes:
-				for name in cl.names:
-					cl_item = QtreeWidgetItem(coll_item,[cl.name, cl.description])
-					cl_item.setData(0,32,cl)
+			for cl in coll.classes:
+				cl_item = QtGui.QTreeWidgetItem(coll_item,[cl.name, cl.description])
+				cl_item.setData(0,32,cl)
 
 	def remove_empty_items(self,root_item):
 		children = [root_item.child(i) for i in range(root_item.childCount())]
@@ -187,15 +139,17 @@ class BoltsWidget(QBoltsWidget):
 				for table in cl.parameters.tables:
 					if table.index == p:
 						#try to detect metric threads
-						keys = sorted(self.data.keys())
+						keys = sorted(table.data.keys())
 						if "M" in [v[0] for v in table.data.keys()]:
 							try:
 								keys = sorted(table.data.keys(),key=lambda x: float(x[1:]))
 							except:
-								keys = sorted(self.data.keys())
-						self.param_widgets[p] = TableIndexWidgets(self.ui.params,keys)
+								keys = sorted(table.data.keys())
+						self.param_widgets[p] = TableIndexWidget(self.ui.params,p,keys)
 						#if more than one table has the same index, they have the same keys, so stop
 						break
+		for key in self.param_widgets:
+			self.ui.param_layout.addWidget(self.param_widgets[key])
 
 	def on_addButton_clicked(self,checked):
 		if FreeCAD.activeDocument is None:
@@ -219,10 +173,10 @@ class BoltsWidget(QBoltsWidget):
 		params['standard'] = data.standard
 
 		params['name'] = data.naming.template % \
-			tuple(params[k] for k in data.naming.substitue)
+			tuple(params[k] for k in data.naming.substitute)
 
 		#add part
-		self.bases[data.base](params,FreeCAD.ActiveDocument)
+		self.repo.freecad.getbase[data.id](params,FreeCAD.ActiveDocument)
 
 	def on_partsTree_itemSelectionChanged(self):
 		items = self.ui.partsTree.selectedItems()
@@ -235,40 +189,14 @@ class BoltsWidget(QBoltsWidget):
 			self.ui.name.setText('')
 			self.ui.description.setText('')
 		elif isinstance(data,BOLTSClass):
-			self.ui.name.setText(data.standard)
+			self.ui.name.setText(data.name)
 			self.ui.description.setText(data.description)
-			data.setup_param_widgets(data)
-		elif isinstance(data,StandardCollection):
-			self.ui.name.setText(data.org)
-			self.ui.description.setText(data.description)
+			self.setup_param_widgets(data)
 		elif isinstance(data,BOLTSCollection):
 			self.ui.name.setText(data.name)
 			self.ui.description.setText(data.description)
-#
-#	def addCollection(self,blt):
-#		coll = BOLTSCollection(blt)
-#		coll_item = coll.get_tree_item(self.coll_root)
-#		for part in blt['parts']:
-#			if not part['base'] in self.bases:
-#				continue
-#			for standard_name in part['standard']:
-#				standard = BOLTSStandard(standard_name,part)
-#				standard.get_tree_item(coll_item)
-#
-#				#add to respective standard
-#				if standard_name.startswith("DINENISO"):
-#					standard.get_tree_item(self.std_coll_items["DINENISO"])
-#				elif standard_name.startswith("DINEN"):
-#					standard.get_tree_item(self.std_coll_items["DINEN"])
-#				elif standard_name.startswith("DINISO"):
-#					standard.get_tree_item(self.std_coll_items["DINISO"])
-#				elif standard_name.startswith("DIN"):
-#					standard.get_tree_item(self.std_coll_items["DIN"])
-#				elif standard_name.startswith("EN"):
-#					standard.get_tree_item(self.std_coll_items["EN"])
 
-
-#get references to Freecad main window
+#get reference to Freecad main window
 #from http://sourceforge.net/apps/mediawiki/free-cad/index.php?title=Code_snippets
 def getMainWindow():
 	"returns the main window"
@@ -281,21 +209,7 @@ def getMainWindow():
 			return i
 	raise Exception("No main window found")
 
-app = QtGui.qApp
-mw = getMainWindow()
+def addWidget(widget):
+	mw = getMainWindow()
+	mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
 
-
-widget = BoltsWidget(bases)
-
-#load parts
-files = listdir('blt')
-for file in files:
-	if file.startswith('.'):
-		continue
-	blt = load_collection(file)
-	widget.addCollection(blt)
-
-widget.remove_empty_items(widget.std_root)
-widget.remove_empty_items(widget.coll_root)
-
-mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)

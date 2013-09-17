@@ -15,9 +15,10 @@
 
 import yaml
 import os
-from os.path import splitext, split
+from os.path import splitext, split, exists, join
 import re
 import copy
+import openscad,freecad
 
 _re_angled = re.compile("([^<]*)<([^>]*)")
 
@@ -82,9 +83,9 @@ class BOLTSRepository:
 		self.collections = []
 
 		#load collection data
-		for filename in os.listdir(path + "/data"):
+		for filename in os.listdir(join(path,"data")):
 			if splitext(filename)[1] == ".blt":
-				self.collections.append(BOLTSCollection(path + "/data/" + filename))
+				self.collections.append(BOLTSCollection(join(path,"data",filename)))
 
 		self.standards = {}
 		self.standards['DIN'] = []
@@ -113,11 +114,16 @@ class BOLTSRepository:
 					self.standards["ISO"].append(cl)
 
 
-		if not os.path.exists(path + "/drawings"):
+		if not exists(join(path,"drawings")):
 			raise MalformedRepositoryError("drawings folder is missing")
 
 		#load backend data
-		#TODO
+		self.openscad = None
+		if exists(join(path,"openscad")):
+			self.openscad = openscad.OpenSCADData(path)
+		self.freecad = None
+		if exists(join(path,"freecad")):
+			self.freecad = freecad.FreeCADData(path)
 
 class BOLTSCollection:
 	def __init__(self,bltname):
@@ -136,7 +142,7 @@ class BOLTSCollection:
 
 		version = coll["collection"]["blt-version"]
 		if version != current_version:
-			raise VersionException(version)
+			raise VersionError(version)
 
 		#Check Conformity
 		spec = _specification

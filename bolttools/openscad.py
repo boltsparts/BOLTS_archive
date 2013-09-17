@@ -16,7 +16,6 @@
 from os import listdir,makedirs
 from os.path import join, exists, basename
 from shutil import rmtree,copy
-import blt_parser
 import yaml
 
 class BaseModule:
@@ -25,12 +24,8 @@ class BaseModule:
 		self.filename = filename
 		self.arguments = mod["arguments"]
 
-class OpenSCADBackend:
+class OpenSCADData:
 	def __init__(self,path):
-
-		#get application independent data
-		self.repo = blt_parser.BOLTSRepository(path)
-
 		#maps class id to base module
 		self.getbase = {}
 
@@ -58,8 +53,10 @@ class OpenSCADBackend:
 								raise NonUniqueClassIdentifier
 							self.getbase[id] = module
 
-	def write_output(self):
-		out_path = join(self.backend_root,"output")
+class OpenSCADExporter:
+	def write_output(self,repo):
+		oscad = repo.openscad
+		out_path = join(oscad.backend_root,"output")
 
 		#clear output and copy files
 		rmtree(out_path,True)
@@ -67,27 +64,27 @@ class OpenSCADBackend:
 		makedirs(out_path)
 		bolts_fid = open(join(out_path,"BOLTS.scad"),"w")
 		standard_fids = {}
-		for std in self.repo.standards:
+		for std in repo.standards:
 			standard_fids[std] = open(join(out_path,"BOLTS_%s.scad" % std),"w")
 
 		makedirs(join(out_path,"tables"))
 
 		makedirs(join(out_path,"common"))
-		for filename in listdir(join(self.backend_root,"common")):
-			copy(join(self.backend_root,"common",filename),join(out_path,"common",filename))
+		for filename in listdir(join(oscad.backend_root,"common")):
+			copy(join(oscad.backend_root,"common",filename),join(out_path,"common",filename))
 			bolts_fid.write("include <common/%s>\n" % filename)
 			for std in standard_fids:
 				standard_fids[std].write("include <common/%s>\n" % filename)
 
 		makedirs(join(out_path,"base"))
-		for filename in self.basefilenames:
+		for filename in oscad.basefilenames:
 			copy(filename,join(out_path,"base"))
 			bolts_fid.write("include <base/%s>\n" % basename(filename))
 			for std in standard_fids:
 				standard_fids[std].write("include <base/%s>\n" % basename(filename))
 
 		#write tables
-		for collection in self.repo.collections:
+		for collection in repo.collections:
 			for cl in collection.classes:
 				table_path = join("tables","%s_table.scad" % cl.name)
 				table_filename = join(out_path,table_path)
@@ -97,17 +94,17 @@ class OpenSCADBackend:
 
 				bolts_fid.write("include <%s>\n" % table_path)
 				for std in standard_fids:
-					if cl in self.repo.standards[std]:
+					if cl in repo.standards[std]:
 						standard_fids[std].write("include <%s>\n" % table_path)
 		bolts_fid.write("\n\n")
 
 		#write stubs
-		for collection in self.repo.collections:
+		for collection in repo.collections:
 			for cl in collection.classes:
-				self.write_stub(bolts_fid,cl)
+				self.write_stub(repo,bolts_fid,cl)
 				for std in standard_fids:
-					if cl in self.repo.standards[std]:
-						self.write_stub(standard_fids[std],cl)
+					if cl in repo.standards[std]:
+						self.write_stub(repo,standard_fids[std],cl)
 		bolts_fid.close()
 		for std in standard_fids:
 			standard_fids[std].close()
@@ -127,7 +124,7 @@ class OpenSCADBackend:
 				fid.write('key == "%s" ? %s : \n' % (k,str(data).replace("'",'"')))
 			fid.write('"Error";\n\n')
 
-	def write_stub(self,fid,cl):
+	def write_stub(self,repo,fid,cl):
 		#collect textual parameter representations
 		args = {}
 		if not cl.standard is None:
@@ -168,7 +165,7 @@ class OpenSCADBackend:
 		fid.write("\t} else {\n")
 
 		#module call
-		base = self.getbase[cl.id]
+		base = repo.openscad.getbase[cl.id]
 		fid.write('\t\t%s(%s);\n\t}\n}\n\n' % 
 				(base.name,',\n\t\t\t'.join(args[arg] for arg in base.arguments)))
 
