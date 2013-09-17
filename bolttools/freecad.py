@@ -17,77 +17,62 @@ from os import listdir,makedirs
 from os.path import join, exists, basename,splitext
 from shutil import rmtree,copy,copytree
 import yaml
+import runpy
 
 class FreeCADData:
 	def __init__(self,path):
 		self.repo_root = path
 
 		self.basefiles = []
-		self.getbase = {}
+		self.getbasename = {}
 		self.backend_root = join(path,"freecad")
+
+		print self.backend_root
+		print listdir(self.backend_root)
 
 		for coll in listdir(self.backend_root):
 			basename = join(self.backend_root,coll,"%s.base" % coll)
 			if not exists(basename):
 				#skip directory that is no collection
 				continue
-			base =  list(yaml.load_all(open(basename)))
-			if len(base) != 1:
+			base_info =  list(yaml.load_all(open(basename)))
+			if len(base_info) != 1:
 				raise MalformedCollectionError(
 						"No YAML document found in file %s" % bltname)
-			base = base[0]
-			for basefile in base:
+			base_info = base_info[0]
+			for basefile in base_info:
+				base_functions = {}
 				if basefile["type"] == "function":
-					self.basefiles.append((coll,basefile["filename"]))
-				for mod in basefile["modules"]:
-					for id in mod["ids"]:
-						self.getbase[id] = mod["name"]
+					basepath = join(self.backend_root,"base",coll,"%s.py" % coll)
+					if not exists(basepath):
+						print "base module described in %s not found: %s" % (basename, basepath)
+					for mod in basefile["modules"]:
+						for id in mod["ids"]:
+							self.getbasename[id] = mod["name"]
+
+
+#collect bases
+#TODO: read base files instead of this fragile heuristic
 
 class FreeCADExporter:
 	def write_output(self,repo):
-		pass
-#
-#		out_path = join(self.backend_root,"output")
-#		bolts_path = join(out_path,"bolts")
-#
-#		#clear output and copy files
-#		rmtree(out_path,True)
-#
-#		makedirs(bolts_path)
-#		#copy blt files
-#		copytree(join(self.repo_root,"data"),join(bolts_path,"data"))
-#		#copy drawings
-#		copytree(join(self.repo_root,"drawings"),join(bolts_path,"drawings"))
-#		#copy blt parser
-#		copy(join(self.repo_root,"bolttools","blt_parser.py"),bolts_path)
-#		#copy gui stuff
-#		copytree(join(self.backend_root,"common"),join(bolts_path,"common"))
-#		open(join(bolts_path,"common","__init__.py"),"w").close()
-#		for coll,filename in self.basefiles:
-#			makedirs(join(bolts_path,coll))
-#			open(join(bolts_path,coll,"__init__.py"),"w").close()
-#			copy(join(self.backend_root,coll,filename),join(bolts_path,coll))
-#
-#		init_fid = open(join(bolts_path,"__init__.py"),"w")
-#
-#		#collect bases
-#		init_fid.write("bases = {}\n")
-#		for coll,filename in self.basefiles:
-#			modname = splitext(filename)[0]
-#			init_fid.write("import %s.%s\n" % (coll,modname))
-#			init_fid.write("bases.update(%s.%s.bases)\n" % (coll,modname))
-#
-#
-#		init_fid.write("""
-##start gui
-#from common.freecad_bolts import addWidget, BoltsWidget, bolts_path
-#
-#from blt_parser import BOLTSRepository
-#
-#repo = BOLTSRepository(bolts_path)
-#
-#widget = BoltsWidget(repo,bases)
-#addWidget(widget)
-#""")
-#
-#
+
+		repo_path = repo.path
+		out_path = join(repo_path,"freecad","output")
+		bolts_path = join(out_path,"bolts")
+
+		#clear output and copy files
+		rmtree(out_path,True)
+
+		makedirs(bolts_path)
+		#copy files
+		copytree(join(repo_path,"data"),join(bolts_path,"data"))
+		copytree(join(repo_path,"bolttools"),join(bolts_path,"bolttools"))
+		copytree(join(repo_path,"drawings"),join(bolts_path,"drawings"))
+		makedirs(join(bolts_path,"freecad"))
+		copytree(join(repo_path,"freecad","base"),join(bolts_path,"freecad","base"))
+		copytree(join(repo_path,"freecad","gui"),join(bolts_path,"freecad","gui"))
+		open(join(bolts_path,"freecad","__init__.py"),"w").close()
+
+		#generate package __init__.py with proper
+		copy(join(repo_path,"freecad","misc","__init__.py"),bolts_path)

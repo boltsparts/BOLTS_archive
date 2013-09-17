@@ -80,6 +80,7 @@ def check_dict(array,spec):
 
 class BOLTSRepository:
 	def __init__(self,path):
+		self.path = path
 		self.collections = []
 
 		#load collection data
