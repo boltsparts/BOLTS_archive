@@ -64,7 +64,7 @@ class OpenSCADExporter:
 		makedirs(out_path)
 		bolts_fid = open(join(out_path,"BOLTS.scad"),"w")
 		standard_fids = {}
-		for std in repo.standards:
+		for std in repo.standard_bodies:
 			standard_fids[std] = open(join(out_path,"BOLTS_%s.scad" % std),"w")
 
 		makedirs(join(out_path,"tables"))
@@ -96,7 +96,7 @@ class OpenSCADExporter:
 
 				bolts_fid.write("include <%s>\n" % table_path)
 				for std in standard_fids:
-					if cl in repo.standards[std]:
+					if cl in repo.standardized[std]:
 						standard_fids[std].write("include <%s>\n" % table_path)
 		bolts_fid.write("\n\n")
 
@@ -107,7 +107,7 @@ class OpenSCADExporter:
 					continue
 				self.write_stub(repo,bolts_fid,cl)
 				for std in standard_fids:
-					if cl in repo.standards[std]:
+					if cl in repo.standardized[std]:
 						self.write_stub(repo,standard_fids[std],cl)
 		bolts_fid.close()
 		for std in standard_fids:
