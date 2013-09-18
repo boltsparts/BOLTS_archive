@@ -146,6 +146,7 @@ class HTMLExporter:
 		params["status"] = cl.status if cl.standard else ""
 		params["body"] = "<a href='../bodies/%s.html'>%s</a>" % (cl.body,cl.body) or ""
 		params["url"] = cl.url or ""
+		params["source"] = cl.source
 		params["drawing"] = cl.drawing
 
 		params["replaces"] = ""
