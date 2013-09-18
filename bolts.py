@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from bolttools import blt_parser, openscad, freecad
+from bolttools import blt_parser, openscad, freecad, html
 from sys import argv, exit
 from os import getcwd
 
@@ -14,6 +14,8 @@ if argv[1] == "export":
 		openscad.OpenSCADExporter().write_output(repo)
 	elif argv[2] == "freecad" and (not repo.freecad is None):
 		freecad.FreeCADExporter().write_output(repo)
+	elif argv[2] == "html" and (not repo.html is None):
+		html.HTMLExporter().write_output(repo)
 	else:
 		print "unknwon export target: %s" % argv[2]
 else:

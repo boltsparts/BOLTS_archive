@@ -18,7 +18,7 @@ import os
 from os.path import splitext, split, exists, join
 import re
 import copy
-import openscad,freecad
+import openscad,freecad, html
 
 _re_angled = re.compile("([^<]*)<([^>]*)")
 
@@ -78,7 +78,10 @@ def check_dict(array,spec):
 	if len(man) > 0:
 		raise MissingFieldError(man)
 
+
 class BOLTSRepository:
+	#order is important
+	standard_bodies = ["DINENISO","DINEN","DINISO","DIN","EN","ISO"]
 	def __init__(self,path):
 		self.path = path
 		self.collections = []
@@ -88,31 +91,29 @@ class BOLTSRepository:
 			if splitext(filename)[1] == ".blt":
 				self.collections.append(BOLTSCollection(join(path,"data",filename)))
 
-		self.standards = {}
-		self.standards['DIN'] = []
-		self.standards['EN'] = []
-		self.standards['DINENISO'] = []
-		self.standards['DINISO'] = []
-		self.standards['ISO'] = []
-		self.standards['DINEN'] = []
+		self.standardized = {body:[] for body in self.standard_bodies}
 
-		#find standard parts
+		#find standard parts and their respective standard bodies
 		for coll in self.collections:
 			for cl in coll.classes:
-				name = cl.name
 				#order is important
-				if name.startswith("DINENISO"):
-					self.standards["DINENISO"].append(cl)
-				elif name.startswith("DINEN"):
-					self.standards["DINEN"].append(cl)
-				elif name.startswith("DINISO"):
-					self.standards["DINISO"].append(cl)
-				elif name.startswith("DIN"):
-					self.standards["DIN"].append(cl)
-				elif name.startswith("EN"):
-					self.standards["EN"].append(cl)
-				elif name.startswith("ISO"):
-					self.standards["ISO"].append(cl)
+				for body in self.standard_bodies:
+					if cl.name.startswith(body):
+						self.standardized[body].append(cl)
+						cl.body = body
+						break
+
+		#fill in obsolescence data
+		for coll in self.collections:
+			for cl in coll.classes:
+				if cl.replaces is None:
+					continue
+				#order is important
+				for body in self.standard_bodies:
+					if cl.replaces.startswith(body):
+						idx = [c.name for c in self.standardized[body]].index(cl.replaces)
+						self.standardized[body][idx].replacedby = cl.name
+						break
 
 
 		if not exists(join(path,"drawings")):
@@ -125,6 +126,9 @@ class BOLTSRepository:
 		self.freecad = None
 		if exists(join(path,"freecad")):
 			self.freecad = freecad.FreeCADData(path)
+		self.html = None
+		if exists(join(path,"html")):
+			self.html = html.HTMLData(path)
 
 class BOLTSCollection:
 	def __init__(self,bltname):
@@ -253,7 +257,9 @@ class BOLTSClass:
 		if "description" in cl:
 			self.description = cl["description"]
 
+		self.standard_body = None
 		self.standard = None
+		self.body = None
 		self.status = "active"
 		self.replaces = None
 		if "standard" in cl:
@@ -266,6 +272,8 @@ class BOLTSClass:
 					raise ValueError
 			if "replaces" in cl:
 				self.replaces = cl["replaces"]
+		#gets updated later by the repo
+		self.replacedby = None
 
 		if "parameters" in cl:
 			self.parameters = BOLTSParameters(cl["parameters"])
