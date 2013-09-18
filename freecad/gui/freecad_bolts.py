@@ -154,8 +154,8 @@ class BoltsWidget(QBoltsWidget):
 			self.ui.param_layout.addWidget(self.param_widgets[key])
 
 	def on_addButton_clicked(self,checked):
-		if FreeCAD.activeDocument is None:
-			App.newDocument()
+		if FreeCAD.activeDocument() is None:
+			FreeCAD.newDocument()
 
 		items = self.ui.partsTree.selectedItems()
 
