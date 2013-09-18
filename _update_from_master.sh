@@ -4,4 +4,4 @@ git rm -rfq html downloads
 mv output/html .
 mv output/downloads/* .
 git rm -rfq output
-git add html downloads
+git add html downloads downloads.html
