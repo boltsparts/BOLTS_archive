@@ -1,6 +1,6 @@
 *.swp
 *.pyc
-output
-output/**/*
+output/freecad/*
+output/openscad/*
 .sass-cache
 _site
