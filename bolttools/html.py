@@ -71,6 +71,9 @@ class HTMLExporter:
 		makedirs(join(self.out_path,"collections"))
 		makedirs(join(self.out_path,"bodies"))
 
+		#copy drawings
+		copytree(join(repo.path,"drawings"),join(self.out_path,"drawings"))
+
 
 		#write collections and parts
 		for coll in repo.collections:
@@ -141,7 +144,7 @@ class HTMLExporter:
 
 		params["title"] = cl.name
 		params["description"] = cl.description or "No description available"
-		params["drawing"] = cl.drawing
+		params["drawing"] = cl.drawing or "no_drawing.png"
 
 		props = []
 
