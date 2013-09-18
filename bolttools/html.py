@@ -37,6 +37,9 @@ def html_table(table_data,header=None,row_classes=None):
 			res.append("<tr class='%s'>%s</tr>" % (row_class,row))
 	return "\n".join(res)
 
+def prop_row(props,prop,value):
+	props.append("<tr><th><strong>%s:</strong></th><td>%s</td></tr>" %(prop,value))
+
 def msort(a,b):
 	val_a, val_b = float(a[1:]),float(b[1:])
 	if val_a < val_b:
@@ -135,27 +138,35 @@ class HTMLExporter:
 
 	def _write_class(self,coll,cl):
 		params = {}
+
 		params["title"] = cl.name
-		params["author"] = " and <br>".join(["<a href='mailto:%s'>%s</a>" % (m,n) \
-				for m,n in zip(coll.author_mails,coll.author_names)])
-		params["license"] = "<a href='%s'>%s</a>" % (coll.license_url,coll.license_name)
 		params["description"] = cl.description or "No description available"
-		params["collection"] = "<a href='../collections/%s.html'>%s</a>" % (coll.id,coll.name)
-		params["identical"] = ", ".join(["<a href='%s.html'>%s</a>" % (id,id) \
-				for id in cl.standard if id != cl.name])
-		params["status"] = cl.status if cl.standard else ""
-		params["body"] = "<a href='../bodies/%s.html'>%s</a>" % (cl.body,cl.body) or ""
-		params["url"] = cl.url or ""
-		params["source"] = cl.source
 		params["drawing"] = cl.drawing
 
-		params["replaces"] = ""
-		if not cl.replaces is None:
-			params["replaces"] = "<a href='%s.html'>%s</a>" % (cl.replaces,cl.replaces) or ""
+		props = []
 
-		params["replacedby"] = ""
-		if not cl.replacedby is None:
-			params["replacedby"] = "<a href='%s.html'>%s</a>" % (cl.replacedby,cl.replacedby)
+		for mail,name in zip(coll.author_mails,coll.author_names):
+			prop_row(props,"Author","<a href='mailto:%s'>%s</a>" % (mail,name))
+		prop_row(props,"License","<a href='%s'>%s</a>" % (coll.license_url,coll.license_name))
+		prop_row(props,"Collection","<a href='../collections/%s.html'>%s</a>" % (coll.id,coll.name))
+		identical = ", ".join(["<a href='%s.html'>%s</a>" % (id,id) for id in cl.standard if id != cl.name])
+		prop_row(props,"Identical to",identical)
+
+		if cl.standard:
+			prop_row(props,"Status",cl.status)
+			prop_row(props,"Standard body","<a href='../bodies/%s.html'>%s</a>" % (cl.body,cl.body))
+			if not cl.replaces is None:
+				prop_row(props,"Replaces","<a href='%s.html'>%s</a>" % (cl.replaces,cl.replaces))
+
+			if not cl.replacedby is None:
+				prop_row(props,"Replaced by","<a href='%s.html'>%s</a>" % (cl.replacedby,cl.replacedby))
+
+
+		if cl.url:
+			prop_row(props,"Url",cl.url)
+		prop_row(props,"Source",cl.source)
+
+		params["properties"] = "\n".join(props)
 
 		#TODO: multiple tables properly
 		params["dimensions"] = ""
