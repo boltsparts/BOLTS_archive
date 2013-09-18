@@ -16,8 +16,13 @@
 from os import listdir,makedirs
 from os.path import join, exists, basename
 from shutil import rmtree,copy, make_archive
-from subprocess import Popen, PIPE
+from subprocess import Popen, PIPE, call
 from datetime import datetime
+import string
+
+class UncommitedChangesError(Exception):
+	def __str__(self):
+		return "There are uncommited changes in the git repo"
 
 
 #from http://stackoverflow.com/a/12827065
@@ -32,31 +37,60 @@ def get_hash():
 
 	return hash
 
+def uncommited_changes_present():
+	return call(["git","diff","--exit-code","--quiet"]) == 1
+
 
 class DownloadsData:
 	def __init__(self,path):
-		self.hash = get_hash()
-		self.date = datetime.now().strftime("%Y%m%d")
+		self.current = {}
+		out_path = join(path,"output","downloads")
+		for filename in sorted(listdir(join(out_path,"downloads","freecad"))):
+			if filename.endswith(".tar.gz"):
+				self.current["freecaddevtar"] = filename
+			elif filename.endswith(".zip"):
+				self.current["freecaddevzip"] = filename
 
-		self.template = "BOLTS_%s_%s_%s" % ("%s",self.date,self.hash[:6])
-		pass
+		for filename in sorted(listdir(join(out_path,"downloads","openscad"))):
+			if filename.endswith(".tar.gz"):
+				self.current["openscaddevtar"] = filename
+			elif filename.endswith(".zip"):
+				self.current["openscaddevzip"] = filename
 
 class DownloadsExporter:
 	def write_output(self,repo):
+
 		downloads = repo.downloads
 		out_path = join(repo.path,"output","downloads")
 
-		if not repo.freecad is None:
-			base_name = join(out_path,downloads.template % "FreeCAD")
-			root_dir = join(repo.path,"output","freecad")
-			print make_archive(base_name,"gztar",root_dir)
-			print make_archive(base_name,"zip",root_dir)
+		#check that there are no uncommited changes
+		if uncommited_changes_present():
+			raise UncommitedChangesError()
 
-		if not repo.openscad is None:
-			base_name = join(out_path,downloads.template % "OpenSCAD")
-			root_dir = join(repo.path,"output","openscad")
-			print make_archive(base_name,"gztar",root_dir)
-			print make_archive(base_name,"zip",root_dir)
+		#construct filename from date and hash
+		date = datetime.now().strftime("%Y%m%d%H%M")
+		template = "BOLTS_%s_%s_%s" % ("%s",date,get_hash()[:6])
+
+		#create archives
+		root_dir = join(repo.path,"output","freecad")
+		if (not repo.freecad is None) and exists(root_dir):
+			base_name = join(out_path,"downloads","freecad",template % "FreeCAD")
+			downloads.current["freecaddevtar"] = basename(make_archive(base_name,"gztar",root_dir))
+			downloads.current["freecaddevzip"] = basename(make_archive(base_name,"zip",root_dir))
+
+		root_dir = join(repo.path,"output","openscad")
+		if (not repo.openscad is None) and exists(root_dir):
+			base_name = join(out_path,"downloads","openscad",template % "OpenSCAD")
+			downloads.current["openscaddevtar"] = basename(make_archive(base_name,"gztar",root_dir))
+			downloads.current["openscaddevzip"] = basename(make_archive(base_name,"zip",root_dir))
+
+		#generate html page
+		template_name = join(repo.path,"downloads","template","downloads.html")
+		template = string.Template(open(template_name).read())
+		fid = open(join(out_path,"downloads.html"),"w")
+		fid.write(template.substitute(downloads.current))
+		fid.close()
+
 
 #		I do not like the fact that I am shipping unprocessed and unstyled html
 #		here, but I do not see a nice workflow for processing and styling, so I
