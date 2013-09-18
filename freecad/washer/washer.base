@@ -1,0 +1,10 @@
+---
+-  filename: washer.py
+   type: function
+   modules:
+      - name: washer1
+        ids: [plainwasher1, plainwasher2, plainwasherforcheesehead, heavydutyplainwasher]
+      - name: washer2
+        ids: [plainwasherchamfered]
+...
+

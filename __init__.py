@@ -15,6 +15,8 @@ repo = blt_parser.BOLTSRepository(rootpath)
 bases = {}
 from BOLTS.freecad.hex import hex
 bases.update(hex.bases)
+from BOLTS.freecad.washer import washer
+bases.update(washer.bases)
 
 mw = getMainWindow()
 
