@@ -47,19 +47,22 @@ class DownloadsExporter:
 		out_path = join(repo.path,"output","downloads")
 
 		if not repo.freecad is None:
-			base_name = join(out_path,downloads.template % "freecad")
+			base_name = join(out_path,downloads.template % "FreeCAD")
 			root_dir = join(repo.path,"output","freecad")
 			print make_archive(base_name,"gztar",root_dir)
 			print make_archive(base_name,"zip",root_dir)
 
 		if not repo.openscad is None:
-			base_name = join(out_path,downloads.template % "openscad")
+			base_name = join(out_path,downloads.template % "OpenSCAD")
 			root_dir = join(repo.path,"output","openscad")
 			print make_archive(base_name,"gztar",root_dir)
 			print make_archive(base_name,"zip",root_dir)
 
-		if not repo.html is None:
-			base_name = join(out_path,downloads.template % "html")
-			root_dir = join(repo.path,"output","html")
-			print make_archive(base_name,"gztar",root_dir)
-			print make_archive(base_name,"zip",root_dir)
+#		I do not like the fact that I am shipping unprocessed and unstyled html
+#		here, but I do not see a nice workflow for processing and styling, so I
+#		don't
+#		if not repo.html is None:
+#			base_name = join(out_path,downloads.template % "html")
+#			root_dir = join(repo.path,"output","html")
+#			print make_archive(base_name,"gztar",root_dir)
+#			print make_archive(base_name,"zip",root_dir)
