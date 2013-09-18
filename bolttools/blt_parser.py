@@ -18,7 +18,7 @@ import os
 from os.path import splitext, split, exists, join
 import re
 import copy
-import openscad,freecad, html
+import openscad,freecad, html, downloads
 
 _re_angled = re.compile("([^<]*)<([^>]*)")
 
@@ -129,6 +129,9 @@ class BOLTSRepository:
 		self.html = None
 		if exists(join(path,"html")):
 			self.html = html.HTMLData(path)
+		self.downloads = None
+		if exists(join(path,"downloads")):
+			self.downloads = downloads.DownloadsData(path)
 
 class BOLTSCollection:
 	def __init__(self,bltname):
