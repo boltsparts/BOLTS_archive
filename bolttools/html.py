@@ -160,7 +160,7 @@ class HTMLExporter:
 		#TODO: multiple tables properly
 		params["dimensions"] = ""
 		for table in cl.parameters.tables:
-			data = [table.data[key] for key in sorted(table.data.keys(),cmp=msort)]
+			data = [[key] + table.data[key] for key in sorted(table.data.keys(),cmp=msort)]
 			header = [str(p) for p in [table.index] + table.columns]
 			params["dimensions"] += html_table(data,header)
 
