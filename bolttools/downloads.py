@@ -24,19 +24,6 @@ class UncommitedChangesError(Exception):
 	def __str__(self):
 		return "There are uncommited changes in the git repo"
 
-
-#from http://stackoverflow.com/a/12827065
-def get_hash():
-	gitproc = Popen(['git', 'show-ref'], stdout = PIPE)
-	(stdout, stderr) = gitproc.communicate()
-
-	for row in stdout.split('\n'):
-		if row.find('HEAD') != -1:
-			hash = row.split()[0]
-			break
-
-	return hash
-
 def uncommited_changes_present():
 	return call(["git","diff","--exit-code","--quiet"]) == 1
 
@@ -69,7 +56,7 @@ class DownloadsExporter:
 
 		#construct filename from date and hash
 		date = datetime.now().strftime("%Y%m%d%H%M")
-		template = "BOLTS_%s_%s_%s" % ("%s",date,get_hash()[:6])
+		template = "BOLTS_%s_%s" % ("%s",date)
 
 		#create archives
 		root_dir = join(repo.path,"output","freecad")
