@@ -106,8 +106,12 @@ class BoltsWidget(QBoltsWidget):
 			coll_item = QtGui.QTreeWidgetItem(self.coll_root,[coll.name, coll.description])
 			coll_item.setData(0,32,coll)
 			for cl in coll.classes:
-				cl_item = QtGui.QTreeWidgetItem(coll_item,[cl.name, cl.description])
-				cl_item.setData(0,32,cl)
+				if not cl.id in self.repo.freecad.getbasename:
+					continue
+				basename = self.repo.freecad.getbasename[cl.id]
+				if basename in self.bases:
+					cl_item = QtGui.QTreeWidgetItem(coll_item,[cl.name, cl.description])
+					cl_item.setData(0,32,cl)
 
 		self.remove_empty_items(self.coll_root)
 
