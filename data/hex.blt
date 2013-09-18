@@ -10,6 +10,7 @@ classes:
     naming:
         template:  Hexagon head screw %s - %s %d
         substitute: [standard, key, l]
+    drawing: hex/hex1.png
     description: hexagon head screw
     standard: DIN933
     status: withdrawn
@@ -54,6 +55,7 @@ classes:
     naming:
         template: Hexagon head screw %s - %s %d
         substitute: [standard, key, l]
+    drawing: hex/hex1.png
     description: hexagon head screw
     standard: [ISO4017, DINENISO4017, DINEN24017]
     parameters:
@@ -98,6 +100,7 @@ classes:
     naming:
         template: Hexagon head bolt %s - %s %d
         substitute: [standard, key, l]
+    drawing: hex/hex2.png
     description: hexagon head bolt
     standard: DIN931
     status: withdrawn
@@ -141,6 +144,7 @@ classes:
     naming:
         template: Hexagon head bolt %s - %s %d
         substitute: [standard, key, l]
+    drawing: hex/hex2.png
     description: hexagon head bolt
     standard: [ISO4014, DINENISO4014, DINEN24014]
     replaces: DIN931
