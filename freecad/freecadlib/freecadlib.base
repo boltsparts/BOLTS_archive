@@ -1,0 +1,9 @@
+---
+- filename: FreeCAD-library/Furniture/Coffee Tables/IKEA_Lack_900_550_450.FCStd
+  type: fcstd
+  objects:
+   - objectname: ikea_lack
+     ids: lack
+...
+
+
