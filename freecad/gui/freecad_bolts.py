@@ -27,8 +27,18 @@ Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
 Ui_ValueWidget,QValueWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
 Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
 Ui_TableIndexWidget,QTableIndexWidget = uic.loadUiType(join(bolts_path,'tableindex_widget.ui'))
+Ui_PropertyWidget,QPropertyWidget = uic.loadUiType(join(bolts_path,'property_widget.ui'))
 
 #custom widgets
+
+class PropertyWidget(QPropertyWidget):
+	def __init__(self,parent,prop,value):
+		QPropertyWidget.__init__(self,parent)
+		self.ui = Ui_PropertyWidget()
+		self.ui.setupUi(self)
+		self.ui.prop.setTextFormat(QtCore.Qt.RichText)
+		self.ui.prop.setText("<b>%s:</b>" % prop)
+		self.ui.value.setText(value)
 
 class LengthWidget(QValueWidget):
 	def __init__(self,parent,label):
@@ -98,6 +108,7 @@ class BoltsWidget(QBoltsWidget):
 		self.bases = bases
 
 		self.param_widgets = {}
+		self.props_widgets = {}
 
 		self.coll_root = QtGui.QTreeWidgetItem(self.ui.partsTree,['Collections','Ordered by collections'])
 		self.coll_root.setData(0,32,None)
@@ -124,13 +135,7 @@ class BoltsWidget(QBoltsWidget):
 				root_item.removeChild(child)
 
 	def setup_param_widgets(self,cl):
-		#clear
-		for key in self.param_widgets:
-			self.ui.param_layout.removeWidget(self.param_widgets[key])
-			self.param_widgets[key].setParent(None)
-		self.param_widgets = {}
-
-		#readd
+		#construct widgets
 		for p in cl.parameters.free:
 			p_type = cl.parameters.types[p]
 			if p_type == "Length (mm)":
@@ -154,8 +159,37 @@ class BoltsWidget(QBoltsWidget):
 						self.param_widgets[p] = TableIndexWidget(self.ui.params,p,keys)
 						#if more than one table has the same index, they have the same keys, so stop
 						break
-		for key in self.param_widgets:
-			self.ui.param_layout.addWidget(self.param_widgets[key])
+		#add them to layout
+			self.ui.param_layout.addWidget(self.param_widgets[p])
+
+	def setup_props_collection(self,coll):
+		#construct widgets
+		self.props_widgets.append(PropertyWidget(self.ui.props,"Name",coll.name))
+		self.props_widgets.append(PropertyWidget(self.ui.props,"Description",coll.description))
+		self.props_widgets.append(PropertyWidget(self.ui.props,"Authors",", ".join(coll.author_names)))
+		self.props_widgets.append(PropertyWidget(self.ui.props,"License",coll.license_name))
+
+		#add them to layout
+		for widget in self.props_widgets:
+			self.ui.props_layout.addWidget(widget)
+
+	def setup_props_class(self,cl):
+		#construct widgets
+		self.props_widgets.append(PropertyWidget(self.ui.props,"Name",cl.name))
+		if cl.description:
+			self.props_widgets.append(PropertyWidget(self.ui.props,"Description",cl.description))
+		if not cl.standard is None:
+			self.props_widgets.append(PropertyWidget(self.ui.props,"Status",cl.status))
+			if not cl.replaces is None:
+				self.props_widgets.append(PropertyWidget(self.ui.props,"Replaces",cl.replaces))
+			if not cl.replacedby is None:
+				self.props_widgets.append(PropertyWidget(self.ui.props,"Replacedby",cl.replacedby))
+		if cl.url:
+			self.props_widgets.append(PropertyWidget(self.ui.props,"URL",cl.url))
+
+		#add them to layout
+		for widget in self.props_widgets:
+			self.ui.props_layout.addWidget(widget)
 
 	def on_addButton_clicked(self,checked):
 		if FreeCAD.activeDocument() is None:
@@ -192,16 +226,22 @@ class BoltsWidget(QBoltsWidget):
 		item = items[0]
 		data = item.data(0,32).toPyObject()
 
-		if data is None:
-			self.ui.name.setText('')
-			self.ui.description.setText('')
-		elif isinstance(data,BOLTSClass):
-			self.ui.name.setText(data.name)
-			self.ui.description.setText(data.description)
+		#clear props widget
+		for widget in self.props_widgets:
+			self.ui.props_layout.removeWidget(widget)
+			widget.setParent(None)
+		self.props_widgets = []
+		#clear
+		for key in self.param_widgets:
+			self.ui.param_layout.removeWidget(self.param_widgets[key])
+			self.param_widgets[key].setParent(None)
+		self.param_widgets = {}
+
+		if isinstance(data,BOLTSClass):
+			self.setup_props_class(data)
 			self.setup_param_widgets(data)
 		elif isinstance(data,BOLTSCollection):
-			self.ui.name.setText(data.name)
-			self.ui.description.setText(data.description)
+			self.setup_props_collection(data)
 
 #get reference to Freecad main window
 #from http://sourceforge.net/apps/mediawiki/free-cad/index.php?title=Code_snippets

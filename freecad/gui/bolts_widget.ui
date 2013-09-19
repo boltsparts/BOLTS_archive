@@ -56,17 +56,18 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="name">
-        <property name="text">
-         <string/>
+       <widget class="QWidget" name="props" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="description">
-        <property name="text">
-         <string/>
-        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <layout class="QVBoxLayout" name="props_layout"/>
+         </item>
+        </layout>
        </widget>
       </item>
       <item>

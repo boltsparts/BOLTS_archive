@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>bool_widget</class>
- <widget class="QWidget" name="bool_widget">
+ <class>Property</class>
+ <widget class="QWidget" name="Property">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>114</width>
-    <height>42</height>
+    <width>152</width>
+    <height>35</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,9 +15,16 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
-    <widget class="QCheckBox" name="checkBox">
+    <widget class="QLabel" name="prop">
      <property name="text">
-      <string>CheckBox</string>
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="value">
+     <property name="text">
+      <string>TextLabel</string>
      </property>
     </widget>
    </item>
