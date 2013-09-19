@@ -32,7 +32,7 @@ def hex1(params,document):
 	shaft_unthreaded = Part.makeCylinder(0.5*d1,h+k)
 	shaft_threaded = Part.makeCylinder(0.5*d1,l-h)
 	shaft_threaded.translate(Vector(0,0,h+k))
-	part.Shape = head.fuse(shaft_unthreaded).fuse(shaft_threaded)
+	part.Shape = head.fuse(shaft_unthreaded).fuse(shaft_threaded).removeSplitter()
 
 def hex2(params,document):
 	key = params['key']
@@ -68,6 +68,6 @@ def hex2(params,document):
 	shaft_unthreaded = Part.makeCylinder(0.5*d1,l-b+k)
 	shaft_threaded = Part.makeCylinder(0.5*d1,b)
 	shaft_threaded.translate(Vector(0,0,l-b+k))
-	part.Shape = head.fuse(shaft_unthreaded).fuse(shaft_threaded)
+	part.Shape = head.fuse(shaft_unthreaded).fuse(shaft_threaded).removeSplitter()
 
 bases = {'hex1' : hex1,'hex2' : hex2}
