@@ -176,7 +176,7 @@ class BoltsWidget(QBoltsWidget):
 		for key in self.param_widgets:
 			params[key] = self.param_widgets[key].getValue()
 		params = data.parameters.collect(params)
-		params['standard'] = data.standard
+		params['standard'] = data.name
 
 		params['name'] = data.naming.template % \
 			tuple(params[k] for k in data.naming.substitute)
