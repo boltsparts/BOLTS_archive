@@ -1,3 +1,2 @@
 safe: true
-baseurl: http://jreinhardt.github.io/BOLTS
-permalink: BOLTS/:categories/:year/:month/:day/:title.html
+baseurl: /BOLTS
