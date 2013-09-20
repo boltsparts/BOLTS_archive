@@ -142,7 +142,17 @@ class OpenSCADExporter:
 				args[p] = 'measures_%d[%d]' % (i,j)
 
 		fid.write('module %s(%s){\n' % (cl.name, ', '.join(cl.parameters.free)))
+
+		#warnings and type checks
+		if cl.status == "withdrawn":
+			fid.write('\techo("Warning: The standard %s is withdrawn. Although withdrawn standards are often still in use, it might be better to use its successor %s instead");\n' % (cl.name,cl.replacedby))
+		for p in params.free:
+			fid.write('\tcheck_parameter_type("%s","%s",%s,"%s");\n' % (cl.name,p,args[p],params.types[p]))
+
+		fid.write("\n");
 	
+
+		#load table data
 		for table,i in zip(cl.parameters.tables,range(len(cl.parameters.tables))):
 			fid.write('\tmeasures_%d = %s_table_%d(%s);\n' % (i,cl.name,i,table.index))
 			fid.write('\tif(measures_%d == "Error"){\n' % i)
