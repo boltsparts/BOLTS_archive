@@ -17,6 +17,7 @@ classes:
     parameters:
         free: [key, l]
         types: {key: Table Index}
+        defaults: {key: M3, l: 20}
         tables:
             index: key
             columns: [d1, k, s, e, h]
@@ -62,6 +63,7 @@ classes:
         free: [key, l]
         types:
             key: Table Index
+        defaults: {key: M3, l: 20}
         tables:
             index: key
             columns: [d1, k, s, e, h]
@@ -108,6 +110,7 @@ classes:
         free: [key, l]
         types:
             key: Table Index
+        defaults: {key: M3, l: 20}
         tables:
             index: key
             columns: [d1, k, s, b1, b2, b3, e]
@@ -152,6 +155,7 @@ classes:
         free: [key, l]
         types:
             key: Table Index
+        defaults: {key: M3, l: 20}
         tables:
             index: key
             columns: [d1, k, s, b1, b2, b3, e]

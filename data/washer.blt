@@ -15,6 +15,7 @@ classes:
     parameters:
         free: [key]
         types: {key: Table Index}
+        defaults: {key: M3}
         tables:
             &DIN125
             index: key
@@ -75,6 +76,7 @@ classes:
     parameters:
         free: [key]
         types: {key: Table Index}
+        defaults: {key: M3}
         tables:
             *DIN125
     notes: Are there precise specifications about the chamfer?
@@ -88,6 +90,7 @@ classes:
     parameters:
         free: [key]
         types: {key: Table Index}
+        defaults: {key: M10}
         tables:
             index: key
             columns: [d1,d2,s]
@@ -130,6 +133,7 @@ classes:
     parameters:
         free: [key]
         types: {key: Table Index}
+        defaults: {key: M3}
         tables:
             index: key
             columns: [d1,d2,s]
@@ -171,6 +175,7 @@ classes:
     parameters:
         free: [key]
         types: {key: Table Index}
+        defaults: {key: M10}
         tables:
             index: key
             columns: [d1,d2,s]
