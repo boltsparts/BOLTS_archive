@@ -41,11 +41,12 @@ class PropertyWidget(QPropertyWidget):
 		self.ui.value.setText(value)
 
 class LengthWidget(QValueWidget):
-	def __init__(self,parent,label):
+	def __init__(self,parent,label,default):
 		QValueWidget.__init__(self,parent)
 		self.ui = Ui_ValueWidget()
 		self.ui.setupUi(self)
 		self.ui.label.setText(label)
+		self.ui.valueEdit.setText(default)
 
 		self.validator = QtGui.QDoubleValidator(0,sys.float_info.max,4,self)
 		self.ui.valueEdit.setValidator(self.validator)
@@ -54,11 +55,12 @@ class LengthWidget(QValueWidget):
 		return float(self.ui.valueEdit.text())
 
 class NumberWidget(QValueWidget):
-	def __init__(self,parent,label):
+	def __init__(self,parent,label,default):
 		QValueWidget.__init__(self,parent)
 		self.ui = Ui_ValueWidget()
 		self.ui.setupUi(self)
 		self.ui.label.setText(label)
+		self.ui.valueEdit.setText(default)
 
 		self.validator = QtGui.QDoubleValidator(self)
 		self.ui.valueEdit.setValidator(self.validator)
@@ -67,33 +69,38 @@ class NumberWidget(QValueWidget):
 		return float(self.ui.valueEdit.text())
 
 class StringWidget(QValueWidget):
-	def __init__(self,parent,label):
+	def __init__(self,parent,label,default):
 		QValueWidget.__init__(self,parent)
 		self.ui = Ui_ValueWidget()
 		self.ui.setupUi(self)
 		self.ui.label.setText(label)
+		self.ui.valueEdit.setText(default)
 
 	def getValue(self):
 		return self.ui.valueEdit.text()
 
 class BoolWidget(QBoolWidget):
-	def __init__(self,parent,label):
+	def __init__(self,parent,label,default):
 		QBoolWidget.__init__(self,parent)
 		self.ui = Ui_BoolWidget()
 		self.ui.setupUi(self)
 		self.ui.label.setText(label)
+		self.ui.checkBox.setChecked(default)
 
 	def getValue(self):
 		self.ui.checkBox.isChecked()
 
 class TableIndexWidget(QTableIndexWidget):
-	def __init__(self,parent,label,keys):
+	def __init__(self,parent,label,keys,default):
 		QTableIndexWidget.__init__(self,parent)
 		self.ui = Ui_TableIndexWidget()
 		self.ui.setupUi(self)
 		self.ui.label.setText(label)
-		for key in keys:
+
+		for key,i in zip(keys,range(len(keys))):
 			self.ui.comboBox.addItem(key)
+			if key == default:
+				self.ui.comboBox.setCurrentIndex(i)
 
 	def getValue(self):
 		return str(self.ui.comboBox.currentText())
@@ -138,14 +145,16 @@ class BoltsWidget(QBoltsWidget):
 		#construct widgets
 		for p in cl.parameters.free:
 			p_type = cl.parameters.types[p]
+			default = str(cl.parameters.defaults[p])
+			print p,p_type,default
 			if p_type == "Length (mm)":
-				self.param_widgets[p] = LengthWidget(self.ui.params,p + " (mm)")
+				self.param_widgets[p] = LengthWidget(self.ui.params,p + " (mm)",default)
 			elif p_type == "Length (in)":
-				self.param_widgets[p] = LengthWidget(self.ui.params,p + " (in)")
+				self.param_widgets[p] = LengthWidget(self.ui.params,p + " (in)",default)
 			elif p_type == "Number":
-				self.param_widgets[p] = NumberWidget(self.ui.params,p)
+				self.param_widgets[p] = NumberWidget(self.ui.params,p,default)
 			elif p_type == "Bool":
-				self.param_widgets[p] = BoolWidget(self.ui.params,p)
+				self.param_widgets[p] = BoolWidget(self.ui.params,p,default)
 			elif p_type == "Table Index":
 				for table in cl.parameters.tables:
 					if table.index == p:
@@ -156,7 +165,7 @@ class BoltsWidget(QBoltsWidget):
 								keys = sorted(table.data.keys(),key=lambda x: float(x[1:]))
 							except:
 								keys = sorted(table.data.keys())
-						self.param_widgets[p] = TableIndexWidget(self.ui.params,p,keys)
+						self.param_widgets[p] = TableIndexWidget(self.ui.params,p,keys,default)
 						#if more than one table has the same index, they have the same keys, so stop
 						break
 		#add them to layout
@@ -179,7 +188,7 @@ class BoltsWidget(QBoltsWidget):
 		if cl.description:
 			self.props_widgets.append(PropertyWidget(self.ui.props,"Description",cl.description))
 		if not cl.standard is None:
-			self.props_widgets.append(PropertyWidget(self.ui.props,"Status",cl.status))
+			self.props_widgets.append(PropertyWidget(self.ui.props,"Status","<font color='red'>%s</font>" % cl.status))
 			if not cl.replaces is None:
 				self.props_widgets.append(PropertyWidget(self.ui.props,"Replaces",cl.replaces))
 			if not cl.replacedby is None:

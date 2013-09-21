@@ -13,6 +13,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from common import BackendData, BackendExporter
 from os import listdir,makedirs
 from os.path import join, exists, basename
 from shutil import rmtree,copy, make_archive
@@ -28,27 +29,30 @@ def uncommited_changes_present():
 	return call(["git","diff","--exit-code","--quiet"]) == 1
 
 
-class DownloadsData:
+class DownloadsData(BackendData):
 	def __init__(self,path):
+		BackendData.__init__(self,"downloads",path)
+
+		#find most current release
 		self.current = {}
-		out_path = join(path,"output","downloads")
-		for filename in sorted(listdir(join(out_path,"downloads","freecad"))):
+		self.freecad_down = join(self.out_root,"downloads","freecad")
+		for filename in sorted(listdir(self.freecad_down)):
 			if filename.endswith(".tar.gz"):
 				self.current["freecaddevtar"] = filename
 			elif filename.endswith(".zip"):
 				self.current["freecaddevzip"] = filename
 
-		for filename in sorted(listdir(join(out_path,"downloads","openscad"))):
+		self.openscad_down = join(self.out_root,"downloads","openscad")
+		for filename in sorted(listdir(self.openscad_down)):
 			if filename.endswith(".tar.gz"):
 				self.current["openscaddevtar"] = filename
 			elif filename.endswith(".zip"):
 				self.current["openscaddevzip"] = filename
 
-class DownloadsExporter:
+class DownloadsExporter(BackendExporter):
 	def write_output(self,repo):
-
 		downloads = repo.downloads
-		out_path = join(repo.path,"output","downloads")
+		out_path = downloads.out_root
 
 		#check that there are no uncommited changes
 		if uncommited_changes_present():
@@ -72,7 +76,7 @@ class DownloadsExporter:
 			downloads.current["openscaddevzip"] = basename(make_archive(base_name,"zip",root_dir))
 
 		#generate html page
-		template_name = join(repo.path,"downloads","template","downloads.html")
+		template_name = join(downloads.backend_root,"template","downloads.html")
 		template = string.Template(open(template_name).read())
 		fid = open(join(out_path,"downloads.html"),"w")
 		fid.write(template.substitute(downloads.current))

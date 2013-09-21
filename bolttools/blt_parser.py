@@ -30,7 +30,7 @@ _specification = {
 	"collection" : (["author","license","blt-version"],["name","description"]),
 	"class" : (["naming","source","id"],["drawing","description","standard","status","replaces","parameters","url","notes"]),
 	"naming" : (["template"],["substitute"]),
-	"parameters" : ([],["literal","free","tables","types"]),
+	"parameters" : ([],["literal","free","tables","types","defaults"]),
 	"table" : (["index","columns","data"],[])
 }
 
@@ -87,6 +87,8 @@ class BOLTSRepository:
 		self.collections = []
 
 		#load collection data
+		if not exists(join(path,"data")):
+			raise MalformedRepositoryError("No data directory found")
 		for filename in os.listdir(join(path,"data")):
 			if splitext(filename)[1] == ".blt":
 				self.collections.append(BOLTSCollection(join(path,"data",filename)))
@@ -296,6 +298,14 @@ class BOLTSClass:
 		self.name = name
 
 class BOLTSParameters:
+	type_defaults = {
+		"Length (mm)" : 10,
+		"Length (in)" : 1,
+		"Number" : 1,
+		"Bool" : False,
+		"Table Index": '',
+		"String" : ''
+	}
 	def __init__(self,param):
 		self.literal = {}
 		if "literal" in param:
@@ -344,6 +354,15 @@ class BOLTSParameters:
 		#check and normalize tables
 		for t in self.tables:
 			t._normalize_and_check_types(self.types)
+
+		#default values for free parameters
+		self.defaults = {p:self.type_defaults[self.types[p]] for p in self.free}
+		if "defaults" in param:
+			for p in param["defaults"]:
+				if p not in self.free:
+					raise ValueError("Default value given for non-free parameter");
+				self.defaults[p] = param["defaults"][p]
+
 	def collect(self,free):
 		res = {}
 		res.update(self.literal)

@@ -13,6 +13,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from common import BackendData, BackendExporter
 from os import listdir,makedirs
 from os.path import join, exists, basename
 from shutil import rmtree,copy
@@ -24,14 +25,13 @@ class BaseModule:
 		self.filename = filename
 		self.arguments = mod["arguments"]
 
-class OpenSCADData:
+class OpenSCADData(BackendData):
 	def __init__(self,path):
+		BackendData.__init__(self,"openscad",path)
 		#maps class id to base module
 		self.getbase = {}
 
 		self.basefilenames = []
-
-		self.backend_root = join(path,"openscad")
 
 		for coll in listdir(self.backend_root):
 			basename = join(self.backend_root,coll,"%s.base" % coll)
@@ -53,15 +53,13 @@ class OpenSCADData:
 								raise NonUniqueClassIdentifier
 							self.getbase[id] = module
 
-class OpenSCADExporter:
+class OpenSCADExporter(BackendExporter):
 	def write_output(self,repo):
 		oscad = repo.openscad
-		out_path = join(repo.path,"output","openscad")
+		out_path = oscad.out_root
 
-		#clear output and copy files
-		rmtree(out_path,True)
-
-		makedirs(out_path)
+		self.clear_output_dir(oscad)
+		#copy files
 		bolts_fid = open(join(out_path,"BOLTS.scad"),"w")
 		standard_fids = {}
 		for std in repo.standard_bodies:
@@ -141,8 +139,25 @@ class OpenSCADExporter:
 			for p,j in zip(table.columns,range(len(table.columns))):
 				args[p] = 'measures_%d[%d]' % (i,j)
 
-		fid.write('module %s(%s){\n' % (cl.name, ', '.join(cl.parameters.free)))
+
+		arg_strings = []
+		for p in params.free:
+			if params.types[p] in ["String","Table Index"]:
+				arg_strings.append('%s="%s"' % (p,params.defaults[p]))
+			else:
+				arg_strings.append('%s=%s' % (p,params.defaults[p]))
+		fid.write('module %s(%s){\n' % (cl.name, ', '.join(arg_strings)))
+
+		#warnings and type checks
+		if cl.status == "withdrawn":
+			fid.write('\techo("Warning: The standard %s is withdrawn. Although withdrawn standards are often still in use, it might be better to use its successor %s instead");\n' % (cl.name,cl.replacedby))
+		for p in params.free:
+			fid.write('\tcheck_parameter_type("%s","%s",%s,"%s");\n' % (cl.name,p,args[p],params.types[p]))
+
+		fid.write("\n");
 	
+
+		#load table data
 		for table,i in zip(cl.parameters.tables,range(len(cl.parameters.tables))):
 			fid.write('\tmeasures_%d = %s_table_%d(%s);\n' % (i,cl.name,i,table.index))
 			fid.write('\tif(measures_%d == "Error"){\n' % i)

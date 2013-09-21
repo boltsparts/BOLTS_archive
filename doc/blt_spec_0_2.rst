@@ -161,7 +161,7 @@ ids are one word identifiers, which must be unique within the repository. This
 class id is used as a way to refer to the class, when the standard field is not
 set.  They should contain only letters, numbers and underscores, and should be
 descriptive, as they may be visible to the user. Some names can not be
-collection ids: common, gui
+collection ids: common, gui, template
 
 .. _collection-header:
 
@@ -239,8 +239,24 @@ restricted to be. The following keys are contained in a parameter element.
   values their respective types. Possible types are: "Length (mm)", Length
   (in)", "Number", "Bool", "Table Index", "String". If no entry is present for
   a parameter, "Length (mm)" is assumed.
+- defaults: optional, associative array. This array contains a default value
+  for every free parameter. If absent, the default value defaults to the type
+  specific values given in the table below.
+
+============  ==============
+Type          Default Value
+============  ==============
+Length (mm)   10
+Length (in)   1
+Number        1
+Bool          False
+Table Index   ""
+String        ""
+============  ==============
 
 Some parameter names are forbidden: standard.
+
+The two values of the type Bool are true and false (lowercase).
 
 .. Limits on parameters could go here
 
