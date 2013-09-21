@@ -13,19 +13,18 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from common import BackendData, BackendExporter
 from os import listdir,makedirs
 from os.path import join, exists, basename,splitext
 from shutil import rmtree,copy,copytree
 import yaml
 import runpy
 
-class FreeCADData:
+class FreeCADData(BackendData):
 	def __init__(self,path):
-		self.repo_root = path
-
+		BackendData.__init__(self,"freecad",path)
 		self.basefiles = []
 		self.getbasename = {}
-		self.backend_root = join(path,"freecad")
 
 		for coll in listdir(self.backend_root):
 			basename = join(self.backend_root,coll,"%s.base" % coll)
@@ -48,16 +47,15 @@ class FreeCADData:
 							self.getbasename[id] = mod["name"]
 
 
-class FreeCADExporter:
+class FreeCADExporter(BackendExporter):
 	def write_output(self,repo):
+		freecad = repo.freecad
 
-		repo_path = repo.path
-		out_path = join(repo.path,"output","freecad")
+		repo_path = freecad.repo_root
+		out_path = freecad.out_root
 		bolts_path = join(out_path,"BOLTS")
 
-		#clear and regenerate output directory
-		rmtree(out_path,True)
-		makedirs(bolts_path)
+		self.clear_output_dir(freecad)
 
 		#generate macro
 		start_macro = open(join(out_path,"start_bolts.py"),"w")

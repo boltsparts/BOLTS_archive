@@ -13,6 +13,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from common import BackendData, BackendExporter
 from os import listdir,makedirs
 from os.path import join, exists, basename
 from shutil import rmtree,copy
@@ -24,14 +25,13 @@ class BaseModule:
 		self.filename = filename
 		self.arguments = mod["arguments"]
 
-class OpenSCADData:
+class OpenSCADData(BackendData):
 	def __init__(self,path):
+		BackendData.__init__(self,"openscad",path)
 		#maps class id to base module
 		self.getbase = {}
 
 		self.basefilenames = []
-
-		self.backend_root = join(path,"openscad")
 
 		for coll in listdir(self.backend_root):
 			basename = join(self.backend_root,coll,"%s.base" % coll)
@@ -53,15 +53,13 @@ class OpenSCADData:
 								raise NonUniqueClassIdentifier
 							self.getbase[id] = module
 
-class OpenSCADExporter:
+class OpenSCADExporter(BackendExporter):
 	def write_output(self,repo):
 		oscad = repo.openscad
-		out_path = join(repo.path,"output","openscad")
+		out_path = oscad.out_root
 
-		#clear output and copy files
-		rmtree(out_path,True)
-
-		makedirs(out_path)
+		self.clear_output_dir(oscad)
+		#copy files
 		bolts_fid = open(join(out_path,"BOLTS.scad"),"w")
 		standard_fids = {}
 		for std in repo.standard_bodies:

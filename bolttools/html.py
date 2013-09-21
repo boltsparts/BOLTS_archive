@@ -13,6 +13,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from common import BackendData, BackendExporter
 from os import listdir,makedirs
 import re
 from os.path import join, exists, basename,splitext
@@ -49,40 +50,40 @@ def msort(a,b):
 	else:
 		return 0
 
-class HTMLData:
+class HTMLData(BackendData):
 	def __init__(self,path):
+		BackendData.__init__(self,"html",path)
 		self.templates = {}
-		for filename in listdir(join(path,"html","template")):
+		template_root = join(self.backend_root,"template")
+		for filename in listdir(template_root):
 			name = splitext(basename(filename))[0]
-			self.templates[name] = string.Template(open(join(path,"html","template",filename)).read())
+			template_path = join(template_root,filename)
+			self.templates[name] = string.Template(open(template_path).read())
 
 
-
-class HTMLExporter:
+class HTMLExporter(BackendExporter):
 	def write_output(self,repo):
-		self.repo = repo
-		self.out_path = join(repo.path,"output","html")
+		html = repo.html
 
 		#clear output and copy files
-		rmtree(self.out_path,True)
+		self.clear_output_dir(html)
 
-		makedirs(self.out_path)
-		makedirs(join(self.out_path,"classes"))
-		makedirs(join(self.out_path,"collections"))
-		makedirs(join(self.out_path,"bodies"))
+		makedirs(join(html.out_root,"classes"))
+		makedirs(join(html.out_root,"collections"))
+		makedirs(join(html.out_root,"bodies"))
 
 		#copy drawings
-		copytree(join(repo.path,"drawings"),join(self.out_path,"drawings"))
+		copytree(join(repo.path,"drawings"),join(html.out_root,"drawings"))
 
 
 		#write collections and parts
 		for coll in repo.collections:
-			self._write_collection(coll)
+			self._write_collection(repo,coll)
 			for cl in coll.classes:
-				self._write_class(coll,cl)
+				self._write_class(repo,coll,cl)
 
 		for body in repo.standard_bodies:
-			self._write_body(body)
+			self._write_body(repo,body)
 
 		#write index
 		params = {}
@@ -96,12 +97,13 @@ class HTMLExporter:
 		header = ["Name", "Description"]
 		params["bodies"] = html_table(data,header)
 
-		fid = open(join(self.out_path,"index.html"),'w')
-		fid.write(self.repo.html.templates["index"].substitute(params))
+		fid = open(join(html.out_root,"index.html"),'w')
+		fid.write(html.templates["index"].substitute(params))
 		fid.close()
 
 
-	def _write_collection(self,coll):
+	def _write_collection(self,repo,coll):
+		html = repo.html
 		params = {}
 		params["title"] = coll.name
 		params["description"] = coll.description or "No description available"
@@ -118,28 +120,30 @@ class HTMLExporter:
 		row_classes = [cl.status for cl in coll.classes]
 		params["classes"] = html_table(data,header,row_classes)
 
-		fid = open(join(self.out_path,"collections","%s.html" % coll.id),'w')
-		fid.write(self.repo.html.templates["collection"].substitute(params))
+		fid = open(join(html.out_root,"collections","%s.html" % coll.id),'w')
+		fid.write(html.templates["collection"].substitute(params))
 		fid.close()
 
-	def _write_body(self,body):
+	def _write_body(self,repo,body):
+		html = repo.html
 		params = {}
 		params["title"] = body
 		params["description"] = "Standards issued by %s" % body
 
 		data = [["<a href='../classes/%s.html'>%s</a>" % (cl.name,cl.name),
 				cl.description,
-				cl.status] for cl in self.repo.standardized[body]]
+				cl.status] for cl in repo.standardized[body]]
 		header = ["Name", "Description", "Status"]
-		row_classes = [cl.status for cl in  self.repo.standardized[body]]
+		row_classes = [cl.status for cl in repo.standardized[body]]
 		params["classes"] = html_table(data,header,row_classes)
 
-		fid = open(join(self.out_path,"bodies","%s.html" % body),'w')
-		fid.write(self.repo.html.templates["body"].substitute(params))
+		fid = open(join(html.out_root,"bodies","%s.html" % body),'w')
+		fid.write(repo.html.templates["body"].substitute(params))
 		fid.close()
 
 
-	def _write_class(self,coll,cl):
+	def _write_class(self,repo,coll,cl):
+		html = repo.html
 		params = {}
 
 		params["title"] = cl.name
@@ -178,8 +182,8 @@ class HTMLExporter:
 			header = [str(p) for p in [table.index] + table.columns]
 			params["dimensions"] += html_table(data,header)
 
-		fid = open(join(self.out_path,"classes","%s.html" % cl.name),'w')
-		fid.write(self.repo.html.templates["class"].substitute(params))
+		fid = open(join(html.out_root,"classes","%s.html" % cl.name),'w')
+		fid.write(html.templates["class"].substitute(params))
 		fid.close()
 
 #class TasksExporter:
