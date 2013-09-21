@@ -141,7 +141,14 @@ class OpenSCADExporter:
 			for p,j in zip(table.columns,range(len(table.columns))):
 				args[p] = 'measures_%d[%d]' % (i,j)
 
-		fid.write('module %s(%s){\n' % (cl.name, ', '.join(cl.parameters.free)))
+
+		arg_strings = []
+		for p in params.free:
+			if params.types[p] in ["String","Table Index"]:
+				arg_strings.append('%s="%s"' % (p,params.defaults[p]))
+			else:
+				arg_strings.append('%s=%s' % (p,params.defaults[p]))
+		fid.write('module %s(%s){\n' % (cl.name, ', '.join(arg_strings)))
 
 		#warnings and type checks
 		if cl.status == "withdrawn":
