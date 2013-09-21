@@ -161,7 +161,7 @@ ids are one word identifiers, which must be unique within the repository. This
 class id is used as a way to refer to the class, when the standard field is not
 set.  They should contain only letters, numbers and underscores, and should be
 descriptive, as they may be visible to the user. Some names can not be
-collection ids: common, gui
+collection ids: common, gui, template
 
 .. _collection-header:
 
