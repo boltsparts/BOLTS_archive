@@ -6,7 +6,7 @@ import unittest
 class TestRepositoryLoad(unittest.TestCase):
 
 	def test_empty(self):
-		self.assertRaises(OSError,
+		self.assertRaises(blt_parser.MalformedRepositoryError,
 				lambda: blt_parser.BOLTSRepository("test_repos/empty"))
 
 	def test_no_collections(self):
