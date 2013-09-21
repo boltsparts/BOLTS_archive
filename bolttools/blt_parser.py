@@ -87,6 +87,8 @@ class BOLTSRepository:
 		self.collections = []
 
 		#load collection data
+		if not exists(join(path,"data")):
+			raise MalformedRepositoryError("No data directory found")
 		for filename in os.listdir(join(path,"data")):
 			if splitext(filename)[1] == ".blt":
 				self.collections.append(BOLTSCollection(join(path,"data",filename)))
