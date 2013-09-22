@@ -1,0 +1,59 @@
+---
+collection:
+    name: BOLTS Bearings
+    description: various ball bearings
+    author: [Johannes Reinhardt <jreinhardt@ist-dein-freund.de>, Javier MG <javiermg@user.sourceforge.net>]
+    license: unclear <www.unclear.org>
+    blt-version: 0.2
+classes:
+  - id: singlerowradialbearing
+    naming:
+        template: Ball bearing %s %s
+        substitute: [standard, key]
+    description: single row radial contact ball bearing
+    standard: DIN625-1
+    parameters:
+        free: [key]
+        types: {key: Table Index}
+        defaults: {key: "608"}
+        tables:
+             index: key
+             columns: [d1, d2, B]
+             data:
+                 #key,[d1, d2, B ]
+                 "625" : [ 5, 16, 5 ]
+                 "626": [ 6, 19, 6 ]
+                 "627": [ 7, 22, 7 ]
+                 "608": [ 8, 22, 7 ]
+                 "609": [ 9, 24, 7 ]
+                 "629": [ 9, 26, 8 ]
+                 "6000": [ 10, 26, 8 ]
+                 "16100": [ 10, 28, 8 ]
+                 "6200": [ 10, 30, 9 ]
+                 "6300": [ 10, 35, 11 ]
+                 "6001": [ 12, 28, 8 ]
+                 "16101": [ 12, 30, 8 ]
+                 "6201": [ 12, 32, 10 ]
+                 "6301": [ 12, 37, 12 ]
+                 "16002": [ 15, 32, 8 ]
+                 "6002": [ 15, 32, 9 ]
+                 "6202": [ 15, 35, 11 ]
+                 "6302": [ 15, 42, 13 ]
+                 "16003": [ 17, 35, 8 ]
+                 "6003": [ 17, 35, 10 ]
+                 "6203": [ 17, 40, 12 ]
+                 "6303": [ 17, 47, 14 ]
+                 "16004": [ 20, 42, 8 ]
+                 "6004": [ 20, 42, 12 ]
+                 "6204": [ 20, 47, 14 ]
+                 "6304": [ 20, 52, 15 ]
+                 "16005": [ 25, 47, 8 ]
+                 "6005": [ 25, 47, 12 ]
+                 "6205": [ 25, 52, 15 ]
+                 "6305": [ 25, 62, 17 ]
+                 "16006": [ 30, 55, 9 ]
+                 "6006": [ 30, 55, 13 ]
+                 "6206": [ 30, 62, 16 ]
+                 "16007": [ 35, 62, 9 ]
+                 "6007": [ 35, 62, 14 ]
+    source: http://www.kgm-kugeln.de/show.php?ID=4589&psid=fb716d1ad3c5e7083758989f85163af0

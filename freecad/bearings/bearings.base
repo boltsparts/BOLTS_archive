@@ -1,0 +1,7 @@
+---
+-  filename: bearings.py
+   type: function
+   modules:
+      - name: bearing
+        ids: [singlerowradialbearing]
+...
