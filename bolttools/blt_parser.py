@@ -34,14 +34,6 @@ _blt_specification = {
 	"table" : (["index","columns","data"],[])
 }
 
-_base_specification = {
-	"file" : (["filename","author","license","type"],["modules","classids","baseid","functions","parts"]),
-	"module" : (["name", "arguments","classids"],["baseid"]),
-	"function" : (["name","classids"],["baseid"]),
-	"part" : (["objectlabel"],["baseid"])
-}
-
-
 class VersionError(Exception):
 	def __init__(self,version):
 		self.version = version
