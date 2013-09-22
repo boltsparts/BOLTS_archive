@@ -160,7 +160,7 @@ class BoltsWidget(QBoltsWidget):
 					if table.index == p:
 						#try to detect metric threads
 						keys = sorted(table.data.keys())
-						if "M" in [v[0] for v in table.data.keys()]:
+						if "M" in [str(v)[0] for v in table.data.keys()]:
 							try:
 								keys = sorted(table.data.keys(),key=lambda x: float(x[1:]))
 							except:
