@@ -77,7 +77,7 @@ class BOLTSRepository:
 					self.collections.append(BOLTSCollection(join(path,"data",filename)))
 				except ParsingError as e:
 					e.set_repo_path(path)
-					e.set_collection(self.id)
+					e.set_collection(filename)
 					raise e
 
 		self.standardized = {body:[] for body in self.standard_bodies}
@@ -168,7 +168,7 @@ class BOLTSCollection:
 				try:
 					self.classes.append(BOLTSClass(cl,name))
 				except ParsingError as e:
-					e.set_class(cl.id)
+					e.set_class(name)
 					raise
 
 	def _load_blt(self,bltname):
@@ -351,12 +351,7 @@ class BOLTSTable:
 
 	def _check_conformity(self,table):
 		spec = _blt_specification
-		try:
-			check_dict(table,spec["table"])
-		except UnknownFieldError as e:
-			raise UnknownFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
-		except MissingFieldError as e:
-			raise MissingFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+		check_dict(table,spec["table"])
 
 	def _normalize_and_check_types(self,types):
 		numbers = ["Length (mm)", "Length (in)", "Number"]
@@ -381,12 +376,14 @@ class BOLTSTable:
 
 class BOLTSNaming:
 	def __init__(self,name):
+		self._check_conformity(name)
 		self.template = name["template"]
 		self.substitute = []
 		if "substitute" in name:
 			self.substitute = name["substitute"]
 
 	def _check_conformity(self,name):
+		spec = _blt_specification
 		check_dict(name,spec["naming"])
 
 	def get_name(self,params):

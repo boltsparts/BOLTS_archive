@@ -77,6 +77,12 @@ class TestCollectionLoad(unittest.TestCase):
 		params = cl.parameters.collect({'key' : 'M2.5', 'l' : 37.4})
 		self.assertEqual(params['s'],12.0)
 
+	def test_naming_error(self):
+		#wrong name for substitute field
+		self.assertRaises(UnknownFieldError, lambda:
+			blt_parser.BOLTSCollection("test_collections/naming.blt")
+		)
+
 	def test_type_error1(self):
 		#additional parameter name in types
 		self.assertRaises(ValueError, lambda:
