@@ -2,12 +2,19 @@ import blt_parser
 import openscad
 import freecad
 import unittest
+from errors import *
 
 class TestRepositoryLoad(unittest.TestCase):
 
+	def test_nonexistant(self):
+		self.assertRaises(MalformedRepositoryError, lambda:
+			blt_parser.BOLTSRepository("test_repos/does_not_exist")
+		)
+
 	def test_empty(self):
-		self.assertRaises(blt_parser.MalformedRepositoryError,
-				lambda: blt_parser.BOLTSRepository("test_repos/empty"))
+		self.assertRaises(MalformedRepositoryError, lambda:
+			blt_parser.BOLTSRepository("test_repos/empty")
+		)
 
 	def test_no_collections(self):
 		repo = blt_parser.BOLTSRepository("test_repos/no_collections")
@@ -18,9 +25,9 @@ class TestRepositoryLoad(unittest.TestCase):
 		self.assertEqual(repo.collections,[])
 
 	def test_no_drawings(self):
-		self.assertRaises(blt_parser.MalformedRepositoryError,
-				lambda: blt_parser.BOLTSRepository(
-					"test_repos/no_drawings/"))
+		self.assertRaises(MalformedRepositoryError, lambda:
+				blt_parser.BOLTSRepository("test_repos/no_drawings/")
+		)
 
 	def test_small(self):
 		repo = blt_parser.BOLTSRepository("test_repos/small")
@@ -29,19 +36,24 @@ class TestRepositoryLoad(unittest.TestCase):
 class TestCollectionLoad(unittest.TestCase):
 
 	def test_empty(self):
-		self.assertRaises(blt_parser.MalformedCollectionError,
-				lambda: blt_parser.BOLTSCollection(
-					"test_collections/empty.blt"))
+		self.assertRaises(MalformedCollectionError, lambda:
+			blt_parser.BOLTSCollection("test_collections/empty.blt")
+		)
+
+	def test_wrong_version(self):
+		self.assertRaises(VersionError, lambda:
+			blt_parser.BOLTSCollection("test_collections/wrong_version.blt")
+		)
 
 	def test_no_classes(self):
-		self.assertRaises(blt_parser.MissingFieldError,
-				lambda: blt_parser.BOLTSCollection(
-					"test_collections/no_classes.blt"))
+		self.assertRaises(MissingFieldError, lambda:
+			blt_parser.BOLTSCollection("test_collections/no_classes.blt")
+		)
 
 	def test_empty_classes(self):
-		self.assertRaises(blt_parser.MalformedCollectionError,
-				lambda: blt_parser.BOLTSCollection(
-					"test_collections/empty_classes.blt"))
+		self.assertRaises(MalformedCollectionError, lambda:
+			blt_parser.BOLTSCollection("test_collections/empty_classes.blt")
+		)
 
 	def test_minimal_class(self):
 		coll = blt_parser.BOLTSCollection("test_collections/minimal_class.blt")
@@ -65,21 +77,22 @@ class TestCollectionLoad(unittest.TestCase):
 		params = cl.parameters.collect({'key' : 'M2.5', 'l' : 37.4})
 		self.assertEqual(params['s'],12.0)
 
-	def test_type_error(self):
+	def test_type_error1(self):
 		#additional parameter name in types
-		self.assertRaises(ValueError,
-				lambda: blt_parser.BOLTSCollection(
-					"test_collections/type_error1.blt"))
-		#unknown type  in types
-		self.assertRaises(ValueError,
-				lambda: blt_parser.BOLTSCollection(
-					"test_collections/type_error2.blt"))
+		self.assertRaises(ValueError, lambda:
+			blt_parser.BOLTSCollection("test_collections/type_error1.blt")
+		)
+	def test_type_error2(self):
+		#unknown type in types
+		self.assertRaises(ValueError, lambda:
+			blt_parser.BOLTSCollection("test_collections/type_error2.blt")
+		)
 
 	def test_table_error(self):
 		#negative value for parameter of type length
-		self.assertRaises(ValueError,
-				lambda: blt_parser.BOLTSCollection(
-					"test_collections/table_error1.blt"))
+		self.assertRaises(ValueError, lambda:
+			blt_parser.BOLTSCollection("test_collections/table_error1.blt")
+		)
 		#negative value for parameter of type number
 		blt_parser.BOLTSCollection("test_collections/table_error2.blt")
 

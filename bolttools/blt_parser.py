@@ -19,6 +19,7 @@ from os.path import splitext, split, exists, join
 import re
 import copy
 import openscad,freecad, html, downloads
+from errors import *
 
 _re_angled = re.compile("([^<]*)<([^>]*)")
 
@@ -33,37 +34,6 @@ _blt_specification = {
 	"parameters" : ([],["literal","free","tables","types","defaults"]),
 	"table" : (["index","columns","data"],[])
 }
-
-class VersionError(Exception):
-	def __init__(self,version):
-		self.version = version
-	def __str__(self):
-		return "Unknown version. File: %f Current: %f" % \
-			(self.version,current_version)
-
-class UnknownFieldError(Exception):
-	def __init__(self,fieldname):
-		self.field = fieldname
-	def __str__(self):
-		return "Unknown Field: %s" % self.field
-
-class MissingFieldError(Exception):
-	def __init__(self,fieldname):
-		self.field = fieldname
-	def __str__(self):
-		return "Missing Field: %s" % self.field
-
-class MalformedRepositoryError(Exception):
-	def __init__(self,msg):
-		self.msg = msg
-	def __str(self):
-		return self.msg
-
-class MalformedCollectionError(Exception):
-	def __init__(self,msg):
-		self.msg = msg
-	def __str(self):
-		return self.msg
 
 def check_dict(array,spec):
 	man = spec[0][:]
@@ -87,15 +57,28 @@ class BOLTSRepository:
 		self.collections = []
 
 		#check for conformity
+		if not exists(path):
+			e = MalformedRepositoryError("Repo directory does not exist")
+			e.set_repo_path(path)
+			raise e
 		if not exists(join(path,"data")):
-			raise MalformedRepositoryError("No data directory found")
+			e = MalformedRepositoryError("No data directory found")
+			e.set_repo_path(path)
+			raise e
 		if not exists(join(path,"drawings")):
-			raise MalformedRepositoryError("drawings folder is missing")
+			e = MalformedRepositoryError("Drawings folder is missing")
+			e.set_repo_path(path)
+			raise e
 
 		#load collection data
 		for filename in os.listdir(join(path,"data")):
 			if splitext(filename)[1] == ".blt":
-				self.collections.append(BOLTSCollection(join(path,"data",filename)))
+				try:
+					self.collections.append(BOLTSCollection(join(path,"data",filename)))
+				except ParsingError as e:
+					e.set_repo_path(path)
+					e.set_collection(self.id)
+					raise e
 
 		self.standardized = {body:[] for body in self.standard_bodies}
 
@@ -134,7 +117,6 @@ class BOLTSRepository:
 		self.downloads = None
 		if exists(join(path,"downloads")):
 			self.downloads = downloads.DownloadsData(path)
-
 
 
 class BOLTSCollection:
@@ -183,7 +165,11 @@ class BOLTSCollection:
 			if isinstance(names,str):
 				names = [names]
 			for name in names:
-				self.classes.append(BOLTSClass(cl,name))
+				try:
+					self.classes.append(BOLTSClass(cl,name))
+				except ParsingError as e:
+					e.set_class(cl.id)
+					raise
 
 	def _load_blt(self,bltname):
 		coll = list(yaml.load_all(open(bltname)))
@@ -204,16 +190,8 @@ class BOLTSCollection:
 
 	def _check_conformity(self,coll):
 		spec = _blt_specification
-		try:
-			check_dict(coll,spec["root"])
-		except (UnknownFieldError, MissingFieldError):
-			print "In collection %s, field %s" % (self.id,"root")
-			raise
-		try:
-			check_dict(coll["collection"],spec["collection"])
-		except (UnknownFieldError, MissingFieldError):
-			print "In collection %s, field %s" % (self.id,"collection")
-			raise
+		check_dict(coll,spec["root"])
+		check_dict(coll["collection"],spec["collection"])
 		classes = coll["classes"]
 		if not isinstance(classes,list):
 			raise MalformedCollectionError("No class in collection %s"% self.id)
@@ -228,7 +206,11 @@ class BOLTSClass:
 
 		self.id = cl["id"]
 
-		self.naming = BOLTSNaming(cl["naming"])
+		try:
+			self.naming = BOLTSNaming(cl["naming"])
+		except ParsingError as e:
+			e.set_class(self.id)
+			raise e
 
 		self.drawing = None
 		if "drawing" in cl:
@@ -275,12 +257,7 @@ class BOLTSClass:
 
 	def _check_conformity(self,cl):
 		spec = _blt_specification
-		try:
-			check_dict(cl,spec["class"])
-		except UnknownFieldError as e:
-			raise UnknownFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
-		except MissingFieldError as e:
-			raise MissingFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+		check_dict(cl,spec["class"])
 
 
 class BOLTSParameters:
@@ -352,12 +329,7 @@ class BOLTSParameters:
 
 	def _check_conformity(self,param):
 		spec = _blt_specification
-		try:
-			check_dict(param,spec["parameters"])
-		except UnknownFieldError as e:
-			raise UnknownFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
-		except MissingFieldError as e:
-			raise MissingFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+		check_dict(param,spec["parameters"])
 
 	def collect(self,free):
 		res = {}
@@ -415,12 +387,7 @@ class BOLTSNaming:
 			self.substitute = name["substitute"]
 
 	def _check_conformity(self,name):
-		try:
-			check_dict(name,spec["naming"])
-		except UnknownFieldError as e:
-			raise UnknownFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
-		except MissingFieldError as e:
-			raise MissingFieldError("In file %s, class %s, field %s" % (bltname,cl["id"], e.field))
+		check_dict(name,spec["naming"])
 
 	def get_name(self,params):
 		return self.template % (params[s] for s in self.substitute)
