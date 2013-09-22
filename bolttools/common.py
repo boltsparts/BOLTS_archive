@@ -32,6 +32,6 @@ class BackendExporter:
 		for path in listdir(backend_data.out_root):
 			full_path = join(backend_data.out_root,path)
 			if isfile(full_path):
-				os.remove(full_path)
+				remove(full_path)
 			else:
 				rmtree(full_path)
