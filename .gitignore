@@ -1,5 +1,6 @@
 *.swp
 *.pyc
+doc/*.pdf
 output/freecad/*
 output/openscad/*
 bolttools/test_repos/*/output
