@@ -15,18 +15,19 @@
 
 class ParsingError(Exception):
 	def __init__(self):
-		self.repo_path = None
-		self.coll = None
-		self.cl = None
+		self.trace_info = {}
 		self.msg = "Something went wrong with parsing"
 	def set_repo_path(self,path):
-		self.repo_path = path
+		self.trace_info["Repository path"] = path
 	def set_collection(self,coll):
-		self.coll = coll
+		self.trace_info["Collection"] = coll
 	def set_class(self,cl):
-		self.cl = cl
+		self.trace_info["Class"] = cl
+	def set_base(self,base):
+		self.trace_info["Base"] = base
 	def __str__(self):
-		return "%s. Repo: %s Collection: %s Class: %s" % (self.msg, self.repo_path, self.coll, self.cl)
+		trace = " ".join("%s: %s" % (k,str(v)) for k,v in self.trace_info.iteritems())
+		return "%s.  %s" % (self.msg, trace)
 
 class VersionError(ParsingError):
 	def __init__(self,version):
