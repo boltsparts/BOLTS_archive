@@ -17,8 +17,11 @@ bases = {}
 for coll in listdir(join(rootpath,"freecad")):
 	if not exists(join(rootpath,"freecad",coll,"%s.base" % coll)):
 		continue
-	mod = importlib.import_module("BOLTS.freecad.%s.%s" % (coll,coll))
-	bases.update(mod.bases)
+	try:
+		mod = importlib.import_module("BOLTS.freecad.%s.%s" % (coll,coll))
+		bases.update(mod.bases)
+	except:
+		pass
 
 print bases
 
