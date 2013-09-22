@@ -1,3 +1,0 @@
-[submodule "freecad/freecadlib/FreeCAD-library"]
-	path = freecad/freecadlib/FreeCAD-library
-	url = https://github.com/yorikvanhavre/FreeCAD-library.git
