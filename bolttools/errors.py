@@ -69,3 +69,8 @@ class MalformedCollectionError(ParsingError):
 		ParsingError.__init__(self)
 		self.msg = msg
 
+class MalformedBaseError(ParsingError):
+	def __init__(self,msg):
+		ParsingError.__init__(self)
+		self.msg = msg
+

@@ -17,14 +17,49 @@ from common import BackendData, BackendExporter
 from os import listdir,makedirs
 from os.path import join, exists, basename,splitext
 from shutil import rmtree,copy,copytree
+from errors import *
 import yaml
-import runpy
+import importlib
+
+_freecad_base_specification = {
+	"file-function" : (["filename","author","license","type","functions"],[]),
+	"file-fcstd" : (["filename","author","license","type","parts"],[]),
+	"function" : (["name","classids"],["baseid"]),
+	"part" : (["objectlabel"],["baseid"])
+}
+
+class FreeCADBase:
+	def __init__(self,basefile,collname):
+		self.collection = collname
+		self.filename = basefile["filename"]
+		self.path = join(collname,self.filename)
+		self.author = basefile["author"]
+		self.license = basefile["license"]
+	def add_part(self,params,doc):
+		raise NotImplementedError
+
+class BaseFunction(FreeCADBase):
+	def __init__(self,function,basefile,collname):
+		self._check_conformity(function,basefile)
+		FreeCADBase.__init__(self,basefile,collname)
+		self.name = function["name"]
+		self.baseid = self.name
+		if "baseid" in function:
+			self.baseid = function["baseid"]
+		self.classids = function["classids"]
+		self.module_name = splitext(basename(self.filename))[0]
+	def _check_conformity(self,function, basefile):
+		spec = _freecad_base_specification
+		check_dict(function,spec["function"])
+		check_dict(basefile,spec["file-function"])
+	def add_part(self,params,doc):
+		module = importlib.import_module("BOLTS.freecad.%s.%s" % (self.module_name,self.module_name))
+		module.__dict__[self.name](params,doc)
 
 class FreeCADData(BackendData):
 	def __init__(self,path):
 		BackendData.__init__(self,"freecad",path)
-		self.basefiles = []
-		self.getbasename = {}
+		self.getbase = {}
 
 		for coll in listdir(self.backend_root):
 			basename = join(self.backend_root,coll,"%s.base" % coll)
@@ -34,18 +69,22 @@ class FreeCADData(BackendData):
 			base_info =  list(yaml.load_all(open(basename)))
 			if len(base_info) != 1:
 				raise MalformedCollectionError(
-						"No YAML document found in file %s" % bltname)
+						"Not exactly one YAML document found in file %s" % bltname)
 			base_info = base_info[0]
 			for basefile in base_info:
-				base_functions = {}
 				if basefile["type"] == "function":
 					basepath = join(self.backend_root,coll,"%s.py" % coll)
 					if not exists(basepath):
-						print "base module described in %s not found: %s" % (basename, basepath)
-					for mod in basefile["modules"]:
-						for id in mod["ids"]:
-							self.getbasename[id] = mod["name"]
-
+						raise MalformedBaseError("Python module %s does not exist" % basepath)
+					for func in basefile["functions"]:
+						try:
+							function = BaseFunction(func,basefile,coll)
+							for id in func["classids"]:
+								self.getbase[id] = function
+						except ParsingError as e:
+							e.set_base(basefile["filename"])
+							e.set_collection(coll)
+							raise e
 
 class FreeCADExporter(BackendExporter):
 	def write_output(self,repo):
