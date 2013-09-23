@@ -13,25 +13,95 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from errors import *
 from common import BackendData, BackendExporter
 from os import listdir,makedirs
 from os.path import join, exists, basename
 from shutil import rmtree,copy
 import yaml
 
-class BaseModule:
-	def __init__(self,mod,filename):
+_openscad_base_specification = {
+	"file-module" : (["filename","author","license","type","modules"],[]),
+	"file-stl" : (["filename","author","license","type","classids"],["baseid"]),
+	"module" : (["name", "arguments","classids"],["baseid"]),
+}
+
+def check_dict(array,spec):
+	man = spec[0][:]
+	opt = spec[1][:]
+	for key in array.keys():
+		if key in man:
+			man.remove(key)
+		elif key in opt:
+			opt.remove(key)
+		else:
+			raise UnknownFieldError(key)
+	if len(man) > 0:
+		raise MissingFieldError(man)
+
+class OpenSCADBase:
+	def __init__(self,basefile,collname):
+		self.collection = collname
+		self.filename = basefile["filename"]
+		self.path = join(collname,self.filename)
+		self.author = basefile["author"]
+		self.license = basefile["license"]
+	def get_copy_files(self):
+		"Returns the path of the files to copy relative to the backend_root"
+		raise NotImplementedError
+	def get_include_files(self):
+		"Returns the path of the files to copy relative to the base folder in output"
+		raise NotImplementedError
+	def get_incantation(self,args):
+		"Return the incantation of the base that produces the geometry"
+		raise NotImplementedError
+
+class BaseModule(OpenSCADBase):
+	def __init__(self,mod,basefile,collname):
+		self._check_conformity(mod,basefile)
+		OpenSCADBase.__init__(self,basefile,collname)
+		self.baseid = mod["name"]
+		if "baseid" in mod:
+			self.baseid = mod["baseid"]
 		self.name = mod["name"]
-		self.filename = filename
 		self.arguments = mod["arguments"]
+		self.classids = mod["classids"]
+	def _check_conformity(self,mod,basefile):
+		spec = _openscad_base_specification
+		check_dict(mod,spec["module"])
+		check_dict(basefile,spec["file-module"])
+	def get_copy_files(self):
+		return [self.path]
+	def get_include_files(self):
+		return [self.filename]
+	def get_incantation(self,args):
+		return "%s(%s)" % (self.name,", ".join(args[arg] for arg in self.arguments))
+
+
+class BaseSTL(OpenSCADBase):
+	def __init__(self,basefile,collname):
+		self._check_conformity(basefile)
+		OpenSCADBase.__init__(self,basefile,collname)
+		self.baseid = self.filename
+		if "baseid" in basefile:
+			self.baseid = basefile["baseid"]
+		self.classids = basefile["classids"]
+	def _check_conformity(self,basefile):
+		spec = _openscad_base_specification
+		check_dict(basefile,spec["file-stl"])
+	def get_copy_files(self):
+		return [self.path]
+	def get_include_files(self):
+		return []
+	def get_incantation(self,args):
+		return 'import("%s")' % join("base",self.filename)
+
 
 class OpenSCADData(BackendData):
 	def __init__(self,path):
 		BackendData.__init__(self,"openscad",path)
 		#maps class id to base module
 		self.getbase = {}
-
-		self.basefilenames = []
 
 		for coll in listdir(self.backend_root):
 			basename = join(self.backend_root,coll,"%s.base" % coll)
@@ -44,14 +114,27 @@ class OpenSCADData(BackendData):
 						"No YAML document found in file %s" % bltname)
 			base = base[0]
 			for basefile in base:
-				self.basefilenames.append(join(self.backend_root,coll,basefile["filename"]))
 				if basefile["type"] == "module":
 					for mod in basefile["modules"]:
-						module = BaseModule(mod,basefile)
-						for id in mod["ids"]:
+						try:
+							module = BaseModule(mod,basefile,coll)
+							for id in module.classids:
+								if id in self.getbase:
+									raise NonUniqueClassIdentifier
+								self.getbase[id] = module
+						except ParsingError as e:
+							e.set_base(basefile["filename"])
+							raise e
+				elif basefile["type"] == "stl":
+					try:
+						module = BaseSTL(basefile,coll)
+						for id in module.classids:
 							if id in self.getbase:
 								raise NonUniqueClassIdentifier
 							self.getbase[id] = module
+					except ParsingError as e:
+						e.set_base(basefile["filename"])
+						raise e
 
 class OpenSCADExporter(BackendExporter):
 	def write_output(self,repo):
@@ -67,6 +150,7 @@ class OpenSCADExporter(BackendExporter):
 
 		makedirs(join(out_path,"tables"))
 
+		#copy common files
 		makedirs(join(out_path,"common"))
 		for filename in listdir(join(oscad.backend_root,"common")):
 			copy(join(oscad.backend_root,"common",filename),join(out_path,"common",filename))
@@ -74,12 +158,26 @@ class OpenSCADExporter(BackendExporter):
 			for std in standard_fids:
 				standard_fids[std].write("include <common/%s>\n" % filename)
 
+		#copy base files
+		copied = []
 		makedirs(join(out_path,"base"))
-		for filename in oscad.basefilenames:
-			copy(filename,join(out_path,"base"))
-			bolts_fid.write("include <base/%s>\n" % basename(filename))
-			for std in standard_fids:
-				standard_fids[std].write("include <base/%s>\n" % basename(filename))
+		for id in oscad.getbase:
+			for path in oscad.getbase[id].get_copy_files():
+				if path in copied:
+					continue
+				copy(join(oscad.backend_root,path),join(out_path,"base",basename(path)))
+				copied.append(path)
+
+		#include files
+		included = []
+		for id in oscad.getbase:
+			for path in oscad.getbase[id].get_include_files():
+				if path in included:
+					continue
+				bolts_fid.write("include <base/%s>\n" % path)
+				for std in standard_fids:
+					standard_fids[std].write("include <base/%s>\n" % path)
+				included.append(path)
 
 		#write tables
 		for collection in repo.collections:
@@ -139,7 +237,6 @@ class OpenSCADExporter(BackendExporter):
 			for p,j in zip(table.columns,range(len(table.columns))):
 				args[p] = 'measures_%d[%d]' % (i,j)
 
-
 		arg_strings = []
 		for p in params.free:
 			if params.types[p] in ["String","Table Index"]:
@@ -184,7 +281,5 @@ class OpenSCADExporter(BackendExporter):
 		fid.write("\t} else {\n")
 
 		#module call
-		base = repo.openscad.getbase[cl.id]
-		fid.write('\t\t%s(%s);\n\t}\n}\n\n' % 
-				(base.name,',\n\t\t\t'.join(args[arg] for arg in base.arguments)))
+		fid.write('\t\t%s;\n\t}\n}\n\n' % repo.openscad.getbase[cl.id].get_incantation(args))
 

@@ -19,17 +19,6 @@ from os import listdir,makedirs, remove
 from os.path import join, exists, basename, isfile
 from shutil import rmtree,copy
 
-_base_specification = {
-	"file" : (["filename","author","license","type"],[]),
-	"file-module" : (["filename","author","license","type","modules"],[]),
-	"file-stl" : (["filename","author","license","type","classids"],["baseid"]),
-	"file-function" : (["filename","author","license","type","functions"],[]),
-	"file-fcstd" : (["filename","author","license","type","parts"],[]),
-	"module" : (["name", "arguments","classids"],["baseid"]),
-	"function" : (["name","classids"],["baseid"]),
-	"part" : (["objectlabel"],["baseid"])
-}
-
 class BackendData:
 	def __init__(self,name,path):
 		self.repo_root = path
