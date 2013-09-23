@@ -69,5 +69,3 @@ def hex2(params,document):
 	shaft_threaded = Part.makeCylinder(0.5*d1,b)
 	shaft_threaded.translate(Vector(0,0,l-b+k))
 	part.Shape = head.fuse(shaft_unthreaded).fuse(shaft_threaded).removeSplitter()
-
-bases = {'hex1' : hex1,'hex2' : hex2}

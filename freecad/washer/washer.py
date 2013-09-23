@@ -25,5 +25,3 @@ def washer2(params,document):
 	shape = outer.cut(inner)
 	#guessed size for the chamfer
 	part.Shape = shape.makeChamfer(0.1*d1,shape.Edges[0:1]).removeSplitter()
-
-bases = {'washer1':washer1, 'washer2':washer2}
