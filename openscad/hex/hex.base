@@ -1,11 +1,13 @@
 ---
--  filename: hex.scad
-   type: module
-   modules:
-      - name: hex1
-        arguments: [d1, k, s, h, l]
-        ids: [hexscrew1, hexscrew2]
-      - name: hex2
-        arguments: [d1, k, s, b1, b2, b3, l]
-        ids: [hexbolt1, hexbolt2]
+- filename: hex.scad
+  type: module
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC-BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
+  modules:
+    - name: hex1
+      arguments: [d1, k, s, h, l]
+      classids: [hexscrew1, hexscrew2]
+    - name: hex2
+      arguments: [d1, k, s, b1, b2, b3, l]
+      classids: [hexbolt1, hexbolt2]
 ...

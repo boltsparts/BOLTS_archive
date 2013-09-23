@@ -1,10 +1,12 @@
 ---
 - filename: hex_socket.scad
   type: module
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC-BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
   modules:
     - name: hex_socket1
       arguments: [d1, d2, b1, b2, b3, k_max, s, t, L, h_max, l]
-      ids: [hexsocketcountersunk]
+      classids: [hexsocketcountersunk]
     - name: hex_socket2
       arguments: [d1, d2, b, k, s, t_min, L, l]
-      ids: [hexsocketheadcap]
+      classids: [hexsocketheadcap]

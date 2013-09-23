@@ -1,9 +1,11 @@
 ---
--  filename: nut.scad
-   type: module
-   modules:
-      - name: hex1
-        arguments: [d1, s, m_max]
-        ids: [hexagonthinnut1, hexagonthinnut2 hexagonnut1, hexagonnut2]
+- filename: nut.scad
+  type: module
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC-BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
+  modules:
+    - name: hex1
+      arguments: [d1, s, m_max]
+      classids: [hexagonthinnut1, hexagonthinnut2 hexagonnut1, hexagonnut2]
 ...
 
