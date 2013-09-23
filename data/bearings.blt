@@ -3,7 +3,7 @@ collection:
     name: BOLTS Bearings
     description: various ball bearings
     author: [Johannes Reinhardt <jreinhardt@ist-dein-freund.de>, Javier MG <javiermg@user.sourceforge.net>]
-    license: unclear <www.unclear.org>
+    license: LGPL 3.0 <http://www.gnu.org/licenses/lgpl-3.0.en.html>
     blt-version: 0.2
 classes:
   - id: singlerowradialbearing
