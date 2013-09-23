@@ -35,20 +35,6 @@ _blt_specification = {
 	"table" : (["index","columns","data"],[])
 }
 
-def check_dict(array,spec):
-	man = spec[0][:]
-	opt = spec[1][:]
-	for key in array.keys():
-		if key in man:
-			man.remove(key)
-		elif key in opt:
-			opt.remove(key)
-		else:
-			raise UnknownFieldError(key)
-	if len(man) > 0:
-		raise MissingFieldError(man)
-
-
 class BOLTSRepository:
 	#order is important
 	standard_bodies = ["DINENISO","DINEN","DINISO","DIN","EN","ISO"]

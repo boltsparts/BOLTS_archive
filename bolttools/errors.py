@@ -13,6 +13,21 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+def check_dict(array,spec):
+	" Function to check a dictionary, as returned from YAML parsing, \
+	against a specified schema "
+	man = spec[0][:]
+	opt = spec[1][:]
+	for key in array.keys():
+		if key in man:
+			man.remove(key)
+		elif key in opt:
+			opt.remove(key)
+		else:
+			raise UnknownFieldError(key)
+	if len(man) > 0:
+		raise MissingFieldError(man)
+
 class ParsingError(Exception):
 	def __init__(self):
 		self.trace_info = {}

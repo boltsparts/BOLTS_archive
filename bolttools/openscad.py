@@ -26,19 +26,6 @@ _openscad_base_specification = {
 	"module" : (["name", "arguments","classids"],["baseid"]),
 }
 
-def check_dict(array,spec):
-	man = spec[0][:]
-	opt = spec[1][:]
-	for key in array.keys():
-		if key in man:
-			man.remove(key)
-		elif key in opt:
-			opt.remove(key)
-		else:
-			raise UnknownFieldError(key)
-	if len(man) > 0:
-		raise MissingFieldError(man)
-
 class OpenSCADBase:
 	def __init__(self,basefile,collname):
 		self.collection = collname
