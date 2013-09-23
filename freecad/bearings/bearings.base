@@ -2,6 +2,8 @@
 -  filename: bearings.py
    type: function
    modules:
-      - name: bearing
+      - name: singlerowradialbearing
         ids: [singlerowradialbearing]
+      - name: axialthrustbearing
+        ids: [axialthrustbearing]
 ...
