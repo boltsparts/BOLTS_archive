@@ -480,7 +480,7 @@ A base function element is a associative array describing a python function
 with the following keys:
 
 - baseid: optional, string. An id for this base. If not given, defaults to name.
-- name: mandatory, string. The name of the module.
+- name: mandatory, string. The name of the function.
 - classids: mandatory, list of string. A list of class ids for which this base
   module should be used.
 
