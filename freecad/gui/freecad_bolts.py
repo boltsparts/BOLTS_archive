@@ -106,13 +106,12 @@ class TableIndexWidget(QTableIndexWidget):
 		return str(self.ui.comboBox.currentText())
 
 class BoltsWidget(QBoltsWidget):
-	def __init__(self,repo,bases):
+	def __init__(self,repo):
 		QBoltsWidget.__init__(self)
 		self.ui = Ui_BoltsWidget()
 		self.ui.setupUi(self)
 
 		self.repo = repo
-		self.bases = bases
 
 		self.param_widgets = {}
 		self.props_widgets = {}
@@ -124,12 +123,10 @@ class BoltsWidget(QBoltsWidget):
 			coll_item = QtGui.QTreeWidgetItem(self.coll_root,[coll.name, coll.description])
 			coll_item.setData(0,32,coll)
 			for cl in coll.classes:
-				if not cl.id in self.repo.freecad.getbasename:
+				if not cl.id in self.repo.freecad.getbase:
 					continue
-				basename = self.repo.freecad.getbasename[cl.id]
-				if basename in self.bases:
-					cl_item = QtGui.QTreeWidgetItem(coll_item,[cl.name, cl.description])
-					cl_item.setData(0,32,cl)
+				cl_item = QtGui.QTreeWidgetItem(coll_item,[cl.name, cl.description])
+				cl_item.setData(0,32,cl)
 
 		self.remove_empty_items(self.coll_root)
 
@@ -228,8 +225,7 @@ class BoltsWidget(QBoltsWidget):
 			tuple(params[k] for k in data.naming.substitute)
 
 		#add part
-		basename = self.repo.freecad.getbasename[data.id]
-		self.bases[basename](params,FreeCAD.ActiveDocument)
+		self.repo.freecad.getbase[data.id].add_part(params,FreeCAD.ActiveDocument)
 
 	def on_partsTree_itemSelectionChanged(self):
 		items = self.ui.partsTree.selectedItems()

@@ -1,9 +1,11 @@
 ---
--  filename: bearings.py
-   type: function
-   modules:
-      - name: singlerowradialbearing
-        ids: [singlerowradialbearing]
-      - name: axialthrustbearing
-        ids: [axialthrustbearing]
+- filename: bearings.py
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC-BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
+  type: function
+  functions:
+    - name: singlerowradialbearing
+      classids: [singlerowradialbearing]
+    - name: axialthrustbearing
+      classids: [axialthrustbearing]
 ...

@@ -1,10 +1,12 @@
 ---
--  filename: washer.py
-   type: function
-   modules:
-      - name: washer1
-        ids: [plainwasher1, plainwasher2, plainwasherforcheesehead, heavydutyplainwasher]
-      - name: washer2
-        ids: [plainwasherchamfered]
+- filename: washer.py
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC-BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
+  type: function
+  functions:
+    - name: washer1
+      classids: [plainwasher1, plainwasher2, plainwasherforcheesehead, heavydutyplainwasher]
+    - name: washer2
+      classids: [plainwasherchamfered]
 ...
 
