@@ -112,4 +112,42 @@ def axialthrustbearing(params, document):
 	comp = Part.Compound(shapes)
 	part.Shape = comp.removeSplitter()
 
-bases = {'singlerowradialbearing' : singlerowradialbearing,'axialthrustbearing' : axialthrustbearing}
+def needlebearing(params, document):
+	rout = 0.5*params["Ew"]
+	rin = 0.5*params["Fw"]
+	bth = params["Bc"]
+	rnd=(rout-rin)/2.00
+	cnd=((rout-rin)/2)+rin
+	nnd=2*math.pi*cnd/(1.8*2*rnd) #Needle number
+	nnd=math.floor(nnd)
+	nnd=int(nnd)
+	name = params['name']
+
+	shapes=[]
+	#needle cage--------------
+	ncrout=cnd+0.175*(rout-rin)
+	ncrin=cnd-0.175*(rout-rin)
+	nc1=Part.makeCylinder(ncrout,bth)
+	nc2=Part.makeCylinder(ncrin,bth)
+	nc=nc1.cut(nc2)
+	#needle space on the cage-
+	rsnd=rnd*1.2
+	thsnd=bth*0.8
+	for i in range(nnd):
+		snd=Part.makeCylinder(rsnd,thsnd)
+		Alpha=(i*2*math.pi)/nnd
+		nv=(cnd*math.cos(Alpha),cnd*math.sin(Alpha),0.1*bth)
+		snd.translate(nv)
+		nc=nc.cut(snd)
+	#Needle creation----------
+	for i in range(nnd):
+		nd=Part.makeCylinder(rnd,thsnd)
+		Alpha=(i*2*math.pi)/nnd
+		nv=(cnd*math.cos(Alpha),cnd*math.sin(Alpha),0.1*bth)
+		nd.translate(nv)
+		shapes.append(nd)
+	shapes.append(nc)
+
+	part = document.addObject("Part::Feature",name)
+	comp = Part.Compound(shapes)
+	part.Shape = comp.removeSplitter()

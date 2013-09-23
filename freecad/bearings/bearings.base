@@ -8,4 +8,6 @@
       classids: [singlerowradialbearing]
     - name: axialthrustbearing
       classids: [axialthrustbearing]
+    - name: needlebearing
+      classids: [needleroller]
 ...
