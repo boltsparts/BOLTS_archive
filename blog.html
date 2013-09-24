@@ -18,7 +18,8 @@
         <p>Posted on {{ post.date | date: "%B %d, %Y" }} by Johannes</p>
       </header>
       <div class="entry-content">
-        {{ post.content }}
+        {{ post.content | split: '<!-- more -->' | first }}
+        <p><a href="{% unless site.baseurl == "/" %}{{ site.baseurl }}{% endunless %}{{ post.url }}">Read more</a></p>
       </div>
     </article>
     {% endfor %}
@@ -43,7 +44,7 @@
     <ul class="bordered-list">
       {% for post in site.posts %}
       <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{% unless site.baseurl == "/" %}{{ site.baseurl }}{% endunless %}{{ post.url }}">{{ post.title }}</a>
         <span class="date">{{ post.date | date: "%d-%m-%Y" }}</span>
       </li>
       {% endfor %}

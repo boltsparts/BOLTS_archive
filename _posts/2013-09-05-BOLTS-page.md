@@ -3,12 +3,11 @@
   title: Home in the interwebs
 ---
 
-BOLTS gets a webpage
-====================
-
 With the help of [Jekyll](http://jekyllrb.com/) and [Github
 Pages](http://pages.github.com/) I created what will in the future serve as the
 virtual home of BOLTS.
+
+<!-- more -->
 
 It took me only a few hours to whip up a decent looking page using the very
 nice [Cactus Theme](https://github.com/Wolfr/cactus-jekyll-theme) and spicing
