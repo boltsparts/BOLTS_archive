@@ -4,8 +4,8 @@
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC-BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
   modules:
-    - name: hex1
+    - name: nut1
       arguments: [d1, s, m_max]
-      classids: [hexagonthinnut1, hexagonthinnut2 hexagonnut1, hexagonnut2]
+      classids: [hexagonthinnut1, hexagonthinnut2, hexagonnut1, hexagonnut2]
 ...
 
