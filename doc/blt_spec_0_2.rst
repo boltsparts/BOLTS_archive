@@ -498,19 +498,21 @@ associative array with the following keys:
   e-mail adress in <> or a list of several authors.
 - license: mandatory, string. The license of the file
 - type: "fcstd"
-- parts: mandatory, list of base-part-element_.
+- object: mandatory, list of base-object-element_.
 
-.. _base-part-element:
+.. _base-object-element:
 
-Base part element
-=================
+Base object element
+===================
 
-A base part element is an associative array describing a part in a FreeCAD
+A base object element is an associative array describing an object in a FreeCAD
 Document. It has the following keys:
 
 - baseid: optional, string. An id for this base. if not given, defaults to objectlabel.
 - objectlabel: mandatory, string. The label of the part. The label must be
   unique in the document.
+- classids: mandatory, list of string. A list of class ids for which this base
+  part should be used.
 
 .. Here a mapping between parameters and properties of the object is necessary
    for having parametrized objects.
