@@ -1,0 +1,14 @@
+---
+collection:
+    name: BOLTS furniture
+    description: various pieces of furniture
+    author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+    license: CC-BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
+    blt-version: 0.2
+classes:
+  - id: lack1
+    naming:
+      template: IKEA Lack 900x550x450
+    description: A coffee table
+    source: https://github.com/yorikvanhavre/FreeCAD-library
+...
