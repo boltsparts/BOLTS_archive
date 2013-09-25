@@ -72,11 +72,15 @@ class BaseFcstd(FreeCADBase):
 
 	def _recursive_copy(self,obj,doc):
 		doc.copyObject(obj)
-		obj_copy = doc.getObject(obj.Name)
-		for child in obj.OutList:
-			child_copy = self._recursive_copy(child,doc)
-			obj_copy.OutList.append(child_copy)
-			child_copy.InList.append(obj_copy)
+		obj_copy = doc.getObjectsByLabel(obj.Label)
+		if len(obj_copy) != 1:
+			raise ValueError("Something went wrong")
+		obj_copy = obj_copy[0]
+		for prop_name in obj.PropertiesList:
+			prop = obj.getPropertyByName(prop_name)
+			prop_copy = obj_copy.getPropertyByName(prop_name)
+			if prop_copy is None and (not prop is None):
+				setattr(obj_copy,prop_name,self._recursive_copy(prop,doc))
 		return obj_copy
 
 	def add_part(self,params,doc):
@@ -86,6 +90,7 @@ class BaseFcstd(FreeCADBase):
 		if len(obj) != 1:
 			raise MalformedBaseError("No file %s found" % self.filename)
 		obj_copy = self._recursive_copy(obj[0],doc)
+		obj_copy.touch()
 		FreeCAD.setActiveDocument(doc.Name)
 		FreeCAD.closeDocument(newdoc.Name)
 
@@ -119,19 +124,19 @@ class FreeCADData(BackendData):
 							e.set_base(basefile["filename"])
 							e.set_collection(coll)
 							raise e
-#				elif basefile["type"] == "fcstd":
-#					basepath = join(self.backend_root,coll,basefile["filename"])
-#					if not exists(basepath):
-#						raise MalformedBaseError("Fcstd file %s does not exist" % basepath)
-#					for obj in basefile["objects"]:
-#						try:
-#							fcstd = BaseFcstd(obj,basefile,coll,self.backend_root)
-#							for id in obj["classids"]:
-#								self.getbase[id] = fcstd
-#						except ParsingError as e:
-#							e.set_base(basefile["filename"])
-#							e.set_collection(coll)
-#							raise e
+				elif basefile["type"] == "fcstd":
+					basepath = join(self.backend_root,coll,basefile["filename"])
+					if not exists(basepath):
+						raise MalformedBaseError("Fcstd file %s does not exist" % basepath)
+					for obj in basefile["objects"]:
+						try:
+							fcstd = BaseFcstd(obj,basefile,coll,self.backend_root)
+							for id in obj["classids"]:
+								self.getbase[id] = fcstd
+						except ParsingError as e:
+							e.set_base(basefile["filename"])
+							e.set_collection(coll)
+							raise e
 
 class FreeCADExporter(BackendExporter):
 	def write_output(self,repo):
