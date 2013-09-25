@@ -25,7 +25,7 @@ _freecad_base_specification = {
 	"file-function" : (["filename","author","license","type","functions"],[]),
 	"file-fcstd" : (["filename","author","license","type","objects"],[]),
 	"function" : (["name","classids"],["baseid"]),
-	"object" : (["objectlabel","classids"],["baseid"])
+	"object" : (["objectname","classids"],["baseid","paramtoprop"])
 }
 
 class FreeCADBase:
@@ -60,10 +60,13 @@ class BaseFcstd(FreeCADBase):
 	def __init__(self,obj,basefile, collname,backend_root):
 		self._check_conformity(obj,basefile)
 		FreeCADBase.__init__(self,basefile,collname,backend_root)
-		self.objectlabel = obj["objectlabel"]
-		self.baseid = self.objectlabel
+		self.objectname = obj["objectname"]
+		self.baseid = self.objectname
 		if "baseid" in obj:
 			self.baseid = obj["baseid"]
+		self.paramtoprop = {"name" : "Label"}
+		if "paramtoprop" in obj:
+			self.paramtoprop = obj["paramtoprop"]
 	
 	def _check_conformity(self,obj,basefile):
 		spec = _freecad_base_specification
@@ -71,11 +74,7 @@ class BaseFcstd(FreeCADBase):
 		check_dict(obj,spec["object"])
 
 	def _recursive_copy(self,obj,doc):
-		doc.copyObject(obj)
-		obj_copy = doc.getObjectsByLabel(obj.Label)
-		if len(obj_copy) != 1:
-			raise ValueError("Something went wrong")
-		obj_copy = obj_copy[0]
+		obj_copy = doc.copyObject(obj)
 		for prop_name in obj.PropertiesList:
 			prop = obj.getPropertyByName(prop_name)
 			prop_copy = obj_copy.getPropertyByName(prop_name)
@@ -85,14 +84,20 @@ class BaseFcstd(FreeCADBase):
 
 	def add_part(self,params,doc):
 		import FreeCAD
+		#copy the object and all its dependencies
 		newdoc = FreeCAD.openDocument(self.filename)
-		obj = newdoc.getObjectsByLabel(self.objectlabel)
-		if len(obj) != 1:
-			raise MalformedBaseError("No file %s found" % self.filename)
-		obj_copy = self._recursive_copy(obj[0],doc)
-		obj_copy.touch()
+		obj = newdoc.getObject(self.objectname)
+		if obj is None:
+			raise MalformedBaseError("No object %s found" % self.objectname)
+		obj_copy = self._recursive_copy(obj,doc)
 		FreeCAD.setActiveDocument(doc.Name)
 		FreeCAD.closeDocument(newdoc.Name)
+
+		for param,prop in self.paramtoprop.iteritems():
+			setattr(obj_copy,prop,params[param])
+
+		obj_copy.touch()
+		doc.recompute()
 
 
 class FreeCADData(BackendData):

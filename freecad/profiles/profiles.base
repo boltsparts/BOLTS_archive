@@ -4,34 +4,8 @@
   license: unclear <http://jreinhardt.github.io/BOLTS/unclear.html>
   type: fcstd
   objects:
-   - objectlabel: Pad
+   - objectname: Pad
+     baseid: tuberect
      classids: [tuberect]
-- filename: 20x20_Vrail_s.fcstd
-  author: quick61 <quick61@users.sourceforge.net>
-  license: unclear <http://jreinhardt.github.io/BOLTS/unclear.html>
-  type: fcstd
-  objects:
-   - objectlabel: 20x20_Vrail
-     classids: [Vrail20x20]
-- filename: 20x40_Vrail_s.fcstd
-  author: quick61 <quick61@users.sourceforge.net>
-  license: unclear <http://jreinhardt.github.io/BOLTS/unclear.html>
-  type: fcstd
-  objects:
-   - objectlabel: 20x40_Vrail
-     classids: [Vrail20x40]
-- filename: 20x60_Vrail_s.fcstd
-  author: quick61 <quick61@users.sourceforge.net>
-  license: unclear <http://jreinhardt.github.io/BOLTS/unclear.html>
-  type: fcstd
-  objects:
-   - objectlabel: 20x60_Vrail
-     classids: [Vrail20x60]
-- filename: 20x80_Vrail_s.fcstd
-  author: quick61 <quick61@users.sourceforge.net>
-  license: unclear <http://jreinhardt.github.io/BOLTS/unclear.html>
-  type: fcstd
-  objects:
-   - objectlabel: 20x80_Vrail
-     classids: [Vrail20x80]
+     paramtoprop: {name : Label, l : Length}
 ...

@@ -10,28 +10,6 @@ classes:
     naming:
       template: Rectangular tube
     description: A rectangular tube
+    parameters:
+        free: ["l"]
     source: https://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=19&t=4205
-  - id: vrail20x20
-    naming:
-      template: OpenBuilds V-Slot 20x20mm
-    description: The V-Slot extrusion from OpenBuilds
-    source: https://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=8&t=4348#p35721
-    url: http://openbuildspartstore.com/v-slot/
-  - id: vrail20x40
-    naming:
-      template: OpenBuilds V-Slot 20x40mm
-    description: The V-Slot extrusion from OpenBuilds
-    source: https://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=8&t=4348#p35721
-    url: http://openbuildspartstore.com/v-slot/
-  - id: vrail20x60
-    naming:
-      template: OpenBuilds V-Slot 20x60mm
-    description: The V-Slot extrusion from OpenBuilds
-    source: https://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=8&t=4348#p35721
-    url: http://openbuildspartstore.com/v-slot/
-  - id: vrail20x80
-    naming:
-      template: OpenBuilds V-Slot 20x80mm
-    description: The V-Slot extrusion from OpenBuilds
-    source: https://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=8&t=4348#p35721
-    url: http://openbuildspartstore.com/v-slot/

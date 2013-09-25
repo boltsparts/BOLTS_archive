@@ -508,11 +508,9 @@ Base object element
 A base object element is an associative array describing an object in a FreeCAD
 Document. It has the following keys:
 
-- baseid: optional, string. An id for this base. if not given, defaults to objectlabel.
-- objectlabel: mandatory, string. The label of the part. The label must be
-  unique in the document.
+- baseid: optional, string. An id for this base. if not given, defaults to objectname.
+- objectname: mandatory, string. The name of the part in the document.
 - classids: mandatory, list of string. A list of class ids for which this base
   part should be used.
-
-.. Here a mapping between parameters and properties of the object is necessary
-   for having parametrized objects.
+- paramtoprop: optional, associative array. This maps parameters to properties
+  of the object. Defaults to {"name" : "Label"}
