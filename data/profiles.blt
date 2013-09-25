@@ -8,8 +8,9 @@ collection:
 classes:
   - id: tuberect
     naming:
-      template: Rectangular tube
+      template: Rectangular tube %s
+      substitute: [l]
     description: A rectangular tube
     parameters:
-        free: ["l"]
+        free: [l]
     source: https://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=19&t=4205
