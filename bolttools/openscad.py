@@ -14,7 +14,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from errors import *
-from common import BackendData, BackendExporter
+from common import BackendData, BackendExporter, BaseBase
 from os import listdir,makedirs
 from os.path import join, exists, basename
 from shutil import rmtree,copy
@@ -26,13 +26,11 @@ _openscad_base_specification = {
 	"module" : (["name", "arguments","classids"],["baseid"]),
 }
 
-class OpenSCADBase:
+class OpenSCADBase(BaseBase):
 	def __init__(self,basefile,collname):
-		self.collection = collname
+		BaseBase.__init__(self,basefile,collname)
 		self.filename = basefile["filename"]
 		self.path = join(collname,self.filename)
-		self.author = basefile["author"]
-		self.license = basefile["license"]
 	def get_copy_files(self):
 		"Returns the path of the files to copy relative to the backend_root"
 		raise NotImplementedError

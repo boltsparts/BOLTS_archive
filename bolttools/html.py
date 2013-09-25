@@ -14,6 +14,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from common import BackendData, BackendExporter
+import freecad,openscad
 from os import listdir,makedirs
 import re
 from os.path import join, exists, basename,splitext
@@ -189,6 +190,42 @@ class HTMLExporter(BackendExporter):
 			data = [[key] + table.data[key] for key in keys]
 			header = [str(p) for p in [table.index] + table.columns]
 			params["dimensions"] += html_table(data,header)
+
+		#freecad information
+		if repo.freecad is None:
+			params["freecad"] = "<tr><td>FreeCAD Backend is not available</td></tr>\n"
+		else:
+			if cl.id in repo.freecad.getbase:
+				base = repo.freecad.getbase[cl.id]
+				freecad_props = []
+				if isinstance(base,freecad.BaseFunction):
+					prop_row(freecad_props,"Type","Function")
+				elif isinstance(base,freecad.BaseFcstd):
+					prop_row(freecad_props,"Type","FCstd file")
+				for mail,name in zip(base.author_mails,base.author_names):
+					prop_row(freecad_props,"Author","<a href='mailto:%s'>%s</a>" % (mail,name))
+				prop_row(freecad_props,"License","<a href='%s'>%s</a>" % (base.license_url,base.license_name))
+				params["freecad"] = "\n".join(freecad_props)
+			else:
+				params["freecad"] = "<tr><td>Class is not available in FreeCAD</td></tr>\n"
+
+		#open
+		if repo.openscad is None:
+			params["openscad"] = "<tr><td>OpenSCAD Backend is not available</td></tr>\n"
+		else:
+			if cl.id in repo.openscad.getbase:
+				base = repo.openscad.getbase[cl.id]
+				openscad_props = []
+				if isinstance(base,openscad.BaseModule):
+					prop_row(openscad_props,"Type","Module")
+				elif isinstance(base,openscad.BaseFcstd):
+					prop_row(openscad_props,"Type","STL file")
+				for mail,name in zip(base.author_mails,base.author_names):
+					prop_row(openscad_props,"Author","<a href='mailto:%s'>%s</a>" % (mail,name))
+				prop_row(openscad_props,"License","<a href='%s'>%s</a>" % (base.license_url,base.license_name))
+				params["openscad"] = "\n".join(openscad_props)
+			else:
+				params["openscad"] = "<tr><td>Class is not available in OpenSCAD</td></tr>\n"
 
 		fid = open(join(html.out_root,"classes","%s.html" % cl.name),'w')
 		fid.write(html.templates["class"].substitute(params))

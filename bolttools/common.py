@@ -18,6 +18,9 @@
 from os import listdir,makedirs, remove
 from os.path import join, exists, basename, isfile
 from shutil import rmtree,copy
+import re
+
+_re_angled = re.compile("([^<]*)<([^>]*)")
 
 class BackendData:
 	def __init__(self,name,path):
@@ -36,3 +39,23 @@ class BackendExporter:
 				remove(full_path)
 			else:
 				rmtree(full_path)
+
+
+class BaseBase:
+	def __init__(self,basefile,collname):
+		self.collection = collname
+
+		self.authors = basefile["author"]
+		if isinstance(self.authors,str):
+			self.authors = [self.authors]
+		self.author_names = []
+		self.author_mails = []
+		for author in self.authors:
+			match = _re_angled.match(author)
+			self.author_names.append(match.group(1).strip())
+			self.author_mails.append(match.group(2).strip())
+
+		self.license = basefile["license"]
+		match = _re_angled.match(self.license)
+		self.license_name = match.group(1).strip()
+		self.license_url = match.group(2).strip()
