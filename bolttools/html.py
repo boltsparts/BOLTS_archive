@@ -156,10 +156,11 @@ class HTMLExporter(BackendExporter):
 			prop_row(props,"Author","<a href='mailto:%s'>%s</a>" % (mail,name))
 		prop_row(props,"License","<a href='%s'>%s</a>" % (coll.license_url,coll.license_name))
 		prop_row(props,"Collection","<a href='../collections/%s.html'>%s</a>" % (coll.id,coll.name))
-		identical = ", ".join(["<a href='%s.html'>%s</a>" % (id,id) for id in cl.standard if id != cl.name])
-		prop_row(props,"Identical to",identical)
 
-		if cl.standard:
+		if not cl.standard is None:
+			identical = ", ".join(["<a href='%s.html'>%s</a>" % (id,id) for id in cl.standard if id != cl.name])
+			prop_row(props,"Identical to",identical)
+
 			prop_row(props,"Status",cl.status)
 			prop_row(props,"Standard body","<a href='../bodies/%s.html'>%s</a>" % (cl.body,cl.body))
 			if not cl.replaces is None:
@@ -178,7 +179,14 @@ class HTMLExporter(BackendExporter):
 		#TODO: multiple tables properly
 		params["dimensions"] = ""
 		for table in cl.parameters.tables:
-			data = [[key] + table.data[key] for key in sorted(table.data.keys(),cmp=msort)]
+			keys = sorted(table.data.keys())
+			#try to detect metric threads
+			if "M" in [str(v)[0] for v in table.data.keys()]:
+				try:
+					keys = sorted(table.data.keys(),key=lambda x: float(x[1:]))
+				except:
+					keys = sorted(table.data.keys())
+			data = [[key] + table.data[key] for key in keys]
 			header = [str(p) for p in [table.index] + table.columns]
 			params["dimensions"] += html_table(data,header)
 
