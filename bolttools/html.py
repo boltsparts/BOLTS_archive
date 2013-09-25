@@ -61,7 +61,6 @@ class HTMLData(BackendData):
 			template_path = join(template_root,filename)
 			self.templates[name] = string.Template(open(template_path).read())
 
-
 class HTMLExporter(BackendExporter):
 	def write_output(self,repo):
 		html = repo.html
@@ -209,9 +208,10 @@ class HTMLExporter(BackendExporter):
 			else:
 				params["freecad"] = "<tr><td>Class is not available in FreeCAD</td></tr>\n"
 
-		#open
+		#openscad
 		if repo.openscad is None:
 			params["openscad"] = "<tr><td>OpenSCAD Backend is not available</td></tr>\n"
+			params["openscadincantation"] = ""
 		else:
 			if cl.id in repo.openscad.getbase:
 				base = repo.openscad.getbase[cl.id]
@@ -224,8 +224,15 @@ class HTMLExporter(BackendExporter):
 					prop_row(openscad_props,"Author","<a href='mailto:%s'>%s</a>" % (mail,name))
 				prop_row(openscad_props,"License","<a href='%s'>%s</a>" % (base.license_url,base.license_name))
 				params["openscad"] = "\n".join(openscad_props)
+
+				params["openscadincantation"] = "<h2>Incantation</h2>\n"
+				params["openscadincantation"] += "{% highlight python %}\n"
+				params["openscadincantation"] += "%s;\n" % openscad.get_incantation(cl)
+				params["openscadincantation"] += "{% endhighlight %}\n"
 			else:
 				params["openscad"] = "<tr><td>Class is not available in OpenSCAD</td></tr>\n"
+				params["openscadincantation"] = ""
+
 
 		fid = open(join(html.out_root,"classes","%s.html" % cl.name),'w')
 		fid.write(html.templates["class"].substitute(params))

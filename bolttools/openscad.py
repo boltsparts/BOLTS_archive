@@ -26,6 +26,17 @@ _openscad_base_specification = {
 	"module" : (["name", "arguments","classids"],["baseid"]),
 }
 
+
+def get_incantation(cl):
+	arg_strings = []
+	params = cl.parameters
+	for p in params.free:
+		if params.types[p] in ["String","Table Index"]:
+			arg_strings.append('%s="%s"' % (p,params.defaults[p]))
+		else:
+			arg_strings.append('%s=%s' % (p,params.defaults[p]))
+	return '%s(%s)' % (cl.name, ', '.join(arg_strings))
+
 class OpenSCADBase(BaseBase):
 	def __init__(self,basefile,collname):
 		BaseBase.__init__(self,basefile,collname)
@@ -222,13 +233,8 @@ class OpenSCADExporter(BackendExporter):
 			for p,j in zip(table.columns,range(len(table.columns))):
 				args[p] = 'measures_%d[%d]' % (i,j)
 
-		arg_strings = []
-		for p in params.free:
-			if params.types[p] in ["String","Table Index"]:
-				arg_strings.append('%s="%s"' % (p,params.defaults[p]))
-			else:
-				arg_strings.append('%s=%s' % (p,params.defaults[p]))
-		fid.write('module %s(%s){\n' % (cl.name, ', '.join(arg_strings)))
+		#incantation
+		fid.write("module %s{\n" % get_incantation(cl))
 
 		#warnings and type checks
 		if cl.status == "withdrawn":
