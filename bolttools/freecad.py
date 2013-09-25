@@ -23,15 +23,15 @@ import importlib
 
 _freecad_base_specification = {
 	"file-function" : (["filename","author","license","type","functions"],[]),
-	"file-fcstd" : (["filename","author","license","type","parts"],[]),
+	"file-fcstd" : (["filename","author","license","type","objects"],[]),
 	"function" : (["name","classids"],["baseid"]),
-	"part" : (["objectlabel"],["baseid"])
+	"object" : (["objectlabel","classids"],["baseid"])
 }
 
 class FreeCADBase:
-	def __init__(self,basefile,collname):
+	def __init__(self,basefile,collname,backend_root):
 		self.collection = collname
-		self.filename = basefile["filename"]
+		self.filename = join(backend_root,collname,basefile["filename"])
 		self.path = join(collname,self.filename)
 		self.author = basefile["author"]
 		self.license = basefile["license"]
@@ -39,9 +39,9 @@ class FreeCADBase:
 		raise NotImplementedError
 
 class BaseFunction(FreeCADBase):
-	def __init__(self,function,basefile,collname):
+	def __init__(self,function,basefile,collname,backend_root):
 		self._check_conformity(function,basefile)
-		FreeCADBase.__init__(self,basefile,collname)
+		FreeCADBase.__init__(self,basefile,collname,backend_root)
 		self.name = function["name"]
 		self.baseid = self.name
 		if "baseid" in function:
@@ -53,8 +53,42 @@ class BaseFunction(FreeCADBase):
 		check_dict(function,spec["function"])
 		check_dict(basefile,spec["file-function"])
 	def add_part(self,params,doc):
-		module = importlib.import_module("BOLTS.freecad.%s.%s" % (self.module_name,self.module_name))
+		module = importlib.import_module("BOLTS.freecad.%s.%s" % (self.collection,self.module_name))
 		module.__dict__[self.name](params,doc)
+
+class BaseFcstd(FreeCADBase):
+	def __init__(self,obj,basefile, collname,backend_root):
+		self._check_conformity(obj,basefile)
+		FreeCADBase.__init__(self,basefile,collname,backend_root)
+		self.objectlabel = obj["objectlabel"]
+		self.baseid = self.objectlabel
+		if "baseid" in obj:
+			self.baseid = obj["baseid"]
+	
+	def _check_conformity(self,obj,basefile):
+		spec = _freecad_base_specification
+		check_dict(basefile,spec["file-fcstd"])
+		check_dict(obj,spec["object"])
+
+	def _recursive_copy(self,obj,doc):
+		doc.copyObject(obj)
+		obj_copy = doc.getObject(obj.Name)
+		for child in obj.OutList:
+			child_copy = self._recursive_copy(child,doc)
+			obj_copy.OutList.append(child_copy)
+			child_copy.InList.append(obj_copy)
+		return obj_copy
+
+	def add_part(self,params,doc):
+		import FreeCAD
+		newdoc = FreeCAD.openDocument(self.filename)
+		obj = newdoc.getObjectsByLabel(self.objectlabel)
+		if len(obj) != 1:
+			raise MalformedBaseError("No file %s found" % self.filename)
+		obj_copy = self._recursive_copy(obj[0],doc)
+		FreeCAD.setActiveDocument(doc.Name)
+		FreeCAD.closeDocument(newdoc.Name)
+
 
 class FreeCADData(BackendData):
 	def __init__(self,path):
@@ -78,13 +112,26 @@ class FreeCADData(BackendData):
 						raise MalformedBaseError("Python module %s does not exist" % basepath)
 					for func in basefile["functions"]:
 						try:
-							function = BaseFunction(func,basefile,coll)
+							function = BaseFunction(func,basefile,coll,self.backend_root)
 							for id in func["classids"]:
 								self.getbase[id] = function
 						except ParsingError as e:
 							e.set_base(basefile["filename"])
 							e.set_collection(coll)
 							raise e
+#				elif basefile["type"] == "fcstd":
+#					basepath = join(self.backend_root,coll,basefile["filename"])
+#					if not exists(basepath):
+#						raise MalformedBaseError("Fcstd file %s does not exist" % basepath)
+#					for obj in basefile["objects"]:
+#						try:
+#							fcstd = BaseFcstd(obj,basefile,coll,self.backend_root)
+#							for id in obj["classids"]:
+#								self.getbase[id] = fcstd
+#						except ParsingError as e:
+#							e.set_base(basefile["filename"])
+#							e.set_collection(coll)
+#							raise e
 
 class FreeCADExporter(BackendExporter):
 	def write_output(self,repo):
