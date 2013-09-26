@@ -1,9 +1,0 @@
----
--  filename: hex.py
-   type: function
-   modules:
-      - name: hex1
-        ids: [hexscrew1, hexscrew2]
-      - name: hex2
-        ids: [hexbolt1, hexbolt2]
-...
