@@ -118,7 +118,10 @@ class BoltsWidget(QBoltsWidget):
 
 		self.coll_root = QtGui.QTreeWidgetItem(self.ui.partsTree,['Collections','Ordered by collections'])
 		self.coll_root.setData(0,32,None)
+		self.std_root = QtGui.QTreeWidgetItem(self.ui.partsTree,['Standard','Ordered by issueing body'])
+		self.std_root.setData(0,32,None)
 
+		#set up collections
 		for coll in self.repo.collections:
 			coll_item = QtGui.QTreeWidgetItem(self.coll_root,[coll.name, coll.description])
 			coll_item.setData(0,32,coll)
@@ -127,6 +130,17 @@ class BoltsWidget(QBoltsWidget):
 					continue
 				cl_item = QtGui.QTreeWidgetItem(coll_item,[cl.name, cl.description])
 				cl_item.setData(0,32,cl)
+
+		#set up standards
+		for body in repo.standard_bodies:
+			std_item = QtGui.QTreeWidgetItem(self.std_root,[body, "Standards issued by %s" % body])
+			std_item.setData(0,32,None)
+			for cl in repo.standardized[body]:
+				if not cl.id in self.repo.freecad.getbase:
+					continue
+				cl_item = QtGui.QTreeWidgetItem(std_item,[cl.name, cl.description])
+				cl_item.setData(0,32,cl)
+
 
 		self.remove_empty_items(self.coll_root)
 
