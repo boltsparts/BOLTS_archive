@@ -3,6 +3,5 @@
 doc/*.pdf
 output/freecad/*
 output/openscad/*
-bolttools/test_repos/*/output
 .sass-cache
 _site
