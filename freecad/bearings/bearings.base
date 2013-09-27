@@ -6,6 +6,9 @@
   functions:
     - name: singlerowradialbearing
       classids: [singlerowradialbearing]
+      parameters:
+        free: [detailed]
+        types: {detailed: Bool}
     - name: axialthrustbearing
       classids: [axialthrustbearing]
     - name: needlebearing

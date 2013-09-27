@@ -25,7 +25,7 @@ from BOLTS.bolttools.blt_parser import BOLTSClass, BOLTSCollection, BOLTSReposit
 #get ui from designer file
 Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
 Ui_ValueWidget,QValueWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
-Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
+Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'bool_widget.ui'))
 Ui_TableIndexWidget,QTableIndexWidget = uic.loadUiType(join(bolts_path,'tableindex_widget.ui'))
 Ui_PropertyWidget,QPropertyWidget = uic.loadUiType(join(bolts_path,'property_widget.ui'))
 
@@ -84,11 +84,11 @@ class BoolWidget(QBoolWidget):
 		QBoolWidget.__init__(self,parent)
 		self.ui = Ui_BoolWidget()
 		self.ui.setupUi(self)
-		self.ui.label.setText(label)
-		self.ui.checkBox.setChecked(default)
+		self.ui.checkBox.setText(label)
+		self.ui.checkBox.setChecked(bool(default))
 
 	def getValue(self):
-		self.ui.checkBox.isChecked()
+		return self.ui.checkBox.isChecked()
 
 class TableIndexWidget(QTableIndexWidget):
 	def __init__(self,parent,label,keys,default):
@@ -152,11 +152,12 @@ class BoltsWidget(QBoltsWidget):
 			if not isinstance(data,BOLTSClass) and child.childCount() == 0:
 				root_item.removeChild(child)
 
-	def setup_param_widgets(self,cl):
+	def setup_param_widgets(self,cl,base):
 		#construct widgets
-		for p in cl.parameters.free:
-			p_type = cl.parameters.types[p]
-			default = str(cl.parameters.defaults[p])
+		params = cl.parameters.union(base.parameters)
+		for p in params.free:
+			p_type = params.types[p]
+			default = str(params.defaults[p])
 			print p,p_type,default
 			if p_type == "Length (mm)":
 				self.param_widgets[p] = LengthWidget(self.ui.params,p + " (mm)",default)
@@ -167,7 +168,7 @@ class BoltsWidget(QBoltsWidget):
 			elif p_type == "Bool":
 				self.param_widgets[p] = BoolWidget(self.ui.params,p,default)
 			elif p_type == "Table Index":
-				for table in cl.parameters.tables:
+				for table in params.tables:
 					if table.index == p:
 						#try to detect metric threads
 						keys = sorted(table.data.keys())
@@ -261,7 +262,7 @@ class BoltsWidget(QBoltsWidget):
 
 		if isinstance(data,BOLTSClass):
 			self.setup_props_class(data)
-			self.setup_param_widgets(data)
+			self.setup_param_widgets(data,self.repo.freecad.getbase[data.id])
 		elif isinstance(data,BOLTSCollection):
 			self.setup_props_collection(data)
 
