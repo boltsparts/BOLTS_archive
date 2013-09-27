@@ -5,6 +5,5 @@
   type: fcstd
   objects:
    - objectname: Fusion001
-     baseid: lack1
      classids: [lack1]
 ...

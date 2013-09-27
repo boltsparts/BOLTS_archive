@@ -5,7 +5,6 @@
   type: fcstd
   objects:
    - objectname: Pad
-     baseid: tuberect
      classids: [tuberect]
      paramtoprop: {name : Label, l : Length}
 ...
