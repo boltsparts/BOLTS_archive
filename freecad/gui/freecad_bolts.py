@@ -85,7 +85,10 @@ class BoolWidget(QBoolWidget):
 		self.ui = Ui_BoolWidget()
 		self.ui.setupUi(self)
 		self.ui.checkBox.setText(label)
-		self.ui.checkBox.setChecked(bool(default))
+		if default == "true":
+			self.ui.checkBox.setChecked(True)
+		else:
+			self.ui.checkBox.setChecked(False)
 
 	def getValue(self):
 		return self.ui.checkBox.isChecked()
