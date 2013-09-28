@@ -1,5 +1,6 @@
 # coding=utf8
 #2013  Javier Martínez García en Linux Mint KDE 14 <jaeco@gmx.com>
+#2013  Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 #LGPL
 
 import Part
@@ -13,44 +14,52 @@ def singlerowradialbearing(params,document):
 	rin=0.5*params['d1']
 	bth=0.5*params['B']
 	name=params['name']
-	
-	rb=(rout-rin)*0.25
-	cb=((rout-rin)/2.00+rin)
-	RR=0.015*rout
+	detailed = params['detailed']
+
 	#shapes---
 	shapes=[]
-	#outer ring--------------
-	our1=Part.makeCylinder(rout,bth)
-	our2=Part.makeCylinder(cb+rb*0.7,bth)
-	our=our1.cut(our2)
-	oure=our.Edges
-	our=our.makeFillet(RR,oure)
-	#inner ring--------------
-	inr1=Part.makeCylinder(cb-rb*0.7,bth)
-	inr2=Part.makeCylinder(rin,bth)
-	inr=inr1.cut(inr2)
-	inre=inr.Edges
-	inr=inr.makeFillet(RR,inre)
-	#track-------------------
-	t=Part.makeTorus(cb,rb)
-	vt=(0,0,bth/2)
-	t.translate(vt)
-	our=our.cut(t)
-	inr=inr.cut(t)
-	#shapes---
-	shapes.append(our)
-	shapes.append(inr)
-	#Balls-------------------
-	nb=(math.pi*cb)*0.8/(rb)
-	nb=math.floor(nb)
-	nb=int(nb)
+	RR=0.015*rout
+	if detailed:
+		rb=(rout-rin)*0.25
+		cb=((rout-rin)/2.00+rin)
+		#outer ring--------------
+		our1=Part.makeCylinder(rout,bth)
+		our2=Part.makeCylinder(cb+rb*0.7,bth)
+		our=our1.cut(our2)
+		oure=our.Edges
+		our=our.makeFillet(RR,oure)
+		#inner ring--------------
+		inr1=Part.makeCylinder(cb-rb*0.7,bth)
+		inr2=Part.makeCylinder(rin,bth)
+		inr=inr1.cut(inr2)
+		inre=inr.Edges
+		inr=inr.makeFillet(RR,inre)
+		#track-------------------
+		t=Part.makeTorus(cb,rb)
+		vt=(0,0,bth/2)
+		t.translate(vt)
+		our=our.cut(t)
+		inr=inr.cut(t)
+		#shapes---
+		shapes.append(our)
+		shapes.append(inr)
+		#Balls-------------------
+		nb=(math.pi*cb)*0.8/(rb)
+		nb=math.floor(nb)
+		nb=int(nb)
 
-	for i in range (nb):
-		b=Part.makeSphere(rb)
-		Alpha=(i*2*math.pi)/nb
-		bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),bth/2)
-		b.translate(bv)
-		shapes.append(b)
+		for i in range (nb):
+			b=Part.makeSphere(rb)
+			Alpha=(i*2*math.pi)/nb
+			bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),bth/2)
+			b.translate(bv)
+			shapes.append(b)
+	else:
+		body = Part.makeCylinder(rout,bth)
+		hole = Part.makeCylinder(rin,bth)
+		body = body.cut(hole)
+		body = body.makeFillet(RR,body.Edges)
+		shapes.append(body)
 
 	part=document.addObject("Part::Feature",name)
 	comp=Part.Compound(shapes)
