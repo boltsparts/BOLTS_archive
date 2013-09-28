@@ -1,78 +1,131 @@
+#2013  Javier Martínez García en Linux Mint KDE 14 <jaeco@gmx.com>
+#LGPL
+
 import Part
 import math
 
+
+### DEEP GROOVE SINGLE ROW BALL BEARING ###------------------------------
+
 def singlerowradialbearing(params,document):
-	R1 = 0.5*params['d1']
-	R4 = 0.5*params['d2']
-	TH=params['B']    #Ball bearing thickness
-	name = params['name']
-	detailed = params['detailed']
-	print detailed
+	rout=0.5*params['d2']
+	rin=0.5*params['d1']
+	bth=0.5*params['B']
+	name=params['name']
+	
+	rb=(rout-rin)*0.25
+	cb=((rout-rin)/2.00+rin)
+	RR=0.015*rout
+	#shapes---
+	shapes=[]
+	#outer ring--------------
+	our1=Part.makeCylinder(rout,bth)
+	our2=Part.makeCylinder(cb+rb*0.7,bth)
+	our=our1.cut(our2)
+	oure=our.Edges
+	our=our.makeFillet(RR,oure)
+	#inner ring--------------
+	inr1=Part.makeCylinder(cb-rb*0.7,bth)
+	inr2=Part.makeCylinder(rin,bth)
+	inr=inr1.cut(inr2)
+	inre=inr.Edges
+	inr=inr.makeFillet(RR,inre)
+	#track-------------------
+	t=Part.makeTorus(cb,rb)
+	vt=(0,0,bth/2)
+	t.translate(vt)
+	our=our.cut(t)
+	inr=inr.cut(t)
+	#shapes---
+	shapes.append(our)
+	shapes.append(inr)
+	#Balls-------------------
+	nb=(math.pi*cb)*0.8/(rb)
+	nb=math.floor(nb)
+	nb=int(nb)
+  
+	for i in range (nb):
+	  b=Part.makeSphere(rb)
+	  Alpha=(i*2*math.pi)/nb
+	  bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),bth/2)
+	  b.translate(bv)
+	  shapes.append(b)
 
-	RR=R4/40.        #Bearing edges rounding value
-	shapes = []
-	if detailed:
-		#the inner two radii seem to be not specified in the standards, so we choose usefull values
-		dr = (R4 - R1)/5.
-		R2= R1 + 2*dr
-		R3= R4 - 2*dr    #Variables. The main body of the bearing is created from 4 cylinders
-		NBall=int(math.floor(math.pi*R1/dr))    #Ball number
-		RBall=2*dr  #Ball radius
+	part=document.addObject("part::Feature",name)
+	comp=Part.Compund(shapes)
+	part.Shape=comp.removeSplitter()
 
-		B1=Part.makeCylinder(R1,TH)
-		B2=Part.makeCylinder(R2,TH)
-		IR=B2.cut(B1)                             # Creates inner ring.
-		FI=IR.Edges
-		IR.makeFillet(RR,FI)
+### DEEP GROOVE DOUBLE ROW BALL BEARING ###------------------------------
 
-		B3=Part.makeCylinder(R3,TH)
-		B4=Part.makeCylinder(R4,TH)
-		OR=B4.cut(B3)                         #Creates outter ring
-		FO=OR.Edges
-		OR=OR.makeFillet(RR,FO)
+def doublerowradialbearing(params,document): 
+	rin=0.5*params['DRBinr']
+	rout=0.5*params['DRBour']
+	bth=params['DRBbth']
+	rb=0.3*(rout-rin)
+	cb=(rout-rin)/2.0+rin
+	RR=0.015*rout
+	#shapes---
+	shapes[]
+	#outer ring---------------
+	our1=Part.makeCylinder(rout,bth)
+	our2=Part.makeCylinder(cb+rb*0.7,bth)
+	our3=Part.makeCylinder(rout,0.1*bth)
+	our4=Part.makeCylinder(rout-0.12*(rout-rin),0.1*bth)
+	our=our1.cut(our2)
+	oursv=(0,0,0.45*bth)
+	ours=our3.cut(our4)
+	ours.translate(oursv)
+	our=our.cut(ours)
+	oure=our.Edges
+	our=our.makeFillet(RR,oure)
+	#iner ring-----------------
+	inr1=Part.makeCylinder(cb-rb*0.7,bth)
+	inr2=Part.makeCylinder(rin,bth)
+	inr=inr1.cut(inr2)
+	inre=inr.Edges
+	inr=inr.makeFillet(RR,inre)
+	#track--------------------
+	t1=Part.makeTorus(cb,rb)
+	t2=Part.makeTorus(cb,rb)
+	vt1=(0,0,rb+bth/2)
+	vt2=(0,0,(bth/2)-rb)
+	t1.translate(vt1)
+	t2.translate(vt2)
+	our=our.cut(t1)
+	our=our.cut(t2)
+	inr=inr.cut(t1)
+	inr=inr.cut(t2)
+	#shapes----
+	shapes.append(our)
+	shapes.append(inr)
+	#Balls--------------------
+	nb=(math.pi*cb)*0.8/(rb)
+	nb=math.floor(nb)
+	nb=int(nb)
+	for i in range (nb):
+	  b=Part.makeSphere(rb)
+	  Alpha=(i*2*math.pi)/nb
+	  bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),rb+bth/2)
+	  b.translate(bv)
+	  shapes.append(b) 
+	
+	offset=math.asin(rb/cb)
+	for i in range(nb):
+	  b=Part.makeSphere(rb)
+	  Alpha=(i*2*math.pi)/nb
+	  bv=(cb*math.cos(Alpha+offset),cb*math.sin(Alpha+offset),(bth/2)-rb)
+	  b.translate(bv)
+	  shapes.append(b)
 
-		T1=Part.makeTorus(R2+(RBall/2),RBall)
-		VT=(0,0,TH/2)
-		T1.translate(VT)                      #Creates ball race
-
-		IR=IR.cut(T1)
-		OR=OR.cut(T1)
-
-		shapes.append(IR)
-		shapes.append(OR)
-
-		CBall=((R3-R2)/2)+R2
-		PBall=TH/2
-
-		for i in range(NBall):                #Creates a number of NBalls
-			Ball=Part.makeSphere(RBall)
-			Alpha=(i*2*math.pi)/NBall 
-			BV=(CBall*math.cos(Alpha),CBall*math.sin(Alpha),TH/2)
-			Ball.translate(BV)
-			shapes.append(Ball)
-	else:
-		B4=Part.makeCylinder(R4,TH)
-		B1=Part.makeCylinder(R1,TH)
-		B = B4.cut(B1)
-		B.makeFillet(RR,B.Edges)
-		shapes.append(B)
-
-	part = document.addObject("Part::Feature",name)
-	comp = Part.Compound(shapes)
-	part.Shape = comp.removeSplitter()
+### AXIAL TRHUST BALL BEARING ###----------------------------------------
 
 def axialthrustbearing(params, document):
 	rin = 0.5*params['d']
 	rout = 0.5*params['D']
 	bth = params['T']
 	name = params['name']
-
 	fth=0.3*bth  #Thrust plate widh
-	#Edge fillet value
-	if rout<70:
-	  RR=1
-	else:
-	  RR=1.5
+	RR=0.015*rout
 	#shapes--
 	shapes=[]
 	#Lower ring--------------------------
@@ -121,6 +174,8 @@ def axialthrustbearing(params, document):
 	comp = Part.Compound(shapes)
 	part.Shape = comp.removeSplitter()
 
+### NEEDLE ONLY BEARING -------------------------------------------------
+
 def needlebearing(params, document):
 	rout = 0.5*params["Ew"]
 	rin = 0.5*params["Fw"]
@@ -131,7 +186,6 @@ def needlebearing(params, document):
 	nnd=math.floor(nnd)
 	nnd=int(nnd)
 	name = params['name']
-
 	shapes=[]
 	#needle cage--------------
 	ncrout=cnd+0.175*(rout-rin)
@@ -160,3 +214,91 @@ def needlebearing(params, document):
 	part = document.addObject("Part::Feature",name)
 	comp = Part.Compound(shapes)
 	part.Shape = comp.removeSplitter()
+
+### CYLINDRICAL SINGLE ROW ROLLER BEARING ###----------------------------
+
+def cylindricalrollerbearing(params,document):
+	rin = 0.5*params['CBinr']
+	rout = 0.5*params['CBour']
+	bth = params['CBbth']
+	name = params['name']
+	rcy=0.2*(rout-rin)
+	ccy=(((rout-rin)/2.0)+rin)
+	RR=0.01*rout
+	ncy=(2*math.pi*ccy)*0.8/(2*rcy)
+	ncy=math.floor(ncy)
+	ncy=int(ncy)
+	#shapes---
+	shapes[]
+	#outer ring------------
+	our1=Part.makeCylinder(rout,bth)
+	our2=Part.makeCylinder(ccy+0.6*rcy,bth)
+	our3=Part.makeCylinder(ccy+rcy,bth*0.6)
+	ourv=(0,0,bth*0.2)
+	our3.translate(ourv)
+	our=our1.cut(our2)
+	oure=our.Edges
+	our.makeFillet(RR,oure)
+	our=our.cut(our3)
+	#inner ring------------
+	inr1=Part.makeCylinder(ccy-rcy,bth)
+	inr2=Part.makeCylinder(rin,bth)
+	inr=inr1.cut(inr2)
+	inre=inr.Edges
+	inr.makeFillet(RR,inre)
+	#shapes----
+	shapes.append(our)
+	shapes.append(inr)
+	#Cylinders------------
+	ncy=(2*math.pi*ccy)*0.8/(2*rcy)
+	ncy=math.floor(ncy)
+	ncy=int(ncy)
+	for i in range (ncy):
+	  c=Part.makeCylinder(rcy,0.6*bth)
+	  Alpha=(i*2*math.pi)/ncy
+	  cv=(ccy*math.cos(Alpha),ccy*math.sin(Alpha),bth*0.2)
+	  c.translate(cv)
+	  shapes.append(c)
+	  
+	part=document.addObject("Part::Feature",name)
+	comp=Part.Compound(shapes)
+	part.Shape=comp.removeSplitter()
+
+### SEALED BEARING ###---------------------------------------------------
+
+def sealedbearing(params,document):
+	rout=0.5*params['SBour']
+	rin=0.5*params['SBrin']
+	bth=params['SBbth']
+	name=params['name']
+	rb=(rout-rin)*0.25
+	cb=((rout-rin)/2.00+rin)
+	RR=0.015*rout
+	#shapes---
+	shapes[]
+	#outer ring--------------
+	our1=Part.makeCylinder(rout,bth)
+	our2=Part.makeCylinder(cb+rb*0.9,bth)
+	our=our1.cut(our2)
+	oure=our.Edges
+	our=our.makeFillet(RR,oure)
+	#inner ring--------------
+	inr1=Part.makeCylinder(cb-rb*0.9,bth)
+	inr2=Part.makeCylinder(rin,bth)
+	inr=inr1.cut(inr2)
+	inre=inr.Edges
+	inr=inr.makeFillet(RR,inre)
+	#seal-------------------
+	sl1=Part.makeCylinder(cb+rb*0.9,bth-2*RR)
+	sl2=Part.makeCylinder(cb-rb*0.9,bth-2*RR)
+	sl=sl1.cut(sl2)
+	slv=(0,0,RR)
+	sl.translate(slv)
+	shapes.append(our)
+	shapes.append(inr)
+	shapes.append(sl)
+
+	part=document.addObject("Part::Feature",name)
+	comp=Part.Compound(shapes)
+	part.Shape=comp.removeSplitter()
+

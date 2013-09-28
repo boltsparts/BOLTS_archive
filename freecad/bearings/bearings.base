@@ -6,11 +6,15 @@
   functions:
     - name: singlerowradialbearing
       classids: [singlerowradialbearing]
-      parameters:
-        free: [detailed]
-        types: {detailed: Bool}
+    - name: doublerowradialbearing
+      classids: [doublerowradialbearing]
     - name: axialthrustbearing
       classids: [axialthrustbearing]
     - name: needlebearing
       classids: [needleroller]
+    - name: cylindricalrollerbearing
+      classids: [cylindricalrollerbearing]
+    - name: sealedbearing
+      classids: [sealedbearing]
+
 ...
