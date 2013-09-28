@@ -1,3 +1,4 @@
+# coding=utf8
 #2013  Javier Martínez García en Linux Mint KDE 14 <jaeco@gmx.com>
 #LGPL
 
@@ -43,16 +44,16 @@ def singlerowradialbearing(params,document):
 	nb=(math.pi*cb)*0.8/(rb)
 	nb=math.floor(nb)
 	nb=int(nb)
-  
-	for i in range (nb):
-	  b=Part.makeSphere(rb)
-	  Alpha=(i*2*math.pi)/nb
-	  bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),bth/2)
-	  b.translate(bv)
-	  shapes.append(b)
 
-	part=document.addObject("part::Feature",name)
-	comp=Part.Compund(shapes)
+	for i in range (nb):
+		b=Part.makeSphere(rb)
+		Alpha=(i*2*math.pi)/nb
+		bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),bth/2)
+		b.translate(bv)
+		shapes.append(b)
+
+	part=document.addObject("Part::Feature",name)
+	comp=Part.Compound(shapes)
 	part.Shape=comp.removeSplitter()
 
 ### DEEP GROOVE DOUBLE ROW BALL BEARING ###------------------------------
@@ -61,11 +62,12 @@ def doublerowradialbearing(params,document):
 	rin=0.5*params['DRBinr']
 	rout=0.5*params['DRBour']
 	bth=params['DRBbth']
+	name = params['name']
 	rb=0.3*(rout-rin)
 	cb=(rout-rin)/2.0+rin
 	RR=0.015*rout
 	#shapes---
-	shapes[]
+	shapes = []
 	#outer ring---------------
 	our1=Part.makeCylinder(rout,bth)
 	our2=Part.makeCylinder(cb+rb*0.7,bth)
@@ -103,19 +105,24 @@ def doublerowradialbearing(params,document):
 	nb=math.floor(nb)
 	nb=int(nb)
 	for i in range (nb):
-	  b=Part.makeSphere(rb)
-	  Alpha=(i*2*math.pi)/nb
-	  bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),rb+bth/2)
-	  b.translate(bv)
-	  shapes.append(b) 
+		b=Part.makeSphere(rb)
+		Alpha=(i*2*math.pi)/nb
+		bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),rb+bth/2)
+		b.translate(bv)
+		shapes.append(b) 
 	
 	offset=math.asin(rb/cb)
 	for i in range(nb):
-	  b=Part.makeSphere(rb)
-	  Alpha=(i*2*math.pi)/nb
-	  bv=(cb*math.cos(Alpha+offset),cb*math.sin(Alpha+offset),(bth/2)-rb)
-	  b.translate(bv)
-	  shapes.append(b)
+		b=Part.makeSphere(rb)
+		Alpha=(i*2*math.pi)/nb
+		bv=(cb*math.cos(Alpha+offset),cb*math.sin(Alpha+offset),(bth/2)-rb)
+		b.translate(bv)
+		shapes.append(b)
+
+	part = document.addObject("Part::Feature",name)
+	comp = Part.Compound(shapes)
+	part.Shape = comp.removeSplitter()
+
 
 ### AXIAL TRHUST BALL BEARING ###----------------------------------------
 
@@ -229,7 +236,7 @@ def cylindricalrollerbearing(params,document):
 	ncy=math.floor(ncy)
 	ncy=int(ncy)
 	#shapes---
-	shapes[]
+	shapes = []
 	#outer ring------------
 	our1=Part.makeCylinder(rout,bth)
 	our2=Part.makeCylinder(ccy+0.6*rcy,bth)
@@ -254,12 +261,12 @@ def cylindricalrollerbearing(params,document):
 	ncy=math.floor(ncy)
 	ncy=int(ncy)
 	for i in range (ncy):
-	  c=Part.makeCylinder(rcy,0.6*bth)
-	  Alpha=(i*2*math.pi)/ncy
-	  cv=(ccy*math.cos(Alpha),ccy*math.sin(Alpha),bth*0.2)
-	  c.translate(cv)
-	  shapes.append(c)
-	  
+		c=Part.makeCylinder(rcy,0.6*bth)
+		Alpha=(i*2*math.pi)/ncy
+		cv=(ccy*math.cos(Alpha),ccy*math.sin(Alpha),bth*0.2)
+		c.translate(cv)
+		shapes.append(c)
+
 	part=document.addObject("Part::Feature",name)
 	comp=Part.Compound(shapes)
 	part.Shape=comp.removeSplitter()
@@ -275,7 +282,7 @@ def sealedbearing(params,document):
 	cb=((rout-rin)/2.00+rin)
 	RR=0.015*rout
 	#shapes---
-	shapes[]
+	shapes = []
 	#outer ring--------------
 	our1=Part.makeCylinder(rout,bth)
 	our2=Part.makeCylinder(cb+rb*0.9,bth)
@@ -301,4 +308,3 @@ def sealedbearing(params,document):
 	part=document.addObject("Part::Feature",name)
 	comp=Part.Compound(shapes)
 	part.Shape=comp.removeSplitter()
-

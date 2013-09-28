@@ -57,22 +57,20 @@ classes:
                  "16007": [ 35, 62, 9 ]
                  "6007": [ 35, 62, 14 ]
     source: http://www.kgm-kugeln.de/show.php?ID=4589
-    
-    
-    - id: doublerowradialbearing
-     naming:
-	 template: Double row %s %s
-	 substitute: [standard,key]
-     description: Deep groove double row ball bearing
-     standard: [DIN625-3]
-     paramters:
-	free: [key]
-	types: {key: Table Index}
-	defaults: {key:"4202-B-TVH"}
-	tables:
-	    index: key
-	    columns: [DRBinr,DRBour,DRBbth]
-	    data:    
+  - id: doublerowradialbearing
+    naming:
+      template: Double row %s %s
+      substitute: [standard,key]
+    description: Deep groove double row ball bearing
+    standard: [DIN625-3]
+    parameters:
+      free: [key]
+      types: {key: Table Index}
+      defaults: {key: "4202-B-TVH"}
+      tables:
+        index: key
+        columns: [DRBinr,DRBour,DRBbth]
+        data:
             "4200-B-TVH" : [10,30,14]
             "4201-B-TVH" : [12,32,14]
             "4202-B-TVH" : [15,35,14]
@@ -92,11 +90,7 @@ classes:
             "4216-B-TVH" : [80,140,33]
             "4217-B-TVH" : [85,150,36]
             "4218-B-TVH" : [90,160,40]
-            
-   source:http://medias.schaeffler.de/medias/es!hp.ec.br/42..-B?#42..-B
-    
-    
-    
+    source: http://medias.schaeffler.de/medias/es!hp.ec.br/42..-B?#42..-B
   - id: axialthrustbearing
     naming:
         template: Axial thrust bearing %s %s
@@ -476,8 +470,7 @@ classes:
                 "K240X250X42" : [240, 250, 42 ]
                 "K265X280X50" : [265, 280, 50 ]
     source: http://medias.schaeffler.de/medias/de!hp.ec/1_R*0*C028*13#13
-
-   - id: cylindricalrollerbearing
+  - id: cylindricalrollerbearing
     naming:
         template: cylindrical roller bearing %s %s
         substitute: [standard, key]
@@ -491,63 +484,60 @@ classes:
             index: key
             columns: [CBinr,CBour,CBbth]
             data:
-            "N202-E-TVP2" : [15,35,11]
-	    "N203-E-TVP2" : [17,40,12]
-	    "N204-E-TVP2" : [20,47,14]
-	    "N205-E-TVP2" : [25,52,15]
-	    "N206-E-TVP2" : [30,62,16]
-	    "N207-E-TVP2" : [35,72,17]
-	    "N208-E-TVP2" : [40,80,18]
-	    "N209-E-TVP2" : [45,85,19]
-	    "N210-E-TVP2" : [50,90,20]
-	    "N211-E-TVP2" : [55,100,21]
-	    "N212-E-TVP2" : [60,110,22]
-	    "N213-E-TVP2" : [65,120,23]
-	    "N214-E-TVP2" : [70,125,24]
-	    "N215-E-TVP2" : [75,130,25]
-	    "N216-E-TVP2" : [80,140,26]
-	    "N217-E-TVP2" : [85,150,28]
-	    "N218-E-TVP2" : [90,160,30]
-	    "N219-E-TVP2" : [95,170,32]
-	    "N220-E-TVP2" : [100,180,34]
-	    "N221-E-M1" : [105,190,36]
-	    "N222-E-TVP2" : [110,200,38]
-	    "N224-E-TVP2" : [120,215,40]
-	    "N226-E-TVP2" : [130,230,40]
-	    "N228-E-M1" : [140,250,42]
-	    "N230-E-M1" : [150,270,45]
-	    "N232-E-M1" : [160,290,48]
-	    "N234-E-M1" : [170,310,52]
-	    "N236-E-M1" : [180,320,52]
-	    "N238-E-M1" : [190,340,55]
-	    "N240-E-M1" : [200,360,58]
-	    "N248-E-TB-M1" : [240,440,72]
-
-   - id: sealedbearing(params,document):
+              "N202-E-TVP2" : [15,35,11]
+              "N203-E-TVP2" : [17,40,12]
+              "N204-E-TVP2" : [20,47,14]
+              "N205-E-TVP2" : [25,52,15]
+              "N206-E-TVP2" : [30,62,16]
+              "N207-E-TVP2" : [35,72,17]
+              "N208-E-TVP2" : [40,80,18]
+              "N209-E-TVP2" : [45,85,19]
+              "N210-E-TVP2" : [50,90,20]
+              "N211-E-TVP2" : [55,100,21]
+              "N212-E-TVP2" : [60,110,22]
+              "N213-E-TVP2" : [65,120,23]
+              "N214-E-TVP2" : [70,125,24]
+              "N215-E-TVP2" : [75,130,25]
+              "N216-E-TVP2" : [80,140,26]
+              "N217-E-TVP2" : [85,150,28]
+              "N218-E-TVP2" : [90,160,30]
+              "N219-E-TVP2" : [95,170,32]
+              "N220-E-TVP2" : [100,180,34]
+              "N221-E-M1" : [105,190,36]
+              "N222-E-TVP2" : [110,200,38]
+              "N224-E-TVP2" : [120,215,40]
+              "N226-E-TVP2" : [130,230,40]
+              "N228-E-M1" : [140,250,42]
+              "N230-E-M1" : [150,270,45]
+              "N232-E-M1" : [160,290,48]
+              "N234-E-M1" : [170,310,52]
+              "N236-E-M1" : [180,320,52]
+              "N238-E-M1" : [190,340,55]
+              "N240-E-M1" : [200,360,58]
+              "N248-E-TB-M1" : [240,440,72]
+    source: http://medias.schaeffler.de/medias/de!hp.ec.br/N2..-E?#N2..-E
+  - id: sealedbearing
     naming:
-	template: sealed bearing %s %s
-	substitute: [standard, key]
+      template: sealed bearing %s %s
+      substitute: [standard, key]
     description: Deep groove sealed ball bearing
     standard: [DIN625-1]
     parameters:
-	free: [key[
-	types: {key: Table Index}
-	defaults:
-	tables:
-	    index: key
-	    columns: [SBrin,SBour,SBbth]
-	    data:
-	    "S6200-2RSR" : [10,30,9]
-	    "S6201-2RSR" : [12,32,10]
-	    "S6202-2RSR" : [15,35,11]
-	    "S6203-2RSR" : [17,40,12]
-	    "S6204-2RSR" : [20,47,14]
-	    "S6205-2RSR" : [25,52,15]
-	    "S6206-2RSR" : [30,62,16]
-	    "S6207-2RSR" : [35,72,17]
-	    "S6208-2RSR" : [40,80,18]
-	    "S6209-2RSR" : [45,85,19]
-	    
-    source:http://medias.schaeffler.de/medias/es!hp.ec.br/S62..-2RSR?#S62..-2RSR 
-    
-    
+      free: [key]
+      types: {key: Table Index}
+      defaults: {key: "S6200-2RSR"}
+      tables:
+        index: key
+        columns: [SBrin,SBour,SBbth]
+        data:
+          "S6200-2RSR" : [10,30,9]
+          "S6201-2RSR" : [12,32,10]
+          "S6202-2RSR" : [15,35,11]
+          "S6203-2RSR" : [17,40,12]
+          "S6204-2RSR" : [20,47,14]
+          "S6205-2RSR" : [25,52,15]
+          "S6206-2RSR" : [30,62,16]
+          "S6207-2RSR" : [35,72,17]
+          "S6208-2RSR" : [40,80,18]
+          "S6209-2RSR" : [45,85,19]
+    source: http://medias.schaeffler.de/medias/es!hp.ec.br/S62..-2RSR?#S62..-2RSR
