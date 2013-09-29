@@ -48,7 +48,20 @@ table {
     border-top: 2px solid $light-bg;
   }
   tr.withdrawn {
-    background-color: $muted-text;
+    color: #000;
+    background-color: $red;
+  }
+  tr.none {
+    color: #000;
+    background-color: $red;
+  }
+  tr.partial {
+    color: #000;
+    background-color: $orange;
+  }
+  tr.complete {
+    color: #FFF;
+    background-color: lighten($dark-bg, 30%);
   }
 }
 
