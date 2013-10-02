@@ -10,6 +10,7 @@ classes:
     naming:
         template: Ball bearing %s %s
         substitute: [standard, key]
+    drawing: bearings/singlerowradialbearing.svg
     description: single row radial contact ball bearing
     standard: DIN625-1
     parameters:
@@ -61,6 +62,7 @@ classes:
     naming:
       template: Double row %s %s
       substitute: [standard,key]
+    drawing: bearings/doublerowradialbearing.svg
     description: Deep groove double row ball bearing
     standard: [DIN625-3]
     parameters:
@@ -95,6 +97,7 @@ classes:
     naming:
         template: Axial thrust bearing %s %s
         substitute: [standard, key]
+    drawing: bearings/axialthrustbearing.svg
     description: axial thrust bearing, single direction
     standard: [DIN711, ISO104]
     parameters:
@@ -235,6 +238,7 @@ classes:
     naming:
         template: Needle roller %s %s
         substitute: [standard, key]
+    drawing: bearings/needleroller.svg
     description: Needle roller without cage
     standard: [DIN5405-1,ISO 3030]
     parameters:
@@ -474,6 +478,7 @@ classes:
     naming:
         template: cylindrical roller bearing %s %s
         substitute: [standard, key]
+    drawing: bearings/cylindricalrollerbearing.svg
     description: Cylindrical single row roller bearing
     standard: [DIN5412-1]
     parameters:
@@ -520,6 +525,7 @@ classes:
     naming:
       template: sealed bearing %s %s
       substitute: [standard, key]
+    drawing: bearings/sealedbearing.svg
     description: Deep groove sealed ball bearing
     standard: [DIN625-1]
     parameters:
