@@ -14,3 +14,11 @@ classes:
     parameters:
         free: [l]
     source: https://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=19&t=4205
+  - id: misumi20x20
+    naming:
+      template: Misumi extrusion 20x20x%s
+      substitute: [l]
+    description: Misumi aluminium extrusion 20mmx20mm
+    parameters:
+      free: [l]
+    source: https://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=19&t=4205&p=34131

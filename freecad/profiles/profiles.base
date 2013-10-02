@@ -6,5 +6,17 @@
   objects:
    - objectname: Pad
      classids: [tuberect]
-     paramtoprop: {name : Label, l : Length}
+     proptoparam:
+       Pad : {Label : name, Length : l}
+
+- filename: HFS5-2020-500.fcstd
+  author: normandc <normandc@users.sourceforge.net>
+  license: GPL 3.0 <http://www.gnu.org/licenses/gpl-3.0.txt>
+  type: fcstd
+  objects:
+   - objectname: PolarPattern
+     classids: [misumi20x20]
+     proptoparam:
+       Pad: { Length : l }
+       PolarPattern: {Label : name}
 ...
