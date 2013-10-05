@@ -19,8 +19,8 @@ if argv[1] == "export":
 	elif argv[2] == "downloads" and (not repo.downloads is None):
 		downloads.DownloadsExporter().write_output(repo)
 	else:
-		print "unknwon export target: %s" % argv[2]
+		print "unknown export target: %s" % argv[2]
 else:
-	print "unknwon command: %s" % argv[1]
+	print "unknown command: %s" % argv[1]
 
 
