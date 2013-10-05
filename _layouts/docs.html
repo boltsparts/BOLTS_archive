@@ -1,0 +1,32 @@
+
+{% include head.html %}
+<body>
+
+  {% include header.html %}
+  <div class="page-title-bar">
+    <div class="inner-content">
+      <h2>{{ page.title }}</h2>
+    </div>
+  </div>
+  <div class="page-type-subnav">
+    <div id="subnav">
+      <h4>Navigation</h4>
+      <ul class="nav nav-tabs nav-stacked">
+        <li><a href="{{ page.docroot }}index.html">Documentation Hub</a></li>
+        <li><a href="{{ page.docroot }}general/index.html">General Documentation</a></li>
+        <li><a href="{{ page.docroot }}freecad/index.html">FreeCAD Documentation</a></li>
+        <li><a href="{{ page.docroot }}openscad/index.html">OpenSCAD Documentation</a></li>
+      </ul>
+    </div>
+
+    <div id="content">
+      <article>
+        {{ content }}
+      </article>
+    </div>
+  </div>
+
+  {% include footer.html %}
+
+</body>
+</html>
