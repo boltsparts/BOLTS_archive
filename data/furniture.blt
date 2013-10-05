@@ -9,6 +9,7 @@ classes:
   - id: lack1
     naming:
       template: IKEA Lack 900x550x450
+    drawing: furniture/lack1.png
     description: A coffee table
     source: https://github.com/yorikvanhavre/FreeCAD-library
 ...
