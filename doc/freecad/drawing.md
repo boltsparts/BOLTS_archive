@@ -1,6 +1,7 @@
 ---
   layout: docs
   title: How to make a nice drawing for BOLTS
+  docroot: "../"
 ---
 
 ### Follow this guide and contribute
