@@ -1,6 +1,6 @@
 ---
   layout: docs
-  title: Install
+  title: Installing BOLTS for FreeCAD
   docroot: "../"
 ---
 
