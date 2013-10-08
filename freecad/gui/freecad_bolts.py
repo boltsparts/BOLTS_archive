@@ -242,6 +242,13 @@ class BoltsWidget(QBoltsWidget):
 		params['name'] = data.naming.template % \
 			tuple(params[k] for k in data.naming.substitute)
 
+		lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
+
+		for key,tp in data.parameters.types.iteritems():
+			if tp in lengths:
+				params[key] = FreeCAD.Units.translateUnit("%g %s" %
+					(params[key], lengths[tp]))
+
 		#add part
 		self.repo.freecad.getbase[data.id].add_part(params,FreeCAD.ActiveDocument)
 
