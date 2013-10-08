@@ -236,3 +236,40 @@ classes:
                 M125:   [  125,  180,  100,    200.57  ]
                 M140:   [  140,  200,  112,    220.80  ]
     source: http://almetal.nl/en/techinfo/nut/nd934.htm
+  - id: hexagonnut3
+    naming:
+      template: Hexagon nut %s - %s
+      substitute: [standard, key]
+    description: finished hexagon nut
+    standard: [ANSI B18.2.2, ASME B18.2.2]
+    status: active
+    parameters:
+        free: [key]
+        types: {key: Table Index, d1: Length (in), s: Length (in), m_max: Length (in)}
+        defaults: {key: "3/8 in"}
+        tables:
+            index: key
+            columns: [d1, s, m_max]
+            data:
+                #key         [  d1    s     m_max]
+                "1/4 in"   : [ .2500, .4375, .21875 ]
+                "5/16 in"  : [ .3125, .5,    .265625 ]
+                "3/8 in"   : [ .3750, .5625, .328125 ]
+                "7/16 in"  : [ .4375, .6875, .375 ]
+                "1/2 in"   : [ .5000, .75, .4375 ]
+                "9/16 in"  : [ .5625, .875, .484375 ]
+                "5/8 in"   : [ .6250, .9375, .546875 ]
+                "3/4 in"   : [ .7500, 1.125, .640625 ]
+                "7/8 in"   : [ .8750, 1.3125, .75 ]
+                "1 in"     : [ 1.0000, 1.5, .859375]
+                "1-1/8 in" : [ 1.1250, 1.6875, .96875 ]
+                "1-3/8 in" : [ 1.3750, 2.0625, 1.171875 ]
+                "1-1/2 in" : [ 1.500, 2.25, 1.28125 ]
+                "1-5/8 in" : [ 1.6250, 2.4375, 1.390625 ]
+                "1-3/4 in" : [ 1.7500, 2.625, 1.5 ]
+                "2 in"     : [ 2.0000, 3.0, 1.71875 ]
+                "2-1/4 in" : [ 2.2500, 3.375, 1.9375 ]
+                "2-1/2 in" : [ 2.5000, 3.75, 2.15625 ]
+                "2-3/4 in" : [ 2.7500, 4.125, 2.375 ]
+                "3 in"     : [ 3.0000, 4.5, 2.59375 ]
+    source: http://www.smithfast.com/finishedhexnuts.html
