@@ -27,7 +27,7 @@ The available parts are sorted in two ways:
 
 By expanding the tree one can browse through the available parts. In the area between the treeview and the button informations about the current selection are displayed.
 
-![Expanded treeview]({{ site.url }}/images/partsselector2.png)
+![Expanded treeview]({{ site.baseurl }}/images/partsselector2.png)
 
 You can see that some parts (like DIN931, DIN933) are visible twice in this screenshot, once in the hexagon fastener collection, once in the list of DIN standards.
 
@@ -41,4 +41,4 @@ In the case of ISO4017, we need to give a length and a diameter. The diameter ca
 
 Once the parameters are specified, the part can be inserted into the active document by clicking the `Add part` button. In the combo view on the right side you can see that the label of the object gives the standard and the value of all the parameters we have specified.
 
-![Expanded treeview]({{ site.url }}/images/partsselector3.png)
+![Expanded treeview]({{ site.baseurl }}/images/partsselector3.png)
