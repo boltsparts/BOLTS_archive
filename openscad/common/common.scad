@@ -10,6 +10,12 @@ module check_dimension_positive(dim, message){
 	}
 }
 
+function convert_to_default_unit(value,unit) =
+	(BOLTS_DEFAULT_UNIT == unit) ? value :
+		(unit == "in") ? value*25.4 :
+			value/25.4;
+	
+
 //see http://rocklinux.net/pipermail/openscad/2013-September/005522.html
 function type(P) =
 	(len(P) == undef)
