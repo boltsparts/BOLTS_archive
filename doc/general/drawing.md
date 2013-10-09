@@ -198,10 +198,10 @@ in principle, but follows a few conventions:
   the collection to which the part belongs. If the same drawing can be used for
   parts from different collections, save the same file multiple times.
 * If the drawing applies to more than one class, then the filename should
-  follow the id of the base. The base id can be looked up on the specification
-  page in the Sections FreeCAD and OpenSCAD. Be careful that also the parameter
-  names have to be the same across all classes.
-* Otherwise the filename should follow the class id, which can also be looked
+  follow the (function/file/module) name of the base. This can be looked up in
+  the base files. Be careful that also the parameter names have to be the same
+  across all classes.
+* Otherwise the filename should follow the class id, which can be looked
   up on the specification page.
 
 For the washer, the collection id is `washer`, and the drawing applies to
@@ -236,5 +236,7 @@ In the case of the washer the relevant part of the resulting file looks like thi
       description: plain washer
       standard: [ISO7089, EN7089, DINENISO7089, DINEN27089, DIN125A]
 
-and similarly for the other classes to which the drawing applies.
+and similarly for the other classes to which the drawing applies. Be careful,
+blt files are sensitive to whitespace, do not use tabs and keep the indentation
+intact.
 
