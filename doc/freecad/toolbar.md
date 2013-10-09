@@ -21,7 +21,7 @@ Then click on the three dots next to Pixmap, choose add icons and navigate to th
 
 When you are done, it should look like this:
 
-![Filled in Customize dialog]({{ site.baseurl }}/images/toolbarbutton1.png)
+[<img alt="Filled in Customize dialog" src="{{ site.baseurl }}/images/toolbarbutton1.png" style="width: 100%;"/>]({{ site.baseurl }}/images/toolbarbutton1.png)
 
 ### Confirm the custom macro
 
@@ -37,7 +37,7 @@ Then create a new toolbar by clicking `New...` and call it BOLTS. The start macr
 
 When you are done, it should look like this:
 
-![New toolbar created and macro added]({{ site.baseurl }}/images/toolbarbutton2.png)
+[<img alt="New toolbar created and macro added" src="{{ site.baseurl }}/images/toolbarbutton2.png" style="width: 100%;"/>]({{ site.baseurl }}/images/toolbarbutton2.png)
 
 Then close the Customize dialog.
 
