@@ -7,12 +7,12 @@
 ### Prerequisites
 
 You need to have installed [FreeCAD](http://freecadweb.org/) and [BOLTS for
-FreeCAD](../freecad/installation.html) and the free Vector Graphics Editor
+FreeCAD]({{ page.docroot }}freecad/installation.html) and the free Vector Graphics Editor
 [Inkscape](http://inkscape.org/).
 
 If the part for which you want to create the drawing is not in BOLTS for
 FreeCAD, you also need [OpenSCAD](http://www.openscad.org/) and [BOLTS for
-OpenSCAD](../openscad/installation.html).
+OpenSCAD]({{ page.docroot }}openscad/installation.html).
 
 ### Follow this guide and contribute
 
@@ -48,7 +48,7 @@ You can skip this step if you want to create a drawing for a part that is only
 in BOLTS for OpenSCAD.
 
 Start FreeCAD. Add a part of the class for which you want to create the
-drawing, as described [here](../freecad/usage.html). The value of the
+drawing, as described [here]({{ page.docroot }}freecad/usage.html). The value of the
 parameters does not matter too much, the default values will be usually fine.
 
 
@@ -98,7 +98,7 @@ Now we can use the python console in FreeCAD to create a drawing:
     BOLTS.make_drawing(4.5,obj)
 
 The first line starts BOLTS for FreeCAD (see also
-[here](../freecad/usage.html)), the second one creates a variable containing
+[here]({{ page.docroot }}freecad/usage.html)), the second one creates a variable containing
 the part and the third line calls a helper function from the BOLTS module.
 
 This helper function has two parameters, a scaling factor and the object, and

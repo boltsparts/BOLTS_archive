@@ -4,7 +4,7 @@
   docroot: "../"
 ---
 
-You need to have [installed BOLTS for FreeCAD]({{ site.baseurl }}/installation.html).
+You need to have [installed BOLTS for FreeCAD](installation.html).
 
 ### Starting the part selector using the python console
 
@@ -16,7 +16,7 @@ and the part selector should appear
 
 ### Starting the parts selector using a toolbar button
 
-If you have [setup a toolbar button]({{ site.baseurl }}/toolbar.html), you can start the part selector by simply clicking on the button
+If you have [setup a toolbar button](toolbar.html), you can start the part selector by simply clicking on the button
 
 ### The different elements of the part selector
 
