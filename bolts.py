@@ -27,10 +27,18 @@ if len(argv) < 2:
 repo = blt_parser.BOLTSRepository(getcwd())
 
 if argv[1] == "export":
-	if argv[2] == "openscad" and (not repo.openscad is None):
-		openscad.OpenSCADExporter().write_output(repo)
-	elif argv[2] == "freecad" and (not repo.freecad is None):
-		freecad.FreeCADExporter().write_output(repo)
+	license = "GPL 3.0"
+	if argv[2] == "--gpl3":
+		license = "GPL 3.0"
+	elif argv[2] == "--lgpl2":
+		license = "LGPL 2.1"
+	elif argv[2] == "--lgpl3":
+		license = "LGPL 3.0"
+
+	if argv[3] == "openscad" and (not repo.openscad is None):
+		openscad.OpenSCADExporter().write_output(repo,license)
+	elif argv[3] == "freecad" and (not repo.freecad is None):
+		freecad.FreeCADExporter().write_output(repo,license)
 	elif argv[2] == "html" and (not repo.html is None):
 		html.HTMLExporter().write_output(repo)
 	elif argv[2] == "downloads" and (not repo.downloads is None):
