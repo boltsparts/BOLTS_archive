@@ -10,4 +10,4 @@
     - name: axialthrustbearing
       arguments: [d,D,T]
       classids: [axialthrustbearing]
-.
+...
