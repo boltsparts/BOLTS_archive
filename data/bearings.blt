@@ -25,56 +25,65 @@ collection:
 classes:
   - id: singlerowradialbearing
     naming:
-        template: Ball bearing %s %s
-        substitute: [standard, key]
+        template: Ball bearing %s %s%s
+        substitute: [standard, key, postfix]
     drawing: bearings/singlerowradialbearing.png
-    description: single row radial contact ball bearing
+    description: single row radial contact ball bearing, with single or double
+      shields, single or double seal or open
     standard: DIN625-1
     parameters:
-        free: [key]
-        types: {key: Table Index}
-        defaults: {key: "608"}
+        free: [key,type]
+        types: {key: Table Index, type: Table Index, postfix: String}
+        defaults: {key: "608", type: "open"}
         tables:
-             index: key
-             columns: [d1, d2, B]
-             data:
-                 #key,[d1, d2, B ]
-                 "625" : [ 5, 16, 5 ]
-                 "626": [ 6, 19, 6 ]
-                 "627": [ 7, 22, 7 ]
-                 "608": [ 8, 22, 7 ]
-                 "609": [ 9, 24, 7 ]
-                 "629": [ 9, 26, 8 ]
-                 "6000": [ 10, 26, 8 ]
-                 "16100": [ 10, 28, 8 ]
-                 "6200": [ 10, 30, 9 ]
-                 "6300": [ 10, 35, 11 ]
-                 "6001": [ 12, 28, 8 ]
-                 "16101": [ 12, 30, 8 ]
-                 "6201": [ 12, 32, 10 ]
-                 "6301": [ 12, 37, 12 ]
-                 "16002": [ 15, 32, 8 ]
-                 "6002": [ 15, 32, 9 ]
-                 "6202": [ 15, 35, 11 ]
-                 "6302": [ 15, 42, 13 ]
-                 "16003": [ 17, 35, 8 ]
-                 "6003": [ 17, 35, 10 ]
-                 "6203": [ 17, 40, 12 ]
-                 "6303": [ 17, 47, 14 ]
-                 "16004": [ 20, 42, 8 ]
-                 "6004": [ 20, 42, 12 ]
-                 "6204": [ 20, 47, 14 ]
-                 "6304": [ 20, 52, 15 ]
-                 "16005": [ 25, 47, 8 ]
-                 "6005": [ 25, 47, 12 ]
-                 "6205": [ 25, 52, 15 ]
-                 "6305": [ 25, 62, 17 ]
-                 "16006": [ 30, 55, 9 ]
-                 "6006": [ 30, 55, 13 ]
-                 "6206": [ 30, 62, 16 ]
-                 "16007": [ 35, 62, 9 ]
-                 "6007": [ 35, 62, 14 ]
-    source: http://www.kgm-kugeln.de/show.php?ID=4589
+          - index: key
+            columns: [d1, d2, B]
+            data:
+              #key,[d1, d2, B ]
+              "625" : [ 5, 16, 5 ]
+              "626": [ 6, 19, 6 ]
+              "627": [ 7, 22, 7 ]
+              "608": [ 8, 22, 7 ]
+              "609": [ 9, 24, 7 ]
+              "629": [ 9, 26, 8 ]
+              "6000": [ 10, 26, 8 ]
+              "16100": [ 10, 28, 8 ]
+              "6200": [ 10, 30, 9 ]
+              "6300": [ 10, 35, 11 ]
+              "6001": [ 12, 28, 8 ]
+              "16101": [ 12, 30, 8 ]
+              "6201": [ 12, 32, 10 ]
+              "6301": [ 12, 37, 12 ]
+              "16002": [ 15, 32, 8 ]
+              "6002": [ 15, 32, 9 ]
+              "6202": [ 15, 35, 11 ]
+              "6302": [ 15, 42, 13 ]
+              "16003": [ 17, 35, 8 ]
+              "6003": [ 17, 35, 10 ]
+              "6203": [ 17, 40, 12 ]
+              "6303": [ 17, 47, 14 ]
+              "16004": [ 20, 42, 8 ]
+              "6004": [ 20, 42, 12 ]
+              "6204": [ 20, 47, 14 ]
+              "6304": [ 20, 52, 15 ]
+              "16005": [ 25, 47, 8 ]
+              "6005": [ 25, 47, 12 ]
+              "6205": [ 25, 52, 15 ]
+              "6305": [ 25, 62, 17 ]
+              "16006": [ 30, 55, 9 ]
+              "6006": [ 30, 55, 13 ]
+              "6206": [ 30, 62, 16 ]
+              "16007": [ 35, 62, 9 ]
+              "6007": [ 35, 62, 14 ]
+          - index: type
+            columns: [ postfix ]
+            data:
+              "open" : [""]
+              "shielded, single" : ["-Z"]
+              "shielded, double" : ["-ZZ"]
+              "sealed, single" : ["-RS"]
+              "sealed, double" : ["-2RS"]
+    source: http://www.kgm-kugeln.de/show.php?ID=4589 and http://reprap.org/wiki/Ball_bearing
   - id: doublerowradialbearing
     naming:
       template: Double row %s %s
@@ -538,29 +547,3 @@ classes:
               "N240-E-M1" : [200,360,58]
               "N248-E-TB-M1" : [240,440,72]
     source: http://medias.schaeffler.de/medias/de!hp.ec.br/N2..-E?#N2..-E
-  - id: sealedbearing
-    naming:
-      template: sealed bearing %s %s
-      substitute: [standard, key]
-    drawing: bearings/sealedbearing.png
-    description: Deep groove sealed ball bearing
-    standard: [DIN625-1]
-    parameters:
-      free: [key]
-      types: {key: Table Index}
-      defaults: {key: "S6200-2RSR"}
-      tables:
-        index: key
-        columns: [SBrin,SBour,SBbth]
-        data:
-          "S6200-2RSR" : [10,30,9]
-          "S6201-2RSR" : [12,32,10]
-          "S6202-2RSR" : [15,35,11]
-          "S6203-2RSR" : [17,40,12]
-          "S6204-2RSR" : [20,47,14]
-          "S6205-2RSR" : [25,52,15]
-          "S6206-2RSR" : [30,62,16]
-          "S6207-2RSR" : [35,72,17]
-          "S6208-2RSR" : [40,80,18]
-          "S6209-2RSR" : [45,85,19]
-    source: http://medias.schaeffler.de/medias/es!hp.ec.br/S62..-2RSR?#S62..-2RSR

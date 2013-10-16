@@ -18,6 +18,7 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 import Part
+import FreeCAD
 import math
 
 
@@ -28,52 +29,51 @@ def singlerowradialbearing(params,document):
 	rin=0.5*params['d1']
 	bth=0.5*params['B']
 	name=params['name']
-	detailed = params['detailed']
+	seal = params['type']
 
 	#shapes---
 	shapes=[]
 	RR=0.015*rout
-	if detailed:
-		rb=(rout-rin)*0.25
-		cb=((rout-rin)/2.00+rin)
-		#outer ring--------------
-		our1=Part.makeCylinder(rout,bth)
-		our2=Part.makeCylinder(cb+rb*0.7,bth)
-		our=our1.cut(our2)
-		oure=our.Edges
-		our=our.makeFillet(RR,oure)
-		#inner ring--------------
-		inr1=Part.makeCylinder(cb-rb*0.7,bth)
-		inr2=Part.makeCylinder(rin,bth)
-		inr=inr1.cut(inr2)
-		inre=inr.Edges
-		inr=inr.makeFillet(RR,inre)
+	rb=(rout-rin)*0.25
+	cb=((rout-rin)/2.00+rin)
+	#outer ring--------------
+	our=Part.makeCylinder(rout,bth).cut(Part.makeCylinder(cb+rb*0.7,bth))
+	our=our.makeFillet(RR,our.Edges)
+	#inner ring--------------
+	inr=Part.makeCylinder(cb-rb*0.7,bth).cut(Part.makeCylinder(rin,bth))
+	inr=inr.makeFillet(RR,inr.Edges)
+
+	if seal == "open" or seal.endswith("single"):
 		#track-------------------
-		t=Part.makeTorus(cb,rb)
-		vt=(0,0,bth/2)
-		t.translate(vt)
+		t=Part.makeCylinder(cb+rb,2*0.7*rb).cut(Part.makeCylinder(cb-rb,2*0.7*rb))
+		t.translate((0,0,0.5*0.7*rb))
 		our=our.cut(t)
 		inr=inr.cut(t)
-		#shapes---
 		shapes.append(our)
 		shapes.append(inr)
-		#Balls-------------------
-		nb=(math.pi*cb)*0.8/(rb)
-		nb=math.floor(nb)
-		nb=int(nb)
 
+		#Balls-------------------
+		nb=int(math.floor(math.pi*cb*0.8/rb))
 		for i in range (nb):
 			b=Part.makeSphere(rb)
 			Alpha=(i*2*math.pi)/nb
 			bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),bth/2)
 			b.translate(bv)
 			shapes.append(b)
-	else:
-		body = Part.makeCylinder(rout,bth)
-		hole = Part.makeCylinder(rin,bth)
-		body = body.cut(hole)
-		body = body.makeFillet(RR,body.Edges)
-		shapes.append(body)
+
+		if seal.endswith("single"):
+			#seal one side
+			sl=Part.makeCylinder(cb+rb*0.9,0.5*bth-RR).cut(Part.makeCylinder(cb-rb*0.9,0.5*bth-RR))
+			sl.translate((0,0,0.5*bth+RR))
+			shapes.append(sl)
+
+	elif seal.endswith("double"):
+		shapes.append(our)
+		shapes.append(inr)
+		#seal-------------------
+		sl=Part.makeCylinder(cb+rb*0.9,bth-2*RR).cut(Part.makeCylinder(cb-rb*0.9,bth-2*RR))
+		sl.translate((0,0,RR))
+		shapes.append(sl)
 
 	part=document.addObject("Part::Feature",name)
 	comp=Part.Compound(shapes)
@@ -289,44 +289,6 @@ def cylindricalrollerbearing(params,document):
 		cv=(ccy*math.cos(Alpha),ccy*math.sin(Alpha),bth*0.2)
 		c.translate(cv)
 		shapes.append(c)
-
-	part=document.addObject("Part::Feature",name)
-	comp=Part.Compound(shapes)
-	part.Shape=comp.removeSplitter()
-
-### SEALED BEARING ###---------------------------------------------------
-
-def sealedbearing(params,document):
-	rout=0.5*params['SBour']
-	rin=0.5*params['SBrin']
-	bth=params['SBbth']
-	name=params['name']
-	rb=(rout-rin)*0.25
-	cb=((rout-rin)/2.00+rin)
-	RR=0.015*rout
-	#shapes---
-	shapes = []
-	#outer ring--------------
-	our1=Part.makeCylinder(rout,bth)
-	our2=Part.makeCylinder(cb+rb*0.9,bth)
-	our=our1.cut(our2)
-	oure=our.Edges
-	our=our.makeFillet(RR,oure)
-	#inner ring--------------
-	inr1=Part.makeCylinder(cb-rb*0.9,bth)
-	inr2=Part.makeCylinder(rin,bth)
-	inr=inr1.cut(inr2)
-	inre=inr.Edges
-	inr=inr.makeFillet(RR,inre)
-	#seal-------------------
-	sl1=Part.makeCylinder(cb+rb*0.9,bth-2*RR)
-	sl2=Part.makeCylinder(cb-rb*0.9,bth-2*RR)
-	sl=sl1.cut(sl2)
-	slv=(0,0,RR)
-	sl.translate(slv)
-	shapes.append(our)
-	shapes.append(inr)
-	shapes.append(sl)
 
 	part=document.addObject("Part::Feature",name)
 	comp=Part.Compound(shapes)
