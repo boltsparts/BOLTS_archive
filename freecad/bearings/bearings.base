@@ -1,7 +1,7 @@
 ---
 - filename: bearings.py
   author: [Johannes Reinhardt <jreinhardt@ist-dein-freund.de>, Javier Martínez García <jaeco@gmx.com>]
-  license: LGPL 2.1+ <http://www.gnu.org/licenses/old-licenses/lgpl-2.1>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: function
   functions:
     - name: singlerowradialbearing

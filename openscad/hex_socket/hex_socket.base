@@ -2,7 +2,7 @@
 - filename: hex_socket.scad
   type: module
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-  license: LGPL 2.1+ <http://www.gnu.org/licenses/old-licenses/lgpl-2.1>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   modules:
     - name: hex_socket1
       arguments: [d1, d2, b1, b2, b3, k_max, s, t, L, h_max, l]
