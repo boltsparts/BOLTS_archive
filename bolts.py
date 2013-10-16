@@ -17,35 +17,46 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 from bolttools import blt_parser, openscad, freecad, html, downloads
-from sys import argv, exit
 from os import getcwd
+import argparse
 
-if len(argv) < 2:
-	print "bolts.py <command>"
-	exit(2)
+licenseids = {
+	"lgpl2.1" : "LGPL 2.1",
+	"lgpl2.1+" : "LGPL 2.1+",
+	"lgpl3" : "LGPL 3.0",
+	"lgpl3+" : "LGPL 3.0+",
+	"gpl3" : "GPL 3.0",
+	"gpl3+" : "GPL 3.0+"
+}
 
-repo = blt_parser.BOLTSRepository(getcwd())
-
-if argv[1] == "export":
-	license = "GPL 3.0"
-	if argv[2] == "--gpl3":
-		license = "GPL 3.0"
-	elif argv[2] == "--lgpl2":
-		license = "LGPL 2.1"
-	elif argv[2] == "--lgpl3":
-		license = "LGPL 3.0"
-
-	if argv[3] == "openscad" and (not repo.openscad is None):
+def export(args):
+	repo = blt_parser.BOLTSRepository(args.repo)
+	license = licenseids[args.license]
+	if args.target == "openscad":
 		openscad.OpenSCADExporter().write_output(repo,license)
-	elif argv[3] == "freecad" and (not repo.freecad is None):
+	elif args.target == "freecad":
 		freecad.FreeCADExporter().write_output(repo,license)
-	elif argv[2] == "html" and (not repo.html is None):
+	elif args.target == "html":
 		html.HTMLExporter().write_output(repo)
-	elif argv[2] == "downloads" and (not repo.downloads is None):
-		downloads.DownloadsExporter().write_output(repo)
-	else:
-		print "unknown export target: %s" % argv[2]
-else:
-	print "unknown command: %s" % argv[1]
 
+parser = argparse.ArgumentParser()
+parser.add_argument("--repo",
+	type=str,
+	help="path of the BOLTS repository to work on",
+	default=getcwd())
 
+subparsers = parser.add_subparsers()
+parser_export = subparsers.add_parser("export")
+parser_export.add_argument("target",
+	type=str,
+	choices=["openscad","freecad","html"],
+	help="the distribution to create")
+parser_export.add_argument("-l","--license",
+	type=str,
+	choices=["lgpl2.1","lgpl2.1+","lgpl3","lgpl3+","gpl3","gpl3+"],
+	default="lgpl2.1",
+	help="the license of the exported license")
+parser_export.set_defaults(func=export)
+
+args = parser.parse_args()
+args.func(args)

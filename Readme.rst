@@ -17,3 +17,13 @@ git submodule update
 
 to get the correct states for the submodules. For more informations about
 submodules, see http://git-scm.com/book/en/Git-Tools-Submodules.
+
+Dependencies
+============
+
+the bolts.py utility requires python 2.7 (because of argparse)
+bolttools requires YAML (http://yaml.org/)
+
+Recommended:
+FreeCAD (http://freecadweb.org/)
+OpenSCAD (http://www.openscad.org/)
