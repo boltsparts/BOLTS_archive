@@ -18,6 +18,8 @@
 
 from bolttools import blt_parser, openscad, freecad, html, downloads
 from os import getcwd
+import os.path
+from subprocess import Popen
 import argparse
 
 licenseids = {
@@ -39,6 +41,17 @@ def export(args):
 	elif args.target == "html":
 		html.HTMLExporter().write_output(repo)
 
+def test(args):
+	if args.target == "freecad":
+		exec_dir = os.path.split(args.repo)[0]
+		freecad_process = Popen(["freecad","-M","."],cwd=exec_dir)
+		freecad_process.wait()
+	elif args.target == "openscad":
+		exec_dir = os.path.join(args.repo,"output","openscad")
+		freecad_process = Popen(["openscad"],cwd=exec_dir)
+		freecad_process.wait()
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--repo",
 	type=str,
@@ -57,6 +70,13 @@ parser_export.add_argument("-l","--license",
 	default="lgpl2.1",
 	help="the license of the exported license")
 parser_export.set_defaults(func=export)
+
+parser_test = subparsers.add_parser("test")
+parser_test.add_argument("target",
+	type=str,
+	choices=["openscad","freecad"],
+	help="the backend to test")
+parser_test.set_defaults(func=test)
 
 args = parser.parse_args()
 args.func(args)
