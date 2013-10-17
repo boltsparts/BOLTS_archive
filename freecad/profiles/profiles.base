@@ -1,0 +1,46 @@
+---
+- filename: tslot-20x20-1S.fcstd
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: fcstd
+  objects:
+   - objectname: Fillet
+     classids: [tslot20x20-1s]
+     proptoparam:
+       Fillet : {Label : name}
+       Box: {Height : l}
+  source: created from scratch, dimensions from http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+- filename: tslot-20x20-2S.fcstd
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: fcstd
+  objects:
+   - objectname: Fillet
+     classids: [tslot20x20-2s]
+     proptoparam:
+       Fillet : {Label : name}
+       Box: {Height : l}
+  source: created from scratch, dimensions from http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+- filename: tslot-20x20-3S.fcstd
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: fcstd
+  objects:
+   - objectname: Fillet
+     classids: [tslot20x20-3s]
+     proptoparam:
+       Fillet : {Label : name}
+       Box: {Height : l}
+  source: created from scratch, dimensions from http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+- filename: tslot-20x20.fcstd
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: fcstd
+  objects:
+   - objectname: Fillet
+     classids: [tslot20x20]
+     proptoparam:
+       Fillet : {Label : name}
+       Box: {Height : l}
+  source: created from scratch, dimensions from http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+...

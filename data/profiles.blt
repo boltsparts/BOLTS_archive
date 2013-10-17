@@ -1,0 +1,57 @@
+#BOLTS - Open Library of Technical Specifications
+#Copyright (C) 2013 Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+#
+#This library is free software; you can redistribute it and/or
+#modify it under the terms of the GNU Lesser General Public
+#License as published by the Free Software Foundation; either
+#version 2.1 of the License, or any later version.
+#
+#This library is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#Lesser General Public License for more details.
+#
+#You should have received a copy of the GNU Lesser General Public
+#License along with this library; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+---
+collection:
+    name: BOLTS profiles
+    description: various profiles and extrusions
+    author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+    license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+    blt-version: 0.2
+classes:
+  - id: tslot20x20
+    naming:
+      template: T Slot extrusion 20x20x%s
+      substitute: [l]
+    description: T Slot aluminium extrusion 20mmx20mm
+    parameters:
+      free: [l]
+    source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+  - id: tslot20x20-1s
+    naming:
+      template: T Slot extrusion one slot 20x20x%s
+      substitute: [l]
+    description: T Slot aluminium extrusion one slot 20mmx20mm
+    parameters:
+      free: [l]
+    source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+  - id: tslot20x20-2s
+    naming:
+      template: T Slot extrusion two slots 20x20x%s
+      substitute: [l]
+    description: T Slot aluminium extrusion two slots 20mmx20mm
+    parameters:
+      free: [l]
+    source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+  - id: tslot20x20-3s
+    naming:
+      template: T Slot extrusion three slots 20x20x%s
+      substitute: [l]
+    description: T Slot aluminium extrusion three slots 20mmx20mm
+    parameters:
+      free: [l]
+    source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+...
