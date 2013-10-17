@@ -33,7 +33,7 @@ mw = getMainWindow()
 mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
 
 
-import FreeCAD
+import FreeCAD, Part
 def make_drawing(scale,obj):
 	doc = FreeCAD.ActiveDocument
 	page = doc.addObject("Drawing::FeaturePage","Page")
@@ -54,4 +54,12 @@ def make_drawing(scale,obj):
 		view.Rotation = rotations[i]
 		view.Scale = scale
 		page.addObject(view)
+
+def list_names(doc):
+	print "Label   Name"
+	print "------------"
+	for part in doc.findObjects():
+		if isinstance(part,Part.Feature):
+			print "%s    %s" % (part.Label, part.Name)
+
 
