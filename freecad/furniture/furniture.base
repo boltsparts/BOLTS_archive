@@ -1,9 +1,0 @@
----
-- filename: IKEA_Lack_900_550_450.FCStd
-  author: 5263 <https://github.com/5263>
-  license: CC-BY 3.0 <http://creativecommons.org/licenses/by/3.0/>
-  type: fcstd
-  objects:
-   - objectname: Fusion001
-     classids: [lack1]
-...
