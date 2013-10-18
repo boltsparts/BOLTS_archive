@@ -35,6 +35,8 @@ def export(args):
 		freecad.FreeCADExporter().write_output(repo,license)
 	elif args.target == "html":
 		html.HTMLExporter().write_output(repo)
+	elif args.target == "downloads":
+		downloads.DownloadsExporter().write_output(repo)
 
 def test(args):
 	if args.target == "freecad":
@@ -95,7 +97,7 @@ subparsers = parser.add_subparsers()
 parser_export = subparsers.add_parser("export")
 parser_export.add_argument("target",
 	type=str,
-	choices=["openscad","freecad","html"],
+	choices=["openscad","freecad","html","downloads"],
 	help="the distribution to create")
 parser_export.add_argument("-l","--license",
 	type=str,
