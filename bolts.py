@@ -19,7 +19,7 @@
 from bolttools import blt_parser, openscad, freecad, html, downloads
 from bolttools.license import LICENSES_SHORT
 from os import getcwd
-from shutil import make_archive
+from shutil import make_archive, copyfile
 import os.path
 from subprocess import call, Popen
 import argparse
@@ -31,8 +31,12 @@ def export(args):
 	license = LICENSES_SHORT[args.license]
 	if args.target == "openscad":
 		openscad.OpenSCADExporter().write_output(repo,license)
+		copyfile(os.path.join(repo.path,"licenses",args.license.strip("+")),
+			os.path.join(repo.path,"output","openscad","LICENSE"))
 	elif args.target == "freecad":
 		freecad.FreeCADExporter().write_output(repo,license)
+		copyfile(os.path.join(repo.path,"licenses",args.license.strip("+")),
+			os.path.join(repo.path,"output","freecad","BOLTS","LICENSE"))
 	elif args.target == "html":
 		html.HTMLExporter().write_output(repo)
 	elif args.target == "downloads":
