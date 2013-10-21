@@ -12,10 +12,56 @@
 
 <div id="content">
   <div class="inner-content">
+    <h1>User Documentation</h1>
     <div class="cols">
-      {% include doc_general.html %}
-      {% include doc_openscad.html %}
-      {% include doc_freecad.html %}
+      <div class="col">
+        <h3>OpenSCAD</h3>
+        <ul>
+          <li><a href="{{ page.docroot }}openscad/installation.html">How to install BOLTS for OpenSCAD</a></li>
+          <li><a href="{{ page.docroot }}openscad/usage.html">How to use BOLTS for OpenSCAD</a></li>
+      </div>
+      <div class="col">
+        <h3>FreeCAD</h3>
+        <ul>
+          <li><a href="{{ page.docroot }}freecad/installation.html">How to install BOLTS for FreeCAD</a></li>
+          <li><a href="{{ page.docroot }}freecad/toolbar.html">How to create a toolbar button for BOLTS</a></li>
+          <li><a href="{{ page.docroot }}freecad/usage.html">How to use BOLTS for FreeCAD</a></li>
+      </div>
+    </div>
+    <h1>Contributor Documentation</h1>
+    <div class="cols">
+      <div class="col">
+        <h3>General</h3>
+        <ul>
+          <li><a href="{{ page.docroot }}general/specification.html">All files and directories explained</a></li>
+          <li><a href="{{ page.docroot }}general/blt-create.html">How to create a new collection for BOLTS</a></li>
+          <li><a href="{{ page.docroot }}general/drawing.html">How to create a nice drawing</a></li>
+          <li><a href="{{ page.docroot }}general/licensing.html">What licenses can be used in BOLTS</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Git</h3>
+        <ul>
+          <li><a href="{{ page.docroot }}git/get-checkout.html">How to get a development checkout</a></li>
+          <li><a href="{{ page.docroot }}git/use-checkout.html">How to use a development checkout</a></li>
+          <li><a href="{{ page.docroot }}git/pull-request.html">How to open a pull request</a></li>
+          <li><a href="{{ page.docroot }}git/bundle.html">How to send a bundle by mail</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>OpenSCAD</h3>
+        <ul>
+          <li><a href="{{ page.docroot }}openscad/basemodule.html">How to write a base module</a></li>
+          <li><a href="{{ page.docroot }}openscad/basestl.html">How to setup a base stl</a></li>
+      </div>
+      <div class="col">
+        <h3>FreeCAD</h3>
+        <ul>
+          <li><a href="{{ page.docroot }}freecad/basefunction.html">How to write a base function</a></li>
+          <li><a href="{{ page.docroot }}freecad/basefcstd.html">How to setup a base fcstd part</a></li>
+      </div>
     </div>
   </div>
 </div>
