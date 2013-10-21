@@ -90,6 +90,7 @@ When working on base files, pay attention to whitespace and identation and do no
 
 You should now test the newly added part. This is most easily done on the command line by typing
 
+    ./bolts.py export freecad
     ./bolts.py test freecad
 
 in the repo directory. This will fire up a FreeCAD instance with the module search path set appropriately, so that typing
