@@ -1,0 +1,46 @@
+digraph G {rankdir=LR;
+subgraph cluster_cl {
+label="Classes";
+"singlerowradialbearing";
+"doublerowradialbearing";
+"axialthrustbearing";
+"needleroller";
+"cylindricalrollerbearing";
+}
+subgraph cluster_std {
+label="Standards";
+"DIN625-1";
+"DIN625-3";
+"DIN711";
+"ISO104";
+"DIN5405-1";
+"ISO 3030";
+"DIN5412-1";
+}
+subgraph cluster_fcd {
+label="FreeCAD";
+"bearings.py:singlerowradialbearing";
+"bearings.py:doublerowradialbearing";
+"bearings.py:axialthrustbearing";
+"bearings.py:needlebearing";
+"bearings.py:cylindricalrollerbearing";
+}
+subgraph cluster_ocd {
+label="OpenSCAD";
+"bearings.scad:singlerowradialbearing";
+"bearings.scad:axialthrustbearing";
+}
+"singlerowradialbearing" -> "bearings.py:singlerowradialbearing";
+"singlerowradialbearing" -> "bearings.scad:singlerowradialbearing";
+"DIN625-1" -> "singlerowradialbearing";
+"doublerowradialbearing" -> "bearings.py:doublerowradialbearing";
+"DIN625-3" -> "doublerowradialbearing";
+"axialthrustbearing" -> "bearings.py:axialthrustbearing";
+"axialthrustbearing" -> "bearings.scad:axialthrustbearing";
+"DIN711" -> "axialthrustbearing";
+"ISO104" -> "axialthrustbearing";
+"needleroller" -> "bearings.py:needlebearing";
+"DIN5405-1" -> "needleroller";
+"ISO 3030" -> "needleroller";
+"cylindricalrollerbearing" -> "bearings.py:cylindricalrollerbearing";
+"DIN5412-1" -> "cylindricalrollerbearing";}
