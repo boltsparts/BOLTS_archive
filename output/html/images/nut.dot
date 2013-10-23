@@ -1,0 +1,52 @@
+digraph G {rankdir=LR;
+subgraph cluster_cl {
+label="Classes";
+"hexagonthinnut1";
+"hexagonthinnut2";
+"hexagonnut1";
+"hexagonnut2";
+"hexagonnut3";
+}
+subgraph cluster_std {
+label="Standards";
+"ISO4035";
+"DINENISO4035";
+"DIN439B";
+"ISO4032";
+"DIN934";
+"ANSI B18.2.2";
+"ASME B18.2.2";
+}
+subgraph cluster_fcd {
+label="FreeCAD";
+"nut.py:nut1";
+"nut.py:nut1";
+"nut.py:nut1";
+"nut.py:nut1";
+"nut.py:nut1";
+}
+subgraph cluster_ocd {
+label="OpenSCAD";
+"nut.scad:nut1";
+"nut.scad:nut1";
+"nut.scad:nut1";
+"nut.scad:nut1";
+"nut.scad:nut1";
+}
+"hexagonthinnut1" -> "nut.py:nut1";
+"hexagonthinnut1" -> "nut.scad:nut1";
+"ISO4035" -> "hexagonthinnut1";
+"DINENISO4035" -> "hexagonthinnut1";
+"hexagonthinnut2" -> "nut.py:nut1";
+"hexagonthinnut2" -> "nut.scad:nut1";
+"DIN439B" -> "hexagonthinnut2";
+"hexagonnut1" -> "nut.py:nut1";
+"hexagonnut1" -> "nut.scad:nut1";
+"ISO4032" -> "hexagonnut1";
+"hexagonnut2" -> "nut.py:nut1";
+"hexagonnut2" -> "nut.scad:nut1";
+"DIN934" -> "hexagonnut2";
+"hexagonnut3" -> "nut.py:nut1";
+"hexagonnut3" -> "nut.scad:nut1";
+"ANSI B18.2.2" -> "hexagonnut3";
+"ASME B18.2.2" -> "hexagonnut3";}

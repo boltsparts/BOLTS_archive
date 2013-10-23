@@ -1,0 +1,25 @@
+digraph G {rankdir=LR;
+subgraph cluster_cl {
+label="Classes";
+"tslot20x20";
+"tslot20x20-1s";
+"tslot20x20-2s";
+"tslot20x20-3s";
+}
+subgraph cluster_std {
+label="Standards";
+}
+subgraph cluster_fcd {
+label="FreeCAD";
+"tslot-20x20.fcstd:Fillet";
+"tslot-20x20-1S.fcstd:Fillet";
+"tslot-20x20-2S.fcstd:Fillet";
+"tslot-20x20-3S.fcstd:Fillet";
+}
+subgraph cluster_ocd {
+label="OpenSCAD";
+}
+"tslot20x20" -> "tslot-20x20.fcstd:Fillet";
+"tslot20x20-1s" -> "tslot-20x20-1S.fcstd:Fillet";
+"tslot20x20-2s" -> "tslot-20x20-2S.fcstd:Fillet";
+"tslot20x20-3s" -> "tslot-20x20-3S.fcstd:Fillet";}

@@ -1,0 +1,49 @@
+digraph G {rankdir=LR;
+subgraph cluster_cl {
+label="Classes";
+"hexscrew1";
+"hexscrew2";
+"hexbolt1";
+"hexbolt2";
+}
+subgraph cluster_std {
+label="Standards";
+"DIN933";
+"ISO4017";
+"DINENISO4017";
+"DINEN24017";
+"DIN931";
+"ISO4014";
+"DINENISO4014";
+"DINEN24014";
+}
+subgraph cluster_fcd {
+label="FreeCAD";
+"hex.py:hex1";
+"hex.py:hex1";
+"hex.py:hex2";
+"hex.py:hex2";
+}
+subgraph cluster_ocd {
+label="OpenSCAD";
+"hex.scad:hex1";
+"hex.scad:hex1";
+"hex.scad:hex2";
+"hex.scad:hex2";
+}
+"hexscrew1" -> "hex.py:hex1";
+"hexscrew1" -> "hex.scad:hex1";
+"DIN933" -> "hexscrew1";
+"hexscrew2" -> "hex.py:hex1";
+"hexscrew2" -> "hex.scad:hex1";
+"ISO4017" -> "hexscrew2";
+"DINENISO4017" -> "hexscrew2";
+"DINEN24017" -> "hexscrew2";
+"hexbolt1" -> "hex.py:hex2";
+"hexbolt1" -> "hex.scad:hex2";
+"DIN931" -> "hexbolt1";
+"hexbolt2" -> "hex.py:hex2";
+"hexbolt2" -> "hex.scad:hex2";
+"ISO4014" -> "hexbolt2";
+"DINENISO4014" -> "hexbolt2";
+"DINEN24014" -> "hexbolt2";}

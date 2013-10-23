@@ -1,0 +1,74 @@
+digraph G {rankdir=LR;
+subgraph cluster_cl {
+label="Classes";
+"plainwasher1";
+"plainwasherchamfered";
+"plainwasher2";
+"plainwasherforcheesehead";
+"heavydutyplainwasher";
+}
+subgraph cluster_std {
+label="Standards";
+"ISO7089";
+"EN7089";
+"DINENISO7089";
+"DINEN27089";
+"DIN125A";
+"ISO7090";
+"DINISO7090";
+"DINENISO7090";
+"DIN125B";
+"DIN126";
+"DINISO7091";
+"DINENISO7091";
+"ISO7091";
+"DIN433";
+"ISO7092";
+"DINISO7092";
+"DINENISO7092";
+"DIN7349";
+}
+subgraph cluster_fcd {
+label="FreeCAD";
+"washer.py:washer1";
+"washer.py:washer2";
+"washer.py:washer1";
+"washer.py:washer1";
+"washer.py:washer1";
+}
+subgraph cluster_ocd {
+label="OpenSCAD";
+"washer.scad:washer1";
+"washer.scad:washer2";
+"washer.scad:washer1";
+"washer.scad:washer1";
+"washer.scad:washer1";
+}
+"plainwasher1" -> "washer.py:washer1";
+"plainwasher1" -> "washer.scad:washer1";
+"ISO7089" -> "plainwasher1";
+"EN7089" -> "plainwasher1";
+"DINENISO7089" -> "plainwasher1";
+"DINEN27089" -> "plainwasher1";
+"DIN125A" -> "plainwasher1";
+"plainwasherchamfered" -> "washer.py:washer2";
+"plainwasherchamfered" -> "washer.scad:washer2";
+"ISO7090" -> "plainwasherchamfered";
+"DINISO7090" -> "plainwasherchamfered";
+"DINENISO7090" -> "plainwasherchamfered";
+"DIN125B" -> "plainwasherchamfered";
+"plainwasher2" -> "washer.py:washer1";
+"plainwasher2" -> "washer.scad:washer1";
+"DIN126" -> "plainwasher2";
+"DINISO7091" -> "plainwasher2";
+"DINENISO7091" -> "plainwasher2";
+"ISO7091" -> "plainwasher2";
+"plainwasherforcheesehead" -> "washer.py:washer1";
+"plainwasherforcheesehead" -> "washer.scad:washer1";
+"DIN433" -> "plainwasherforcheesehead";
+"ISO7092" -> "plainwasherforcheesehead";
+"DINISO7092" -> "plainwasherforcheesehead";
+"DINENISO7092" -> "plainwasherforcheesehead";
+"heavydutyplainwasher" -> "washer.py:washer1";
+"heavydutyplainwasher" -> "washer.scad:washer1";
+"DIN7349" -> "heavydutyplainwasher";}
