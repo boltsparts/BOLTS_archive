@@ -16,6 +16,11 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
+
+function BOLTS_version_major() = 0;
+function BOLTS_version_minor() = 2;
+function BOLTS_version() = [BOLTS_version_major(), BOLTS_version_minor()];
+
 BOLTS_THREAD_COLOR = [255,255,0];
 
 BOLTS_MODE = "sketch";
