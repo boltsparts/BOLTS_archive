@@ -1,35 +1,35 @@
-digraph G {rankdir=LR;
+digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
-"hexscrew1";
-"hexscrew2";
-"hexbolt1";
-"hexbolt2";
+"hexscrew1" [width=3, height=0.8, fixedsize=true];
+"hexscrew2" [width=3, height=0.8, fixedsize=true];
+"hexbolt1" [width=3, height=0.8, fixedsize=true];
+"hexbolt2" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_std {
 label="Standards";
-"DIN933";
-"ISO4017";
-"DINENISO4017";
-"DINEN24017";
-"DIN931";
-"ISO4014";
-"DINENISO4014";
-"DINEN24014";
+"DIN933" [width=3, height=0.8, fixedsize=true];
+"ISO4017" [width=3, height=0.8, fixedsize=true];
+"DINENISO4017" [width=3, height=0.8, fixedsize=true];
+"DINEN24017" [width=3, height=0.8, fixedsize=true];
+"DIN931" [width=3, height=0.8, fixedsize=true];
+"ISO4014" [width=3, height=0.8, fixedsize=true];
+"DINENISO4014" [width=3, height=0.8, fixedsize=true];
+"DINEN24014" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_fcd {
 label="FreeCAD";
-"hex.py:hex1";
-"hex.py:hex1";
-"hex.py:hex2";
-"hex.py:hex2";
+"hex.py:hex1" [width=4, height=0.8, fixedsize=true];
+"hex.py:hex1" [width=4, height=0.8, fixedsize=true];
+"hex.py:hex2" [width=4, height=0.8, fixedsize=true];
+"hex.py:hex2" [width=4, height=0.8, fixedsize=true];
 }
 subgraph cluster_ocd {
 label="OpenSCAD";
-"hex.scad:hex1";
-"hex.scad:hex1";
-"hex.scad:hex2";
-"hex.scad:hex2";
+"hex.scad:hex1" [width=4, height=0.8, fixedsize=true];
+"hex.scad:hex1" [width=4, height=0.8, fixedsize=true];
+"hex.scad:hex2" [width=4, height=0.8, fixedsize=true];
+"hex.scad:hex2" [width=4, height=0.8, fixedsize=true];
 }
 "hexscrew1" -> "hex.py:hex1";
 "hexscrew1" -> "hex.scad:hex1";

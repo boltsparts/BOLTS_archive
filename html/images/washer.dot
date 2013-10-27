@@ -1,48 +1,48 @@
-digraph G {rankdir=LR;
+digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
-"plainwasher1";
-"plainwasherchamfered";
-"plainwasher2";
-"plainwasherforcheesehead";
-"heavydutyplainwasher";
+"plainwasher1" [width=3, height=0.8, fixedsize=true];
+"plainwasherchamfered" [width=3, height=0.8, fixedsize=true];
+"plainwasher2" [width=3, height=0.8, fixedsize=true];
+"plainwasherforcheesehead" [width=3, height=0.8, fixedsize=true];
+"heavydutyplainwasher" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_std {
 label="Standards";
-"ISO7089";
-"EN7089";
-"DINENISO7089";
-"DINEN27089";
-"DIN125A";
-"ISO7090";
-"DINISO7090";
-"DINENISO7090";
-"DIN125B";
-"DIN126";
-"DINISO7091";
-"DINENISO7091";
-"ISO7091";
-"DIN433";
-"ISO7092";
-"DINISO7092";
-"DINENISO7092";
-"DIN7349";
+"ISO7089" [width=3, height=0.8, fixedsize=true];
+"EN7089" [width=3, height=0.8, fixedsize=true];
+"DINENISO7089" [width=3, height=0.8, fixedsize=true];
+"DINEN27089" [width=3, height=0.8, fixedsize=true];
+"DIN125A" [width=3, height=0.8, fixedsize=true];
+"ISO7090" [width=3, height=0.8, fixedsize=true];
+"DINISO7090" [width=3, height=0.8, fixedsize=true];
+"DINENISO7090" [width=3, height=0.8, fixedsize=true];
+"DIN125B" [width=3, height=0.8, fixedsize=true];
+"DIN126" [width=3, height=0.8, fixedsize=true];
+"DINISO7091" [width=3, height=0.8, fixedsize=true];
+"DINENISO7091" [width=3, height=0.8, fixedsize=true];
+"ISO7091" [width=3, height=0.8, fixedsize=true];
+"DIN433" [width=3, height=0.8, fixedsize=true];
+"ISO7092" [width=3, height=0.8, fixedsize=true];
+"DINISO7092" [width=3, height=0.8, fixedsize=true];
+"DINENISO7092" [width=3, height=0.8, fixedsize=true];
+"DIN7349" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_fcd {
 label="FreeCAD";
-"washer.py:washer1";
-"washer.py:washer2";
-"washer.py:washer1";
-"washer.py:washer1";
-"washer.py:washer1";
+"washer.py:washer1" [width=4, height=0.8, fixedsize=true];
+"washer.py:washer2" [width=4, height=0.8, fixedsize=true];
+"washer.py:washer1" [width=4, height=0.8, fixedsize=true];
+"washer.py:washer1" [width=4, height=0.8, fixedsize=true];
+"washer.py:washer1" [width=4, height=0.8, fixedsize=true];
 }
 subgraph cluster_ocd {
 label="OpenSCAD";
-"washer.scad:washer1";
-"washer.scad:washer2";
-"washer.scad:washer1";
-"washer.scad:washer1";
-"washer.scad:washer1";
+"washer.scad:washer1" [width=4, height=0.8, fixedsize=true];
+"washer.scad:washer2" [width=4, height=0.8, fixedsize=true];
+"washer.scad:washer1" [width=4, height=0.8, fixedsize=true];
+"washer.scad:washer1" [width=4, height=0.8, fixedsize=true];
+"washer.scad:washer1" [width=4, height=0.8, fixedsize=true];
 }
 "plainwasher1" -> "washer.py:washer1";
 "plainwasher1" -> "washer.scad:washer1";

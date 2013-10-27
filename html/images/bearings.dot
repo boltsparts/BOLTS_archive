@@ -1,34 +1,34 @@
-digraph G {rankdir=LR;
+digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
-"singlerowradialbearing";
-"doublerowradialbearing";
-"axialthrustbearing";
-"needleroller";
-"cylindricalrollerbearing";
+"singlerowradialbearing" [width=3, height=0.8, fixedsize=true];
+"doublerowradialbearing" [width=3, height=0.8, fixedsize=true];
+"axialthrustbearing" [width=3, height=0.8, fixedsize=true];
+"needleroller" [width=3, height=0.8, fixedsize=true];
+"cylindricalrollerbearing" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_std {
 label="Standards";
-"DIN625-1";
-"DIN625-3";
-"DIN711";
-"ISO104";
-"DIN5405-1";
-"ISO 3030";
-"DIN5412-1";
+"DIN625-1" [width=3, height=0.8, fixedsize=true];
+"DIN625-3" [width=3, height=0.8, fixedsize=true];
+"DIN711" [width=3, height=0.8, fixedsize=true];
+"ISO104" [width=3, height=0.8, fixedsize=true];
+"DIN5405-1" [width=3, height=0.8, fixedsize=true];
+"ISO 3030" [width=3, height=0.8, fixedsize=true];
+"DIN5412-1" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_fcd {
 label="FreeCAD";
-"bearings.py:singlerowradialbearing";
-"bearings.py:doublerowradialbearing";
-"bearings.py:axialthrustbearing";
-"bearings.py:needlebearing";
-"bearings.py:cylindricalrollerbearing";
+"bearings.py:singlerowradialbearing" [width=4, height=0.8, fixedsize=true];
+"bearings.py:doublerowradialbearing" [width=4, height=0.8, fixedsize=true];
+"bearings.py:axialthrustbearing" [width=4, height=0.8, fixedsize=true];
+"bearings.py:needlebearing" [width=4, height=0.8, fixedsize=true];
+"bearings.py:cylindricalrollerbearing" [width=4, height=0.8, fixedsize=true];
 }
 subgraph cluster_ocd {
 label="OpenSCAD";
-"bearings.scad:singlerowradialbearing";
-"bearings.scad:axialthrustbearing";
+"bearings.scad:singlerowradialbearing" [width=4, height=0.8, fixedsize=true];
+"bearings.scad:axialthrustbearing" [width=4, height=0.8, fixedsize=true];
 }
 "singlerowradialbearing" -> "bearings.py:singlerowradialbearing";
 "singlerowradialbearing" -> "bearings.scad:singlerowradialbearing";
