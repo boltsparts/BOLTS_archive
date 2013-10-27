@@ -6,10 +6,11 @@
 
 You need to have FreeCAD and [FreeCAD for BOLTS installed](installation.html).
 
-This assumes, that the blt file for this part is already created, and you have
-a python function that creates the part that you want to add to BOLTS. For more
-information on part scripting in FreeCAD see the [FreeCAD documentation on this
-topic](http://freecadweb.org/wiki/index.php?title=Power_users_hub).
+This assumes that the [blt file]({{page.docroot}}/general/blt-files.html)  for
+this part is already created, and you have a python function that creates the
+part that you want to add to BOLTS. For more information on part scripting in
+FreeCAD see the 
+[FreeCAD documentation on this topic](http://freecadweb.org/wiki/index.php?title=Power_users_hub).
 
 
 ### The function
@@ -51,8 +52,6 @@ extension `.py` in a subdirectory of the freecad directory which is named after
 the collection to which the part belongs (in this case `washer`). This
 directory must contain a empty file called `__init__.py` and the base file for
 this collection (in this case `washer.base`).
-
-For
 
 ### Write the base file
 
