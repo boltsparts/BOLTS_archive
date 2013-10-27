@@ -50,31 +50,31 @@ function type(P) =
 module check_parameter_type(part_name,name,value,param_type){
 	if(param_type=="Length (mm)"){
 		if(type(value) != "number"){
-			echo(str("Error: Expected a Length (mm) as parameter",name,"for ",part_name,", but",value,"is not numerical"));
+			echo(str("Error: Expected a Length (mm) as parameter ",name," for ",part_name,", but ",value," is not numerical"));
 		} else if(value < 0){
-			echo(str("Error: Expected a Length (mm) as parameter",name,"for ",part_name,", but",value,"is negative"));
+			echo(str("Error: Expected a Length (mm) as parameter ",name," for ",part_name,", but ",value," is negative"));
 		}
 	} else if(param_type=="Length (in)"){
 		if(type(value) != "number"){
-			echo(str("Error: Expected a Length (in) as parameter",name,"for ",part_name,", but",value,"is not numerical"));
+			echo(str("Error: Expected a Length (in) as parameter ",name," for ",part_name,", but ",value," is not numerical"));
 		} else if(value < 0){
-			echo(str("Error: Expected a Length (in) as parameter",name,"for ",part_name,", but",value,"is negative"));
+			echo(str("Error: Expected a Length (in) as parameter ",name," for ",part_name,", but ",value," is negative"));
 		}
 	} else if(param_type=="Number"){
 		if(type(value) != "number"){
-			echo(str("Error: Expected a Number as parameter",name,"for ",part_name,", but",value,"is not numerical"));
+			echo(str("Error: Expected a Number as parameter ",name," for ",part_name,", but ",value," is not numerical"));
 		}
 	} else if(param_type=="Bool"){
 		if(type(value) != "boolean"){
-			echo(str("Error: Expected a Bool as parameter",name,"for ",part_name,", but",value,"is not boolean"));
+			echo(str("Error: Expected a Bool as parameter ",name," for ",part_name,", but ",value," is not boolean"));
 		}
 	} else if(param_type=="Table Index"){
 		if(type(value) != "string"){
-			echo(str("Error: Expected a Table Index as parameter","for ",part_name,name,", but",value,"is not a string"));
+			echo(str("Error: Expected a Table Index as parameter ",name," for ",part_name,", but ",value," is not a string"));
 		}
 	} else if(param_type=="String"){
 		if(type(value) != "string"){
-			echo(str("Error: Expected a String as parameter",name,"for ",part_name,", but",value,"is not a string"));
+			echo(str("Error: Expected a String as parameter ",name," for ",part_name,", but ",value," is not a string"));
 		}
 	} else {
 		echo(str("Error: Unknown type in parameter check. This should not happen, please report this bug to BOLTS"));
