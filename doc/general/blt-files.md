@@ -18,7 +18,7 @@ The headers contains general information about the collection. This is an
 example taken from the 
 [hex collection]({{site.baseurl}}/html/collections/hex.html)
 , and illustrates the form of the header. For detailed information please refer to the
-[specification](http://127.0.0.1:4000/doc/general/specification.html#collection-header):
+[specification]{{site.baseurl}}/doc/general/specification.html#collection-header):
 
     #BOLTS - Open Library of Technical Specifications
     #Copyright (C) 2013 Johannes Reinhardt <jreinhardt@ist-dein-freund.de>

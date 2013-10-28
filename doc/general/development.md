@@ -4,7 +4,7 @@
 ---
 
 BOLTS consists of quite a lot of code and data and to manage this code and data
-and the changes made to it, [git](http://www.git-scm.org) is used. Git is a
+and the changes made to it, [git](http://www.git-scm.com) is used. Git is a
 distributed version control system and this allows everybody who wants to work
 with git to obtain a version of BOLTS (called a branch), that is separate from
 the main version, so that it is possible to play around, add parts and develop
@@ -14,7 +14,7 @@ move the changes made in one branch to the master branch.
 There exist many different workflows and ways how to develop software with git.
 I will present three different ways that I consider useful for the purpose of
 contributing to BOLTS. For more information see the [git
-documentation](http://www.git-scm.org) or the [GitHub
+documentation](http://www.git-scm.com) or the [GitHub
 documentation](https://help.github.com/).
 
 ### Using the GitHub web interface
