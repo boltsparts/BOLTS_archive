@@ -1,0 +1,21 @@
+digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+subgraph cluster_cl {
+label="Classes";
+"genericpipe" [width=3, height=0.8, fixedsize=true];
+"din11850range2" [width=3, height=0.8, fixedsize=true];
+}
+subgraph cluster_std {
+label="Standards";
+"DIN11850 Range 2" [width=3, height=0.8, fixedsize=true];
+}
+subgraph cluster_fcd {
+label="FreeCAD";
+}
+subgraph cluster_ocd {
+label="OpenSCAD";
+"pipe.scad:pipe" [width=4, height=0.8, fixedsize=true];
+"pipe.scad:pipe" [width=4, height=0.8, fixedsize=true];
+}
+"genericpipe" -> "pipe.scad:pipe";
+"din11850range2" -> "pipe.scad:pipe";
+"DIN11850 Range 2" -> "din11850range2";}
