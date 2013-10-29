@@ -56,8 +56,10 @@ this collection (in this case `washer.base`).
 ### Write the base file
 
 The base file provides BOLTS with all the informations it needs to know about
-the files in a collection directory. It contains a list of sections (more
-precisely base file elements), each describing one file:
+the files in a collection directory, it is a kind of manifest file. It contains
+a list of sections (more precisely 
+[base file elements]({{page.docroot}}/general/specification.html))
+, each describing one file:
 
     ---
     - filename: washer.py
@@ -120,4 +122,4 @@ When fixing a bug, you have to close FreeCAD, and repeat this step from the begi
 
 ### Next steps
 
-You might want to contribute this part to BOLTS, so that every user can profit from your efforts.
+You might want to [contribute]({{page.docroot}}/general/development.html) this part to BOLTS, so that every user can profit from your efforts.
