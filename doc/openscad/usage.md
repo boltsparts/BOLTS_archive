@@ -116,4 +116,25 @@ BOLTS will inform you that
 
     Warning: The standard DIN931 is withdrawn. Although withdrawn standards are often still in use, it might be better to use its successor DINEN24014 instead
 
+### Checking for the version
+
+BOLTS provides version information to allow a scad file to complain when a
+unsuitable version of BOLTS is used. This is especially important for scad
+files that are published on the internet. Version information comes in two
+flavours: the number of the release, and a date.
+
+The number of the release can be accessed by calling the function
+
+    BOLTS_version()
+
+For a stable release it returns a list with the major and minor version as
+integers. For a development release the string "development" is returned.
+
+The date can be accessed using the function
+
+    BOLTS_date()
+
+and is returned as a list with three integers for the year, the month and the
+day at which the distribution was exported.
+
 
