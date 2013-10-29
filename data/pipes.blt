@@ -34,7 +34,7 @@ classes:
     parameters:
       free: [od, id, l]
       defaults: {od: 13, id: 10, l: 1000}
-    source: No source information required
+    source: No source information used
   - id: din11850range2
     naming:
       template: DIN11850 Range 2 DN %d length %g
