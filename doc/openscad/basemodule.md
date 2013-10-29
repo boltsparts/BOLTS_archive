@@ -53,7 +53,7 @@ collection with a pipe module that lives in a file called `pipe.scad`:
     module pipe(id,od,l){
         difference(){
             cylinder(r=od/2,h=l,center=true);
-            cylinder(r=oi/2,h=l+1,center=true);
+            cylinder(r=id/2,h=l+1,center=true);
         }
     }
 
