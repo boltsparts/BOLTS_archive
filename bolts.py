@@ -71,7 +71,11 @@ def release(args):
 	for li_short in ["lgpl2.1+","gpl3"]:
 		license = LICENSES_SHORT[li_short]
 		openscad.OpenSCADExporter().write_output(repo,license)
+		copyfile(os.path.join(repo.path,"licenses",li_short.strip("+")),
+			os.path.join(repo.path,"output","openscad","LICENSE"))
 		freecad.FreeCADExporter().write_output(repo,license)
+		copyfile(os.path.join(repo.path,"licenses",li_short.strip("+")),
+			os.path.join(repo.path,"output","freecad","BOLTS","LICENSE"))
 
 		for backend,backend_name in zip(["freecad","openscad"],["FreeCAD","OpenSCAD"]):
 			#construct filename from date
