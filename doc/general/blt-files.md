@@ -23,7 +23,7 @@ the collection id.
 The file should begin with a license header that specifies the license of the
 file. BOLTS can work with a number of free licenses, a list and detailed
 explanation can be found [here](licensing.html). If you are unsure what to choose,
-[LGPL 2.1 or later](http://gnu.org/licenses/lgpl-2.1) or a more liberal license like
+[LGPL 2.1 or later](http://www.gnu.org/licenses/lgpl-2.1) or a more liberal license like
 [MIT](http://opensource.org/licenses/MIT) are usually a good choice.
 
 After the license header follows the collection header. It contains general

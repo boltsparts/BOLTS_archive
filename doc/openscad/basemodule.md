@@ -1,7 +1,7 @@
 ---
   layout: docs
   title: How to create a base module
-  docroot: "../"
+  docroot: ".."
 ---
 
 This tutorial shows you the preferred way to make a class from a
@@ -99,7 +99,7 @@ then follows the list of modules that are contained in the file.
 In the case of `pipe.scad` there is only one module called `pipe`. The
 arguments field gives the parameters that need to be supplied to the module.
 The parameters must be a subset of the parameters of the class as it is
-defined in the [blt file]({{page.docroot}}/general/blt-file.html).
+defined in the [blt file]({{page.docroot}}/general/blt-files.html).
 
 The `classids` field contains a list of classids whichc this module can
 represent. Be careful, that the parameter names and meanings for all classes
