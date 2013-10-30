@@ -17,7 +17,11 @@ The main features provided by this release are:
 - Automatically generates [HTML Documentation]({{site.baseurl}}/html/index.html), an [OpenSCAD Library]({{site.baseurl}}/doc/openscad/usage.html) and a [FreeCAD widget]({{site.baseurl}}/doc/freecad/usage.html) that can make use of this information.
 - Has extensive [Documentation]({{site.baseurl}}/doc/index.html) that describes how to [contribute]({{site.baseurl}}/contribute.html) new parts.
 - Includes a integrated [license management system]({{site.baseurl}}/doc/general/licensing.html) that allows to reuse existing code while ensuring license compliance.
-- Provides standard parts for 135 different standards by 8 different standardisation organisations.
+- Provides standard parts for 135 different standards by 8 different standardisation organisations and also some parts that are not standardized.
+
+[<img alt="FreeCAD Widget and bearing" src="{{ site.baseurl }}/images/freecad-bearing.png" style="width: 100%;"/>]({{ site.baseurl }}/images/freecad-bearing.png)
+
+[<img alt="OpenSCAD and bolt" src="{{ site.baseurl }}/images/openscad-bolt.png" style="width: 100%;"/>]({{ site.baseurl }}/images/openscad-bolt.png)
 
 However BOLTS is still at the very beginning of its development and should be
 considered beta software. I invite people to
