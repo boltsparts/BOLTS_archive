@@ -4,6 +4,8 @@
   docroot: "../"
 ---
 
+You need to have [python](http://www.python.org/) (Version 2.7) and [pyyaml](http://pyyaml.org/) installed.
+
 ### Download a BOLTS for FreeCAD release
 
 You can find the most recent BOLTS for FreeCAD release at the [Downloads Page]({{ site.baseurl}}/downloads.html).
