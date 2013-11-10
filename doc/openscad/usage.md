@@ -137,4 +137,10 @@ The date can be accessed using the function
 and is returned as a list with three integers for the year, the month and the
 day at which the distribution was exported.
 
+The final ingredient to uniquely identify the version of BOLTS is the license.
+Distributions conforming to different licenses can differ in the selection of
+parts offered. To query the license of the distribution one can use the function
 
+    BOLTS_license()
+
+which returns a string with the license.
