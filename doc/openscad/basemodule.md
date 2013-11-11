@@ -17,6 +17,7 @@ yourself.
 Or you try to find out if someone else has done this already. There are a number of sites where a lot of scad code is published:
 
  - [Thingiverse](http://www.thingiverse.com/)
+ - [Youmagine](https://www.youmagine.com/)
  - [Cubehero](https://cubehero.com/)
  - [GitHub](https://github.com/)
  - [Bldr](http://www.bld3r.com/)
