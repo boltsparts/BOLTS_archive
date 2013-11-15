@@ -27,11 +27,18 @@ from freecad.gui.freecad_bolts import BoltsWidget, getMainWindow
 rootpath =  dirname(__file__)
 repo = blt_parser.BOLTSRepository(rootpath)
 
-widget = BoltsWidget(repo)
+widget = None
 
-mw = getMainWindow()
-mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
+def show_widget(repo,widget):
+	print repo, widget
+	if widget is None:
+		widget = BoltsWidget(repo)
 
+		mw = getMainWindow()
+		mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
+	else:
+		widget.show()
+	return widget
 
 import FreeCAD, Part
 def make_drawing(scale,obj):
