@@ -7,9 +7,9 @@ The aim of BOLTS is to build a free and open-source standard parts library that 
 
 ### Backend independent data
 
-Very often there exist several similar or even identical standards for one part, issued by different organisations. For this reason, BOLTS has the concept of a class of parts, where one class can cover several identical standards. To specify a class of particles, we have to specify information about the various dimensions of the part, tables with values for these dimensions, a description, the standards that this class covers, a drawing of the part and so on. The way how the geometry of the part is specified is different for different CAD applications and therefore belongs to the backend specific data.
+Very often there exist several similar or even identical standards for one part, issued by different organisations. For this reason, BOLTS has the concept of a class of parts, where one class can cover several identical standards. To specify a class of parts, we have to specify information about the various dimensions of the part, tables with values for these dimensions, a description, the standards that this class covers, a drawing of the part and so on. The way in which the geometry of the part is specified is different for different CAD applications and therefore belongs to the backend specific data.
 
-BOLTS provides another level of organisation, the collection. A collection contains several classes, so that similar but not identical classes can be grouped together. All the information about a collection is stored in a blt file.
+BOLTS provides another level of organisation, the collection. A collection contains several classes, so that similar but not identical classes can be grouped together. All the information about the classes in a collection is stored in a blt file.
 
 ### Backend specific data
 

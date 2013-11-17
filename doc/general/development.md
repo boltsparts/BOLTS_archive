@@ -6,7 +6,7 @@
 BOLTS consists of quite a lot of code and data and to manage this code and data
 and the changes made to it, [git](http://www.git-scm.com) is used. Git is a
 distributed version control system and this allows everybody who wants to work
-with git to obtain a version of BOLTS (called a branch), that is separate from
+with git to obtain a version of BOLTS (called a fork), that is separate from
 the main version, so that it is possible to play around, add parts and develop
 new features without breaking the master branch. git then makes it very easy to
 move the changes made in one branch to the master branch.

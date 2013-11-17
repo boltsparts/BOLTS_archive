@@ -4,7 +4,7 @@
   docroot: "../"
 ---
 
-blt files contain most of the basefile independent data. There is one blt file
+blt files contain most of the backend independent data. There is one blt file
 for each each collection, which provides the information about all the classes
 of the collection.
 
@@ -108,7 +108,7 @@ However, some combinations of the three are more common than others, because the
 [standards](http://en.wikipedia.org/wiki/Pipe_%28fluid_conveyance%29#Sizes)
 specify combinations of (some of) the parameters.
 
-So another way to specify a would be to specify a nominal pipe size and a
+So another way to specify a pipe would be to specify a nominal pipe size and a
 length. There are tables that one can use to look up the inner and outer
 diameter for a given nominal pipe size. The length of a pipe is usually not
 standardized.

@@ -20,7 +20,7 @@ Or you try to find out if someone else has done this already. There are a number
  - [Youmagine](https://www.youmagine.com/)
  - [Cubehero](https://cubehero.com/)
  - [GitHub](https://github.com/)
- - [Bldr](http://www.bld3r.com/)
+ - [Bld3r](http://www.bld3r.com/)
  - [list with many more](http://reprap.org/wiki/Printable_part_sources)
 
 However, to use code written by someone else, you need to make sure that there
@@ -102,7 +102,7 @@ arguments field gives the parameters that need to be supplied to the module.
 The parameters must be a subset of the parameters of the class as it is
 defined in the [blt file]({{page.docroot}}/general/blt-files.html).
 
-The `classids` field contains a list of classids whichc this module can
+The `classids` field contains a list of classids which this module can
 represent. Be careful, that the parameter names and meanings for all classes
 in this list must be the same, otherwise the some parameters can not be found
 for some classes.
