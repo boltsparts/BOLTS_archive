@@ -34,6 +34,19 @@ classes:
         free: [key, l]
         types: {key: Table Index}
         defaults: {key: M3, l: 20}
+        common:
+          - [[M3,M6], [8,10,12,14,16,18,20,22,25]]
+          - [[M4, M5], [6,8,10,12,14,16,18,20,22,25,30,35,40]]
+          - [[M4,M25], [45,50,55,60]]
+          - [[M6], [30,35,40,45,50,55,60,65,70]]
+          - [[M7,M8,M10], [12,14,16,18]]
+          - [[M7,M8,M10, M14], [20,22,25,30,35,40,45,50]]
+          - [[M10], [10]]
+          - [[M8],[10,55,60]]
+          - [[M12], [16,18,20,22]]
+          - [[M12,M16],[25, 30, 35, 40, 45, 50, 55, 60, 65, 70]]
+          - [[M20], [30,35,40,45,50,55]]
+          - [[M25], [40]]
         tables:
             index: key
             columns: [d1, k, s, e, h]
@@ -67,7 +80,7 @@ classes:
                 M48:   [  48,   30,    75,   82.60,   None  ]
                 M52:   [  52,   33,    80,   88.25,   None  ]
                 M64:   [  64,   40,    95,   104.86,  None  ]
-    source: http://almetal.nl/en/techinfo/hex/hd933.htm
+    source: Dimensions from http://almetal.nl/en/techinfo/hex/hd933.htm, commmon lengths from http://www.mcmaster.com/#standard-cap-screws/=pf7iuu
   - id: hexscrew2
     naming:
         template: Hexagon head screw %s - %s %d
