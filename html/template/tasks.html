@@ -14,7 +14,7 @@
     <h1>Bases</h1>
     <p> For some classes a backend specific geometry is missing for one or more CAD packages.
     <table class="table">
-      $basetable
+      $missingbasetable
     </table>
   </div>
 
@@ -27,6 +27,14 @@
     <p> For other classes no svg version of the drawing is available.
     <table class="table">
       $missingdrawingssvg
+    </table>
+  </div>
+
+  <div class="inner-content">
+    <h1>Common Parameters</h1>
+    <p> For some classes no common parameter combinations are specified. This prevents these classes from being exported in some backends that create individual files for a combination of parameters.
+    <table class="table">
+      $missingcommonparameters
     </table>
   </div>
 
