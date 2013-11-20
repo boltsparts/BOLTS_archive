@@ -3,9 +3,23 @@ BOLTS
 
 BOLTS is an Open Library for Technical Specifications.
 
-For more information check the BOLTS webpage:
+This repository contains all the tools and data that are required to build the
+different distributions and the website. You only need to get the content of
+this repository if you want to contribute content to BOLTS or want to develop
+the tools that are used to manage it.
+
+**If you want to use BOLTS, then you should get the BOLTS distribution for the CAD
+tool of your choice from the
+[download section of the webpage](http://jreinhardt.github.io/BOLTS/downloads.html)
+instead. Instructions on how to use the distributions can be found in the
+[documentation section](http://jreinhardt.github.io/BOLTS/doc/index.html)**
+
+If you have more questions, the chances to find answers on the webpage
 
 http://jreinhardt.github.io/BOLTS/index.html
+
+are much higher than to find them here.
+
 
 Development
 ===========
