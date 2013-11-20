@@ -30,6 +30,7 @@ classes:
   naming:
      template: "%s Battery"
      substitute: [T]
+  drawing: batteries/roundBattery.png
   description: Most common round single cell battery sizes
   parameters:
      free: [T]
