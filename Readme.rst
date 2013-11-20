@@ -8,11 +8,12 @@ different distributions and the website. You only need to get the content of
 this repository if you want to contribute content to BOLTS or want to develop
 the tools that are used to manage it.
 
-**If you just want to use BOLTS**, then you should get the BOLTS distribution
+**If you just want to use BOLTS, then you should get the BOLTS distribution
 for the CAD tool of your choice from the
-[download section of the webpage](http://jreinhardt.github.io/BOLTS/downloads.html)
-instead. Instructions on how to use the distributions can be found in the
-[documentation section](http://jreinhardt.github.io/BOLTS/doc/index.html).
+`download section <http://jreinhardt.github.io/BOLTS/downloads.html>`_
+of the webpage instead. Instructions on how to use the distributions can be
+found in the
+`documentation section <http://jreinhardt.github.io/BOLTS/doc/index.html>`_.**
 
 If you have more questions, the chances to find answers on the webpage
 
