@@ -1,0 +1,11 @@
+---
+- filename: batteries.scad
+  type: module
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  modules:
+    - name: roundBatteryBase
+      arguments: [h,d]
+      classids: [roundBattery]
+  source: own work
+...

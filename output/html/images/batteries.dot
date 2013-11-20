@@ -1,0 +1,18 @@
+digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+subgraph cluster_cl {
+label="Classes";
+"roundBattery" [width=3, height=0.8, fixedsize=true];
+}
+subgraph cluster_std {
+label="Standards";
+}
+subgraph cluster_fcd {
+label="FreeCAD";
+"batteries.py:roundBattery" [width=4, height=0.8, fixedsize=true];
+}
+subgraph cluster_ocd {
+label="OpenSCAD";
+"batteries.scad:roundBatteryBase" [width=4, height=0.8, fixedsize=true];
+}
+"roundBattery" -> "batteries.py:roundBattery";
+"roundBattery" -> "batteries.scad:roundBatteryBase";}
