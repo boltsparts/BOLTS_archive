@@ -30,6 +30,7 @@ classes:
     naming:
       template: Pipe OD %g ID %g length %g
       substitute: [od, id, l]
+    drawing: pipes/pipe.png
     description: a generic pipe
     parameters:
       free: [od, id, l]
@@ -39,6 +40,7 @@ classes:
     naming:
       template: DIN11850 Range 2 DN %s length %g
       substitute: [dn, l]
+    drawing: pipes/pipe.png
     description: pipe
     standard: DIN11850 Range 2
     parameters:
