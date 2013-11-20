@@ -1,6 +1,6 @@
 ---
   layout: docs
-  title: How to setup a fcstd base
+  title: How to setup a base function
   docroot: "../"
 ---
 
