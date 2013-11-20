@@ -37,7 +37,7 @@ classes:
     source: No source information used
   - id: din11850range2
     naming:
-      template: DIN11850 Range 2 DN %d length %g
+      template: DIN11850 Range 2 DN %s length %g
       substitute: [dn, l]
     description: pipe
     standard: DIN11850 Range 2
