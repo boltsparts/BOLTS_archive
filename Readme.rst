@@ -15,7 +15,11 @@ for the CAD tool of your choice from the**
 found in the**
 `documentation section <http://jreinhardt.github.io/BOLTS/doc/index.html>`_.
 
-If you have more questions, the chances to find answers on the webpage
+The webpage contains a lot of general infos, an overview over the
+`specifications <http://jreinhardt.github.io/BOLTS/html/index.html>`_ of all
+parts contained in BOLTS and quite a bit of
+`documentation <http://jreinhardt.github.io/BOLTS/doc/index.html>`_.
+So if you have more questions, the chances to find answers on the webpage
 
 http://jreinhardt.github.io/BOLTS/index.html
 
