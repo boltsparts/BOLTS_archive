@@ -221,6 +221,7 @@ class BoltsWidget(QBoltsWidget):
 		for widget in self.props_widgets:
 			self.ui.props_layout.addWidget(widget)
 
+	@QtCore.pyqtSlot(bool)
 	def on_addButton_clicked(self,checked):
 		if FreeCAD.activeDocument() is None:
 			FreeCAD.newDocument()
