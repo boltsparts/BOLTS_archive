@@ -17,6 +17,7 @@
 
 from PyQt4 import QtGui, QtCore, uic
 import FreeCAD
+import FreeCADGui
 import sys
 from os import listdir
 from os.path import dirname, join
@@ -253,6 +254,7 @@ class BoltsWidget(QBoltsWidget):
 
 		#add part
 		self.repo.freecad.getbase[data.id].add_part(params,FreeCAD.ActiveDocument)
+		FreeCADGui.SendMsgToActiveView("ViewFit")
 
 	def on_partsTree_itemSelectionChanged(self):
 		items = self.ui.partsTree.selectedItems()
