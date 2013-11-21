@@ -6,13 +6,9 @@
 
 You need to have [installed BOLTS for FreeCAD](installation.html).
 
-### Starting the part selector using the python console
+### Starting the part selector using the macro
 
-Just type
-
-    import BOLTS
-
-and the part selector should appear
+Choose <code>Macros</code> from the <code>Macro</code> menu and execute <code>start_bolts.FCMacro</code>.
 
 ### Starting the parts selector using a toolbar button
 

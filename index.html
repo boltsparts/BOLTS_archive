@@ -56,12 +56,9 @@ ISO7089("M4");
       </div>
       <div class="col">
         <h3>Quickstart: Using BOLTS with FreeCAD</h3>
-        <p>Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="{{site.baseurl}}/downloads.html">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab.</p>
-        <p> After starting FreeCAD, type</p>
-        {% highlight python %}
-import BOLTS
-{% endhighlight %}
-        <p>into the FreeCAD python console. A widget should appear. There you can select a part from the tree, give values for the parameters and add it to the current document.</p>
+        <p>Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="{{site.baseurl}}/downloads.html">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab. You also have to make sure to have <a href="https://bitbucket.org/xi/pyyaml">pyyaml</a> installed.</p>
+        <p> After starting FreeCAD, choose <code>Macros</code> from the <code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code></p>
+        <p>A widget should appear. There you can select a part from the tree, give values for the parameters and add it to the current document.</p>
         <p>For more information see the <a href="{{ site.baseurl}}/doc/index.html">Documentation</a>
       </div>
     </div>
