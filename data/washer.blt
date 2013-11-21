@@ -94,6 +94,7 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: M3}
+        common: []
         tables:
             *DIN125
     notes: Are there precise specifications about the chamfer?
