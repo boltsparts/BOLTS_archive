@@ -16,18 +16,17 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ---
-collection:
-    name: BOLTS Bearings
-    description: various ball bearings
-    author: [Johannes Reinhardt <jreinhardt@ist-dein-freund.de>, Javier Martínez García <jaeco@gmx.com>]
-    license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-    blt-version: 0.2
+id: bearings
+name: BOLTS Bearings
+description: various ball bearings
+author: [Johannes Reinhardt <jreinhardt@ist-dein-freund.de>, Javier Martínez García <jaeco@gmx.com>]
+license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+blt-version: 0.3
 classes:
   - id: singlerowradialbearing
     naming:
         template: Ball bearing %s %s%s
         substitute: [standard, key, postfix]
-    drawing: bearings/singlerowradialbearing.png
     description: single row radial contact ball bearing, with single or double
       shields, single or double seal or open
     standard: DIN625-1
@@ -88,7 +87,6 @@ classes:
     naming:
       template: Double row %s %s
       substitute: [standard,key]
-    drawing: bearings/doublerowradialbearing.png
     description: Deep groove double row ball bearing
     standard: [DIN625-3]
     parameters:
@@ -124,7 +122,6 @@ classes:
     naming:
         template: Axial thrust bearing %s %s
         substitute: [standard, key]
-    drawing: bearings/axialthrustbearing.png
     description: axial thrust bearing, single direction
     standard: [DIN711, ISO104]
     parameters:
@@ -266,7 +263,6 @@ classes:
     naming:
         template: Needle roller %s %s
         substitute: [standard, key]
-    drawing: bearings/needleroller.png
     description: Needle roller without cage
     standard: [DIN5405-1,ISO 3030]
     parameters:
@@ -507,7 +503,6 @@ classes:
     naming:
         template: cylindrical roller bearing %s %s
         substitute: [standard, key]
-    drawing: bearings/cylindricalrollerbearing.png
     description: Cylindrical single row roller bearing
     standard: [DIN5412-1]
     parameters:

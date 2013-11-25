@@ -19,18 +19,17 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 ---
-collection:
-    name: BOLTS pipes
-    description: metric and imperial pipes
-    author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-    license: MIT <http://opensource.org/licenses/MIT>
-    blt-version: 0.2
+id: pipes
+name: BOLTS pipes
+description: metric and imperial pipes
+author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+license: MIT <http://opensource.org/licenses/MIT>
+blt-version: 0.3
 classes:
   - id: genericpipe
     naming:
       template: Pipe OD %g ID %g length %g
       substitute: [od, id, l]
-    drawing: pipes/pipe.png
     description: a generic pipe
     parameters:
       free: [od, id, l]
@@ -40,7 +39,6 @@ classes:
     naming:
       template: DIN11850 Range 2 DN %s length %g
       substitute: [dn, l]
-    drawing: pipes/pipe.png
     description: pipe
     standard: DIN11850 Range 2
     parameters:

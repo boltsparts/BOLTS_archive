@@ -19,18 +19,17 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 ---
-collection:
-    name: BOLTS batteries
-    description: This collection contains different sorts of batteries
-    author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-    license: MIT <http://opensource.org/licenses/MIT>
-    blt-version: 0.2
+id: batteries
+name: BOLTS batteries
+description: This collection contains different sorts of batteries
+author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+license: MIT <http://opensource.org/licenses/MIT>
+blt-version: 0.3
 classes:
 - id: roundBattery
   naming:
      template: "%s Battery"
      substitute: [T]
-  drawing: batteries/roundBattery.png
   description: Most common round single cell battery sizes
   parameters:
      free: [T]

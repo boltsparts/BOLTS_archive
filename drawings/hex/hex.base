@@ -1,0 +1,15 @@
+---
+- filename: hex1
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing
+  source: own work
+  classids: [hexscrew1,hexscrew2]
+- filename: hex2
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing
+  source: own work
+  classids: [hexbolt1,hexbolt2]
+...
+

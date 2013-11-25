@@ -15,18 +15,17 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ---
-collection:
-    name: BOLTS washers
-    description: various standard washers
-    author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-    license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-    blt-version: 0.2
+id: washer
+name: BOLTS washers
+description: various standard washers
+author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+blt-version: 0.3
 classes:
   - id: plainwasher1
     naming:
       template: Plain washer %s - %s
       substitute: [standard, key]
-    drawing: washer/washer1.png
     description: plain washer
     standard: [ISO7089, EN7089, DINENISO7089, DINEN27089, DIN125A]
     parameters:
@@ -103,7 +102,6 @@ classes:
     naming:
       template: Plain washer %s - %s
       substitute: [standard, key]
-    drawing: washer/washer1.png
     description: plain washer
     standard: [DIN126, DINISO7091, DINENISO7091, ISO7091]
     parameters:
@@ -147,7 +145,6 @@ classes:
     naming:
       template: Plain washer %s - %s
       substitute: [standard, key]
-    drawing: washer/washer1.png
     description: plain washer for cheese head screws
     standard: [DIN433, ISO7092, DINISO7092, DINENISO7092]
     parameters:
@@ -190,7 +187,6 @@ classes:
     naming:
       template: Heavy duty plain washer %s - %s
       substitute: [standard, key]
-    drawing: washer/washer1.png
     description: heavy duty plain washer
     standard: DIN7349
     parameters:

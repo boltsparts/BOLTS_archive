@@ -15,18 +15,17 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ---
-collection:
-    name: BOLTS hexagon fasteners
-    description: various standard hex bolts and screws
-    author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-    license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-    blt-version: 0.2
+id: hex
+name: BOLTS hexagon fasteners
+description: various standard hex bolts and screws
+author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+blt-version: 0.3
 classes:
   - id: hexscrew1
     naming:
         template:  Hexagon head screw %s - %s %d
         substitute: [standard, key, l]
-    drawing: hex/hex1.png
     description: hexagon head screw
     standard: DIN933
     status: withdrawn
@@ -84,7 +83,6 @@ classes:
     naming:
         template: Hexagon head screw %s - %s %d
         substitute: [standard, key, l]
-    drawing: hex/hex1.png
     description: hexagon head screw
     standard: [ISO4017, DINENISO4017, DINEN24017]
     parameters:
@@ -130,7 +128,6 @@ classes:
     naming:
         template: Hexagon head bolt %s - %s %d
         substitute: [standard, key, l]
-    drawing: hex/hex2.png
     description: hexagon head bolt
     standard: DIN931
     status: withdrawn
@@ -175,7 +172,6 @@ classes:
     naming:
         template: Hexagon head bolt %s - %s %d
         substitute: [standard, key, l]
-    drawing: hex/hex2.png
     description: hexagon head bolt
     standard: [ISO4014, DINENISO4014, DINEN24014]
     replaces: DIN931

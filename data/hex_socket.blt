@@ -15,12 +15,12 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ---
-collection:
-    name: BOLTS hexagon socket fasteners
-    description: various standard hex socket bolts and screws
-    author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-    license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-    blt-version: 0.2
+id: hex_socket
+name: BOLTS hexagon socket fasteners
+description: various standard hex socket bolts and screws
+author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+blt-version: 0.3
 classes:
   - id: hexsocketcountersunk
     naming:

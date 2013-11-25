@@ -15,18 +15,17 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ---
-collection:
-    name: BOLTS nuts
-    description: various standard nuts
-    author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-    license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-    blt-version: 0.2
+id: nut
+name: BOLTS nuts
+description: various standard nuts
+author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+blt-version: 0.3
 classes:
   - id: hexagonthinnut1
     naming:
       template: Hexagon thin nut %s - %s
       substitute: [standard, key]
-    drawing: nut/nut1.png
     description: hexagon thin nuts
     standard: [ISO4035, DINENISO4035]
     replaces: DIN439B
@@ -76,7 +75,6 @@ classes:
     naming:
         template: Hexagon thin nut %s - %s
         substitute: [standard, key]
-    drawing: nut/nut1.png
     description: hexagon thin nuts
     standard: DIN439B
     status: withdrawn
@@ -126,7 +124,6 @@ classes:
     naming:
       template: Hexagon nut %s - %s
       substitute: [standard, key]
-    drawing: nut/nut1.png
     description: hexagon nuts
     standard: ISO4032
     replaces: DIN934
@@ -193,7 +190,6 @@ classes:
     naming:
       template: Hexagon nut %s - %s
       substitute: [standard, key]
-    drawing: nut/nut1.png
     description: hexagon nuts
     standard: DIN934
     status: withdrawn
@@ -260,7 +256,6 @@ classes:
     naming:
       template: Hexagon nut %s - %s
       substitute: [standard, key]
-    drawing: nut/nut1.png
     description: finished hexagon nut
     standard: [ANSI B18.2.2, ASME B18.2.2]
     status: active

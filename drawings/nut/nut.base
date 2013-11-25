@@ -1,0 +1,9 @@
+---
+- filename: nut1
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing
+  source: own work
+  classids: [hexagonthinnut1, hexagonthinnut2,hexagonnut1,hexagonnut2,hexagonnut3]
+...
+
