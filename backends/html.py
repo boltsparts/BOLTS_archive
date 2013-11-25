@@ -24,7 +24,7 @@ from shutil import copytree, copyfile
 from codecs import open
 
 from common import BackendExporter
-
+from license import LICENSES_SHORT
 import statistics, checker, openscad
 
 #inspired by html.py but avoiding the dependency
@@ -118,6 +118,11 @@ class HTMLExporter(BackendExporter):
 			params["contributors"] = str(len(contributors_names))
 			fid.write(self.templates["statistics"].substitute(params))
 
+		#write download page
+		with open(join(out_root,"downloads.html"),"w","utf8") as fid:
+			content = self._get_download_content()
+			fid.write(self.templates["downloads"].substitute(content))
+
 		#write task page
 		with open(join(out_root,"tasks.html"),'w','utf8') as fid:
 			content = self._get_task_page_content()
@@ -183,6 +188,61 @@ class HTMLExporter(BackendExporter):
 		header = ["Name", "Description"]
 		params["bodies"] = html_table(data,header)
 
+		return params
+
+	def _get_download_content(self):
+		asset_path = join(self.repo.path,"downloads")
+		backends = ["freecad","openscad"]
+
+		#find most current release
+		self.release = {}
+		self.development = {}
+
+		for backend in backends:
+			self.release[backend] = {}
+			self.development[backend] = {}
+			for filename in listdir(join(asset_path,backend)):
+				basename,ext = splitext(filename)
+				if ext == ".gz":
+					ext = ".tar.gz"
+					basename = splitext(basename)[0]
+				parts = basename.split("_")
+				version_string = parts[2]
+
+				#some old development snapshots have no license in filename
+				license = "none"
+				if len(parts) > 3:
+					license = parts[3]
+
+				kind = self.development[backend]
+				version = None
+				try:
+					version = int(version_string)
+				except ValueError:
+					version = float(version_string)
+					kind = self.release[backend]
+
+				if not license in kind:
+					kind[license] = {}
+				if not ext in kind[license]:
+					kind[license][ext] = (version, join(backend,filename))
+				elif version > kind[license][ext][0]:
+					kind[license][ext] = (version, join(backend,filename))
+
+		params = {}
+
+		for kind,kind_name in zip([self.release, self.development],
+			["release","development"]):
+			for backend in backends:
+				rows = []
+				for license in ["lgpl2.1+","gpl3"]:
+					if license in kind[backend]:
+						rows.append([LICENSES_SHORT[license],
+							'<a href="downloads/%s">.tar.gz</a>' % (kind[backend][license][".tar.gz"][1]),
+							'<a href="downloads/%s">.zip</a>' % (kind[backend][license][".zip"][1])])
+				if len(rows) == 0:
+					rows = [["No %s distribution available" % kind_name]]
+				params["%s%s" % (backend, kind_name)] = html_table(rows)
 		return params
 
 	def _get_collection_content(self,coll):
