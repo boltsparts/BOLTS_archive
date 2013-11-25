@@ -170,6 +170,11 @@ class HTMLExporter(BackendExporter):
 			[["%s geometry" % r["database"], r["id"],r["license_name"],r["license_url"],r["author_names"]]
 				for r in self.checker.get_unsupported_base_license_table()],
 			["Type","Id/Filename","License name","License url", "Authors"])
+
+		params["strayfiletable"] = html_table(
+			[[r["filename"],["path"]]
+				for r in self.checker.get_stray_files_table()],
+			["Filename","Path"])
 		return params
 
 	def _get_specs_index_content(self):

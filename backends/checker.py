@@ -161,6 +161,90 @@ class CheckerExporter(BackendExporter):
 				rows.append(row)
 		return rows
 
+	def get_stray_files_table(self):
+		rows = []
+		for coll in self.repo.collections:
+			path = join(self.repo.path,"freecad",coll.id)
+			if not exists(path):
+				continue
+			files = listdir(path)
+
+			#remove files known from bases
+			for cl in coll.classes_by_ids():
+				if not cl.id in self.freecad.getbase:
+					continue
+				base = self.freecad.getbase[cl.id]
+				if base.filename in files:
+					files.remove(base.filename)
+
+			#check what is left
+			for filename in files:
+				if splitext(filename)[1] == ".base":
+					continue
+				row = {}
+				row["filename"] = filename
+				row["collection"] = coll.id
+				row["path"] = path
+				rows.append(row)
+
+		for coll in self.repo.collections:
+			path = join(self.repo.path,"openscad",coll.id)
+			if not exists(path):
+				continue
+			files = listdir(path)
+
+			#remove files known from bases
+			for cl in coll.classes_by_ids():
+				if not cl.id in self.openscad.getbase:
+					continue
+				base = self.openscad.getbase[cl.id]
+				if base.filename in files:
+					files.remove(base.filename)
+
+			#check what is left
+			for filename in files:
+				if splitext(filename)[1] == ".base":
+					continue
+				row = {}
+				row["filename"] = filename
+				row["collection"] = coll.id
+				row["path"] = path
+				rows.append(row)
+
+		for coll in self.repo.collections:
+			path = join(self.repo.path,"drawings",coll.id)
+			if not exists(path):
+				continue
+			files = listdir(path)
+
+			#remove files known from bases
+			for cl in coll.classes_by_ids():
+				if not cl.id in self.drawings.getbase:
+					continue
+				drawing = self.drawings.getbase[cl.id]
+				if not drawing.get_png() is None:
+					if basename(drawing.get_png()) in files:
+						files.remove(basename(drawing.get_png()))
+				if not drawing.get_svg() is None:
+					if basename(drawing.get_svg()) in files:
+						files.remove(basename(drawing.get_svg()))
+
+			#check what is left
+			for filename in files:
+				if splitext(filename)[1] == ".base":
+					continue
+				row = {}
+				row["filename"] = filename
+				row["collection"] = coll.id
+				row["path"] = path
+				rows.append(row)
+		return rows
+
+
+
+
+
+
 
 
 	
