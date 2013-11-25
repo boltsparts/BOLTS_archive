@@ -16,14 +16,77 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 from PyQt4 import QtGui, QtCore, uic
-import FreeCAD
-import FreeCADGui
+import FreeCAD, FreeCADGui
+import Part, Sketcher
 import sys
 from os import listdir
 from os.path import dirname, join
-from BOLTS.bolttools import blt_parser
+from BOLTS.bolttools import blt
+from BOLTS.bolttools import freecad
 bolts_path = dirname(__file__)
-from BOLTS.bolttools.blt_parser import BOLTSClass, BOLTSCollection, BOLTSRepository
+from BOLTS.bolttools.blt import BOLTSClass, BOLTSCollection, BOLTSRepository
+import importlib
+
+def add_part(base,params,doc):
+	if isinstance(base,freecad.BaseFunction):
+		module = importlib.import_module("BOLTS.freecad.%s.%s" %
+			(base.collection,base.module_name))
+		module.__dict__[base.name](params,doc)
+	elif isinstance(base,freecad.BaseFcstd):
+		#copy part to doc
+		src_doc = FreeCAD.openDocument(base.filename)
+		src_obj = src_doc.getObject(base.objectname)
+		if src_obj is None:
+			raise MalformedBaseError("No object %s found" % base.objectname)
+		#maps source name to destination object
+		srcdstmap = {}
+		dst_obj = self._recursive_copy(src_obj,doc,srcdstmap)
+
+		#set parameters
+		for obj_name,proptoparam in base.proptoparam.iteritems():
+			for prop,param in proptoparam.iteritems():
+				setattr(srcdstmap[obj_name],prop,params[param])
+
+		#finish presentation
+		dst_obj.touch()
+		doc.recompute()
+		FreeCADGui.getDocument(doc.Name).getObject(dst_obj.Name).Visibility = True
+		FreeCAD.setActiveDocument(doc.Name)
+		FreeCAD.closeDocument(src_doc.Name)
+
+
+def copy_part_recursive(self,src_obj,dst_doc,srcdstmap):
+	# pylint: disable=F0401
+
+	if src_obj.Name in srcdstmap:
+		return srcdstmap[src_obj.Name]
+	obj_copy = dst_doc.copyObject(src_obj)
+	srcdstmap[src_obj.Name] = obj_copy
+	for prop_name in src_obj.PropertiesList:
+		prop = src_obj.getPropertyByName(prop_name)
+		if isinstance(prop,tuple) or isinstance(prop,list):
+			new_prop = []
+			for p_item in prop:
+				if isinstance(p_item,Part.Feature):
+					new_prop.append(copy_part_recursive(p_item,dst_doc,srcdstmap))
+				elif isinstance(p_item,Sketcher.Sketch):
+					new_prop.append(dst_doc.copyObject(p_item))
+				else:
+					new_prop.append(p_item)
+			if isinstance(prop,tuple):
+				new_prop = tuple(new_prop)
+			setattr(obj_copy,prop_name,new_prop)
+		elif isinstance(prop,Sketcher.Sketch):
+			setattr(obj_copy,prop_name,dst_doc.copyObject(prop))
+		elif isinstance(prop,Part.Feature):
+			setattr(obj_copy,prop_name,copy_part_recursive(prop,dst_doc,srcdstmap))
+		else:
+			setattr(obj_copy,prop_name,src_obj.getPropertyByName(prop_name))
+	obj_copy.touch()
+	gui_doc = FreeCADGui.getDocument(dst_doc.Name)
+	gui_doc.getObject(obj_copy.Name).Visibility = False
+	return obj_copy
+
 
 #get ui from designer file
 Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
@@ -112,12 +175,13 @@ class TableIndexWidget(QTableIndexWidget):
 		return str(self.ui.comboBox.currentText())
 
 class BoltsWidget(QBoltsWidget):
-	def __init__(self,repo):
+	def __init__(self,repo,freecad):
 		QBoltsWidget.__init__(self)
 		self.ui = Ui_BoltsWidget()
 		self.ui.setupUi(self)
 
 		self.repo = repo
+		self.freecad = freecad
 
 		self.param_widgets = {}
 		self.props_widgets = {}
@@ -132,7 +196,7 @@ class BoltsWidget(QBoltsWidget):
 			coll_item = QtGui.QTreeWidgetItem(self.coll_root,[coll.name, coll.description])
 			coll_item.setData(0,32,coll)
 			for cl in coll.classes:
-				if not cl.id in self.repo.freecad.getbase:
+				if not cl.id in self.freecad.getbase:
 					continue
 				cl_item = QtGui.QTreeWidgetItem(coll_item,[cl.name, cl.description])
 				cl_item.setData(0,32,cl)
@@ -142,7 +206,7 @@ class BoltsWidget(QBoltsWidget):
 			std_item = QtGui.QTreeWidgetItem(self.std_root,[body, "Standards issued by %s" % body])
 			std_item.setData(0,32,None)
 			for cl in repo.standardized[body]:
-				if not cl.id in self.repo.freecad.getbase:
+				if not cl.id in self.freecad.getbase:
 					continue
 				cl_item = QtGui.QTreeWidgetItem(std_item,[cl.name, cl.description])
 				cl_item.setData(0,32,cl)
@@ -254,7 +318,8 @@ class BoltsWidget(QBoltsWidget):
 					(params[key], lengths[tp]))
 
 		#add part
-		self.repo.freecad.getbase[data.id].add_part(params,FreeCAD.ActiveDocument)
+		base = self.freecad.getbase[data.id]
+		add_part(base,params,FreeCAD.ActiveDocument)
 		FreeCADGui.SendMsgToActiveView("ViewFit")
 
 	def on_partsTree_itemSelectionChanged(self):
@@ -277,7 +342,7 @@ class BoltsWidget(QBoltsWidget):
 
 		if isinstance(data,BOLTSClass):
 			self.setup_props_class(data)
-			self.setup_param_widgets(data,self.repo.freecad.getbase[data.id])
+			self.setup_param_widgets(data,self.freecad.getbase[data.id])
 		elif isinstance(data,BOLTSCollection):
 			self.setup_props_collection(data)
 

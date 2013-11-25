@@ -17,30 +17,29 @@
 
 from os.path import join, exists, dirname
 from os import listdir
-from bolttools import blt_parser
-from bolttools import freecad
+import bolttools.blt
+import bolttools.freecad
 from PyQt4 import QtCore
 
-from freecad.gui.freecad_bolts import BoltsWidget, getMainWindow
+from gui.freecad_bolts import BoltsWidget, getMainWindow
+
+import FreeCAD, Part
 
 #import repo
 rootpath =  dirname(__file__)
-repo = blt_parser.BOLTSRepository(rootpath)
+repo = bolttools.blt.BOLTSRepository(rootpath)
+freecad = bolttools.freecad.FreeCADData(rootpath)
 
 widget = None
 
-def show_widget(repo,widget):
-	print repo, widget
-	if widget is None:
-		widget = BoltsWidget(repo)
+if widget is None:
+	widget = BoltsWidget(repo,freecad)
 
-		mw = getMainWindow()
-		mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
-	else:
-		widget.show()
-	return widget
+	mw = getMainWindow()
+	mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
+else:
+	widget.show()
 
-import FreeCAD, Part
 def make_drawing(scale,obj):
 	doc = FreeCAD.ActiveDocument
 	page = doc.addObject("Drawing::FeaturePage","Page")
