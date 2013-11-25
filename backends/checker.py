@@ -34,30 +34,7 @@ class CheckerExporter(BackendExporter):
 		self.drawings = drawings
 
 	def write_output(self,out_path):
-		tables = [
-			self.get_missing_base_table(),
-			self.get_missing_classes_table(),
-			self.get_missing_classes_table(),
-			self.get_missing_common_parameters_table(),
-			self.get_missing_image_table(),
-			self.get_unsupported_coll_license_table(),
-			self.get_unsupported_base_license_table()]
-		names = [
-			"missing_base_table",
-			"missing_classes_table",
-			"missing_classes_table",
-			"missing_common_parameters_table",
-			"missing_image_table",
-			"unsupported_coll_license_table",
-			"unsupported_base_license_table"]
-
-		self.clear_output_dir(out_path)
-
-		for table,name in zip(tables,names):
-			fid = open(join(out_path,name + ".dat"),"w")
-			for row in table:
-				fid.write(str(row) + "\n")
-			fid.close()
+		pass
 
 	def get_missing_base_table(self):
 		rows = []
@@ -117,7 +94,7 @@ class CheckerExporter(BackendExporter):
 					rows.append(row)
 		return rows
 
-	def get_missing_image_table(self):
+	def get_missing_drawings_table(self):
 		rows = []
 		for coll in self.repo.collections:
 			for cl in coll.classes_by_ids():
@@ -126,6 +103,16 @@ class CheckerExporter(BackendExporter):
 					row["class"] = cl
 					row["collection"] = coll.id
 					rows.append(row)
+		return rows
+
+	def get_missing_svg_drawings_table(self):
+		rows = []
+		for id,draw in self.drawings.getbase.iteritems():
+			if draw.get_svg() is None:
+				row = {}
+				row["id"] = id
+				row["drawing"] = draw
+				rows.append(row)
 		return rows
 
 	def get_unsupported_coll_license_table(self):
