@@ -58,8 +58,8 @@ class HTMLExporter(BackendExporter):
 		self.openscad = oscad
 		self.drawings = draws
 
-		self.statistics = statistics.StatisticsExporter(repo,freecad,openscad,drawings)
-		self.checker = checker.CheckerExporter(repo,freecad,openscad,drawings)
+		self.statistics = statistics.StatisticsExporter(repo,fcad,oscad,draws)
+		self.checker = checker.CheckerExporter(repo,fcad,oscad,draws)
 
 	def write_output(self,out_root):
 		#load templates
