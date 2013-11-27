@@ -15,9 +15,8 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-import yaml
 from os import listdir,makedirs
-from os.path import join, exists, basename
+from os.path import join, basename
 from shutil import copy
 # pylint: disable=W0622
 from codecs import open
@@ -80,7 +79,7 @@ class OpenSCADExporter(BackendExporter):
 		date = datetime.now()
 		version_fid.write('function BOLTS_date() = [%d,%d,%d];\n' %
 				(date.year, date.month, date.day))
-		version_fid.write('function BOLTS_license() = "%s";\n' % target_license);
+		version_fid.write('function BOLTS_license() = "%s";\n' % target_license)
 		version_fid.close()
 		bolts_fid.write("include <common/version.scad>\n")
 		for std in standard_fids:

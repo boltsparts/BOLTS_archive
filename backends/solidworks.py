@@ -15,14 +15,9 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-import yaml
-from os import listdir,makedirs
-from os.path import join, exists, basename
-from shutil import copy, copyfile
-# pylint: disable=W0622
-from codecs import open
-import license
-from datetime import datetime
+from os import makedirs
+from os.path import join, exists
+from shutil import copyfile
 
 import xlwt
 

@@ -19,7 +19,7 @@ import string
 from os import listdir, makedirs
 from os.path import join, basename, splitext, exists
 import subprocess
-from shutil import copytree, copyfile
+from shutil import copyfile
 # pylint: disable=W0622
 from codecs import open
 
@@ -50,13 +50,13 @@ def prop_row(props,prop,value):
 
 
 class HTMLExporter(BackendExporter):
-	def __init__(self,repo,freecad,openscad,drawings):
+	def __init__(self,repo,fcad,oscad,draws):
 		BackendExporter.__init__(self,repo)
 		self.templates = {}
 
-		self.freecad = freecad
-		self.openscad = openscad
-		self.drawings = drawings
+		self.freecad = fcad
+		self.openscad = oscad
+		self.drawings = draws
 
 		self.statistics = statistics.StatisticsExporter(repo,freecad,openscad,drawings)
 		self.checker = checker.CheckerExporter(repo,freecad,openscad,drawings)
@@ -279,12 +279,12 @@ class HTMLExporter(BackendExporter):
 		backends = ["freecad","openscad"]
 
 		#find most current release
-		self.release = {}
-		self.development = {}
+		release = {}
+		development = {}
 
 		for backend in backends:
-			self.release[backend] = {}
-			self.development[backend] = {}
+			release[backend] = {}
+			development[backend] = {}
 			for filename in listdir(join(asset_path,backend)):
 				basename,ext = splitext(filename)
 				if ext == ".gz":
@@ -298,13 +298,13 @@ class HTMLExporter(BackendExporter):
 				if len(parts) > 3:
 					license = parts[3]
 
-				kind = self.development[backend]
+				kind = development[backend]
 				version = None
 				try:
 					version = int(version_string)
 				except ValueError:
 					version = float(version_string)
-					kind = self.release[backend]
+					kind = release[backend]
 
 				if not license in kind:
 					kind[license] = {}
@@ -315,7 +315,7 @@ class HTMLExporter(BackendExporter):
 
 		params = {}
 
-		for kind,kind_name in zip([self.release, self.development],
+		for kind,kind_name in zip([release, development],
 			["release","development"]):
 			for backend in backends:
 				rows = []

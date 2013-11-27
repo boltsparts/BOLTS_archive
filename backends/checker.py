@@ -13,14 +13,8 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import yaml
-import importlib
-from os import listdir, makedirs, remove
+from os import listdir
 from os.path import join, exists, basename, splitext
-from shutil import copy, move, copytree
-# pylint: disable=W0622
-from codecs import open
-from datetime import datetime
 
 from common import BackendExporter
 import license
@@ -132,32 +126,35 @@ class CheckerExporter(BackendExporter):
 		rows = []
 		for id, base in self.freecad.getbase.iteritems():
 			if not license.check_license(base.license_name,base.license_url):
+				row = {}
 				row["id"] = id
 				row["database"] = "FreeCAD"
-				row["license_name"] = coll.license_name
-				row["license_url"] = coll.license_url
-				row["author_names"] = coll.author_names
-				row["author_mails"] = coll.author_mails
+				row["license_name"] = base.license_name
+				row["license_url"] = base.license_url
+				row["author_names"] = base.author_names
+				row["author_mails"] = base.author_mails
 				rows.append(row)
 
 		for id, base in self.openscad.getbase.iteritems():
 			if not license.check_license(base.license_name,base.license_url):
+				row = {}
 				row["id"] = id
 				row["database"] = "OpenSCAD"
-				row["license_name"] = coll.license_name
-				row["license_url"] = coll.license_url
-				row["author_names"] = coll.author_names
-				row["author_mails"] = coll.author_mails
+				row["license_name"] = base.license_name
+				row["license_url"] = base.license_url
+				row["author_names"] = base.author_names
+				row["author_mails"] = base.author_mails
 				rows.append(row)
 
 		for id, base in self.drawings.getbase.iteritems():
 			if not license.check_license(base.license_name,base.license_url):
+				row = {}
 				row["id"] = id
 				row["database"] = "Drawings"
-				row["license_name"] = coll.license_name
-				row["license_url"] = coll.license_url
-				row["author_names"] = coll.author_names
-				row["author_mails"] = coll.author_mails
+				row["license_name"] = base.license_name
+				row["license_url"] = base.license_url
+				row["author_names"] = base.author_names
+				row["author_mails"] = base.author_mails
 				rows.append(row)
 		return rows
 

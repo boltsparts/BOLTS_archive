@@ -17,11 +17,9 @@
 
 #common stuff
 
-import re
 from os import listdir,makedirs, remove
 from os.path import join, exists, isfile
 from shutil import rmtree
-from copy import deepcopy
 
 class BackendExporter:
 	def __init__(self,repo):

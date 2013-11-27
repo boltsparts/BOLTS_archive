@@ -13,10 +13,8 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import yaml
-import importlib
-from os import listdir, makedirs, remove
-from os.path import join, exists, basename, splitext
+from os import makedirs, remove
+from os.path import join, exists, basename
 from shutil import copy, move, copytree
 # pylint: disable=W0622
 from codecs import open
@@ -57,7 +55,7 @@ class FreeCADExporter(BackendExporter):
 
 		#freecad gui code
 		if not license.is_combinable_with("LGPL 2.1+",target_license):
-			raise IncompatibleLicenseEroor("FreeCAD gui files are licensed under LGPL 2.1+, which is not compatible with %s" % target_license)
+			raise IncompatibleLicenseError("FreeCAD gui files are licensed under LGPL 2.1+, which is not compatible with %s" % target_license)
 		if not exists(join(bolts_path,"freecad")):
 			makedirs(join(bolts_path,"freecad"))
 		if not exists(join(bolts_path,"data")):

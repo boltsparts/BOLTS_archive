@@ -76,8 +76,11 @@ LICENSE_LINKS = [
 ]
 
 LICENSE_GRAPH = dict((k,[]) for k in LICENSES)
-for a,b in LICENSE_LINKS:
-	LICENSE_GRAPH[a].append(b)
+def _populate_license_graph():
+	for a,b in LICENSE_LINKS:
+		LICENSE_GRAPH[a].append(b)
+
+_populate_license_graph()
 
 def is_combinable_with(a,b):
 	if a == b:
