@@ -15,7 +15,7 @@
 
 from os import makedirs, remove
 from os.path import join, exists, basename
-from shutil import copy, move, copytree
+from shutil import copy, move, copytree, rmtree
 # pylint: disable=W0622
 from codecs import open
 from datetime import datetime
@@ -45,6 +45,9 @@ class FreeCADExporter(BackendExporter):
 		copytree(join(self.repo.path,"bolttools"),join(bolts_path,"bolttools"))
 		#remove the .git file, because it confuses git
 		remove(join(bolts_path,"bolttools",".git"))
+		#remove the test suite and documentation, to save space
+		rmtree(join(bolts_path,"bolttools","test"))
+		rmtree(join(bolts_path,"bolttools","doc"))
 
 		#generate version file
 		date = datetime.now()
