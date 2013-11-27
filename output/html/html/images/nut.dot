@@ -1,0 +1,54 @@
+digraph G {
+rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+subgraph cluster_cl {
+label="Classes";
+"hexagonthinnut1" [width=3, height=0.8, fixedsize=true];
+"hexagonthinnut2" [width=3, height=0.8, fixedsize=true];
+"hexagonnut1" [width=3, height=0.8, fixedsize=true];
+"hexagonnut2" [width=3, height=0.8, fixedsize=true];
+"hexagonnut3" [width=3, height=0.8, fixedsize=true];
+}
+subgraph cluster_std {
+label="Standards";
+"ISO4035" [width=3, height=0.8, fixedsize=true];
+"DINENISO4035" [width=3, height=0.8, fixedsize=true];
+"DIN439B" [width=3, height=0.8, fixedsize=true];
+"ISO4032" [width=3, height=0.8, fixedsize=true];
+"DIN934" [width=3, height=0.8, fixedsize=true];
+"ANSI B18.2.2" [width=3, height=0.8, fixedsize=true];
+"ASME B18.2.2" [width=3, height=0.8, fixedsize=true];
+}
+subgraph cluster_fcd {
+label="FreeCAD";
+"nut.py:nut1" [width=4, height=0.8, fixedsize=true];
+"nut.py:nut1" [width=4, height=0.8, fixedsize=true];
+"nut.py:nut1" [width=4, height=0.8, fixedsize=true];
+"nut.py:nut1" [width=4, height=0.8, fixedsize=true];
+"nut.py:nut1" [width=4, height=0.8, fixedsize=true];
+}
+subgraph cluster_ocd {
+label="OpenSCAD";
+"nut.scad:nut1" [width=4, height=0.8, fixedsize=true];
+"nut.scad:nut1" [width=4, height=0.8, fixedsize=true];
+"nut.scad:nut1" [width=4, height=0.8, fixedsize=true];
+"nut.scad:nut1" [width=4, height=0.8, fixedsize=true];
+"nut.scad:nut1" [width=4, height=0.8, fixedsize=true];
+}
+"hexagonthinnut1" -> "nut.py:nut1";
+"hexagonthinnut1" -> "nut.scad:nut1";
+"ISO4035" -> "hexagonthinnut1";
+"DINENISO4035" -> "hexagonthinnut1";
+"hexagonthinnut2" -> "nut.py:nut1";
+"hexagonthinnut2" -> "nut.scad:nut1";
+"DIN439B" -> "hexagonthinnut2";
+"hexagonnut1" -> "nut.py:nut1";
+"hexagonnut1" -> "nut.scad:nut1";
+"ISO4032" -> "hexagonnut1";
+"hexagonnut2" -> "nut.py:nut1";
+"hexagonnut2" -> "nut.scad:nut1";
+"DIN934" -> "hexagonnut2";
+"hexagonnut3" -> "nut.py:nut1";
+"hexagonnut3" -> "nut.scad:nut1";
+"ANSI B18.2.2" -> "hexagonnut3";
+"ASME B18.2.2" -> "hexagonnut3";
+}

@@ -1,0 +1,89 @@
+---
+  layout: base
+  title: DINISO7092
+---
+
+<div class="page-title-bar">
+  <div class="inner-content">
+    <h2>{{ page.title }}</h2>
+  </div>
+</div>
+
+<div id="content">
+  <div class="inner-content">
+    <table>
+      <tr><th><strong>Author:</strong></th><td><a href='mailto:jreinhardt@ist-dein-freund.de'>Johannes Reinhardt</a></td></tr>
+<tr><th><strong>License:</strong></th><td><a href='http://www.gnu.org/licenses/lgpl-2.1'>LGPL 2.1+</a></td></tr>
+<tr><th><strong>Collection:</strong></th><td><a href='../collections/washer.html'>BOLTS washers</a></td></tr>
+<tr><th><strong>Identical to:</strong></th><td><a href='DIN433.html'>DIN433</a>, <a href='ISO7092.html'>ISO7092</a>, <a href='DINENISO7092.html'>DINENISO7092</a></td></tr>
+<tr><th><strong>Status:</strong></th><td>active</td></tr>
+<tr><th><strong>Standard body:</strong></th><td><a href='../bodies/DINISO.html'>DINISO</a></td></tr>
+<tr><th><strong>Class ID:</strong></th><td>plainwasherforcheesehead</td></tr>
+<tr><th><strong>Source:</strong></th><td>http://almetal.nl/en/techinfo/wsh/wd433.htm</td></tr>
+    </table>
+  </div>
+
+  <div class="inner-content">
+    <h1>Drawing</h1>
+    <img width=600 src="../drawings/no_drawing.png"/>
+  </div>
+
+  <div class="inner-content">
+    <h1>Description</h1>
+    plain washer for cheese head screws
+  </div>
+
+  <div class="inner-content">
+    <h1>FreeCAD</h1>
+    <table class="table">
+      <tr><th><strong>Author:</strong></th><td><a href='mailto:jreinhardt@ist-dein-freund.de'>Johannes Reinhardt</a></td></tr>
+<tr><th><strong>License:</strong></th><td><a href='http://www.gnu.org/licenses/lgpl-2.1'>LGPL 2.1+</a></td></tr>
+    </table>
+  </div>
+
+  <div class="inner-content">
+    <h1>OpenSCAD</h1>
+    <table class="table">
+      <tr><th><strong>Author:</strong></th><td><a href='mailto:jreinhardt@ist-dein-freund.de'>Johannes Reinhardt</a></td></tr>
+<tr><th><strong>License:</strong></th><td><a href='http://www.gnu.org/licenses/lgpl-2.1'>LGPL 2.1+</a></td></tr>
+    </table>
+      <h2>Incantations</h2>
+{% highlight python %}
+DINISO7092(key="M3");
+dims = DINISO7092_dims(key="M3");
+{% endhighlight %}
+
+  </div>
+
+  <div class="inner-content">
+    <h1>Dimensions</h1>
+    <table class="table">
+      <tr><th>key</th> <th>d1 (mm)</th> <th>d2 (mm)</th> <th>s (mm)</th><tr>
+<tr><td>M1</td> <td>1.1</td> <td>2.5</td> <td>0.3</td></tr>
+<tr><td>M1.2</td> <td>1.3</td> <td>3.0</td> <td>0.3</td></tr>
+<tr><td>M1.4</td> <td>1.5</td> <td>3.0</td> <td>0.3</td></tr>
+<tr><td>M1.6</td> <td>1.7</td> <td>3.5</td> <td>0.3</td></tr>
+<tr><td>M1.7</td> <td>1.8</td> <td>4.0</td> <td>0.3</td></tr>
+<tr><td>M1.8</td> <td>1.9</td> <td>4.0</td> <td>0.3</td></tr>
+<tr><td>M2</td> <td>2.2</td> <td>4.5</td> <td>0.3</td></tr>
+<tr><td>M2.3</td> <td>2.5</td> <td>5.0</td> <td>0.5</td></tr>
+<tr><td>M2.5</td> <td>2.7</td> <td>5.0</td> <td>0.5</td></tr>
+<tr><td>M2.6</td> <td>2.8</td> <td>5.5</td> <td>0.5</td></tr>
+<tr><td>M3</td> <td>3.2</td> <td>6.0</td> <td>0.5</td></tr>
+<tr><td>M3.5</td> <td>3.7</td> <td>7.0</td> <td>0.5</td></tr>
+<tr><td>M4</td> <td>4.3</td> <td>8.0</td> <td>0.5</td></tr>
+<tr><td>M5</td> <td>5.3</td> <td>9.0</td> <td>1.0</td></tr>
+<tr><td>M6</td> <td>6.4</td> <td>11.0</td> <td>1.6</td></tr>
+<tr><td>M8</td> <td>8.4</td> <td>15.0</td> <td>1.6</td></tr>
+<tr><td>M10</td> <td>10.5</td> <td>18.0</td> <td>1.6</td></tr>
+<tr><td>M12</td> <td>13.0</td> <td>20.0</td> <td>2.0</td></tr>
+<tr><td>M14</td> <td>15.0</td> <td>24.0</td> <td>2.5</td></tr>
+<tr><td>M16</td> <td>17.0</td> <td>28.0</td> <td>2.5</td></tr>
+<tr><td>M18</td> <td>19.0</td> <td>30.0</td> <td>2.5</td></tr>
+<tr><td>M20</td> <td>21.0</td> <td>34.0</td> <td>3.0</td></tr>
+<tr><td>M24</td> <td>25.0</td> <td>39.0</td> <td>4.0</td></tr>
+<tr><td>M30</td> <td>31.0</td> <td>50.0</td> <td>4.0</td></tr>
+<tr><td>M36</td> <td>37.0</td> <td>60.0</td> <td>5.0</td></tr>
+    </table>
+  </div>
+</div>

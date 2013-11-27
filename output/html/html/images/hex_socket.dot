@@ -1,0 +1,33 @@
+digraph G {
+rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+subgraph cluster_cl {
+label="Classes";
+"hexsocketcountersunk" [width=3, height=0.8, fixedsize=true];
+"hexsocketheadcap" [width=3, height=0.8, fixedsize=true];
+}
+subgraph cluster_std {
+label="Standards";
+"ISO10642" [width=3, height=0.8, fixedsize=true];
+"DINISO10642" [width=3, height=0.8, fixedsize=true];
+"DIN7991" [width=3, height=0.8, fixedsize=true];
+"ISO4762" [width=3, height=0.8, fixedsize=true];
+"DINENISO4762" [width=3, height=0.8, fixedsize=true];
+"DIN912" [width=3, height=0.8, fixedsize=true];
+}
+subgraph cluster_fcd {
+label="FreeCAD";
+}
+subgraph cluster_ocd {
+label="OpenSCAD";
+"hex_socket.scad:hex_socket1" [width=4, height=0.8, fixedsize=true];
+"hex_socket.scad:hex_socket2" [width=4, height=0.8, fixedsize=true];
+}
+"hexsocketcountersunk" -> "hex_socket.scad:hex_socket1";
+"ISO10642" -> "hexsocketcountersunk";
+"DINISO10642" -> "hexsocketcountersunk";
+"DIN7991" -> "hexsocketcountersunk";
+"hexsocketheadcap" -> "hex_socket.scad:hex_socket2";
+"ISO4762" -> "hexsocketheadcap";
+"DINENISO4762" -> "hexsocketheadcap";
+"DIN912" -> "hexsocketheadcap";
+}

@@ -14,36 +14,74 @@
     <h1>Bases</h1>
     <p> For some classes a backend specific geometry is missing for one or more CAD packages. Detailed information how to add a geometry can be found <a href="{{ site.baseurl }}/doc/openscad/basemodule.html">here</a> for OpenSCAD, and <a href="{{ site.baseurl }}/doc/freecad/basefunction.html">here</a> and <a href="{{ site.baseurl }}/doc/freecad/basefcstd.html">here</a> for FreeCAD.
     <table class="table">
-      <tr><th>Class id</th> <th>Standards</th> <th>FreeCAD</th> <th>OpenSCAD</th><tr>
-<tr class='partial'><td>tslot20x20</td> <td>None</td> <td>Yes (Fcstd)</td> <td>Deactivated</td></tr>
-<tr class='partial'><td>tslot20x20-1s</td> <td>None</td> <td>Yes (Fcstd)</td> <td>Deactivated</td></tr>
-<tr class='partial'><td>tslot20x20-2s</td> <td>None</td> <td>Yes (Fcstd)</td> <td>Deactivated</td></tr>
-<tr class='partial'><td>tslot20x20-3s</td> <td>None</td> <td>Yes (Fcstd)</td> <td>Deactivated</td></tr>
-<tr class='partial'><td>doublerowradialbearing</td> <td>['DIN625-3']</td> <td>Yes (function)</td> <td>Deactivated</td></tr>
-<tr class='partial'><td>needleroller</td> <td>['DIN5405-1', 'ISO 3030']</td> <td>Yes (function)</td> <td>Deactivated</td></tr>
-<tr class='partial'><td>cylindricalrollerbearing</td> <td>['DIN5412-1']</td> <td>Yes (function)</td> <td>Deactivated</td></tr>
-<tr class='partial'><td>hexsocketcountersunk</td> <td>['ISO10642', 'DINISO10642', 'DIN7991']</td> <td>Deactivated</td> <td>Yes (module)</td></tr>
-<tr class='partial'><td>hexsocketheadcap</td> <td>['ISO4762', 'DINENISO4762', 'DIN912']</td> <td>Deactivated</td> <td>Yes (module)</td></tr>
+      <tr><th>Class id</th> <th>Collection</th> <th>Standards</th> <th>FreeCAD</th> <th>OpenSCAD</th><tr>
+<tr><td>tslot20x20</td> <td>profiles</td> <td>None</td> <td>True</td> <td>False</td></tr>
+<tr><td>tslot20x20-1s</td> <td>profiles</td> <td>None</td> <td>True</td> <td>False</td></tr>
+<tr><td>tslot20x20-2s</td> <td>profiles</td> <td>None</td> <td>True</td> <td>False</td></tr>
+<tr><td>tslot20x20-3s</td> <td>profiles</td> <td>None</td> <td>True</td> <td>False</td></tr>
+<tr><td>doublerowradialbearing</td> <td>bearings</td> <td>['DIN625-3']</td> <td>True</td> <td>False</td></tr>
+<tr><td>needleroller</td> <td>bearings</td> <td>['DIN5405-1', 'ISO 3030']</td> <td>True</td> <td>False</td></tr>
+<tr><td>cylindricalrollerbearing</td> <td>bearings</td> <td>['DIN5412-1']</td> <td>True</td> <td>False</td></tr>
+<tr><td>hexsocketcountersunk</td> <td>hex_socket</td> <td>['ISO10642', 'DINISO10642', 'DIN7991']</td> <td>False</td> <td>True</td></tr>
+<tr><td>hexsocketheadcap</td> <td>hex_socket</td> <td>['ISO4762', 'DINENISO4762', 'DIN912']</td> <td>False</td> <td>True</td></tr>
     </table>
   </div>
 
   <div class="inner-content">
     <h1>Drawings</h1>
-    <p> For some classes a drawing is missing that gives a visual overview over the part and clarifies the meaning of the parameters. Instructions how to add one can be found <a href="{{ site.baseurl }}/doc/general/drawing.html">here</a>
+    <p> For some classes a drawing is missing that gives a visual overview over the part and clarifies the meaning of the parameters. Instructions how to add one can be found <a href="{{ site.baseurl }}/doc/general/drawing.html">here</a></p>
     <table class="table">
-      <tr><th>Class id</th> <th>Standards</th> <th>Collection id</th><tr>
-<tr><td>tslot20x20</td> <td>None</td> <td>profiles</td></tr>
-<tr><td>tslot20x20-1s</td> <td>None</td> <td>profiles</td></tr>
-<tr><td>tslot20x20-2s</td> <td>None</td> <td>profiles</td></tr>
-<tr><td>tslot20x20-3s</td> <td>None</td> <td>profiles</td></tr>
-<tr><td>plainwasherchamfered</td> <td>['ISO7090', 'DINISO7090', 'DINENISO7090', 'DIN125B']</td> <td>washer</td></tr>
-<tr><td>hexsocketcountersunk</td> <td>['ISO10642', 'DINISO10642', 'DIN7991']</td> <td>hex_socket</td></tr>
-<tr><td>hexsocketheadcap</td> <td>['ISO4762', 'DINENISO4762', 'DIN912']</td> <td>hex_socket</td></tr>
+      <tr><th>Class id</th> <th>Collection</th> <th>Standards</th><tr>
+<tr><td>tslot20x20</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>tslot20x20-1s</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>tslot20x20-2s</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>tslot20x20-3s</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>plainwasherchamfered</td> <td>washer</td> <td>['ISO7090', 'DINISO7090', 'DINENISO7090', 'DIN125B']</td></tr>
+<tr><td>hexsocketcountersunk</td> <td>hex_socket</td> <td>['ISO10642', 'DINISO10642', 'DIN7991']</td></tr>
+<tr><td>hexsocketheadcap</td> <td>hex_socket</td> <td>['ISO4762', 'DINENISO4762', 'DIN912']</td></tr>
     </table>
-    <p> For other classes no svg version of the drawing is available.
+    <p> For some classes only drawings in the png format are available:</p>
     <table class="table">
-      <tr><th>Drawing name</th> <th>affected classes and collections</th><tr>
-<tr><td>drawings/hex/hex1.svg</td> <td>[('hexscrew1', 'hex'), ('hexscrew2', 'hex')]</td></tr>
+      <tr><th>Filename</th> <th>Class ID</th><tr>
+<tr><td>hex1</td> <td>hexscrew2</td></tr>
+<tr><td>hex1</td> <td>hexscrew1</td></tr>
+    </table>
+  </div>
+
+  <div class="inner-content">
+    <h1>Common Parameters</h1>
+    <p> For some classes no common parameter combinations are specified. This prevents these classes from being exported in some backends that create individual files for a combination of parameters.
+    <table class="table">
+      <tr><th>Class ID</th> <th>Collection</th> <th>Standards</th><tr>
+<tr><td>hexscrew2</td> <td>hex</td> <td>['ISO4017', 'DINENISO4017', 'DINEN24017']</td></tr>
+<tr><td>hexbolt1</td> <td>hex</td> <td>['DIN931']</td></tr>
+<tr><td>hexbolt2</td> <td>hex</td> <td>['ISO4014', 'DINENISO4014', 'DINEN24014']</td></tr>
+<tr><td>genericpipe</td> <td>pipes</td> <td>None</td></tr>
+<tr><td>din11850range2</td> <td>pipes</td> <td>['DIN11850 Range 2']</td></tr>
+<tr><td>tslot20x20</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>tslot20x20-1s</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>tslot20x20-2s</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>tslot20x20-3s</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>doublerowradialbearing</td> <td>bearings</td> <td>['DIN625-3']</td></tr>
+<tr><td>axialthrustbearing</td> <td>bearings</td> <td>['DIN711', 'ISO104']</td></tr>
+<tr><td>needleroller</td> <td>bearings</td> <td>['DIN5405-1', 'ISO 3030']</td></tr>
+<tr><td>cylindricalrollerbearing</td> <td>bearings</td> <td>['DIN5412-1']</td></tr>
+<tr><td>plainwasherchamfered</td> <td>washer</td> <td>['ISO7090', 'DINISO7090', 'DINENISO7090', 'DIN125B']</td></tr>
+<tr><td>hexsocketcountersunk</td> <td>hex_socket</td> <td>['ISO10642', 'DINISO10642', 'DIN7991']</td></tr>
+<tr><td>hexsocketheadcap</td> <td>hex_socket</td> <td>['ISO4762', 'DINENISO4762', 'DIN912']</td></tr>
+    </table>
+  </div>
+
+  <div class="inner-content">
+    <h1>Stray Files</h1>
+    <p>Some files in the BOLTS repository are unaccounted for. This usually happens if files are not noted in the base files, and are therefore not used, or if content was removed or renamed, and associated files were left behind.
+    <table class="table">
+      <tr><th>Filename</th> <th>Path</th><tr>
+<tr><td>hex_socket1.png</td> <td>['path']</td></tr>
+<tr><td>hex_socket2.png</td> <td>['path']</td></tr>
+<tr><td>sealedbearing.svg</td> <td>['path']</td></tr>
+<tr><td>sealedbearing.png</td> <td>['path']</td></tr>
+<tr><td>washer2.png</td> <td>['path']</td></tr>
     </table>
   </div>
 

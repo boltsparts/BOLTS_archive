@@ -1,0 +1,70 @@
+---
+  layout: base
+  title: roundBattery
+---
+
+<div class="page-title-bar">
+  <div class="inner-content">
+    <h2>{{ page.title }}</h2>
+  </div>
+</div>
+
+<div id="content">
+  <div class="inner-content">
+    <table>
+      <tr><th><strong>Author:</strong></th><td><a href='mailto:jreinhardt@ist-dein-freund.de'>Johannes Reinhardt</a></td></tr>
+<tr><th><strong>License:</strong></th><td><a href='http://opensource.org/licenses/MIT'>MIT</a></td></tr>
+<tr><th><strong>Collection:</strong></th><td><a href='../collections/batteries.html'>BOLTS batteries</a></td></tr>
+<tr><th><strong>Class ID:</strong></th><td>roundBattery</td></tr>
+<tr><th><strong>Source:</strong></th><td>http://en.wikipedia.org/wiki/List_of_battery_sizes</td></tr>
+    </table>
+  </div>
+
+  <div class="inner-content">
+    <h1>Drawing</h1>
+    <img width=600 src="../drawings/no_drawing.png"/>
+  </div>
+
+  <div class="inner-content">
+    <h1>Description</h1>
+    Most common round single cell battery sizes
+  </div>
+
+  <div class="inner-content">
+    <h1>FreeCAD</h1>
+    <table class="table">
+      <tr><th><strong>Author:</strong></th><td><a href='mailto:jreinhardt@ist-dein-freund.de'>Johannes Reinhardt</a></td></tr>
+<tr><th><strong>License:</strong></th><td><a href='http://www.gnu.org/licenses/lgpl-2.1'>LGPL 2.1+</a></td></tr>
+    </table>
+  </div>
+
+  <div class="inner-content">
+    <h1>OpenSCAD</h1>
+    <table class="table">
+      <tr><th><strong>Author:</strong></th><td><a href='mailto:jreinhardt@ist-dein-freund.de'>Johannes Reinhardt</a></td></tr>
+<tr><th><strong>License:</strong></th><td><a href='http://www.gnu.org/licenses/lgpl-2.1'>LGPL 2.1+</a></td></tr>
+    </table>
+      <h2>Incantations</h2>
+{% highlight python %}
+roundBattery(T="AAA");
+dims = roundBattery_dims(T="AAA");
+{% endhighlight %}
+
+  </div>
+
+  <div class="inner-content">
+    <h1>Dimensions</h1>
+    <table class="table">
+      <tr><th>T</th> <th>h (mm)</th> <th>d (mm)</th><tr>
+<tr><td>1/2AA</td> <td>24.0</td> <td>14.5</td></tr>
+<tr><td>A</td> <td>50.0</td> <td>17.0</td></tr>
+<tr><td>AA</td> <td>50.5</td> <td>14.5</td></tr>
+<tr><td>AAA</td> <td>44.5</td> <td>10.5</td></tr>
+<tr><td>AAAA</td> <td>42.5</td> <td>8.3</td></tr>
+<tr><td>C</td> <td>50.0</td> <td>26.2</td></tr>
+<tr><td>D</td> <td>61.5</td> <td>34.2</td></tr>
+<tr><td>N</td> <td>30.2</td> <td>12.0</td></tr>
+<tr><td>Sub-C</td> <td>42.9</td> <td>22.2</td></tr>
+    </table>
+  </div>
+</div>
