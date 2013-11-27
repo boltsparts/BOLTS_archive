@@ -43,7 +43,7 @@ else:
 def make_drawing(scale,obj):
 	doc = FreeCAD.ActiveDocument
 	page = doc.addObject("Drawing::FeaturePage","Page")
-	page.Template = join(rootpath,"drawings","template.svg")
+	page.Template = join(rootpath,"assets","template.svg")
 
 
 	#front, side right, side left, rear, top, bottom, iso

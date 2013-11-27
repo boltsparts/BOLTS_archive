@@ -15,7 +15,7 @@
 
 from os import makedirs, remove
 from os.path import join, exists, basename
-from shutil import copy, move, copytree, rmtree
+from shutil import copy, move, copytree, copyfile, rmtree
 # pylint: disable=W0622
 from codecs import open
 from datetime import datetime
@@ -65,10 +65,10 @@ class FreeCADExporter(BackendExporter):
 			makedirs(join(bolts_path,"data"))
 		open(join(bolts_path,"freecad","__init__.py"),"w").close()
 
-		copytree(join(self.repo.path,"backends","freecad"),join(bolts_path,"gui"))
-
+		copytree(join(self.repo.path,"backends","freecad","gui"),join(bolts_path,"gui"))
+		copytree(join(self.repo.path,"backends","freecad","assets"),join(bolts_path,"assets"))
 		copytree(join(self.repo.path,"icons"),join(bolts_path,"icons"))
-		move(join(bolts_path,"gui","init.py"),join(bolts_path,"__init__.py"))
+		copyfile(join(self.repo.path,"backends","freecad","init.py"),join(bolts_path,"__init__.py"))
 		open(join(bolts_path,"gui","__init__.py"),"w").close()
 
 		for coll in self.repo.collections:
