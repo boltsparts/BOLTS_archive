@@ -137,6 +137,85 @@ class HTMLExporter(BackendExporter):
 
 			fid.write(self.templates["contributors"].substitute(params))
 
+		#write base graphs
+		for coll in self.repo.collections:
+			#write dot files
+			image_path = join(html_root,'images')
+			with open(join(image_path,'%s.dot' % coll.id),'w','utf8') as fid:
+				fid.write(self._get_coll_base_graph_dot(coll))
+
+			#render dots to svg
+			with open(join(image_path,"%s.svg" % coll.id),'w','utf8') as fid:
+				fid.write(subprocess.check_output(["dot","-Tsvg",join(image_path,"%s.dot" % coll.id)]))
+
+			#render dots to png
+			with open(join(image_path,"%s.png" % coll.id),'wb') as fid:
+				fid.write(subprocess.check_output(["dot","-Tpng",join(image_path,"%s.dot" % coll.id)]))
+
+	def _get_coll_base_graph_dot(self,coll):
+		res = []
+
+		res.append("digraph G {")
+		res.append("rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;")
+		std_cluster = ["subgraph cluster_std {"]
+		std_cluster.append('label="Standards";')
+		cl_cluster = ["subgraph cluster_cl {"]
+		cl_cluster.append('label="Classes";')
+		fcd_cluster = ["subgraph cluster_fcd {"]
+		fcd_cluster.append('label="FreeCAD";')
+		ocd_cluster = ["subgraph cluster_ocd {"]
+		ocd_cluster.append('label="OpenSCAD";')
+		links = []
+
+		layout_classes = "[width=3, height=0.8, fixedsize=true]"
+		layout_base = "[width=4, height=0.8, fixedsize=true]"
+		layout_standard = "[width=3, height=0.8, fixedsize=true]"
+
+		classes = []
+		for cl in coll.classes:
+			if not cl.id in classes:
+				cl_cluster.append('"%s" %s;' % (cl.id,layout_classes))
+
+				if (not self.freecad is None) and cl.id in self.freecad.getbase:
+					base = self.freecad.getbase[cl.id]
+					filename = basename(base.filename)
+					if base.type == "function":
+						fcd_cluster.append('"%s:%s" %s;' % (filename,base.name,layout_base))
+						links.append('"%s" -> "%s:%s";' % (cl.id, filename,base.name))
+					elif base.type == "fcstd":
+						fcd_cluster.append('"%s:%s" %s;' % (filename,base.objectname,layout_base))
+						links.append('"%s" -> "%s:%s";' % (cl.id, filename,base.objectname))
+
+				if (not self.openscad is None) and  cl.id in self.openscad.getbase:
+					base = self.openscad.getbase[cl.id]
+					filename = basename(base.filename)
+					if base.type == "module":
+						ocd_cluster.append('"%s:%s" %s;' % (filename,base.name,layout_base))
+						links.append('"%s" -> "%s:%s";' % (cl.id, filename,base.name))
+					elif base.type == "stl":
+						ocd_cluster.append('"%s:%s" %s;' % (filename,"STL",layout_base))
+						links.append('"%s" -> "%s:%s";' % (cl.id, filename,"STL"))
+
+				classes.append(cl.id)
+
+			if not cl.standard is None:
+				std_cluster.append('"%s" %s;' % (cl.name,layout_standard))
+				links.append('"%s" -> "%s";' % (cl.name, cl.id))
+
+		cl_cluster.append("}")
+		std_cluster.append("}")
+		fcd_cluster.append("}")
+		ocd_cluster.append("}")
+
+		res.extend(cl_cluster)
+		res.extend(std_cluster)
+		res.extend(fcd_cluster)
+		res.extend(ocd_cluster)
+		res.extend(links)
+		res.append("}")
+
+		return "\n".join(res)
+
 	def _get_task_page_content(self):
 		params = {}
 		params["missingbasetable"] = html_table(
@@ -285,6 +364,7 @@ class HTMLExporter(BackendExporter):
 		params["classes"] = html_table(data,header,row_classes)
 
 		return params
+
 
 	def _get_class_content(self,coll,cl):
 		params = {}
