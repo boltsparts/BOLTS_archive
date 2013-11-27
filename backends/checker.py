@@ -30,6 +30,7 @@ class CheckerExporter(BackendExporter):
 	def write_output(self,out_path):
 		pass
 
+	#classes for which no base geometries are available
 	def get_missing_base_table(self):
 		rows = []
 		for coll in self.repo.collections:
@@ -44,7 +45,8 @@ class CheckerExporter(BackendExporter):
 		return rows
 
 
-	def get_missing_classes_table(self):
+	#classes which are mentioned, but not defined
+	def get_unknown_classes_table(self):
 		rows = []
 		ids = []
 		for coll in self.repo.collections:
@@ -77,6 +79,7 @@ class CheckerExporter(BackendExporter):
 		return rows
 
 
+	#classes with no common parameters
 	def get_missing_common_parameters_table(self):
 		rows = []
 		for coll in self.repo.collections:
@@ -88,6 +91,7 @@ class CheckerExporter(BackendExporter):
 					rows.append(row)
 		return rows
 
+	#classes without drawings
 	def get_missing_drawings_table(self):
 		rows = []
 		for coll in self.repo.collections:
@@ -99,6 +103,7 @@ class CheckerExporter(BackendExporter):
 					rows.append(row)
 		return rows
 
+	#drawings without svg  version
 	def get_missing_svg_drawings_table(self):
 		rows = []
 		for id,draw in self.drawings.getbase.iteritems():
@@ -109,6 +114,7 @@ class CheckerExporter(BackendExporter):
 				rows.append(row)
 		return rows
 
+	#collections with unsupported licenses
 	def get_unsupported_coll_license_table(self):
 		rows = []
 		for coll in self.repo.collections:
@@ -122,6 +128,7 @@ class CheckerExporter(BackendExporter):
 				rows.append(row)
 		return rows
 
+	#bases with unsupported licenses
 	def get_unsupported_base_license_table(self):
 		rows = []
 		for id, base in self.freecad.getbase.iteritems():
@@ -158,6 +165,7 @@ class CheckerExporter(BackendExporter):
 				rows.append(row)
 		return rows
 
+	#files that are present, but nowhere mentioned
 	def get_stray_files_table(self):
 		rows = []
 		for coll in self.repo.collections:

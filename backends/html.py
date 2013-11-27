@@ -223,9 +223,9 @@ class HTMLExporter(BackendExporter):
 				for r in self.checker.get_missing_base_table()],
 			["Class id","Collection","Standards","FreeCAD","OpenSCAD"])
 
-		params["missingclasstable"] = html_table(
+		params["unknownclasstable"] = html_table(
 			[[r["id"],r["database"]]
-				for r in self.checker.get_missing_classes_table()],
+				for r in self.checker.get_unknown_classes_table()],
 			["Class id", "Database"])
 
 		params["missingdrawingstable"] = html_table(
