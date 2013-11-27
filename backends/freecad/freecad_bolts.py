@@ -34,7 +34,7 @@ def add_part(base,params,doc):
 		module.__dict__[base.name](params,doc)
 	elif isinstance(base,freecad.BaseFcstd):
 		#copy part to doc
-		src_doc = FreeCAD.openDocument(base.filename)
+		src_doc = FreeCAD.openDocument(base.path)
 		src_obj = src_doc.getObject(base.objectname)
 		if src_obj is None:
 			raise MalformedBaseError("No object %s found" % base.objectname)
