@@ -3,5 +3,6 @@
 doc/*.pdf
 output/freecad/*
 output/openscad/*
+output/solidworks/*
 .sass-cache
 _site
