@@ -31,6 +31,40 @@ from subprocess import call, Popen
 import argparse
 from datetime import datetime
 
+#table is a list of lists, similar to the format html_table expects
+def display_table(table,header,title,description):
+	if len(table) == 0:
+		return
+	print title
+	print '-'*len(title) + '\n'
+	print description + '\n'
+
+	#determine maximum field width
+	width = []
+	for field in header:
+		width.append(len(field))
+	for row in table:
+		for i in range(len(row)):
+			width[i] = max(len(str(row[i])),width[i])
+	
+	#add some more space
+	for i in range(len(width)):
+		width[i] += 2
+
+	#print headers
+	for i in range(len(header)):
+		print "%-*s" % (width[i],header[i]),
+	print ""
+	for w in width:
+		print "-"*w,
+	print ""
+
+	for row in table:
+		for w,v in zip(width,row):
+			print "%-*s" % (w,v),
+		print ""
+	print ""
+
 
 def export(args):
 	#load data
@@ -68,6 +102,80 @@ def test(args):
 	elif args.target == "openscad":
 		freecad_process = Popen(["openscad"],cwd=exec_dir)
 		freecad_process.wait()
+
+def check(args):
+	repo = BOLTSRepository(args.repo)
+	openscad = OpenSCADData(args.repo)
+	freecad = FreeCADData(args.repo)
+	drawings = DrawingsData(args.repo)
+	solidworks = SolidWorksData(args.repo)
+
+	from backends.checker import CheckerExporter
+	checker = CheckerExporter(repo,freecad,openscad,drawings)
+
+	print ""
+
+	display_table(
+		[[r["class"].id, r["collection"], r["class"].standard, r["freecad"], r["openscad"]]
+			for r in checker.get_missing_base_table()],
+		["Class id","Collection","Standards","FreeCAD","OpenSCAD"],
+		"Missing base geometries",
+		"Some classes can not be used in one or more CAD packages, because no geometry is available."
+	)
+
+	display_table(
+		[[r["id"], r["database"]]
+			for r in checker.get_unknown_classes_table()],
+		["Class id", "Database"],
+		"Unknown classes",
+		"Some classes are mentioned in base files, but never defined in blt files."
+	)
+
+	display_table(
+		[[r["class"].id, r["collection"], r["class"].standard]
+			for r in checker.get_missing_drawings_table()],
+		["Class id", "Collection", "Standards"],
+		"Missing drawings",
+		"Some classes do not have associated drawings."
+	)
+
+	display_table(
+		[[r["class"].id,r["collection"],r["class"].standard]
+			for r in checker.get_missing_common_parameters_table()],
+		["Class ID","Collection","Standards"],
+		"Missing common parameters",
+		"Some classes have no common parameters defined.")
+
+	display_table(
+		[[r["drawing"].filename,r["id"]]
+			for r in checker.get_missing_svg_drawings_table()],
+		["Filename", "Class ID"],
+		"Missing svg drawings",
+		"Some drawings have no svg version."
+	)
+
+	display_table(
+		[["Collection",r["id"],r["license_name"],r["license_url"],r["author_names"]]
+			for r in checker.get_unsupported_coll_license_table()] +
+		[["%s geometry" % r["database"], r["id"],r["license_name"],r["license_url"],r["author_names"]]
+			for r in checker.get_unsupported_base_license_table()],
+		["Type","Id/Filename","License name","License url", "Authors"],
+		"Incompatible Licenses",
+		"Some collections or base geometries have unknown licenses."
+	)
+
+	display_table(
+		[[r["filename"],["path"]]
+			for r in checker.get_stray_files_table()],
+		["Filename","Path"],
+		"Stray files",
+		"Some files are present in the repository, but not mentioned anywhere."
+	)
+
+
+
+
+
 #
 #def release(args):
 #	#check that there are no uncommited changes
@@ -119,6 +227,7 @@ parser.add_argument("--repo",
 	default=getcwd())
 
 subparsers = parser.add_subparsers()
+
 parser_export = subparsers.add_parser("export")
 parser_export.add_argument("target",
 	type=str,
@@ -137,6 +246,9 @@ parser_test.add_argument("target",
 	choices=["openscad","freecad"],
 	help="the backend to test")
 parser_test.set_defaults(func=test)
+
+parser_check = subparsers.add_parser("check")
+parser_check.set_defaults(func=check)
 
 #parser_release = subparsers.add_parser("release")
 #parser_release.set_defaults(func=release)
