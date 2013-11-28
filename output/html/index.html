@@ -14,43 +14,57 @@
 
 <div id="content">
   <div class="inner-content">
-    <h2>Attention: BOLTS is beta software</h2>
-    BOLTS is in its early stages of development, so expect things to change. But this is also your chance to make things <a href="contribute.html">change for the better</a>.
     <div class="cols">
       <div class="col">
         <h3> What is BOLTS?</h3>
         <p>The aim of BOLTS is to build a free and open-source standard parts library for CAD applications. It does so by providing a common database that can be utilized by many different CAD applications.</p>
-
-        <p>BOLTS tries to provide a infrastructure and processes that build on three basic principles:</p>
-        <ul>
-          <li><strong>Separation:</strong> The description of parts (dimensions, geometries, ...) is separated into application specific and general information.  This allows to add support for individual CAD applications with minimal effort.</li>
-          <li><strong>Automation:</strong> The description of parts is designed to be machine readable. This allows to eliminate a lot of work by automation, and eases the task of maintaining a large number of parts.</li>
-          <li><strong>Contribution:</strong> Building a parts library that suits the needs of a wide range of people can only be done by a wide range of people. Therefore BOLTS is designed to make contributing easy.</li>
-        </ul>
       </div>
       <div class="col">
-        <h3>Features</h3>
-        <ul>
-          <li>Provides GPL and LGPL distributions.
-          <li>Built with platform independent technologies like <a href="http://www.python.org">Python</a> and <a href="http://yaml.org/">YAML</a></li>
-          <li>Support for <a href="http://www.openscad.org/">OpenSCAD</a> and <a href="http://freecadweb.org/">FreeCAD</a>, others are planned.</li>
-          <li><a href="{{ site.baseurl }}/html/index.html">Comprehensive online documentation</a> for all parts</li>
-          <li>Easy to contribute to</li>
-        </ul>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>What is a standard parts library?</h3>
+        <p>When you use a CAD software to create a design, this design consists usually of two different types of components: Custom parts that are specific to your purposes and have to be custom made (e.g. by 3D printing), and standard parts like nuts and bolts that you can buy in a hardware store.</p>
+        <p>A standard parts library relieves you from the tedious task of modeling standard parts by providing them readily usable, so that you can focus on the interesting aspects of your design.</p>
+        <p>While many commercial vendors offer standard parts libraries with their tools or for a fee, there is no free (as in freedom) standard parts library, yet. BOLTS tries to fill this gap.</p>
+      </div>
+      <div class="col">
+        <img width="80%" src="{{ site.baseurl}}/images/parts_library.png"/>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>How does BOLTS work?</h3>
+        <p>BOLTS leverages the parametric abilities, that most CAD applications provide. This allows to obtain a huge number of different sizes and variants of a part from a single model.</p>
+        <p>Dimensions and metadata of all the sizes and versions of the part are kept in special files. BOLTS can then use this data and the parametric models of the parts to automatically build standard parts libraries ("BOLTS for ...") for different CAD tools, that the user just can simply download and use.</p>
+        <p> So in a sense BOLTS is a tool to create standard parts libraries.</p>
+      </div>
+      <div class="col">
+        <a href="{{ site.baseurl}}/images/bolts_process.png"><img width="80%" src="{{ site.baseurl}}/images/bolts_process.png"/></a>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>How can I help?</h3>
+        <p>You can help BOLTS by modeling parts in one of the supported CAD tools, by adding dimensions and metadata for new parts, or by creating drawings for the <a href="{{ site.baseurl }}/html/index.html">online part directory</a>.</p>
+        <p>These tasks are relatively easy, and most of them do not require programming skills. To learn more, check out <a href="{{ site.baseurl }}/contribute.html">this page</a>, it has more information and links to detailed descriptions of the different tasks.</p>
+      </div>
+      <div class="col">
         <h3>Statistics</h3>
         <ul>
           <li> <a href="{{ site.baseurl }}/contributors.html">2 people</a> contributed</li>
           <li> 28 classes in</li>
-          <li> 8 collections following</li>
+          <li> 8 <a href="{{ site.baseurl }}/html/index.html">collections</a> following</li>
           <li> 47 different standards issued by</li>
-          <li> 8 standardization organisations</li>
+          <li> 8 <a href="{{ site.baseurl }}/html/index.html">standardization organisations</a></li>
           <li> 612 different parts</li>
         </ul>
       </div>
     </div>
     <div class="cols">
       <div class="col">
-        <h3>Quickstart: Using BOLTS with OpenSCAD</h3>
+        <h3>Quickstart: Using BOLTS for OpenSCAD</h3>
         <p>Download the tarball with BOLTS for <a href="http://www.openscad.org/">OpenSCAD</a> from the <a href="{{site.baseurl}}/downloads.html">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the top of your scad file:</p>
           {% highlight python %}
 include <bolts.scad>
@@ -62,11 +76,19 @@ ISO7089("M4");
         <p>For more information see the <a href="{{ site.baseurl}}/doc/index.html">Documentation</a>
       </div>
       <div class="col">
-        <h3>Quickstart: Using BOLTS with FreeCAD</h3>
+        <a href="{{ site.baseurl}}/images/openscad-bolt.png"><img width="80%" src="{{ site.baseurl}}/images/openscad-bolt.png"/></a>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>Quickstart: Using BOLTS for FreeCAD</h3>
         <p>Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="{{site.baseurl}}/downloads.html">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab. You also have to make sure to have <a href="https://bitbucket.org/xi/pyyaml">pyyaml</a> installed.</p>
         <p> After starting FreeCAD, choose <code>Macros</code> from the <code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code></p>
         <p>A widget should appear. There you can select a part from the tree, give values for the parameters and add it to the current document.</p>
         <p>For more information see the <a href="{{ site.baseurl}}/doc/index.html">Documentation</a>
+      </div>
+      <div class="col">
+        <a href="{{ site.baseurl}}/images/freecad-bearing.png"><img width="80%" src="{{ site.baseurl}}/images/freecad-bearing.png"/></a>
       </div>
     </div>
   </div>
