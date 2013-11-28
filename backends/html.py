@@ -84,9 +84,8 @@ class HTMLExporter(BackendExporter):
 		makedirs(join(html_root,"drawings"))
 
 		#write unchanged files
-		for name in ["atom.xml","blog.html","contribute.html","public_domain.html","unclear_license.html"]:
-			with open(join(out_root,name),"w","utf8") as fid:
-				fid.write(self.templates[splitext(name)[0]].substitute({}))
+		for name in ["atom.xml","blog.html","contribute.html","public_domain.html","unclear_license.html","no_drawing.png"]:
+			copyfile(join(template_dir,name),join(out_root,name))
 
 		#write specification collections, parts and bodies
 		for coll in self.repo.collections:
