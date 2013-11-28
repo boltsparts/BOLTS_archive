@@ -1,4 +1,5 @@
-digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+digraph G {
+rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
 "genericpipe" [width=3, height=0.8, fixedsize=true];
@@ -22,4 +23,5 @@ label="OpenSCAD";
 "genericpipe" -> "pipe.scad:pipe";
 "din11850range2" -> "pipes.py:pipe";
 "din11850range2" -> "pipe.scad:pipe";
-"DIN11850 Range 2" -> "din11850range2";}
+"DIN11850 Range 2" -> "din11850range2";
+}

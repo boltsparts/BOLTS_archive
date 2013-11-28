@@ -1,4 +1,5 @@
-digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+digraph G {
+rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
 "tslot20x20" [width=3, height=0.8, fixedsize=true];
@@ -22,4 +23,5 @@ label="OpenSCAD";
 "tslot20x20" -> "tslot-20x20.fcstd:Fillet";
 "tslot20x20-1s" -> "tslot-20x20-1S.fcstd:Fillet";
 "tslot20x20-2s" -> "tslot-20x20-2S.fcstd:Fillet";
-"tslot20x20-3s" -> "tslot-20x20-3S.fcstd:Fillet";}
+"tslot20x20-3s" -> "tslot-20x20-3S.fcstd:Fillet";
+}

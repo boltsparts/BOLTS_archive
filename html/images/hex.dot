@@ -1,4 +1,5 @@
-digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+digraph G {
+rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
 "hexscrew1" [width=3, height=0.8, fixedsize=true];
@@ -46,4 +47,5 @@ label="OpenSCAD";
 "hexbolt2" -> "hex.scad:hex2";
 "ISO4014" -> "hexbolt2";
 "DINENISO4014" -> "hexbolt2";
-"DINEN24014" -> "hexbolt2";}
+"DINEN24014" -> "hexbolt2";
+}

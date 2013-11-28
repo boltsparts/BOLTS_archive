@@ -1,4 +1,5 @@
-digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+digraph G {
+rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
 "hexagonthinnut1" [width=3, height=0.8, fixedsize=true];
@@ -49,4 +50,5 @@ label="OpenSCAD";
 "hexagonnut3" -> "nut.py:nut1";
 "hexagonnut3" -> "nut.scad:nut1";
 "ANSI B18.2.2" -> "hexagonnut3";
-"ASME B18.2.2" -> "hexagonnut3";}
+"ASME B18.2.2" -> "hexagonnut3";
+}

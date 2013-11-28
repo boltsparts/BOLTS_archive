@@ -1,4 +1,5 @@
-digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+digraph G {
+rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
 "singlerowradialbearing" [width=3, height=0.8, fixedsize=true];
@@ -43,4 +44,5 @@ label="OpenSCAD";
 "DIN5405-1" -> "needleroller";
 "ISO 3030" -> "needleroller";
 "cylindricalrollerbearing" -> "bearings.py:cylindricalrollerbearing";
-"DIN5412-1" -> "cylindricalrollerbearing";}
+"DIN5412-1" -> "cylindricalrollerbearing";
+}

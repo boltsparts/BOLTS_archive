@@ -1,4 +1,5 @@
-digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+digraph G {
+rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
 "hexsocketcountersunk" [width=3, height=0.8, fixedsize=true];
@@ -28,4 +29,5 @@ label="OpenSCAD";
 "hexsocketheadcap" -> "hex_socket.scad:hex_socket2";
 "ISO4762" -> "hexsocketheadcap";
 "DINENISO4762" -> "hexsocketheadcap";
-"DIN912" -> "hexsocketheadcap";}
+"DIN912" -> "hexsocketheadcap";
+}

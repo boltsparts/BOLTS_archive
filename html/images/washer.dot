@@ -1,4 +1,5 @@
-digraph G {rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+digraph G {
+rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
 "plainwasher1" [width=3, height=0.8, fixedsize=true];
@@ -71,4 +72,5 @@ label="OpenSCAD";
 "DINENISO7092" -> "plainwasherforcheesehead";
 "heavydutyplainwasher" -> "washer.py:washer1";
 "heavydutyplainwasher" -> "washer.scad:washer1";
-"DIN7349" -> "heavydutyplainwasher";}
+"DIN7349" -> "heavydutyplainwasher";
+}
