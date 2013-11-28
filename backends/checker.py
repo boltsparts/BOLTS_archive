@@ -20,236 +20,262 @@ from common import BackendExporter
 import license
 from errors import *
 
+class ErrorTable:
+	def __init__(self,title,description,headers):
+		self.title = title
+		self.description = description
+		self.rows = []
+		self.headers = headers
+
+	def populate(self,repo,databases):
+		pass
+
+	def get_headers(self):
+		return self.headers
+
+	def get_title(self):
+		return self.title
+
+	def get_description(self):
+		return self.description
+
+	def get_table(self):
+		return self.rows
+
+	def print_table(self):
+		if len(self.rows) == 0:
+			return ""
+
+		res = []
+		res.append(self.title)
+		res.append('-'*len(self.title) + '\n')
+		res.append(self.description + '\n')
+
+		#determine maximum field width
+		width = []
+		for field in self.headers:
+			width.append(len(field))
+		for row in self.rows:
+			for i in range(len(row)):
+				width[i] = max(len(str(row[i])),width[i])
+
+		#add some more space
+		for i in range(len(width)):
+			width[i] += 2
+
+		#print headers
+		res.append("".join("%-*s" % (width[i],self.headers[i]) for i in range(len(self.headers))))
+		res.append("".join("-"*w for w in width))
+
+		for row in self.rows:
+			res.append("".join("%-*s" % (w,v) for w,v in zip(width,row)))
+		res.append("\n")
+		return "\n".join(res)
+
+
+class MissingBaseTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Missing base geometries",
+			"Some classes can not be used in one or more CAD packages, because no geometry is available.",
+			["Class id","Collection","Standards","FreeCAD","OpenSCAD"]
+		)
+
+	def populate(self,repo,dbs):
+		for coll in repo.collections:
+			for cl in coll.classes_by_ids():
+				row = []
+				row.append(cl.id)
+				row.append(coll.id)
+				row.append(cl.standard)
+				row.append(cl.id in dbs["freecad"].getbase)
+				row.append(cl.id in dbs["openscad"].getbase)
+				if not (row[-1] and row[-2]):
+					self.rows.append(row)
+
+class UnknownClassTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Unknown classes",
+			"Some classes are mentioned in base files, but never defined in blt files.",
+			["Class id", "Database"]
+		)
+
+		def populate(self,repo,dbs):
+			ids = []
+			for coll in repo.collections:
+				for cl in coll.classes_by_ids():
+					ids.append(cl.id)
+			for db in dbs:
+				for base in dbs[db].getbase.values():
+					for cl_id in base.classids:
+						if cl_id not in ids:
+							row = []
+							row.append(cl_id)
+							row.append(db)
+							self.rows.append(row)
+
+class MissingCommonParametersTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Missing common parameters",
+			"Some classes have no common parameters defined.",
+			["Class ID","Collection","Standards"]
+		)
+
+	def populate(self,repo,dbs):
+		for coll in repo.collections:
+			for cl in coll.classes_by_ids():
+				if len(cl.parameters.common) == 0:
+					row = []
+					row.append(cl.id)
+					row.append(coll.id)
+					row.append(cl.standard)
+					self.rows.append(row)
+
+class MissingDrawingTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Missing drawings",
+			"Some classes do not have associated drawings.",
+			["Class id", "Collection", "Standards"]
+		)
+
+	def populate(self,repo,dbs):
+		for coll in repo.collections:
+			for cl in coll.classes_by_ids():
+				if not cl.id in dbs["drawings"].getbase:
+					row = []
+					row.append(coll.id)
+					row.append(cl.standard)
+					self.rows.append(row)
+
+class MissingSVGSourceTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Missing svg drawings",
+			"Some drawings have no svg version.",
+			["Filename", "Class ID"]
+		)
+
+	def populate(self,repo,dbs):
+		for id,draw in dbs["drawings"].getbase.iteritems():
+			if draw.get_svg() is None:
+				row = []
+				row.append(draw.filename)
+				row.append(id)
+				self.rows.append(row)
+
+class UnsupportedLicenseTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Incompatible Licenses",
+			"Some collections or base geometries have unknown licenses.",
+			["Type","Id/Filename","License name","License url", "Authors"]
+		)
+
+	def populate(self,repo,dbs):
+		#collections
+		for coll in repo.collections:
+			if not license.check_license(coll.license_name,coll.license_url):
+				row = []
+				row.append("Collection")
+				row.append(coll.id)
+				row.append(coll.license_name)
+				row.append(coll.license_url)
+				row.append(",".join(coll.authors))
+				self.rows.append(row)
+		#bases
+		for db in dbs:
+			for id, base in dbs[db].getbase.iteritems():
+				if not license.check_license(base.license_name,base.license_url):
+					row = []
+					row.append(db)
+					row.append(id)
+					row.append(base.license_name)
+					row.append(base.license_url)
+					row.append(",".join(coll.authors))
+					self.rows.append(row)
+
+class UnknownFileTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Stray files",
+			"Some files are present in the repository, but not mentioned anywhere.",
+			["Filename","Path"]
+		)
+
+	def populate(self,repo,dbs):
+		for db in dbs:
+			if db == "drawings":
+				continue
+			for coll in repo.collections:
+				path = join(repo.path,db,coll.id)
+				if not exists(path):
+					continue
+				files = listdir(path)
+
+				#remove files known from bases
+				for cl in coll.classes_by_ids():
+					if not cl.id in dbs[db].getbase:
+						continue
+					base = dbs[db].getbase[cl.id]
+					if base.filename in files:
+						files.remove(base.filename)
+
+				#check what is left
+				for filename in files:
+					if splitext(filename)[1] == ".base":
+						continue
+					row = []
+					row.append(filename)
+					row.append(path)
+					self.rows.append(row)
+
+		if "drawings" in dbs:
+			for coll in repo.collections:
+				path = join(repo.path,"drawings",coll.id)
+				if not exists(path):
+					continue
+
+				#remove files known from bases
+				files = listdir(path)
+				for cl in coll.classes_by_ids():
+					if not cl.id in dbs["drawings"].getbase:
+						continue
+					drawing = dbs["drawings"].getbase[cl.id]
+					if not drawing.get_png() is None:
+						if basename(drawing.get_png()) in files:
+							files.remove(basename(drawing.get_png()))
+					if not drawing.get_svg() is None:
+						if basename(drawing.get_svg()) in files:
+							files.remove(basename(drawing.get_svg()))
+
+				#check what is left
+				for filename in files:
+					if splitext(filename)[1] == ".base":
+						continue
+					row = []
+					row.append(filename)
+					row.append(path)
+					self.rows.append(row)
+
 class CheckerExporter(BackendExporter):
-	def __init__(self,repo,freecad,openscad,drawings):
+	def __init__(self,repo,databases):
 		BackendExporter.__init__(self,repo)
-		self.freecad = freecad
-		self.openscad = openscad
-		self.drawings = drawings
+		self.databases = databases
+
+		self.checks = {}
+		self.checks["missingbase"] = MissingBaseTable()
+		self.checks["unknownclass"] = UnknownClassTable()
+		self.checks["missingcommonparameters"] = MissingCommonParametersTable()
+		self.checks["missingdrawing"] = MissingDrawingTable()
+		self.checks["missingsvgsource"] = MissingSVGSourceTable()
+		self.checks["unsupportedlicense"] = UnsupportedLicenseTable()
+		self.checks["unknownfile"] = UnknownFileTable()
+
+		for check in self.checks.values():
+			check.populate(repo,databases)
 
 	def write_output(self,out_path):
 		pass
-
-	#classes for which no base geometries are available
-	def get_missing_base_table(self):
-		rows = []
-		for coll in self.repo.collections:
-			for cl in coll.classes_by_ids():
-				row = {}
-				row["class"] = cl
-				row["freecad"] = cl.id in self.freecad.getbase
-				row["openscad"] = cl.id in self.openscad.getbase
-				row["collection"] = coll.id
-				if not (row["freecad"] and row["openscad"]):
-					rows.append(row)
-		return rows
-
-
-	#classes which are mentioned, but not defined
-	def get_unknown_classes_table(self):
-		rows = []
-		ids = []
-		for coll in self.repo.collections:
-			for cl in coll.classes_by_ids():
-				ids.append(cl.id)
-
-		for base in self.freecad.getbase.values():
-			for id in base.classids:
-				if id not in ids:
-					row = {}
-					row["id"] = id
-					row["database"] = "FreeCAD"
-					rows.append(row)
-
-		for base in self.openscad.getbase.values():
-			for id in base.classids:
-				if id not in ids:
-					row = {}
-					row["id"] = id
-					row["database"] = "OpenSCAD"
-					rows.append(row)
-
-		for base in self.drawings.getbase.values():
-			for id in base.classids:
-				if id not in ids:
-					row = {}
-					row["id"] = id
-					row["database"] = "Drawings"
-					rows.append(row)
-		return rows
-
-
-	#classes with no common parameters
-	def get_missing_common_parameters_table(self):
-		rows = []
-		for coll in self.repo.collections:
-			for cl in coll.classes_by_ids():
-				if len(cl.parameters.common) == 0:
-					row = {}
-					row["class"] = cl
-					row["collection"] = coll.id
-					rows.append(row)
-		return rows
-
-	#classes without drawings
-	def get_missing_drawings_table(self):
-		rows = []
-		for coll in self.repo.collections:
-			for cl in coll.classes_by_ids():
-				if not cl.id in self.drawings.getbase:
-					row = {}
-					row["class"] = cl
-					row["collection"] = coll.id
-					rows.append(row)
-		return rows
-
-	#drawings without svg  version
-	def get_missing_svg_drawings_table(self):
-		rows = []
-		for id,draw in self.drawings.getbase.iteritems():
-			if draw.get_svg() is None:
-				row = {}
-				row["id"] = id
-				row["drawing"] = draw
-				rows.append(row)
-		return rows
-
-	#collections with unsupported licenses
-	def get_unsupported_coll_license_table(self):
-		rows = []
-		for coll in self.repo.collections:
-			if not license.check_license(coll.license_name,coll.license_url):
-				row = {}
-				row["id"] = coll.id
-				row["license_name"] = coll.license_name
-				row["license_url"] = coll.license_url
-				row["author_names"] = coll.author_names
-				row["author_mails"] = coll.author_mails
-				rows.append(row)
-		return rows
-
-	#bases with unsupported licenses
-	def get_unsupported_base_license_table(self):
-		rows = []
-		for id, base in self.freecad.getbase.iteritems():
-			if not license.check_license(base.license_name,base.license_url):
-				row = {}
-				row["id"] = id
-				row["database"] = "FreeCAD"
-				row["license_name"] = base.license_name
-				row["license_url"] = base.license_url
-				row["author_names"] = base.author_names
-				row["author_mails"] = base.author_mails
-				rows.append(row)
-
-		for id, base in self.openscad.getbase.iteritems():
-			if not license.check_license(base.license_name,base.license_url):
-				row = {}
-				row["id"] = id
-				row["database"] = "OpenSCAD"
-				row["license_name"] = base.license_name
-				row["license_url"] = base.license_url
-				row["author_names"] = base.author_names
-				row["author_mails"] = base.author_mails
-				rows.append(row)
-
-		for id, base in self.drawings.getbase.iteritems():
-			if not license.check_license(base.license_name,base.license_url):
-				row = {}
-				row["id"] = id
-				row["database"] = "Drawings"
-				row["license_name"] = base.license_name
-				row["license_url"] = base.license_url
-				row["author_names"] = base.author_names
-				row["author_mails"] = base.author_mails
-				rows.append(row)
-		return rows
-
-	#files that are present, but nowhere mentioned
-	def get_stray_files_table(self):
-		rows = []
-		for coll in self.repo.collections:
-			path = join(self.repo.path,"freecad",coll.id)
-			if not exists(path):
-				continue
-			files = listdir(path)
-
-			#remove files known from bases
-			for cl in coll.classes_by_ids():
-				if not cl.id in self.freecad.getbase:
-					continue
-				base = self.freecad.getbase[cl.id]
-				if base.filename in files:
-					files.remove(base.filename)
-
-			#check what is left
-			for filename in files:
-				if splitext(filename)[1] == ".base":
-					continue
-				row = {}
-				row["filename"] = filename
-				row["collection"] = coll.id
-				row["path"] = path
-				rows.append(row)
-
-		for coll in self.repo.collections:
-			path = join(self.repo.path,"openscad",coll.id)
-			if not exists(path):
-				continue
-			files = listdir(path)
-
-			#remove files known from bases
-			for cl in coll.classes_by_ids():
-				if not cl.id in self.openscad.getbase:
-					continue
-				base = self.openscad.getbase[cl.id]
-				if base.filename in files:
-					files.remove(base.filename)
-
-			#check what is left
-			for filename in files:
-				if splitext(filename)[1] == ".base":
-					continue
-				row = {}
-				row["filename"] = filename
-				row["collection"] = coll.id
-				row["path"] = path
-				rows.append(row)
-
-		for coll in self.repo.collections:
-			path = join(self.repo.path,"drawings",coll.id)
-			if not exists(path):
-				continue
-			files = listdir(path)
-
-			#remove files known from bases
-			for cl in coll.classes_by_ids():
-				if not cl.id in self.drawings.getbase:
-					continue
-				drawing = self.drawings.getbase[cl.id]
-				if not drawing.get_png() is None:
-					if basename(drawing.get_png()) in files:
-						files.remove(basename(drawing.get_png()))
-				if not drawing.get_svg() is None:
-					if basename(drawing.get_svg()) in files:
-						files.remove(basename(drawing.get_svg()))
-
-			#check what is left
-			for filename in files:
-				if splitext(filename)[1] == ".base":
-					continue
-				row = {}
-				row["filename"] = filename
-				row["collection"] = coll.id
-				row["path"] = path
-				rows.append(row)
-		return rows
-
-
-
-
-
-
-
-
-	

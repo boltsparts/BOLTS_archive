@@ -11,46 +11,63 @@
 
 <div id="content">
   <div class="inner-content">
-    <h1>Bases</h1>
-    <p> For some classes a backend specific geometry is missing for one or more CAD packages. Detailed information how to add a geometry can be found <a href="{{ site.baseurl }}/doc/openscad/basemodule.html">here</a> for OpenSCAD, and <a href="{{ site.baseurl }}/doc/freecad/basefunction.html">here</a> and <a href="{{ site.baseurl }}/doc/freecad/basefcstd.html">here</a> for FreeCAD.
+    <h1>$missingbasetitle</h1>
+    <p>$missingbasedescription</p>
+    <p>Detailed information how to add a geometry can be found <a href="{{ site.baseurl }}/doc/openscad/basemodule.html">here</a> for OpenSCAD, and <a href="{{ site.baseurl }}/doc/freecad/basefunction.html">here</a> and <a href="{{ site.baseurl }}/doc/freecad/basefcstd.html">here</a> for FreeCAD.</p>
     <table class="table">
       $missingbasetable
     </table>
   </div>
 
-  <div class="inner-content">
-    <h1>Drawings</h1>
-    <p> For some classes a drawing is missing that gives a visual overview over the part and clarifies the meaning of the parameters. Instructions how to add one can be found <a href="{{ site.baseurl }}/doc/general/drawing.html">here</a></p>
+    <h1>$unknownclasstitle</h1>
+    <p>$unknownclassdescription</p>
+    <p>This usually happens if class names are misspelled or classes are renamed or removed and some references are forgotten.</p>
     <table class="table">
-      $missingdrawingstable
+      $unknownclasstable
     </table>
-    <p> For some classes only drawings in the png format are available:</p>
+  </div>
+
+    <h1>$missingcommonparameterstitle</h1>
+    <p>$missingcommonparametersdescription</p>
+    <p>This either happens if a class contains non-discrete free parameters or if it explicitly a empty common parameters set is given, in order to suppress output for this class or work around bugs.</p>
     <table class="table">
-      $missingsvgdrawingstable
+      $missingcommonparameterstable
     </table>
   </div>
 
   <div class="inner-content">
-    <h1>Common Parameters</h1>
-    <p> For some classes no common parameter combinations are specified. This prevents these classes from being exported in some backends that create individual files for a combination of parameters.
+    <h1>$missingdrawingtitle</h1>
+    <p>$missingdrawingdescription</p>
+    <p>Detailed information how to add a drawing can be found <a href="{{ site.baseurl }}/doc/general/drawing.html">here</a>.</p>
     <table class="table">
-      $missingcommonparameters
+      $missingdrawingtable
     </table>
   </div>
 
   <div class="inner-content">
-    <h1>Stray Files</h1>
-    <p>Some files in the BOLTS repository are unaccounted for. This usually happens if files are not noted in the base files, and are therefore not used, or if content was removed or renamed, and associated files were left behind.
+    <h1>$missingsvgsourcetitle</h1>
+    <p>$missingsvgsourcedescription</p>
     <table class="table">
-      $strayfiletable
+      $missingsvgsourcetable
     </table>
   </div>
 
   <div class="inner-content">
-    <h1>Unsupported licenses</h1>
-    <p> For some classes a unsupported license name and/or url was found. Often this is the result of typos. Check with the <a href="{{ site.baseurl }}/doc/general/specification.html">list in the specifications</a> to identify these cases. If the license is not on the list, try contact all the copyright holder of the file and ask them to relicense or dual license this file under one of the supported licenses, or remove the file.
+    <h1>$unsupportedlicensetitle</h1>
+    <p>$unsupportedlicensedescription</p>
+    <p>Often this is the result of typos. Check with the <a href="{{ site.baseurl }}/doc/general/specification.html">list in the specifications</a> to identify these cases. If the license is not on the list, try contact all the copyright holder of the file and ask them to relicense or dual license this file under one of the supported licenses, or remove the file.</p>
     <table class="table">
-      $unsupportedlicenses
+      $unsupportedlicensetable
     </table>
   </div>
+
+  <div class="inner-content">
+    <h1>$unknownfiletitle</h1>
+    <p>$unknownfiledescription</p>
+    <p>This usually happens if things are renamed or removed and some files are left behind.</p>
+    <table class="table">
+      $unknownfiletable
+    </table>
+  </div>
+
 </div>

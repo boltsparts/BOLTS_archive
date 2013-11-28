@@ -59,7 +59,11 @@ class HTMLExporter(BackendExporter):
 		self.drawings = draws
 
 		self.statistics = statistics.StatisticsExporter(repo,fcad,oscad,draws)
-		self.checker = checker.CheckerExporter(repo,fcad,oscad,draws)
+		dbs = {}
+		dbs["freecad"] = fcad
+		dbs["openscad"] = oscad
+		dbs["drawings"] = draws
+		self.checker = checker.CheckerExporter(repo,dbs)
 
 	def write_output(self,out_root):
 		#load templates
@@ -218,42 +222,12 @@ class HTMLExporter(BackendExporter):
 
 	def _get_task_page_content(self):
 		params = {}
-		params["missingbasetable"] = html_table(
-			[[r["class"].id,r["collection"],r["class"].standard,r["freecad"],r["openscad"]]
-				for r in self.checker.get_missing_base_table()],
-			["Class id","Collection","Standards","FreeCAD","OpenSCAD"])
 
-		params["unknownclasstable"] = html_table(
-			[[r["id"],r["database"]]
-				for r in self.checker.get_unknown_classes_table()],
-			["Class id", "Database"])
+		for name,check in self.checker.checks.iteritems():
+			params[name + "title"] = check.get_title()
+			params[name + "description"] = check.get_description()
+			params[name + "table"] = html_table(check.get_table(),check.get_headers())
 
-		params["missingdrawingstable"] = html_table(
-			[[r["class"].id,r["collection"],r["class"].standard]
-				for r in self.checker.get_missing_drawings_table()],
-			["Class id", "Collection", "Standards"])
-
-		params["missingcommonparameters"] = html_table(
-			[[r["class"].id,r["collection"],r["class"].standard]
-				for r in self.checker.get_missing_common_parameters_table()],
-			["Class ID","Collection","Standards"])
-
-		params["missingsvgdrawingstable"] = html_table(
-			[[r["drawing"].filename,r["id"]]
-				for r in self.checker.get_missing_svg_drawings_table()],
-			["Filename", "Class ID"])
-
-		params["unsupportedlicenses"] = html_table(
-			[["Collection",r["id"],r["license_name"],r["license_url"],r["author_names"]]
-				for r in self.checker.get_unsupported_coll_license_table()] +
-			[["%s geometry" % r["database"], r["id"],r["license_name"],r["license_url"],r["author_names"]]
-				for r in self.checker.get_unsupported_base_license_table()],
-			["Type","Id/Filename","License name","License url", "Authors"])
-
-		params["strayfiletable"] = html_table(
-			[[r["filename"],["path"]]
-				for r in self.checker.get_stray_files_table()],
-			["Filename","Path"])
 		return params
 
 	def _get_specs_index_content(self):

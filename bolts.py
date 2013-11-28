@@ -105,75 +105,16 @@ def test(args):
 
 def check(args):
 	repo = BOLTSRepository(args.repo)
-	openscad = OpenSCADData(args.repo)
-	freecad = FreeCADData(args.repo)
-	drawings = DrawingsData(args.repo)
-	solidworks = SolidWorksData(args.repo)
+	dbs = {}
+	dbs["openscad"] = OpenSCADData(args.repo)
+	dbs["freecad"] = FreeCADData(args.repo)
+	dbs["drawings"] = DrawingsData(args.repo)
 
 	from backends.checker import CheckerExporter
-	checker = CheckerExporter(repo,freecad,openscad,drawings)
+	checker = CheckerExporter(repo,dbs)
 
-	print ""
-
-	display_table(
-		[[r["class"].id, r["collection"], r["class"].standard, r["freecad"], r["openscad"]]
-			for r in checker.get_missing_base_table()],
-		["Class id","Collection","Standards","FreeCAD","OpenSCAD"],
-		"Missing base geometries",
-		"Some classes can not be used in one or more CAD packages, because no geometry is available."
-	)
-
-	display_table(
-		[[r["id"], r["database"]]
-			for r in checker.get_unknown_classes_table()],
-		["Class id", "Database"],
-		"Unknown classes",
-		"Some classes are mentioned in base files, but never defined in blt files."
-	)
-
-	display_table(
-		[[r["class"].id, r["collection"], r["class"].standard]
-			for r in checker.get_missing_drawings_table()],
-		["Class id", "Collection", "Standards"],
-		"Missing drawings",
-		"Some classes do not have associated drawings."
-	)
-
-	display_table(
-		[[r["class"].id,r["collection"],r["class"].standard]
-			for r in checker.get_missing_common_parameters_table()],
-		["Class ID","Collection","Standards"],
-		"Missing common parameters",
-		"Some classes have no common parameters defined.")
-
-	display_table(
-		[[r["drawing"].filename,r["id"]]
-			for r in checker.get_missing_svg_drawings_table()],
-		["Filename", "Class ID"],
-		"Missing svg drawings",
-		"Some drawings have no svg version."
-	)
-
-	display_table(
-		[["Collection",r["id"],r["license_name"],r["license_url"],r["author_names"]]
-			for r in checker.get_unsupported_coll_license_table()] +
-		[["%s geometry" % r["database"], r["id"],r["license_name"],r["license_url"],r["author_names"]]
-			for r in checker.get_unsupported_base_license_table()],
-		["Type","Id/Filename","License name","License url", "Authors"],
-		"Incompatible Licenses",
-		"Some collections or base geometries have unknown licenses."
-	)
-
-	display_table(
-		[[r["filename"],["path"]]
-			for r in checker.get_stray_files_table()],
-		["Filename","Path"],
-		"Stray files",
-		"Some files are present in the repository, but not mentioned anywhere."
-	)
-
-
-
+	for check in checker.checks.values():
+		print check.print_table()
 
 
 #
