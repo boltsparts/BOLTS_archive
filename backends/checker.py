@@ -15,6 +15,7 @@
 
 from os import listdir
 from os.path import join, exists, basename, splitext
+import re
 
 from common import BackendExporter
 import license
@@ -260,6 +261,29 @@ class UnknownFileTable(ErrorTable):
 					row.append(path)
 					self.rows.append(row)
 
+class NonconformingParameternameTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Nonconforming Parameter names",
+			"Parameter names should start with a upper- or lowercase letter. The rest of the name should consist of only lowercase letters, numbers and underscores",
+			["Parameter name","Class id","Collection"]
+		)
+
+	def populate(self,repo,dbs):
+		schema = re.compile("[a-zA-z][a-z0-9_]*")
+		for coll in repo.collections:
+			for cl in coll.classes_by_ids():
+				for pname in cl.parameters.parameters:
+					match = schema.match(pname)
+					if match is None or (not match.group(0) == pname):
+						row = []
+						row.append(pname)
+						row.append(cl.id)
+						row.append(coll.id)
+						self.rows.append(row)
+
+
+
 class CheckerExporter(BackendExporter):
 	def __init__(self,repo,databases):
 		BackendExporter.__init__(self,repo)
@@ -273,6 +297,7 @@ class CheckerExporter(BackendExporter):
 		self.checks["missingsvgsource"] = MissingSVGSourceTable()
 		self.checks["unsupportedlicense"] = UnsupportedLicenseTable()
 		self.checks["unknownfile"] = UnknownFileTable()
+		self.checks["nonconformingparametername"] = NonconformingParameternameTable()
 
 		for check in self.checks.values():
 			check.populate(repo,databases)
