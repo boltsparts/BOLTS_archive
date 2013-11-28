@@ -16,8 +16,8 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 import string
-from os import listdir, makedirs
-from os.path import join, basename, splitext, exists
+from os import listdir, makedirs, walk
+from os.path import join, basename, splitext, exists, relpath
 import subprocess
 from shutil import copyfile
 # pylint: disable=W0622
@@ -67,10 +67,11 @@ class HTMLExporter(BackendExporter):
 
 	def write_output(self,out_root):
 		#load templates
-		for filename in listdir(join(self.repo.path,"backends","html")):
-			name = splitext(basename(filename))[0]
-			template_path = join(self.repo.path,"backends","html",filename)
-			self.templates[name] = string.Template(open(template_path).read())
+		template_dir = join(self.repo.path,"backends","html")
+		for dirpath,dirnames,filenames in walk(template_dir):
+			for filename in filenames:
+				name = join(relpath(dirpath,template_dir),splitext(filename)[0]).replace("./","")
+				self.templates[name] = string.Template(open(join(dirpath,filename)).read())
 
 		#clear output and copy files
 		self.clear_output_dir(out_root)
@@ -81,6 +82,11 @@ class HTMLExporter(BackendExporter):
 		makedirs(join(html_root,"bodies"))
 		makedirs(join(html_root,"images"))
 		makedirs(join(html_root,"drawings"))
+
+		#write unchanged files
+		for name in ["atom.xml","blog.html","contribute.html","public_domain.html","unclear_license.html"]:
+			with open(join(out_root,name),"w","utf8") as fid:
+				fid.write(self.templates[splitext(name)[0]].substitute({}))
 
 		#write specification collections, parts and bodies
 		for coll in self.repo.collections:
@@ -110,7 +116,7 @@ class HTMLExporter(BackendExporter):
 		#write spec index
 		with open(join(html_root,"index.html"),'w','utf8') as fid:
 			content = self._get_specs_index_content()
-			fid.write(self.templates["index"].substitute(content))
+			fid.write(self.templates["html/index"].substitute(content))
 
 		#write start page
 		with open(join(out_root,"index.html"),'w','utf8') as fid:
@@ -120,7 +126,7 @@ class HTMLExporter(BackendExporter):
 				params[field] = stats[field]
 			contributors_names = self.statistics.get_contributors_list()
 			params["contributors"] = str(len(contributors_names))
-			fid.write(self.templates["landing"].substitute(params))
+			fid.write(self.templates["index"].substitute(params))
 
 		#write download page
 		with open(join(out_root,"downloads.html"),"w","utf8") as fid:
