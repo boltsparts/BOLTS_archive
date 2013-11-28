@@ -120,7 +120,7 @@ class HTMLExporter(BackendExporter):
 				params[field] = stats[field]
 			contributors_names = self.statistics.get_contributors_list()
 			params["contributors"] = str(len(contributors_names))
-			fid.write(self.templates["statistics"].substitute(params))
+			fid.write(self.templates["landing"].substitute(params))
 
 		#write download page
 		with open(join(out_root,"downloads.html"),"w","utf8") as fid:

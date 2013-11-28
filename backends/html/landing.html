@@ -1,0 +1,73 @@
+---
+  layout: base
+  title: Home
+---
+
+<div id="banner">
+  <div class="inner-content">
+    <div class="copy">
+      <h1>BOLTS</h1>
+      <p class="intro">BOLTS is an Open Library of Technical Specifications.</p>
+    </div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="inner-content">
+    <h2>Attention: BOLTS is beta software</h2>
+    BOLTS is in its early stages of development, so expect things to change. But this is also your chance to make things <a href="contribute.html">change for the better</a>.
+    <div class="cols">
+      <div class="col">
+        <h3> What is BOLTS?</h3>
+        <p>The aim of BOLTS is to build a free and open-source standard parts library for CAD applications. It does so by providing a common database that can be utilized by many different CAD applications.</p>
+
+        <p>BOLTS tries to provide a infrastructure and processes that build on three basic principles:</p>
+        <ul>
+          <li><strong>Separation:</strong> The description of parts (dimensions, geometries, ...) is separated into application specific and general information.  This allows to add support for individual CAD applications with minimal effort.</li>
+          <li><strong>Automation:</strong> The description of parts is designed to be machine readable. This allows to eliminate a lot of work by automation, and eases the task of maintaining a large number of parts.</li>
+          <li><strong>Contribution:</strong> Building a parts library that suits the needs of a wide range of people can only be done by a wide range of people. Therefore BOLTS is designed to make contributing easy.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Features</h3>
+        <ul>
+          <li>Provides GPL and LGPL distributions.
+          <li>Built with platform independent technologies like <a href="http://www.python.org">Python</a> and <a href="http://yaml.org/">YAML</a></li>
+          <li>Support for <a href="http://www.openscad.org/">OpenSCAD</a> and <a href="http://freecadweb.org/">FreeCAD</a>, others are planned.</li>
+          <li><a href="{{ site.baseurl }}/html/index.html">Comprehensive online documentation</a> for all parts</li>
+          <li>Easy to contribute to</li>
+        </ul>
+        <h3>Statistics</h3>
+        <ul>
+          <li> <a href="{{ site.baseurl }}/html/contributors.html">$contributors people</a> contributed</li>
+          <li> $classes classes in</li>
+          <li> $collections collections following</li>
+          <li> $standards different standards issued by</li>
+          <li> $bodies standardization organisations</li>
+          <li> $commonconfigurations different parts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>Quickstart: Using BOLTS with OpenSCAD</h3>
+        <p>Download the tarball with BOLTS for <a href="http://www.openscad.org/">OpenSCAD</a> from the <a href="{{site.baseurl}}/downloads.html">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the top of your scad file:</p>
+          {% highlight python %}
+include <bolts.scad>
+{% endhighlight %}
+        <p> You can now use BOLTS to add standard parts like a <a href="{{site.baseurl}}/html/classes/ISO7089.html">washer</a>:</p>
+      {% highlight python %}
+ISO7089("M4");
+{% endhighlight %}
+        <p>For more information see the <a href="{{ site.baseurl}}/doc/index.html">Documentation</a>
+      </div>
+      <div class="col">
+        <h3>Quickstart: Using BOLTS with FreeCAD</h3>
+        <p>Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="{{site.baseurl}}/downloads.html">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab. You also have to make sure to have <a href="https://bitbucket.org/xi/pyyaml">pyyaml</a> installed.</p>
+        <p> After starting FreeCAD, choose <code>Macros</code> from the <code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code></p>
+        <p>A widget should appear. There you can select a part from the tree, give values for the parameters and add it to the current document.</p>
+        <p>For more information see the <a href="{{ site.baseurl}}/doc/index.html">Documentation</a>
+      </div>
+    </div>
+  </div>
+</div>
