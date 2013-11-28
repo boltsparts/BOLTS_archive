@@ -1,0 +1,24 @@
+---
+layout: nil
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title>BOLTS Development Blog</title>
+ <link href="{{ site.baseurl }}atom.xml" rel="self"/>
+ <link href="{{ site.baseurl }}"/>
+ <updated>{{ site.time | date_to_xmlschema }}</updated>
+ <id>{{ site.baseurl }}</id>
+ <author>
+   <name>Johannes Reinhardt</name>
+   <email>jreinhardt@ist-dein-freund.de</email>
+ </author>
+ {% for post in site.posts %}
+ <entry>
+   <title>{{ post.title }}</title>
+   <link href="{{ site.baseurl }}{{ post.url }}"/>
+   <updated>{{ post.date | date_to_xmlschema }}</updated>
+   <id>{{ site.baseurl }}{{ post.id }}</id>
+   <content type="html">{{ post.content | xml_escape }}</content>
+ </entry>
+ {% endfor %}
+</feed>

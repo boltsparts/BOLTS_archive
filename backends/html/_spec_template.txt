@@ -1,0 +1,15 @@
+---
+  layout: base
+  title: Specification
+---
+<div class="page-title-bar">
+  <div class="inner-content">
+    <h2>{{ page.title }}</h2>
+  </div>
+</div>
+
+<div id="content">
+  <div class="inner-content">
+%(body)s
+  </div>
+</div>
