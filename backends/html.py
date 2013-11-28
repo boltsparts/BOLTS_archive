@@ -84,8 +84,10 @@ class HTMLExporter(BackendExporter):
 		makedirs(join(html_root,"drawings"))
 
 		#write unchanged files
-		for name in ["atom.xml","blog.html","contribute.html","public_domain.html","unclear_license.html","no_drawing.png"]:
+		for name in ["atom.xml","blog.html","contribute.html","public_domain.html","unclear_license.html"]:
 			copyfile(join(template_dir,name),join(out_root,name))
+
+		copyfile(join(template_dir,"no_drawing.png"),join(html_root,"drawings","no_drawing.png"))
 
 		#write specification collections, parts and bodies
 		for coll in self.repo.collections:
@@ -350,7 +352,16 @@ class HTMLExporter(BackendExporter):
 
 		params["title"] = cl.name
 		params["description"] = cl.description or "No description available"
-		params["drawing"] = cl.drawing or "no_drawing.png"
+
+		#find drawing
+		if cl.id in self.drawings.getbase:
+			drawing = self.drawings.getbase[cl.id]
+			if drawing.get_png() is None:
+				params["drawing"] = "no_drawing.png"
+			else:
+				params["drawing"] = join(drawing.collection,drawing.filename+ ".png")
+		else:
+			params["drawing"] = "no_drawing.png"
 
 		props = []
 
