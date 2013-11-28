@@ -16,7 +16,7 @@ OpenSCAD]({{ page.docroot }}openscad/installation.html).
 
 ### Follow this guide and contribute
 
-There is a [list of classes]({{ site.baseurl }}/html/tasks.html) for which no
+There is a [list of classes]({{ site.baseurl }}/tasks.html) for which no
 drawing is available. You are invited to pick one, follow this guide and
 contribute the result.
 
