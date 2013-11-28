@@ -147,6 +147,7 @@ class MissingDrawingTable(ErrorTable):
 			for cl in coll.classes_by_ids():
 				if not cl.id in dbs["drawings"].getbase:
 					row = []
+					row.append(cl.id)
 					row.append(coll.id)
 					row.append(cl.standard)
 					self.rows.append(row)
