@@ -82,9 +82,9 @@ def singlerowradialbearing(params,document):
 ### DEEP GROOVE DOUBLE ROW BALL BEARING ###------------------------------
 
 def doublerowradialbearing(params,document): 
-	rin=0.5*params['DRBinr']
-	rout=0.5*params['DRBour']
-	bth=params['DRBbth']
+	rin=0.5*params['d1']
+	rout=0.5*params['d2']
+	bth=params['B']
 	name = params['name']
 	rb=0.3*(rout-rin)
 	cb=(rout-rin)/2.0+rin
@@ -248,9 +248,9 @@ def needlebearing(params, document):
 ### CYLINDRICAL SINGLE ROW ROLLER BEARING ###----------------------------
 
 def cylindricalrollerbearing(params,document):
-	rin = 0.5*params['CBinr']
-	rout = 0.5*params['CBour']
-	bth = params['CBbth']
+	rin = 0.5*params['d1']
+	rout = 0.5*params['d2']
+	bth = params['B']
 	name = params['name']
 	rcy=0.2*(rout-rin)
 	ccy=(((rout-rin)/2.0)+rin)

@@ -74,9 +74,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="203.85713"
-     inkscape:cy="82.434264"
+     inkscape:zoom="1.979899"
+     inkscape:cx="218.91631"
+     inkscape:cy="95.337771"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -95,7 +95,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -348,47 +348,46 @@
        inkscape:connector-curvature="0"
        transform="translate(0,308.2677)" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.4;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DistanceEnd);marker-end:url(#DistanceStart);stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 165.71428,135.35714 14.28572,0"
+       style="fill:none;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#DistanceEnd);marker-end:url(#DistanceStart)"
+       d="m 180,443.62484 -14.28572,0"
        id="path8190"
-       inkscape:connector-curvature="0"
-       transform="translate(0,308.2677)" />
+       inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="129.28572"
-       y="425.83875"
+       x="143.92857"
+       y="411.19589"
        id="text9655"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan9657"
-         x="129.28572"
-         y="425.83875"
-         style="font-size:8px">DRBin</tspan></text>
+         x="143.92857"
+         y="411.19589"
+         style="font-size:8px">d1</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="64.64286"
-       y="433.62485"
+       x="68.571434"
+       y="412.91055"
        id="text9659"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan9661"
-         x="64.64286"
-         y="433.62485"
-         style="font-size:8px">DRBour</tspan></text>
+         x="68.571434"
+         y="412.91055"
+         style="font-size:8px">d2</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="156.42856"
-       y="468.2677"
+       x="170.35713"
+       y="456.83914"
        id="text9663"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan9665"
-         x="156.42856"
-         y="468.2677"
-         style="font-size:8px">DRBbth</tspan></text>
+         x="170.35713"
+         y="456.83914"
+         style="font-size:8px">B</tspan></text>
   </g>
   <g
      id="g50">

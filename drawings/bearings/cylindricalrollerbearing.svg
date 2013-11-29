@@ -14,7 +14,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="cylindricalrollerbearing.svg">
+   sodipodi:docname="cylindricalrollerbearing.svg"
+   inkscape:export-filename="/home/jreinhardt/Models/BOLTS/drawings/bearings/cylindricalrollerbearing.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <defs
      id="defs4">
     <marker
@@ -72,8 +75,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="4.2380952"
-     inkscape:cx="105.67416"
-     inkscape:cy="105"
+     inkscape:cx="106.14607"
+     inkscape:cy="123.8764"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -92,7 +95,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -353,15 +356,15 @@
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="58.51685"
-       y="410.20029"
+       x="68.19101"
+       y="411.61603"
        id="text5190"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5192"
-         x="58.51685"
-         y="410.20029"
-         style="font-size:8px">CBinr</tspan></text>
+         x="68.19101"
+         y="411.61603"
+         style="font-size:8px">d2</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -373,20 +376,19 @@
          id="tspan5196"
          x="138.26967"
          y="411.61603"
-         style="font-size:8px">CBour</tspan></text>
+         style="font-size:8px">d1</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="166.34831"
-       y="150.06741"
+       x="169.88763"
+       y="456.44748"
        id="text5198"
-       sodipodi:linespacing="125%"
-       transform="translate(0,308.2677)"><tspan
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5200"
-         x="166.34831"
-         y="150.06741"
-         style="font-size:8px">CBbth</tspan></text>
+         x="169.88763"
+         y="456.44748"
+         style="font-size:8px">B</tspan></text>
   </g>
   <g
      id="g50">

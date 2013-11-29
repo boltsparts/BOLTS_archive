@@ -96,7 +96,7 @@ classes:
       common: []
       tables:
         index: key
-        columns: [DRBinr,DRBour,DRBbth]
+        columns: [d1,d2,B]
         data:
             "4200-B-TVH" : [10,30,14]
             "4201-B-TVH" : [12,32,14]
@@ -512,7 +512,7 @@ classes:
         common: []
         tables:
             index: key
-            columns: [CBinr,CBour,CBbth]
+            columns: [d1,d2,B]
             data:
               "N202-E-TVP2" : [15,35,11]
               "N203-E-TVP2" : [17,40,12]
