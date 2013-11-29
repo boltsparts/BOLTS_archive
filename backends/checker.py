@@ -283,6 +283,28 @@ class NonconformingParameternameTable(ErrorTable):
 						row.append(coll.id)
 						self.rows.append(row)
 
+class TableProblemTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Table problems",
+			"There are  problems in a table",
+			["Class id", "Collection", "Table", "Row", "Column", "Reason"]
+		)
+
+	def populate(self,repo,dbs):
+		for coll in repo.collections:
+			for cl in coll.classes_by_ids():
+				t_idx = 0
+				for table in cl.parameters.tables:
+					#sort by first column
+					data = [kv for kv in sorted(table.data.iteritems(),key=lambda x: x[1][0])]
+					n = len(data)
+					m = len(data[0][1])
+
+					for index,row in data:
+						if not len(row) == m:
+							self.rows.append([cl.id,coll.id,t_idx,index,"-","Inconsistent row lengths"])
+					t_idx += 1
 
 
 class CheckerExporter(BackendExporter):
@@ -299,6 +321,7 @@ class CheckerExporter(BackendExporter):
 		self.checks["unsupportedlicense"] = UnsupportedLicenseTable()
 		self.checks["unknownfile"] = UnknownFileTable()
 		self.checks["nonconformingparametername"] = NonconformingParameternameTable()
+		self.checks["tableproblem"] = TableProblemTable()
 
 		for check in self.checks.values():
 			check.populate(repo,databases)
