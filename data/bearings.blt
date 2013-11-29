@@ -93,7 +93,6 @@ classes:
       free: [key]
       types: {key: Table Index}
       defaults: {key: "4202-B-TVH"}
-      common: []
       tables:
         index: key
         columns: [d1,d2,B]
@@ -128,7 +127,6 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: "51200"}
-        common: []
         tables:
              index: key
              columns: [d,D,T]
@@ -269,7 +267,6 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: K10X13X10-TV}
-        common: []
         tables:
             index: key
             columns: [Fw,Ew,Bc]
@@ -509,7 +506,6 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: N204-E-TVP2}
-        common: []
         tables:
             index: key
             columns: [d1,d2,B]
