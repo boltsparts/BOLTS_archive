@@ -188,7 +188,7 @@ class UnsupportedLicenseTable(ErrorTable):
 				row.append(",".join(coll.authors))
 				self.rows.append(row)
 		#bases
-		for db in dbs:
+		for db in ["openscad","freecad","drawings"]:
 			for id, base in dbs[db].getbase.iteritems():
 				if not license.check_license(base.license_name,base.license_url):
 					row = []
@@ -306,6 +306,50 @@ class TableProblemTable(ErrorTable):
 							self.rows.append([cl.id,coll.id,t_idx,index,"-","Inconsistent row lengths"])
 					t_idx += 1
 
+class MissingBaseConnectionTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Missing Base Connections",
+			"There are possibilities to assign classes to base geometries that are not used",
+			["Backend","Filename","missing classes"]
+		)
+
+	def populate(self,repo,dbs):
+		#collect sets of geo equivalent classes
+		geo_eq = []
+		for db in ["freecad","openscad","drawings"]:
+			for base in dbs[db].getbase.values():
+				geo_eq.append(set(base.classids))
+		for dtable in dbs["solidworks"].designtables:
+			geo_eq.append(set([dtc.classid for dtc in dtable.classes]))
+
+		#consolidate geo equivalent sets TODO: what is that operation called in cs lingo? algos?
+		while True:
+			geo_cns = []
+			for coll in repo.collections:
+				for cl in coll.classes_by_ids():
+					cn = set([])
+					for eq in geo_eq:
+						if cl.id in eq:
+							cn = cn.union(eq)
+					if not cn in geo_cns:
+						geo_cns.append(cn)
+			if len(geo_cns) == len(geo_eq):
+				geo_eq = geo_cns
+				break
+			geo_eq = geo_cns
+
+		#check whether we are missing something
+		for db in ["freecad","openscad","drawings"]:
+			for base in dbs[db].getbase.values():
+				classids = set(base.classids)
+				for eq in geo_eq:
+					if not classids.isdisjoint(eq) and eq > classids:
+						self.rows.append([db,base.filename,str(eq - classids)])
+
+
+
+
 
 class CheckerExporter(BackendExporter):
 	def __init__(self,repo,databases):
@@ -322,6 +366,7 @@ class CheckerExporter(BackendExporter):
 		self.checks["unknownfile"] = UnknownFileTable()
 		self.checks["nonconformingparametername"] = NonconformingParameternameTable()
 		self.checks["tableproblem"] = TableProblemTable()
+		self.checks["missingbaseconnection"] = MissingBaseConnectionTable()
 
 		for check in self.checks.values():
 			check.populate(repo,databases)

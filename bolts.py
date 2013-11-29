@@ -109,6 +109,7 @@ def check(args):
 	dbs["openscad"] = OpenSCADData(args.repo)
 	dbs["freecad"] = FreeCADData(args.repo)
 	dbs["drawings"] = DrawingsData(args.repo)
+	dbs["solidworks"] = SolidWorksData(args.repo)
 
 	from backends.checker import CheckerExporter
 	checker = CheckerExporter(repo,dbs)
