@@ -45,3 +45,10 @@ class BackendNotAvailableError(BackendError):
 	def __init__(self,backendname):
 		BackendError.__init__(self,backendname)
 		self.msg = "The backend is not available in this repo"
+
+class ModuleNameCollisionError(Exception):
+	def __init__(self,modulename):
+		Exception.__init__(self)
+		self.modulename = modulename
+	def __str__(self):
+		return "Detected a module name clash for OpenSCAD export for name: %s" % self.modulename

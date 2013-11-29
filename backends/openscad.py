@@ -43,6 +43,19 @@ class OpenSCADExporter(BackendExporter):
 	def __init__(self,repo,openscad):
 		BackendExporter.__init__(self,repo)
 		self.openscad = openscad
+
+		#check for module name clashes
+		modules = []
+		for coll in repo.collections:
+			for cl in coll.classes:
+				if cl.openscadname in modules:
+					raise ModuleNameCollisionError(cl.openscadname)
+				modules.append(cl.openscadname);
+		for base in self.openscad.getbase.values():
+			if base.type == "module":
+				if base.name in modules:
+					raise ModuleNameCollisionError(base.name)
+
 	def write_output(self,out_path,target_license,version="unstable"):
 		oscad = self.openscad
 
