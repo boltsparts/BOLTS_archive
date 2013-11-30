@@ -267,6 +267,7 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: K10X13X10-TV}
+        common: []
         tables:
             index: key
             columns: [Fw,Ew,Bc]
