@@ -93,6 +93,9 @@ def export(args):
 	elif args.target == "solidworks":
 		from backends.solidworks import SolidWorksExporter
 		SolidWorksExporter(repo,solidworks).write_output(out_path)
+	elif args.target == "step":
+		from backends.step import STEPExporter
+		STEPExporter(repo,freecad).write_output(out_path)
 
 def test(args):
 	exec_dir = os.path.join(args.repo,"output",args.target)
@@ -173,7 +176,7 @@ subparsers = parser.add_subparsers()
 parser_export = subparsers.add_parser("export")
 parser_export.add_argument("target",
 	type=str,
-	choices=["openscad","freecad","html","downloads","solidworks"],
+	choices=["openscad","freecad","html","downloads","solidworks","step"],
 	help="the distribution to create")
 parser_export.add_argument("-l","--license",
 	type=str,
