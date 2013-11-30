@@ -25,9 +25,9 @@ import license
 from errors import *
 
 class FreeCADExporter(BackendExporter):
-	def __init__(self,repo,freecad):
-		BackendExporter.__init__(self,repo)
-		self.freecad = freecad
+	def __init__(self,repo,databases):
+		BackendExporter.__init__(self,repo,databases)
+		self.freecad = databases["freecad"]
 	def write_output(self,out_path,target_license,version="unstable"):
 
 		self.clear_output_dir(out_path)

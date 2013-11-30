@@ -353,8 +353,7 @@ class MissingBaseConnectionTable(ErrorTable):
 
 class CheckerExporter(BackendExporter):
 	def __init__(self,repo,databases):
-		BackendExporter.__init__(self,repo)
-		self.databases = databases
+		BackendExporter.__init__(self,repo,databases)
 
 		self.checks = {}
 		self.checks["missingbase"] = MissingBaseTable()

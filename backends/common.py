@@ -22,8 +22,9 @@ from os.path import join, exists, isfile
 from shutil import rmtree
 
 class BackendExporter:
-	def __init__(self,repo):
+	def __init__(self,repo,databases):
 		self.repo = repo
+		self.databases = databases
 	def clear_output_dir(self,out_dir):
 		# pylint: disable=R0201
 		if not exists(out_dir):

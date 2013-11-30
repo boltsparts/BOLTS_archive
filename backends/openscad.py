@@ -40,9 +40,9 @@ def get_incantation(cl,params):
 
 
 class OpenSCADExporter(BackendExporter):
-	def __init__(self,repo,openscad):
-		BackendExporter.__init__(self,repo)
-		self.openscad = openscad
+	def __init__(self,repo,databases):
+		BackendExporter.__init__(self,repo,databases)
+		self.openscad = databases["openscad"]
 
 		#check for module name clashes
 		modules = []

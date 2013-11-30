@@ -50,20 +50,16 @@ def prop_row(props,prop,value):
 
 
 class HTMLExporter(BackendExporter):
-	def __init__(self,repo,fcad,oscad,draws):
-		BackendExporter.__init__(self,repo)
+	def __init__(self,repo,databases):
+		BackendExporter.__init__(self,repo,databases)
 		self.templates = {}
 
-		self.freecad = fcad
-		self.openscad = oscad
-		self.drawings = draws
+		self.freecad = self.databases["freecad"]
+		self.openscad = self.databases["openscad"]
+		self.drawings = self.databases["drawings"]
 
-		self.statistics = statistics.StatisticsExporter(repo,fcad,oscad,draws)
-		dbs = {}
-		dbs["freecad"] = fcad
-		dbs["openscad"] = oscad
-		dbs["drawings"] = draws
-		self.checker = checker.CheckerExporter(repo,dbs)
+		self.statistics = statistics.StatisticsExporter(repo,databases)
+		self.checker = checker.CheckerExporter(repo,databases)
 
 	def write_output(self,out_root):
 		#load templates

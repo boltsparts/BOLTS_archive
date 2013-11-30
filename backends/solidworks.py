@@ -25,9 +25,9 @@ from errors import *
 from common import BackendExporter
 
 class SolidWorksExporter(BackendExporter):
-	def __init__(self,repo,solidworks):
-		BackendExporter.__init__(self,repo)
-		self.solidworks = solidworks
+	def __init__(self,repo,databases):
+		BackendExporter.__init__(self,repo,databases)
+		self.solidworks = databases["solidworks"]
 
 	def write_output(self,out_path):
 		self.clear_output_dir(out_path)

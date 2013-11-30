@@ -69,33 +69,34 @@ def display_table(table,header,title,description):
 def export(args):
 	#load data
 	repo = BOLTSRepository(args.repo)
-	openscad = OpenSCADData(args.repo)
-	freecad = FreeCADData(args.repo)
-	drawings = DrawingsData(args.repo)
-	solidworks = SolidWorksData(args.repo)
+	dbs = {}
+	dbs["openscad"] = OpenSCADData(args.repo)
+	dbs["freecad"] = FreeCADData(args.repo)
+	dbs["drawings"] = DrawingsData(args.repo)
+	dbs["solidworks"] = SolidWorksData(args.repo)
 
 	license = LICENSES_SHORT[args.license]
 
 	out_path = os.path.join(repo.path,"output",args.target)
 	if args.target == "openscad":
 		from backends.openscad import OpenSCADExporter
-		OpenSCADExporter(repo,openscad).write_output(out_path,license)
+		OpenSCADExporter(repo,dbs).write_output(out_path,license)
 		copyfile(os.path.join(repo.path,"backends","licenses",args.license.strip("+")),
 			os.path.join(out_path,"LICENSE"))
 	elif args.target == "freecad":
 		from backends.freecad import FreeCADExporter
-		FreeCADExporter(repo,freecad).write_output(out_path,license)
+		FreeCADExporter(repo,dbs).write_output(out_path,license)
 		copyfile(os.path.join(repo.path,"backends","licenses",args.license.strip("+")),
 			os.path.join(out_path,"BOLTS","LICENSE"))
 	elif args.target == "html":
 		from backends.html import HTMLExporter
-		HTMLExporter(repo,freecad,openscad,drawings).write_output(out_path)
+		HTMLExporter(repo,dbs).write_output(out_path)
 	elif args.target == "solidworks":
 		from backends.solidworks import SolidWorksExporter
-		SolidWorksExporter(repo,solidworks).write_output(out_path)
+		SolidWorksExporter(repo,dbs).write_output(out_path)
 	elif args.target == "step":
 		from backends.step import STEPExporter
-		STEPExporter(repo,freecad).write_output(out_path)
+		STEPExporter(repo,dbs).write_output(out_path)
 
 def test(args):
 	exec_dir = os.path.join(args.repo,"output",args.target)

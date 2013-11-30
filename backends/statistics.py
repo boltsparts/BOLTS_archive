@@ -18,11 +18,11 @@ import license
 from errors import *
 
 class StatisticsExporter(BackendExporter):
-	def __init__(self,repo,freecad,openscad,drawings):
-		BackendExporter.__init__(self,repo)
-		self.freecad = freecad
-		self.openscad = openscad
-		self.drawings = drawings
+	def __init__(self,repo,databases):
+		BackendExporter.__init__(self,repo,databases)
+		self.freecad = databases["freecad"]
+		self.openscad = databases["openscad"]
+		self.drawings = databases["drawings"]
 
 	def write_output(self,out_path):
 		pass
