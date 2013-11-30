@@ -52,3 +52,9 @@ class ModuleNameCollisionError(Exception):
 		self.modulename = modulename
 	def __str__(self):
 		return "Detected a module name clash for OpenSCAD export for name: %s" % self.modulename
+
+class MissingFreeCADError(Exception):
+	def __init__(self):
+		Exception.__init__(self)
+	def __str__(self):
+		return "Could not find FreeCAD python module"
