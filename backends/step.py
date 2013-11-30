@@ -68,6 +68,10 @@ class STEPExporter(BackendExporter):
 	def write_output(self,out_path):
 		self.clear_output_dir(out_path)
 
+		#Disable writing bytecode to avoid littering the freecad database with pyc files
+		write_bytecode = sys.dont_write_bytecode
+		sys.dont_write_bytecode = True
+
 		for coll in self.repo.collections:
 			makedirs(join(out_path,coll.id))
 			sys.path.append(join(self.repo.path,"freecad",coll.id))
@@ -95,6 +99,9 @@ class STEPExporter(BackendExporter):
 					shape.exportStep(join(out_path,coll.id,filename))
 					FreeCAD.closeDocument(doc.Name)
 			sys.path.pop()
+
+		#restore byte code writing
+		sys.dont_write_bytecode = write_bytecode
 
 
 
