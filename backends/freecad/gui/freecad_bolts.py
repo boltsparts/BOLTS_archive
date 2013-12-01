@@ -40,7 +40,7 @@ def add_part(base,params,doc):
 			raise MalformedBaseError("No object %s found" % base.objectname)
 		#maps source name to destination object
 		srcdstmap = {}
-		dst_obj = self._recursive_copy(src_obj,doc,srcdstmap)
+		dst_obj = copy_part_recursive(src_obj,doc,srcdstmap)
 
 		#set parameters
 		for obj_name,proptoparam in base.proptoparam.iteritems():
@@ -55,7 +55,7 @@ def add_part(base,params,doc):
 		FreeCAD.closeDocument(src_doc.Name)
 
 
-def copy_part_recursive(self,src_obj,dst_doc,srcdstmap):
+def copy_part_recursive(src_obj,dst_doc,srcdstmap):
 	# pylint: disable=F0401
 
 	if src_obj.Name in srcdstmap:
