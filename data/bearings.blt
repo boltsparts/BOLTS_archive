@@ -17,7 +17,7 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ---
 id: bearings
-name: BOLTS Bearings
+name: Bearings
 description: various ball bearings
 author: [Johannes Reinhardt <jreinhardt@ist-dein-freund.de>, Javier Martínez García <jaeco@gmx.com>]
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>

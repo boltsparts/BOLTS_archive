@@ -20,7 +20,7 @@
 #THE SOFTWARE.
 ---
 id: pipes
-name: BOLTS pipes
+name: Pipes
 description: metric and imperial pipes
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: MIT <http://opensource.org/licenses/MIT>
