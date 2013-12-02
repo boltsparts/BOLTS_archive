@@ -65,20 +65,24 @@ class STEPExporter(BackendExporter):
 		BackendExporter.__init__(self,repo, databases)
 		self.freecad = databases["freecad"]
 
-	def write_output(self,out_path):
+	def write_output(self,out_path,version,stable=False):
 		self.clear_output_dir(out_path)
+
+		ver_root = joun(out_path,version)
+		makedirs(ver_root)
 
 		#Disable writing bytecode to avoid littering the freecad database with pyc files
 		write_bytecode = sys.dont_write_bytecode
 		sys.dont_write_bytecode = True
 
 		for coll in self.repo.collections:
-			makedirs(join(out_path,coll.id))
+			makedirs(join(ver_root,coll.id))
 			sys.path.append(join(self.repo.path,"freecad",coll.id))
 			for cl in coll.classes:
 				if not cl.id in self.freecad.getbase:
 					continue
 				base = self.freecad.getbase[cl.id]
+				#TODO: licence conformity
 
 				for free in cl.parameters.common:
 					params = cl.parameters.collect(dict(zip(cl.parameters.free,free)))
@@ -101,7 +105,7 @@ class STEPExporter(BackendExporter):
 							shape = shape.fuse(sh)
 
 					#TODO: http://forum.freecadweb.org/viewtopic.php?f=10&t=4905&start=10
-					shape.exportStep(join(out_path,coll.id,filename))
+					shape.exportStep(join(ver_root,coll.id,filename))
 					FreeCAD.closeDocument(doc.Name)
 			sys.path.pop()
 

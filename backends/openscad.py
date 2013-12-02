@@ -56,7 +56,7 @@ class OpenSCADExporter(BackendExporter):
 				if base.name in modules:
 					raise ModuleNameCollisionError(base.name)
 
-	def write_output(self,out_path,target_license,version="unstable"):
+	def write_output(self,out_path,target_license,version,stable=False):
 		oscad = self.openscad
 
 		self.clear_output_dir(out_path)
@@ -83,12 +83,12 @@ class OpenSCADExporter(BackendExporter):
 
 		#create version file
 		version_fid = open(join(out_path,"common","version.scad"),"w","utf8")
-		if version == "unstable":
-			version_fid.write('function BOLTS_version() = "%s";\n' % version)
-		else:
+		if stable:
 			major, minor = str(version).split('.')
 			version_fid.write('function BOLTS_version() = [%s, %s, %s];\n' %
 				 (major, minor, target_license))
+		else:
+			version_fid.write('function BOLTS_version() = "%s";\n' % version)
 		date = datetime.now()
 		version_fid.write('function BOLTS_date() = [%d,%d,%d];\n' %
 				(date.year, date.month, date.day))

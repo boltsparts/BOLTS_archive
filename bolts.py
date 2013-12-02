@@ -80,12 +80,12 @@ def export(args):
 	out_path = os.path.join(repo.path,"output",args.target)
 	if args.target == "openscad":
 		from backends.openscad import OpenSCADExporter
-		OpenSCADExporter(repo,dbs).write_output(out_path,license)
+		OpenSCADExporter(repo,dbs).write_output(out_path,license,"development")
 		copyfile(os.path.join(repo.path,"backends","licenses",args.license.strip("+")),
 			os.path.join(out_path,"LICENSE"))
 	elif args.target == "freecad":
 		from backends.freecad import FreeCADExporter
-		FreeCADExporter(repo,dbs).write_output(out_path,license)
+		FreeCADExporter(repo,dbs).write_output(out_path,license,"development")
 		copyfile(os.path.join(repo.path,"backends","licenses",args.license.strip("+")),
 			os.path.join(out_path,"BOLTS","LICENSE"))
 	elif args.target == "html":
@@ -93,10 +93,10 @@ def export(args):
 		HTMLExporter(repo,dbs).write_output(out_path)
 	elif args.target == "solidworks":
 		from backends.solidworks import SolidWorksExporter
-		SolidWorksExporter(repo,dbs).write_output(out_path)
+		SolidWorksExporter(repo,dbs).write_output(out_path,"development")
 	elif args.target == "step":
 		from backends.step import STEPExporter
-		STEPExporter(repo,dbs).write_output(out_path)
+		STEPExporter(repo,dbs).write_output(out_path,"development")
 
 def test(args):
 	exec_dir = os.path.join(args.repo,"output",args.target)
@@ -122,48 +122,52 @@ def check(args):
 		print check.print_table()
 
 
-#
-#def release(args):
-#	#check that there are no uncommited changes
-#	if call(["git","diff","--exit-code","--quiet"]) == 1:
-#		print "There are uncommited changes present in the git repository. Please take care of them before releasing"
-#		exit(1)
-#
-#	if args.kind == "stable" and args.version is None:
-#		print "Please specify a version using -v when releasing a stable version"
-#		exit(2)
-#	if args.kind == "development" and not args.version is None:
-#		print "No explicit version can be given for development releases"
-#		exit(2)
-#	repo = blt_parser.BOLTSRepository(args.repo)
-#
-#	#export
-#	html.HTMLExporter().write_output(repo)
-#	for li_short in ["lgpl2.1+","gpl3"]:
-#		license = LICENSES_SHORT[li_short]
-#		openscad.OpenSCADExporter().write_output(repo,license)
-#		copyfile(os.path.join(repo.path,"licenses",li_short.strip("+")),
-#			os.path.join(repo.path,"output","openscad","LICENSE"))
-#		freecad.FreeCADExporter().write_output(repo,license)
-#		copyfile(os.path.join(repo.path,"licenses",li_short.strip("+")),
-#			os.path.join(repo.path,"output","freecad","BOLTS","LICENSE"))
-#
-#		for backend,backend_name in zip(["freecad","openscad"],["FreeCAD","OpenSCAD"]):
-#			#construct filename from date
-#			if args.kind == "development":
-#				date = datetime.now().strftime("%Y%m%d%H%M")
-#				template = "BOLTS_%s_%s_%s" % (backend_name,date,li_short)
-#			elif args.kind == "stable":
-#				template = "BOLTS_%s_%s_%s" % (backend_name,args.version,li_short)
-#
-#			#create archives
-#			root_dir = os.path.join(repo.path,"output",backend)
-#			base_name = os.path.join(repo.downloads.out_root,"downloads",backend,template)
-#			make_archive(base_name,"gztar",root_dir)
-#			make_archive(base_name,"zip",root_dir)
-#
-#	#write html overview
-#	downloads.DownloadsExporter().write_output(repo)
+
+def release(args):
+	#check that there are no uncommited changes
+	if call(["git","diff","--exit-code","--quiet"]) == 1:
+		print "There are uncommited changes present in the git repository. Please take care of them before releasing"
+		exit(1)
+
+	if args.kind == "stable" and args.version is None:
+		print "Please specify a version using -v when releasing a stable version"
+		exit(2)
+	if args.kind == "development" and not args.version is None:
+		print "No explicit version can be given for development releases"
+		exit(2)
+	repo = BOLTSRepository(args.repo)
+
+	version = datetime.now().strftime("%Y%m%d%H%M")
+	stable = args.kind == "stable"
+	if stable:
+		version = args.version
+	from backends.openscad import OpenSCADExporter
+	from backends.freecad import FreeCADExporter
+
+	dbs = {}
+	dbs["openscad"] = OpenSCADData(args.repo)
+	dbs["freecad"] = FreeCADData(args.repo)
+
+	#export
+	for li_short in ["lgpl2.1+","gpl3"]:
+		license = LICENSES_SHORT[li_short]
+		OpenSCADExporter(repo,dbs).write_output(os.path.join(repo.path,"output","openscad"),license,version,stable)
+		copyfile(os.path.join(repo.path,"backends","licenses",li_short.strip("+")),
+			os.path.join(repo.path,"output","openscad","LICENSE"))
+		FreeCADExporter(repo,dbs).write_output(os.path.join(repo.path,"output","freecad"),license,version,stable)
+		copyfile(os.path.join(repo.path,"backends","licenses",li_short.strip("+")),
+			os.path.join(repo.path,"output","freecad","BOLTS","LICENSE"))
+
+		for backend,backend_name in zip(["freecad","openscad"],["FreeCAD","OpenSCAD"]):
+			#construct filename from date
+			template = "BOLTS_%s_%s_%s" % (backend_name,version,li_short)
+
+			#create archives
+			root_dir = os.path.join(repo.path,"output",backend)
+			base_name = os.path.join(repo.path,"downloads",backend,template)
+			make_archive(base_name,"gztar",root_dir)
+			make_archive(base_name,"zip",root_dir)
+
 
 
 parser = argparse.ArgumentParser()
@@ -196,14 +200,14 @@ parser_test.set_defaults(func=test)
 parser_check = subparsers.add_parser("check")
 parser_check.set_defaults(func=check)
 
-#parser_release = subparsers.add_parser("release")
-#parser_release.set_defaults(func=release)
-#parser_release.add_argument("kind",
-#	type=str,
-#	choices=["development","stable"],
-#	help="whether to create a development snapshot or a official relase",
-#	default="development")
-#parser_release.add_argument("-v","--version",type=str)
+parser_release = subparsers.add_parser("release")
+parser_release.set_defaults(func=release)
+parser_release.add_argument("kind",
+	type=str,
+	choices=["development","stable"],
+	help="whether to create a development snapshot or a official relase",
+	default="development")
+parser_release.add_argument("-v","--version",type=str)
 
 
 args = parser.parse_args()

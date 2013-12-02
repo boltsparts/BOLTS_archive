@@ -29,8 +29,11 @@ class SolidWorksExporter(BackendExporter):
 		BackendExporter.__init__(self,repo,databases)
 		self.solidworks = databases["solidworks"]
 
-	def write_output(self,out_path):
+	def write_output(self,out_path,version,stable=False):
 		self.clear_output_dir(out_path)
+
+		ver_root = join(out_path,version)
+		makedirs(ver_root)
 
 		for designtable in self.solidworks.designtables:
 			#build class lookup, we need to search for classes by ids
@@ -44,7 +47,7 @@ class SolidWorksExporter(BackendExporter):
 					blt_classes[cl.id] = cl
 
 			#create directories and copy model files
-			coll_path = join(out_path,designtable.collection)
+			coll_path = join(ver_root,designtable.collection)
 			if not exists(coll_path):
 				makedirs(coll_path)
 			model_path = join(coll_path,designtable.filename)

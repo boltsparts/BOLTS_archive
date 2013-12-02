@@ -29,7 +29,7 @@ class FreeCADExporter(BackendExporter):
 	def __init__(self,repo,databases):
 		BackendExporter.__init__(self,repo,databases)
 		self.freecad = databases["freecad"]
-	def write_output(self,out_path,target_license,version="unstable"):
+	def write_output(self,out_path,target_license,version,stable=False):
 
 		self.clear_output_dir(out_path)
 		bolts_path = join(out_path,"BOLTS")
