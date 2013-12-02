@@ -40,9 +40,17 @@ classes:
     source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-2s
     naming:
+      template: T Slot extrusion two slots (opp.) 20x20x%s
+      substitute: [l]
+    description: T Slot aluminium extrusion two oppositeslots 20mmx20mm
+    parameters:
+      free: [l]
+    source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+  - id: tslot20x20-2sa
+    naming:
       template: T Slot extrusion two slots 20x20x%s
       substitute: [l]
-    description: T Slot aluminium extrusion two slots 20mmx20mm
+    description: T Slot aluminium extrusion two neighboring slots 20mmx20mm
     parameters:
       free: [l]
     source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
