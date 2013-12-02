@@ -93,7 +93,12 @@ class STEPExporter(BackendExporter):
 					add_part(base,params,doc)
 
 					#merge all solids of a compound, otherwise the step file contains many objects
-					shape = doc.ActiveObject.Shape
+					obj = doc.ActiveObject
+					shape = obj.Shape
+					if isinstance(obj.Shape,Part.Compound):
+						shape = obj.Shape.Solids[0]
+						for sh in obj.Shape.Solids[1:]:
+							shape = shape.fuse(sh)
 
 					#TODO: http://forum.freecadweb.org/viewtopic.php?f=10&t=4905&start=10
 					shape.exportStep(join(out_path,coll.id,filename))
