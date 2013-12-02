@@ -21,7 +21,7 @@ FREECADPATH = '/usr/lib/freecad/lib/' # path to your FreeCAD.so or FreeCAD.dll f
 import sys
 sys.path.append(FREECADPATH)
 try:
-	import FreeCAD, Part
+	import FreeCAD, Part, Sketcher
 except:
 	raise MissingFreeCADError()
 
@@ -32,6 +32,37 @@ import importlib
 
 from common import BackendExporter
 from freecad import FreeCADExporter
+
+def copy_part_recursive(src_obj,dst_doc,srcdstmap):
+	# pylint: disable=F0401
+
+	if src_obj.Name in srcdstmap:
+		return srcdstmap[src_obj.Name]
+	obj_copy = dst_doc.copyObject(src_obj)
+	srcdstmap[src_obj.Name] = obj_copy
+	for prop_name in src_obj.PropertiesList:
+		prop = src_obj.getPropertyByName(prop_name)
+		if isinstance(prop,tuple) or isinstance(prop,list):
+			new_prop = []
+			for p_item in prop:
+				if isinstance(p_item,Part.Feature):
+					new_prop.append(copy_part_recursive(p_item,dst_doc,srcdstmap))
+				elif isinstance(p_item,Sketcher.Sketch):
+					new_prop.append(dst_doc.copyObject(p_item))
+				else:
+					new_prop.append(p_item)
+			if isinstance(prop,tuple):
+				new_prop = tuple(new_prop)
+			setattr(obj_copy,prop_name,new_prop)
+		elif isinstance(prop,Sketcher.Sketch):
+			setattr(obj_copy,prop_name,dst_doc.copyObject(prop))
+		elif isinstance(prop,Part.Feature):
+			setattr(obj_copy,prop_name,copy_part_recursive(prop,dst_doc,srcdstmap))
+		else:
+			setattr(obj_copy,prop_name,src_obj.getPropertyByName(prop_name))
+	obj_copy.touch()
+	return obj_copy
+
 
 def add_part(base,params,doc):
 	if base.type == "function":
@@ -45,7 +76,7 @@ def add_part(base,params,doc):
 			raise MalformedBaseError("No object %s found" % base.objectname)
 		#maps source name to destination object
 		srcdstmap = {}
-		dst_obj = self._recursive_copy(src_obj,doc,srcdstmap)
+		dst_obj = copy_part_recursive(src_obj,doc,srcdstmap)
 
 		#set parameters
 		for obj_name,proptoparam in base.proptoparam.iteritems():
@@ -55,7 +86,6 @@ def add_part(base,params,doc):
 		#finish presentation
 		dst_obj.touch()
 		doc.recompute()
-		FreeCADGui.getDocument(doc.Name).getObject(dst_obj.Name).Visibility = True
 		FreeCAD.setActiveDocument(doc.Name)
 		FreeCAD.closeDocument(src_doc.Name)
 
@@ -68,7 +98,7 @@ class STEPExporter(BackendExporter):
 	def write_output(self,out_path,version,stable=False):
 		self.clear_output_dir(out_path)
 
-		ver_root = joun(out_path,version)
+		ver_root = join(out_path,version)
 		makedirs(ver_root)
 
 		#Disable writing bytecode to avoid littering the freecad database with pyc files
@@ -96,13 +126,11 @@ class STEPExporter(BackendExporter):
 
 					add_part(base,params,doc)
 
-					#merge all solids of a compound, otherwise the step file contains many objects
-					obj = doc.ActiveObject
-					shape = obj.Shape
-					if isinstance(obj.Shape,Part.Compound):
-						shape = obj.Shape.Solids[0]
-						for sh in obj.Shape.Solids[1:]:
-							shape = shape.fuse(sh)
+					shape = None
+					if base.type == "function":
+						shape = doc.ActiveObject.Shape
+					elif base.type == "fcstd":
+						shape = doc.getObject(base.objectname).Shape
 
 					#TODO: http://forum.freecadweb.org/viewtopic.php?f=10&t=4905&start=10
 					shape.exportStep(join(ver_root,coll.id,filename))
