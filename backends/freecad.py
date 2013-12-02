@@ -19,6 +19,7 @@ from shutil import copy, move, copytree, copyfile, rmtree
 # pylint: disable=W0622
 from codecs import open
 from datetime import datetime
+from PyQt4 import uic
 
 from common import BackendExporter
 import license
@@ -70,6 +71,9 @@ class FreeCADExporter(BackendExporter):
 		copytree(join(self.repo.path,"icons"),join(bolts_path,"icons"))
 		copyfile(join(self.repo.path,"backends","freecad","init.py"),join(bolts_path,"__init__.py"))
 		open(join(bolts_path,"gui","__init__.py"),"w").close()
+
+		#compile ui files
+		uic.compileUiDir(join(bolts_path,"gui"))
 
 		for coll in self.repo.collections:
 			if not license.is_combinable_with(coll.license_name,target_license):
