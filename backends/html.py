@@ -397,7 +397,7 @@ class HTMLExporter(BackendExporter):
 		params["dimensions"] = ""
 		for table in cl.parameters.tables:
 			sort_idx = table.columns.index(table.sort)
-			data = [row for idx,row in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx])]
+			data = [[idx] + list(row) for idx,row in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx])]
 
 			lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
 
