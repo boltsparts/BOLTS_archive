@@ -250,13 +250,8 @@ class BoltsWidget(QBoltsWidget):
 			elif p_type == "Table Index":
 				for table in params.tables:
 					if table.index == p:
-						#try to detect metric threads
-						keys = sorted(table.data.keys())
-						if "M" in [str(v)[0] for v in table.data.keys()]:
-							try:
-								keys = sorted(table.data.keys(),key=lambda x: float(x[1:]))
-							except:
-								keys = sorted(table.data.keys())
+						sort_idx = table.columns.index(table.sort)
+						keys = [key for key,row in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx])]
 						self.param_widgets[p] = TableIndexWidget(self.ui.params,p,keys,default)
 						#if more than one table has the same index, they have the same keys, so stop
 						break

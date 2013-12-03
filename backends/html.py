@@ -396,14 +396,8 @@ class HTMLExporter(BackendExporter):
 		#TODO: multiple tables properly
 		params["dimensions"] = ""
 		for table in cl.parameters.tables:
-			keys = sorted(table.data.keys())
-			#try to detect metric threads
-			if "M" in [str(v)[0] for v in table.data.keys()]:
-				try:
-					keys = sorted(table.data.keys(),key=lambda x: float(x[1:]))
-				except ValueError:
-					keys = sorted(table.data.keys())
-			data = [[key] + table.data[key] for key in keys]
+			sort_idx = table.columns.index(table.sort)
+			data = [row for idx,row in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx])]
 
 			lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
 

@@ -296,8 +296,8 @@ class TableProblemTable(ErrorTable):
 			for cl in coll.classes_by_ids():
 				t_idx = 0
 				for table in cl.parameters.tables:
-					#sort by first column
-					data = [kv for kv in sorted(table.data.iteritems(),key=lambda x: x[1][0])]
+					sort_idx = table.columns.index(table.sort)
+					data = [kv for kv in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx])]
 					n = len(data)
 					m = len(data[0][1])
 
