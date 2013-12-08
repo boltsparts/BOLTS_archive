@@ -31,6 +31,8 @@ def get_signature(cl,params):
 	for pname in params.free:
 		if params.types[pname] in ["String","Table Index"]:
 			arg_strings.append('%s="%s"' % (pname,params.defaults[pname]))
+		elif params.types[pname] == "Bool":
+			arg_strings.append('%s=%s' % (pname,str(params.defaults[pname]).lower()))
 		else:
 			arg_strings.append('%s=%s' % (pname,params.defaults[pname]))
 	return ', '.join(arg_strings)
