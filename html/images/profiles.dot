@@ -21,10 +21,20 @@ label="FreeCAD";
 }
 subgraph cluster_ocd {
 label="OpenSCAD";
+"aluminiumProfiles.scad:tslot_20x20_base" [width=4, height=0.8, fixedsize=true];
+"aluminiumProfiles.scad:tslot_20x20_1s_base" [width=4, height=0.8, fixedsize=true];
+"aluminiumProfiles.scad:tslot_20x20_2s_base" [width=4, height=0.8, fixedsize=true];
+"aluminiumProfiles.scad:tslot_20x20_2sa_base" [width=4, height=0.8, fixedsize=true];
+"aluminiumProfiles.scad:tslot_20x20_3s_base" [width=4, height=0.8, fixedsize=true];
 }
 "tslot20x20" -> "tslot-20x20.fcstd:Fillet";
+"tslot20x20" -> "aluminiumProfiles.scad:tslot_20x20_base";
 "tslot20x20-1s" -> "tslot-20x20-1S.fcstd:Fillet";
+"tslot20x20-1s" -> "aluminiumProfiles.scad:tslot_20x20_1s_base";
 "tslot20x20-2s" -> "tslot-20x20-2S.fcstd:Fillet";
+"tslot20x20-2s" -> "aluminiumProfiles.scad:tslot_20x20_2s_base";
 "tslot20x20-2sa" -> "tslot-20x20-2SA.fcstd:Fillet";
+"tslot20x20-2sa" -> "aluminiumProfiles.scad:tslot_20x20_2sa_base";
 "tslot20x20-3s" -> "tslot-20x20-3S.fcstd:Fillet";
+"tslot20x20-3s" -> "aluminiumProfiles.scad:tslot_20x20_3s_base";
 }
