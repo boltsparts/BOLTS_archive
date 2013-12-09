@@ -319,8 +319,13 @@ class BoltsWidget(QBoltsWidget):
 
 		for key,tp in data.parameters.types.iteritems():
 			if tp in lengths:
-				params[key] = FreeCAD.Units.translateUnit("%g %s" %
-					(params[key], lengths[tp]))
+				revision = int(FreeCAD.Version()[2].split()[0])
+				if revision >= 2836:
+					params[key] = FreeCAD.Units.parseQuantity("%g %s" %
+						(params[key], lengths[tp])).Value
+				else:
+					params[key] = FreeCAD.Units.translateUnit("%g %s" %
+						(params[key], lengths[tp]))
 
 		#add part
 		base = self.freecad.getbase[data.id]
