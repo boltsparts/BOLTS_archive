@@ -1,7 +1,7 @@
 ---
 - filename: aluminiumProfiles.scad
   author: Damian Axford <https://github.com/Axford/axCut>
-  license: Public Domain <>
+  license: Public Domain <http://jreinhardt.github.io/BOLTS/public_domain.html>
   type: module
   modules:
     - name: tslot_20x20_base
