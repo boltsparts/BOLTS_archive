@@ -78,7 +78,7 @@ or by using a convenience function provided by BOLTS
 
 If you need only a single parameter, it is even shorter to avoid the dims variable and write
 
-    echo(get_dims(DIN125A_dims("M4"),"d1"));
+    echo(get_dim(DIN125A_dims("M4"),"d1"));
 
 
 By using dimensions this way, your code avoids magic numbers and becomes more
