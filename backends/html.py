@@ -226,10 +226,10 @@ class HTMLExporter(BackendExporter):
 	def _get_task_page_content(self):
 		params = {}
 
-		for name,check in self.checker.checks.iteritems():
-			params[name + "title"] = check.get_title()
-			params[name + "description"] = check.get_description()
-			params[name + "table"] = html_table(check.get_table(),check.get_headers())
+		for name,task in self.checker.tasks.iteritems():
+			params[name + "title"] = task.get_title()
+			params[name + "description"] = task.get_description()
+			params[name + "table"] = html_table(task.get_table(),task.get_headers())
 
 		return params
 

@@ -356,16 +356,18 @@ class CheckerExporter(BackendExporter):
 		BackendExporter.__init__(self,repo,databases)
 
 		self.checks = {}
-		self.checks["missingbase"] = MissingBaseTable()
 		self.checks["unknownclass"] = UnknownClassTable()
-		self.checks["missingcommonparameters"] = MissingCommonParametersTable()
-		self.checks["missingdrawing"] = MissingDrawingTable()
-		self.checks["missingsvgsource"] = MissingSVGSourceTable()
 		self.checks["unsupportedlicense"] = UnsupportedLicenseTable()
 		self.checks["unknownfile"] = UnknownFileTable()
 		self.checks["nonconformingparametername"] = NonconformingParameternameTable()
 		self.checks["tableproblem"] = TableProblemTable()
 		self.checks["missingbaseconnection"] = MissingBaseConnectionTable()
+
+		self.tasks = {}
+		self.tasks["missingcommonparameters"] = MissingCommonParametersTable()
+		self.tasks["missingbase"] = MissingBaseTable()
+		self.tasks["missingdrawing"] = MissingDrawingTable()
+		self.tasks["missingsvgsource"] = MissingSVGSourceTable()
 
 		for check in self.checks.values():
 			check.populate(repo,databases)
