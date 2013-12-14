@@ -372,5 +372,8 @@ class CheckerExporter(BackendExporter):
 		for check in self.checks.values():
 			check.populate(repo,databases)
 
+		for task in self.tasks.values():
+			task.populate(repo,databases)
+
 	def write_output(self,out_path):
 		pass
