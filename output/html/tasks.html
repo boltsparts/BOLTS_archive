@@ -16,6 +16,11 @@
     <p>Detailed information how to add a geometry can be found <a href="{{ site.baseurl }}/doc/openscad/basemodule.html">here</a> for OpenSCAD, and <a href="{{ site.baseurl }}/doc/freecad/basefunction.html">here</a> and <a href="{{ site.baseurl }}/doc/freecad/basefcstd.html">here</a> for FreeCAD.</p>
     <table class="table">
       <tr><th>Class id</th> <th>Collection</th> <th>Standards</th> <th>FreeCAD</th> <th>OpenSCAD</th><tr>
+<tr><td>doublerowradialbearing</td> <td>bearings</td> <td>['DIN625-3']</td> <td>True</td> <td>False</td></tr>
+<tr><td>needleroller</td> <td>bearings</td> <td>['DIN5405-1', 'ISO 3030']</td> <td>True</td> <td>False</td></tr>
+<tr><td>cylindricalrollerbearing</td> <td>bearings</td> <td>['DIN5412-1']</td> <td>True</td> <td>False</td></tr>
+<tr><td>hexsocketcountersunk</td> <td>hex_socket</td> <td>['ISO10642', 'DINISO10642', 'DIN7991']</td> <td>False</td> <td>True</td></tr>
+<tr><td>hexsocketheadcap</td> <td>hex_socket</td> <td>['ISO4762', 'DINENISO4762', 'DIN912']</td> <td>False</td> <td>True</td></tr>
     </table>
   </div>
 
@@ -25,6 +30,20 @@
     <p>This either happens if a class contains non-discrete free parameters or if it explicitly a empty common parameters set is given, in order to suppress output for this class or work around bugs.</p>
     <table class="table">
       <tr><th>Class ID</th> <th>Collection</th> <th>Standards</th><tr>
+<tr><td>hexscrew2</td> <td>hex</td> <td>['ISO4017', 'DINENISO4017', 'DINEN24017']</td></tr>
+<tr><td>hexbolt1</td> <td>hex</td> <td>['DIN931']</td></tr>
+<tr><td>hexbolt2</td> <td>hex</td> <td>['ISO4014', 'DINENISO4014', 'DINEN24014']</td></tr>
+<tr><td>genericpipe</td> <td>pipes</td> <td>None</td></tr>
+<tr><td>din11850range2</td> <td>pipes</td> <td>['DIN11850 Range 2']</td></tr>
+<tr><td>tslot20x20</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>tslot20x20-1s</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>tslot20x20-2s</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>tslot20x20-2sa</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>tslot20x20-3s</td> <td>profiles</td> <td>None</td></tr>
+<tr><td>needleroller</td> <td>bearings</td> <td>['DIN5405-1', 'ISO 3030']</td></tr>
+<tr><td>plainwasherchamfered</td> <td>washer</td> <td>['ISO7090', 'DINISO7090', 'DINENISO7090', 'DIN125B']</td></tr>
+<tr><td>hexsocketcountersunk</td> <td>hex_socket</td> <td>['ISO10642', 'DINISO10642', 'DIN7991']</td></tr>
+<tr><td>hexsocketheadcap</td> <td>hex_socket</td> <td>['ISO4762', 'DINENISO4762', 'DIN912']</td></tr>
     </table>
   </div>
 
@@ -34,6 +53,8 @@
     <p>Detailed information how to add a drawing can be found <a href="{{ site.baseurl }}/doc/general/drawing.html">here</a>.</p>
     <table class="table">
       <tr><th>Class id</th> <th>Collection</th> <th>Standards</th><tr>
+<tr><td>hexsocketcountersunk</td> <td>hex_socket</td> <td>['ISO10642', 'DINISO10642', 'DIN7991']</td></tr>
+<tr><td>hexsocketheadcap</td> <td>hex_socket</td> <td>['ISO4762', 'DINENISO4762', 'DIN912']</td></tr>
     </table>
   </div>
 
