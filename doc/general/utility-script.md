@@ -37,12 +37,25 @@ or adding new collections
 
     ./bolts.py export html
 
+
+### Running automatic checks
+
+BOLTS can run some automatic checks and detect a few common errors, problems
+and inconsistencies.
+
+To do so, execute
+
+    ./bolts.py check
+
+A report is displayed with all the problems found and a short explanation.
+
+
 ### Testing CAD applications
 
-Manual inspection is good, but some errors can only be found when working in
-the CAD application. The utility script allows to fire up instances of OpenSCAD
-or FreeCAD with all necessary paths setup such that one can test freshly
-exported distributions.
+Manual inspection and automatic checks are good, but some errors can only be
+found when working in the CAD application. The utility script allows to fire up
+instances of OpenSCAD or FreeCAD with all necessary paths setup such that one
+can test freshly exported distributions.
 
 This is done with the `test` subcommand. To test for FreeCAD type
 
