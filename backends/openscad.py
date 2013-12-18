@@ -164,6 +164,7 @@ class OpenSCADExporter(BackendExporter):
 					continue
 				self.write_stub(bolts_fid,cl)
 				self.write_dim_accessor(bolts_fid,cl)
+				self.write_connectors_accessor(bolts_fid,cl)
 				for std in standard_fids:
 					if cl in self.repo.standardized[std]:
 						self.write_stub(standard_fids[std],cl)
@@ -208,6 +209,35 @@ class OpenSCADExporter(BackendExporter):
 		fid.write("function %s_dims(%s) = [\n\t" % (cl.openscadname, get_signature(cl,params)))
 		fid.write(",\n\t".join('["%s", %s]' % (pname,args[pname]) for pname in params.parameters))
 		fid.write("];\n\n")
+
+	def write_connectors_accessor(self,fid,cl):
+		units = {"Length (mm)" : "mm", "Length (in)" : "in"}
+		#collect textual parameter representations
+		args = {}
+		if not cl.standard is None:
+			args['standard'] = '"%s"' % cl.name
+		base = self.openscad.getbase[cl.id]
+
+		#do nothing if no connectors are specified
+		if base.connectors is None:
+			return
+		#class parameters
+		params = cl.parameters.union(base.parameters)
+		for pname in params.free:
+			args[pname] = pname
+		args.update(params.literal)
+		args["location"] = "location";
+		for table,i in zip(params.tables,range(len(params.tables))):
+			for pname,j in zip(table.columns,range(len(table.columns))):
+				if params.types[pname] in units:
+					unit = units[params.types[pname]]
+					args[pname] = 'convert_to_default_unit(%s_table_%d(%s)[%d],"%s")' % (cl.id,i,table.index,j,unit)
+				else:
+					args[pname] = '%s_table_%d(%s)[%d]' % (cl.id,i,table.index,j)
+		call = "%s(%s)" % (base.connectors.name, ", ".join(args[arg] for arg in base.connectors.arguments))
+
+		fid.write("function %s_conn(location,%s) = new_cs(\n" % (cl.openscadname, get_signature(cl,params)))
+		fid.write("\torigin=%s[0],\n\taxes=%s[1]);\n\n" % (call,call))
 
 	def write_stub(self,fid,cl):
 		units = {"Length (mm)" : "mm", "Length (in)" : "in"}

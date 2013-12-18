@@ -41,3 +41,8 @@ module hex2(d1, k, s, b1, b2, b3, l){
 	}
 }
 
+function hexConn(k,s,l,location) = 
+	(location == "root") ? [[0,0,0],[[0,0,1],[0,1,0]]] :
+	(location == "tip") ? [[0,0,l],[[0,0,1],[0,1,0]]] :
+	(location == "head") ? [[0,0,-s],[[0,0,-1],[0,-1,0]]] :
+	"Error";
