@@ -134,6 +134,26 @@ class MissingCommonParametersTable(ErrorTable):
 					row.append(cl.standard)
 					self.rows.append(row)
 
+class MissingConnectorsTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Missing connectors",
+			"Some classes have no connectors specified.",
+			["Class ID","Collection","Standards"]
+		)
+
+	def populate(self,repo,dbs):
+		for coll in repo.collections:
+			for cl in coll.classes_by_ids():
+				if cl.id in dbs["openscad"].getbase:
+					base = dbs["openscad"].getbase[cl.id]
+					if base.connectors is None:
+						row = []
+						row.append(cl.id)
+						row.append(coll.id)
+						row.append(cl.standard)
+						self.rows.append(row)
+
 class MissingDrawingTable(ErrorTable):
 	def __init__(self):
 		ErrorTable.__init__(self,
@@ -365,6 +385,7 @@ class CheckerExporter(BackendExporter):
 
 		self.tasks = {}
 		self.tasks["missingcommonparameters"] = MissingCommonParametersTable()
+		self.tasks["missingconnectors"] = MissingConnectorsTable()
 		self.tasks["missingbase"] = MissingBaseTable()
 		self.tasks["missingdrawing"] = MissingDrawingTable()
 		self.tasks["missingsvgsource"] = MissingSVGSourceTable()
