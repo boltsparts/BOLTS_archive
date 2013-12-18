@@ -7,5 +7,9 @@
     - name: nut1
       arguments: [d1, s, m_max]
       classids: [hexagonthinnut1, hexagonthinnut2, hexagonnut1, hexagonnut2, hexagonnut3]
+      connectors:
+        name: nutConn
+        arguments: [m_max,location]
+        locations: [bottom,top]
 ...
 

@@ -19,8 +19,15 @@
 module nut1(d1, s, m_max){
 	//hex sidelength
 	a = s/tan(60);
-	difference(){
-		hex_head(m_max,s);
-		translate([0,0,-d1]) cylinder(r=d1/2,h=m_max+ 2*d1);
+	translate([0,0,m_max]){
+		difference(){
+			hex_head(m_max,s);
+			translate([0,0,-d1]) cylinder(r=d1/2,h=m_max+ 2*d1);
+		}
 	}
 }
+
+function nutConn(m_max,location) =
+	(location == "bottom") ? [[0,0,0],[[0,0,1],[0,1,0]]] :
+	(location == "top")    ? [[0,0,m_max],[[0,0,1],[0,1,0]]] :
+	"Error";
