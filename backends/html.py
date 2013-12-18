@@ -448,8 +448,15 @@ class HTMLExporter(BackendExporter):
 				params["openscadincantation"] += "dims = %s_dims(%s);\n" % (cl.openscadname,
 					openscad.get_signature(cl,cl.parameters.union(base.parameters)))
 				params["openscadincantation"] += "{% endhighlight %}\n"
+
+				if base.connectors is None:
+					params["connectors"] = ""
+				else:
+					params["connectors"] = "<h2>Connectors</h2>\n"
+					params["connectors"] += "<p>%s</p>\n\n" % ", ".join(base.connectors.locations)
 			else:
 				params["openscad"] = "<tr><td>Class not available in OpenSCAD</td></tr>\n"
 				params["openscadincantation"] = ""
+				params["connectors"] = ""
 
 		return params
