@@ -7,5 +7,9 @@
     - name: roundBatteryBase
       arguments: [h,d]
       classids: [roundBattery]
+      connectors:
+        name: roundBatteryConn
+        arguments: [h,location]
+        locations: [plus, minus]
   source: own work
 ...

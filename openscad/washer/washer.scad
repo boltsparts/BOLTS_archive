@@ -36,3 +36,8 @@ module washer2(d1,d2,s){
 	}
 }
 
+function washerConn(d2,s,location) =
+	(location == "bottom") ? [[0,0,0],[[0,0,1],[0,1,0]]] :
+	(location == "top")    ? [[0,0,s],[[0,0,1],[0,1,0]]] :
+	(location == "outer")  ? [[d2/2,0,0],[[1,0,0],[0,1,0]]] :
+	"Error";

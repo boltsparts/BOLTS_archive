@@ -24,3 +24,8 @@ module roundBatteryBase(h,d){
 		cylinder(r=d/2,h=0.97*h);
 	}
 }
+
+function roundBatteryConn(h,location) = 
+	(location == "plus")  ? [[0,0,h],[[0,0,1],[0,1,0]]] :
+	(location == "minus") ? [[0,0,0],[[0,0,1],[0,1,0]]] :
+	"Error";

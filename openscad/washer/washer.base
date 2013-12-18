@@ -7,8 +7,16 @@
     - name: washer1
       arguments: [d1, d2, s]
       classids: [plainwasher1, plainwasher2, plainwasherforcheesehead, heavydutyplainwasher]
+      connectors:
+        name: washerConn
+        arguments: [d2,s,location]
+        locations: [top,bottom,outer]
     - name: washer2
       arguments: [d1, d2, s]
       classids: [plainwasherchamfered]
+      connectors:
+        name: washerConn
+        arguments: [d2,s,location]
+        locations: [top,bottom,outer]
 ...
 
