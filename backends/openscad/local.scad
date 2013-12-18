@@ -138,17 +138,16 @@ module in_cs(cs){
 	}
 }
 
-module align(cs, cs_dst, displacement){
+module align(cs, cs_dst, displacement=[0,0,0]){
 	x_rot = calculate_rotation_axis(cs[1][0],cs_dst[1][0]);
 	y_rot = _rotation_angle(cs[1][1],
 		rotation_matrix3(x_rot[0],x_rot[1])*cs_dst[1][1]);
-	echo(y_rot);
-	translate(cs_dst[0])
+	translate(cs_dst[0]+displacement*cs_dst[1])
 		//align x axes
 		rotate(-x_rot[1],x_rot[0])
 				//align y axes
 				rotate(-y_rot,cs[1][0])
-				translate(-cs[0]+displacement)
+				translate(-cs[0])
 					child(0);
 }
 
