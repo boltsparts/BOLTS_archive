@@ -141,12 +141,19 @@ def release(args):
 	stable = args.kind == "stable"
 	if stable:
 		version = args.version
+
+	targets = [args.target]
+	if targets[0] == "all":
+		targets = ["freecad","openscad"]
+
 	from backends.openscad import OpenSCADExporter
 	from backends.freecad import FreeCADExporter
 
 	dbs = {}
 	dbs["openscad"] = OpenSCADData(args.repo)
 	dbs["freecad"] = FreeCADData(args.repo)
+
+	backend_names = {"freecad" : "FreeCAD", "openscad" : "OpenSCAD"}
 
 	#export
 	for li_short in ["lgpl2.1+","gpl3"]:
@@ -158,7 +165,8 @@ def release(args):
 		copyfile(os.path.join(repo.path,"backends","licenses",li_short.strip("+")),
 			os.path.join(repo.path,"output","freecad","BOLTS","LICENSE"))
 
-		for backend,backend_name in zip(["freecad","openscad"],["FreeCAD","OpenSCAD"]):
+		for backend in targets:
+			backend_name = backend_names[backend]
 			#construct filename from date
 			template = "BOLTS_%s_%s_%s" % (backend_name,version,li_short)
 
@@ -207,6 +215,10 @@ parser_release.add_argument("kind",
 	choices=["development","stable"],
 	help="whether to create a development snapshot or a official relase",
 	default="development")
+parser_release.add_argument("target",
+	type=str,
+	choices=["all","openscad","freecad"],
+	default="all")
 parser_release.add_argument("-v","--version",type=str)
 
 
