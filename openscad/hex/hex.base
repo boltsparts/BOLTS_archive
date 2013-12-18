@@ -9,13 +9,13 @@
       classids: [hexscrew1, hexscrew2]
       connectors:
         name: hexConn
-        arguments: [k,s,l,location]
+        arguments: [k,l,location]
         locations: [root,tip,head]
     - name: hex2
       arguments: [d1, k, s, b1, b2, b3, l]
       classids: [hexbolt1, hexbolt2]
       connectors:
         name: hexConn
-        arguments: [k,s,l,location]
+        arguments: [k,l,location]
         locations: [root,tip,head]
 ...
