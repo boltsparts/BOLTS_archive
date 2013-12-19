@@ -83,16 +83,8 @@ module check_parameter_type(part_name,name,value,param_type){
 
 
 module thread_external(d1,l){
-	if(BOLTS_MODE == "sketch"){
-		translate([0,0,0.01])
-		color(BOLTS_THREAD_COLOR) difference() {
-			cylinder(r=0.5*d1,h= l-0.01);
-			translate([0,0,0.01]) cylinder(r=0.4*d1,h= l-0.03);
-		}
-	} else {
-		color(BOLTS_THREAD_COLOR)
+	color(BOLTS_THREAD_COLOR)
 		cylinder(r=0.5*d1,h= l);
-	}
 }
 
 module hex_head(k,s){
@@ -106,7 +98,7 @@ module hex_head(k,s){
 
 module hex_socket_neg(t,s){
 	a = s/tan(60);
-	//The fudging here is to avoid coincident faces wehn subtracting from a
+	//The fudging here is to avoid coincident faces when subtracting from a
 	//body (see e.g. hex_socket)
 	translate([0,0,t/2-0.01]) union(){
 		rotate([0,0, 30]) cube([a,s,t+0.01],true);
