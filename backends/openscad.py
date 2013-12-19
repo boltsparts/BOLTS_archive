@@ -263,7 +263,7 @@ class OpenSCADExporter(BackendExporter):
 
 		#warnings and type checks
 		if cl.status == "withdrawn":
-			fid.write("""\techo("Warning: The standard %s is withdrawn.
+			fid.write("""\tBOLTS_warning("The standard %s is withdrawn.
 Although withdrawn standards are often still in use,
 it might be better to use its successor %s instead");\n""" %
 				(cl.name,cl.replacedby))

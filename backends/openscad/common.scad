@@ -21,6 +21,11 @@ module BOLTS_error(msg){
 	echo(str("BOLTS Error: ",msg));
 }
 
+module BOLTS_warning(msg){
+	echo(str("BOLTS Warning: ",msg));
+}
+
+
 module check_dimension_defined(dim, descr){
 	if(dim == "None"){
 		BOLTS_error(str("Dimension unspecified",descr));
