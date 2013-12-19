@@ -94,9 +94,9 @@ def export(args):
 	elif args.target == "solidworks":
 		from backends.solidworks import SolidWorksExporter
 		SolidWorksExporter(repo,dbs).write_output(out_path,"development")
-	elif args.target == "step":
-		from backends.step import STEPExporter
-		STEPExporter(repo,dbs).write_output(out_path,"development")
+	elif args.target == "iges":
+		from backends.exchange import IGESExporter
+		IGESExporter(repo,dbs).write_output(out_path,"development")
 
 def test(args):
 	exec_dir = os.path.join(args.repo,"output",args.target)
@@ -189,7 +189,7 @@ subparsers = parser.add_subparsers()
 parser_export = subparsers.add_parser("export")
 parser_export.add_argument("target",
 	type=str,
-	choices=["openscad","freecad","html","downloads","solidworks","step"],
+	choices=["openscad","freecad","html","downloads","solidworks","iges"],
 	help="the distribution to create")
 parser_export.add_argument("-l","--license",
 	type=str,

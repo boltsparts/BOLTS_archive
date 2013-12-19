@@ -90,7 +90,7 @@ def add_part(base,params,doc):
 		FreeCAD.closeDocument(src_doc.Name)
 
 
-class STEPExporter(BackendExporter):
+class IGESExporter(BackendExporter):
 	def __init__(self,repo,databases):
 		BackendExporter.__init__(self,repo, databases)
 		self.freecad = databases["freecad"]
@@ -119,7 +119,7 @@ class STEPExporter(BackendExporter):
 					params["standard"] = cl.name
 					name = cl.naming.get_name(params)
 					params["name"] = name
-					filename = name + ".step"
+					filename = name + ".iges"
 					filename = filename.replace(" ","_").replace("/","-")
 
 					doc = FreeCAD.newDocument()
@@ -132,8 +132,7 @@ class STEPExporter(BackendExporter):
 					elif base.type == "fcstd":
 						shape = doc.getObject(base.objectname).Shape
 
-					#TODO: http://forum.freecadweb.org/viewtopic.php?f=10&t=4905&start=10
-					shape.exportStep(join(ver_root,coll.id,filename))
+					shape.exportIges(join(ver_root,coll.id,filename))
 					FreeCAD.closeDocument(doc.Name)
 			sys.path.pop()
 
