@@ -16,15 +16,20 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
+
+module BOLTS_error(msg){
+	echo(str("BOLTS Error: ",msg));
+}
+
 module check_dimension_defined(dim, descr){
 	if(dim == "None"){
-		echo("Error: Unspecified ",descr);
+		BOLTS_error(str("Dimension unspecified",descr));
 	}
 }
 
 module check_dimension_positive(dim, message){
 	if(dim < 0){
-		echo(message);
+		BOLTS_error(message);
 	}
 }
 
@@ -50,34 +55,34 @@ function type(P) =
 module check_parameter_type(part_name,name,value,param_type){
 	if(param_type=="Length (mm)"){
 		if(type(value) != "number"){
-			echo(str("Error: Expected a Length (mm) as parameter ",name," for ",part_name,", but ",value," is not numerical"));
+			BOLTS_error(str("Expected a Length (mm) as parameter ",name," for ",part_name,", but ",value," is not numerical"));
 		} else if(value < 0){
-			echo(str("Error: Expected a Length (mm) as parameter ",name," for ",part_name,", but ",value," is negative"));
+			BOLTS_error(str("Expected a Length (mm) as parameter ",name," for ",part_name,", but ",value," is negative"));
 		}
 	} else if(param_type=="Length (in)"){
 		if(type(value) != "number"){
-			echo(str("Error: Expected a Length (in) as parameter ",name," for ",part_name,", but ",value," is not numerical"));
+			BOLTS_error(str("Expected a Length (in) as parameter ",name," for ",part_name,", but ",value," is not numerical"));
 		} else if(value < 0){
-			echo(str("Error: Expected a Length (in) as parameter ",name," for ",part_name,", but ",value," is negative"));
+			BOLTS_error(str("Expected a Length (in) as parameter ",name," for ",part_name,", but ",value," is negative"));
 		}
 	} else if(param_type=="Number"){
 		if(type(value) != "number"){
-			echo(str("Error: Expected a Number as parameter ",name," for ",part_name,", but ",value," is not numerical"));
+			BOLTS_error(str("Expected a Number as parameter ",name," for ",part_name,", but ",value," is not numerical"));
 		}
 	} else if(param_type=="Bool"){
 		if(type(value) != "boolean"){
-			echo(str("Error: Expected a Bool as parameter ",name," for ",part_name,", but ",value," is not boolean"));
+			BOLTS_error(str("Expected a Bool as parameter ",name," for ",part_name,", but ",value," is not boolean"));
 		}
 	} else if(param_type=="Table Index"){
 		if(type(value) != "string"){
-			echo(str("Error: Expected a Table Index as parameter ",name," for ",part_name,", but ",value," is not a string"));
+			BOLTS_error(str("Expected a Table Index as parameter ",name," for ",part_name,", but ",value," is not a string"));
 		}
 	} else if(param_type=="String"){
 		if(type(value) != "string"){
-			echo(str("Error: Expected a String as parameter ",name," for ",part_name,", but ",value," is not a string"));
+			BOLTS_error(str("Expected a String as parameter ",name," for ",part_name,", but ",value," is not a string"));
 		}
 	} else {
-		echo(str("Error: Unknown type in parameter check. This should not happen, please report this bug to BOLTS"));
+		BOLTS_error(str("Unknown type in parameter check. This should not happen, please report this bug to BOLTS"));
 	}
 }
 

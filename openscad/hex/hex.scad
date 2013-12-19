@@ -30,7 +30,7 @@ module hex2(d1, k, s, b1, b2, b3, l){
 	b = (l < 125) ? b1 :
 		(l < 200) ? b2 :
 		b3;
-	check_dimension_defined(b, "threaded shaft length");
+	check_dimension_defined(b, "threaded shaft length b");
 
 	union(){
 		hex_head(k,s);

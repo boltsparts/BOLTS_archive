@@ -24,9 +24,9 @@ module hex_socket1(d1,d2,b1,b2,b3,k_max,s,t,L,h_max,l){
 	h = l - k_max - b;
 
 	//TODO: These checks are not very careful
-	check_dimension_defined(b,"threaded shaft length");
-	check_dimension_defined(t,"socket depth");
-	check_dimension_defined(h_max,"unthreaded shaft length");
+	check_dimension_defined(b,"threaded shaft length b");
+	check_dimension_defined(t,"socket depth t");
+	check_dimension_defined(h_max,"unthreaded shaft length h_max");
 
 	difference(){
 		union(){

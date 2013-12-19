@@ -279,7 +279,7 @@ it might be better to use its successor %s instead");\n""" %
 			fid.write('\tmeasures_%d = %s_table_%d(%s);\n' %
 				(i,cl.id,i,table.index))
 			fid.write('\tif(measures_%d == "Error"){\n' % i)
-			fid.write('\t\techo("TableLookUpError in %s, table %d");\n\t}\n' %
+			fid.write('\t\tBOLTS_error("Table look-up failed in %s, table %d");\n\t}\n' %
 				(cl.name,i))
 
 		fid.write('\tif(BOLTS_MODE == "bom"){\n')
