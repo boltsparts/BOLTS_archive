@@ -38,7 +38,8 @@ def washer2(params,document):
 
 	part = document.addObject("Part::Feature",name)
 	outer = Part.makeCylinder(0.5*d2,s)
+	outer = outer.makeChamfer(0.3*s,outer.Edges[0:1])
 	inner = Part.makeCylinder(0.5*d1,s)
 	shape = outer.cut(inner)
 	#guessed size for the chamfer
-	part.Shape = shape.makeChamfer(0.3*s,shape.Edges[0:1]).removeSplitter()
+	part.Shape = shape.removeSplitter()
