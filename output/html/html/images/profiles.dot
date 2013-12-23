@@ -7,6 +7,11 @@ label="Classes";
 "tslot20x20-2s" [width=3, height=0.8, fixedsize=true];
 "tslot20x20-2sa" [width=3, height=0.8, fixedsize=true];
 "tslot20x20-3s" [width=3, height=0.8, fixedsize=true];
+"vslot20x20" [width=3, height=0.8, fixedsize=true];
+"vslot20x40" [width=3, height=0.8, fixedsize=true];
+"vslot20x60" [width=3, height=0.8, fixedsize=true];
+"vslot20x80" [width=3, height=0.8, fixedsize=true];
+"openbuildsdualvwheel" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_std {
 label="Standards";
@@ -18,6 +23,11 @@ label="FreeCAD";
 "tslot-20x20-2S.fcstd:Fillet" [width=4, height=0.8, fixedsize=true];
 "tslot-20x20-2SA.fcstd:Fillet" [width=4, height=0.8, fixedsize=true];
 "tslot-20x20-3S.fcstd:Fillet" [width=4, height=0.8, fixedsize=true];
+"20x20_Vrail_s.fcstd:Pad" [width=4, height=0.8, fixedsize=true];
+"20x40_Vrail_s.fcstd:Pad" [width=4, height=0.8, fixedsize=true];
+"20x60_Vrail_s.fcstd:Pad" [width=4, height=0.8, fixedsize=true];
+"20x80_Vrail_s.fcstd:Pad" [width=4, height=0.8, fixedsize=true];
+"V_Wheel.fcstd:Revolution" [width=4, height=0.8, fixedsize=true];
 }
 subgraph cluster_ocd {
 label="OpenSCAD";
@@ -37,4 +47,9 @@ label="OpenSCAD";
 "tslot20x20-2sa" -> "aluminiumProfiles.scad:tslot_20x20_2sa_base";
 "tslot20x20-3s" -> "tslot-20x20-3S.fcstd:Fillet";
 "tslot20x20-3s" -> "aluminiumProfiles.scad:tslot_20x20_3s_base";
+"vslot20x20" -> "20x20_Vrail_s.fcstd:Pad";
+"vslot20x40" -> "20x40_Vrail_s.fcstd:Pad";
+"vslot20x60" -> "20x60_Vrail_s.fcstd:Pad";
+"vslot20x80" -> "20x80_Vrail_s.fcstd:Pad";
+"openbuildsdualvwheel" -> "V_Wheel.fcstd:Revolution";
 }
