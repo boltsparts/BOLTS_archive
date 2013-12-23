@@ -24,42 +24,116 @@ blt-version: 0.3
 classes:
   - id: tslot20x20
     naming:
-      template: T Slot extrusion 20x20x%s
+      template: T slot extrusion 20x20x%s
       substitute: [l]
-    description: T Slot aluminium extrusion 20mmx20mm
+    description: generic T slot aluminium extrusion 20mmx20mm
     parameters:
       free: [l]
-    source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+    source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-1s
     naming:
-      template: T Slot extrusion one slot 20x20x%s
+      template: T slot extrusion one slot 20x20x%s
       substitute: [l]
-    description: T Slot aluminium extrusion one slot 20mmx20mm
+    description: generic T slot aluminium extrusion one slot 20mmx20mm
     parameters:
       free: [l]
-    source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+    source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-2s
     naming:
-      template: T Slot extrusion two slots (opp.) 20x20x%s
+      template: T slot extrusion two slots (opp.) 20x20x%s
       substitute: [l]
-    description: T Slot aluminium extrusion two oppositeslots 20mmx20mm
+    description: generic T slot aluminium extrusion two oppositeslots 20mmx20mm
     parameters:
       free: [l]
-    source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+    source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-2sa
     naming:
-      template: T Slot extrusion two slots 20x20x%s
+      template: T slot extrusion two slots 20x20x%s
       substitute: [l]
-    description: T Slot aluminium extrusion two neighboring slots 20mmx20mm
+    description: generic T slot aluminium extrusion two neighboring slots 20mmx20mm
     parameters:
       free: [l]
-    source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+    source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-3s
     naming:
-      template: T Slot extrusion three slots 20x20x%s
+      template: T slot extrusion three slots 20x20x%s
       substitute: [l]
-    description: T Slot aluminium extrusion three slots 20mmx20mm
+    description: generic T slot extrusion three slots 20mmx20mm
     parameters:
       free: [l]
     source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
+  - id: vslot20x20
+    naming:
+      template: "%sV-Slot 20x20mm Length: %s"
+      substitute: [finish_name,l]
+    description: V-Slot is a high quality extruded aluminum profile building block that has an extremely smooth linear v groove rail on all 4 sides.
+    parameters:
+      free: [l,finish]
+      defaults: {finish: "Clear anodized", l: 100}
+      types: {finish: Table Index, finish_name: String}
+      tables:
+        - index: finish
+          columns: [finish_name]
+          data:
+            "Clear anodized" : [""]
+            "Black" : ["Black "]
+    source: dimensions from https://store-itwgldve.mybigcommerce.com/product_images/uploaded_images/opensource-button.png
+    url: http://openbuildspartstore.com/v-slot/
+  - id: vslot20x40
+    naming:
+      template: "%s V-Slot 20x40mm Length: %s"
+      substitute: [finish,l]
+    description: V-Slot is a high quality extruded aluminum profile building block that has an extremely smooth linear v groove rail on all 4 sides.
+    parameters:
+      free: [l,finish]
+      defaults: {finish: "Clear anodized", l: 100}
+      types: {finish: Table Index, finish_name: String}
+      tables:
+        - index: finish
+          columns: [finish_name]
+          data:
+            "Clear anodized" : [""]
+            "Black" : ["Black "]
+    source: dimensions from https://store-itwgldve.mybigcommerce.com/product_images/uploaded_images/opensource-button.png
+    url: http://openbuildspartstore.com/v-slot/
+  - id: vslot20x60
+    naming:
+      template: "%s V-Slot 20x60mm Length: %s"
+      substitute: [finish,l]
+    description: V-Slot is a high quality extruded aluminum profile building block that has an extremely smooth linear v groove rail on all 4 sides.
+    parameters:
+      free: [l,finish]
+      defaults: {finish: "Clear anodized", l: 100}
+      types: {finish: Table Index, finish_name: String}
+      tables:
+        - index: finish
+          columns: [finish_name]
+          data:
+            "Clear anodized" : [""]
+            "Black" : ["Black "]
+    source: dimensions from https://store-itwgldve.mybigcommerce.com/product_images/uploaded_images/opensource-button.png
+    url: http://openbuildspartstore.com/v-slot/
+  - id: vslot20x80
+    naming:
+      template: "%s V-Slot 20x60mm Length: %s"
+      substitute: [finish,l]
+    description: V-Slot is a high quality extruded aluminum profile building block that has an extremely smooth linear v groove rail on all 4 sides.
+    parameters:
+      free: [l,finish]
+      defaults: {finish: "Clear anodized", l: 100}
+      types: {finish: Table Index, finish_name: String}
+      tables:
+        - index: finish
+          columns: [finish_name]
+          data:
+            "Clear anodized" : [""]
+            "Black" : ["Black "]
+    source: dimensions from https://store-itwgldve.mybigcommerce.com/product_images/uploaded_images/opensource-button.png
+    url: http://openbuildspartstore.com/v-slot/
+  - id: openbuildsdualvwheel
+    naming:
+      template: OpenBuilds Dual V Wheel - Delrin
+    description: The OpenBuilds Delrin Dual V Wheels are great for use with any V Wheel Linear Guide System. They can be used with V-Slot Extrusion and OpenRail.
+    source: dimensions from https://store-itwgldve.mybigcommerce.com//product_downloads/Open%20Source%20Downloads%20for%20Store/Dual%20V%20Wheels/OpenRail%20Dual%20V%20Wheels_Version3.zip
+    url: http://openbuildspartstore.com/openbuilds-dual-v-wheel-delrin/
 ...
