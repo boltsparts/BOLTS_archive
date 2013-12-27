@@ -62,7 +62,7 @@
    - objectname: Pad
      classids: [vslot20x20]
      proptoparam:
-       Pad: {Length : l}
+       Pad: {Length : l, Label : name}
   source: created from scratch, dimensions from https://store-itwgldve.mybigcommerce.com//product_downloads/Open%20Source%20Downloads%20for%20Store/VSLOT%20Extrusion/VSLOT%20Extrusion_10.zip
 - filename: 20x40_Vrail_s.fcstd
   author: quick61 <http://forum.freecadweb.org/memberlist.php?mode=viewprofile&u=2030>
