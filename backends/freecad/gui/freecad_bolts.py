@@ -259,6 +259,10 @@ class BoltsWidget(QBoltsWidget):
 						break
 		#add them to layout
 			self.ui.param_layout.addWidget(self.param_widgets[p])
+		if base.type == "fcstd":
+			self.ui.addButton.setText("Add part (may take a bit)")
+		else:
+			self.ui.addButton.setText("Add part")
 
 	def setup_props_collection(self,coll):
 		#construct widgets
