@@ -136,6 +136,14 @@ classes:
         types:
             key: Table Index
         defaults: {key: M3, l: 20}
+        common:
+          - [[M6],[35,40,45,50,60,70,80,100,120]]
+          - [[M8],[35,40,45,50,60,65,80,90,100,120]]
+          - [[M10],[40,45,50,55,60,65,70,80,90,100,110,120,130,140,150,160]]
+          - [[M12],[40,45,50,55,60,70,80,90,100,120,140,150,160,180]]
+          - [[M16],[55,60,65,70,80,90,100,110,120,140,160,180,200]]
+          - [[M20],[65,70,80,90,100,110,120,140,160]]
+          - [[M24],[80,90,100,120]]
         tables:
             index: key
             columns: [d1, k, s, b1, b2, b3, e]
@@ -167,7 +175,7 @@ classes:
                 M56:  [  56.0,  35.0,   85.0,   None,   124.0,  137.0,  93.56   ]
                 M60:  [  60.0,  38.0,   90.0,   None,   132.0,  145.0,  99.21   ]
                 M64:  [  64.0,  40.0,   95.0,   None,   140.0,  153.0,  104.86  ]
-    source: http://almetal.nl/en/techinfo/hex/hd931.htm
+    source: http://almetal.nl/en/techinfo/hex/hd931.htm, common parameters from http://shop.zweygart.de/p29262.html
   - id: hexbolt2
     naming:
         template: Hexagon head bolt %s - %s %d
@@ -180,6 +188,14 @@ classes:
         types:
             key: Table Index
         defaults: {key: M3, l: 20}
+        common:
+          - [[M6],[35,40,45,50,60,70,80,100,120]]
+          - [[M8],[35,40,45,50,60,65,80,90,100,120]]
+          - [[M10],[40,45,50,55,60,65,70,80,90,100,110,120,130,140,150,160]]
+          - [[M12],[40,45,50,55,60,70,80,90,100,120,140,150,160,180]]
+          - [[M16],[55,60,65,70,80,90,100,110,120,140,160,180,200]]
+          - [[M20],[65,70,80,90,100,110,120,140,160]]
+          - [[M24],[80,90,100,120]]
         tables:
             index: key
             columns: [d1, k, s, b1, b2, b3, e]
@@ -212,5 +228,5 @@ classes:
                 M60:  [  60.0,  38.0,   90.0,   None,   132.0,  145.0,  99.21   ]
                 M64:  [  64.0,  40.0,   95.0,   None,   140.0,  153.0,  104.86  ]
     url: http://www.beuth.de/en/standard/din-en-iso-4014/140571988
-    source: http://almetal.nl/en/techinfo/hex/hd931.htm
+    source: http://almetal.nl/en/techinfo/hex/hd931.htm, common parameters from http://shop.zweygart.de/p29262.html
 ...

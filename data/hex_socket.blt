@@ -65,6 +65,13 @@ classes:
         free: [key, l]
         types: {key: Table Index}
         defaults: {key: M3, l: 20}
+        common:
+          - [[M3],[20,30]]
+          - [[M4],[10,12,16,20,25]]
+          - [[M5],[8,10,12,16,20,25,30,35,40,50,60]]
+          - [[M6],[10,12,16,20,25,30,35,40,50,60]]
+          - [[M8],[16,20,25,30,35,40,50,60,70]]
+          - [[M10],[30,40,50,60,80]]
         tables:
             index: key
             columns: [d1, d2, b, k, s, t_min, L]
@@ -97,4 +104,4 @@ classes:
                 M52:   [  52,   78,    116,   52,   36,    31,    None  ]
                 M56:   [  56,   84,    124,   56,   41,    34,    None  ]
                 M64:   [  64,   96,    140,   64,   46,    38,    None  ]
-    source: http://almetal.nl/en/techinfo/soc/sd912.htm
+    source: http://almetal.nl/en/techinfo/soc/sd912.htm, common parameters from http://shop.zweygart.de/befestigung/schrauben-metrisch/zylinderkopf/p29246.html
