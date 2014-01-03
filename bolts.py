@@ -144,7 +144,7 @@ def release(args):
 
 	targets = [args.target]
 	if targets[0] == "all":
-		targets = ["freecad","openscad"]
+		targets = ["freecad","openscad","iges"]
 
 	from backends.openscad import OpenSCADExporter
 	from backends.freecad import FreeCADExporter
@@ -153,9 +153,9 @@ def release(args):
 	dbs["openscad"] = OpenSCADData(args.repo)
 	dbs["freecad"] = FreeCADData(args.repo)
 
-	backend_names = {"freecad" : "FreeCAD", "openscad" : "OpenSCAD"}
+	backend_names = {"freecad" : "FreeCAD", "openscad" : "OpenSCAD", "iges" : "IGES"}
 
-	#export
+	#OpenSCAD, FreeCAD export
 	for li_short in ["lgpl2.1+","gpl3"]:
 		license = LICENSES_SHORT[li_short]
 		OpenSCADExporter(repo,dbs).write_output(os.path.join(repo.path,"output","openscad"),license,version,stable)
@@ -165,7 +165,9 @@ def release(args):
 		copyfile(os.path.join(repo.path,"backends","licenses",li_short.strip("+")),
 			os.path.join(repo.path,"output","freecad","BOLTS","LICENSE"))
 
-		for backend in targets:
+		for backend in ["openscad", "freecad"]:
+			if not backend in targets:
+				continue
 			backend_name = backend_names[backend]
 			#construct filename from date
 			template = "BOLTS_%s_%s_%s" % (backend_name,version,li_short)
@@ -175,6 +177,27 @@ def release(args):
 			base_name = os.path.join(repo.path,"downloads",backend,template)
 			make_archive(base_name,"gztar",root_dir)
 			make_archive(base_name,"zip",root_dir)
+
+	#iges export
+	from backends.exchange import IGESExporter
+	if "iges" in targets:
+		try:
+			import tarfile, lzma
+		except ImportError:
+			print "Could not find python-lzma, which is required for IGES export"
+			return
+		IGESExporter(repo,dbs).write_output(os.path.join(repo.path,"output","iges"),version,stable)
+
+		#write xz file, see http://stackoverflow.com/a/13131500
+		backend_name = backend_names[backend]
+		xz_name = "BOLTS_%s_%s.tar.xz" % (backend_name,version)
+		xz_fid = lzma.LZMAFile(os.path.join(repo.path,"downloads","iges",xz_name),mode="w")
+		with tarfile.open(mode="w", fileobj=xz_fid) as tar_xz_fid:
+			tar_xz_fid.add(os.path.join(repo.path,"output","iges"),arcname="/")
+		xz_fid.close()
+
+
+
 
 
 
@@ -217,7 +240,7 @@ parser_release.add_argument("kind",
 	default="development")
 parser_release.add_argument("target",
 	type=str,
-	choices=["all","openscad","freecad"],
+	choices=["all","openscad","freecad","iges"],
 	default="all")
 parser_release.add_argument("-v","--version",type=str)
 
