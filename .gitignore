@@ -2,7 +2,7 @@
 *.pyc
 doc/*.pdf
 output/freecad/*
-output/step/*
+output/iges/*
 output/openscad/*
 output/solidworks/*
 .sass-cache
