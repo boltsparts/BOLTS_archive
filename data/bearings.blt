@@ -85,7 +85,7 @@ classes:
     source: http://www.kgm-kugeln.de/show.php?ID=4589 and http://reprap.org/wiki/Ball_bearing
   - id: doublerowradialbearing
     naming:
-      template: Double row %s %s
+      template: Double row ball bearing %s %s
       substitute: [standard,key]
     description: Deep groove double row ball bearing
     standard: [DIN625-3]
