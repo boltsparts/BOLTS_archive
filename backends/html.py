@@ -253,7 +253,7 @@ class HTMLExporter(BackendExporter):
 
 	def _get_download_content(self):
 		asset_path = join(self.repo.path,"downloads")
-		backends = ["freecad","openscad"]
+		backends = ["freecad","openscad","iges"]
 
 		#find most current release
 		release = {}
@@ -266,6 +266,9 @@ class HTMLExporter(BackendExporter):
 				basename,ext = splitext(filename)
 				if ext == ".gz":
 					ext = ".tar.gz"
+					basename = splitext(basename)[0]
+				elif ext == ".xz":
+					ext = ".tar.xz"
 					basename = splitext(basename)[0]
 				parts = basename.split("_")
 				version_string = parts[2]
@@ -295,6 +298,8 @@ class HTMLExporter(BackendExporter):
 		for kind,kind_name in zip([release, development],
 			["release","development"]):
 			for backend in backends:
+				if backend == "iges":
+					continue
 				rows = []
 				for license in ["lgpl2.1+","gpl3"]:
 					if license in kind[backend]:
@@ -304,6 +309,13 @@ class HTMLExporter(BackendExporter):
 				if len(rows) == 0:
 					rows = [["No %s distribution available" % kind_name]]
 				params["%s%s" % (backend, kind_name)] = html_table(rows)
+			#iges
+			rows = []
+			if "none" in kind["iges"]:
+				rows.append(['<a href="downloads/%s">.tar.xz</a>' % (kind["iges"]["none"][".tar.xz"][1])])
+			if len(rows) == 0:
+				rows = [["No %s distribution available" % kind_name]]
+			params["%s%s" % ("iges", kind_name)] = html_table(rows)
 		return params
 
 	def _get_collection_content(self,coll):
