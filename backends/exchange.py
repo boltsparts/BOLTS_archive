@@ -103,6 +103,13 @@ class IGESExporter(BackendExporter):
 		ver_root = join(out_path,version)
 		makedirs(ver_root)
 
+		#generate version file
+		date = datetime.now()
+		version_file = open(join(ver_root,"VERSION"),"w")
+		version_file.write("%s\n%d-%d-%d\n" %
+			(version, date.year, date.month, date.day))
+		version_file.close()
+
 		#Disable writing bytecode to avoid littering the freecad database with pyc files
 		write_bytecode = sys.dont_write_bytecode
 		sys.dont_write_bytecode = True
