@@ -64,7 +64,9 @@ def copy_part_recursive(src_obj,dst_doc,srcdstmap):
 	srcdstmap[src_obj.Name] = obj_copy
 	for prop_name in src_obj.PropertiesList:
 		prop = src_obj.getPropertyByName(prop_name)
-		if isinstance(prop,tuple) or isinstance(prop,list):
+		if 'ReadOnly' in src_obj.getTypeOfProperty(prop_name):
+			pass
+		elif isinstance(prop,tuple) or isinstance(prop,list):
 			new_prop = []
 			for p_item in prop:
 				if isinstance(p_item,Part.Feature):
@@ -257,6 +259,10 @@ class BoltsWidget(QBoltsWidget):
 						break
 		#add them to layout
 			self.ui.param_layout.addWidget(self.param_widgets[p])
+		if base.type == "fcstd":
+			self.ui.addButton.setText("Add part (may take a bit)")
+		else:
+			self.ui.addButton.setText("Add part")
 
 	def setup_props_collection(self,coll):
 		#construct widgets

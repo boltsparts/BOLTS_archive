@@ -17,9 +17,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-BOLTS_THREAD_COLOR = [255,255,0];
-
-BOLTS_MODE = "sketch";
+BOLTS_MODE = "draft";
 
 //can be "in" and "mm"
 BOLTS_DEFAULT_UNIT = "mm";
+
+BOLTS_THREAD_COLOR = [0,1,0];

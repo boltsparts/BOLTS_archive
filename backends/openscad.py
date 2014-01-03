@@ -35,6 +35,7 @@ def get_signature(cl,params):
 			arg_strings.append('%s=%s' % (pname,str(params.defaults[pname]).lower()))
 		else:
 			arg_strings.append('%s=%s' % (pname,params.defaults[pname]))
+	arg_strings.append('part_mode="default"')
 	return ', '.join(arg_strings)
 
 def get_incantation(cl,params):
@@ -263,7 +264,7 @@ class OpenSCADExporter(BackendExporter):
 
 		#warnings and type checks
 		if cl.status == "withdrawn":
-			fid.write("""\techo("Warning: The standard %s is withdrawn.
+			fid.write("""\tBOLTS_warning("The standard %s is withdrawn.
 Although withdrawn standards are often still in use,
 it might be better to use its successor %s instead");\n""" %
 				(cl.name,cl.replacedby))
@@ -279,14 +280,15 @@ it might be better to use its successor %s instead");\n""" %
 			fid.write('\tmeasures_%d = %s_table_%d(%s);\n' %
 				(i,cl.id,i,table.index))
 			fid.write('\tif(measures_%d == "Error"){\n' % i)
-			fid.write('\t\techo("TableLookUpError in %s, table %d");\n\t}\n' %
+			fid.write('\t\tBOLTS_error("Table look-up failed in %s, table %d");\n\t}\n' %
 				(cl.name,i))
 
 		fid.write('\tif(BOLTS_MODE == "bom"){\n')
+		fid.write('\t\tif(!(part_mode == "diff")){\n')
 
 		#write part name output for bom
 		argc = 0
-		fid.write('\t\techo(str(" "')
+		fid.write('\t\t\techo(str(" "')
 		for token in cl.naming.template.split():
 			if token[0] == "%":
 				fid.write(",")
@@ -298,8 +300,8 @@ it might be better to use its successor %s instead");\n""" %
 				fid.write('," "')
 		fid.write("));\n")
 		#To avoid problems with missing top level object
+		fid.write("\t\t}\n")
 		fid.write("\t\tcube();\n")
-
 		fid.write("\t} else {\n")
 
 		#module call

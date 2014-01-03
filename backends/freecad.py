@@ -93,6 +93,8 @@ class FreeCADExporter(BackendExporter):
 			open(join(bolts_path,"freecad",coll.id,"__init__.py"),"w").close()
 
 			for cl in coll.classes:
+				if not cl.id in self.freecad.getbase:
+					continue
 				base = self.freecad.getbase[cl.id]
 				if not base.license_name in license.LICENSES:
 					continue
