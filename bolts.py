@@ -189,7 +189,7 @@ def release(args):
 		IGESExporter(repo,dbs).write_output(os.path.join(repo.path,"output","iges"),version,stable)
 
 		#write xz file, see http://stackoverflow.com/a/13131500
-		backend_name = backend_names[backend]
+		backend_name = backend_names["iges"]
 		xz_name = "BOLTS_%s_%s.tar.xz" % (backend_name,version)
 		xz_fid = lzma.LZMAFile(os.path.join(repo.path,"downloads","iges",xz_name),mode="w")
 		with tarfile.open(mode="w", fileobj=xz_fid) as tar_xz_fid:
