@@ -129,7 +129,7 @@ class IGESExporter(BackendExporter):
 					params["standard"] = cl.name
 					name = cl.naming.get_name(params)
 					params["name"] = name
-					filename = name + ".iges"
+					filename = name + ".igs"
 					filename = filename.replace(" ","_").replace("/","-")
 
 					doc = FreeCAD.newDocument()
