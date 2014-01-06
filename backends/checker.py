@@ -88,7 +88,10 @@ class MissingBaseTable(ErrorTable):
 				row = []
 				row.append(cl.id)
 				row.append(coll.id)
-				row.append(cl.standard)
+				if cl.standard is None:
+					row.append(cl.standard)
+				else:
+					row.append(', '.join(cl.standard))
 				row.append(cl.id in dbs["freecad"].getbase)
 				row.append(cl.id in dbs["openscad"].getbase)
 				if not (row[-1] and row[-2]):
@@ -131,7 +134,10 @@ class MissingCommonParametersTable(ErrorTable):
 					row = []
 					row.append(cl.id)
 					row.append(coll.id)
-					row.append(cl.standard)
+					if cl.standard is None:
+						row.append(cl.standard)
+					else:
+						row.append(', '.join(cl.standard))
 					self.rows.append(row)
 
 class MissingConnectorsTable(ErrorTable):
@@ -151,7 +157,10 @@ class MissingConnectorsTable(ErrorTable):
 						row = []
 						row.append(cl.id)
 						row.append(coll.id)
-						row.append(cl.standard)
+						if cl.standard is None:
+							row.append(cl.standard)
+						else:
+							row.append(', '.join(cl.standard))
 						self.rows.append(row)
 
 class MissingDrawingTable(ErrorTable):
@@ -169,7 +178,10 @@ class MissingDrawingTable(ErrorTable):
 					row = []
 					row.append(cl.id)
 					row.append(coll.id)
-					row.append(cl.standard)
+					if cl.standard is None:
+						row.append(cl.standard)
+					else:
+						row.append(', '.join(cl.standard))
 					self.rows.append(row)
 
 class MissingSVGSourceTable(ErrorTable):
