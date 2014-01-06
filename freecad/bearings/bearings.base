@@ -5,7 +5,7 @@
   type: function
   functions:
     - name: singlerowradialbearing
-      classids: [singlerowradialbearing]
+      classids: [singlerowradialbearing, singlerowradialbearingimperial]
     - name: doublerowradialbearing
       classids: [doublerowradialbearing]
     - name: axialthrustbearing

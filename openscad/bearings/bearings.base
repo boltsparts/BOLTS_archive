@@ -6,7 +6,7 @@
   modules:
     - name: singlerowradialbearing
       arguments: [d1,d2,B]
-      classids: [singlerowradialbearing]
+      classids: [singlerowradialbearing, singlerowradialbearingimperial]
     - name: axialthrustbearing
       arguments: [d,D,T]
       classids: [axialthrustbearing]

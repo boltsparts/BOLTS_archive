@@ -4,7 +4,7 @@
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing
   source: own work
-  classids: [singlerowradialbearing]
+  classids: [singlerowradialbearing, singlerowradialbearingimperial]
 - filename: doublerowradialbearing
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
