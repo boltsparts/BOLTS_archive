@@ -560,6 +560,7 @@ classes:
                 "K240X250X42" : [240, 250, 42 ]
                 "K265X280X50" : [265, 280, 50 ]
     source: http://medias.schaeffler.de/medias/de!hp.ec/1_R*0*C028*13#13
+    notes: no common parameters, because there are so many different types and I do not know which are useful.
   - id: cylindricalrollerbearing
     naming:
         template: cylindrical roller bearing %s %s
