@@ -39,12 +39,17 @@ classes:
             columns: [d1, d2, B]
             data:
               #key,[d1, d2, B ]
+              "623" : [ 3, 10, 4 ]
+              "624" : [ 4, 13, 5 ]
+              "634" : [ 4, 16, 5 ]
               "625" : [ 5, 16, 5 ]
-              "626": [ 6, 19, 6 ]
-              "627": [ 7, 22, 7 ]
-              "608": [ 8, 22, 7 ]
-              "609": [ 9, 24, 7 ]
-              "629": [ 9, 26, 8 ]
+              "635" : [ 5, 19, 6 ]
+              "626" : [ 6, 19, 6 ]
+              "627" : [ 7, 22, 7 ]
+              "607" : [ 7, 19, 6 ]
+              "608" : [ 8, 22, 7 ]
+              "609" : [ 9, 24, 7 ]
+              "629" : [ 9, 26, 8 ]
               "6000": [ 10, 26, 8 ]
               "16100": [ 10, 28, 8 ]
               "6200": [ 10, 30, 9 ]
@@ -82,7 +87,7 @@ classes:
               "shielded, double" : ["-ZZ"]
               "sealed, single" : ["-RS"]
               "sealed, double" : ["-2RS"]
-    source: http://www.kgm-kugeln.de/show.php?ID=4589 and http://reprap.org/wiki/Ball_bearing
+    source: http://www.kgm-kugeln.de/show.php?ID=4589 and http://reprap.org/wiki/Ball_bearing. dimensions for 623, 624, 634, 635 and 607 are taken from a old (~1980s) catalogue of Steyr.
   - id: doublerowradialbearing
     naming:
       template: Double row ball bearing %s %s
