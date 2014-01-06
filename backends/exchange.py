@@ -121,8 +121,10 @@ class IGESExporter(BackendExporter):
 			for cl in coll.classes:
 				if not cl.id in self.freecad.getbase:
 					continue
+				if cl.parameters.common is None:
+					continue
+
 				base = self.freecad.getbase[cl.id]
-				#TODO: licence conformity
 
 				for free in cl.parameters.common:
 					params = cl.parameters.collect(dict(zip(cl.parameters.free,free)))

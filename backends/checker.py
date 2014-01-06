@@ -127,7 +127,7 @@ class MissingCommonParametersTable(ErrorTable):
 	def populate(self,repo,dbs):
 		for coll in repo.collections:
 			for cl in coll.classes_by_ids():
-				if len(cl.parameters.common) == 0:
+				if cl.parameters.common is None:
 					row = []
 					row.append(cl.id)
 					row.append(coll.id)
