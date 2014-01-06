@@ -32,6 +32,7 @@ def singlerowradialbearing(params,document):
 	rout=0.5*params['d2']
 	rin=0.5*params['d1']
 	bth=0.5*params['B']
+	r_fillet=0.5*params['r_fillet']
 	name=params['name']
 	seal = params['type']
 
@@ -42,10 +43,10 @@ def singlerowradialbearing(params,document):
 	cb=((rout-rin)/2.00+rin)
 	#outer ring
 	our=Part.makeCylinder(rout,bth).cut(Part.makeCylinder(cb+rb*0.7,bth))
-	our=our.makeFillet(RR,our.Edges)
+	our=our.makeFillet(r_fillet,our.Edges)
 	#inner ring
 	inr=Part.makeCylinder(cb-rb*0.7,bth).cut(Part.makeCylinder(rin,bth))
-	inr=inr.makeFillet(RR,inr.Edges)
+	inr=inr.makeFillet(r_fillet,inr.Edges)
 
 	if seal == "open" or seal.endswith("single"):
 		#track
