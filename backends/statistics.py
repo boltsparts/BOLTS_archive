@@ -59,6 +59,7 @@ class StatisticsExporter(BackendExporter):
 				stats["classes"] += 1
 				if not cl.standard is None:
 					stats["standards"] += len(cl.standard)
+			for cl in coll.classes:
 				if not cl.parameters.common is None:
 					stats["commonconfigurations"] += len(cl.parameters.common)
 		stats["bodies"] = len(self.repo.standard_bodies)
