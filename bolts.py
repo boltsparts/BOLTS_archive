@@ -212,7 +212,7 @@ subparsers = parser.add_subparsers()
 parser_export = subparsers.add_parser("export")
 parser_export.add_argument("target",
 	type=str,
-	choices=["openscad","freecad","html","downloads","solidworks","iges"],
+	choices=["openscad","freecad","html","solidworks","iges"],
 	help="the distribution to create")
 parser_export.add_argument("-l","--license",
 	type=str,
