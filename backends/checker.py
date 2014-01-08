@@ -380,7 +380,33 @@ class MissingBaseConnectionTable(ErrorTable):
 						self.rows.append([db,base.filename,str(eq - classids)])
 
 
+class MissingParameterDescriptionTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Missing parameter description",
+			"Some classes have no human readable description of their parameters.",
+			["Class id","Collection","Standards","parameters"]
+		)
 
+	def populate(self,repo,dbs):
+		for coll in repo.collections:
+			for cl in coll.classes_by_ids():
+				row = []
+				row.append(cl.id)
+				row.append(coll.id)
+				if cl.standard is None:
+					row.append(cl.standard)
+				else:
+					row.append(', '.join(cl.standard))
+
+				missing = []
+				for pname in cl.parameters.parameters:
+					if not pname in cl.parameters.description:
+						missing.append(pname)
+
+				if len(missing) > 0:
+					row.append(', '.join(missing))
+					self.rows.append(row)
 
 
 class CheckerExporter(BackendExporter):
@@ -394,6 +420,7 @@ class CheckerExporter(BackendExporter):
 		self.checks["nonconformingparametername"] = NonconformingParameternameTable()
 		self.checks["tableproblem"] = TableProblemTable()
 		self.checks["missingbaseconnection"] = MissingBaseConnectionTable()
+		self.checks["missingparameterdescription"] = MissingParameterDescriptionTable()
 
 		self.tasks = {}
 		self.tasks["missingcommonparameters"] = MissingCommonParametersTable()
