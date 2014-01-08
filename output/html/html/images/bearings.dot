@@ -3,6 +3,7 @@ rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
 subgraph cluster_cl {
 label="Classes";
 "singlerowradialbearing" [width=3, height=0.8, fixedsize=true];
+"singlerowradialbearingimperial" [width=3, height=0.8, fixedsize=true];
 "doublerowradialbearing" [width=3, height=0.8, fixedsize=true];
 "axialthrustbearing" [width=3, height=0.8, fixedsize=true];
 "needleroller" [width=3, height=0.8, fixedsize=true];
@@ -21,6 +22,7 @@ label="Standards";
 subgraph cluster_fcd {
 label="FreeCAD";
 "bearings.py:singlerowradialbearing" [width=4, height=0.8, fixedsize=true];
+"bearings.py:singlerowradialbearing" [width=4, height=0.8, fixedsize=true];
 "bearings.py:doublerowradialbearing" [width=4, height=0.8, fixedsize=true];
 "bearings.py:axialthrustbearing" [width=4, height=0.8, fixedsize=true];
 "bearings.py:needlebearing" [width=4, height=0.8, fixedsize=true];
@@ -29,11 +31,14 @@ label="FreeCAD";
 subgraph cluster_ocd {
 label="OpenSCAD";
 "bearings.scad:singlerowradialbearing" [width=4, height=0.8, fixedsize=true];
+"bearings.scad:singlerowradialbearing" [width=4, height=0.8, fixedsize=true];
 "bearings.scad:axialthrustbearing" [width=4, height=0.8, fixedsize=true];
 }
 "singlerowradialbearing" -> "bearings.py:singlerowradialbearing";
 "singlerowradialbearing" -> "bearings.scad:singlerowradialbearing";
 "DIN625-1" -> "singlerowradialbearing";
+"singlerowradialbearingimperial" -> "bearings.py:singlerowradialbearing";
+"singlerowradialbearingimperial" -> "bearings.scad:singlerowradialbearing";
 "doublerowradialbearing" -> "bearings.py:doublerowradialbearing";
 "DIN625-3" -> "doublerowradialbearing";
 "axialthrustbearing" -> "bearings.py:axialthrustbearing";
