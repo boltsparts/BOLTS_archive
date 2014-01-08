@@ -1,0 +1,109 @@
+---
+  layout: base
+  title: singlerowradialbearingimperial
+---
+
+<div class="page-title-bar">
+  <div class="inner-content">
+    <h2>{{ page.title }}</h2>
+  </div>
+</div>
+
+<div id="content">
+  <div class="inner-content">
+    <table>
+      <tr><th><strong>Author:</strong></th><td><a href='mailto:jreinhardt@ist-dein-freund.de'>Johannes Reinhardt</a></td></tr>
+<tr><th><strong>Author:</strong></th><td><a href='mailto:jaeco@gmx.com'>Javier Martínez García</a></td></tr>
+<tr><th><strong>License:</strong></th><td><a href='http://www.gnu.org/licenses/lgpl-2.1'>LGPL 2.1+</a></td></tr>
+<tr><th><strong>Collection:</strong></th><td><a href='../collections/bearings.html'>Bearings</a></td></tr>
+<tr><th><strong>Class ID:</strong></th><td>singlerowradialbearingimperial</td></tr>
+<tr><th><strong>Source:</strong></th><td>Old (~1980s) paper catalog of Steyr.</td></tr>
+    </table>
+  </div>
+
+  <div class="inner-content">
+    <h1>Drawing</h1>
+    <img width=600 src="../drawings/bearings/singlerowradialbearing.png"/>
+    <table class="table">
+      <tr><th>Parameter name</th> <th>Description</th><tr>
+<tr><td>r_fillet</td> <td>fillet radius</td></tr>
+<tr><td>B</td> <td>thickness</td></tr>
+<tr><td>key</td> <td>Model designation</td></tr>
+<tr><td>d2</td> <td>outer diameter</td></tr>
+<tr><td>type</td> <td>Type of bearing protection</td></tr>
+<tr><td>d1</td> <td>inner diameter</td></tr>
+    </table>
+  </div>
+
+  <div class="inner-content">
+    <h1>Description</h1>
+    single row radial contact ball bearing, imperial sizes
+  </div>
+
+  <div class="inner-content">
+    <h1>FreeCAD</h1>
+    <table class="table">
+      <tr><th><strong>Author:</strong></th><td><a href='mailto:jreinhardt@ist-dein-freund.de'>Johannes Reinhardt</a></td></tr>
+<tr><th><strong>Author:</strong></th><td><a href='mailto:jaeco@gmx.com'>Javier Martínez García</a></td></tr>
+<tr><th><strong>License:</strong></th><td><a href='http://www.gnu.org/licenses/lgpl-2.1'>LGPL 2.1+</a></td></tr>
+    </table>
+  </div>
+
+  <div class="inner-content">
+    <h1>OpenSCAD</h1>
+    <table class="table">
+      <tr><th><strong>Author:</strong></th><td><a href='mailto:jreinhardt@ist-dein-freund.de'>Johannes Reinhardt</a></td></tr>
+<tr><th><strong>License:</strong></th><td><a href='http://www.gnu.org/licenses/lgpl-2.1'>LGPL 2.1+</a></td></tr>
+    </table>
+      <h2>Incantations</h2>
+{% highlight python %}
+singlerowradialbearingimperial(key="RLS8", part_mode="default");
+dims = singlerowradialbearingimperial_dims(key="RLS8", part_mode="default");
+{% endhighlight %}
+
+      
+  </div>
+
+  <div class="inner-content">
+    <h1>Dimensions</h1>
+    <table class="table">
+      <tr><th>key</th> <th>d1 (in)</th> <th>d2 (in)</th> <th>B (in)</th> <th>r_fillet (in)</th><tr>
+<tr><td>RLS4</td> <td>0.5</td> <td>1.3125</td> <td>0.375</td> <td>0.03125</td></tr>
+<tr><td>RMS4</td> <td>0.5</td> <td>1.625</td> <td>0.625</td> <td>0.0625</td></tr>
+<tr><td>RLS5</td> <td>0.625</td> <td>1.5625</td> <td>0.4375</td> <td>0.03125</td></tr>
+<tr><td>RMS5</td> <td>0.625</td> <td>1.8125</td> <td>0.625</td> <td>0.0625</td></tr>
+<tr><td>RLS6</td> <td>0.75</td> <td>1.875</td> <td>0.5625</td> <td>0.0625</td></tr>
+<tr><td>RMS6</td> <td>0.75</td> <td>2.0</td> <td>0.6875</td> <td>0.0625</td></tr>
+<tr><td>RLS7</td> <td>0.875</td> <td>2.0</td> <td>0.5625</td> <td>0.0625</td></tr>
+<tr><td>RMS7</td> <td>0.875</td> <td>2.25</td> <td>0.6875</td> <td>0.0625</td></tr>
+<tr><td>RLS8</td> <td>1.0</td> <td>2.25</td> <td>0.625</td> <td>0.0625</td></tr>
+<tr><td>RMS8</td> <td>1.0</td> <td>2.5</td> <td>0.75</td> <td>0.09375</td></tr>
+<tr><td>RLS9</td> <td>1.125</td> <td>2.5</td> <td>0.625</td> <td>0.0625</td></tr>
+<tr><td>RMS9</td> <td>1.125</td> <td>2.8125</td> <td>0.8125</td> <td>0.09375</td></tr>
+<tr><td>RLS10</td> <td>1.25</td> <td>2.75</td> <td>0.6875</td> <td>0.0625</td></tr>
+<tr><td>RMS10</td> <td>1.25</td> <td>3.125</td> <td>0.875</td> <td>0.09375</td></tr>
+<tr><td>RLS11</td> <td>1.375</td> <td>3.0</td> <td>0.6875</td> <td>0.0625</td></tr>
+<tr><td>RMS11</td> <td>1.375</td> <td>3.5</td> <td>0.875</td> <td>0.09375</td></tr>
+<tr><td>RLS12</td> <td>1.5</td> <td>3.25</td> <td>0.75</td> <td>0.09375</td></tr>
+<tr><td>RMS12</td> <td>1.5</td> <td>3.75</td> <td>0.9375</td> <td>0.09375</td></tr>
+<tr><td>RLS13</td> <td>1.625</td> <td>3.5</td> <td>0.75</td> <td>0.09375</td></tr>
+<tr><td>RMS13</td> <td>1.625</td> <td>4.0</td> <td>0.9375</td> <td>0.09375</td></tr>
+<tr><td>RLS14</td> <td>1.75</td> <td>3.75</td> <td>0.8125</td> <td>0.09375</td></tr>
+<tr><td>RMS14</td> <td>1.75</td> <td>4.25</td> <td>1.0625</td> <td>0.09375</td></tr>
+<tr><td>RLS15</td> <td>1.875</td> <td>4.0</td> <td>0.8125</td> <td>0.09375</td></tr>
+<tr><td>RMS15</td> <td>1.875</td> <td>4.5</td> <td>1.0625</td> <td>0.09375</td></tr>
+<tr><td>RLS16</td> <td>2.0</td> <td>4.0</td> <td>0.8125</td> <td>0.09375</td></tr>
+<tr><td>RMS16</td> <td>2.0</td> <td>4.5</td> <td>1.0625</td> <td>0.09375</td></tr>
+<tr><td>RLS18</td> <td>2.25</td> <td>4.5</td> <td>0.875</td> <td>0.09375</td></tr>
+<tr><td>RMS18</td> <td>2.25</td> <td>5.0</td> <td>1.25</td> <td>0.125</td></tr>
+<tr><td>RMS20</td> <td>2.5</td> <td>5.5</td> <td>1.25</td> <td>0.125</td></tr>
+<tr><td>RLS20</td> <td>2.5</td> <td>5.0</td> <td>0.9375</td> <td>0.09375</td></tr>
+<tr><td>RMS22</td> <td>2.75</td> <td>6.125</td> <td>1.375</td> <td>0.125</td></tr>
+<tr><td>RLS22</td> <td>2.75</td> <td>5.25</td> <td>0.9375</td> <td>0.09375</td></tr>
+<tr><td>RMS24</td> <td>3.0</td> <td>7.0</td> <td>1.5625</td> <td>0.15625</td></tr>
+<tr><td>RLS24</td> <td>3.0</td> <td>5.75</td> <td>1.0625</td> <td>0.09375</td></tr>
+<tr><td>RMS26</td> <td>3.25</td> <td>7.5</td> <td>1.5625</td> <td>0.15625</td></tr>
+<tr><td>RLS26</td> <td>3.25</td> <td>6.0</td> <td>1.0625</td> <td>0.09375</td></tr>
+    </table>
+  </div>
+</div>

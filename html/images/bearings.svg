@@ -10,7 +10,7 @@
 <title>G</title>
 <polygon fill="white" stroke="white" points="-4,5 -4,-792 973,-792 973,5 -4,5"/>
 <g id="graph2" class="cluster"><title>cluster_cl</title>
-<polygon fill="none" stroke="black" points="332,-210 332,-686 564,-686 564,-210 332,-210"/>
+<polygon fill="none" stroke="black" points="332,-116 332,-686 564,-686 564,-116 332,-116"/>
 <text text-anchor="middle" x="448" y="-669.4" font-family="Times Roman,serif" font-size="14.00">Classes</text>
 </g>
 <g id="graph3" class="cluster"><title>cluster_std</title>
@@ -27,168 +27,183 @@
 </g>
 <!-- singlerowradialbearing -->
 <g id="node2" class="node"><title>singlerowradialbearing</title>
-<ellipse fill="none" stroke="black" cx="448" cy="-341" rx="108" ry="29"/>
-<text text-anchor="middle" x="448" y="-337.4" font-family="Times Roman,serif" font-size="14.00">singlerowradialbearing</text>
+<ellipse fill="none" stroke="black" cx="448" cy="-153" rx="108" ry="29"/>
+<text text-anchor="middle" x="448" y="-149.4" font-family="Times Roman,serif" font-size="14.00">singlerowradialbearing</text>
 </g>
 <!-- bearings.py:singlerowradialbearing -->
-<g id="node16" class="node"><title>bearings.py:singlerowradialbearing</title>
-<ellipse fill="none" stroke="black" cx="808" cy="-341" rx="144" ry="29"/>
-<text text-anchor="middle" x="808" y="-337.4" font-family="Times Roman,serif" font-size="14.00">bearings.py:singlerowradialbearing</text>
+<g id="node17" class="node"><title>bearings.py:singlerowradialbearing</title>
+<ellipse fill="none" stroke="black" cx="808" cy="-247" rx="144" ry="29"/>
+<text text-anchor="middle" x="808" y="-243.4" font-family="Times Roman,serif" font-size="14.00">bearings.py:singlerowradialbearing</text>
 </g>
 <!-- singlerowradialbearing&#45;&gt;bearings.py:singlerowradialbearing -->
 <g id="edge6" class="edge"><title>singlerowradialbearing&#45;&gt;bearings.py:singlerowradialbearing</title>
-<path fill="none" stroke="black" d="M556.012,-341C586.7,-341 620.73,-341 653.598,-341"/>
-<polygon fill="black" stroke="black" points="653.756,-344.5 663.756,-341 653.756,-337.5 653.756,-344.5"/>
+<path fill="none" stroke="black" d="M523.093,-173.939C582.672,-190.553 656,-211 656,-211 656,-211 677.459,-216.082 704.25,-222.428"/>
+<polygon fill="black" stroke="black" points="703.795,-225.917 714.332,-224.816 705.408,-219.105 703.795,-225.917"/>
 </g>
 <!-- bearings.scad:singlerowradialbearing -->
-<g id="node22" class="node"><title>bearings.scad:singlerowradialbearing</title>
-<ellipse fill="none" stroke="black" cx="808" cy="-139" rx="144" ry="29"/>
-<text text-anchor="middle" x="808" y="-135.4" font-family="Times Roman,serif" font-size="14.00">bearings.scad:singlerowradialbearing</text>
+<g id="node23" class="node"><title>bearings.scad:singlerowradialbearing</title>
+<ellipse fill="none" stroke="black" cx="808" cy="-45" rx="144" ry="29"/>
+<text text-anchor="middle" x="808" y="-41.4" font-family="Times Roman,serif" font-size="14.00">bearings.scad:singlerowradialbearing</text>
 </g>
 <!-- singlerowradialbearing&#45;&gt;bearings.scad:singlerowradialbearing -->
 <g id="edge8" class="edge"><title>singlerowradialbearing&#45;&gt;bearings.scad:singlerowradialbearing</title>
-<path fill="none" stroke="black" d="M507.699,-316.812C536.122,-305.295 564,-294 564,-294 564,-294 656,-201 656,-201 656,-201 695.801,-184.765 734.67,-168.911"/>
-<polygon fill="black" stroke="black" points="736.041,-172.132 743.979,-165.114 733.398,-165.65 736.041,-172.132"/>
+<path fill="none" stroke="black" d="M520.418,-131.275C577.328,-114.201 656.901,-90.3298 717.921,-72.0237"/>
+<polygon fill="black" stroke="black" points="718.976,-75.3614 727.549,-69.1354 716.965,-68.6566 718.976,-75.3614"/>
 </g>
-<!-- doublerowradialbearing -->
-<g id="node3" class="node"><title>doublerowradialbearing</title>
-<ellipse fill="none" stroke="black" cx="448" cy="-623" rx="108" ry="29"/>
-<text text-anchor="middle" x="448" y="-619.4" font-family="Times Roman,serif" font-size="14.00">doublerowradialbearing</text>
-</g>
-<!-- bearings.py:doublerowradialbearing -->
-<g id="node17" class="node"><title>bearings.py:doublerowradialbearing</title>
-<ellipse fill="none" stroke="black" cx="808" cy="-623" rx="144" ry="29"/>
-<text text-anchor="middle" x="808" y="-619.4" font-family="Times Roman,serif" font-size="14.00">bearings.py:doublerowradialbearing</text>
-</g>
-<!-- doublerowradialbearing&#45;&gt;bearings.py:doublerowradialbearing -->
-<g id="edge12" class="edge"><title>doublerowradialbearing&#45;&gt;bearings.py:doublerowradialbearing</title>
-<path fill="none" stroke="black" d="M556.012,-623C586.7,-623 620.73,-623 653.598,-623"/>
-<polygon fill="black" stroke="black" points="653.756,-626.5 663.756,-623 653.756,-619.5 653.756,-626.5"/>
-</g>
-<!-- axialthrustbearing -->
-<g id="node4" class="node"><title>axialthrustbearing</title>
+<!-- singlerowradialbearingimperial -->
+<g id="node3" class="node"><title>singlerowradialbearingimperial</title>
 <ellipse fill="none" stroke="black" cx="448" cy="-247" rx="108" ry="29"/>
-<text text-anchor="middle" x="448" y="-243.4" font-family="Times Roman,serif" font-size="14.00">axialthrustbearing</text>
+<text text-anchor="middle" x="448" y="-243.4" font-family="Times Roman,serif" font-size="14.00">singlerowradialbearingimperial</text>
 </g>
-<!-- bearings.py:axialthrustbearing -->
-<g id="node18" class="node"><title>bearings.py:axialthrustbearing</title>
-<ellipse fill="none" stroke="black" cx="808" cy="-247" rx="144" ry="29"/>
-<text text-anchor="middle" x="808" y="-243.4" font-family="Times Roman,serif" font-size="14.00">bearings.py:axialthrustbearing</text>
-</g>
-<!-- axialthrustbearing&#45;&gt;bearings.py:axialthrustbearing -->
-<g id="edge16" class="edge"><title>axialthrustbearing&#45;&gt;bearings.py:axialthrustbearing</title>
+<!-- singlerowradialbearingimperial&#45;&gt;bearings.py:singlerowradialbearing -->
+<g id="edge12" class="edge"><title>singlerowradialbearingimperial&#45;&gt;bearings.py:singlerowradialbearing</title>
 <path fill="none" stroke="black" d="M556.012,-247C586.7,-247 620.73,-247 653.598,-247"/>
 <polygon fill="black" stroke="black" points="653.756,-250.5 663.756,-247 653.756,-243.5 653.756,-250.5"/>
 </g>
-<!-- bearings.scad:axialthrustbearing -->
-<g id="node23" class="node"><title>bearings.scad:axialthrustbearing</title>
-<ellipse fill="none" stroke="black" cx="808" cy="-45" rx="144" ry="29"/>
-<text text-anchor="middle" x="808" y="-41.4" font-family="Times Roman,serif" font-size="14.00">bearings.scad:axialthrustbearing</text>
-</g>
-<!-- axialthrustbearing&#45;&gt;bearings.scad:axialthrustbearing -->
-<g id="edge18" class="edge"><title>axialthrustbearing&#45;&gt;bearings.scad:axialthrustbearing</title>
-<path fill="none" stroke="black" d="M484.707,-219.646C544.42,-175.148 656,-92 656,-92 656,-92 686.02,-82.7174 719.378,-72.4028"/>
+<!-- singlerowradialbearingimperial&#45;&gt;bearings.scad:singlerowradialbearing -->
+<g id="edge14" class="edge"><title>singlerowradialbearingimperial&#45;&gt;bearings.scad:singlerowradialbearing</title>
+<path fill="none" stroke="black" d="M507.699,-222.812C536.122,-211.295 564,-200 564,-200 564,-200 656,-92 656,-92 656,-92 686.02,-82.7174 719.378,-72.4028"/>
 <polygon fill="black" stroke="black" points="720.809,-75.624 729.329,-69.326 718.741,-68.9364 720.809,-75.624"/>
 </g>
-<!-- needleroller -->
-<g id="node5" class="node"><title>needleroller</title>
+<!-- doublerowradialbearing -->
+<g id="node4" class="node"><title>doublerowradialbearing</title>
 <ellipse fill="none" stroke="black" cx="448" cy="-529" rx="108" ry="29"/>
-<text text-anchor="middle" x="448" y="-525.4" font-family="Times Roman,serif" font-size="14.00">needleroller</text>
+<text text-anchor="middle" x="448" y="-525.4" font-family="Times Roman,serif" font-size="14.00">doublerowradialbearing</text>
 </g>
-<!-- bearings.py:needlebearing -->
-<g id="node19" class="node"><title>bearings.py:needlebearing</title>
+<!-- bearings.py:doublerowradialbearing -->
+<g id="node18" class="node"><title>bearings.py:doublerowradialbearing</title>
 <ellipse fill="none" stroke="black" cx="808" cy="-529" rx="144" ry="29"/>
-<text text-anchor="middle" x="808" y="-525.4" font-family="Times Roman,serif" font-size="14.00">bearings.py:needlebearing</text>
+<text text-anchor="middle" x="808" y="-525.4" font-family="Times Roman,serif" font-size="14.00">bearings.py:doublerowradialbearing</text>
 </g>
-<!-- needleroller&#45;&gt;bearings.py:needlebearing -->
-<g id="edge24" class="edge"><title>needleroller&#45;&gt;bearings.py:needlebearing</title>
+<!-- doublerowradialbearing&#45;&gt;bearings.py:doublerowradialbearing -->
+<g id="edge16" class="edge"><title>doublerowradialbearing&#45;&gt;bearings.py:doublerowradialbearing</title>
 <path fill="none" stroke="black" d="M556.012,-529C586.7,-529 620.73,-529 653.598,-529"/>
 <polygon fill="black" stroke="black" points="653.756,-532.5 663.756,-529 653.756,-525.5 653.756,-532.5"/>
 </g>
-<!-- cylindricalrollerbearing -->
-<g id="node6" class="node"><title>cylindricalrollerbearing</title>
+<!-- axialthrustbearing -->
+<g id="node5" class="node"><title>axialthrustbearing</title>
+<ellipse fill="none" stroke="black" cx="448" cy="-341" rx="108" ry="29"/>
+<text text-anchor="middle" x="448" y="-337.4" font-family="Times Roman,serif" font-size="14.00">axialthrustbearing</text>
+</g>
+<!-- bearings.py:axialthrustbearing -->
+<g id="node19" class="node"><title>bearings.py:axialthrustbearing</title>
+<ellipse fill="none" stroke="black" cx="808" cy="-341" rx="144" ry="29"/>
+<text text-anchor="middle" x="808" y="-337.4" font-family="Times Roman,serif" font-size="14.00">bearings.py:axialthrustbearing</text>
+</g>
+<!-- axialthrustbearing&#45;&gt;bearings.py:axialthrustbearing -->
+<g id="edge20" class="edge"><title>axialthrustbearing&#45;&gt;bearings.py:axialthrustbearing</title>
+<path fill="none" stroke="black" d="M556.012,-341C586.7,-341 620.73,-341 653.598,-341"/>
+<polygon fill="black" stroke="black" points="653.756,-344.5 663.756,-341 653.756,-337.5 653.756,-344.5"/>
+</g>
+<!-- bearings.scad:axialthrustbearing -->
+<g id="node24" class="node"><title>bearings.scad:axialthrustbearing</title>
+<ellipse fill="none" stroke="black" cx="808" cy="-139" rx="144" ry="29"/>
+<text text-anchor="middle" x="808" y="-135.4" font-family="Times Roman,serif" font-size="14.00">bearings.scad:axialthrustbearing</text>
+</g>
+<!-- axialthrustbearing&#45;&gt;bearings.scad:axialthrustbearing -->
+<g id="edge22" class="edge"><title>axialthrustbearing&#45;&gt;bearings.scad:axialthrustbearing</title>
+<path fill="none" stroke="black" d="M507.699,-316.812C536.122,-305.295 564,-294 564,-294 564,-294 656,-201 656,-201 656,-201 695.801,-184.765 734.67,-168.911"/>
+<polygon fill="black" stroke="black" points="736.041,-172.132 743.979,-165.114 733.398,-165.65 736.041,-172.132"/>
+</g>
+<!-- needleroller -->
+<g id="node6" class="node"><title>needleroller</title>
 <ellipse fill="none" stroke="black" cx="448" cy="-435" rx="108" ry="29"/>
-<text text-anchor="middle" x="448" y="-431.4" font-family="Times Roman,serif" font-size="14.00">cylindricalrollerbearing</text>
+<text text-anchor="middle" x="448" y="-431.4" font-family="Times Roman,serif" font-size="14.00">needleroller</text>
 </g>
-<!-- bearings.py:cylindricalrollerbearing -->
-<g id="node20" class="node"><title>bearings.py:cylindricalrollerbearing</title>
+<!-- bearings.py:needlebearing -->
+<g id="node20" class="node"><title>bearings.py:needlebearing</title>
 <ellipse fill="none" stroke="black" cx="808" cy="-435" rx="144" ry="29"/>
-<text text-anchor="middle" x="808" y="-431.4" font-family="Times Roman,serif" font-size="14.00">bearings.py:cylindricalrollerbearing</text>
+<text text-anchor="middle" x="808" y="-431.4" font-family="Times Roman,serif" font-size="14.00">bearings.py:needlebearing</text>
 </g>
-<!-- cylindricalrollerbearing&#45;&gt;bearings.py:cylindricalrollerbearing -->
-<g id="edge30" class="edge"><title>cylindricalrollerbearing&#45;&gt;bearings.py:cylindricalrollerbearing</title>
+<!-- needleroller&#45;&gt;bearings.py:needlebearing -->
+<g id="edge28" class="edge"><title>needleroller&#45;&gt;bearings.py:needlebearing</title>
 <path fill="none" stroke="black" d="M556.012,-435C586.7,-435 620.73,-435 653.598,-435"/>
 <polygon fill="black" stroke="black" points="653.756,-438.5 663.756,-435 653.756,-431.5 653.756,-438.5"/>
 </g>
+<!-- cylindricalrollerbearing -->
+<g id="node7" class="node"><title>cylindricalrollerbearing</title>
+<ellipse fill="none" stroke="black" cx="448" cy="-623" rx="108" ry="29"/>
+<text text-anchor="middle" x="448" y="-619.4" font-family="Times Roman,serif" font-size="14.00">cylindricalrollerbearing</text>
+</g>
+<!-- bearings.py:cylindricalrollerbearing -->
+<g id="node21" class="node"><title>bearings.py:cylindricalrollerbearing</title>
+<ellipse fill="none" stroke="black" cx="808" cy="-623" rx="144" ry="29"/>
+<text text-anchor="middle" x="808" y="-619.4" font-family="Times Roman,serif" font-size="14.00">bearings.py:cylindricalrollerbearing</text>
+</g>
+<!-- cylindricalrollerbearing&#45;&gt;bearings.py:cylindricalrollerbearing -->
+<g id="edge34" class="edge"><title>cylindricalrollerbearing&#45;&gt;bearings.py:cylindricalrollerbearing</title>
+<path fill="none" stroke="black" d="M556.012,-623C586.7,-623 620.73,-623 653.598,-623"/>
+<polygon fill="black" stroke="black" points="653.756,-626.5 663.756,-623 653.756,-619.5 653.756,-626.5"/>
+</g>
 <!-- DIN625&#45;1 -->
-<g id="node8" class="node"><title>DIN625&#45;1</title>
-<ellipse fill="none" stroke="black" cx="124" cy="-341" rx="108" ry="29"/>
-<text text-anchor="middle" x="124" y="-337.4" font-family="Times Roman,serif" font-size="14.00">DIN625&#45;1</text>
+<g id="node9" class="node"><title>DIN625&#45;1</title>
+<ellipse fill="none" stroke="black" cx="124" cy="-153" rx="108" ry="29"/>
+<text text-anchor="middle" x="124" y="-149.4" font-family="Times Roman,serif" font-size="14.00">DIN625&#45;1</text>
 </g>
 <!-- DIN625&#45;1&#45;&gt;singlerowradialbearing -->
 <g id="edge10" class="edge"><title>DIN625&#45;1&#45;&gt;singlerowradialbearing</title>
+<path fill="none" stroke="black" d="M232.338,-153C263.545,-153 297.748,-153 329.536,-153"/>
+<polygon fill="black" stroke="black" points="329.764,-156.5 339.764,-153 329.764,-149.5 329.764,-156.5"/>
+</g>
+<!-- DIN625&#45;3 -->
+<g id="node10" class="node"><title>DIN625&#45;3</title>
+<ellipse fill="none" stroke="black" cx="124" cy="-623" rx="108" ry="29"/>
+<text text-anchor="middle" x="124" y="-619.4" font-family="Times Roman,serif" font-size="14.00">DIN625&#45;3</text>
+</g>
+<!-- DIN625&#45;3&#45;&gt;doublerowradialbearing -->
+<g id="edge18" class="edge"><title>DIN625&#45;3&#45;&gt;doublerowradialbearing</title>
+<path fill="none" stroke="black" d="M197.521,-601.67C247.247,-587.243 313.017,-568.162 364.685,-553.172"/>
+<polygon fill="black" stroke="black" points="365.862,-556.475 374.49,-550.327 363.911,-549.752 365.862,-556.475"/>
+</g>
+<!-- DIN711 -->
+<g id="node11" class="node"><title>DIN711</title>
+<ellipse fill="none" stroke="black" cx="124" cy="-341" rx="108" ry="29"/>
+<text text-anchor="middle" x="124" y="-337.4" font-family="Times Roman,serif" font-size="14.00">DIN711</text>
+</g>
+<!-- DIN711&#45;&gt;axialthrustbearing -->
+<g id="edge24" class="edge"><title>DIN711&#45;&gt;axialthrustbearing</title>
 <path fill="none" stroke="black" d="M232.338,-341C263.545,-341 297.748,-341 329.536,-341"/>
 <polygon fill="black" stroke="black" points="329.764,-344.5 339.764,-341 329.764,-337.5 329.764,-344.5"/>
 </g>
-<!-- DIN625&#45;3 -->
-<g id="node9" class="node"><title>DIN625&#45;3</title>
-<ellipse fill="none" stroke="black" cx="124" cy="-717" rx="108" ry="29"/>
-<text text-anchor="middle" x="124" y="-713.4" font-family="Times Roman,serif" font-size="14.00">DIN625&#45;3</text>
-</g>
-<!-- DIN625&#45;3&#45;&gt;doublerowradialbearing -->
-<g id="edge14" class="edge"><title>DIN625&#45;3&#45;&gt;doublerowradialbearing</title>
-<path fill="none" stroke="black" d="M197.521,-695.67C247.247,-681.243 313.017,-662.162 364.685,-647.172"/>
-<polygon fill="black" stroke="black" points="365.862,-650.475 374.49,-644.327 363.911,-643.752 365.862,-650.475"/>
-</g>
-<!-- DIN711 -->
-<g id="node10" class="node"><title>DIN711</title>
-<ellipse fill="none" stroke="black" cx="124" cy="-247" rx="108" ry="29"/>
-<text text-anchor="middle" x="124" y="-243.4" font-family="Times Roman,serif" font-size="14.00">DIN711</text>
-</g>
-<!-- DIN711&#45;&gt;axialthrustbearing -->
-<g id="edge20" class="edge"><title>DIN711&#45;&gt;axialthrustbearing</title>
-<path fill="none" stroke="black" d="M232.338,-247C263.545,-247 297.748,-247 329.536,-247"/>
-<polygon fill="black" stroke="black" points="329.764,-250.5 339.764,-247 329.764,-243.5 329.764,-250.5"/>
-</g>
 <!-- ISO104 -->
-<g id="node11" class="node"><title>ISO104</title>
-<ellipse fill="none" stroke="black" cx="124" cy="-153" rx="108" ry="29"/>
-<text text-anchor="middle" x="124" y="-149.4" font-family="Times Roman,serif" font-size="14.00">ISO104</text>
+<g id="node12" class="node"><title>ISO104</title>
+<ellipse fill="none" stroke="black" cx="124" cy="-247" rx="108" ry="29"/>
+<text text-anchor="middle" x="124" y="-243.4" font-family="Times Roman,serif" font-size="14.00">ISO104</text>
 </g>
 <!-- ISO104&#45;&gt;axialthrustbearing -->
-<g id="edge22" class="edge"><title>ISO104&#45;&gt;axialthrustbearing</title>
-<path fill="none" stroke="black" d="M197.521,-174.33C247.247,-188.757 313.017,-207.838 364.685,-222.828"/>
-<polygon fill="black" stroke="black" points="363.911,-226.248 374.49,-225.673 365.862,-219.525 363.911,-226.248"/>
+<g id="edge26" class="edge"><title>ISO104&#45;&gt;axialthrustbearing</title>
+<path fill="none" stroke="black" d="M197.521,-268.33C247.247,-282.757 313.017,-301.838 364.685,-316.828"/>
+<polygon fill="black" stroke="black" points="363.911,-320.248 374.49,-319.673 365.862,-313.525 363.911,-320.248"/>
 </g>
 <!-- DIN5405&#45;1 -->
-<g id="node12" class="node"><title>DIN5405&#45;1</title>
+<g id="node13" class="node"><title>DIN5405&#45;1</title>
 <ellipse fill="none" stroke="black" cx="124" cy="-529" rx="108" ry="29"/>
 <text text-anchor="middle" x="124" y="-525.4" font-family="Times Roman,serif" font-size="14.00">DIN5405&#45;1</text>
 </g>
 <!-- DIN5405&#45;1&#45;&gt;needleroller -->
-<g id="edge26" class="edge"><title>DIN5405&#45;1&#45;&gt;needleroller</title>
-<path fill="none" stroke="black" d="M232.338,-529C263.545,-529 297.748,-529 329.536,-529"/>
-<polygon fill="black" stroke="black" points="329.764,-532.5 339.764,-529 329.764,-525.5 329.764,-532.5"/>
+<g id="edge30" class="edge"><title>DIN5405&#45;1&#45;&gt;needleroller</title>
+<path fill="none" stroke="black" d="M197.521,-507.67C247.247,-493.243 313.017,-474.162 364.685,-459.172"/>
+<polygon fill="black" stroke="black" points="365.862,-462.475 374.49,-456.327 363.911,-455.752 365.862,-462.475"/>
 </g>
 <!-- ISO 3030 -->
-<g id="node13" class="node"><title>ISO 3030</title>
-<ellipse fill="none" stroke="black" cx="124" cy="-623" rx="108" ry="29"/>
-<text text-anchor="middle" x="124" y="-619.4" font-family="Times Roman,serif" font-size="14.00">ISO 3030</text>
+<g id="node14" class="node"><title>ISO 3030</title>
+<ellipse fill="none" stroke="black" cx="124" cy="-435" rx="108" ry="29"/>
+<text text-anchor="middle" x="124" y="-431.4" font-family="Times Roman,serif" font-size="14.00">ISO 3030</text>
 </g>
 <!-- ISO 3030&#45;&gt;needleroller -->
-<g id="edge28" class="edge"><title>ISO 3030&#45;&gt;needleroller</title>
-<path fill="none" stroke="black" d="M197.521,-601.67C247.247,-587.243 313.017,-568.162 364.685,-553.172"/>
-<polygon fill="black" stroke="black" points="365.862,-556.475 374.49,-550.327 363.911,-549.752 365.862,-556.475"/>
-</g>
-<!-- DIN5412&#45;1 -->
-<g id="node14" class="node"><title>DIN5412&#45;1</title>
-<ellipse fill="none" stroke="black" cx="124" cy="-435" rx="108" ry="29"/>
-<text text-anchor="middle" x="124" y="-431.4" font-family="Times Roman,serif" font-size="14.00">DIN5412&#45;1</text>
-</g>
-<!-- DIN5412&#45;1&#45;&gt;cylindricalrollerbearing -->
-<g id="edge32" class="edge"><title>DIN5412&#45;1&#45;&gt;cylindricalrollerbearing</title>
+<g id="edge32" class="edge"><title>ISO 3030&#45;&gt;needleroller</title>
 <path fill="none" stroke="black" d="M232.338,-435C263.545,-435 297.748,-435 329.536,-435"/>
 <polygon fill="black" stroke="black" points="329.764,-438.5 339.764,-435 329.764,-431.5 329.764,-438.5"/>
+</g>
+<!-- DIN5412&#45;1 -->
+<g id="node15" class="node"><title>DIN5412&#45;1</title>
+<ellipse fill="none" stroke="black" cx="124" cy="-717" rx="108" ry="29"/>
+<text text-anchor="middle" x="124" y="-713.4" font-family="Times Roman,serif" font-size="14.00">DIN5412&#45;1</text>
+</g>
+<!-- DIN5412&#45;1&#45;&gt;cylindricalrollerbearing -->
+<g id="edge36" class="edge"><title>DIN5412&#45;1&#45;&gt;cylindricalrollerbearing</title>
+<path fill="none" stroke="black" d="M197.521,-695.67C247.247,-681.243 313.017,-662.162 364.685,-647.172"/>
+<polygon fill="black" stroke="black" points="365.862,-650.475 374.49,-644.327 363.911,-643.752 365.862,-650.475"/>
 </g>
 </g>
 </svg>
