@@ -291,7 +291,6 @@ classes:
           key: Thread designation
           d1: hole diameter
           s: width across flats
-          e_min: head diameter
           m_max: thickness
         tables:
             index: key
