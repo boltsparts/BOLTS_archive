@@ -371,6 +371,15 @@ class HTMLExporter(BackendExporter):
 		else:
 			params["drawing"] = "no_drawing.png"
 
+		#parameter descriptions
+		if len(cl.parameters.description) > 0:
+			params["parameterdescriptions"] = html_table(
+				[[pname,descr] for pname,descr in cl.parameters.description.iteritems()],
+				["Parameter name", "Description"])
+		else:
+			params["parameterdescriptions"] = ""
+
+		#part properties
 		props = []
 
 		for mail,name in zip(coll.author_mails,coll.author_names):
