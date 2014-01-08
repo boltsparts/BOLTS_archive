@@ -1,7 +1,7 @@
 ---
   layout: post
   title: Parameter description
-  date: 2014-01-07 16:15:00
+  date: 2014-01-08 16:15:00
 ---
 
 blt files now contain a human readable description of the various  parameters
