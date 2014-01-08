@@ -33,6 +33,15 @@ classes:
         free: [key, l]
         types: {key: Table Index}
         defaults: {key: M3, l: 20}
+        description:
+          key: Thread designation
+          l: length excluding head
+          d1: threaded shaft diamater
+          k: head length
+          s: width across flats
+          e: head diameter
+          h: unthreaded length of shaft
+          pitch: thread pitch
         common:
           - [[M3,M6], [8,10,12,14,16,18,20,22,25]]
           - [[M4, M5], [6,8,10,12,14,16,18,20,22,25,30,35,40]]
@@ -90,6 +99,14 @@ classes:
         types:
             key: Table Index
         defaults: {key: M3, l: 20}
+        description:
+          key: Thread designation
+          l: length excluding head
+          d1: threaded shaft diamater
+          k: head length
+          s: width across flats
+          e: head diameter
+          h: unthreaded length of shaft
         tables:
             index: key
             columns: [d1, k, s, e, h]
@@ -136,6 +153,16 @@ classes:
         types:
             key: Table Index
         defaults: {key: M3, l: 20}
+        description:
+          key: Thread designation
+          l: length excluding head
+          d1: threaded shaft diamater
+          b1: threaded length of shaft for l < 125 mm
+          b2: threaded length of shaft for 125 mm < l < 200 mm
+          b3: threaded length of shaft for l > 200 mm
+          k: head length
+          s: width across flats
+          e: head diameter
         common:
           - [[M6],[35,40,45,50,60,70,80,100,120]]
           - [[M8],[35,40,45,50,60,65,80,90,100,120]]
@@ -188,6 +215,16 @@ classes:
         types:
             key: Table Index
         defaults: {key: M3, l: 20}
+        description:
+          key: Thread designation
+          l: length excluding head
+          d1: threaded shaft diamater
+          b1: threaded length of shaft for l < 125 mm
+          b2: threaded length of shaft for 125 mm < l < 200 mm
+          b3: threaded length of shaft for l > 200 mm
+          k: head length
+          s: width across flats
+          e: head diameter
         common:
           - [[M6],[35,40,45,50,60,70,80,100,120]]
           - [[M8],[35,40,45,50,60,65,80,90,100,120]]

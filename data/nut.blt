@@ -33,6 +33,12 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: M3}
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          e_min: head diameter
+          m_max: thickness
         tables:
             index: key
             columns: [d1, s, m_max, e_min]
@@ -82,6 +88,12 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: M3}
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          e_min: head diameter
+          m_max: thickness
         tables:
             index: key
             columns: [d1, s, m_max, e_min]
@@ -131,6 +143,12 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: M3}
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          e_min: head diameter
+          m_max: thickness
         tables:
             index: key
             columns: [d1, s, m_max, e_min]
@@ -197,6 +215,12 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: M3}
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          e_min: head diameter
+          m_max: thickness
         tables:
             index: key
             columns: [d1, s, m_max, e_min]
@@ -263,6 +287,12 @@ classes:
         free: [key]
         types: {key: Table Index, d1: Length (in), s: Length (in), m_max: Length (in)}
         defaults: {key: "3/8 in"}
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          e_min: head diameter
+          m_max: thickness
         tables:
             index: key
             columns: [d1, s, m_max]

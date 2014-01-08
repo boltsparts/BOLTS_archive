@@ -34,6 +34,14 @@ classes:
         free: [key,type]
         types: {key: Table Index, type: Table Index, postfix: String}
         defaults: {key: "608", type: "open"}
+        description:
+          key: Model designation
+          type: Type of bearing protection
+          postfix: Postfix to the model designation for the protection type
+          d1: inner diameter
+          d2: outer diameter
+          B: thickness
+          r_fillet: fillet radius
         tables:
           - index: key
             columns: [d1, d2, B, r_fillet]
@@ -104,6 +112,13 @@ classes:
           type: String
         literal: {type: "open"}
         defaults: {key: "RLS8"}
+        description:
+          key: Model designation
+          type: Type of bearing protection
+          d1: inner diameter
+          d2: outer diameter
+          B: thickness
+          r_fillet: fillet radius
         tables:
           - index: key
             columns: [d1, d2, B, r_fillet]
@@ -156,6 +171,11 @@ classes:
       free: [key]
       types: {key: Table Index}
       defaults: {key: "4202-B-TVH"}
+      description:
+        key: Model designation
+        d1: inner diameter
+        d2: outer diameter
+        B: thickness
       tables:
         index: key
         columns: [d1,d2,B]
@@ -190,6 +210,14 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: "51200"}
+        description:
+          key: Model designation
+          d_w: inner diameter, shaft side
+          D_w: outer diameter, shaft side
+          d_g: inner diameter
+          D_g: outer diameter
+          T: thickness
+          r_fillet: fillet radius
         tables:
              index: key
              columns: [d_w,d_g,D_g,D_w,T,r_fillet]
@@ -329,6 +357,11 @@ classes:
     parameters:
         free: [key]
         types: {key: Table Index}
+        description:
+          key: Model designation
+          Fw: inner diameter
+          Ew: outer diameter
+          Bc: length
         defaults: {key: K10X13X10-TV}
         common: []
         tables:
@@ -571,6 +604,11 @@ classes:
         free: [key]
         types: {key: Table Index}
         defaults: {key: N204-E-TVP2}
+        description:
+          key: Model designation
+          d1: inner diameter
+          d2: outer diameter
+          B: thickness
         tables:
             index: key
             columns: [d1,d2,B]

@@ -29,6 +29,8 @@ classes:
     description: generic T slot aluminium extrusion 20mmx20mm
     parameters:
       free: [l]
+      defaults: {l: 100}
+      description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-1s
     naming:
@@ -37,6 +39,8 @@ classes:
     description: generic T slot aluminium extrusion one slot 20mmx20mm
     parameters:
       free: [l]
+      defaults: {l: 100}
+      description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-2s
     naming:
@@ -45,6 +49,8 @@ classes:
     description: generic T slot aluminium extrusion two oppositeslots 20mmx20mm
     parameters:
       free: [l]
+      defaults: {l: 100}
+      description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-2sa
     naming:
@@ -53,6 +59,8 @@ classes:
     description: generic T slot aluminium extrusion two neighboring slots 20mmx20mm
     parameters:
       free: [l]
+      defaults: {l: 100}
+      description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-3s
     naming:
@@ -61,6 +69,8 @@ classes:
     description: generic T slot extrusion three slots 20mmx20mm
     parameters:
       free: [l]
+      defaults: {l: 100}
+      description: {l: Length}
     source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: vslot20x20
     naming:
@@ -71,6 +81,10 @@ classes:
       free: [l,finish]
       defaults: {finish: "Clear anodized", l: 100}
       types: {finish: Table Index, finish_name: String}
+      description:
+        l: Length
+        finish: Material finish
+        finish_name: Material finish used in naming
       tables:
         - index: finish
           columns: [finish_name]
@@ -87,6 +101,10 @@ classes:
     parameters:
       free: [l,finish]
       defaults: {finish: "Clear anodized", l: 100}
+      description:
+        l: Length
+        finish: Material finish
+        finish_name: Material finish used in naming
       types: {finish: Table Index, finish_name: String}
       tables:
         - index: finish
@@ -104,6 +122,10 @@ classes:
     parameters:
       free: [l,finish]
       defaults: {finish: "Clear anodized", l: 100}
+      description:
+        l: Length
+        finish: Material finish
+        finish_name: Material finish used in naming
       types: {finish: Table Index, finish_name: String}
       tables:
         - index: finish
@@ -121,6 +143,10 @@ classes:
     parameters:
       free: [l,finish]
       defaults: {finish: "Clear anodized", l: 100}
+      description:
+        l: Length
+        finish: Material finish
+        finish_name: Material finish used in naming
       types: {finish: Table Index, finish_name: String}
       tables:
         - index: finish

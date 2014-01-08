@@ -32,21 +32,25 @@ classes:
      substitute: [T]
   description: Most common round single cell battery sizes
   parameters:
-     free: [T]
-     types: {T: Table Index}
-     defaults: {T: "AAA"}
-     tables:
-        index: T
-        sort: d
-        columns: [h,d]
-        data:
-          "AAA" : [44.5,10.5]
-          "AA" : [50.5,14.5]
-          "C" : [50,26.2]
-          "D" : [61.5,34.2]
-          "1/2AA" : [24,14.5]
-          "AAAA" : [42.5,8.3]
-          "A" : [50, 17]
-          "N" : [30.2, 12]
-          "Sub-C" : [42.9, 22.2]
+    free: [T]
+    types: {T: Table Index}
+    defaults: {T: "AAA"}
+    description:
+      T: Type Code
+      h: height
+      d: diameter
+    tables:
+       index: T
+       sort: d
+       columns: [h,d]
+       data:
+         "AAA" : [44.5,10.5]
+         "AA" : [50.5,14.5]
+         "C" : [50,26.2]
+         "D" : [61.5,34.2]
+         "1/2AA" : [24,14.5]
+         "AAAA" : [42.5,8.3]
+         "A" : [50, 17]
+         "N" : [30.2, 12]
+         "Sub-C" : [42.9, 22.2]
   source: http://en.wikipedia.org/wiki/List_of_battery_sizes

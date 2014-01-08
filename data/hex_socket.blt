@@ -32,6 +32,20 @@ classes:
         free: [key, l]
         types: {key: Table Index}
         defaults: {key: M3, l: 20}
+        description:
+          key: Thread designation
+          l: shaft length
+          d1: shaft diameter
+          d2: head diameter
+          b1: threaded length of shaft for l < 125 mm
+          b2: threaded length of shaft for 125 mm < l < 200 mm
+          b3: threaded length of shaft for l > 200 mm
+          k_max: head length
+          s: width across flats
+          t: socket depth
+          alpha: head angle
+          L: threshold threading length, shaft is completely threaded for screws shorter than L
+          h_max: maximum unthreaded length of shaft
         tables:
             index: key
             columns: [d1, d2, b1, b2, b3, k_max, s, t, alpha, L, h_max]
@@ -54,7 +68,6 @@ classes:
                 M24:   [  24,   39,  54,    60,    None,  14,    14,    10.3,  60,     90,    23     ]
     source: http://almetal.nl/en/techinfo/soc/sd7991.htm
     notes: The OpenSCAD base module does not use alpha
-
   - id: hexsocketheadcap
     naming:
         template: hex socket head cap screw %s - %s %d
@@ -65,6 +78,16 @@ classes:
         free: [key, l]
         types: {key: Table Index}
         defaults: {key: M3, l: 20}
+        description:
+          key: Thread designation
+          l: shaft length
+          d1: shaft diameter
+          d2: head diameter
+          k: head length
+          s: width across flats
+          b: threaded length of shaft
+          t_min: socket depth
+          L: threshold threading length, shaft is completely threaded for screws shorter than L
         common:
           - [[M3],[20,30]]
           - [[M4],[10,12,16,20,25]]

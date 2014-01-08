@@ -34,6 +34,10 @@ classes:
     parameters:
       free: [od, id, l]
       defaults: {od: 13, id: 10, l: 1000}
+      description:
+        id: inner diameter
+        od: outer diameter
+        l: length
     source: No source information used
   - id: din11850range2
     naming:
@@ -45,6 +49,11 @@ classes:
       free: [dn, l]
       types: {dn: Table Index}
       defaults: {dn: "10", l: 1000}
+      description:
+        dn: nominal diameter
+        id: inner diameter
+        od: outer diameter
+        l: length
       tables:
         index: dn
         columns: [id, od]
