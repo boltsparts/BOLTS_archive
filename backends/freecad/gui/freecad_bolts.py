@@ -240,7 +240,6 @@ class BoltsWidget(QBoltsWidget):
 		for p in params.free:
 			p_type = params.types[p]
 			default = str(params.defaults[p])
-			print p,p_type,default
 			if p_type == "Length (mm)":
 				self.param_widgets[p] = LengthWidget(self.ui.params,p + " (mm)",default)
 			elif p_type == "Length (in)":
@@ -257,6 +256,7 @@ class BoltsWidget(QBoltsWidget):
 						self.param_widgets[p] = TableIndexWidget(self.ui.params,p,keys,default)
 						#if more than one table has the same index, they have the same keys, so stop
 						break
+			self.param_widgets[p].setToolTip(cl.parameters.description[p])
 		#add them to layout
 			self.ui.param_layout.addWidget(self.param_widgets[p])
 		if base.type == "fcstd":
