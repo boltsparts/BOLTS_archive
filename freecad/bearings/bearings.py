@@ -151,32 +151,34 @@ def doublerowradialbearing(params,document):
 
 
 def axialthrustbearing(params, document):
-	rin = 0.5*params['d']
-	rout = 0.5*params['D']
+	rin_w = 0.5*params['d_w']
+	rin_g = 0.5*params['d_g']
+	rout_w = 0.5*params['D_w']
+	rout_g = 0.5*params['D_g']
+	r_fillet =  params['r_fillet']
 	bth = params['T']
 	name = params['name']
 	fth=0.3*bth  #Thrust plate widh
-	RR=0.015*rout
 
 	shapes=[]
 
 	#Lower ring
-	lr1=Part.makeCylinder(rout,fth)
-	lr2=Part.makeCylinder(rin,fth)
+	lr1=Part.makeCylinder(rout_g,fth)
+	lr2=Part.makeCylinder(rin_g,fth)
 	lr=lr1.cut(lr2)
 	lre=lr.Edges
-	lr=lr.makeFillet(RR,lre)
+	lr=lr.makeFillet(r_fillet,lre)
 	#Upper ring
-	ur1=Part.makeCylinder(rout,fth)
-	ur2=Part.makeCylinder(rin,fth)
+	ur1=Part.makeCylinder(rout_w,fth)
+	ur2=Part.makeCylinder(rin_w,fth)
 	ur=ur1.cut(ur2)
 	ure=ur.Edges
-	ur=ur.makeFillet(RR,ure)
+	ur=ur.makeFillet(r_fillet,ure)
 	#Positioning Vector
 	Vur=(0,0,bth-fth)
 	ur.translate(Vur)
 	#Balltracks
-	tbigradius=((rout-rin)/2.00)+rin
+	tbigradius=((rout_w-rin_g)/2.00)+rin_g
 	tsmradius=(bth/2.00)-(0.75*fth)
 	Vtorus=(0,0,bth/2.00)
 	torus=makeRing(tbigradius,tsmradius)

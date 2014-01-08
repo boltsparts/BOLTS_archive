@@ -8,6 +8,6 @@
       arguments: [d1,d2,B]
       classids: [singlerowradialbearing, singlerowradialbearingimperial]
     - name: axialthrustbearing
-      arguments: [d,D,T]
+      arguments: [d_w,D_w,d_g,D_g,T]
       classids: [axialthrustbearing]
 ...

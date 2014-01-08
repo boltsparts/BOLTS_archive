@@ -55,25 +55,22 @@ module singlerowradialbearing(d1,d2,B){
 	}
 }
 
-module axialthrustbearing(d1,d2,B){
+module axialthrustbearing(d1_w,d2_w,d1_g,d2_g,B){
 	rb = B/4;
-	n = ceil((d2+d1)/2/rb);
-	echo(n);
-	translate([0,0,B/2]){
-		union(){
-			difference(){
-				cylinder(r=d2/2,h=B,center=true);
-				cylinder(r=d1/2,h=2*B,center=true);
-				//gap
-				cylinder(r=d2,h=0.3*B,center=true);
-				//track
-				makeSquorus((d2+d1)/4,rb);
+	n = ceil((d2_w+d1_w)/2/rb);
+	union(){
+		difference(){
+			union(){
+				translate([0,0,-0.35*B]) makeRing(d1_g/2,d2_g/2,0.3*B);
+				translate([0,0,+0.35*B]) makeRing(d1_w/2,d2_w/2,0.3*B);
 			}
-			for ( i = [0 : n-1] ){
-				rotate( i * 360 / n, [0, 0,1])
-				translate([0, (d2+d1)/4, 0])
-					sphere(r = rb);
-			}
+			//track
+			makeSquorus((d2_w+d1_w)/4,rb);
+		}
+		for ( i = [0 : n-1] ){
+			rotate( i * 360 / n, [0, 0,1])
+			translate([0, (d2_w+d1_w)/4, 0])
+				sphere(r = rb);
 		}
 	}
 }
