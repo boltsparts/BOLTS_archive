@@ -15,7 +15,27 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-from PyQt4 import QtGui, QtCore
+try:
+	from PySide import QtCore, QtGui
+	from FreeCADGui import PySideUic as uic
+	Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
+	Ui_ValueWidget,QValueWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
+	Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'bool_widget.ui'))
+	Ui_TableIndexWidget,QTableIndexWidget = uic.loadUiType(join(bolts_path,'tableindex_widget.ui'))
+	Ui_PropertyWidget,QPropertyWidget = uic.loadUiType(join(bolts_path,'property_widget.ui'))
+except ImportError:
+	from PyQt4 import QtGui, QtCore
+	from bolts_widget import Ui_BoltsWidget
+	from PyQt4.QtGui import QDockWidget as QBoltsWidget
+	from value_widget import Ui_ValueWidget
+	from PyQt4.QtGui import QWidget as QValueWidget
+	from bool_widget import Ui_BoolWidget
+	from PyQt4.QtGui import QWidget as QBoolWidget
+	from tableindex_widget import Ui_TableIndexWidget
+	from PyQt4.QtGui import QWidget as QTableIndexWidget
+	from property_widget import Ui_PropertyWidget
+	from PyQt4.QtGui import QWidget as QPropertyWidget
+
 import FreeCAD, FreeCADGui
 import Part, Sketcher
 import sys
@@ -89,23 +109,6 @@ def copy_part_recursive(src_obj,dst_doc,srcdstmap):
 	gui_doc.getObject(obj_copy.Name).Visibility = False
 	return obj_copy
 
-
-#get ui from designer file
-#Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
-#Ui_ValueWidget,QValueWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
-#Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'bool_widget.ui'))
-#Ui_TableIndexWidget,QTableIndexWidget = uic.loadUiType(join(bolts_path,'tableindex_widget.ui'))
-#Ui_PropertyWidget,QPropertyWidget = uic.loadUiType(join(bolts_path,'property_widget.ui'))
-from bolts_widget import Ui_BoltsWidget
-from PyQt4.QtGui import QDockWidget as QBoltsWidget
-from value_widget import Ui_ValueWidget
-from PyQt4.QtGui import QWidget as QValueWidget
-from bool_widget import Ui_BoolWidget
-from PyQt4.QtGui import QWidget as QBoolWidget
-from tableindex_widget import Ui_TableIndexWidget
-from PyQt4.QtGui import QWidget as QTableIndexWidget
-from property_widget import Ui_PropertyWidget
-from PyQt4.QtGui import QWidget as QPropertyWidget
 
 #custom widgets
 

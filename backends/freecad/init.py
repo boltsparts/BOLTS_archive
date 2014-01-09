@@ -19,7 +19,10 @@ from os.path import join, exists, dirname
 from os import listdir
 import bolttools.blt
 import bolttools.freecad
-from PyQt4 import QtCore
+try:
+	from PySide import QtCore
+except ImportError:
+	from PyQt import QtCore
 
 from gui.freecad_bolts import BoltsWidget, getMainWindow
 
