@@ -24,15 +24,15 @@ blt-version: 0.3
 classes:
   - id: hexscrew1
     naming:
-        template:  Hexagon head screw %s - %s %d
-        substitute: [standard, key, l]
+        template:  Hexagon head screw %s - %s%s %d
+        substitute: [standard, key, pitch_name, l]
     description: hexagon head screw
     standard: DIN933
     status: withdrawn
     parameters:
-        free: [key, l]
-        types: {key: Table Index}
-        defaults: {key: M3, l: 20}
+        free: [key, l, thread_type]
+        types: {key: Table Index, thread_type: Table Index, pitch_name: String}
+        defaults: {key: M3, l: 20, thread_type: coarse}
         description:
           key: Thread designation
           l: length excluding head
@@ -41,19 +41,20 @@ classes:
           s: width across flats
           e: head diameter
           h: unthreaded length of shaft
+          thread_type: type of thread
           pitch: thread pitch
         common:
-          - [[M3,M6], [8,10,12,14,16,18,20,22,25]]
-          - [[M4, M5], [6,8,10,12,14,16,18,20,22,25,30,35,40]]
-          - [[M4], [45,50,55,60]]
-          - [[M6], [30,35,40,45,50,55,60,65,70]]
-          - [[M7,M8,M10], [12,14,16,18]]
-          - [[M7,M8,M10, M14], [20,22,25,30,35,40,45,50]]
-          - [[M10], [10]]
-          - [[M8],[10,55,60]]
-          - [[M12], [16,18,20,22]]
-          - [[M12,M16],[25, 30, 35, 40, 45, 50, 55, 60, 65, 70]]
-          - [[M20], [30,35,40,45,50,55]]
+          - [[M3], [8, 10,12,14,16,18,20,22,25],["coarse","fine I"]]
+          - [[M4], [6, 8, 10,12,14,16,18,20,22,25,30,35,40,45,50,55,60],["coarse","fine I"]]
+          - [[M5], [6, 8, 10,12,14,16,18,20,22,25,30,35,40],["coarse","fine I"]]
+          - [[M6], [8, 10,12,14,16,18,20,22,25,30,35,40,45,50,55,60,65,70],["coarse","fine I"]]
+          - [[M7], [12,14,16,18,20,22,25,30,35,40,45,50],"coarse","fine I"]
+          - [[M8], [10,12,14,16,18,20,22,25,30,35,40,45,50,55,60],["coarse","fine I", "fine II"]]
+          - [[M10],[10,12,14,16,18,20,22,25,30,35,40,45,50],["coarse","fine I", "fine II","fine III"]]
+          - [[M12],[16,18,20,22,25,30,35,40,45,50,55,60,65,70],["coarse","fine I", "fine II","fine III"]]
+          - [[M14],[20,22,25,30,35,40,45,50],["coarse","fine I", "fine II","fine III"]]
+          - [[M16],[25,30,35,40,45,50,55,60,65,70],["coarse","fine I","fine III"]]
+          - [[M20],[30,35,40,45,50,55],["coarse","fine I", "fine II","fine III"]]
         tables:
             index: key
             columns: [d1, k, s, e, h, pitch]
@@ -87,6 +88,113 @@ classes:
                 M48:   [  48,   30,    75,   82.60,   None,   5.0   ]
                 M52:   [  52,   33,    80,   88.25,   None,   5.0   ]
                 M64:   [  64,   40,    95,   104.86,  None,   6.0   ]
+        tables2d:
+          - rowindex: key
+            colindex: thread_type
+            columns: ["coarse", "fine I", "fine II", "fine III", "fine IV"]
+            result: pitch
+            data:
+              "M1" : [0.25, 0.2, None, None, None]
+              "M1.1" : [0.25, 0.2, None, None, None]
+              "M1.2" : [0.25, 0.2, None, None, None]
+              "M1.4" : [0.3, 0.2, None, None, None]
+              "M1.6" : [0.35, 0.2, None, None, None]
+              "M1.7" : [0.35, 0.2, None, None, None]
+              "M1.8" : [0.35, 0.2, None, None, None]
+              "M2" : [0.4, 0.25, None, None, None]
+              "M2.2" : [0.45, 0.25, None, None, None]
+              "M2.3" : [0.4, 0.25, None, None, None]
+              "M2.5" : [0.45, 0.35, None, None, None]
+              "M2.6" : [0.45, 0.35, None, None, None]
+              "M3" : [0.5, 0.35, None, None, None]
+              "M3.5" : [0.6, 0.35, None, None, None]
+              "M4" : [0.7, 0.5, None, None, None]
+              "M4.5" : [0.75, 0.5, None, None, None]
+              "M5" : [0.8, 0.5, None, None, None]
+              "M6" : [1, 0.75, None, None, None]
+              "M7" : [1, 0.75, None, None, None]
+              "M8" : [1.25, 1, 0.75, None, None]
+              "M9" : [1.25, 1, 0.75, None, None]
+              "M10" : [1.5, 1.25, 1, 0.75, None]
+              "M11" : [1.5, None, 1, 0.75, None]
+              "M12" : [1.75, 1.5, 1.25, 1, None]
+              "M14" : [2, 1.5, 1.25, 1, None]
+              "M16" : [2, 1.5, None, 1, None]
+              "M18" : [2.5, 2, 1.5, 1, None]
+              "M20" : [2.5, 2, 1.5, 1, None]
+              "M22" : [2.5, 2, 1.5, 1, None]
+              "M24" : [3, 2, 1.5, 1, None]
+              "M26" : [None, None, 1.5, None, None]
+              "M27" : [3, 2, 1.5, 1, None]
+              "M28" : [None, 2, 1.5, 1, None]
+              "M30" : [3.5, 3, 2, 1.5, 1]
+              "M32" : [None, None, 2, 1.5, None]
+              "M33" : [3.5, 3, 2, 1.5, None]
+              "M36" : [4, 3, 2, 1.5, None]
+              "M38" : [None, None, None, 1.5, None]
+              "M39" : [4, 3, 2, 1.5, None]
+              "M40" : [None, 3, 2, 1.5, None]
+              "M42" : [4.5, 4, 3, 2, 1.5]
+              "M45" : [4.5, 4, 3, 2, 1.5]
+              "M48" : [5, 4, 3, 2, 1.5]
+              "M52" : [5, 4, 3, 2, 1.5]
+              "M56" : [5.5, None, 4, None, 2]
+              "M60" : [5.5, None, 4, None, 2]
+              "M64" : [6, None, 4, None, None]
+              "M68" : [6, None, 4, None, None]
+          - rowindex: key
+            colindex: thread_type
+            columns: ["coarse", "fine I", "fine II", "fine III", "fine IV"]
+            result: pitch_name
+            data:
+              "M1" : ["", "x0.2", "", "", ""]
+              "M1.1" : ["", "x0.2", "", "", ""]
+              "M1.2" : ["", "x0.2", "", "", ""]
+              "M1.4" : ["", "x0.2", "", "", ""]
+              "M1.6" : ["", "x0.2", "", "", ""]
+              "M1.7" : ["", "x0.2", "", "", ""]
+              "M1.8" : ["", "x0.2", "", "", ""]
+              "M2" : ["", "x0.25", "", "", ""]
+              "M2.2" : ["", "x0.25", "", "", ""]
+              "M2.3" : ["", "x0.25", "", "", ""]
+              "M2.5" : ["", "x0.35", "", "", ""]
+              "M2.6" : ["", "x0.35", "", "", ""]
+              "M3" : ["", "x0.35", "", "", ""]
+              "M3.5" : ["", "x0.35", "", "", ""]
+              "M4" : ["", "x0.5", "", "", ""]
+              "M4.5" : ["", "x0.5", "", "", ""]
+              "M5" : ["", "x0.5", "", "", ""]
+              "M6" : ["", "x0.75", "", "", ""]
+              "M7" : ["", "x0.75", "", "", ""]
+              "M8" : ["", "x1", "x0.75", "", ""]
+              "M9" : ["", "x1", "x0.75", "", ""]
+              "M10" : ["", "x1.25", "x1", "x0.75", ""]
+              "M11" : ["", "", "x1", "x0.75", ""]
+              "M12" : ["", "x1.5", "x1.25", "x1", ""]
+              "M14" : ["", "x1.5", "x1.25", "x1", ""]
+              "M16" : ["", "x1.5", "", "x1", ""]
+              "M18" : ["", "x2", "x1.5", "x1", ""]
+              "M20" : ["", "x2", "x1.5", "x1", ""]
+              "M22" : ["", "x2", "x1.5", "x1", ""]
+              "M24" : ["", "x2", "x1.5", "x1", ""]
+              "M26" : ["", "", "x1.5", "", ""]
+              "M27" : ["", "x2", "x1.5", "x1", ""]
+              "M28" : ["", "x2", "x1.5", "x1", ""]
+              "M30" : ["", "x3", "x2", "x1.5", "x1"]
+              "M32" : ["", "", "x2", "x1.5", ""]
+              "M33" : ["", "x3", "x2", "x1.5", ""]
+              "M36" : ["", "x3", "x2", "x1.5", ""]
+              "M38" : ["", "", "", "x1.5", ""]
+              "M39" : ["", "x3", "x2", "x1.5", ""]
+              "M40" : ["", "x3", "x2", "x1.5", ""]
+              "M42" : ["", "x4", "x3", "x2", "x1.5"]
+              "M45" : ["", "x4", "x3", "x2", "x1.5"]
+              "M48" : ["", "x4", "x3", "x2", "x1.5"]
+              "M52" : ["", "x4", "x3", "x2", "x1.5"]
+              "M56" : ["", "", "x4", "", "x2"]
+              "M60" : ["", "", "x4", "", "x2"]
+              "M64" : ["", "", "x4", "", ""]
+              "M68" : ["", "", "x4", "", ""]
     source: Dimensions from http://almetal.nl/en/techinfo/hex/hd933.htm, commmon lengths from http://freecadweb.org/wiki/index.php?title=Macro_screw_maker1_2, thread pitch data from http://almetal.nl/en/techinfo/gti/scthmc.htm
   - id: hexscrew2
     naming:
