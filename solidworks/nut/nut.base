@@ -1,15 +1,22 @@
 ---
-- filename: nut.scad
-  type: module
+- filename: nut.sldprt
   author: Dale Dunn <dale.dunn@gmail.com>
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-  modules:
-    - name: nut1
-      arguments: [d1, s, m_max]
-      classids: [hexagonthinnut1, hexagonthinnut2, hexagonnut1, hexagonnut2, hexagonnut3]
-      connectors:
-        name: nutConn
-        arguments: [m_max,location]
-        locations: [bottom,top]
+  type: "solidworks"
+  suffix: ISO
+  params:
+    Size@Sketch1: d1
+    Width@Sketch1: s
+    Thickness@Boss-Extrude1: m_max
+  metadata:
+    $prp@MetaTest: e_min
+  classes:
+   - classid: hexagonthinnut1
+     naming:
+       template: ISO4035 - %s
+       substitute: [key]
+   - classid: hexagonnut1
+     naming:
+       template: ISO4032 - %s
+       substitute: [key]
 ...
-
