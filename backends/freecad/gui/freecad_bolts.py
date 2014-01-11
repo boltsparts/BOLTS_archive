@@ -249,13 +249,36 @@ class BoltsWidget(QBoltsWidget):
 			elif p_type == "Bool":
 				self.param_widgets[p] = BoolWidget(self.ui.params,p,default)
 			elif p_type == "Table Index":
+				#find smallest usable set of choices for this index
+				choices = None
+				for table in params.tables:
+					if p == table.index:
+						if choices is None:
+							choices = set(table.data.keys())
+						else:
+							choices &= set(table.data.keys())
+				for table in params.tables2d:
+					if p == table.rowindex:
+						if choices is None:
+							choices = set(table.data.keys())
+						else:
+							choices &= set(table.data.keys())
+					elif p == table.colindex:
+						if choices is None:
+							choices = set(table.columns)
+						else:
+							choices &= set(table.columns)
+				#and a sorting if possible
+				handled = False
 				for table in params.tables:
 					if table.index == p:
 						sort_idx = table.columns.index(table.sort)
-						keys = [key for key,row in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx])]
+						keys = [key for key,row in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx]) if key in choices]
 						self.param_widgets[p] = TableIndexWidget(self.ui.params,p,keys,default)
-						#if more than one table has the same index, they have the same keys, so stop
+						handled = True
 						break
+				if not handled:
+					self.param_widgets[p] = TableIndexWidget(self.ui.params,p,list(choices),default)
 			self.param_widgets[p].setToolTip(cl.parameters.description[p])
 		#add them to layout
 			self.ui.param_layout.addWidget(self.param_widgets[p])
