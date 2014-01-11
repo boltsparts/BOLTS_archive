@@ -1,0 +1,15 @@
+---
+- filename: nut.scad
+  type: module
+  author: Dale Dunn <dale.dunn@gmail.com>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  modules:
+    - name: nut1
+      arguments: [d1, s, m_max]
+      classids: [hexagonthinnut1, hexagonthinnut2, hexagonnut1, hexagonnut2, hexagonnut3]
+      connectors:
+        name: nutConn
+        arguments: [m_max,location]
+        locations: [bottom,top]
+...
+
