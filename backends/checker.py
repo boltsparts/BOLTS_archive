@@ -241,7 +241,7 @@ class UnknownFileTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		for db in dbs:
-			if db == "drawings":
+			if db in ["drawings","solidworks"]:
 				continue
 			for coll in repo.collections:
 				path = join(repo.path,db,coll.id)
@@ -272,8 +272,9 @@ class UnknownFileTable(ErrorTable):
 				if not exists(path):
 					continue
 
-				#remove files known from bases
 				files = listdir(path)
+
+				#remove files known from bases
 				for cl in coll.classes_by_ids():
 					if not cl.id in dbs["drawings"].getbase:
 						continue
@@ -284,6 +285,29 @@ class UnknownFileTable(ErrorTable):
 					if not drawing.get_svg() is None:
 						if basename(drawing.get_svg()) in files:
 							files.remove(basename(drawing.get_svg()))
+
+				#check what is left
+				for filename in files:
+					if splitext(filename)[1] == ".base":
+						continue
+					row = []
+					row.append(filename)
+					row.append(path)
+					self.rows.append(row)
+
+		if "solidworks" in dbs:
+			for coll in repo.collections:
+				path = join(repo.path,"solidworks",coll.id)
+				if not exists(path):
+					continue
+
+				files = listdir(path)
+
+				#remove files known from bases
+				for dtable in dbs["solidworks"].designtables:
+					if not coll.id == dtable.collection:
+						continue
+					files.remove(dtable.filename)
 
 				#check what is left
 				for filename in files:
