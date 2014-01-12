@@ -10,6 +10,9 @@
     Thickness@Boss-Extrude1: m_max
   metadata:
     $prp@Nominal Size: key
+    $prp@Thickness: m_max
+    $prp@Width Across Flats: s
+    $prp@Width Across Corners: e_min
   classes:
    - classid: hexagonthinnut1
      naming:
