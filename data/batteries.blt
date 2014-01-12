@@ -41,7 +41,6 @@ classes:
       d: diameter
     tables:
        index: T
-       sort: d
        columns: [h,d]
        data:
          "AAA" : [44.5,10.5]

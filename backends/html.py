@@ -426,8 +426,7 @@ class HTMLExporter(BackendExporter):
 
 		params["dimensions"] = ""
 		for table in cl.parameters.tables:
-			sort_idx = table.columns.index(table.sort)
-			data = [[idx] + list(row) for idx,row in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx])]
+			data = [[idx] + table.data[idx] for idx in cl.parameters.choices[table.index]]
 
 			lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
 
@@ -444,7 +443,8 @@ class HTMLExporter(BackendExporter):
 			lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
 			#TODO: The table class should be handled in the template, but python templates are not smart enough
 			params["dimensions"] += '<table class="table">\n' + html_table2d(
-				table.data.values(),table.result,table.columns,table.data.keys()) + '\n</table>\n'
+				[table.data[i] for i in cl.parameters.choices[table.rowindex]],
+				table.result,table.columns,table.data.keys()) + '\n</table>\n'
 
 		#freecad information
 		if self.freecad is None:
