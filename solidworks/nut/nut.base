@@ -9,7 +9,7 @@
     Width@Sketch1: s
     Thickness@Boss-Extrude1: m_max
   metadata:
-    $prp@MetaTest: e_min
+    $prp@Nominal Size: key
   classes:
    - classid: hexagonthinnut1
      naming:
