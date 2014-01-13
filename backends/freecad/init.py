@@ -22,8 +22,16 @@ import bolttools.blt
 import bolttools.freecad
 try:
 	from PySide import QtCore
+	from FreeCADGui import getMainWindow
 except ImportError:
-	from PyQt4 import QtCore
+	from PyQt4 import QtCore, QtGui
+
+	def getMainWindow():
+		"returns the main window"
+		for i in QtGui.qApp.topLevelWidgets():
+			if i.metaObject().className() == "Gui::MainWindow":
+				return i
+		raise Exception("No main window found")
 
 from gui.freecad_bolts import BoltsWidget
 
@@ -38,7 +46,7 @@ widget = None
 if widget is None:
 	widget = BoltsWidget(repo,freecad)
 
-	mw = FreeCADGui.getMainWindow()
+	mw = getMainWindow()
 	mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
 else:
 	widget.show()
