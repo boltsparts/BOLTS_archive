@@ -252,13 +252,7 @@ class BoltsWidget(QBoltsWidget):
 			elif p_type == "Bool":
 				self.param_widgets[p] = BoolWidget(self.ui.params,p,default)
 			elif p_type == "Table Index":
-				for table in params.tables:
-					if table.index == p:
-						sort_idx = table.columns.index(table.sort)
-						keys = [key for key,row in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx])]
-						self.param_widgets[p] = TableIndexWidget(self.ui.params,p,keys,default)
-						#if more than one table has the same index, they have the same keys, so stop
-						break
+				self.param_widgets[p] = TableIndexWidget(self.ui.params,p,params.choices[p],default)
 			self.param_widgets[p].setToolTip(cl.parameters.description[p])
 		#add them to layout
 			self.ui.param_layout.addWidget(self.param_widgets[p])

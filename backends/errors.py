@@ -58,3 +58,10 @@ class MissingFreeCADError(Exception):
 		Exception.__init__(self)
 	def __str__(self):
 		return "Could not find FreeCAD python module"
+
+class FileNotFoundError(Exception):
+	def __init__(self,filename):
+		Exception.__init__(self)
+		self.filename = filename
+	def __str__(self):
+		return "Could not find file %s. BOLTS is case sensitive" % self.filename

@@ -241,7 +241,7 @@ class UnknownFileTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		for db in dbs:
-			if db == "drawings":
+			if db in ["drawings","solidworks"]:
 				continue
 			for coll in repo.collections:
 				path = join(repo.path,db,coll.id)
@@ -272,8 +272,9 @@ class UnknownFileTable(ErrorTable):
 				if not exists(path):
 					continue
 
-				#remove files known from bases
 				files = listdir(path)
+
+				#remove files known from bases
 				for cl in coll.classes_by_ids():
 					if not cl.id in dbs["drawings"].getbase:
 						continue
@@ -284,6 +285,29 @@ class UnknownFileTable(ErrorTable):
 					if not drawing.get_svg() is None:
 						if basename(drawing.get_svg()) in files:
 							files.remove(basename(drawing.get_svg()))
+
+				#check what is left
+				for filename in files:
+					if splitext(filename)[1] == ".base":
+						continue
+					row = []
+					row.append(filename)
+					row.append(path)
+					self.rows.append(row)
+
+		if "solidworks" in dbs:
+			for coll in repo.collections:
+				path = join(repo.path,"solidworks",coll.id)
+				if not exists(path):
+					continue
+
+				files = listdir(path)
+
+				#remove files known from bases
+				for dtable in dbs["solidworks"].designtables:
+					if not coll.id == dtable.collection:
+						continue
+					files.remove(dtable.filename)
 
 				#check what is left
 				for filename in files:
@@ -314,29 +338,6 @@ class NonconformingParameternameTable(ErrorTable):
 						row.append(cl.id)
 						row.append(coll.id)
 						self.rows.append(row)
-
-class TableProblemTable(ErrorTable):
-	def __init__(self):
-		ErrorTable.__init__(self,
-			"Table problems",
-			"There are  problems in a table",
-			["Class id", "Collection", "Table", "Row", "Column", "Reason"]
-		)
-
-	def populate(self,repo,dbs):
-		for coll in repo.collections:
-			for cl in coll.classes_by_ids():
-				t_idx = 0
-				for table in cl.parameters.tables:
-					sort_idx = table.columns.index(table.sort)
-					data = [kv for kv in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx])]
-					n = len(data)
-					m = len(data[0][1])
-
-					for index,row in data:
-						if not len(row) == m:
-							self.rows.append([cl.id,coll.id,t_idx,index,"-","Inconsistent row lengths"])
-					t_idx += 1
 
 class MissingBaseConnectionTable(ErrorTable):
 	def __init__(self):
@@ -418,7 +419,6 @@ class CheckerExporter(BackendExporter):
 		self.checks["unsupportedlicense"] = UnsupportedLicenseTable()
 		self.checks["unknownfile"] = UnknownFileTable()
 		self.checks["nonconformingparametername"] = NonconformingParameternameTable()
-		self.checks["tableproblem"] = TableProblemTable()
 		self.checks["missingbaseconnection"] = MissingBaseConnectionTable()
 		self.checks["missingparameterdescription"] = MissingParameterDescriptionTable()
 
