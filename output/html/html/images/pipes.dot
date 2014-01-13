@@ -4,24 +4,35 @@ subgraph cluster_cl {
 label="Classes";
 "genericpipe" [width=3, height=0.8, fixedsize=true];
 "din11850range2" [width=3, height=0.8, fixedsize=true];
+"nominalpipesize" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_std {
 label="Standards";
 "DIN11850 Range 2" [width=3, height=0.8, fixedsize=true];
+"ANSI B36.10M" [width=3, height=0.8, fixedsize=true];
+"ASME B36.10M" [width=3, height=0.8, fixedsize=true];
+"API 5L" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_fcd {
 label="FreeCAD";
 "pipes.py:pipe" [width=4, height=0.8, fixedsize=true];
 "pipes.py:pipe" [width=4, height=0.8, fixedsize=true];
+"pipes.py:pipe_wall" [width=4, height=0.8, fixedsize=true];
 }
 subgraph cluster_ocd {
 label="OpenSCAD";
 "pipe.scad:pipe" [width=4, height=0.8, fixedsize=true];
 "pipe.scad:pipe" [width=4, height=0.8, fixedsize=true];
+"pipe.scad:pipe_wall" [width=4, height=0.8, fixedsize=true];
 }
 "genericpipe" -> "pipes.py:pipe";
 "genericpipe" -> "pipe.scad:pipe";
 "din11850range2" -> "pipes.py:pipe";
 "din11850range2" -> "pipe.scad:pipe";
 "DIN11850 Range 2" -> "din11850range2";
+"nominalpipesize" -> "pipes.py:pipe_wall";
+"nominalpipesize" -> "pipe.scad:pipe_wall";
+"ANSI B36.10M" -> "nominalpipesize";
+"ASME B36.10M" -> "nominalpipesize";
+"API 5L" -> "nominalpipesize";
 }
