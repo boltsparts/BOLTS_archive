@@ -22,6 +22,7 @@ from shutil import copy
 from codecs import open
 import license
 from datetime import datetime
+import re
 
 from errors import *
 from common import BackendExporter
@@ -41,6 +42,10 @@ def get_signature(cl,params):
 def get_incantation(cl,params):
 	return '%s(%s)' % (cl.openscadname, get_signature(cl,params))
 
+def format_string(template,substitute,args):
+	t = template.replace("%d","%s").replace("%f","%s").replace("%g","%s")
+	subst = t % tuple('",%s,"' % args[s] for s in substitute)
+	return 'str("' + subst + '")'
 
 class OpenSCADExporter(BackendExporter):
 	def __init__(self,repo,databases):
@@ -324,17 +329,9 @@ it might be better to use its successor %s instead");\n""" %
 
 		#write part name output for bom
 		argc = 0
-		fid.write('\t\t\techo(str(" "')
-		for token in cl.naming.template.split():
-			if token[0] == "%":
-				fid.write(",")
-				fid.write(args[cl.naming.substitute[argc]])
-				fid.write('," "')
-				argc += 1
-			else:
-				fid.write(',"%s"' % token)
-				fid.write('," "')
-		fid.write("));\n")
+		fid.write('\t\t\techo(')
+		fid.write(format_string(cl.naming.template,cl.naming.substitute,args))
+		fid.write(");\n")
 		#To avoid problems with missing top level object
 		fid.write("\t\t}\n")
 		fid.write("\t\tcube();\n")
