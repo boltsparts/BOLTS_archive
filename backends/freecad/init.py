@@ -15,6 +15,7 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
+import FreeCAD, FreeCADGui, Part
 from os.path import join, exists, dirname
 from os import listdir
 import bolttools.blt
@@ -22,11 +23,10 @@ import bolttools.freecad
 try:
 	from PySide import QtCore
 except ImportError:
-	from PyQt import QtCore
+	from PyQt4 import QtCore
 
-from gui.freecad_bolts import BoltsWidget, getMainWindow
+from gui.freecad_bolts import BoltsWidget
 
-import FreeCAD, Part
 
 #import repo
 rootpath =  dirname(__file__)
@@ -38,7 +38,7 @@ widget = None
 if widget is None:
 	widget = BoltsWidget(repo,freecad)
 
-	mw = getMainWindow()
+	mw = FreeCADGui.getMainWindow()
 	mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
 else:
 	widget.show()

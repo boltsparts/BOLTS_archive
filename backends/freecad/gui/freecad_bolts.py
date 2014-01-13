@@ -15,6 +15,8 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
+from os.path import dirname, join
+bolts_path = dirname(__file__)
 try:
 	from PySide import QtCore, QtGui
 	from FreeCADGui import PySideUic as uic
@@ -23,6 +25,9 @@ try:
 	Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'bool_widget.ui'))
 	Ui_TableIndexWidget,QTableIndexWidget = uic.loadUiType(join(bolts_path,'tableindex_widget.ui'))
 	Ui_PropertyWidget,QPropertyWidget = uic.loadUiType(join(bolts_path,'property_widget.ui'))
+	from PySide.QtCore import Slot
+	def unpack(x):
+		return x
 except ImportError:
 	from PyQt4 import QtGui, QtCore
 	from bolts_widget import Ui_BoltsWidget
@@ -35,15 +40,16 @@ except ImportError:
 	from PyQt4.QtGui import QWidget as QTableIndexWidget
 	from property_widget import Ui_PropertyWidget
 	from PyQt4.QtGui import QWidget as QPropertyWidget
+	from PyQt4.QtCore import pyqtSlot as Slot
+	def unpack(x):
+		return x.toPyObject()
 
 import FreeCAD, FreeCADGui
 import Part, Sketcher
 import sys
 from os import listdir
-from os.path import dirname, join
 from BOLTS.bolttools import blt
 from BOLTS.bolttools import freecad
-bolts_path = dirname(__file__)
 from BOLTS.bolttools.blt import BOLTSClass, BOLTSCollection, BOLTSRepository
 import importlib
 
@@ -233,7 +239,7 @@ class BoltsWidget(QBoltsWidget):
 		children = [root_item.child(i) for i in range(root_item.childCount())]
 		for child in children:
 			self.remove_empty_items(child)
-			data = child.data(0,32).toPyObject()
+			data = unpack(child.data(0,32))
 			if not isinstance(data,BOLTSClass) and child.childCount() == 0:
 				root_item.removeChild(child)
 
@@ -293,7 +299,7 @@ class BoltsWidget(QBoltsWidget):
 		for widget in self.props_widgets:
 			self.ui.props_layout.addWidget(widget)
 
-	@QtCore.pyqtSlot(bool)
+	@Slot(bool)
 	def on_addButton_clicked(self,checked):
 		if FreeCAD.activeDocument() is None:
 			FreeCAD.newDocument()
@@ -303,7 +309,7 @@ class BoltsWidget(QBoltsWidget):
 		if len(items) < 1:
 			return
 
-		data = items[0].data(0,32).toPyObject()
+		data = unpack(items[0].data(0,32))
 
 		if not isinstance(data,BOLTSClass):
 			return
@@ -335,12 +341,13 @@ class BoltsWidget(QBoltsWidget):
 		add_part(base,params,FreeCAD.ActiveDocument)
 		FreeCADGui.SendMsgToActiveView("ViewFit")
 
+	@Slot()
 	def on_partsTree_itemSelectionChanged(self):
 		items = self.ui.partsTree.selectedItems()
 		if len(items) < 1:
 			return
 		item = items[0]
-		data = item.data(0,32).toPyObject()
+		data = unpack(item.data(0,32))
 
 		#clear props widget
 		for widget in self.props_widgets:
@@ -358,21 +365,3 @@ class BoltsWidget(QBoltsWidget):
 			self.setup_param_widgets(data,self.freecad.getbase[data.id])
 		elif isinstance(data,BOLTSCollection):
 			self.setup_props_collection(data)
-
-#get reference to Freecad main window
-#from http://sourceforge.net/apps/mediawiki/free-cad/index.php?title=Code_snippets
-def getMainWindow():
-	"returns the main window"
-	# using QtGui.qApp.activeWindow() isn't very reliable because if another
-	# widget than the mainwindow is active (e.g. a dialog) the wrong widget is
-	# returned
-	toplevel = QtGui.qApp.topLevelWidgets()
-	for i in toplevel:
-		if i.metaObject().className() == "Gui::MainWindow":
-			return i
-	raise Exception("No main window found")
-
-def addWidget(widget):
-	mw = getMainWindow()
-	mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
-
