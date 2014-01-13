@@ -30,10 +30,12 @@
 <tr><td>e</td> <td>head diameter</td></tr>
 <tr><td>h</td> <td>unthreaded length of shaft</td></tr>
 <tr><td>k</td> <td>head length</td></tr>
+<tr><td>thread_type</td> <td>type of thread</td></tr>
 <tr><td>l</td> <td>length excluding head</td></tr>
 <tr><td>s</td> <td>width across flats</td></tr>
 <tr><td>key</td> <td>Thread designation</td></tr>
 <tr><td>pitch</td> <td>thread pitch</td></tr>
+<tr><td>pitch_name</td> <td>pitch indication for the part name</td></tr>
 <tr><td>d1</td> <td>threaded shaft diamater</td></tr>
     </table>
   </div>
@@ -59,8 +61,8 @@
     </table>
       <h2>Incantations</h2>
 {% highlight python %}
-DIN933(key="M3", l=20, part_mode="default");
-dims = DIN933_dims(key="M3", l=20, part_mode="default");
+DIN933(key="M3", l=20, thread_type="coarse", part_mode="default");
+dims = DIN933_dims(key="M3", l=20, thread_type="coarse", part_mode="default");
 {% endhighlight %}
 
       <h2>Connectors</h2>
@@ -72,7 +74,8 @@ dims = DIN933_dims(key="M3", l=20, part_mode="default");
   <div class="inner-content">
     <h1>Dimensions</h1>
     <table class="table">
-      <tr><th>key</th> <th>d1 (mm)</th> <th>k (mm)</th> <th>s (mm)</th> <th>e (mm)</th> <th>h (mm)</th> <th>pitch (mm)</th><tr>
+      <table class="table">
+<tr><th>key</th> <th>d1 (mm)</th> <th>k (mm)</th> <th>s (mm)</th> <th>e (mm)</th> <th>h (mm)</th> <th>pitch (mm)</th><tr>
 <tr><td>M1.6</td> <td>1.6</td> <td>1.1</td> <td>3.2</td> <td>3.48</td> <td>None</td> <td>0.35</td></tr>
 <tr><td>M2</td> <td>2.0</td> <td>1.4</td> <td>4.0</td> <td>4.32</td> <td>None</td> <td>0.4</td></tr>
 <tr><td>M2.5</td> <td>2.5</td> <td>1.7</td> <td>5.0</td> <td>5.45</td> <td>None</td> <td>0.45</td></tr>
@@ -101,6 +104,70 @@ dims = DIN933_dims(key="M3", l=20, part_mode="default");
 <tr><td>M48</td> <td>48.0</td> <td>30.0</td> <td>75.0</td> <td>82.6</td> <td>None</td> <td>5.0</td></tr>
 <tr><td>M52</td> <td>52.0</td> <td>33.0</td> <td>80.0</td> <td>88.25</td> <td>None</td> <td>5.0</td></tr>
 <tr><td>M64</td> <td>64.0</td> <td>40.0</td> <td>95.0</td> <td>104.86</td> <td>None</td> <td>6.0</td></tr>
+</table>
+<table class="table">
+<tr><td>pitch</td><th>coarse</th> <th>fine I</th> <th>fine II</th> <th>fine III</th> <th>fine IV</th><tr>
+<tr><th>M2.6</th><td>0.35</td> <td>0.2</td> <td>None</td> <td>None</td> <td>None</td></tr>
+<tr><th>M2.5</th><td>0.4</td> <td>0.25</td> <td>None</td> <td>None</td> <td>None</td></tr>
+<tr><th>M56</th><td>0.45</td> <td>0.35</td> <td>None</td> <td>None</td> <td>None</td></tr>
+<tr><th>M2.3</th><td>0.5</td> <td>0.35</td> <td>None</td> <td>None</td> <td>None</td></tr>
+<tr><th>M2.2</th><td>0.6</td> <td>0.35</td> <td>None</td> <td>None</td> <td>None</td></tr>
+<tr><th>M39</th><td>0.7</td> <td>0.5</td> <td>None</td> <td>None</td> <td>None</td></tr>
+<tr><th>M3.5</th><td>0.8</td> <td>0.5</td> <td>None</td> <td>None</td> <td>None</td></tr>
+<tr><th>M36</th><td>1.0</td> <td>0.75</td> <td>None</td> <td>None</td> <td>None</td></tr>
+<tr><th>M33</th><td>1.0</td> <td>0.75</td> <td>None</td> <td>None</td> <td>None</td></tr>
+<tr><th>M32</th><td>1.25</td> <td>1.0</td> <td>0.75</td> <td>None</td> <td>None</td></tr>
+<tr><th>M30</th><td>1.5</td> <td>1.25</td> <td>1.0</td> <td>0.75</td> <td>None</td></tr>
+<tr><th>M5</th><td>1.75</td> <td>1.5</td> <td>1.25</td> <td>1.0</td> <td>None</td></tr>
+<tr><th>M4</th><td>2.0</td> <td>1.5</td> <td>1.25</td> <td>1.0</td> <td>None</td></tr>
+<tr><th>M7</th><td>2.0</td> <td>1.5</td> <td>None</td> <td>1.0</td> <td>None</td></tr>
+<tr><th>M6</th><td>2.5</td> <td>2.0</td> <td>1.5</td> <td>1.0</td> <td>None</td></tr>
+<tr><th>M1</th><td>2.5</td> <td>2.0</td> <td>1.5</td> <td>1.0</td> <td>None</td></tr>
+<tr><th>M3</th><td>2.5</td> <td>2.0</td> <td>1.5</td> <td>1.0</td> <td>None</td></tr>
+<tr><th>M2</th><td>3.0</td> <td>2.0</td> <td>1.5</td> <td>1.0</td> <td>None</td></tr>
+<tr><th>M64</th><td>3.0</td> <td>2.0</td> <td>1.5</td> <td>1.0</td> <td>None</td></tr>
+<tr><th>M9</th><td>3.5</td> <td>3.0</td> <td>2.0</td> <td>1.5</td> <td>1.0</td></tr>
+<tr><th>M8</th><td>3.5</td> <td>3.0</td> <td>2.0</td> <td>1.5</td> <td>None</td></tr>
+<tr><th>M10</th><td>4.0</td> <td>3.0</td> <td>2.0</td> <td>1.5</td> <td>None</td></tr>
+<tr><th>M38</th><td>4.0</td> <td>3.0</td> <td>2.0</td> <td>1.5</td> <td>None</td></tr>
+<tr><th>M42</th><td>4.5</td> <td>4.0</td> <td>3.0</td> <td>2.0</td> <td>1.5</td></tr>
+<tr><th>M1.4</th><td>4.5</td> <td>4.0</td> <td>3.0</td> <td>2.0</td> <td>1.5</td></tr>
+<tr><th>M40</th><td>5.0</td> <td>4.0</td> <td>3.0</td> <td>2.0</td> <td>1.5</td></tr>
+<tr><th>M60</th><td>5.0</td> <td>4.0</td> <td>3.0</td> <td>2.0</td> <td>1.5</td></tr>
+<tr><th>M48</th><td>6.0</td> <td>None</td> <td>4.0</td> <td>None</td> <td>None</td></tr>
+</table>
+<table class="table">
+<tr><td>pitch_name</td><th>coarse</th> <th>fine I</th> <th>fine II</th> <th>fine III</th> <th>fine IV</th><tr>
+<tr><th>M2.6</th><td></td> <td>x0.2</td> <td></td> <td></td> <td></td></tr>
+<tr><th>M2.5</th><td></td> <td>x0.25</td> <td></td> <td></td> <td></td></tr>
+<tr><th>M56</th><td></td> <td>x0.35</td> <td></td> <td></td> <td></td></tr>
+<tr><th>M2.3</th><td></td> <td>x0.35</td> <td></td> <td></td> <td></td></tr>
+<tr><th>M2.2</th><td></td> <td>x0.35</td> <td></td> <td></td> <td></td></tr>
+<tr><th>M39</th><td></td> <td>x0.5</td> <td></td> <td></td> <td></td></tr>
+<tr><th>M3.5</th><td></td> <td>x0.5</td> <td></td> <td></td> <td></td></tr>
+<tr><th>M36</th><td></td> <td>x0.75</td> <td></td> <td></td> <td></td></tr>
+<tr><th>M33</th><td></td> <td>x0.75</td> <td></td> <td></td> <td></td></tr>
+<tr><th>M32</th><td></td> <td>x1</td> <td>x0.75</td> <td></td> <td></td></tr>
+<tr><th>M30</th><td></td> <td>x1.25</td> <td>x1</td> <td>x0.75</td> <td></td></tr>
+<tr><th>M5</th><td></td> <td>x1.5</td> <td>x1.25</td> <td>x1</td> <td></td></tr>
+<tr><th>M4</th><td></td> <td>x1.5</td> <td>x1.25</td> <td>x1</td> <td></td></tr>
+<tr><th>M7</th><td></td> <td>x1.5</td> <td></td> <td>x1</td> <td></td></tr>
+<tr><th>M6</th><td></td> <td>x2</td> <td>x1.5</td> <td>x1</td> <td></td></tr>
+<tr><th>M1</th><td></td> <td>x2</td> <td>x1.5</td> <td>x1</td> <td></td></tr>
+<tr><th>M3</th><td></td> <td>x2</td> <td>x1.5</td> <td>x1</td> <td></td></tr>
+<tr><th>M2</th><td></td> <td>x2</td> <td>x1.5</td> <td>x1</td> <td></td></tr>
+<tr><th>M64</th><td></td> <td>x2</td> <td>x1.5</td> <td>x1</td> <td></td></tr>
+<tr><th>M9</th><td></td> <td>x3</td> <td>x2</td> <td>x1.5</td> <td>x1</td></tr>
+<tr><th>M8</th><td></td> <td>x3</td> <td>x2</td> <td>x1.5</td> <td></td></tr>
+<tr><th>M10</th><td></td> <td>x3</td> <td>x2</td> <td>x1.5</td> <td></td></tr>
+<tr><th>M38</th><td></td> <td>x3</td> <td>x2</td> <td>x1.5</td> <td></td></tr>
+<tr><th>M42</th><td></td> <td>x4</td> <td>x3</td> <td>x2</td> <td>x1.5</td></tr>
+<tr><th>M1.4</th><td></td> <td>x4</td> <td>x3</td> <td>x2</td> <td>x1.5</td></tr>
+<tr><th>M40</th><td></td> <td>x4</td> <td>x3</td> <td>x2</td> <td>x1.5</td></tr>
+<tr><th>M60</th><td></td> <td>x4</td> <td>x3</td> <td>x2</td> <td>x1.5</td></tr>
+<tr><th>M48</th><td></td> <td></td> <td>x4</td> <td></td> <td></td></tr>
+</table>
+
     </table>
   </div>
 </div>
