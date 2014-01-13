@@ -1,0 +1,25 @@
+---
+- filename: nut.sldprt
+  author: Dale Dunn <dale.dunn@gmail.com>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  type: "solidworks"
+  suffix: ISO
+  params:
+    Size@Sketch1: d1
+    Width@Sketch1: s
+    Thickness@Boss-Extrude1: m_max
+  metadata:
+    $prp@Nominal Size: key
+    $prp@Thickness: m_max
+    $prp@Width Across Flats: s
+    $prp@Width Across Corners: e_min
+  classes:
+   - classid: hexagonthinnut1
+     naming:
+       template: ISO4035 - %s
+       substitute: [key]
+   - classid: hexagonnut1
+     naming:
+       template: ISO4032 - %s
+       substitute: [key]
+...
