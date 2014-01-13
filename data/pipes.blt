@@ -75,4 +75,108 @@ classes:
           "200" : [200, 204]
     notes: More tables can be found here http://www.gillain.com/en/tubes-and-components/p/detail/food-tubes-din-11850. The data there contradicts the one in Wikipedia, e.g. for DN32.
     source: de.wikipedia.org/wiki/Rohr_(Technik)#Abmessungen
-...
+  - id: nominalpipesize
+    naming: 
+      template: "%s %s Length: %s"
+      substitute: [nps, sched, l]
+    description: Welded and seamless wrought steel pipe for high or low temperatures and pressures
+    standard: [ANSI B36.10M, ASME B36.10M, API 5L]
+    parameters:
+      free: [nps, sched, l]
+      types:
+        nps: Table Index
+        sched: Table Index
+        l: Length (in)
+        od: Length (in)
+        wall: Length (in)
+      defaults:
+        nps: "NPS 1/2"
+        sched: "40"
+        l: 50
+      description:
+        nps: Nominal pipe size
+        sched: Pipe schedule
+        od: outer diameter
+        wall: wall thickness
+        l: length
+      tables:
+        - index: nps
+          columns: [od]
+          data:
+            "NPS 1/8" :   [ .405  ]
+            "NPS 1/4" :   [ .540  ]
+            "NPS 3/8" :   [ .675  ]
+            "NPS 1/2" :   [ .840  ]
+            "NPS 3/4" :   [ 1.050 ]
+            "NPS 1" :     [ 1.315 ]
+            "NPS 1 1/4" : [ 1.660 ]
+            "NPS 1 1/2" : [ 1.900 ]
+            "NPS 2" :     [ 2.375 ]
+            "NPS 2 1/2" : [ 2.875 ]
+            "NPS 3" :     [ 3.500 ]
+            "NPS 3 1/2" : [ 4.000 ]
+            "NPS 4" :     [ 4.500 ]
+            "NPS 4 1/2" : [ 5.000 ]
+            "NPS 5" :     [ 5.563 ]
+            "NPS 6" :     [ 6.625 ]
+            "NPS 7" :     [ 7.625 ]
+            "NPS 8" :     [ 8.625 ]
+            "NPS 9" :     [ 9.625 ]
+            "NPS 10" :    [ 10.750 ]
+            "NPS 11" :    [ 11.750 ]
+            "NPS 12" :    [ 12.750 ]
+            "NPS 14" :    [ 14.000 ]
+            "NPS 16" :    [ 16.000 ]
+            "NPS 18" :    [ 18.000 ]
+            "NPS 20" :    [ 20.000 ]
+            "NPS 24" :    [ 24.000 ]
+            "NPS 26" :    [ 26.000 ]
+            "NPS 28" :    [ 28.000 ]
+            "NPS 30" :    [ 30.000 ]
+            "NPS 32" :    [ 32.000 ]
+            "NPS 34" :    [ 34.00  ]
+            "NPS 36" :    [ 36.000 ]
+            "NPS 42" :    [ 42.000 ]
+            "NPS 48" :    [ 48.000 ]
+      tables2d:
+        - rowindex: nps
+          colindex: sched
+          result: wall
+          columns: ["5s","5","10s","10","20","30","40s","40","60","80s","80","100","120","140","160"]
+          data:
+            "NPS 1/8" :   [ None, .035, .049, .049, None, None, .068, .068, None, .095, .095, None, None, None, None]
+            "NPS 1/4" :   [ None, .049, .065, .065, None, None, .088, .088, None, .119, .119, None, None, None, None]
+            "NPS 3/8" :   [ None, .049, .065, .065, None, None, .091, .091, None, .126, .126, None, None, None, None]
+            "NPS 1/2" :   [ .065, .065, .083, .083, None, None, .109, .109, None, .147, .147, None, None, None, .187]
+            "NPS 3/4" :   [ .065, .065, .083, .083, None, None, .113, .113, None, .154, .154, None, None, None, .218]
+            "NPS 1" :     [ .065, .065, .109, .109, None, None, .133, .133, None, .179, .179, None, None, None, .250]
+            "NPS 1 1/4" : [ .065, .065, .109, .109, None, None, .140, .140, None, .191, .191, None, None, None, .250]
+            "NPS 1 1/2" : [ .065, .065, .109, .109, None, None, .145, .145, None, .200, .200, None, None, None, .281]
+            "NPS 2" :     [ .065, .065, .109, .109, None, None, .154, .154, None, .218, .218, None, None, None, .343]
+            "NPS 2 1/2" : [ .083, .083, .120, .120, None, None, .203, .203, None, .276, .276, None, None, None, .375]
+            "NPS 3" :     [ .083, .083, .120, .120, None, None, .216, .216, None, .300, .300, None, None, None, .437]
+            "NPS 3 1/2" : [ .083, .083, .120, .120, None, None, .226, .226, None, .318, .318, None, None, None, None]
+            "NPS 4" :     [ .083, .083, .120, .120, None, None, .237, .237, .281, .337, .337, None, .437, None, .531]
+            "NPS 4 1/2" : [ None, None, None, None, None, None, None, .247, None, None, .355, None, None, None, None]
+            "NPS 5" :     [ .109, .109, .134, .134, None, None, .258, .258, None, .375, .375, None, .500, None, .625]
+            "NPS 6" :     [ .109, .109, .134, .134, None, None, .280, .280, None, .432, .432, None, .562, None, .718]
+            "NPS 7" :     [ None, None, None, None, None, None, None, .301, None, None, .500, None, None, None, None]
+            "NPS 8" :     [ .109, .109, .148, .148, .250, .277, .322, .322, .406, .500, .500, .593, .718, .812, .906]
+            "NPS 9" :     [ None, None, None, None, None, None, None, .342, None, None, .500, None, None, None, None]
+            "NPS 10" :    [.134, .134, .165, .165, .250, .307, .365, .365, .500, .500, .593, .718, .843, 1.000, 1.125]
+            "NPS 11" :    [ None, None, None, None, None, None, None, .375, None, None, .500, None, None, None, None]
+            "NPS 12" :    [.156, .165, .180, .180, .250, .330, .375, .406, .562, .500, .687, .843, 1.000, 1.125, 1.312]
+            "NPS 14" :    [.156, None, .188, .250, .312, .375, .375, .437, .593, .500, .750, .937, 1.093, 1.250, 1.406]
+            "NPS 16" :    [.165, None, .188, .250, .312, .375, .375, .500, .656, .500, .843, 1.031, 1.218, 1.437, 1.593]
+            "NPS 18" :    [.165, None, .188, .250, .312, .437, .375, .562, .750, .500, .937, 1.156, 1.375, 1.562, 1.781]
+            "NPS 20" :    [.188, None, .218, .250, .375, .500, .375, .593, .812, .500, 1.031, 1.280, 1.500, 1.750, 1.968]
+            "NPS 24" :    [.218, None, .250, .250, .375, .562, .375, .687, .968, .500, 1.218, 1.531, 1.812, 2.062, 2.343]
+            "NPS 26" :    [None, None, None, .312, .500, None, .375, None, None, .500, None, None, None, None, None]
+            "NPS 28" :    [None, None, None, .312, .500, .625, .375, None, None, None, None, None, None, None, None]
+            "NPS 30" :    [.250, None, .312, .312, .500, .625, .375, None, None, .500, None, None, None, None, None]
+            "NPS 32" :    [None, None, None, .312, .500, .625, .375, .688, None, .500, None, None, None, None, None]
+            "NPS 34" :    [None, None, None, .312, .500, .625, .375, .688, None, None, None, None, None, None, None]
+            "NPS 36" :    [None, None, None, .312, .500, .625, .375, .750, None, .500, None, None, None, None, None]
+            "NPS 42" :    [None, None, None, None, None, None, .375, None, None, .500, None, None, None, None, None]
+            "NPS 48" :    [None, None, None, None, None, None, .375, None, None, .500, None, None, None, None, None]
+    source: http://www.engineersedge.com/pipe_schedules.htm

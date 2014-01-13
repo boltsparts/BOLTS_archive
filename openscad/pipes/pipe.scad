@@ -22,3 +22,10 @@ module pipe(id,od,l){
 		cylinder(r=id/2,h=l+1,center=true);
 	}
 }
+
+module pipe_wall(od,wall,l){
+	difference(){
+		cylinder(r=od/2,h=l,center=true);
+		cylinder(r=(od - 2*wall)/2,h=l+1,center=true);
+	}
+}
