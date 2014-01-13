@@ -43,6 +43,7 @@ classes:
           h: unthreaded length of shaft
           thread_type: type of thread
           pitch: thread pitch
+          pitch_name: pitch indication for the part name
         common:
           - [[M3], [8, 10,12,14,16,18,20,22,25],["coarse","fine I"]]
           - [[M4], [6, 8, 10,12,14,16,18,20,22,25,30,35,40,45,50,55,60],["coarse","fine I"]]
