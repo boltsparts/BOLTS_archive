@@ -44,6 +44,16 @@ def html_table(table_data,header=None,row_classes=None):
 			res.append(u"<tr class='%s'>%s</tr>" % (row_class,row))
 	return u"\n".join(res)
 
+def html_table2d(table_data,corner,col_header,row_header):
+	"generates the content of a html 2d table without the surrounding table tags"
+	res = []
+	row = " ".join([u"<th>%s</th>" % unicode(head) for head in col_header])
+	res.append(u"<tr><td>%s</td>%s<tr>" % (corner,row))
+	for row_data,header in zip(table_data,row_header):
+		row = " ".join([u"<td>%s</td>" % unicode(datum) for datum in row_data])
+		res.append(u"<tr><th>%s</th>%s</tr>" % (header,row))
+	return u"\n".join(res)
+
 def prop_row(props,prop,value):
 	props.append("<tr><th><strong>%s:</strong></th><td>%s</td></tr>" %
 		(prop,value))
@@ -414,11 +424,9 @@ class HTMLExporter(BackendExporter):
 
 		params["properties"] = "\n".join(props)
 
-		#TODO: multiple tables properly
 		params["dimensions"] = ""
 		for table in cl.parameters.tables:
-			sort_idx = table.columns.index(table.sort)
-			data = [[idx] + list(row) for idx,row in sorted(table.data.iteritems(),key=lambda x: x[1][sort_idx])]
+			data = [[idx] + table.data[idx] for idx in cl.parameters.choices[table.index]]
 
 			lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
 
@@ -428,8 +436,15 @@ class HTMLExporter(BackendExporter):
 					header.append("%s (%s)" % (str(p), lengths[cl.parameters.types[p]]))
 				else:
 					header.append("%s" % str(p))
+			#TODO: The table class should be handled in the template, but python templates are not smart enough
+			params["dimensions"] += '<table class="table">\n' + html_table(data,header) + '\n</table>\n'
+		for table in cl.parameters.tables2d:
 
-			params["dimensions"] += html_table(data,header)
+			lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
+			#TODO: The table class should be handled in the template, but python templates are not smart enough
+			params["dimensions"] += '<table class="table">\n' + html_table2d(
+				[table.data[i] for i in cl.parameters.choices[table.rowindex]],
+				table.result,table.columns,table.data.keys()) + '\n</table>\n'
 
 		#freecad information
 		if self.freecad is None:

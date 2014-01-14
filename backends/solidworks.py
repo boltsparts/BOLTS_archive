@@ -15,7 +15,7 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-from os import makedirs
+from os import makedirs, listdir
 from os.path import join, exists
 from shutil import copyfile
 
@@ -50,6 +50,9 @@ class SolidWorksExporter(BackendExporter):
 			coll_path = join(ver_root,designtable.collection)
 			if not exists(coll_path):
 				makedirs(coll_path)
+			#check for case
+			if not designtable.filename in listdir(join(self.solidworks.backend_root,designtable.collection)):
+				raise FileNotFoundError(designtable.filename)
 			model_path = join(coll_path,designtable.filename)
 			if not exists(model_path):
 				copyfile(designtable.path,model_path)

@@ -15,15 +15,26 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
+import FreeCAD, FreeCADGui, Part
 from os.path import join, exists, dirname
 from os import listdir
 import bolttools.blt
 import bolttools.freecad
-from PyQt4 import QtCore
+try:
+	from PySide import QtCore
+	from FreeCADGui import getMainWindow
+except ImportError:
+	from PyQt4 import QtCore, QtGui
 
-from gui.freecad_bolts import BoltsWidget, getMainWindow
+	def getMainWindow():
+		"returns the main window"
+		for i in QtGui.qApp.topLevelWidgets():
+			if i.metaObject().className() == "Gui::MainWindow":
+				return i
+		raise Exception("No main window found")
 
-import FreeCAD, Part
+from gui.freecad_bolts import BoltsWidget
+
 
 #import repo
 rootpath =  dirname(__file__)
