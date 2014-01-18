@@ -87,6 +87,19 @@ def check(args):
 	for check in checker.checks.values():
 		print check.print_table()
 
+def tasks(args):
+	repo = BOLTSRepository(args.repo)
+	dbs = {}
+	dbs["openscad"] = OpenSCADData(args.repo)
+	dbs["freecad"] = FreeCADData(args.repo)
+	dbs["drawings"] = DrawingsData(args.repo)
+	dbs["solidworks"] = SolidWorksData(args.repo)
+
+	from backends.checker import CheckerExporter
+	checker = CheckerExporter(repo,dbs)
+
+	for task in checker.tasks.values():
+		print task.print_table()
 
 
 def release(args):
@@ -196,6 +209,9 @@ parser_test.set_defaults(func=test)
 
 parser_check = subparsers.add_parser("check")
 parser_check.set_defaults(func=check)
+
+parser_check = subparsers.add_parser("tasks")
+parser_check.set_defaults(func=tasks)
 
 parser_release = subparsers.add_parser("release")
 parser_release.set_defaults(func=release)
