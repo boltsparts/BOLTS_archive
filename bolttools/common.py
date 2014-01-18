@@ -84,8 +84,8 @@ class BOLTSParameters:
 	}
 	def __init__(self,param):
 		check_schema(param,"parameters",
-			[],
-			["literal","free","tables","tables2d","types","defaults","common","description"]
+			["types"],
+			["literal","free","tables","tables2d","defaults","common","description"]
 		)
 
 		self.literal = {}
@@ -143,15 +143,14 @@ class BOLTSParameters:
 			if not tname in all_types:
 				raise UnknownTypeError(tname)
 
+		for pname in self.parameters:
+			if not pname in self.types:
+				raise MissingTypeError(pname)
+
 		#check description
 		for pname,tname in self.description.iteritems():
 			if not pname in self.parameters:
 				raise UnknownParameterError(pname)
-
-		#fill in defaults for types
-		for pname in self.parameters:
-			if not pname in self.types:
-				self.types[pname] = "Length (mm)"
 
 		#check and normalize tables
 		for table in self.tables:
@@ -256,7 +255,7 @@ class BOLTSParameters:
 		return res
 
 	def union(self,other):
-		res = BOLTSParameters({})
+		res = BOLTSParameters({"types" : {}})
 		res.literal.update(self.literal)
 		res.literal.update(other.literal)
 		res.free = self.free + other.free

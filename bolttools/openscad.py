@@ -58,7 +58,7 @@ class BaseModule(OpenSCADGeometry):
 		if "parameters" in mod:
 			self.parameters = BOLTSParameters(mod["parameters"])
 		else:
-			self.parameters = BOLTSParameters({})
+			self.parameters = BOLTSParameters({"types" : {}})
 
 		self.connectors = None
 		if "connectors" in mod:
@@ -83,7 +83,7 @@ class BaseSTL(OpenSCADGeometry):
 		if "parameters" in basefile:
 			self.parameters = BOLTSParameters(basefile["parameters"])
 		else:
-			self.parameters = BOLTSParameters({})
+			self.parameters = BOLTSParameters({"types" : {}})
 
 	def get_copy_files(self):
 		return [self.path]

@@ -83,6 +83,11 @@ class UnknownTypeError(ParsingError):
 		ParsingError.__init__(self)
 		self.msg = "Unknown type in types: %s" % tname
 
+class MissingTypeError(ParsingError):
+	def __init__(self,pname):
+		ParsingError.__init__(self)
+		self.msg = "No type specified for parameter: %s" % pname
+
 class NonUniqueBaseError(ParsingError):
 	def __init__(self,id):
 		ParsingError.__init__(self)
