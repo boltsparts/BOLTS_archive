@@ -103,6 +103,11 @@ class MissingLocationError(ParsingError):
 		ParsingError.__init__(self)
 		self.msg = "Argument list for coordinate system does not contain 'location': %s" % arguments
 
+class TableIndexTypeError(ParsingError):
+	def __init__(self,pname,tname):
+		ParsingError.__init__(self)
+		self.msg = "Parameter %s is used as an index in a table but has type: %s" % (pname,tname)
+
 class IncompatibleTypeError(Exception):
 	def __init__(self,pname,tname1,tname2):
 		Exception.__init__(self)

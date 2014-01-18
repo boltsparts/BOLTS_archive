@@ -156,13 +156,13 @@ class BOLTSParameters:
 		for table in self.tables:
 			table._normalize_and_check_types(self.types)
 			if self.types[table.index] != "Table Index":
-				raise ValueError("Parameter %s must be of type Table Index" % table.index)
+				raise TableIndexTypeError(table.index,self.types[table.index])
 		for table in self.tables2d:
 			table._normalize_and_check_types(self.types)
 			if self.types[table.rowindex] != "Table Index":
-				raise ValueError("Parameter %s must be of type Table Index" % table.rowindex)
+				raise TableIndexTypeError(table.rowindex,self.types[table.rowindex])
 			if self.types[table.colindex] != "Table Index":
-				raise ValueError("Parameter %s must be of type Table Index" % table.colindex)
+				raise TableIndexTypeError(table.colindex,self.types[table.colindex])
 
 		#find the set of possible choices for every Table Index
 		self.choices = {}
