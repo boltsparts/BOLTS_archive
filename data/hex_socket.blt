@@ -30,8 +30,21 @@ classes:
     standard: [ISO10642, DINISO10642, DIN7991]
     parameters:
         free: [key, l]
-        types: {key: Table Index}
-        defaults: {key: M3, l: 20}
+        defaults: {key: "M3", l: 20}
+        types:
+          key: Table Index
+          l: Length (mm)
+          d1: Length (mm)
+          d2: Length (mm)
+          b1: Length (mm)
+          b2: Length (mm)
+          b3: Length (mm)
+          k_max: Length (mm)
+          s: Length (mm)
+          t: Length (mm)
+          alpha: Number
+          L: Length (mm)
+          h_max: Length (mm)
         description:
           key: Thread designation
           l: shaft length
@@ -76,8 +89,17 @@ classes:
     standard: [ISO4762, DINENISO4762, DIN912]
     parameters:
         free: [key, l]
-        types: {key: Table Index}
-        defaults: {key: M3, l: 20}
+        defaults: {key: "M3", l: 20}
+        types:
+          key: Table Index
+          l: Length (mm)
+          d1: Length (mm)
+          d2: Length (mm)
+          k: Length (mm)
+          s: Length (mm)
+          b: Length (mm)
+          t_min: Length (mm)
+          L: Length (mm)
         description:
           key: Thread designation
           l: shaft length

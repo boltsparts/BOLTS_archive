@@ -33,8 +33,11 @@ classes:
   description: Most common round single cell battery sizes
   parameters:
     free: [T]
-    types: {T: Table Index}
     defaults: {T: "AAA"}
+    types:
+      T: Table Index
+      h: Length (mm)
+      d: Length (mm)
     description:
       T: Type Code
       h: height

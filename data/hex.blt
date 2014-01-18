@@ -31,8 +31,18 @@ classes:
     status: withdrawn
     parameters:
         free: [key, l, thread_type]
-        types: {key: Table Index, thread_type: Table Index, pitch_name: String}
-        defaults: {key: M3, l: 20, thread_type: coarse}
+        defaults: {key: "M3", l: 20, thread_type: "coarser"}
+        types:
+          key: Table Index
+          l: Length (mm)
+          d1: Length (mm)
+          k: Length (mm)
+          s: Length (mm)
+          e: Length (mm)
+          h: Length (mm)
+          thread_type: Table Index
+          pitch: Length (mm)
+          pitch_name: String
         description:
           key: Thread designation
           l: length excluding head
@@ -205,9 +215,15 @@ classes:
     standard: [ISO4017, DINENISO4017, DINEN24017]
     parameters:
         free: [key, l]
+        defaults: {key: "M3", l: 20}
         types:
-            key: Table Index
-        defaults: {key: M3, l: 20}
+          key: Table Index
+          l: Length (mm)
+          d1: Length (mm)
+          k: Length (mm)
+          s: Length (mm)
+          e: Length (mm)
+          h: Length (mm)
         description:
           key: Thread designation
           l: length excluding head
@@ -259,9 +275,17 @@ classes:
     status: withdrawn
     parameters:
         free: [key, l]
+        defaults: {key: "M3", l: 20}
         types:
-            key: Table Index
-        defaults: {key: M3, l: 20}
+          key: Table Index
+          l: Length (mm)
+          d1: Length (mm)
+          b1: Length (mm)
+          b2: Length (mm)
+          b3: Length (mm)
+          k: Length (mm)
+          s: Length (mm)
+          e: Length (mm)
         description:
           key: Thread designation
           l: length excluding head
@@ -321,9 +345,17 @@ classes:
     replaces: DIN931
     parameters:
         free: [key, l]
+        defaults: {key: "M3", l: 20}
         types:
-            key: Table Index
-        defaults: {key: M3, l: 20}
+          key: Table Index
+          l: Length (mm)
+          d1: Length (mm)
+          b1: Length (mm)
+          b2: Length (mm)
+          b3: Length (mm)
+          k: Length (mm)
+          s: Length (mm)
+          e: Length (mm)
         description:
           key: Thread designation
           l: length excluding head
