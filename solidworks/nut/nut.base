@@ -22,4 +22,8 @@
      naming:
        template: ISO4032 - %s
        substitute: [key]
+   - classid: hexagonnut3
+     naming:
+       template: ASME B18.2.2 - %s
+       substitute: [key]
 ...
