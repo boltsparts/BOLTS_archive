@@ -31,40 +31,6 @@ from subprocess import call, Popen
 import argparse
 from datetime import datetime
 
-#table is a list of lists, similar to the format html_table expects
-def display_table(table,header,title,description):
-	if len(table) == 0:
-		return
-	print title
-	print '-'*len(title) + '\n'
-	print description + '\n'
-
-	#determine maximum field width
-	width = []
-	for field in header:
-		width.append(len(field))
-	for row in table:
-		for i in range(len(row)):
-			width[i] = max(len(str(row[i])),width[i])
-	
-	#add some more space
-	for i in range(len(width)):
-		width[i] += 2
-
-	#print headers
-	for i in range(len(header)):
-		print "%-*s" % (width[i],header[i]),
-	print ""
-	for w in width:
-		print "-"*w,
-	print ""
-
-	for row in table:
-		for w,v in zip(width,row):
-			print "%-*s" % (w,v),
-		print ""
-	print ""
-
 
 def export(args):
 	#load data
@@ -121,6 +87,19 @@ def check(args):
 	for check in checker.checks.values():
 		print check.print_table()
 
+def tasks(args):
+	repo = BOLTSRepository(args.repo)
+	dbs = {}
+	dbs["openscad"] = OpenSCADData(args.repo)
+	dbs["freecad"] = FreeCADData(args.repo)
+	dbs["drawings"] = DrawingsData(args.repo)
+	dbs["solidworks"] = SolidWorksData(args.repo)
+
+	from backends.checker import CheckerExporter
+	checker = CheckerExporter(repo,dbs)
+
+	for task in checker.tasks.values():
+		print task.print_table()
 
 
 def release(args):
@@ -230,6 +209,9 @@ parser_test.set_defaults(func=test)
 
 parser_check = subparsers.add_parser("check")
 parser_check.set_defaults(func=check)
+
+parser_check = subparsers.add_parser("tasks")
+parser_check.set_defaults(func=tasks)
 
 parser_release = subparsers.add_parser("release")
 parser_release.set_defaults(func=release)

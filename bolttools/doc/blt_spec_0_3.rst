@@ -209,10 +209,9 @@ restricted to be. The following keys are contained in a parameter element.
 - tables2d: optional, table2d-element_ or list of table2d-elements. This array
   contains tabular data. Usually row and column indices will be free variables,
   for details see table2d-element_ and parameter-collection_.
-- types: optional, associative array. Contains as keys parameter names, as
+- types: mandatory, associative array. Contains as keys parameter names, as
   values their respective types. Possible types are: "Length (mm)", Length
-  (in)", "Number", "Bool", "Table Index", "String". If no entry is present for
-  a parameter, "Length (mm)" is assumed.
+  (in)", "Number", "Bool", "Table Index", "String".
 - defaults: optional, associative array. This array contains a default value
   for every free parameter. If absent, the default value defaults to the type
   specific values given in the table below.

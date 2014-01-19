@@ -127,7 +127,11 @@ class IGESExporter(BackendExporter):
 				base = self.freecad.getbase[cl.id]
 
 				for free in cl.parameters.common:
-					params = cl.parameters.collect(dict(zip(cl.parameters.free,free)))
+					try:
+						params = cl.parameters.collect(dict(zip(cl.parameters.free,free)))
+					except:
+						print "A problem occured when parameters for %s where collected for %s" % (free,cl.id)
+						raise
 					params["standard"] = cl.name
 					name = cl.naming.get_name(params)
 					params["name"] = name

@@ -328,6 +328,9 @@ class BoltsWidget(QBoltsWidget):
 
 		for key,tp in data.parameters.types.iteritems():
 			if tp in lengths:
+				if params[key] is None:
+					#A undefined value is not necessarily fatal
+					continue
 				revision = int(FreeCAD.Version()[2].split()[0])
 				if revision >= 2836:
 					params[key] = FreeCAD.Units.parseQuantity("%g %s" %
@@ -337,9 +340,13 @@ class BoltsWidget(QBoltsWidget):
 						(params[key], lengths[tp]))
 
 		#add part
-		base = self.freecad.getbase[data.id]
-		add_part(base,params,FreeCAD.ActiveDocument)
-		FreeCADGui.SendMsgToActiveView("ViewFit")
+		try:
+			base = self.freecad.getbase[data.id]
+			add_part(base,params,FreeCAD.ActiveDocument)
+			FreeCADGui.SendMsgToActiveView("ViewFit")
+		except Exception as e:
+			FreeCAD.Console.PrintMessage(e)
+			QtGui.QErrorMessage(self).showMessage("An error occured when trying to add the part: %s\nParameter Values: %s" % (e,params))
 
 	@Slot()
 	def on_partsTree_itemSelectionChanged(self):

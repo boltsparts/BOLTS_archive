@@ -30,6 +30,7 @@ classes:
     parameters:
       free: [l]
       defaults: {l: 100}
+      types: { l: Length (mm) }
       description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-1s
@@ -40,6 +41,7 @@ classes:
     parameters:
       free: [l]
       defaults: {l: 100}
+      types: { l: Length (mm) }
       description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-2s
@@ -50,6 +52,7 @@ classes:
     parameters:
       free: [l]
       defaults: {l: 100}
+      types: { l: Length (mm) }
       description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-2sa
@@ -60,6 +63,7 @@ classes:
     parameters:
       free: [l]
       defaults: {l: 100}
+      types: { l: Length (mm) }
       description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: tslot20x20-3s
@@ -70,6 +74,7 @@ classes:
     parameters:
       free: [l]
       defaults: {l: 100}
+      types: { l: Length (mm) }
       description: {l: Length}
     source: following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
   - id: vslot20x20
@@ -80,7 +85,10 @@ classes:
     parameters:
       free: [l,finish]
       defaults: {finish: "Clear anodized", l: 100}
-      types: {finish: Table Index, finish_name: String}
+      types: 
+        l: Length (mm)
+        finish: Table Index
+        finish_name: String
       description:
         l: Length
         finish: Material finish
@@ -101,11 +109,14 @@ classes:
     parameters:
       free: [l,finish]
       defaults: {finish: "Clear anodized", l: 100}
+      types:
+        l: Length (mm)
+        finish: Table Index
+        finish_name: String
       description:
         l: Length
         finish: Material finish
         finish_name: Material finish used in naming
-      types: {finish: Table Index, finish_name: String}
       tables:
         - index: finish
           columns: [finish_name]
@@ -122,11 +133,14 @@ classes:
     parameters:
       free: [l,finish]
       defaults: {finish: "Clear anodized", l: 100}
+      types:
+        l: Length (mm)
+        finish: Table Index
+        finish_name: String
       description:
         l: Length
         finish: Material finish
         finish_name: Material finish used in naming
-      types: {finish: Table Index, finish_name: String}
       tables:
         - index: finish
           columns: [finish_name]
@@ -143,11 +157,14 @@ classes:
     parameters:
       free: [l,finish]
       defaults: {finish: "Clear anodized", l: 100}
+      types:
+        l: Length (mm)
+        finish: Table Index
+        finish_name: String
       description:
         l: Length
         finish: Material finish
         finish_name: Material finish used in naming
-      types: {finish: Table Index, finish_name: String}
       tables:
         - index: finish
           columns: [finish_name]

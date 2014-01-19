@@ -32,6 +32,9 @@ classes:
         pitch_name: String
         key: Table Index
         thread_type: Table Index
+        d1: Length (mm)
+        d2: Length (mm)
+        s: Length (mm)
       description:
         thread_type: Type of the thread
         key: Thread size
