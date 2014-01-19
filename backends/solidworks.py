@@ -24,6 +24,15 @@ import xlwt
 from errors import *
 from common import BackendExporter
 
+UNITS = {
+	"Length (mm)" : " mm",
+	"Length (in)" : " in",
+	"Number" : "",
+	"Bool" : "",
+	"Table Index" : "",
+	"String" : ""
+}
+
 class SolidWorksExporter(BackendExporter):
 	def __init__(self,repo,databases):
 		BackendExporter.__init__(self,repo,databases)
@@ -77,6 +86,7 @@ class SolidWorksExporter(BackendExporter):
 				cl = blt_classes[dtcl.classid]
 				for free in cl.parameters.common:
 					params = cl.parameters.collect(dict(zip(cl.parameters.free,free)))
+					types = cl.parameters.types
 					name = "undefined"
 					if name is None:
 						name = cl.naming.get_name(params)
@@ -88,11 +98,11 @@ class SolidWorksExporter(BackendExporter):
 					c += 1
 					
 					for pname in designtable.params.values():
-						worksheet.write(r,c,params[pname])
+						worksheet.write(r,c,str(params[pname]) + UNITS[types[pname]])
 						c += 1
 
 					for pname in designtable.metadata.values():
-						worksheet.write(r,c,params[pname])
+						worksheet.write(r,c,str(params[pname]) + UNITS[types[pname]])
 						c += 1
 
 					r += 1
