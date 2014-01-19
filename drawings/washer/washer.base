@@ -2,13 +2,13 @@
 - filename: washer1
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
   source: own work
   classids: [plainwasher1, plainwasher2, plainwasherforcheesehead, heavydutyplainwasher]
 - filename: washer2
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
   source: own work
   classids: [plainwasherchamfered]
 ...
