@@ -197,10 +197,12 @@ class BOLTSParameters:
 		self.defaults = dict((pname,self.type_defaults[self.types[pname]])
 			for pname in self.free)
 		if "defaults" in param:
-			for pname in param["defaults"]:
+			for pname,dvalue in param["defaults"].iteritems():
 				if pname not in self.free:
 					raise NonFreeDefaultError(pname)
-				self.defaults[pname] = param["defaults"][pname]
+				if self.types[pname] == "Table Index" and dvalue not in self.choices[pname]:
+					raise InvalidTableIndexError(pname,dvalue)
+				self.defaults[pname] = dvalue
 
 		#common parameter combinations
 		discrete_types = ["Bool", "Table Index"]

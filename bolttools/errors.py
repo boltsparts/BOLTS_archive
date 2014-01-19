@@ -98,6 +98,11 @@ class NonUniqueClassIdError(ParsingError):
 		ParsingError.__init__(self)
 		self.msg = "Encountered more than one class with id: %s" % id
 
+class InvalidTableIndexError(ParsingError):
+	def __init__(self,pname,val):
+		ParsingError.__init__(self)
+		self.msg = "%s is not a valid choice as a Table Index for parameter %s" % (val,pname)
+
 class MissingLocationError(ParsingError):
 	def __init__(self,arguments):
 		ParsingError.__init__(self)
