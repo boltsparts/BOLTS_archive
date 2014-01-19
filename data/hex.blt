@@ -31,7 +31,7 @@ classes:
     status: withdrawn
     parameters:
         free: [key, l, thread_type]
-        defaults: {key: "M3", l: 20, thread_type: "coarser"}
+        defaults: {key: "M3", l: 20, thread_type: "coarse"}
         types:
           key: Table Index
           l: Length (mm)
@@ -59,7 +59,7 @@ classes:
           - [[M4], [6, 8, 10,12,14,16,18,20,22,25,30,35,40,45,50,55,60],["coarse","fine I"]]
           - [[M5], [6, 8, 10,12,14,16,18,20,22,25,30,35,40],["coarse","fine I"]]
           - [[M6], [8, 10,12,14,16,18,20,22,25,30,35,40,45,50,55,60,65,70],["coarse","fine I"]]
-          - [[M7], [12,14,16,18,20,22,25,30,35,40,45,50],"coarse","fine I"]
+          - [[M7], [12,14,16,18,20,22,25,30,35,40,45,50],["coarse","fine I"]]
           - [[M8], [10,12,14,16,18,20,22,25,30,35,40,45,50,55,60],["coarse","fine I", "fine II"]]
           - [[M10],[10,12,14,16,18,20,22,25,30,35,40,45,50],["coarse","fine I", "fine II","fine III"]]
           - [[M12],[16,18,20,22,25,30,35,40,45,50,55,60,65,70],["coarse","fine I", "fine II","fine III"]]
