@@ -44,8 +44,6 @@ class FreeCADExporter(BackendExporter):
 		if not license.is_combinable_with("LGPL 2.1+",target_license):
 			raise IncompatibleLicenseError("bolttools licensed under LGPL 2.1+, which is not compatible with %s" % target_license)
 		copytree(join(self.repo.path,"bolttools"),join(bolts_path,"bolttools"))
-		#remove the .git file, because it confuses git
-		remove(join(bolts_path,"bolttools",".git"))
 		#remove the test suite and documentation, to save space
 		rmtree(join(bolts_path,"bolttools","test"))
 		rmtree(join(bolts_path,"bolttools","doc"))

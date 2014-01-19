@@ -1,0 +1,22 @@
+---
+- filename: nut.model
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: "solidworks"
+  suffix: ISO
+  params:
+    Size@Sketch1: d1
+    Width@Sketch1: d2
+    Thickness@Boss-Extrude1: s
+  metadata:
+    $prp@MetaTest: e_min
+  classes:
+   - classid: hexagonthinnut1
+     naming:
+       template: ISO4035 - %s
+       substitute: [key]
+   - classid: hexagonnut11
+     naming:
+       template: ISO4032 - %s
+       substitute: [key]
+...
