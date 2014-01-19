@@ -11,4 +11,46 @@
   type: drawing-dimensions
   source: own work
   classids: [plainwasherchamfered]
+- filename: washer1-top
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: top
+  source: own work
+  classids: [plainwasher1, plainwasher2, plainwasherforcheesehead, heavydutyplainwasher]
+- filename: washer1-bottom
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: bottom
+  source: own work
+  classids: [plainwasher1, plainwasher2, plainwasherforcheesehead, heavydutyplainwasher]
+- filename: washer1-outer
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: outer
+  source: own work
+  classids: [plainwasher1, plainwasher2, plainwasherforcheesehead, heavydutyplainwasher]
+- filename: washer2-top
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: top
+  source: own work
+  classids: [plainwasherchamfered]
+- filename: washer2-bottom
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: bottom
+  source: own work
+  classids: [plainwasherchamfered]
+- filename: washer2-outer
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: outer
+  source: own work
+  classids: [plainwasherchamfered]
 ...
