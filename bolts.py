@@ -101,6 +101,18 @@ def tasks(args):
 	for task in checker.tasks.values():
 		print task.print_table()
 
+def connectors(args):
+	repo = BOLTSRepository(args.repo)
+	dbs = {}
+	dbs["openscad"] = OpenSCADData(args.repo)
+	dbs["drawings"] = DrawingsData(args.repo)
+
+	out_path = os.path.join(repo.path,"output","connectordrawings")
+
+	from backends.connectordrawings import ConnectorDrawingsExporter
+	ConnectorDrawingsExporter(repo,dbs).write_output(out_path)
+
+
 
 def release(args):
 	#check that there are no uncommited changes
@@ -212,6 +224,9 @@ parser_check.set_defaults(func=check)
 
 parser_check = subparsers.add_parser("tasks")
 parser_check.set_defaults(func=tasks)
+
+parser_check = subparsers.add_parser("connectors")
+parser_check.set_defaults(func=connectors)
 
 parser_release = subparsers.add_parser("release")
 parser_release.set_defaults(func=release)
