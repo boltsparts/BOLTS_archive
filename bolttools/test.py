@@ -168,6 +168,14 @@ class TestFreeCAD(unittest.TestCase):
 class TestDrawings(unittest.TestCase):
 	def test_syntax(self):
 		draw = drawings.DrawingsData("test/syntax")
+		self.assertTrue("hexscrew1" in draw.getdimensions)
+
+		self.assertTrue(draw.getdimensions["hexscrew1"].get_png() is None)
+		self.assertFalse(draw.getdimensions["hexscrew1"].get_svg() is None)
+
+		self.assertTrue(len(draw.getconnectors["hexbolt1"]) == 1)
+		self.assertTrue(draw.getconnectors["hexbolt1"]["tip"].get_png() is None)
+		self.assertFalse(draw.getconnectors["hexbolt2"]["tip"].get_svg() is None)
 
 class TestSolidWorks(unittest.TestCase):
 	def test_syntax(self):
