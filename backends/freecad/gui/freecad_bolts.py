@@ -20,26 +20,35 @@ bolts_path = dirname(__file__)
 try:
 	from PySide import QtCore, QtGui
 	from FreeCADGui import PySideUic as uic
-	Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
-	Ui_ValueWidget,QValueWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
-	Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'bool_widget.ui'))
-	Ui_TableIndexWidget,QTableIndexWidget = uic.loadUiType(join(bolts_path,'tableindex_widget.ui'))
-	Ui_PropertyWidget,QPropertyWidget = uic.loadUiType(join(bolts_path,'property_widget.ui'))
+	Ui_BoltsWidget,_QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
+	Ui_ValueWidget,_QValueWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
+	Ui_BoolWidget,_QBoolWidget = uic.loadUiType(join(bolts_path,'bool_widget.ui'))
+	Ui_TableIndexWidget,_QTableIndexWidget = uic.loadUiType(join(bolts_path,'tableindex_widget.ui'))
+	Ui_PropertyWidget,_QPropertyWidget = uic.loadUiType(join(bolts_path,'property_widget.ui'))
+
+	from PySide.QtGui import QDockWidget as QBoltsWidget
+	from PySide.QtGui import QWidget as QValueWidget
+	from PySide.QtGui import QWidget as QBoolWidget
+	from PySide.QtGui import QWidget as QTableIndexWidget
+	from PySide.QtGui import QWidget as QPropertyWidget
+
 	from PySide.QtCore import Slot
 	def unpack(x):
 		return x
 except ImportError:
 	from PyQt4 import QtGui, QtCore
 	from bolts_widget import Ui_BoltsWidget
-	from PyQt4.QtGui import QDockWidget as QBoltsWidget
 	from value_widget import Ui_ValueWidget
-	from PyQt4.QtGui import QWidget as QValueWidget
 	from bool_widget import Ui_BoolWidget
-	from PyQt4.QtGui import QWidget as QBoolWidget
 	from tableindex_widget import Ui_TableIndexWidget
-	from PyQt4.QtGui import QWidget as QTableIndexWidget
 	from property_widget import Ui_PropertyWidget
+
+	from PyQt4.QtGui import QDockWidget as QBoltsWidget
+	from PyQt4.QtGui import QWidget as QValueWidget
+	from PyQt4.QtGui import QWidget as QBoolWidget
+	from PyQt4.QtGui import QWidget as QTableIndexWidget
 	from PyQt4.QtGui import QWidget as QPropertyWidget
+
 	from PyQt4.QtCore import pyqtSlot as Slot
 	def unpack(x):
 		return x.toPyObject()
