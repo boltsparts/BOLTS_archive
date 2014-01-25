@@ -6,21 +6,20 @@
   suffix: all
   params:
     Size@skBody: d1
-    # Length@Body: l
-    # Width@skHead: s
-    # Height@Head: k
-   metadata:
+    Length@Body: l
+    Width@skHead: s
+    Height@Head: k
+  metadata:
     $prp@Nominal Size: key
-    # $prp@Length: l
-    # $prp@Height: k
-    # $prp@Width Across Flats: s
-    # $prp@Width Across Corners: e
-    # $prp@Thread Type: thread_type
-    # $prp@Pitch: pitch_name
+    $prp@Length: l
+    $prp@Height: k
+    $prp@Width Across Flats: s
+    $prp@Width Across Corners: e
+    $prp@Thread Type: thread_type
+    $prp@Pitch: pitch_name
   classes:
    - classid: hexscrew1
      naming:
-       template: DIN933 - %s
-       substitute: [key]
-   
+       template: DIN933 %s M%02d%s x %03d
+       substitute: [thread_type,d1,pitch_name,l]
 ...
