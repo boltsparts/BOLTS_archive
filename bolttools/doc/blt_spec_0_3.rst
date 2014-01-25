@@ -209,10 +209,9 @@ restricted to be. The following keys are contained in a parameter element.
 - tables2d: optional, table2d-element_ or list of table2d-elements. This array
   contains tabular data. Usually row and column indices will be free variables,
   for details see table2d-element_ and parameter-collection_.
-- types: optional, associative array. Contains as keys parameter names, as
+- types: mandatory, associative array. Contains as keys parameter names, as
   values their respective types. Possible types are: "Length (mm)", Length
-  (in)", "Number", "Bool", "Table Index", "String". If no entry is present for
-  a parameter, "Length (mm)" is assumed.
+  (in)", "Number", "Bool", "Table Index", "String".
 - defaults: optional, associative array. This array contains a default value
   for every free parameter. If absent, the default value defaults to the type
   specific values given in the table below.
@@ -393,8 +392,9 @@ stored, that illustrate the geometries of the parts and the meaning of the
 parameters.
 
 In each directory there is a .base file with the same name as the directory. It
-contains metadata in form of a list of base-file-element_ of type "drawing" for
-the files in this directory. See base-file-type-drawing_
+contains metadata in form of a list of base-file-element_ of type
+"drawing-dimensions" or "drawing-connector" for the files in this directory.
+See base-file-type-drawing-dimensions_ and base-file-type-drawing-connectors_.
 
 
 ********
@@ -457,14 +457,14 @@ base-files_ , which contain a list of base-file-element_ of type "solidworks"
 List of base file types
 #######################
 
-.. _base-file-type-drawing:
+.. _base-file-type-drawing-dimensions:
 
-*******
-Drawing
-*******
+******************
+Drawing Dimensions
+******************
 
-This kind of base-file-element_ describes a drawing. It is an associative array
-with the following keys:
+This kind of base-file-element_ describes a drawing showing the dimensional
+parameters of a part. It is an associative array with the following keys:
 
 - filename: mandatory, string. The filename of the file without the extension.
   Files with the same basename but different extensions are taken to be
@@ -473,10 +473,33 @@ with the following keys:
   e-mail adress in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be one of the
   supported-licenses_.
-- type: "drawing"
+- type: "drawing-dimensions"
 - source: optional, string. A string describing the origin of the file.
 - classids: mandatory, list of strings. The class_ ids to which this drawing applies.
 
+
+.. _base-file-type-drawing-connectors:
+
+******************
+Drawing Connectors
+******************
+
+This kind of base-file-element_ describes a drawing showing the location of one
+or several connectors (see base-module-cs_). It is an associative array with
+the following keys:
+
+- filename: mandatory, string. The filename of the file without the extension.
+  Files with the same basename but different extensions are taken to be
+  conversions to different file formats.
+- author: mandatory, string or list of strings. The author of the file with
+  e-mail adress in <> or a list of several authors.
+- license: mandatory, string. The license of the file. Must be one of the
+  supported-licenses_.
+- type: "drawing-connectors"
+- location: mandatory, string. Gives the name of the connector location that
+  this drawing shows.
+- source: optional, string. A string describing the origin of the file.
+- classids: mandatory, list of strings. The class_ ids to which this drawing applies.
 
 .. _base-file-type-module:
 

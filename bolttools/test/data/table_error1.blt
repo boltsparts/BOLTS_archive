@@ -28,6 +28,10 @@ classes:
       free: [key,l]
       types:
         key: Table Index
+        l: Length (mm)
+        d1: Length (mm)
+        d2: Length (mm)
+        s: Length (mm)
       tables:
         index: key
         columns: [d1, d2, s]

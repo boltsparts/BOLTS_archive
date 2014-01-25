@@ -2,31 +2,31 @@
 - filename: tslot20x20
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
   source: own work
   classids: [tslot20x20]
 - filename: tslot20x20-1s
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
   source: own work
   classids: [tslot20x20-1s]
 - filename: tslot20x20-2s
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
   source: own work
   classids: [tslot20x20-2s]
 - filename: tslot20x20-2sa
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
   source: own work
   classids: [tslot20x20-2sa]
 - filename: tslot20x20-3s
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
   source: own work
   classids: [tslot20x20-3s]
 ...

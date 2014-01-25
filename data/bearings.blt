@@ -32,8 +32,15 @@ classes:
     standard: DIN625-1
     parameters:
         free: [key,type]
-        types: {key: Table Index, type: Table Index, postfix: String}
         defaults: {key: "608", type: "open"}
+        types:
+          key: Table Index
+          type: Table Index
+          postfix: String
+          d1: Length (mm)
+          d2: Length (mm)
+          B: Length (mm)
+          r_fillet: Length (mm)
         description:
           key: Model designation
           type: Type of bearing protection
@@ -103,6 +110,8 @@ classes:
     description: single row radial contact ball bearing, imperial sizes
     parameters:
         free: [key]
+        defaults: {key: "RLS8"}
+        literal: {type: "open"}
         types:
           key: Table Index
           d1: Length (in)
@@ -110,8 +119,6 @@ classes:
           B: Length (in)
           r_fillet: Length (in)
           type: String
-        literal: {type: "open"}
-        defaults: {key: "RLS8"}
         description:
           key: Model designation
           type: Type of bearing protection
@@ -169,8 +176,12 @@ classes:
     standard: [DIN625-3]
     parameters:
       free: [key]
-      types: {key: Table Index}
       defaults: {key: "4202-B-TVH"}
+      types:
+        key: Table Index
+        d1: Length (mm)
+        d2: Length (mm)
+        B: Length (mm)
       description:
         key: Model designation
         d1: inner diameter
@@ -208,8 +219,15 @@ classes:
     standard: [DIN711, ISO104]
     parameters:
         free: [key]
-        types: {key: Table Index}
         defaults: {key: "51200"}
+        types:
+          key: Table Index
+          d_w: Length (mm)
+          D_w: Length (mm)
+          d_g: Length (mm)
+          D_g: Length (mm)
+          T: Length (mm)
+          r_fillet: Length (mm)
         description:
           key: Model designation
           d_w: inner diameter, shaft side
@@ -356,13 +374,17 @@ classes:
     standard: [DIN5405-1,ISO 3030]
     parameters:
         free: [key]
-        types: {key: Table Index}
+        defaults: {key: "K10X13X10-TV"}
+        types:
+          key: Table Index
+          Fw: Length (mm)
+          Ew: Length (mm)
+          Bc: Length (mm)
         description:
           key: Model designation
           Fw: inner diameter
           Ew: outer diameter
           Bc: length
-        defaults: {key: K10X13X10-TV}
         common: []
         tables:
             index: key
@@ -602,8 +624,12 @@ classes:
     standard: [DIN5412-1]
     parameters:
         free: [key]
-        types: {key: Table Index}
         defaults: {key: N204-E-TVP2}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          d2: Length (mm)
+          B: Length (mm)
         description:
           key: Model designation
           d1: inner diameter

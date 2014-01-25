@@ -106,13 +106,21 @@ class HTMLExporter(BackendExporter):
 					content = self._get_class_content(coll,cl)
 					fid.write(self.templates["class"].substitute(content))
 				#copy drawings
-				if cl.id in self.drawings.getbase:
+				if cl.id in self.drawings.getdimensions:
 					if not exists(join(html_root,"drawings",coll.id)):
 						makedirs(join(html_root,"drawings",coll.id))
-					drawing = self.drawings.getbase[cl.id]
+					drawing = self.drawings.getdimensions[cl.id]
 					drawing_png = drawing.get_png()
 					if not drawing_png is None:
 						copyfile(drawing_png,join(html_root,"drawings",coll.id,drawing.filename + ".png"))
+				if cl.id in self.drawings.getconnectors:
+					if not exists(join(html_root,"drawings",coll.id)):
+						makedirs(join(html_root,"drawings",coll.id))
+					for drawing in self.drawings.getconnectors[cl.id].values():
+						drawing_png = drawing.get_png()
+						if not drawing_png is None:
+							copyfile(drawing_png,join(html_root,"drawings",coll.id,drawing.filename + ".png"))
+
 
 		#write body pages
 		for body in self.repo.standard_bodies:
@@ -372,8 +380,8 @@ class HTMLExporter(BackendExporter):
 		params["description"] = cl.description or "No description available"
 
 		#find drawing
-		if cl.id in self.drawings.getbase:
-			drawing = self.drawings.getbase[cl.id]
+		if cl.id in self.drawings.getdimensions:
+			drawing = self.drawings.getdimensions[cl.id]
 			if drawing.get_png() is None:
 				params["drawing"] = "no_drawing.png"
 			else:
@@ -489,7 +497,30 @@ class HTMLExporter(BackendExporter):
 					params["connectors"] = ""
 				else:
 					params["connectors"] = "<h2>Connectors</h2>\n"
-					params["connectors"] += "<p>%s</p>\n\n" % ", ".join(base.connectors.locations)
+					#TODO: The table class should be handled in the template
+					params["connectors"] += '<table class="table">\n'
+
+					draw_template = '<a href="../drawings/%s"><img width=200 src="../drawings/%s"/></a>'
+
+					conns = []
+					if cl.id in self.drawings.getconnectors:
+						conn_drawings = self.drawings.getconnectors[cl.id]
+						for loc in base.connectors.locations:
+							conns.append([loc])
+							#find a image that shows the connector
+							if loc in conn_drawings:
+								draw = conn_drawings[loc]
+								draw_path = join(draw.collection,draw.filename + ".png")
+								#TODO: also the drawings path should not be here but in the template
+								conns[-1].append(draw_template % (draw_path,draw_path))
+							else:
+								conns[-1].append(draw_template % ("no_drawing.png","no_drawing.png"))
+					else:
+						for loc in base.connectors.locations:
+							conns.append([loc,draw_template % ("no_drawing.png","no_drawing.png")])
+
+					params["connectors"] += html_table(conns,["Location","Drawing"])
+					params["connectors"] += "</table>\n"
 			else:
 				params["openscad"] = "<tr><td>Class not available in OpenSCAD</td></tr>\n"
 				params["openscadincantation"] = ""

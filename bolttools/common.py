@@ -84,8 +84,8 @@ class BOLTSParameters:
 	}
 	def __init__(self,param):
 		check_schema(param,"parameters",
-			[],
-			["literal","free","tables","tables2d","types","defaults","common","description"]
+			["types"],
+			["literal","free","tables","tables2d","defaults","common","description"]
 		)
 
 		self.literal = {}
@@ -143,27 +143,26 @@ class BOLTSParameters:
 			if not tname in all_types:
 				raise UnknownTypeError(tname)
 
+		for pname in self.parameters:
+			if not pname in self.types:
+				raise MissingTypeError(pname)
+
 		#check description
 		for pname,tname in self.description.iteritems():
 			if not pname in self.parameters:
 				raise UnknownParameterError(pname)
 
-		#fill in defaults for types
-		for pname in self.parameters:
-			if not pname in self.types:
-				self.types[pname] = "Length (mm)"
-
 		#check and normalize tables
 		for table in self.tables:
 			table._normalize_and_check_types(self.types)
 			if self.types[table.index] != "Table Index":
-				raise ValueError("Parameter %s must be of type Table Index" % table.index)
+				raise TableIndexTypeError(table.index,self.types[table.index])
 		for table in self.tables2d:
 			table._normalize_and_check_types(self.types)
 			if self.types[table.rowindex] != "Table Index":
-				raise ValueError("Parameter %s must be of type Table Index" % table.rowindex)
+				raise TableIndexTypeError(table.rowindex,self.types[table.rowindex])
 			if self.types[table.colindex] != "Table Index":
-				raise ValueError("Parameter %s must be of type Table Index" % table.colindex)
+				raise TableIndexTypeError(table.colindex,self.types[table.colindex])
 
 		#find the set of possible choices for every Table Index
 		self.choices = {}
@@ -198,10 +197,12 @@ class BOLTSParameters:
 		self.defaults = dict((pname,self.type_defaults[self.types[pname]])
 			for pname in self.free)
 		if "defaults" in param:
-			for pname in param["defaults"]:
+			for pname,dvalue in param["defaults"].iteritems():
 				if pname not in self.free:
 					raise NonFreeDefaultError(pname)
-				self.defaults[pname] = param["defaults"][pname]
+				if self.types[pname] == "Table Index" and dvalue not in self.choices[pname]:
+					raise InvalidTableIndexError(pname,dvalue)
+				self.defaults[pname] = dvalue
 
 		#common parameter combinations
 		discrete_types = ["Bool", "Table Index"]
@@ -256,7 +257,7 @@ class BOLTSParameters:
 		return res
 
 	def union(self,other):
-		res = BOLTSParameters({})
+		res = BOLTSParameters({"types" : {}})
 		res.literal.update(self.literal)
 		res.literal.update(other.literal)
 		res.free = self.free + other.free

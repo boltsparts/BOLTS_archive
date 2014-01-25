@@ -56,6 +56,11 @@ class TestCollectionLoad(unittest.TestCase):
 		self.assertEqual(cl.source,"Invented for testpurposes")
 		self.assertEqual(cl.parameters.free,[])
 
+	def test_invalid_default(self):
+		self.assertRaises(InvalidTableIndexError, lambda:
+			blt.BOLTSCollection(load_coll("test/data/invalid_default.blt"))
+		)
+
 	def test_parameters(self):
 		coll = blt.BOLTSCollection(load_coll("test/data/parameters.blt"))
 
@@ -96,7 +101,6 @@ class TestCollectionLoad(unittest.TestCase):
 		self.assertEqual(res["pitch_name"],"x0.2")
 
 		self.assertEqual(len(p.common),10)
-
 
 	def test_table_error(self):
 		#negative value for parameter of type length
@@ -164,6 +168,14 @@ class TestFreeCAD(unittest.TestCase):
 class TestDrawings(unittest.TestCase):
 	def test_syntax(self):
 		draw = drawings.DrawingsData("test/syntax")
+		self.assertTrue("hexscrew1" in draw.getdimensions)
+
+		self.assertTrue(draw.getdimensions["hexscrew1"].get_png() is None)
+		self.assertFalse(draw.getdimensions["hexscrew1"].get_svg() is None)
+
+		self.assertTrue(len(draw.getconnectors["hexbolt1"]) == 1)
+		self.assertTrue(draw.getconnectors["hexbolt1"]["tip"].get_png() is None)
+		self.assertFalse(draw.getconnectors["hexbolt2"]["tip"].get_svg() is None)
 
 class TestSolidWorks(unittest.TestCase):
 	def test_syntax(self):

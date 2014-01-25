@@ -83,6 +83,11 @@ class UnknownTypeError(ParsingError):
 		ParsingError.__init__(self)
 		self.msg = "Unknown type in types: %s" % tname
 
+class MissingTypeError(ParsingError):
+	def __init__(self,pname):
+		ParsingError.__init__(self)
+		self.msg = "No type specified for parameter: %s" % pname
+
 class NonUniqueBaseError(ParsingError):
 	def __init__(self,id):
 		ParsingError.__init__(self)
@@ -93,10 +98,20 @@ class NonUniqueClassIdError(ParsingError):
 		ParsingError.__init__(self)
 		self.msg = "Encountered more than one class with id: %s" % id
 
+class InvalidTableIndexError(ParsingError):
+	def __init__(self,pname,val):
+		ParsingError.__init__(self)
+		self.msg = "%s is not a valid choice as a Table Index for parameter %s" % (val,pname)
+
 class MissingLocationError(ParsingError):
 	def __init__(self,arguments):
 		ParsingError.__init__(self)
 		self.msg = "Argument list for coordinate system does not contain 'location': %s" % arguments
+
+class TableIndexTypeError(ParsingError):
+	def __init__(self,pname,tname):
+		ParsingError.__init__(self)
+		self.msg = "Parameter %s is used as an index in a table but has type: %s" % (pname,tname)
 
 class IncompatibleTypeError(Exception):
 	def __init__(self,pname,tname1,tname2):
