@@ -34,6 +34,10 @@ classes:
     parameters:
       free: [od, id, l]
       defaults: {od: 13, id: 10, l: 1000}
+      types:
+        id: Length (mm)
+        od: Length (mm)
+        l: Length (mm)
       description:
         id: inner diameter
         od: outer diameter
@@ -47,8 +51,12 @@ classes:
     standard: DIN11850 Range 2
     parameters:
       free: [dn, l]
-      types: {dn: Table Index}
       defaults: {dn: "10", l: 1000}
+      types:
+        dn: Table Index
+        id: Length (mm)
+        od: Length (mm)
+        l: Length (mm)
       description:
         dn: nominal diameter
         id: inner diameter
@@ -76,23 +84,20 @@ classes:
     notes: More tables can be found here http://www.gillain.com/en/tubes-and-components/p/detail/food-tubes-din-11850. The data there contradicts the one in Wikipedia, e.g. for DN32.
     source: de.wikipedia.org/wiki/Rohr_(Technik)#Abmessungen
   - id: nominalpipesize
-    naming: 
+    naming:
       template: "%s %s Length: %s"
       substitute: [nps, sched, l]
     description: Welded and seamless wrought steel pipe for high or low temperatures and pressures
     standard: [ANSI B36.10M, ASME B36.10M, API 5L]
     parameters:
       free: [nps, sched, l]
+      defaults: { nps: "NPS 1/2", sched: "40", l: 50 }
       types:
         nps: Table Index
         sched: Table Index
         l: Length (in)
         od: Length (in)
         wall: Length (in)
-      defaults:
-        nps: "NPS 1/2"
-        sched: "40"
-        l: 50
       description:
         nps: Nominal pipe size
         sched: Pipe schedule

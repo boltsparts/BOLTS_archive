@@ -28,6 +28,10 @@ classes:
       free: [key,l]
       types:
         key: Table Index
+        l: Length (mm)
+        d1: Length (mm)
+        d2: Length (mm)
+        s: Length (mm)
       description:
         l: Length of the part from start to end
         key: Thread size

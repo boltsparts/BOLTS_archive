@@ -30,8 +30,12 @@ classes:
     standard: [ISO7089, EN7089, DINENISO7089, DINEN27089, DIN125A]
     parameters:
         free: [key]
-        types: {key: Table Index}
-        defaults: {key: M3}
+        defaults: {key: "M3"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          d2: Length (mm)
+          s: Length (mm)
         description:
           key: Thread designation
           d1: inner diameter
@@ -96,8 +100,12 @@ classes:
     standard: [ISO7090, DINISO7090, DINENISO7090, DIN125B]
     parameters:
         free: [key]
-        types: {key: Table Index}
-        defaults: {key: M3}
+        defaults: {key: "M3"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          d2: Length (mm)
+          s: Length (mm)
         description:
           key: Thread designation
           d1: inner diameter
@@ -115,8 +123,12 @@ classes:
     standard: [DIN126, DINISO7091, DINENISO7091, ISO7091]
     parameters:
         free: [key]
-        types: {key: Table Index}
-        defaults: {key: M10}
+        defaults: {key: "M10"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          d2: Length (mm)
+          s: Length (mm)
         description:
           key: Thread designation
           d1: inner diameter
@@ -163,8 +175,12 @@ classes:
     standard: [DIN433, ISO7092, DINISO7092, DINENISO7092]
     parameters:
         free: [key]
-        types: {key: Table Index}
-        defaults: {key: M3}
+        defaults: {key: "M3"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          d2: Length (mm)
+          s: Length (mm)
         description:
           key: Thread designation
           d1: inner diameter
@@ -210,8 +226,12 @@ classes:
     standard: DIN7349
     parameters:
         free: [key]
-        types: {key: Table Index}
-        defaults: {key: M10}
+        defaults: {key: "M10"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          d2: Length (mm)
+          s: Length (mm)
         description:
           key: Thread designation
           d1: inner diameter

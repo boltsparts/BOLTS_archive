@@ -28,10 +28,6 @@ from common import BaseElement, DataBase, BOLTSParameters, check_schema
 class Drawing(BaseElement):
 	def __init__(self,basefile,collname,backend_root):
 		BaseElement.__init__(self,basefile,collname)
-		check_schema(basefile,"drawing",
-			["filename","author","license","type","classids"],
-			["source"]
-		)
 		self.collection = collname
 		self.filename = basefile["filename"]
 		self.path = join(backend_root,collname,self.filename)
@@ -52,10 +48,29 @@ class Drawing(BaseElement):
 			return None
 		return self.versions["svg"]
 
+class DrawingDimensions(Drawing):
+	def __init__(self,basefile,collname,backend_root):
+		check_schema(basefile,"drawing",
+			["filename","author","license","type","classids"],
+			["source"]
+		)
+		Drawing.__init__(self,basefile,collname,backend_root)
+
+class DrawingConnectors(Drawing):
+	def __init__(self,basefile,collname,backend_root):
+		check_schema(basefile,"drawing",
+			["filename","author","license","type","classids","location"],
+			["source"]
+		)
+		Drawing.__init__(self,basefile,collname,backend_root)
+
+		self.location = basefile["location"]
+
 class DrawingsData(DataBase):
 	def __init__(self,path):
 		DataBase.__init__(self,"drawings", path)
-		self.getbase = {}
+		self.getdimensions = {}
+		self.getconnectors = {}
 
 		if not exists(path):
 			e = MalformedRepositoryError("Repo directory does not exist")
@@ -78,7 +93,17 @@ class DrawingsData(DataBase):
 			base_info = base_info[0]
 
 			for drawing_element in base_info:
-				draw = Drawing(drawing_element, coll, self.backend_root)
-
-				for id in drawing_element["classids"]:
-					self.getbase[id] = draw
+				if drawing_element["type"] == "drawing-dimensions":
+					draw = DrawingDimensions(drawing_element, coll, self.backend_root)
+					for id in drawing_element["classids"]:
+						self.getdimensions[id] = draw
+				if drawing_element["type"] == "drawing-connector":
+					draw = DrawingConnectors(drawing_element, coll, self.backend_root)
+					for id in drawing_element["classids"]:
+						if not id in self.getconnectors:
+							self.getconnectors[id] = {draw.location: draw}
+						elif draw.location not in self.getconnectors[id]:
+							self.getconnectors[id][draw.location] = draw
+						else:
+							raise MalformedRepositoryError("More than one drawing for location %s of class %s" % 
+								(draw.location,id))

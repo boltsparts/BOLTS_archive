@@ -33,6 +33,12 @@ classes:
           free: [key, l]
           types:
               key: Table Index
+              l: Length (mm)
+              d1: Length (mm)
+              k: Length (mm)
+              s: Length (mm)
+              e: Length (mm)
+              h: Length (mm)
           tables:
             - index: key
               columns: [d1, k, s]
