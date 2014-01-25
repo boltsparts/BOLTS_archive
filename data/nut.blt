@@ -311,6 +311,7 @@ classes:
           d1: Length (in)
           s: Length (in)
           m_max: Length (in)
+          e_min: Length (in)
         description:
           key: Thread designation
           d1: hole diameter
