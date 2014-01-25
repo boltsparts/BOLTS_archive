@@ -28,6 +28,10 @@ classes:
       free: [key,l]
       types:
         key: Table Index
+        l: Length (mm)
+        d1: Length (mm)
+        d2: Length (mm)
+        s: Length (mm)
       description:
         l: Length of the part from start to end
         key: Thread size
@@ -45,6 +49,10 @@ classes:
       free: [key,l]
       types:
         key: Table Index
+        l: Length (mm)
+        d1: Length (mm)
+        d2: Length (mm)
+        s: Length (mm)
       description:
         l: Length of the part from start to end
         key: Thread size
@@ -63,6 +71,9 @@ classes:
       types:
         key: Table Index
         l: Length (in)
+        d1: Length (in)
+        d2: Length (in)
+        s: Length (in)
       description:
         l: Length of the part from start to end
         key: Thread size
@@ -80,6 +91,10 @@ classes:
       free: [key,l]
       types:
         key: Table Index
+        l: Length (mm)
+        d1: Length (mm)
+        d2: Length (mm)
+        s: Length (mm)
       defaults:
         key: M2.5
       description:
@@ -99,6 +114,10 @@ classes:
       free: [key,l]
       types:
         key: Table Index
+        l: Length (mm)
+        d1: Length (mm)
+        d2: Length (mm)
+        s: Length (mm)
       description:
         l: Length of the part
         key: Thread size

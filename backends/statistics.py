@@ -41,6 +41,15 @@ class StatisticsExporter(BackendExporter):
 			for name in base.author_names:
 				if not name in contributors_names:
 					contributors_names.append(name)
+		for draw in self.drawings.getdimensions.values():
+			for name in base.author_names:
+				if not name in contributors_names:
+					contributors_names.append(name)
+		for draws in self.drawings.getconnectors.values():
+			for draw in draws.values():
+				for name in base.author_names:
+					if not name in contributors_names:
+						contributors_names.append(name)
 		return contributors_names
 
 

@@ -46,7 +46,7 @@ class BaseFunction(FreeCADGeometry):
 		if "parameters" in function:
 			self.parameters = BOLTSParameters(function["parameters"])
 		else:
-			self.parameters = BOLTSParameters({})
+			self.parameters = BOLTSParameters({"types" : {}})
 
 class BaseFcstd(FreeCADGeometry):
 	def __init__(self,obj,basefile, collname,backend_root):
@@ -66,7 +66,7 @@ class BaseFcstd(FreeCADGeometry):
 		if "parameters" in obj:
 			self.parameters = BOLTSParameters(obj["parameters"])
 		else:
-			self.parameters = BOLTSParameters({})
+			self.parameters = BOLTSParameters({"types" : {}})
 
 		self.classids = obj["classids"]
 

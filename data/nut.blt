@@ -31,8 +31,13 @@ classes:
     replaces: DIN439B
     parameters:
         free: [key]
-        types: {key: Table Index}
-        defaults: {key: M3}
+        defaults: {key: "M3"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          s: Length (mm)
+          e_min: Length (mm)
+          m_max: Length (mm)
         description:
           key: Thread designation
           d1: hole diameter
@@ -86,8 +91,13 @@ classes:
     status: withdrawn
     parameters:
         free: [key]
-        types: {key: Table Index}
         defaults: {key: M3}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          s: Length (mm)
+          e_min: Length (mm)
+          m_max: Length (mm)
         description:
           key: Thread designation
           d1: hole diameter
@@ -141,8 +151,13 @@ classes:
     replaces: DIN934
     parameters:
         free: [key]
-        types: {key: Table Index}
-        defaults: {key: M3}
+        defaults: {key: "M3"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          s: Length (mm)
+          e_min: Length (mm)
+          m_max: Length (mm)
         description:
           key: Thread designation
           d1: hole diameter
@@ -213,8 +228,13 @@ classes:
     status: withdrawn
     parameters:
         free: [key]
-        types: {key: Table Index}
-        defaults: {key: M3}
+        defaults: {key: "M3"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          s: Length (mm)
+          e_min: Length (mm)
+          m_max: Length (mm)
         description:
           key: Thread designation
           d1: hole diameter
@@ -285,9 +305,12 @@ classes:
     status: active
     parameters:
         free: [key]
-        types: {key: Table Index, d1: Length (in), s: Length (in), m_max: Length (in), e_min: Length (in)}
-        defaults: {key: "3/8 in"}
         defaults: {key: "0.2500-20"}
+        types:
+          key: Table Index
+          d1: Length (in)
+          s: Length (in)
+          m_max: Length (in)
         description:
           key: Thread designation
           d1: hole diameter
@@ -298,25 +321,25 @@ classes:
             index: key
             columns: [d1, s, m_max, e_min]
             data:
-                #key         [  d1    s     m_max      e_min]
-                "0.2500-20"   : [ .2500, .4375, .21875, .505 ]
-                "0.3125-18"  : [ .3125, .5,    .265625, .577 ]
-                "0.3750-16"   : [ .3750, .5625, .328125, .650 ]
-                "0.4375-14"  : [ .4375, .6875, .375, .794 ]
-                "0.5000-13"   : [ .5000, .75, .4375, .866 ]
-                "0.5625-11"  : [ .5625, .875, .484375, 1.01 ]
-                "0.6250-11"   : [ .6250, .9375, .546875, 1.083 ]
-                "0.7500-10"   : [ .7500, 1.125, .640625, 1.299 ]
-                "0.8750-9"   : [ .8750, 1.3125, .75, 1.516 ]
-                "1.0000-8"     : [ 1.0000, 1.5, .859375, 1.732]
-                "1.1250-7" : [ 1.1250, 1.6875, .96875, 1.949 ]
-                "1.3750-6" : [ 1.3750, 2.0625, 1.171875, 2.382 ]
-                "1.5000-6" : [ 1.500, 2.25, 1.28125, 2.598 ]
-                "1.6250-8" : [ 1.6250, 2.4375, 1.390625, 2.815 ]
-                "1.7500-5" : [ 1.7500, 2.625, 1.5, 3.031 ]
-                "2.0000-4.5" : [ 2.0000, 3.0, 1.71875, 3.464 ]
-                "2.2500-4.5" : [ 2.2500, 3.375, 1.9375, 3.897 ]
-                "2.5000-4" : [ 2.5000, 3.75, 2.15625, 4.33 ]
-                "2.7500-4" : [ 2.7500, 4.125, 2.375, 4.763 ]
-                "3.0000-4" : [ 3.0000, 4.5, 2.59375, 5.196 ]
+                #key              [  d1     s       m_max       e_min]
+                "0.2500-20"     : [ .2500,  .4375,  .21875,     .505 ]
+                "0.3125-18"     : [ .3125,  .5,     .265625,    .577 ]
+                "0.3750-16"     : [ .3750,  .5625,  .328125,    .650 ]
+                "0.4375-14"     : [ .4375,  .6875,  .375,       .794 ]
+                "0.5000-13"     : [ .5000,  .75,    .4375,      .866 ]
+                "0.5625-11"     : [ .5625,  .875,   .484375,    1.01 ]
+                "0.6250-11"     : [ .6250,  .9375,  .546875,    1.083 ]
+                "0.7500-10"     : [ .7500,  1.125,  .640625,    1.299 ]
+                "0.8750-9"      : [ .8750,  1.3125, .75,        1.516 ]
+                "1.0000-8"      : [ 1.0000, 1.5,    .859375,    1.732]
+                "1.1250-7"      : [ 1.1250, 1.6875, .96875,     1.949 ]
+                "1.3750-6"      : [ 1.3750, 2.0625, 1.171875,   2.382 ]
+                "1.5000-6"      : [ 1.500,  2.25,   1.28125,    2.598 ]
+                "1.6250-8"      : [ 1.6250, 2.4375, 1.390625,   2.815 ]
+                "1.7500-5"      : [ 1.7500, 2.625,  1.5,        3.031 ]
+                "2.0000-4.5"    : [ 2.0000, 3.0,    1.71875,    3.464 ]
+                "2.2500-4.5"    : [ 2.2500, 3.375,  1.9375,     3.897 ]
+                "2.5000-4"      : [ 2.5000, 3.75,   2.15625,    4.33 ]
+                "2.7500-4"      : [ 2.7500, 4.125,  2.375,      4.763 ]
+                "3.0000-4"      : [ 3.0000, 4.5,    2.59375,    5.196 ]
     source: http://www.smithfast.com/finishedhexnuts.html, Machinery's Handbook, 24th Edition (ISBN0-8311-2424-5) - Screw Thread Systems, Table 2

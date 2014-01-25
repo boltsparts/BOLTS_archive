@@ -218,7 +218,7 @@ class BOLTSClass:
 			if "parameters" in cl:
 				self.parameters = BOLTSParameters(cl["parameters"])
 			else:
-				self.parameters = BOLTSParameters({})
+				self.parameters = BOLTSParameters({"types" : {}})
 		except ParsingError as e:
 			e.set_class(self.id)
 			raise e

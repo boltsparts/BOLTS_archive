@@ -2,14 +2,55 @@
 - filename: hex1
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
   source: own work
   classids: [hexscrew1,hexscrew2]
 - filename: hex2
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
+  source: own work
+  classids: [hexbolt1,hexbolt2]
+- filename: hex1-tip
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: tip
+  source: own work
+  classids: [hexscrew1,hexscrew2]
+- filename: hex1-root
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: root
+  source: own work
+  classids: [hexscrew1,hexscrew2]
+- filename: hex1-head
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: head
+  source: own work
+  classids: [hexscrew1,hexscrew2]
+- filename: hex2-tip
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: tip
+  source: own work
+  classids: [hexbolt1,hexbolt2]
+- filename: hex2-root
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: root
+  source: own work
+  classids: [hexbolt1,hexbolt2]
+- filename: hex2-head
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: head
   source: own work
   classids: [hexbolt1,hexbolt2]
 ...
-
