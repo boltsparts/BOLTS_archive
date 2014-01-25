@@ -1,9 +1,9 @@
 ---
-- filename: nut.SLDPRT
+- filename: Nut.SLDPRT
   author: Dale Dunn <dale.dunn@gmail.com>
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: "solidworks"
-  suffix: ISO
+  suffix: all
   params:
     Size@Sketch1: d1
     Width@Sketch1: s
