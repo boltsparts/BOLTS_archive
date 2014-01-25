@@ -286,11 +286,8 @@ classes:
     parameters:
         free: [key]
         types: {key: Table Index, d1: Length (in), s: Length (in), m_max: Length (in), e_min: Length (in)}
-<<<<<<< HEAD
         defaults: {key: "3/8 in"}
-=======
         defaults: {key: "0.2500-20"}
->>>>>>> add-ss-classes
         description:
           key: Thread designation
           d1: hole diameter
