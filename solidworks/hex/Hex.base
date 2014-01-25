@@ -1,0 +1,26 @@
+---
+- filename: Hex.SLDPRT
+  author: Dale Dunn <dale.dunn@gmail.com>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  type: "solidworks"
+  suffix: all
+  params:
+    Size@skBody: d1
+    # Length@Body: l
+    # Width@skHead: s
+    # Height@Head: k
+   metadata:
+    $prp@Nominal Size: key
+    # $prp@Length: l
+    # $prp@Height: k
+    # $prp@Width Across Flats: s
+    # $prp@Width Across Corners: e
+    # $prp@Thread Type: thread_type
+    # $prp@Pitch: pitch_name
+  classes:
+   - classid: hexscrew1
+     naming:
+       template: DIN933 - %s
+       substitute: [key]
+   
+...
