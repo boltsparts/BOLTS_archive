@@ -2,13 +2,13 @@
 - filename: pipe
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
   source: own work
   classids: [genericpipe, din11850range2]
 - filename: pipe_wall
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
   source: own work
   classids: [nominalpipesize]
 ...

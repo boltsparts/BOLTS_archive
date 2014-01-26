@@ -18,6 +18,7 @@ Changes of the BOLTS specifications
 * added description field to Parameter element
 * added table2 2 dimensional lookup tables
 * make types mandatory
+* distinguish between dimension and connector drawings
 
 
 

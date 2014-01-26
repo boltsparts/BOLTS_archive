@@ -2,8 +2,21 @@
 - filename: nut1
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing
+  type: drawing-dimensions
+  source: own work
+  classids: [hexagonthinnut1, hexagonthinnut2,hexagonnut1,hexagonnut2,hexagonnut3]
+- filename: nut1-bottom
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: bottom
+  source: own work
+  classids: [hexagonthinnut1, hexagonthinnut2,hexagonnut1,hexagonnut2,hexagonnut3]
+- filename: nut1-top
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: top
   source: own work
   classids: [hexagonthinnut1, hexagonthinnut2,hexagonnut1,hexagonnut2,hexagonnut3]
 ...
-
