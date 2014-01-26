@@ -1,5 +1,5 @@
 ---
-- filename: Hex.SLDPRT
+- filename: hex.SLDPRT
   author: Dale Dunn <dale.dunn@gmail.com>
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: "solidworks"
