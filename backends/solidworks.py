@@ -102,7 +102,7 @@ class SolidWorksExporter(BackendExporter):
 						c += 1
 
 					for pname in designtable.metadata.values():
-						worksheet.write(r,c,str(params[pname]) + UNITS[types[pname]])
+						worksheet.write(r,c,str(params[pname]))
 						c += 1
 
 					r += 1
