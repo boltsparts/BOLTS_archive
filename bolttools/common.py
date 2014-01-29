@@ -18,7 +18,8 @@
 #common elements and baseclasses
 
 import re
-from os.path import join
+from os.path import join, exists
+from os import listdir
 from copy import deepcopy
 
 from errors import *
@@ -42,6 +43,18 @@ def check_schema(yaml_dict, element_name, mandatory_fields, optional_fields):
 			raise UnknownFieldError(element_name,key)
 	if len(mandatory_fields) > 0:
 		raise MissingFieldError(element_name,mandatory_fields)
+
+def check_windows_path(directory,filename):
+	path = join(directory,filename)
+	files = listdir(directory)
+	#Catch case problems slipping through on Windows
+	if exists(path) and not (filename in files):
+		raise CaseMismatchError(path)
+	#give hints on case sensitive platform
+	if not exists(path):
+		for fname in files:
+			if filename.lower() == fname.lower():
+				raise CaseMismatchError(join(path))
 
 class Sorting:
 	def __init__(self):

@@ -68,6 +68,11 @@ class MalformedStringError(ParsingError):
 		ParsingError.__init__(self)
 		self.msg = msg
 
+class CaseMismatchError(ParsingError):
+	def __init__(self,path):
+		ParsingError.__init__(self)
+		self.msg = "Could not find file %s due to case mismatch" % path
+
 class NonFreeDefaultError(ParsingError):
 	def __init__(self,pname):
 		ParsingError.__init__(self)

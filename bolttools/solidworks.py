@@ -23,7 +23,7 @@ from os.path import join, exists, splitext
 from codecs import open
 
 from errors import *
-from common import BaseElement, DataBase, BOLTSParameters, BOLTSNaming, check_schema
+from common import BaseElement, DataBase, BOLTSParameters, BOLTSNaming, check_schema, check_windows_path
 
 class DesignTableClass:
 	def __init__(self,cl):
@@ -48,6 +48,7 @@ class DesignTable(BaseElement):
 		)
 
 		self.filename = designtable["filename"]
+		check_windows_path(join(backend_root,collname),self.filename)
 		self.path = join(backend_root,collname,self.filename)
 
 		self.suffix = designtable["suffix"]
@@ -80,6 +81,7 @@ class SolidWorksData(DataBase):
 
 		for coll in listdir(self.backend_root):
 			basefilename = join(self.backend_root,coll,"%s.base" % coll)
+			check_windows_path(join(self.backend_root,coll),"%s.base" % coll)
 			if not exists(basefilename):
 				#skip directory that is no collection
 				continue

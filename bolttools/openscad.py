@@ -22,7 +22,7 @@ from os.path import join, exists
 from codecs import open
 
 from errors import *
-from common import DataBase, BaseElement, BOLTSParameters, check_schema
+from common import DataBase, BaseElement, BOLTSParameters, check_schema, check_windows_path
 
 
 class OpenSCADGeometry(BaseElement):
@@ -121,6 +121,7 @@ class OpenSCADData(DataBase):
 
 		for coll in listdir(self.backend_root):
 			basefilename = join(self.backend_root,coll,"%s.base" % coll)
+			check_windows_path(join(self.backend_root,coll),"%s.base"  % coll)
 			if not exists(basefilename):
 				#skip directory that is no collection
 				continue

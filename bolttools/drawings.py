@@ -23,7 +23,7 @@ from os.path import join, exists, splitext
 from codecs import open
 
 from errors import *
-from common import BaseElement, DataBase, BOLTSParameters, check_schema
+from common import BaseElement, DataBase, BOLTSParameters, check_schema, check_windows_path
 
 class Drawing(BaseElement):
 	def __init__(self,basefile,collname,backend_root):
@@ -83,6 +83,7 @@ class DrawingsData(DataBase):
 
 		for coll in listdir(self.backend_root):
 			basefilename = join(self.backend_root,coll,"%s.base" % coll)
+			check_windows_path(join(self.backend_root,coll),"%s.base" % coll)
 			if not exists(basefilename):
 				#skip directory that is no collection
 				continue

@@ -19,7 +19,7 @@ from os.path import join, exists, basename, splitext
 # pylint: disable=W0622
 from codecs import open
 
-from common import check_schema, DataBase, BaseElement, BOLTSParameters
+from common import check_schema, DataBase, BaseElement, BOLTSParameters, check_windows_path
 from errors import *
 
 class FreeCADGeometry(BaseElement):
@@ -97,6 +97,7 @@ class FreeCADData(DataBase):
 			for basefile in base_info:
 				if basefile["type"] == "function":
 					basepath = join(self.backend_root,coll,"%s.py" % coll)
+					check_windows_path(join(self.backend_root,coll),"%s.py" % coll)
 					if not exists(basepath):
 						raise MalformedBaseError("Python module %s does not exist" % basepath)
 					for func in basefile["functions"]:
@@ -112,6 +113,7 @@ class FreeCADData(DataBase):
 							raise e
 				elif basefile["type"] == "fcstd":
 					basepath = join(self.backend_root,coll,basefile["filename"])
+					check_windows_path(join(self.backend_root,coll),basefile["filename"])
 					if not exists(basepath):
 						continue
 					for obj in basefile["objects"]:
