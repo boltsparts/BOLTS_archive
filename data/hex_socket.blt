@@ -158,7 +158,15 @@ classes:
     standard: [DIN913, ISO4026]
     parameters:
       free: [key,l]
-      types: {key: Table Index}
+      types:
+        key: Table Index
+        l: Length (mm)
+        d: Length (mm)
+        d1: Length (mm)
+        t: Length (mm)
+        s: Length (mm)
+        e: Length (mm)
+        point: String
       defaults: {key: M10, l: 20}
       description:
         key: Thread designation
@@ -202,7 +210,15 @@ classes:
     standard: [DIN914, ISO4027]
     parameters:
       free: [key,l]
-      types: {key: Table Index}
+      types:
+        key: Table Index
+        l: Length (mm)
+        d: Length (mm)
+        d1: Length (mm)
+        t: Length (mm)
+        s: Length (mm)
+        e: Length (mm)
+        point: String
       defaults: {key: M10, l: 20}
       description:
         key: Thread designation
@@ -242,7 +258,15 @@ classes:
     standard: [DIN915, ISO4028]
     parameters:
       free: [key,l]
-      types: {key: Table Index}
+      types:
+        key: Table Index
+        l: Length (mm)
+        d: Length (mm)
+        d1: Length (mm)
+        t: Length (mm)
+        s: Length (mm)
+        e: Length (mm)
+        point: String
       defaults: {key: M10, l: 20}
       description:
         key: Thread designation
@@ -280,4 +304,122 @@ classes:
           "M20": [ 20, 15,  8,   11.43,10  ]
           "M24": [ 24, 18,  10,  13.72,12  ]
     source: http://www.fullermetric.com/products/socket/din915socket_set_screw_dog_point.aspx
+  - id: hexsocketsetscrewcup
+    naming:
+      template: socket set screw cup point %s %s %d
+      substitute: [standard, key, length]
+    description: Hexagon socket set screw with cup point
+    standard: [DIN916, ISO4029]
+    parameters:
+      free: [key,l]
+      types:
+        key: Table Index
+        l: Length (mm)
+        d: Length (mm)
+        d1: Length (mm)
+        t: Length (mm)
+        s: Length (mm)
+        e: Length (mm)
+        point: String
+      defaults: {key: M10, l: 20}
+      description:
+        key: Thread designation
+        l: total length
+        d: diameter
+        d1: maximum point diameter
+        t: socket depth
+        s: width across flats
+        e: width across edges
+        point: point type
+      literal: {point: dog}
+      common:
+        - [[M2], [3,4,5,6,8]]
+        - [[M2.5], [3,4,5,6,8,10]]
+        - [[M3], [3,4,5,6,8,10,12,14,16,20,25]]
+        - [[M4], [3,4,5,6,8,10,12,14,16,20,25,30,35]]
+        - [[M5], [5,6,8,10,12,14,16,20,25,30,35,40,45]]
+        - [[M6], [5,6,8,10,12,14,16,20,25,30,35,40,45,50]]
+        - [[M8], [6,8,10,12,14,16,20,25,30,35,40,45,50,60]]
+        - [[M10], [8,10,12,14,16,20,25,30,35,40,45,50,60]]
+        - [[M12], [10,12,14,16,20,25,30,35,40,45,50,60,70,80]]
+        - [[M14], [14,16,20,25,30,35,40]]
+        - [[M16], [16,20,25,30,35,40,45,50,60,70,80,100]]
+        - [[M20], [20,25,30,35,40,45,50,60,65,70,80,130]]
+        - [[M24], [25,30,40,45,60,70,80,90]]
+      tables:
+        index: key
+        columns: [d,d1,t,e,s]
+        data:
+          "M2"   : [  2, 1,   0.8, 1.003, 0.9 ]
+          "M2.5" : [2.5, 1.2, 1.2, 1.427, 1.5 ]
+          "M3"   : [  3, 1.4, 1.2, 1.73,  1.5 ]
+          "M4"   : [  4, 1.5, 1.5, 2.3,   2   ]
+          "M5"   : [  5, 2,   2,   2.87,  2.5 ]
+          "M6"   : [  6, 3,   2,   3.44,  3   ]
+          "M8"   : [  8, 5,   3,   4.58,  4   ]
+          "M10"  : [ 10, 6,   4,   5.72,  5   ]
+          "M12"  : [ 12, 8,   4.8, 6.86,  6   ]
+          "M14"  : [ 14, 9,   5.6, 6.86,  6   ]
+          "M16"  : [ 16, 10,  6.4, 9.15,  8   ]
+          "M20"  : [ 20, 14,  8,   11.43, 10  ]
+          "M24"  : [ 24, 16,  10,  13.72, 12  ]
+    source: http://www.fullermetric.com/products/socket/din915socket_set_screw_dog_point.aspx
+  - id: hexsocketsetscrewall
+    naming:
+      template: socket set screw %s point %s %s %d
+      substitute: [standard, point, key, length]
+    description: Hexagon socket set screw with cup point
+    standard: [ANSI B18.3.6M]
+    parameters:
+      free: [key,l,point]
+      types:
+      types:
+        key: Table Index
+        l: Length (mm)
+        d: Length (mm)
+        d1: Length (mm)
+        t: Length (mm)
+        s: Length (mm)
+        e: Length (mm)
+        point: Table Index
+      defaults: {key: M10, l: 20}
+      description:
+        key: Thread designation
+        l: total length
+        d: diameter
+        d1: maximum point diameter
+        t: socket depth
+        s: width across flats
+        e: width across edges
+        point: point type
+      tables:
+        index: key
+        columns: [d,t,e,s]
+        data:
+          "M3"   : [  3, 1.2, 1.73,  1.5 ]
+          "M4"   : [  4, 1.5, 2.3,   2   ]
+          "M5"   : [  5, 2,   2.87,  2.5 ]
+          "M6"   : [  6, 2,   3.44,  3   ]
+          "M8"   : [  8, 3,   4.58,  4   ]
+          "M10"  : [ 10, 4,   5.72,  5   ]
+          "M12"  : [ 12, 4.8, 6.86,  6   ]
+          "M16"  : [ 16, 6.4, 9.15,  8   ]
+          "M20"  : [ 20, 8,   11.43, 10  ]
+          "M24"  : [ 24, 10,  13.72, 12  ]
+      tables2d:
+        - rowindex: key
+          colindex: point
+          result: d1
+          columns: ["flat","cone","dog","cup"]
+          data:
+            "M3" : [ 2,   None, 2,   1.4]
+            "M4" : [ 2.5, None, 2.5, 1.5]
+            "M5" : [ 3.5, None, 3.5, 2  ]
+            "M6" : [ 4,   1.5,  4,   3  ]
+            "M8" : [ 5.5, 2,    5.5, 5  ]
+            "M10": [ 7,   2.5,  7,   6  ]
+            "M12": [ 8.5, 3,    8.5, 8  ]
+            "M16": [ 12,  None, 12,  10 ]
+            "M20": [ 15,  None, 15,  14 ]
+    source: http://www.fullermetric.com/products/socket/index.aspx, data is more or less the intersection of the data from DIN 913-916
 ...
