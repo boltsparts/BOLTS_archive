@@ -20,11 +20,15 @@ from os.path import join, exists, dirname
 from os import listdir
 import bolttools.blt
 import bolttools.freecad
+
+USE_PYSIDE=True
+
 try:
 	from PySide import QtCore
 	from FreeCADGui import getMainWindow
 except ImportError:
 	from PyQt4 import QtCore, QtGui
+	USE_PYSIDE=False
 
 	def getMainWindow():
 		"returns the main window"

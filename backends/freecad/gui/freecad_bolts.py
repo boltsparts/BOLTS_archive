@@ -17,7 +17,9 @@
 
 from os.path import dirname, join
 bolts_path = dirname(__file__)
-try:
+from BOLTS import USE_PYSIDE
+
+if USE_PYSIDE:
 	from PySide import QtCore, QtGui
 	from FreeCADGui import PySideUic as uic
 	Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
@@ -28,7 +30,7 @@ try:
 	from PySide.QtCore import Slot
 	def unpack(x):
 		return x
-except ImportError:
+else:
 	from PyQt4 import QtGui, QtCore
 	from bolts_widget import Ui_BoltsWidget
 	from PyQt4.QtGui import QDockWidget as QBoltsWidget
