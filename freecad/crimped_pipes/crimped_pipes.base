@@ -1,9 +1,0 @@
----
-- filename: crimped_pipes.py
-  author: Fabrizio Pollastri <f.pollastri@inrim.it>
-  license: LGPL 3.0+ <http://www.gnu.org/licenses/lgpl-3.0>
-  type: function
-  functions:
-    - name: crimped_pipe
-      classids: [crimped pipe]
-...

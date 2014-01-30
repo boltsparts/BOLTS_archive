@@ -1,0 +1,68 @@
+#.+
+# .context    : BOLTS - Open Library of Technical Specifications
+# .title      : connecting bars
+# .kind       : BOLTS blt file
+# .author     : Fabrizio Pollastri <f.pollastri@inrim.it>
+# .site       : Torino - Italy
+# .creation   : 19-Jan-2014
+# .license    : MIT <http://opensource.org/licenses/MIT>
+#
+# Copyright (c) 2014 Fabrizio Pollastri <f.pollastri@inrim.it>
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#.-
+---
+id: connecting_bars
+name: Connecting Bars
+description: Bars connecting together mechanical parts
+author: Fabrizio Pollastri <f.pollastri@inrim.it>
+license: MIT <http://opensource.org/licenses/MIT>
+blt-version: 0.3
+classes:
+  - id: tube bar crimped ends
+    naming:
+      template: Tube_Bar_Crimped_Ends OD %g ID %g CG %g CL %g HD %g RL %g TL %g SD %d
+      substitute: [od, id, cg, cl, hd, rl, tl, sd]
+    description: a connecting bar made with a round tube crimped at both ends
+    parameters:
+      free: [od, id, cg, cl, hd, rl, tl, sd]
+      defaults: {od: 33.7, id: 27.9, cg: 6, hd: 16, cl: 50, rl: 50, tl: 50, sd: False}
+      types:
+        od: Length (mm)
+        id: Length (mm) 
+        cg: Length (mm) 
+        hd: Length (mm) 
+        cl: Length (mm) 
+        rl: Length (mm) 
+        tl: Length (mm) 
+        sd: Bool
+      description:
+        id: inner diameter
+        od: outer diameter
+        cg: crimp gap
+        hd: hole diameter
+        cl: crimp length
+        rl: round length
+        tl: transition length
+        sd: true = side crimped, false = simmetrically crimped
+    source: No source information used
+...

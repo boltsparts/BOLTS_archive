@@ -1,25 +1,31 @@
 #.+
 # .context    : BOLTS - Open Library of Technical Specifications
-# .title      : crimped pipes
+# .title      : connecting bars
 # .kind       : BOLTS base function
 # .author     : Fabrizio Pollastri <f.pollastri@inrim.it>
 # .site       : Torino - Italy
 # .creation   : 19-Jan-2014
-# .copyright  : (c) 2014 Fabrizio Pollastri
-# .license    : LGPL 3.0+ <http://www.gnu.org/licenses/lgpl-3.0> 
+# .license    : MIT <http://opensource.org/licenses/MIT>
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the Lesser GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# Lesser GNU General Public License for more details.
-
-# You should have received a copy of the Lesser GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Copyright (c) 2014 Fabrizio Pollastri <f.pollastri@inrim.it>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 #.-
 
 from FreeCAD import Base
@@ -28,7 +34,7 @@ import Part
 from math import pi
 
 
-def crimped_pipe(params,document):
+def tube_bar_crimped_ends(params,document):
     id = params['id']
     od = params['od']
     cg = params['cg']
@@ -97,13 +103,11 @@ def crimped_pipe(params,document):
     trans_o = Part.makeLoft([round_o1,round_o2,crimped_o2,crimped_o1],True)
 
     ## crimped parts
-
     eaxis = Base.Vector(0.,0.,cl)
     crimped_i = Part.Face(crimped_i1).extrude(eaxis)
     crimped_o = Part.Face(crimped_o1).extrude(eaxis)
 
     ## fastening hole
-   
     oxyz = Base.Vector(0.,-0.5 * tn_o + dy,tl + 0.5 * cl)
     haxis = Base.Vector(0.,1.,0.)
     hole = Part.makeCylinder(0.5 * hd,tn_o,oxyz,haxis)

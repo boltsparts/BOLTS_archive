@@ -1,0 +1,9 @@
+---
+- filename: connecting_bars.py
+  author: Fabrizio Pollastri <f.pollastri@inrim.it>
+  license: MIT <http://opensource.org/licenses/MIT>
+  type: function
+  functions:
+    - name: tube_bar_crimped_ends
+      classids: [tube bar crimped ends]
+...
