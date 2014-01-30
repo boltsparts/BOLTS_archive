@@ -19,14 +19,21 @@ from os.path import dirname, join
 bolts_path = dirname(__file__)
 from BOLTS import USE_PYSIDE
 
+import FreeCAD, FreeCADGui
+
 if USE_PYSIDE:
 	from PySide import QtCore, QtGui
 	from FreeCADGui import PySideUic as uic
-	Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
-	Ui_ValueWidget,QValueWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
-	Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'bool_widget.ui'))
-	Ui_TableIndexWidget,QTableIndexWidget = uic.loadUiType(join(bolts_path,'tableindex_widget.ui'))
-	Ui_PropertyWidget,QPropertyWidget = uic.loadUiType(join(bolts_path,'property_widget.ui'))
+
+	try:
+		Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
+		Ui_ValueWidget,QValueWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
+		Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'bool_widget.ui'))
+		Ui_TableIndexWidget,QTableIndexWidget = uic.loadUiType(join(bolts_path,'tableindex_widget.ui'))
+		Ui_PropertyWidget,QPropertyWidget = uic.loadUiType(join(bolts_path,'property_widget.ui'))
+	except ImportError:
+		FreeCAD.Console.PrintError("uic import failed. Make sure that the pyside tools are installed")
+		raise
 	from PySide.QtCore import Slot
 	def unpack(x):
 		return x
@@ -46,7 +53,6 @@ else:
 	def unpack(x):
 		return x.toPyObject()
 
-import FreeCAD, FreeCADGui
 import Part, Sketcher
 import sys
 from os import listdir
