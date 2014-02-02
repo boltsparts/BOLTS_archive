@@ -20,6 +20,13 @@ from Part import makeBox
 import Part
 import math
 
+thread_color = (0.5,1.,5.,0.)
+
+def color_face(part,n):
+	color = part.ViewObject.DiffuseColor[0]
+	n_faces = len(part.Shape.Faces)
+	part.ViewObject.DiffuseColor = [color if i != n else thread_color for i in range(n_faces)]
+
 def hex1(params,document):
 	key = params['key']
 	d1 = params['d1']
@@ -49,7 +56,10 @@ def hex1(params,document):
 	shaft_unthreaded = Part.makeCylinder(0.5*d1,h+k)
 	shaft_threaded = Part.makeCylinder(0.5*d1,l-h)
 	shaft_threaded.translate(Vector(0,0,h+k))
-	part.Shape = head.fuse(shaft_unthreaded).fuse(shaft_threaded).removeSplitter()
+	part.Shape = head.fuse(shaft_unthreaded).removeSplitter().fuse(shaft_threaded)
+
+	#color thread
+	color_face(part,9)
 
 def hex2(params,document):
 	key = params['key']
@@ -85,4 +95,8 @@ def hex2(params,document):
 	shaft_unthreaded = Part.makeCylinder(0.5*d1,l-b+k)
 	shaft_threaded = Part.makeCylinder(0.5*d1,b)
 	shaft_threaded.translate(Vector(0,0,l-b+k))
-	part.Shape = head.fuse(shaft_unthreaded).fuse(shaft_threaded).removeSplitter()
+	part.Shape = head.fuse(shaft_unthreaded).removeSplitter().fuse(shaft_threaded)
+
+	#color thread
+	color_face(part,9)
+

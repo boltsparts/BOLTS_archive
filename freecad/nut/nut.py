@@ -20,6 +20,14 @@ from Part import makeBox
 import Part
 import math
 
+thread_color = (0.5,1.,5.,0.)
+
+def color_face(part,n):
+	color = part.ViewObject.DiffuseColor[0]
+	n_faces = len(part.Shape.Faces)
+	part.ViewObject.DiffuseColor = [color if i != n else thread_color for i in range(n_faces)]
+
+
 def nut1(params,document):
 	key = params['key']
 	d1 = params['d1']
@@ -48,4 +56,7 @@ def nut1(params,document):
 	nut = head.cut(hole)
 #	nut = nut.makeFillet(r_fillet,nut.Edges)
 	part.Shape = nut.removeSplitter()
+
+	#color thread
+	color_face(part,7)
 
