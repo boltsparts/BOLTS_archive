@@ -18,6 +18,7 @@
 #common elements and baseclasses
 
 import re
+import math
 from os.path import join
 from copy import deepcopy
 
@@ -42,6 +43,31 @@ def check_schema(yaml_dict, element_name, mandatory_fields, optional_fields):
 			raise UnknownFieldError(element_name,key)
 	if len(mandatory_fields) > 0:
 		raise MissingFieldError(element_name,mandatory_fields)
+
+ALL_TYPES = ["Length (mm)", "Length (in)", "Number", "Bool", "Table Index", "String"]
+
+def convert_type(pname,tname,value):
+	""" Convert from strings to python types """
+	numbers = ["Length (mm)", "Length (in)", "Number"]
+	positive = ["Length (mm)", "Length (in)"]
+
+	#Check
+	if not tname in ALL_TYPES:
+		raise ValueError("Unknown Type in table for parameter %s: %s" % (pname,tname))
+
+	#Convert
+	if value == "None":
+		value = None
+	elif tname in numbers:
+		value = float(value)
+		if tname in positive and value < 0:
+			raise ValueError("Negative length in table for parameter %s: %f" % (pname,value))
+	elif tname == "Bool":
+		if not value in ["True","False"]:
+			raise ValueError("Unknown value for bool parameter %s: %s" % value)
+		value = bool(value)
+
+	return value
 
 class Sorting:
 	def __init__(self):
@@ -80,7 +106,7 @@ class BOLTSParameters:
 		"Number" : 1,
 		"Bool" : False,
 		"Table Index": '',
-		"String" : ''
+		"String" : '',
 	}
 	def __init__(self,param):
 		check_schema(param,"parameters",
@@ -88,9 +114,14 @@ class BOLTSParameters:
 			["literal","free","tables","tables2d","defaults","common","description"]
 		)
 
+		self.types = {}
+		if "types" in param:
+			self.types = param["types"]
+
 		self.literal = {}
 		if "literal" in param:
-			self.literal = param["literal"]
+			for pname,val in param["literal"].iteritems():
+				self.literal[pname] = convert_type(pname,self.types[pname],val)
 
 		self.free = []
 		if "free" in param:
@@ -112,10 +143,6 @@ class BOLTSParameters:
 			else:
 				self.tables2d.append(BOLTSTable2D(param["tables2d"]))
 
-		self.types = {}
-		if "types" in param:
-			self.types = param["types"]
-
 		self.description = {}
 		if "description" in param:
 			self.description = param["description"]
@@ -134,13 +161,10 @@ class BOLTSParameters:
 		self.parameters = list(set(self.parameters))
 
 		#check types
-		all_types = ["Length (mm)", "Length (in)", "Number",
-			"Bool", "Table Index", "String"]
-		
 		for pname,tname in self.types.iteritems():
 			if not pname in self.parameters:
 				raise UnknownParameterError(pname)
-			if not tname in all_types:
+			if not tname in ALL_TYPES:
 				raise UnknownTypeError(tname)
 
 		for pname in self.parameters:
@@ -314,29 +338,13 @@ class BOLTSTable:
 		self.data = deepcopy(table["data"])
 
 	def _normalize_and_check_types(self,types):
-		numbers = ["Length (mm)", "Length (in)", "Number"]
-		positive = ["Length (mm)", "Length (in)"]
-		rest = ["Bool", "Table Index", "String"]
 		col_types = [types[col] for col in self.columns]
-		idx = range(len(self.columns))
 		for key in self.data:
 			row = self.data[key]
 			if len(row) != len(self.columns):
 				raise ValueError("Column is missing for row: %s" % key)
-			for i,tname in zip(idx,col_types):
-				if row[i] == "None":
-					row[i] = None
-				else:
-					if tname in numbers:
-						row[i] = float(row[i])
-					elif not tname in rest:
-						raise ValueError("Unknown Type in table: %s" % tname)
-					if tname in positive and row[i] < 0:
-						raise ValueError("Negative length in table: %f" % row[i])
-					if tname == "Bool":
-						if not row[i] in ["True","False"]:
-							raise ValueError("Unknown value for bool parameter: %s" % row[i])
-						row[i] = bool(row[i])
+			for i in range(len(self.columns)):
+				row[i] = convert_type(self.columns[i],col_types[i],row[i])
 
 class BOLTSTable2D:
 	def __init__(self,table):
@@ -355,28 +363,13 @@ class BOLTSTable2D:
 			raise ValueError("Row- and ColIndex are identical. In this case a ordinary table should be used.")
 
 	def _normalize_and_check_types(self,types):
-		numbers = ["Length (mm)", "Length (in)", "Number"]
-		positive = ["Length (mm)", "Length (in)"]
-		rest = ["Bool", "Table Index", "String"]
 		res_type = types[self.result]
 		for key in self.data:
 			row = self.data[key]
 			if len(row) != len(self.columns):
 				raise ValueError("Column is missing for row: %s" % key)
 			for i in range(len(self.columns)):
-				if row[i] == "None":
-					row[i] = None
-				else:
-					if res_type in numbers:
-						row[i] = float(row[i])
-					elif not res_type in rest:
-						raise ValueError("Unknown Type in table: %s" % res_type)
-					if res_type in positive and row[i] < 0:
-						raise ValueError("Negative length in table: %f" % row[i])
-					if res_type == "Bool":
-						if not row[i] in ["True","False"]:
-							raise ValueError("Unknown value for bool parameter: %s" % row[i])
-						row[i] = bool(row[i])
+				row[i] = convert_type(self.result,types[self.result],row[i])
 
 class BOLTSNaming:
 	def __init__(self,name):
