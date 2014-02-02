@@ -433,26 +433,31 @@ class HTMLExporter(BackendExporter):
 		params["properties"] = "\n".join(props)
 
 		params["dimensions"] = ""
+		units = {"Length (mm)" : "mm", "Length (in)" : "in", "Angle (deg)" : "deg"}
 		for table in cl.parameters.tables:
 			data = [[idx] + table.data[idx] for idx in cl.parameters.choices[table.index]]
 
-			lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
 
 			header = [str(table.index)]
 			for p in table.columns:
-				if cl.parameters.types[p] in lengths:
-					header.append("%s (%s)" % (str(p), lengths[cl.parameters.types[p]]))
+				if cl.parameters.types[p] in units:
+					header.append("%s (%s)" % (str(p), units[cl.parameters.types[p]]))
 				else:
 					header.append("%s" % str(p))
 			#TODO: The table class should be handled in the template, but python templates are not smart enough
 			params["dimensions"] += '<table class="table">\n' + html_table(data,header) + '\n</table>\n'
 		for table in cl.parameters.tables2d:
 
-			lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
 			#TODO: The table class should be handled in the template, but python templates are not smart enough
+			result = None
+			if cl.parameters.types[table.result] in units:
+				result = "%s (%s)" % (table.result,units[cl.parameters.types[table.result]])
+			else:
+				result = table.result
+
 			params["dimensions"] += '<table class="table">\n' + html_table2d(
 				[table.data[i] for i in cl.parameters.choices[table.rowindex]],
-				table.result,table.columns,table.data.keys()) + '\n</table>\n'
+				result,table.columns,table.data.keys()) + '\n</table>\n'
 
 		#freecad information
 		if self.freecad is None:
