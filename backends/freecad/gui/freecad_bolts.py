@@ -372,6 +372,8 @@ class BoltsWidget(QBoltsWidget):
 			base = self.freecad.getbase[data.id]
 			add_part(base,params,FreeCAD.ActiveDocument)
 			FreeCADGui.SendMsgToActiveView("ViewFit")
+		except ValueError as e:
+			QtGui.QErrorMessage(self).showMessage(str(e))
 		except Exception as e:
 			FreeCAD.Console.PrintMessage(e)
 			QtGui.QErrorMessage(self).showMessage("An error occured when trying to add the part: %s\nParameter Values: %s" % (e,params))
