@@ -211,7 +211,7 @@ restricted to be. The following keys are contained in a parameter element.
   for details see table2d-element_ and parameter-collection_.
 - types: mandatory, associative array. Contains as keys parameter names, as
   values their respective types. Possible types are: "Length (mm)", Length
-  (in)", "Number", "Bool", "Table Index", "String".
+  (in)", "Number", "Bool", "Table Index", "String", "Angle (deg)".
 - defaults: optional, associative array. This array contains a default value
   for every free parameter. If absent, the default value defaults to the type
   specific values given in the table below.
@@ -239,6 +239,7 @@ Number        1               no
 Bool          False           yes
 Table Index   ""              yes
 String        ""              no
+Angle (deg)   0               no
 ============  ==============  =========
 
 Some parameter names are forbidden: standard, name.

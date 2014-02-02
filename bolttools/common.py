@@ -44,11 +44,11 @@ def check_schema(yaml_dict, element_name, mandatory_fields, optional_fields):
 	if len(mandatory_fields) > 0:
 		raise MissingFieldError(element_name,mandatory_fields)
 
-ALL_TYPES = ["Length (mm)", "Length (in)", "Number", "Bool", "Table Index", "String"]
+ALL_TYPES = ["Length (mm)", "Length (in)", "Number", "Bool", "Table Index", "String","Angle (deg)"]
 
 def convert_type(pname,tname,value):
 	""" Convert from strings to python types """
-	numbers = ["Length (mm)", "Length (in)", "Number"]
+	numbers = ["Length (mm)", "Length (in)", "Number","Angle (deg)"]
 	positive = ["Length (mm)", "Length (in)"]
 
 	#Check
@@ -62,6 +62,8 @@ def convert_type(pname,tname,value):
 		value = float(value)
 		if tname in positive and value < 0:
 			raise ValueError("Negative length in table for parameter %s: %f" % (pname,value))
+		elif tname == "Angle (deg)" and math.fabs(value) > 360:
+			raise ValueError("Angles must be 360 > alpha > -360: %s is %f" % (pname,value))
 	elif tname == "Bool":
 		if not value in ["True","False"]:
 			raise ValueError("Unknown value for bool parameter %s: %s" % value)
@@ -107,6 +109,7 @@ class BOLTSParameters:
 		"Bool" : False,
 		"Table Index": '',
 		"String" : '',
+		"Angle (deg)" : 0
 	}
 	def __init__(self,param):
 		check_schema(param,"parameters",
