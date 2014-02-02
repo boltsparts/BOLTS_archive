@@ -23,7 +23,9 @@ def pipe(params,document):
 	l = params['l']
 	name = params['name']
 
-	part = document.addObject("Part::Feature",name)
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
 	outer = Part.makeCylinder(0.5*od,l)
 	inner = Part.makeCylinder(0.5*id,l)
 	part.Shape = outer.cut(inner).removeSplitter()
@@ -36,7 +38,9 @@ def pipe_wall(params,document):
 
 	id = od - 2*wall
 
-	part = document.addObject("Part::Feature",name)
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
 	outer = Part.makeCylinder(0.5*od,l)
 	inner = Part.makeCylinder(0.5*id,l)
 	part.Shape = outer.cut(inner).removeSplitter()

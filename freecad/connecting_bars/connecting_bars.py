@@ -45,7 +45,8 @@ def tube_bar_crimped_ends(params,document):
     sd = params['sd']
     name = params['name']
 
-    part = document.addObject("Part::Feature",name)
+    part = document.addObject("Part::Feature","BOLTS_part")
+    part.Label = name
 
     ## round to crimped transition
  

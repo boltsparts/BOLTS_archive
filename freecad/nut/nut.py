@@ -37,7 +37,8 @@ def nut1(params,document):
 
 	r_fillet = 0.03*s
 
-	part = document.addObject("Part::Feature",name)
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
 
 	#head
 	a = s/math.tan(math.pi/3.)

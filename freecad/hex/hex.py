@@ -38,7 +38,8 @@ def hex1(params,document):
 	l = params['l']
 	name = params['name']
 
-	part = document.addObject("Part::Feature",name)
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
 
 	#head
 	a = s/math.tan(math.pi/3.)
@@ -77,7 +78,8 @@ def hex2(params,document):
 		b = b2
 	name = params['name']
 
-	part = document.addObject("Part::Feature",name)
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
 
 	#head
 	a = s/math.tan(math.pi/3.)

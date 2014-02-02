@@ -80,9 +80,10 @@ def singlerowradialbearing(params,document):
 		sl.translate((0,0,RR))
 		shapes.append(sl)
 
-	part=document.addObject("Part::Feature",name)
+	part = document.addObject("Part::Feature","BOLTS_part")
 	comp=Part.Compound(shapes)
 	part.Shape=comp.removeSplitter()
+	part.Label = name
 
 
 def doublerowradialbearing(params,document): 
@@ -145,9 +146,10 @@ def doublerowradialbearing(params,document):
 		b.translate(bv)
 		shapes.append(b)
 
-	part = document.addObject("Part::Feature",name)
+	part = document.addObject("Part::Feature","BOLTS_part")
 	comp = Part.Compound(shapes)
 	part.Shape = comp.removeSplitter()
+	part.Label = name
 
 
 def axialthrustbearing(params, document):
@@ -205,9 +207,10 @@ def axialthrustbearing(params, document):
 		Ball.translate(BV)
 		shapes.append(Ball)
 
-	part = document.addObject("Part::Feature",name)
+	part = document.addObject("Part::Feature","BOLTS_part")
 	comp = Part.Compound(shapes)
 	part.Shape = comp.removeSplitter()
+	part.Label = name
 
 
 def needlebearing(params, document):
@@ -247,9 +250,10 @@ def needlebearing(params, document):
 		shapes.append(nd)
 	shapes.append(nc)
 
-	part = document.addObject("Part::Feature",name)
+	part = document.addObject("Part::Feature","BOLTS_part")
 	comp = Part.Compound(shapes)
 	part.Shape = comp.removeSplitter()
+	part.Label = name
 
 
 def cylindricalrollerbearing(params,document):
@@ -296,6 +300,7 @@ def cylindricalrollerbearing(params,document):
 		c.translate(cv)
 		shapes.append(c)
 
-	part=document.addObject("Part::Feature",name)
+	part = document.addObject("Part::Feature","BOLTS_part")
 	comp=Part.Compound(shapes)
 	part.Shape=comp.removeSplitter()
+	part.Label = name
