@@ -163,6 +163,21 @@ class NumberWidget(QValueWidget):
 	def getValue(self):
 		return float(self.ui.valueEdit.text())
 
+class AngleWidget(QValueWidget):
+	def __init__(self,parent,label,default):
+		QValueWidget.__init__(self,parent)
+		self.ui = Ui_ValueWidget()
+		self.ui.setupUi(self)
+		self.ui.label.setText(label)
+		self.ui.valueEdit.setText(default)
+
+		self.validator = QtGui.QDoubleValidator(self)
+		self.validator.setRange(-360.,360.,2)
+		self.ui.valueEdit.setValidator(self.validator)
+
+	def getValue(self):
+		return float(self.ui.valueEdit.text())
+
 class StringWidget(QValueWidget):
 	def __init__(self,parent,label,default):
 		QValueWidget.__init__(self,parent)
@@ -255,6 +270,7 @@ class BoltsWidget(QBoltsWidget):
 		#construct widgets
 		params = cl.parameters.union(base.parameters)
 		for p in params.free:
+			print p
 			p_type = params.types[p]
 			default = str(params.defaults[p])
 			if p_type == "Length (mm)":
@@ -263,10 +279,14 @@ class BoltsWidget(QBoltsWidget):
 				self.param_widgets[p] = LengthWidget(self.ui.params,p + " (in)",default)
 			elif p_type == "Number":
 				self.param_widgets[p] = NumberWidget(self.ui.params,p,default)
+			elif p_type == "Angle (deg)":
+				self.param_widgets[p] = AngleWidget(self.ui.params,p + " (deg)",default)
 			elif p_type == "Bool":
 				self.param_widgets[p] = BoolWidget(self.ui.params,p,default)
 			elif p_type == "Table Index":
 				self.param_widgets[p] = TableIndexWidget(self.ui.params,p,params.choices[p],default)
+			else:
+				raise ValueError("Unknown type encountered for parameter %s: %s" % (p,p_type))
 			self.param_widgets[p].setToolTip(cl.parameters.description[p])
 		#add them to layout
 			self.ui.param_layout.addWidget(self.param_widgets[p])
