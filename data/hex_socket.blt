@@ -42,7 +42,7 @@ classes:
           k_max: Length (mm)
           s: Length (mm)
           t: Length (mm)
-          alpha: Number
+          alpha: Angle (deg)
           L: Length (mm)
           h_max: Length (mm)
         description:
