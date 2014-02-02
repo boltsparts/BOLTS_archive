@@ -23,6 +23,9 @@ def pipe(params,document):
 	l = params['l']
 	name = params['name']
 
+	if id > od:
+		raise ValueError("Inner diameter must be smaller than outer diameter")
+
 	part = document.addObject("Part::Feature","BOLTS_part")
 	part.Label = name
 
