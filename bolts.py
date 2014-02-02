@@ -85,7 +85,7 @@ def check(args):
 	checker = CheckerExporter(repo,dbs)
 
 	for check in checker.checks.values():
-		print check.print_table()
+		print check.print_table(),
 
 def tasks(args):
 	repo = BOLTSRepository(args.repo)
@@ -99,7 +99,7 @@ def tasks(args):
 	checker = CheckerExporter(repo,dbs)
 
 	for task in checker.tasks.values():
-		print task.print_table()
+		print task.print_table(),
 
 def connectors(args):
 	repo = BOLTSRepository(args.repo)
