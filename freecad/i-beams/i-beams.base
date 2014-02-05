@@ -1,5 +1,5 @@
 ---
-- filename: i-beam.py
+- filename: i-beams.py
   author: Bernd Hahnebach <bernd@bimstatik.ch>
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: function
