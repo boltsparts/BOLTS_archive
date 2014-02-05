@@ -1,0 +1,9 @@
+---
+- filename: i-beam.py
+  author: Bernd Hahnebach <bernd@bimstatik.ch>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  type: function
+  functions:
+    - name: ibeam1
+      classids: [ibeamhea, ibeamheaa, ibeamheb, ibeamhem, ibeamipe, ibeamipea, ibeamipeo, ibeamiper, ibeamipev]
+...
