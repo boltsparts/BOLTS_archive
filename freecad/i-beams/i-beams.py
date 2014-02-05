@@ -29,19 +29,22 @@ def ibeam1(params,document):
         tf = params['tf']
         tw = params['tw']
         r = params ['r']
+        l = params['l']
         name = params['name']
 
 
 
         part = document.addObject("Part::Feature","BOLTS_part")
         part.Label = name
- 
+
         box1 = makeBox(b,tf,l)
         box1.translate(Vector(0,(h-tf),0))
         box2 = makeBox(b,tf,l)
         box3 = makeBox(tw,(h-2*tf),l)
         box3.translate(Vector((b/2),tf,0))
         beam =   box1.fuse(box2).fuse(box3)
+
+        part.Shape = beam
 
 
         # fillet is missing
