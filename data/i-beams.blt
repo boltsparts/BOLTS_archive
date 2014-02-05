@@ -15,7 +15,7 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 ---
-id: i-beam
+id: i-beams
 name: i-beams
 description: various standard metric european i-beams
 author: Bernd Hahnebach <bernd@bimstatik.ch>
@@ -30,7 +30,7 @@ classes:
     standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
     parameters:
         free: [type,l]
-        defaults: {type:"HEA200",l: 3000}
+        defaults: {type: "HEA200", l: 3000}
         types:
           type: Table Index
           h: Length (mm)
@@ -86,7 +86,7 @@ classes:
     standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
     parameters:
         free: [type,l]
-        defaults: {type:"HEAA200",l: 3000}
+        defaults: {type: "HEAA200", l: 3000}
         types:
           type: Table Index
           h: Length (mm)
@@ -142,7 +142,7 @@ classes:
     standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
     parameters:
         free: [type,l]
-        defaults: {type:"HEB200",l: 3000}
+        defaults: {type: "HEB200", l: 3000}
         types:
           type: Table Index
           h: Length (mm)
@@ -198,7 +198,7 @@ classes:
     standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
     parameters:
         free: [type,l]
-        defaults: {type:"HEM200",l: 3000}
+        defaults: {type: "HEM200", l: 3000}
         types:
           type: Table Index
           h: Length (mm)
@@ -254,7 +254,7 @@ classes:
     standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
     parameters:
         free: [type,l]
-        defaults: {type:"IPE200",l: 3000}
+        defaults: {type: "IPE200", l: 3000}
         types:
           type: Table Index
           h: Length (mm)
@@ -312,7 +312,7 @@ classes:
     standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
     parameters:
         free: [type,l]
-        defaults: {type:"IPEa200",l: 3000}
+        defaults: {type: "IPEa200", l: 3000}
         types:
           type: Table Index
           h: Length (mm)
@@ -361,7 +361,7 @@ classes:
     standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
     parameters:
         free: [type,l]
-        defaults: {type:"IPEo200",l: 3000}
+        defaults: {type: "IPEo200", l: 3000}
         types:
           type: Table Index
           h: Length (mm)
@@ -395,7 +395,7 @@ classes:
                 IPEo450:   [   456, 192,   11, 17.6, 21 ]
                 IPEo500:   [   506, 202,   12,   19, 21 ]
                 IPEo550:   [   556, 212, 12.7, 20.2, 24 ]
-                IPEo600:   [   610, 224,   15,   24, 24 ]    
+                IPEo600:   [   610, 224,   15,   24, 24 ]
     source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
     notes: http://en.wikipedia.org/wiki/I-beam
   - id: ibeamiper
@@ -406,7 +406,7 @@ classes:
     standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
     parameters:
         free: [type,l]
-        defaults: {type:"IPEr200",l: 3000}
+        defaults: {type: "IPEr200", l: 3000}
         types:
           type: Table Index
           h: Length (mm)
@@ -453,7 +453,7 @@ classes:
     standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
     parameters:
         free: [type,l]
-        defaults: {type:"IPEv400",l: 3000}
+        defaults: {type: "IPEv400", l: 3000}
         types:
           type: Table Index
           h: Length (mm)
@@ -480,7 +480,6 @@ classes:
                 IPEv500:   [   514, 204, 14.2,   23, 21 ]
                 IPEv550:   [   566, 216, 17.1, 25.2, 24 ]
                 IPEv600:   [   618, 228,   18,   28, 24 ]
-     source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
-     notes: http://en.wikipedia.org/wiki/I-beam
-
-
+    source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
+    notes: http://en.wikipedia.org/wiki/I-beam
+...
