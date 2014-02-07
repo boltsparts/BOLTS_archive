@@ -53,7 +53,7 @@ BOLTS has a check to encourage complete coverage of all parameters and
 complains if unknown parameters are described.
 
 This information is used in the 
-[generated html documentation](http://jreinhardt.github.io/BOLTS/html/classes/ISO4035.html)
+[generated html documentation]({{site.baseurl}}/html/classes/ISO4035.html)
  for each part, just below the drawing, to give it more context.
 
 It is also shown as a tooltip in the FreeCAD widget, when hovering above the

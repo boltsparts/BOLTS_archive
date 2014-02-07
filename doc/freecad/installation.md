@@ -43,7 +43,7 @@ If you get a message that says
 
 then there is a part of the PySide Qt bindings missing. For Debian and Ubuntu this is contained in the package pyside-tools.
 
-If you get different errors, than please try the latest development snapshot. If it still does not work, please report that problem. There is a number of places where you can do so, a list can be found [on the contribute page](http://jreinhardt.github.io/BOLTS/contribute.html).
+If you get different errors, than please try the latest development snapshot. If it still does not work, please report that problem. There is a number of places where you can do so, a list can be found [on the contribute page]({{site.baseurl}}/contribute.html).
 
 ### Next steps
 

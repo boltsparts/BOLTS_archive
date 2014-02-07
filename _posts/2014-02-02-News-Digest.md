@@ -12,7 +12,7 @@ None of these changes are spectacular enough to justify a own blog post. But I h
 
 * I reintegrated bolttools in the BOLTS git repo. This avoids submodules and all the problems and confusions they cause.
 * Types for parameters in blt files files are now mandatory. I got bitten too often by strange errors that were caused by forgotten types. blt files get a bit more verbose by that, though.
-* [OpenSCAD connectors]({{site.baseurl}}/2013/12/27/OpenSCAD-positioning.html) are now documented on the specification pages, see for example [here]({{site.baseurl}}/html/classes/ISO4017.html). For every connector a picture is shown that shows the position and orientation of the connector with respect to the part. I also created a bit of infrastructure to semi-automate the creation of these pictures.
+* [OpenSCAD connectors]({{site.baseurl}}/2013/12/28/OpenSCAD-positioning.html) are now documented on the specification pages, see for example [here]({{site.baseurl}}/html/classes/ISO4017.html). For every connector a picture is shown that shows the position and orientation of the connector with respect to the part. I also created a bit of infrastructure to semi-automate the creation of these pictures.
 
 [<img alt="Connector position documentation" src="{{ site.baseurl }}/images/openscad-connectors-documentation.png" style="width: 60%;"/>]({{ site.baseurl }}/images/openscad-connectors-documentation.png)
 

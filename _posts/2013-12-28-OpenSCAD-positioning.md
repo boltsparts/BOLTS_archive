@@ -5,7 +5,7 @@
 ---
 
 I am looking for ways to make it easier to use parts from
-[BOLTS](http://jreinhardt.github.io/BOLTS/index.html) in OpenSCAD. At the
+[BOLTS]({{site.baseurl}}/index.html) in OpenSCAD. At the
 moment it is a bit awkward because one has to know precisely how the
 BOLTS part is positioned and oriented  and then has to translate and
 rotate it around. This often requires the knowledge of some dimensions
@@ -103,14 +103,14 @@ Changing the size of the bolts and washers change M4 is also easy.
 ### Try it
 
 You can try this functionality with the most recent development snapshot from
-the [BOLTS page](http://jreinhardt.github.io/BOLTS/downloads.html). Either
+the [BOLTS page]({{site.baseurl}}/downloads.html). Either
 place the contents of the archive in the same directory as the .scad files that
 use BOLTS, or follow the instructions on 
 [how to install BOLTS for OpenSCAD]({{site.baseurl}}/doc/openscad/installation.html).
 
 Not all parts have connectors yet, but nuts, washers, hex bolts and
 batteries do. The names of the connectors are listed in the OpenSCAD section of the
-[part page](http://jreinhardt.github.io/BOLTS/html/index.html).
+[part page]({{site.baseurl}}/html/index.html).
 
 There is no documentation for this feature (apart from this blog post), because
 I might still change the way things work.

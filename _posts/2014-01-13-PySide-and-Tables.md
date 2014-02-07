@@ -22,13 +22,13 @@ Versions of FreeCAD on all systems, but in the end it worked out. At least I
 hope. I do not have access to a Windows Computer, so I could not test that. If
 you do and run FreeCAD 0.13 or 0.14, it would be great if you could test
 whether the latest 
-[development snapshot](http://jreinhardt.github.io/BOLTS/downloads.html) works for you.
+[development snapshot]({{site.baseurl}}/downloads.html) works for you.
 
 ### 2D Tables
 
 BOLTS needs to provide a way to express the relationship between the parameters
 of parts. As an example, the dimensions of the head of a 
-[hexagon head screw](http://jreinhardt.github.io/BOLTS/html/classes/ISO4017.html) 
+[hexagon head screw]({{site.baseurl}}/html/classes/ISO4017.html) 
 are determined by the diameter of the shaft.
 
 These relationships are usually expressed by tables. For most parameters these

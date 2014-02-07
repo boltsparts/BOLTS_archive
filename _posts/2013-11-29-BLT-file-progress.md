@@ -3,11 +3,11 @@
   title: BLT file progress
 ---
 
-This post should now appear on [Planet RepRap](http://planet.arcol.hu/), hi everybody reading this from there. This is the development blog for [BOLTS](http://jreinhardt.github.io/BOLTS/index.html). BOLTS tries to build an open standard parts library for a number of CAD applications.
+This post should now appear on [Planet RepRap](http://planet.arcol.hu/), hi everybody reading this from there. This is the development blog for [BOLTS]({{site.baseurl}}/index.html). BOLTS tries to build an open standard parts library for a number of CAD applications.
 
-BOLTS is a rather young project, but is already useable with [OpenSCAD](http://www.openscad.org/) and [FreeCAD](http://freecadweb.org/). Its youth is noticeable by the still relatively [small number of parts](http://jreinhardt.github.io/BOLTS/html/index.html), though. It is not difficult to add more parts and [well documented](http://jreinhardt.github.io/BOLTS/doc/index.html), so if you are missing a part in BOLTS, or just think BOLTS is a good idea, [please help out with improving it](http://jreinhardt.github.io/BOLTS/contribute.html).
+BOLTS is a rather young project, but is already useable with [OpenSCAD](http://www.openscad.org/) and [FreeCAD](http://freecadweb.org/). Its youth is noticeable by the still relatively [small number of parts]({{site.baseurl}}/html/index.html), though. It is not difficult to add more parts and [well documented]({{site.baseurl}}/doc/index.html), so if you are missing a part in BOLTS, or just think BOLTS is a good idea, [please help out with improving it]({{site.baseurl}}/contribute.html).
 
-If you want to try out BOLTS or learn more about it, you should head to its [webpage](http://jreinhardt.github.io/BOLTS/index.html).
+If you want to try out BOLTS or learn more about it, you should head to its [webpage]({{site.baseurl}}/index.html).
 
 The rest of this post reports on recent developments of one of the important components 
 
