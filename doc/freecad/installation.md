@@ -37,6 +37,12 @@ If you get an error that says something like:
 
 then you are using a older version of python where the importlib library is not included. You can get it [here](https://pypi.python.org/pypi/importlib/1.0.2). For importlib no convenient installer is available for windows. Instructions on how to install a python module without an installer can be found [here](http://docs.python.org/2/install/index.html).
 
+If you get a message that says
+
+    uic import failed. Make sure that the pyside tools are installed
+
+then there is a part of the PySide Qt bindings missing. For Debian and Ubuntu this is contained in the package pyside-tools.
+
 If you get different errors, than please try the latest development snapshot. If it still does not work, please report that problem. There is a number of places where you can do so, a list can be found [on the contribute page](http://jreinhardt.github.io/BOLTS/contribute.html).
 
 ### Next steps
