@@ -25,14 +25,12 @@ try:
 except:
 	raise MissingFreeCADError()
 
-from os.path import join, exists, basename, splitext, isfile
-from os import listdir, makedirs, remove, devnull
-from shutil import rmtree
+from os.path import join
+from os import makedirs, remove
 from datetime import datetime
 import importlib
 
 from common import BackendExporter
-from freecad import FreeCADExporter
 
 def copy_part_recursive(src_obj,dst_doc,srcdstmap):
 	# pylint: disable=F0401

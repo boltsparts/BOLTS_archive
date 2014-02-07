@@ -13,9 +13,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from os import makedirs, remove
+from os import makedirs
 from os.path import join, exists, basename
-from shutil import copy, move, copytree, copyfile, rmtree
+from shutil import copy, copytree, copyfile, rmtree
 # pylint: disable=W0622
 from codecs import open
 from datetime import datetime
@@ -42,7 +42,8 @@ class FreeCADExporter(BackendExporter):
 		#copy files
 		#bolttools
 		if not license.is_combinable_with("LGPL 2.1+",target_license):
-			raise IncompatibleLicenseError("bolttools licensed under LGPL 2.1+, which is not compatible with %s" % target_license)
+			raise IncompatibleLicenseError(
+				"bolttools is LGPL 2.1+, which is not compatible with %s" % target_license)
 		copytree(join(self.repo.path,"bolttools"),join(bolts_path,"bolttools"))
 		#remove the test suite and documentation, to save space
 		rmtree(join(bolts_path,"bolttools","test"))
@@ -57,7 +58,8 @@ class FreeCADExporter(BackendExporter):
 
 		#freecad gui code
 		if not license.is_combinable_with("LGPL 2.1+",target_license):
-			raise IncompatibleLicenseError("FreeCAD gui files are licensed under LGPL 2.1+, which is not compatible with %s" % target_license)
+			raise IncompatibleLicenseError(
+				"FreeCAD gui files are LGPL 2.1+, which is not compatible with %s" % target_license)
 		if not exists(join(bolts_path,"freecad")):
 			makedirs(join(bolts_path,"freecad"))
 		if not exists(join(bolts_path,"data")):

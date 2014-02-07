@@ -16,15 +16,13 @@
 
 from common import BackendExporter
 from openscad import OpenSCADExporter,get_signature
-import license
 from errors import *
-from os import listdir, makedirs, walk
+from os import makedirs
 from os.path import join, exists
 
 class ConnectorDrawingsExporter(BackendExporter):
 	def __init__(self,repo,databases):
 		BackendExporter.__init__(self,repo,databases)
-		self.repo
 		self.dbs = databases
 
 	def write_output(self,out_path):

@@ -51,7 +51,8 @@ class SolidWorksExporter(BackendExporter):
 			if not exists(coll_path):
 				makedirs(coll_path)
 			#check for case
-			if not designtable.filename in listdir(join(self.solidworks.backend_root,designtable.collection)):
+			if not designtable.filename in listdir(
+					join(self.solidworks.backend_root,designtable.collection)):
 				raise FileNotFoundError(designtable.filename)
 			model_path = join(coll_path,designtable.filename)
 			if not exists(model_path):
@@ -62,17 +63,17 @@ class SolidWorksExporter(BackendExporter):
 			worksheet = workbook.add_sheet("Sheet1")
 
 			#write column headers
-			c = 1
-			r = 0
+			col = 1
+			row = 0
 			for pname in designtable.params:
-				worksheet.write(r,c,pname)
-				c += 1
+				worksheet.write(row,col,pname)
+				col += 1
 			for mname in designtable.metadata:
-				worksheet.write(r,c,mname)
-				c += 1
+				worksheet.write(row,col,mname)
+				col += 1
 
 			#write configurations
-			r = 1
+			row = 1
 			for dtcl in designtable.classes:
 				cl = blt_classes[dtcl.classid]
 				for free in cl.parameters.common:
@@ -83,19 +84,19 @@ class SolidWorksExporter(BackendExporter):
 					else:
 						name = dtcl.naming.get_name(params)
 
-					c = 0
-					worksheet.write(r,c,name)
-					c += 1
+					col = 0
+					worksheet.write(row,col,name)
+					col += 1
 					
 					for pname in designtable.params.values():
 						worksheet.write(r,c,params[pname])
-						c += 1
+						col += 1
 
 					for pname in designtable.metadata.values():
 						worksheet.write(r,c,params[pname])
-						c += 1
+						col += 1
 
-					r += 1
+					row += 1
 
 			workbook.save(join(coll_path,designtable.outname))
 

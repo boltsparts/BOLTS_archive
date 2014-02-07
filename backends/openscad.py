@@ -22,7 +22,6 @@ from shutil import copy
 from codecs import open
 import license
 from datetime import datetime
-import re
 
 from errors import *
 from common import BackendExporter
@@ -58,7 +57,7 @@ class OpenSCADExporter(BackendExporter):
 			for cl in coll.classes:
 				if cl.openscadname in modules:
 					raise ModuleNameCollisionError(cl.openscadname)
-				modules.append(cl.openscadname);
+				modules.append(cl.openscadname)
 		for base in self.openscad.getbase.values():
 			if base.type == "module":
 				if base.name in modules:
@@ -78,7 +77,8 @@ class OpenSCADExporter(BackendExporter):
 
 		#copy common files
 		if not license.is_combinable_with("LGPL 2.1+",target_license):
-			raise IncompatibleLicenseError("OpenSCAD common files are licensed under LGPL 2.1+, which is not compatible with %s" % target_license)
+			raise IncompatibleLicenseError(
+				"OpenSCAD common files are LGPL 2.1+, which is not compatible with %s" % target_license)
 		makedirs(join(out_path,"common"))
 		for filename in listdir(join(self.repo.path,"backends","openscad")):
 			if not filename.endswith(".scad"):
@@ -217,14 +217,16 @@ class OpenSCADExporter(BackendExporter):
 			for pname,j in zip(table.columns,range(len(table.columns))):
 				if params.types[pname] in units:
 					unit = units[params.types[pname]]
-					args[pname] = 'convert_to_default_unit(%s_table_%d(%s)[%d],"%s")' % (cl.id,i,table.index,j,unit)
+					args[pname] = 'convert_to_default_unit(%s_table_%d(%s)[%d],"%s")' % \
+						(cl.id,i,table.index,j,unit)
 				else:
 					args[pname] = '%s_table_%d(%s)[%d]' % (cl.id,i,table.index,j)
 		for table,i in zip(params.tables2d,range(len(params.tables2d))):
 			pname = table.result
 			if params.types[pname] in units:
 				unit = units[params.types[pname]]
-				args[pname] = 'convert_to_default_unit(%s_table2d_%d(%s,%s),"%s")' % (cl.id,i,table.rowindex,table.colindex,unit)
+				args[pname] = 'convert_to_default_unit(%s_table2d_%d(%s,%s),"%s")' % \
+					(cl.id,i,table.rowindex,table.colindex,unit)
 			else:
 				args[pname] = '%s_table2d_%d(%s,%s)' % (cl.id,i,table.rowindex,table.colindex)
 		fid.write("function %s_dims(%s) = [\n\t" % (cl.openscadname, get_signature(cl,params)))
@@ -247,7 +249,7 @@ class OpenSCADExporter(BackendExporter):
 		for pname in params.free:
 			args[pname] = pname
 		args.update(params.literal)
-		args["location"] = "location";
+		args["location"] = "location"
 		for table,i in zip(params.tables,range(len(params.tables))):
 			for pname,j in zip(table.columns,range(len(table.columns))):
 				if params.types[pname] in units:

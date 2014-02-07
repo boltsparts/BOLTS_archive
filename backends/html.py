@@ -90,7 +90,8 @@ class HTMLExporter(BackendExporter):
 		makedirs(join(html_root,"drawings"))
 
 		#write unchanged files
-		for name in ["atom.xml","blog.html","contribute.html","public_domain.html","unclear_license.html"]:
+		for name in ["atom.xml","blog.html","contribute.html",
+				"public_domain.html","unclear_license.html"]:
 			copyfile(join(template_dir,name),join(out_root,name))
 
 		copyfile(join(template_dir,"no_drawing.png"),join(html_root,"drawings","no_drawing.png"))
@@ -444,11 +445,13 @@ class HTMLExporter(BackendExporter):
 					header.append("%s (%s)" % (str(p), units[cl.parameters.types[p]]))
 				else:
 					header.append("%s" % str(p))
-			#TODO: The table class should be handled in the template, but python templates are not smart enough
+			#TODO: The table class should be handled in the template,
+			#but python templates are not smart enough
 			params["dimensions"] += '<table class="table">\n' + html_table(data,header) + '\n</table>\n'
 		for table in cl.parameters.tables2d:
 
-			#TODO: The table class should be handled in the template, but python templates are not smart enough
+			#TODO: The table class should be handled in the template,
+			#but python templates are not smart enough
 			result = None
 			if cl.parameters.types[table.result] in units:
 				result = "%s (%s)" % (table.result,units[cl.parameters.types[table.result]])
