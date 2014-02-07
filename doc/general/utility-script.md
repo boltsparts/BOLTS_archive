@@ -49,6 +49,18 @@ To do so, execute
 
 A report is displayed with all the problems found and a short explanation.
 
+### Listing tasks
+
+BOLTS can also look for missing bits and pieces and other small jobs that make
+BOLTS more complete or consistent.
+
+To show a list of such tasks use
+
+    ./bolts.py tasks
+
+If there are tasks available, they are displayed together with a short
+explanation.
+
 
 ### Testing CAD applications
 
