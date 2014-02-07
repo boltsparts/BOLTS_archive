@@ -159,6 +159,7 @@ class HTMLExporter(BackendExporter):
 			params = {}
 			params["ncontributors"] = str(len(contributors_names))
 			params["table"] = html_table([[name] for name in contributors_names])
+			params["acknowledgements"] = open(join(self.repo.path,"website","acknowledgement.html")).read()
 
 			fid.write(self.templates["contributors"].substitute(params))
 
