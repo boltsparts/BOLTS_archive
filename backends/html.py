@@ -320,10 +320,9 @@ class HTMLExporter(BackendExporter):
 				if backend == "iges":
 					continue
 				rows = []
-				for license in ["lgpl2.1+","gpl3"]:
+				for license in ["lgpl2.1+"]:
 					if license in kind[backend]:
-						rows.append([LICENSES_SHORT[license],
-							'<a href="downloads/%s">.tar.gz</a>' % (kind[backend][license][".tar.gz"][1]),
+						rows.append(['<a href="downloads/%s">.tar.gz</a>' % (kind[backend][license][".tar.gz"][1]),
 							'<a href="downloads/%s">.zip</a>' % (kind[backend][license][".zip"][1])])
 				if len(rows) == 0:
 					rows = [["No %s distribution available" % kind_name]]
