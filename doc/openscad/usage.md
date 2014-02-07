@@ -84,6 +84,78 @@ If you need only a single parameter, it is even shorter to avoid the dims variab
 By using dimensions this way, your code avoids magic numbers and becomes more
 readable and can be modified easily.
 
+### Using connectors
+
+To make the positioning of BOLTS part easier, BOLTS includes
+[local.scad](https://github.com/jreinhardt/local-scad), an improved version of
+the [attach library](http://www.thingiverse.com/thing:30136).
+
+Instead of having complicated nested `translate` and `rotate` calls, this
+library allows to specify the position and orientation of a portion of a design
+using so called connectors. A connector is a data type that contains
+informations about both position and orientation.
+
+A connector is created with the `new_cs` function, which takes two arguments: a
+vector with three values specifying the origin of the connector and a list of
+two vectors specifying one main and one additional direction.
+
+Connectors are actually like local coordinate systems with a origin and three
+axes, but the third direction does not need to be specified, but is calculated
+from the other two direction.
+
+Connectors can be displayed using the `show_cs` module, which takes a connector
+as argument. The resulting object has a size of one unit, so it might be
+difficult to spot in big designs.
+
+Positioning is done with the `align` module, which takes two connectors as
+arguments. It then translates and rotates the child of the module such that the
+first connector is aligned with the second connector. Optionally, a
+displacement in the connector coordinate system can be specified.
+
+Many parts in BOLTS already have connectors connectors defined, to check what a
+specific part provides, check the part page in the
+[online reference]({{site.baseurl}}/html/index.html).
+
+The general workflow is to create a connector which specifies where the BOLTS
+part should end up in your design. Then a connector of the BOLTS part is
+chosen, depending on what point of the part should end up there. Finally the
+align module is used to position the part.
+
+This structure is illustrated again by the following example:
+
+### Example: Bolted connection
+
+    include <BOLTS.scad>
+    
+    $fn=50;
+    
+    % cube([10,40,50]);
+    
+    //target connector
+    cube_cs = new_cs(origin = [10,20,20], axes = [[-1,0,0],[0,-1,0]]);
+
+    //BOLTS part connectors
+    washer_cs = ISO7089_conn("top","M4");
+    bolt_cs = ISO4017_conn("root","M4",20);
+    nut_cs = ISO4035_conn("bottom","M4");
+    
+    //connectors can be displayed with
+    //show_cs(cube_cs);
+    
+    //thickness of washer
+    s = get_dim(ISO7089_dims("M4"),"s");
+    
+    //position washer and bolt at the location specified by cube_cs
+    align(washer_cs,cube_cs) ISO7089("M4");
+    align(bolt_cs,cube_cs,[-s,0,0]) ISO4017("M4",20);
+    align(washer_cs,cube_cs,[10+s,0,0]) ISO7089("M4");
+    align(nut_cs,cube_cs,[10+s,0,0]) ISO4035("M4");
+
+This results in
+
+[<img alt="Bolted connection example" src="{{ site.baseurl }}/images/openscad-positioningexample.png" style="width: 100%;"/>]({{ site.baseurl }}/images/openscad-positioningexample.png)
+
+
 ### Check for errors
 
 The modules provided by BOLTS perform a number of sanity checks. If there is a
