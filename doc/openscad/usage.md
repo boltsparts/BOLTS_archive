@@ -114,7 +114,10 @@ displacement in the connector coordinate system can be specified.
 
 Many parts in BOLTS already have connectors connectors defined, to check what a
 specific part provides, check the part page in the
-[online reference]({{site.baseurl}}/html/index.html).
+[online reference]({{site.baseurl}}/html/index.html). For parts with connectors
+a function is available with the same name as the part, but with a `_conn`
+appended. This function takes the name of the connector as first argument and
+the same arguments as the part as further arguments and returns the connector.
 
 The general workflow is to create a connector which specifies where the BOLTS
 part should end up in your design. Then a connector of the BOLTS part is
