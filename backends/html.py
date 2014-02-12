@@ -523,6 +523,8 @@ class HTMLExporter(BackendExporter):
 								conns[-1].append(draw_template % (draw_path,draw_path))
 							else:
 								conns[-1].append(draw_template % ("no_drawing.png","no_drawing.png"))
+							conns[-1].append("{%% highlight python %%} conn = %s_conn(%s,%s);\n {%% endhighlight %%}" %
+								(cl.openscadname,loc, openscad.get_signature(cl,cl.parameters.union(base.parameters))))
 					else:
 						for loc in base.connectors.locations:
 							conns.append([loc,draw_template % ("no_drawing.png","no_drawing.png")])
