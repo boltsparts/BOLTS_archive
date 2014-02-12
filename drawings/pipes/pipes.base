@@ -11,4 +11,32 @@
   type: drawing-dimensions
   source: own work
   classids: [nominalpipesize]
+- filename: pipe-back-in
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: back-in
+  source: own work
+  classids: [genericpipe,din11850range2,nominalpipesize]
+- filename: pipe-back-out
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: back-out
+  source: own work
+  classids: [genericpipe,din11850range2,nominalpipesize]
+- filename: pipe-front-in
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: front-in
+  source: own work
+  classids: [genericpipe,din11850range2,nominalpipesize]
+- filename: pipe-front-out
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-connector
+  location: front-out
+  source: own work
+  classids: [genericpipe,din11850range2,nominalpipesize]
 ...
