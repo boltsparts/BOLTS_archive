@@ -29,3 +29,11 @@ module pipe_wall(od,wall,l){
 		cylinder(r=(od - 2*wall)/2,h=l+1,center=true);
 	}
 }
+
+function pipeConn(l,location) =
+	(location == "front-in")  ? [[0,0,-l/2],[[0,0,1],[1,0,0]]] :
+	(location == "front-out") ? [[0,0,-l/2],[[0,0,-1],[-1,0,0]]] :
+	(location == "back-in")   ? [[0,0,+l/2],[[0,0,-1],[-1,0,0]]] :
+	(location == "back-out")  ? [[0,0,+l/2],[[0,0,1],[1,0,0]]] :
+	"Error";
+	

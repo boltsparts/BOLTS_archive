@@ -7,9 +7,17 @@
     - name: pipe
       arguments: [id, od, l]
       classids: [genericpipe, din11850range2]
+      connectors:
+        name: pipeConn
+        arguments: [l,location]
+        locations: [front-in, front-out, back-in, back-out]
     - name: pipe_wall
       arguments: [od, wall, l]
       classids: [nominalpipesize]
+      connectors:
+        name: pipeConn
+        arguments: [l,location]
+        locations: [front-in, front-out, back-in, back-out]
   source: own work
 ...
 
