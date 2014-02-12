@@ -65,8 +65,10 @@ dims = ISO4035_dims(key="M3", part_mode="default");
     <h2>Connectors</h2>
 <table class="table">
 <tr><th>Location</th> <th>Drawing</th><tr>
-<tr><td>bottom</td> <td><a href="../drawings/nut/nut1-bottom.png"><img width=200 src="../drawings/nut/nut1-bottom.png"/></a></td></tr>
-<tr><td>top</td> <td><a href="../drawings/nut/nut1-top.png"><img width=200 src="../drawings/nut/nut1-top.png"/></a></td></tr></table>
+<tr><td>bottom</td> <td><a href="../drawings/nut/nut1-bottom.png"><img width=200 src="../drawings/nut/nut1-bottom.png"/></a></td> <td>{% highlight python %} conn = ISO4035_conn(bottom,key="M3", part_mode="default");
+ {% endhighlight %}</td></tr>
+<tr><td>top</td> <td><a href="../drawings/nut/nut1-top.png"><img width=200 src="../drawings/nut/nut1-top.png"/></a></td> <td>{% highlight python %} conn = ISO4035_conn(top,key="M3", part_mode="default");
+ {% endhighlight %}</td></tr></table>
 
   </div>
 

@@ -59,8 +59,10 @@ dims = roundBattery_dims(T="AAA", part_mode="default");
     <h2>Connectors</h2>
 <table class="table">
 <tr><th>Location</th> <th>Drawing</th><tr>
-<tr><td>plus</td> <td><a href="../drawings/batteries/roundBattery-plus.png"><img width=200 src="../drawings/batteries/roundBattery-plus.png"/></a></td></tr>
-<tr><td>minus</td> <td><a href="../drawings/batteries/roundBattery-minus.png"><img width=200 src="../drawings/batteries/roundBattery-minus.png"/></a></td></tr></table>
+<tr><td>plus</td> <td><a href="../drawings/batteries/roundBattery-plus.png"><img width=200 src="../drawings/batteries/roundBattery-plus.png"/></a></td> <td>{% highlight python %} conn = roundBattery_conn(plus,T="AAA", part_mode="default");
+ {% endhighlight %}</td></tr>
+<tr><td>minus</td> <td><a href="../drawings/batteries/roundBattery-minus.png"><img width=200 src="../drawings/batteries/roundBattery-minus.png"/></a></td> <td>{% highlight python %} conn = roundBattery_conn(minus,T="AAA", part_mode="default");
+ {% endhighlight %}</td></tr></table>
 
   </div>
 

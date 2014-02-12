@@ -66,9 +66,12 @@ dims = DINENISO4017_dims(key="M3", l=20, part_mode="default");
     <h2>Connectors</h2>
 <table class="table">
 <tr><th>Location</th> <th>Drawing</th><tr>
-<tr><td>root</td> <td><a href="../drawings/hex/hex1-root.png"><img width=200 src="../drawings/hex/hex1-root.png"/></a></td></tr>
-<tr><td>tip</td> <td><a href="../drawings/hex/hex1-tip.png"><img width=200 src="../drawings/hex/hex1-tip.png"/></a></td></tr>
-<tr><td>head</td> <td><a href="../drawings/hex/hex1-head.png"><img width=200 src="../drawings/hex/hex1-head.png"/></a></td></tr></table>
+<tr><td>root</td> <td><a href="../drawings/hex/hex1-root.png"><img width=200 src="../drawings/hex/hex1-root.png"/></a></td> <td>{% highlight python %} conn = DINENISO4017_conn(root,key="M3", l=20, part_mode="default");
+ {% endhighlight %}</td></tr>
+<tr><td>tip</td> <td><a href="../drawings/hex/hex1-tip.png"><img width=200 src="../drawings/hex/hex1-tip.png"/></a></td> <td>{% highlight python %} conn = DINENISO4017_conn(tip,key="M3", l=20, part_mode="default");
+ {% endhighlight %}</td></tr>
+<tr><td>head</td> <td><a href="../drawings/hex/hex1-head.png"><img width=200 src="../drawings/hex/hex1-head.png"/></a></td> <td>{% highlight python %} conn = DINENISO4017_conn(head,key="M3", l=20, part_mode="default");
+ {% endhighlight %}</td></tr></table>
 
   </div>
 

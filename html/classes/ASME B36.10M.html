@@ -64,10 +64,14 @@ dims = ASME_B36_10M_dims(nps="NPS 1/2", sched="40", l=50, part_mode="default");
     <h2>Connectors</h2>
 <table class="table">
 <tr><th>Location</th> <th>Drawing</th><tr>
-<tr><td>front-in</td> <td><a href="../drawings/pipes/pipe-front-in.png"><img width=200 src="../drawings/pipes/pipe-front-in.png"/></a></td></tr>
-<tr><td>front-out</td> <td><a href="../drawings/pipes/pipe-front-out.png"><img width=200 src="../drawings/pipes/pipe-front-out.png"/></a></td></tr>
-<tr><td>back-in</td> <td><a href="../drawings/pipes/pipe-back-in.png"><img width=200 src="../drawings/pipes/pipe-back-in.png"/></a></td></tr>
-<tr><td>back-out</td> <td><a href="../drawings/pipes/pipe-back-out.png"><img width=200 src="../drawings/pipes/pipe-back-out.png"/></a></td></tr></table>
+<tr><td>front-in</td> <td><a href="../drawings/pipes/pipe-front-in.png"><img width=200 src="../drawings/pipes/pipe-front-in.png"/></a></td> <td>{% highlight python %} conn = ASME_B36_10M_conn(front-in,nps="NPS 1/2", sched="40", l=50, part_mode="default");
+ {% endhighlight %}</td></tr>
+<tr><td>front-out</td> <td><a href="../drawings/pipes/pipe-front-out.png"><img width=200 src="../drawings/pipes/pipe-front-out.png"/></a></td> <td>{% highlight python %} conn = ASME_B36_10M_conn(front-out,nps="NPS 1/2", sched="40", l=50, part_mode="default");
+ {% endhighlight %}</td></tr>
+<tr><td>back-in</td> <td><a href="../drawings/pipes/pipe-back-in.png"><img width=200 src="../drawings/pipes/pipe-back-in.png"/></a></td> <td>{% highlight python %} conn = ASME_B36_10M_conn(back-in,nps="NPS 1/2", sched="40", l=50, part_mode="default");
+ {% endhighlight %}</td></tr>
+<tr><td>back-out</td> <td><a href="../drawings/pipes/pipe-back-out.png"><img width=200 src="../drawings/pipes/pipe-back-out.png"/></a></td> <td>{% highlight python %} conn = ASME_B36_10M_conn(back-out,nps="NPS 1/2", sched="40", l=50, part_mode="default");
+ {% endhighlight %}</td></tr></table>
 
   </div>
 
