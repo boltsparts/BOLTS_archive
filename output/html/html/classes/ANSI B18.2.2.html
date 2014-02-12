@@ -63,8 +63,10 @@ dims = ANSI_B18_2_2_dims(key="3/8 in", part_mode="default");
     <h2>Connectors</h2>
 <table class="table">
 <tr><th>Location</th> <th>Drawing</th><tr>
-<tr><td>bottom</td> <td><a href="../drawings/nut/nut1-bottom.png"><img width=200 src="../drawings/nut/nut1-bottom.png"/></a></td></tr>
-<tr><td>top</td> <td><a href="../drawings/nut/nut1-top.png"><img width=200 src="../drawings/nut/nut1-top.png"/></a></td></tr></table>
+<tr><td>bottom</td> <td><a href="../drawings/nut/nut1-bottom.png"><img width=200 src="../drawings/nut/nut1-bottom.png"/></a></td> <td>{% highlight python %} conn = ANSI_B18_2_2_conn(bottom,key="3/8 in", part_mode="default");
+ {% endhighlight %}</td></tr>
+<tr><td>top</td> <td><a href="../drawings/nut/nut1-top.png"><img width=200 src="../drawings/nut/nut1-top.png"/></a></td> <td>{% highlight python %} conn = ANSI_B18_2_2_conn(top,key="3/8 in", part_mode="default");
+ {% endhighlight %}</td></tr></table>
 
   </div>
 

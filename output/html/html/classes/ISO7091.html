@@ -63,9 +63,12 @@ dims = ISO7091_dims(key="M10", part_mode="default");
     <h2>Connectors</h2>
 <table class="table">
 <tr><th>Location</th> <th>Drawing</th><tr>
-<tr><td>top</td> <td><a href="../drawings/washer/washer1-top.png"><img width=200 src="../drawings/washer/washer1-top.png"/></a></td></tr>
-<tr><td>bottom</td> <td><a href="../drawings/washer/washer1-bottom.png"><img width=200 src="../drawings/washer/washer1-bottom.png"/></a></td></tr>
-<tr><td>outer</td> <td><a href="../drawings/washer/washer1-outer.png"><img width=200 src="../drawings/washer/washer1-outer.png"/></a></td></tr></table>
+<tr><td>top</td> <td><a href="../drawings/washer/washer1-top.png"><img width=200 src="../drawings/washer/washer1-top.png"/></a></td> <td>{% highlight python %} conn = ISO7091_conn(top,key="M10", part_mode="default");
+ {% endhighlight %}</td></tr>
+<tr><td>bottom</td> <td><a href="../drawings/washer/washer1-bottom.png"><img width=200 src="../drawings/washer/washer1-bottom.png"/></a></td> <td>{% highlight python %} conn = ISO7091_conn(bottom,key="M10", part_mode="default");
+ {% endhighlight %}</td></tr>
+<tr><td>outer</td> <td><a href="../drawings/washer/washer1-outer.png"><img width=200 src="../drawings/washer/washer1-outer.png"/></a></td> <td>{% highlight python %} conn = ISO7091_conn(outer,key="M10", part_mode="default");
+ {% endhighlight %}</td></tr></table>
 
   </div>
 
