@@ -176,13 +176,6 @@ infos:
             name: pipeConn
             arguments: [l,location]
             locations: [front-in, front-out, back-in, back-out]
-        - name: pipe_wall
-          arguments: [od, wall, l]
-          classids: [nominalpipesize]
-          connectors:
-            name: pipeConn
-            arguments: [l,location]
-            locations: [front-in, front-out, back-in, back-out]
       source: own work
     ...
 
@@ -206,17 +199,19 @@ png using `Design->export as image...`. Make sure that it is easy to understand
 from the picture where the connector is located on the part, and how it is
 oriented.The images go into the `pipes` subdirectory of the `drawings` folder.
 
+[<img alt="Finding a good angle" src="{{ site.baseurl }}/images/openscad-connectordrawings.png" style="width: 100%;"/>]({{ site.baseurl }}/images/openscad-connectordrawings.png)
+
 The final step is to add entries to the base file in this folder to tell BOLTS
 about all the drawings. Here is an example how it looks for the `front-in`
 connector:
 
-- filename: pipe-back-in
-  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing-connector
-  location: back-in
-  source: own work
-  classids: [genericpipe,din11850range2,nominalpipesize]
+    - filename: pipe-back-in
+      author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+      license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+      type: drawing-connector
+      location: back-in
+      source: own work
+      classids: [genericpipe,din11850range2]
 
 You should add your name as author. The license should be chosen to CC0, as
 this makes things easier. `type` must be `drawing-connector`.
