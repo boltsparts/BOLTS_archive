@@ -17,17 +17,17 @@
 ---
 id: i-beams
 name: i-beams
-description: various standard metric european i-beams
+description: various rolled i-beam profiles
 author: Bernd Hahnebach <bernd@bimstatik.ch>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.3
 classes:
-  - id: ibeamhea
+  - id: ibeam_hea
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    description: HEA beams
-    standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
+    description: HEA profile, metric european standard i-beam profile
+    standard: [DIN1025-3, EN53-62]
     parameters:
         free: [type,l]
         defaults: {type: "HEA200", l: 3000}
@@ -76,14 +76,13 @@ classes:
                 HEA800:   [   790, 300,   15,   28, 30 ]
                 HEA900:   [   890, 300,   16,   30, 30 ]
                 HEA1000:  [   990, 300, 16.5,   31, 30 ]
-    source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
+    source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
-  - id: ibeamheaa
+  - id: ibeam_heaa
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    description: HEAA beams
-    standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
+    description: HEAA profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "HEAA200", l: 3000}
@@ -132,14 +131,14 @@ classes:
                 HEAA800:   [   770, 300,   14,   18, 30 ]
                 HEAA900:   [   870, 300,   15,   20, 30 ]
                 HEAA1000:  [   970, 300,   16,   21, 30 ]
-    source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
+    source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
-  - id: ibeamheb
+  - id: ibeam_heb
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    description: HEB beams
-    standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
+    description: HEB profile, metric european standard i-beam profile
+    standard: [DIN1025-2, EN53-62]
     parameters:
         free: [type,l]
         defaults: {type: "HEB200", l: 3000}
@@ -188,14 +187,14 @@ classes:
                 HEB800:   [   800, 300, 17.5,   33, 30 ]
                 HEB900:   [   900, 300, 18.5,   35, 30 ]
                 HEB1000:  [  1000, 300,   19,   36, 30 ]
-    source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
+    source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
-  - id: ibeamhem
+  - id: ibeam_hem
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    description: HEB beams
-    standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
+    description: HEB profile, metric european standard i-beam profile
+    standard: [DIN1025-4, EN53-62]
     parameters:
         free: [type,l]
         defaults: {type: "HEM200", l: 3000}
@@ -244,14 +243,14 @@ classes:
                 HEM800:   [   814, 303,   21,   40, 30 ]
                 HEM900:   [   910, 302,   21,   40, 30 ]
                 HEM1000:  [  1008, 302,   21,   40, 30 ]
-    source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
+    source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
-  - id: ibeamipe
+  - id: ibeam_ipe
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    description: IPE beams
-    standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
+    description: IPE profile, metric european standard i-beam profile
+    standard: [DIN1025-5, EN19-57]
     parameters:
         free: [type,l]
         defaults: {type: "IPE200", l: 3000}
@@ -294,22 +293,50 @@ classes:
                 IPE500:       [   500, 200, 10.2,   16, 21 ]
                 IPE550:       [   550, 210, 11.1, 17.2, 21 ]
                 IPE600:       [   600, 220,   12,   19, 24 ]
+    source: http://www.bauforumstahl.de/Querschnittswerte
+    notes: http://en.wikipedia.org/wiki/I-beam
+  - id: ibeam_ipe750
+    naming:
+      template: "%s, l=%s"
+      substitute: [type,l]
+    description: IPE 750 profile, metric european i-beam profile
+    parameters:
+        free: [type,l]
+        defaults: {type: "IPE750x137", l: 3000}
+        types:
+          type: Table Index
+          h: Length (mm)
+          b: Length (mm)
+          tw: Length (mm)
+          tf: Length (mm)
+          r: Length (mm)
+          l: Length (mm)
+        description:
+          type: beam type
+          h: beam height
+          b: flange width
+          tw: web thickness
+          tf: flange thickness
+          r: fillet radius
+          l: beam length
+        tables:
+            index: type
+            columns: [h,b,tw,tf,r]
+            data:
+                #type         [     h    b    tw    tf   r ]
                 IPE750x137:   [   753, 263, 11.5,   17, 17 ]
                 IPE750x147:   [   753, 265, 13.2,   17, 17 ]
                 IPE750x161:   [   758, 266, 13.8, 19.3, 17 ]
                 IPE750x173:   [   762, 267, 14.4, 21.6, 17 ]
                 IPE750x185:   [   766, 267, 14.9, 23.6, 17 ]
                 IPE750x196:   [   770, 268, 15.6, 25.4, 17 ]
-                IPE750x210:   [   775, 268,   16,   28,  0 ]
-                IPE750x222:   [   778, 269,   17, 29.5,  0 ]
-    source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
+    source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
-  - id: ibeamipea
+  - id: ibeam_ipea
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    description: IPEa beams
-    standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
+    description: IPEa profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "IPEa200", l: 3000}
@@ -334,7 +361,6 @@ classes:
             columns: [h,b,tw,tf,r]
             data:
                 #type      [       h     b   tw    tf   r ]
-                IPEa100:   [      98,  55,  3.6,  4.7,  0 ]
                 IPEa120:   [     118,  64,  3.8,  5.1,  7 ]
                 IPEa140:   [     138,  73,  3.8,  5.6,  7 ]
                 IPEa160:   [     157,  82,    4,  5.9,  9 ]
@@ -351,14 +377,13 @@ classes:
                 IPEa500:   [     497, 200,  8.4, 14.5, 21 ]
                 IPEa550:   [     547, 210,    9, 15.7, 24 ]
                 IPEa600:   [     597, 220,  9.8, 17.5, 24 ]
-    source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
+    source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
-  - id: ibeamipeo
+  - id: ibeam_ipeo
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    description: IPEo beams
-    standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
+    description: IPEo profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "IPEo200", l: 3000}
@@ -396,14 +421,13 @@ classes:
                 IPEo500:   [   506, 202,   12,   19, 21 ]
                 IPEo550:   [   556, 212, 12.7, 20.2, 24 ]
                 IPEo600:   [   610, 224,   15,   24, 24 ]
-    source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
+    source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
-  - id: ibeamiper
+  - id: ibeam_iper
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    description: IPEr beams
-    standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
+    description: IPEr profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "IPEr200", l: 3000}
@@ -443,14 +467,13 @@ classes:
                 IPEr500:   [   508, 198, 12.6,   20, 21 ]
                 IPEr550:   [   560, 210,   14, 22.2, 24 ]
                 IPEr600:   [   608, 218,   14,   23, 24 ]
-    source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
+    source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
-  - id: ibeamipev
+  - id: ibeam_ipev
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    description: IPEv beams
-    standard: [DIN18800, EC3, DINEN1993-1-1, SIA262]
+    description: IPEv profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "IPEv400", l: 3000}
@@ -475,11 +498,11 @@ classes:
             columns: [h,b,tw,tf,r]
             data:
                 #type      [     h    b    tw    tf   r ]
-                IPEv400:   [   408, 182, 10.6, 17.5,  0 ]
+                IPEv400:   [   408, 182, 10.6, 17.5, 21 ]
                 IPEv450:   [   460, 194, 12.4, 19.6, 21 ]
                 IPEv500:   [   514, 204, 14.2,   23, 21 ]
                 IPEv550:   [   566, 216, 17.1, 25.2, 24 ]
                 IPEv600:   [   618, 228,   18,   28, 24 ]
-    source: http://www.lssnet.de/profilelibrary/aspprofile.aspx
+    source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
 ...
