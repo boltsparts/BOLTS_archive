@@ -60,7 +60,6 @@ def make_drawing(scale,obj):
 	page = doc.addObject("Drawing::FeaturePage","Page")
 	page.Template = join(rootpath,"assets","template.svg")
 
-
 	#front, side right, side left, rear, top, bottom, iso
 	directions = [(0.,0.,1.),(1.,0.,0.),(-1.,0.,0.),(0.,0.,-1.),(0.,-1.,0.),(0.,1.,0.),(1.,1.,1.)]
 	#x center positions
