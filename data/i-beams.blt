@@ -193,7 +193,7 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    description: HEB profile, metric european standard i-beam profile
+    description: HEM profile, metric european standard i-beam profile
     standard: [DIN1025-4, EN53-62]
     parameters:
         free: [type,l]
