@@ -1,0 +1,112 @@
+#BOLTS - Open Library of Technical Specifications
+#Copyright (C) 2014 Bernd Hahnebach <bernd@bimstatik.ch>
+#
+#This library is free software; you can redistribute it and/or
+#modify it under the terms of the GNU Lesser General Public
+#License as published by the Free Software Foundation; either
+#version 2.1 of the License, or any later version.
+#
+#This library is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+#Lesser General Public License for more details.
+#
+#You should have received a copy of the GNU Lesser General Public
+#License along with this library; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+---
+id: c-beams
+name: c-beams
+description: various rolled c-beam profiles
+author: Bernd Hahnebach <bernd@bimstatik.ch>
+license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+blt-version: 0.3
+classes:
+  - id: cbeam_upe
+    naming:
+      template: "%s, l=%s"
+      substitute: [type,l]
+    description: UPE profile, metric european standard c-beam profile
+    standard: [pendent]
+    parameters:
+        free: [type,l]
+        defaults: {type: "UPE200", l: 3000}
+        types:
+          type: Table Index
+          h: Length (mm)
+          b: Length (mm)
+          tw: Length (mm)
+          tf: Length (mm)
+          r: Length (mm)
+          l: Length (mm)
+        description:
+          type: beam type
+          h: beam height
+          b: flange width
+          tw: web thickness
+          tf: flange thickness
+          r: fillet radius
+          l: beam length
+        tables:
+            index: type
+            columns: [h,b,tw,tf,r]
+            data:
+                #type     [     h    b    tw    tf   r ]
+                UPE80:    [    80,  50,    4,    7, 10 ]
+                UPE100:   [   100,  55,  4.5,  7.5, 10 ]
+                UPE120:   [   120,  60,    5,    8, 12 ]
+                UPE140:   [   140,  65,    5,    9, 12 ]
+                UPE160:   [   160,  70,  5.5,  9.5, 12 ]
+                UPE180:   [   180,  75,  5.5, 10.5, 12 ]
+                UPE200:   [   200,  80,    6,   11, 13 ]
+                UPE220:   [   220,  85,  6.5,   12, 13 ]
+                UPE240:   [   240,  90,    7, 12.5, 15 ]
+                UPE270:   [   270,  95,  7.5, 13.5, 15 ]
+                UPE300:   [   300, 100,  9.5,   15, 15 ]
+                UPE330:   [   330, 105,   11,   16, 18 ]
+                UPE360:   [   360, 110,   12,   17, 18 ]
+                UPE400:   [   400, 115, 13.5,   18, 18 ]
+    source: C5 steel work, swiss profile table
+    notes: pendent
+  - id: cbeam_uap
+    naming:
+      template: "%s, l=%s"
+      substitute: [type,l]
+    description: UAP profile, metric european standard c-beam profile
+    standard: [pendent]
+    parameters:
+        free: [type,l]
+        defaults: {type: "UAP200", l: 3000}
+        types:
+          type: Table Index
+          h: Length (mm)
+          b: Length (mm)
+          tw: Length (mm)
+          tf: Length (mm)
+          r: Length (mm)
+          l: Length (mm)
+        description:
+          type: beam type
+          h: beam height
+          b: flange width
+          tw: web thickness
+          tf: flange thickness
+          r: fillet radius
+          l: beam length
+        tables:
+            index: type
+            columns: [h,b,tw,tf,r]
+            data:
+                #type     [     h    b   tw     tf      r   ]
+                UAP80:    [    80,  45,   5,     8,     8,  ]
+                UAP100:   [   100,  50, 5.5,   8.5,   8.5,  ]
+                UAP130:   [   130,  55,   6,   9.5,   9.5,  ]
+                UAP150:   [   150,  65,   7, 10.25, 10.25,  ]
+                UAP175:   [   175,  70, 7.5, 10.75, 10.75,  ]
+                UAP200:   [   200,  75,   8,  11.5,  11.5,  ]
+                UAP220:   [   220,  80,   8,  12.5,  12.5,  ]
+                UAP250:   [   250,  85,   9,  13.5,  13.5,  ]
+                UAP300:   [   300, 100, 9.5,    16,    16,  ]
+    source: C5 steel work, swiss profile table
+    notes: pendent
+...
