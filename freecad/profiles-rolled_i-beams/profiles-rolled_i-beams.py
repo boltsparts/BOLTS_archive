@@ -71,8 +71,8 @@ def ibeam_parallel_flange(params,document):
 
         # center of the fillets, starting right bottom, going against clockwise
         Vfc1 = Vector((tw/2+r),(-h/2+tf+r),0)
-        Vfc2 = Vector((tw/2+r),(h/2-tf-r))
-        Vfc3 = Vector((-tw/2-r),(h/2-tf-r))
+        Vfc2 = Vector((tw/2+r),(h/2-tf-r),0)
+        Vfc3 = Vector((-tw/2-r),(h/2-tf-r),0)
         Vfc4 = Vector((-tw/2-r),(-h/2+tf+r),0)
         normal = Vector(0,0,1)
         Cfc1 = makeCircle(r,Vfc1,normal,180,270)
