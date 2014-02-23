@@ -28,7 +28,7 @@ classes:
       substitute: [type,l]
     drawing: profiles-rolled_c-beams/c-beams1.png
     description: UPE profile, metric european standard c-beam profile
-    standard: [pendent]
+    standard: [DIN1026-2]
     parameters:
         free: [type,l]
         defaults: {type: "UPE200", l: 3000}
@@ -67,15 +67,15 @@ classes:
                 UPE330:   [   330, 105,   11,   16, 18 ]
                 UPE360:   [   360, 110,   12,   17, 18 ]
                 UPE400:   [   400, 115, 13.5,   18, 18 ]
-    source: C5 steel work, swiss profile table
-    notes: pendent
+    source: http://www.bauforumstahl.de/Querschnittswerte
+    notes: http://en.wikipedia.org/wiki/Structural_steel
   - id: cbeam_uap
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
     drawing: profiles-rolled_c-beams/c-beams1.png
     description: UAP profile, metric european standard c-beam profile
-    standard: [pendent]
+    standard: [NFA45-255]
     parameters:
         free: [type,l]
         defaults: {type: "UAP200", l: 3000}
@@ -109,6 +109,6 @@ classes:
                 UAP220:   [   220,  80,   8,  12.5,  12.5,  ]
                 UAP250:   [   250,  85,   9,  13.5,  13.5,  ]
                 UAP300:   [   300, 100, 9.5,    16,    16,  ]
-    source: C5 steel work, swiss profile table
-    notes: pendent
+    source: http://www.bauforumstahl.de/Querschnittswerte
+    notes: http://en.wikipedia.org/wiki/Structural_steel
 ...
