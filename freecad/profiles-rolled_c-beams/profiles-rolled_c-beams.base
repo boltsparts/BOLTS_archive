@@ -1,0 +1,9 @@
+---
+- filename: profiles-rolled_c-beams.py
+  author: Bernd Hahnebach <bernd@bimstatik.ch>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  type: function
+  functions:
+    - name: cbeam_parallel_flange
+      classids: [cbeam_upe, cbeam_uap]
+...
