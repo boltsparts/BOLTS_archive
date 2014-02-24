@@ -444,11 +444,6 @@ class MissingBaseConnectionTable(ErrorTable):
 		for db in ["freecad","openscad"]:
 			for base in dbs[db].getbase.values():
 				geo_eq.append(set(base.classids))
-		for base in dbs["drawings"].getdimensions.values():
-			geo_eq.append(set(base.classids))
-		for bases in dbs["drawings"].getconnectors.values():
-			for base in bases.values():
-				geo_eq.append(set(base.classids))
 		for dtable in dbs["solidworks"].designtables:
 			geo_eq.append(set([dtc.classid for dtc in dtable.classes]))
 
