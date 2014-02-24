@@ -16,11 +16,8 @@ label="Classes";
 subgraph cluster_std {
 label="Standards";
 "DIN1025-3" [width=3, height=0.8, fixedsize=true];
-"EN53-62" [width=3, height=0.8, fixedsize=true];
 "DIN1025-2" [width=3, height=0.8, fixedsize=true];
-"EN53-62" [width=3, height=0.8, fixedsize=true];
 "DIN1025-4" [width=3, height=0.8, fixedsize=true];
-"EN53-62" [width=3, height=0.8, fixedsize=true];
 "DIN1025-5" [width=3, height=0.8, fixedsize=true];
 "EN19-57" [width=3, height=0.8, fixedsize=true];
 }
@@ -42,14 +39,11 @@ label="OpenSCAD";
 }
 "ibeam_hea" -> "profiles-rolled_i-beams.py:ibeam_parallel_flange";
 "DIN1025-3" -> "ibeam_hea";
-"EN53-62" -> "ibeam_hea";
 "ibeam_heaa" -> "profiles-rolled_i-beams.py:ibeam_parallel_flange";
 "ibeam_heb" -> "profiles-rolled_i-beams.py:ibeam_parallel_flange";
 "DIN1025-2" -> "ibeam_heb";
-"EN53-62" -> "ibeam_heb";
 "ibeam_hem" -> "profiles-rolled_i-beams.py:ibeam_parallel_flange";
 "DIN1025-4" -> "ibeam_hem";
-"EN53-62" -> "ibeam_hem";
 "ibeam_ipe" -> "profiles-rolled_i-beams.py:ibeam_parallel_flange";
 "DIN1025-5" -> "ibeam_ipe";
 "EN19-57" -> "ibeam_ipe";
