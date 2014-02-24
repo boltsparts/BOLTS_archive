@@ -47,13 +47,17 @@ freecad = bolttools.freecad.FreeCADData(rootpath)
 
 widget = None
 
-if widget is None:
-	widget = BoltsWidget(repo,freecad)
+def show_widget():
+	global widget
+	if widget is None:
+		widget = BoltsWidget(repo,freecad)
 
-	mw = getMainWindow()
-	mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
-else:
-	widget.show()
+		mw = getMainWindow()
+		mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
+	else:
+		widget.show()
+
+show_widget()
 
 def make_drawing(scale,obj):
 	doc = FreeCAD.ActiveDocument
