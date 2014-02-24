@@ -26,7 +26,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_i-beams/i-beams1.png
     description: HEA profile, metric european standard i-beam profile
     standard: [DIN1025-3, EN53-62]
     parameters:
@@ -83,7 +82,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_i-beams/i-beams1.png
     description: HEAA profile, metric european i-beam profile
     parameters:
         free: [type,l]
@@ -139,7 +137,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_i-beams/i-beams1.png
     description: HEB profile, metric european standard i-beam profile
     standard: [DIN1025-2, EN53-62]
     parameters:
@@ -196,7 +193,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_i-beams/i-beams1.png
     description: HEM profile, metric european standard i-beam profile
     standard: [DIN1025-4, EN53-62]
     parameters:
@@ -253,7 +249,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_i-beams/i-beams1.png
     description: IPE profile, metric european standard i-beam profile
     standard: [DIN1025-5, EN19-57]
     parameters:
@@ -304,7 +299,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_i-beams/i-beams1.png
     description: IPE 750 profile, metric european i-beam profile
     parameters:
         free: [type,l]
@@ -342,7 +336,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_i-beams/i-beams1.png
     description: IPEa profile, metric european i-beam profile
     parameters:
         free: [type,l]
@@ -390,7 +383,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_i-beams/i-beams1.png
     description: IPEo profile, metric european i-beam profile
     parameters:
         free: [type,l]
@@ -435,7 +427,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_i-beams/i-beams1.png
     description: IPEr profile, metric european i-beam profile
     parameters:
         free: [type,l]
@@ -482,7 +473,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_i-beams/i-beams1.png
     description: IPEv profile, metric european i-beam profile
     parameters:
         free: [type,l]

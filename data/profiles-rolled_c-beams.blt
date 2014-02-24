@@ -26,7 +26,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_c-beams/c-beams1.png
     description: UPE profile, metric european standard c-beam profile
     standard: [DIN1026-2]
     parameters:
@@ -73,7 +72,6 @@ classes:
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
-    drawing: profiles-rolled_c-beams/c-beams1.png
     description: UAP profile, metric european standard c-beam profile
     standard: [NFA45-255]
     parameters:
