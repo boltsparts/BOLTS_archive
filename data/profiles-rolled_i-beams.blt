@@ -1,5 +1,5 @@
 #BOLTS - Open Library of Technical Specifications
-#Copyright (C) 2014 Bernd Hahnebach <bernd@bimstatik.ch>
+#Copyright (C) 2014 Bernd Hahnebach <bernd@bimstatik.org>
 #
 #This library is free software; you can redistribute it and/or
 #modify it under the terms of the GNU Lesser General Public
@@ -18,7 +18,7 @@
 id: profiles-rolled_i-beams
 name: Rolled I-Beam Profiles
 description: various rolled i-beam profiles
-author: Bernd Hahnebach <bernd@bimstatik.ch>
+author: Bernd Hahnebach <bernd@bimstatik.org>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.3
 classes:

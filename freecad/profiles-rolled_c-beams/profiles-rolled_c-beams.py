@@ -1,5 +1,5 @@
 #BOLTS - Open Library of Technical Specifications
-#Copyright (C) 2014 Bernd Hahnebach <bernd@bimstatik.ch>
+#Copyright (C) 2014 Bernd Hahnebach <bernd@bimstatik.org>
 #
 #This library is free software; you can redistribute it and/or
 #modify it under the terms of the GNU Lesser General Public
