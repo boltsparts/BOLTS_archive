@@ -29,7 +29,7 @@ class ErrorTable:
 		self.headers = headers
 
 	def populate(self,repo,databases):
-		pass
+		raise NotImplementedError
 
 	def get_headers(self):
 		return self.headers
@@ -105,19 +105,21 @@ class UnknownClassTable(ErrorTable):
 			["Class id", "Database"]
 		)
 
-		def populate(self,repo,dbs):
-			ids = []
-			for coll in repo.collections:
-				for cl in coll.classes_by_ids():
-					ids.append(cl.id)
-			for db in dbs:
-				for base in dbs[db].getbase.values():
-					for cl_id in base.classids:
-						if cl_id not in ids:
-							row = []
-							row.append(cl_id)
-							row.append(db)
-							self.rows.append(row)
+	def populate(self,repo,dbs):
+		ids = []
+		for coll in repo.collections:
+			for cl in coll.classes_by_ids():
+				ids.append(cl.id)
+		for db in dbs:
+			if not db in ["openscad","freecad"]:
+				continue
+			for base in dbs[db].getbase.values():
+				for cl_id in base.classids:
+					if cl_id not in ids:
+						row = []
+						row.append(cl_id)
+						row.append(db)
+						self.rows.append(row)
 
 class MissingCommonParametersTable(ErrorTable):
 	def __init__(self):
