@@ -22,7 +22,7 @@ author: Bernd Hahnebach <bernd@bimstatik.org>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.3
 classes:
-  - id: rrw_squere_swiss
+  - id: rrw_square_swiss_stock
     naming:
       template: "%s, l=%s"
       substitute: [type,l]
