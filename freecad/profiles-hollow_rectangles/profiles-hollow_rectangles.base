@@ -1,11 +1,11 @@
 ---
-- filename: profiles-rectangles.py
+- filename: profiles-hollow_rectangles.py
   author: Bernd Hahnebach <bernd@bimstatik.org>
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: function
   functions:
     - name: generic_rrw
-      classids: [generichollowrectangle]
+      classids: [generic_hollow_rectangle]
     - name: rrw
       classids: [rrw_square_swiss_stock, rrw_square]
 ...
