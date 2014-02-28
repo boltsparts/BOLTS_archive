@@ -1,0 +1,10 @@
+---
+- filename: INP550.fcstd
+  author: Bernd Hahnebach <bernd@bimstatik.org>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  type: fcstd
+  objects:
+    - objectname: Extrude
+      classids: [inp550]
+  source: created from scratch
+...
