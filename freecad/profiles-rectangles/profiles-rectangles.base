@@ -5,5 +5,5 @@
   type: function
   functions:
     - name: rrw
-      classids: [rrw_square_swiss_stock]
+      classids: [rrw_square_swiss_stock, rrw_square]
 ...
