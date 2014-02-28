@@ -22,6 +22,26 @@ author: Bernd Hahnebach <bernd@bimstatik.org>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.3
 classes:
+  - id: generichollowrectangle
+    naming:
+#      template: RRW h %g b %g t %g length %g
+      template: "RRW%s-%s-%s, l=%s"
+      substitute: [h, b, t, l]
+    description: a generic hollow rectangle profile
+    parameters:
+      free: [h, b, t, l]
+      defaults: {h: 100, b: 100, t: 6.3, l: 2500}
+      types:
+          h: Length (mm)
+          b: Length (mm)
+          t: Length (mm)
+          l: Length (mm)
+      description:
+          h: profile height
+          b: profile width
+          t: web thickness
+          l: profile length
+    source: No source information used
   - id: rrw_square_swiss_stock
     naming:
       template: "%s, l=%s"

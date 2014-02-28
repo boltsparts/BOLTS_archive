@@ -4,6 +4,8 @@
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: function
   functions:
+    - name: generic_rrw
+      classids: [generichollowrectangle]
     - name: rrw
       classids: [rrw_square_swiss_stock, rrw_square]
 ...
