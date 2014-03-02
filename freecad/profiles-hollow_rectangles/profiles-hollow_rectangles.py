@@ -18,7 +18,7 @@
 
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part
+import Part, Arch
 
 def generic_rrw(params,document):
         h = params['h']
@@ -31,15 +31,8 @@ def generic_rrw(params,document):
         ri=1.0*t
         ro=1.5*t
 
-               
         if t >= h/4 or t >= b/4 :
                 raise ValueError("Height and Width must be greater than 4 x Webthickness")
-               
-        
-
-        part = document.addObject("Part::Feature","BOLTS_part")
-        part.Label = name
-
 
         # outer rectangle, going clockwise
         Vor1 = Vector((b/2),(h/2-ro),0)
@@ -94,12 +87,23 @@ def generic_rrw(params,document):
         # putting the segments together, make wires, make faces, extrude them and cut them
         Wo = Part.Wire([Lor1,Coc1,Lor2,Coc2,Lor3,Coc3,Lor4,Coc4,])
         Wi = Part.Wire([Lir1,Cic1,Lir2,Cic2,Lir3,Cic3,Lir4,Cic4,])
-        Fo = Part.Face(Wo)
-        Fi = Part.Face(Wi)
-        Po = Fo.extrude(Vector(0,0,l))
-        Pi = Fi.extrude(Vector(0,0,l))
-        beam = Po.cut(Pi) 
-        part.Shape = beam
+        F = Part.Face([Wo,Wi])
+
+        part = None
+        if params['arch']:
+                part = Arch.makeStructure(name=name)
+
+                prof = document.addObject("Part::Feature","Profile")
+                prof.Shape = F
+                part.Base = prof
+
+                part.Height = l
+        else:
+                part = document.addObject("Part::Feature","BOLTS_part")
+                part.Label = name
+
+                beam = F.extrude(Vector(0,0,l))
+                part.Shape = beam
 
 
 
@@ -115,11 +119,6 @@ def rrw(params,document):
         ri=1.0*t
         ro=1.5*t
 
-
-        part = document.addObject("Part::Feature","BOLTS_part")
-        part.Label = name
-
-
         # outer rectangle, going clockwise
         Vor1 = Vector((b/2),(h/2-ro),0)
         Vor2 = Vector((b/2),(-h/2+ro),0)
@@ -173,10 +172,20 @@ def rrw(params,document):
         # putting the segments together, make wires, make faces, extrude them and cut them
         Wo = Part.Wire([Lor1,Coc1,Lor2,Coc2,Lor3,Coc3,Lor4,Coc4,])
         Wi = Part.Wire([Lir1,Cic1,Lir2,Cic2,Lir3,Cic3,Lir4,Cic4,])
-        Fo = Part.Face(Wo)
-        Fi = Part.Face(Wi)
-        Po = Fo.extrude(Vector(0,0,l))
-        Pi = Fi.extrude(Vector(0,0,l))
-        beam = Po.cut(Pi) 
-        part.Shape = beam
+        F = Part.Face([Wo,Wi])
 
+        part = None
+        if params['arch']:
+                part = Arch.makeStructure(name=name)
+
+                prof = document.addObject("Part::Feature","Profile")
+                prof.Shape = F
+                part.Base = prof
+
+                part.Height = l
+        else:
+                part = document.addObject("Part::Feature","BOLTS_part")
+                part.Label = name
+
+                beam = F.extrude(Vector(0,0,l))
+                part.Shape = beam
