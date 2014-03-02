@@ -195,7 +195,7 @@ class BoolWidget(QBoolWidget):
 		self.ui = Ui_BoolWidget()
 		self.ui.setupUi(self)
 		self.ui.checkBox.setText(label)
-		if default == "true":
+		if default == "True":
 			self.ui.checkBox.setChecked(True)
 		else:
 			self.ui.checkBox.setChecked(False)
@@ -269,8 +269,8 @@ class BoltsWidget(QBoltsWidget):
 	def setup_param_widgets(self,cl,base):
 		#construct widgets
 		params = cl.parameters.union(base.parameters)
+
 		for p in params.free:
-			print p
 			p_type = params.types[p]
 			default = str(params.defaults[p])
 			if p_type == "Length (mm)":
@@ -287,7 +287,7 @@ class BoltsWidget(QBoltsWidget):
 				self.param_widgets[p] = TableIndexWidget(self.ui.params,p,params.choices[p],default)
 			else:
 				raise ValueError("Unknown type encountered for parameter %s: %s" % (p,p_type))
-			self.param_widgets[p].setToolTip(cl.parameters.description[p])
+			self.param_widgets[p].setToolTip(params.description[p])
 		#add them to layout
 			self.ui.param_layout.addWidget(self.param_widgets[p])
 		if base.type == "fcstd":
