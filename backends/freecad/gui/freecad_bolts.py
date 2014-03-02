@@ -372,6 +372,7 @@ class BoltsWidget(QBoltsWidget):
 			base = self.freecad.getbase[data.id]
 			add_part(base,params,FreeCAD.ActiveDocument)
 			FreeCADGui.SendMsgToActiveView("ViewFit")
+			FreeCAD.ActiveDocument.recompute()
 		except ValueError as e:
 			QtGui.QErrorMessage(self).showMessage(str(e))
 		except Exception as e:
