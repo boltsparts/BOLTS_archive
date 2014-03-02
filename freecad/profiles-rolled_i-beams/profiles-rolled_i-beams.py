@@ -19,6 +19,7 @@
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
 import Part
+import Arch
 
 def ibeam_parallel_flange(params,document):
         key = params['type']
@@ -31,9 +32,6 @@ def ibeam_parallel_flange(params,document):
         name = params['name']
 
 
-
-        part = document.addObject("Part::Feature","BOLTS_part")
-        part.Label = name
 
         # lower flange, starting at the left web fillet, going against clockwise
         Vlf1 = Vector((-tw/2-r),(-h/2+tf),0)
@@ -83,6 +81,20 @@ def ibeam_parallel_flange(params,document):
         # putting the segments together make a wire, a face and extrude it
         W = Part.Wire([Llf1,Llf2,Llf3,Llf4,Llf5,Cfc1,Lw1,Cfc2,Luf1,Luf2,Luf3,Luf4,Luf5,Cfc3,Lw2,Cfc4])
         F = Part.Face(W)
-        beam = F.extrude(Vector(0,0,l))
-        part.Shape = beam
 
+
+        part = None
+        if params['arch']:
+                part = Arch.makeStructure(name=name)
+
+                prof = document.addObject("Part::Feature","Profile")
+                prof.Shape = F
+                part.Base = prof
+
+                part.Height = l
+        else:
+                part = document.addObject("Part::Feature","BOLTS_part")
+                part.Label = name
+
+                beam = F.extrude(Vector(0,0,l))
+                part.Shape = beam
