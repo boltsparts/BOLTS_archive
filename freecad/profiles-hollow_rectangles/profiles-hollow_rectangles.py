@@ -89,7 +89,6 @@ def generic_rrw(params,document):
         Wi = Part.Wire([Lir1,Cic1,Lir2,Cic2,Lir3,Cic3,Lir4,Cic4,])
         F = Part.Face([Wo,Wi])
 
-        part = None
         if params['arch']:
                 part = Arch.makeStructure(name=name)
 
@@ -174,7 +173,6 @@ def rrw(params,document):
         Wi = Part.Wire([Lir1,Cic1,Lir2,Cic2,Lir3,Cic3,Lir4,Cic4,])
         F = Part.Face([Wo,Wi])
 
-        part = None
         if params['arch']:
                 part = Arch.makeStructure(name=name)
 

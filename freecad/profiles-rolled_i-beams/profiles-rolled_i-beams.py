@@ -18,8 +18,7 @@
 
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part
-import Arch
+import Part, Arch
 
 def ibeam_parallel_flange(params,document):
         key = params['type']
@@ -83,7 +82,6 @@ def ibeam_parallel_flange(params,document):
         F = Part.Face(W)
 
 
-        part = None
         if params['arch']:
                 part = Arch.makeStructure(name=name)
 
