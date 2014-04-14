@@ -1,0 +1,15 @@
+---
+- filename: profiles-hot_finished-hollow.py
+  author: Bernd Hahnebach <bernd@bimstatik.org>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  type: function
+  functions:
+    - name: generic_rectangle_hollow
+      classids: [generic_rectangle_hollow]
+    - name: rectangle_hollow
+      classids: [rectangular_hollow_50to90, rectangular_hollow_100to180, rectangular_hollow_200to500]
+    - name: square_hollow
+      classids: [square_hollow_40to90, square_hollow_100to180, square_hollow_200to400]
+    - name: circle_hollow
+      classids: [circle_hollow_21to89, circle_hollow_101to219, circle_hollow_244to457, circle_hollow_508to914, circle_hollow_1016to1219]
+...
