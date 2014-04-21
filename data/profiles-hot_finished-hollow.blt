@@ -16,7 +16,7 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 ---
 id: profiles-hot_finished-hollow
-name: hollow sections
+name: Hollow sections
 description: Hot finished structural hollow sections
 author: [Bernd Hahnebach <bernd@bimstatik.org>, Johannes Reinhardt <jreinhardt@ist-dein-freund.de>]
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
@@ -79,7 +79,7 @@ classes:
     naming:
       template: "CHS%s, l=%s"
       substitute: [type,l]
-    description: Circle Hollow Section (CHS) 21.3 to 88.9
+    description: Circular Hollow Section (CHS) 21.3 to 88.9
     standard: [EN 10210-2]
     parameters:
         free: [type,l]

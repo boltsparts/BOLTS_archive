@@ -18,7 +18,7 @@
 
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part
+import Part, Arch
 
 def rectangle_hollow(params,document):
         h = params['h']
@@ -30,11 +30,6 @@ def rectangle_hollow(params,document):
         ## Definition in EN standard
         ri=1.0*t
         ro=1.5*t
-
-
-        part = document.addObject("Part::Feature","BOLTS_part")
-        part.Label = name
-
 
         # outer rectangle, going clockwise
         Vor1 = Vector((b/2),(h/2-ro),0)
@@ -89,12 +84,22 @@ def rectangle_hollow(params,document):
         # putting the segments together, make wires, make faces, extrude them and cut them
         Wo = Part.Wire([Lor1,Coc1,Lor2,Coc2,Lor3,Coc3,Lor4,Coc4,])
         Wi = Part.Wire([Lir1,Cic1,Lir2,Cic2,Lir3,Cic3,Lir4,Cic4,])
-        Fo = Part.Face(Wo)
-        Fi = Part.Face(Wi)
-        Po = Fo.extrude(Vector(0,0,l))
-        Pi = Fi.extrude(Vector(0,0,l))
-        beam = Po.cut(Pi) 
-        part.Shape = beam
+        face = Part.Face([Wo,Wi])
+
+        if params['arch']:
+                part = Arch.makeStructure(name=name)
+
+                prof = document.addObject("Part::Feature","Profile")
+                prof.Shape = face
+                part.Base = prof
+
+                part.Height = l
+        else:
+                part = document.addObject("Part::Feature","BOLTS_part")
+                part.Label = name
+
+                beam = face.extrude(Vector(0,0,l))
+                part.Shape = beam
 
 
 
@@ -107,11 +112,6 @@ def square_hollow(params,document):
         ## Definition in EN standard
         ri=1.0*t
         ro=1.5*t
-
-
-        part = document.addObject("Part::Feature","BOLTS_part")
-        part.Label = name
-
 
         # outer rectangle, going clockwise
         Vor1 = Vector((b/2),(b/2-ro),0)
@@ -166,13 +166,22 @@ def square_hollow(params,document):
         # putting the segments together, make wires, make faces, extrude them and cut them
         Wo = Part.Wire([Lor1,Coc1,Lor2,Coc2,Lor3,Coc3,Lor4,Coc4,])
         Wi = Part.Wire([Lir1,Cic1,Lir2,Cic2,Lir3,Cic3,Lir4,Cic4,])
-        Fo = Part.Face(Wo)
-        Fi = Part.Face(Wi)
-        Po = Fo.extrude(Vector(0,0,l))
-        Pi = Fi.extrude(Vector(0,0,l))
-        beam = Po.cut(Pi) 
-        part.Shape = beam
+        face = Part.Face([Wo,Wi])
 
+        if params['arch']:
+                part = Arch.makeStructure(name=name)
+
+                prof = document.addObject("Part::Feature","Profile")
+                prof.Shape = face
+                part.Base = prof
+
+                part.Height = l
+        else:
+                part = document.addObject("Part::Feature","BOLTS_part")
+                part.Label = name
+
+                beam = face.extrude(Vector(0,0,l))
+                part.Shape = beam
 
 
 def circle_hollow(params,document):
@@ -183,9 +192,21 @@ def circle_hollow(params,document):
 
         id = od - t
 
-        part = document.addObject("Part::Feature","BOLTS_part")
-        part.Label = name
+        outer = Part.Wire(Part.makeCircle(0.5*od))
+        inner = Part.Wire(Part.makeCircle(0.5*id))
+        face = Part.Face([outer,inner])
 
-        outer = Part.makeCylinder(0.5*od,l)
-        inner = Part.makeCylinder(0.5*id,l)
-        part.Shape = outer.cut(inner).removeSplitter()
+        if params['arch']:
+                part = Arch.makeStructure(name=name)
+
+                prof = document.addObject("Part::Feature","Profile")
+                prof.Shape = face
+                part.Base = prof
+
+                part.Height = l
+        else:
+                part = document.addObject("Part::Feature","BOLTS_part")
+                part.Label = name
+
+                beam = face.extrude(Vector(0,0,l))
+                part.Shape = beam
