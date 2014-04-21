@@ -18,15 +18,49 @@
 id: profiles-hot_finished-hollow
 name: hollow sections
 description: Hot finished structural hollow sections
-author: Bernd Hahnebach <bernd@bimstatik.org>
+author: [Bernd Hahnebach <bernd@bimstatik.org>, Johannes Reinhardt <jreinhardt@ist-dein-freund.de>]
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.3
 classes:
-  - id: generic_rectangle_hollow
+  - id: generic_circle_hollow
     naming:
-      template: "%s-%s-%s, l=%s"
+      template: "Circular hollow profile %s/%s, l=%s"
+      substitute: [D,t,l]
+    description: a generic circular hollow profile
+    parameters:
+        free: [D,t,l]
+        defaults: {D: 21.3, t: 2.3, l: 3000}
+        types:
+          D: Length (mm)
+          t: Length (mm)
+          l: Length (mm)
+        description:
+          D: outside diameter
+          t: thickness
+          l: profile length
+    source: No source information used
+  - id: generic_square_hollow
+    naming:
+      template: "Square hollow profile %s/%s, l=%s"
+      substitute: [b,t,l]
+    description: a generic square hollow profile
+    parameters:
+        free: [b,t,l]
+        defaults: {b: 40, t: 2.6, l: 3000}
+        types:
+          b: Length (mm)
+          t: Length (mm)
+          l: Length (mm)
+        description:
+          b: outside dimension 
+          t: web thickness
+          l: profile length
+    source: No source information used
+  - id: generic_rectangular_hollow
+    naming:
+      template: "Rectangular hollow profile %s-%s-%s, l=%s"
       substitute: [h, b, t, l]
-    description: a generic rectangle hollow profile
+    description: a generic rectangular hollow profile
     parameters:
       free: [h, b, t, l]
       defaults: {h: 100, b: 100, t: 6.3, l: 2500}
@@ -41,7 +75,6 @@ classes:
           t: web thickness
           l: profile length
     source: No source information used
-
   - id: circle_hollow
     naming:
       template: "CHS%s, l=%s"
@@ -94,7 +127,7 @@ classes:
                 88.9/4.0:   [  88.9,  4.0 ]
                 88.9/5.0:   [  88.9,  5.0 ]
                 88.9/6.0:   [  88.9,  6.0 ]
-                88.9/6.3:   [  88.9,  6.3 ]    
+                88.9/6.3:   [  88.9,  6.3 ]
                 101.6/3.2:   [  101.6,  3.2 ]
                 101.6/4.0:   [  101.6,  4.0 ]
                 101.6/5.0:   [  101.6,  5.0 ]
@@ -424,7 +457,7 @@ classes:
     naming:
       template: "RHS%s, l=%s"
       substitute: [type,l]
-    description: Square Hollow Section (RHS) 50 to 90
+    description: Rectangular Hollow Section (RHS) 50 to 90
     standard: [EN 10210-2]
     parameters:
         free: [type,l]

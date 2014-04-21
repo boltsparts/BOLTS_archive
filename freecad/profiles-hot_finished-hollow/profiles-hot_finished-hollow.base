@@ -4,12 +4,10 @@
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: function
   functions:
-    - name: generic_rectangle_hollow
-      classids: [rectangle_hollow]
     - name: rectangle_hollow
-      classids: [rectangular_hollow]
+      classids: [rectangular_hollow,generic_rectangular_hollow]
     - name: square_hollow
-      classids: [square_hollow]
+      classids: [square_hollow,generic_square_hollow]
     - name: circle_hollow
-      classids: [circle_hollow]
+      classids: [circle_hollow,generic_circle_hollow]
 ...
