@@ -42,7 +42,7 @@ classes:
           l: profile length
     source: No source information used
 
-  - id: circle_hollow_21to89
+  - id: circle_hollow
     naming:
       template: "CHS%s, l=%s"
       substitute: [type,l]
@@ -95,33 +95,6 @@ classes:
                 88.9/5.0:   [  88.9,  5.0 ]
                 88.9/6.0:   [  88.9,  6.0 ]
                 88.9/6.3:   [  88.9,  6.3 ]    
-    source: EN 10210-2:2006, Table B.1
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-
-  - id: circle_hollow_101to219
-    naming:
-      template: "CHS%s, l=%s"
-      substitute: [type,l]
-    description: Circle Hollow Section (CHS) 101.6 to 219.1
-    standard: [EN 10210-2]
-    parameters:
-        free: [type,l]
-        defaults: {type: "101.6/3.2", l: 3000}
-        types:
-          type: Table Index
-          D: Length (mm)
-          t: Length (mm)
-          l: Length (mm)
-        description:
-          type: profile type
-          D: outside diameter 
-          t: thickness
-          l: profile length
-        tables:
-            index: type
-            columns: [D,t]
-            data:
-                #type       [  D      t   ]
                 101.6/3.2:   [  101.6,  3.2 ]
                 101.6/4.0:   [  101.6,  4.0 ]
                 101.6/5.0:   [  101.6,  5.0 ]
@@ -170,33 +143,6 @@ classes:
                 219.1/14.2:   [  219.1,  14.2 ]
                 219.1/16.0:   [  219.1,  16.0 ]
                 219.1/20.0:   [  219.1,  20.0 ]
-    source: EN 10210-2:2006, Table B.1
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-
-  - id: circle_hollow_244to457
-    naming:
-      template: "CHS%s, l=%s"
-      substitute: [type,l]
-    description: Circle Hollow Section (CHS) 244.5 to 457.0
-    standard: [EN 10210-2]
-    parameters:
-        free: [type,l]
-        defaults: {type: "244.5/5.0", l: 3000}
-        types:
-          type: Table Index
-          D: Length (mm)
-          t: Length (mm)
-          l: Length (mm)
-        description:
-          type: profile type
-          D: outside diameter 
-          t: thickness
-          l: profile length
-        tables:
-            index: type
-            columns: [D,t]
-            data:
-                #type       [  D      t   ]
                 244.5/5.0:   [  244.5,  5.0 ]
                 244.5/6.3:   [  244.5,  6.3 ]
                 244.5/8.0:   [  244.5,  8.0 ]
@@ -252,33 +198,6 @@ classes:
                 457.0/25.0:   [  457.0,  25.0 ]
                 457.0/30.0:   [  457.0,  30.0 ]
                 457.0/40.0:   [  457.0,  40.0 ]
-    source: EN 10210-2:2006, Table B.1
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-
-  - id: circle_hollow_508to914
-    naming:
-      template: "CHS%s, l=%s"
-      substitute: [type,l]
-    description: Circle Hollow Section (CHS) 508.0 to 914.0
-    standard: [EN 10210-2]
-    parameters:
-        free: [type,l]
-        defaults: {type: "508.0/6.3", l: 3000}
-        types:
-          type: Table Index
-          D: Length (mm)
-          t: Length (mm)
-          l: Length (mm)
-        description:
-          type: profile type
-          D: outside diameter 
-          t: thickness
-          l: profile length
-        tables:
-            index: type
-            columns: [D,t]
-            data:
-                #type       [  D      t   ]
                 508.0/6.3:   [  508.0,  6.3 ]
                 508.0/8.0:   [  508.0,  8.0 ]
                 508.0/10.0:   [  508.0,  10.0 ]
@@ -340,33 +259,6 @@ classes:
                 914.0/20.0:   [  914.0,  20.0 ]
                 914.0/25.0:   [  914.0,  25.0 ]
                 914.0/30.0:   [  914.0,  30.0 ]
-    source: EN 10210-2:2006, Table B.1
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-
-  - id: circle_hollow_1016to1219
-    naming:
-      template: "CHS%s, l=%s"
-      substitute: [type,l]
-    description: Circle Hollow Section (CHS) 1016.0 to 1219.0
-    standard: [EN 10210-2]
-    parameters:
-        free: [type,l]
-        defaults: {type: "1016.0/8.0", l: 3000}
-        types:
-          type: Table Index
-          D: Length (mm)
-          t: Length (mm)
-          l: Length (mm)
-        description:
-          type: profile type
-          D: outside diameter 
-          t: thickness
-          l: profile length
-        tables:
-            index: type
-            columns: [D,t]
-            data:
-                #type       [  D      t   ]
                 1016.0/8.0:   [  1016.0,  8.0 ]
                 1016.0/10.0:   [  1016.0,  10.0 ]
                 1016.0/12.5:   [  1016.0,  12.5 ]
@@ -396,8 +288,7 @@ classes:
                 1219.0/25.0:   [  1219.0,  25.0 ]
     source: EN 10210-2:2006, Table B.1
     notes: http://en.wikipedia.org/wiki/Structural_steel
-
-  - id: square_hollow_40to90
+  - id: square_hollow
     naming:
       template: "SHS%s, l=%s"
       substitute: [type,l]
@@ -450,33 +341,6 @@ classes:
                 90/5.0:   [  90,  5.0 ]
                 90/6.3:   [  90,  6.3 ]
                 90/8.0:   [  90,  8.0 ]
-    source: EN 10210-2:2006, Table B.2
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-
-  - id: square_hollow_100to180
-    naming:
-      template: "SHS%s, l=%s"
-      substitute: [type,l]
-    description: Square Hollow Section (SHS) 100 to 180
-    standard: [EN 10210-2]
-    parameters:
-        free: [type,l]
-        defaults: {type: "100/5.0", l: 3000}
-        types:
-          type: Table Index
-          b: Length (mm)
-          t: Length (mm)
-          l: Length (mm)
-        description:
-          type: profile type
-          b: outside dimension 
-          t: web thickness
-          l: profile length
-        tables:
-            index: type
-            columns: [b,t]
-            data:
-                #type           [   b   t   ]
                 100/4.0:   [  100,  4.0 ]
                 100/5.0:   [  100,  5.0 ]
                 100/6.3:   [  100,  6.3 ]
@@ -513,33 +377,6 @@ classes:
                 180/12.5:   [  180,  12.5 ]
                 180/14.2:   [  180,  14.2 ]
                 180/16.0:   [  180,  16.0 ]
-    source: EN 10210-2:2006, Table B.2
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-
-  - id: square_hollow_200to400
-    naming:
-      template: "SHS%s, l=%s"
-      substitute: [type,l]
-    description: Square Hollow Section (SHS) 200 to 400
-    standard: [EN 10210-2]
-    parameters:
-        free: [type,l]
-        defaults: {type: "200/5.0", l: 3000}
-        types:
-          type: Table Index
-          b: Length (mm)
-          t: Length (mm)
-          l: Length (mm)
-        description:
-          type: profile type
-          b: outside dimension 
-          t: web thickness
-          l: profile length
-        tables:
-            index: type
-            columns: [b,t]
-            data:
-                #type           [   b   t   ]
                 200/5.0:   [  200,  5.0 ]
                 200/6.3:   [  200,  6.3 ]
                 200/8.0:   [  200,  8.0 ]
@@ -583,8 +420,7 @@ classes:
                 400/20.0:   [  400,  20.0 ]
     source: EN 10210-2:2006, Table B.2
     notes: http://en.wikipedia.org/wiki/Structural_steel
-
-  - id: rectangular_hollow_50to90
+  - id: rectangular_hollow
     naming:
       template: "RHS%s, l=%s"
       substitute: [type,l]
@@ -629,35 +465,6 @@ classes:
                 90/50/5.0:   [  90,  50,  5.0 ]
                 90/50/6.3:   [  90,  50,  6.3 ]
                 90/50/8.0:   [  90,  50,  8.0 ]
-    source: EN 10210-2:2006, Table B.3
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-
-  - id: rectangular_hollow_100to180
-    naming:
-      template: "RHS%s, l=%s"
-      substitute: [type,l]
-    description: Square Hollow Section (RHS) 100 to 180
-    standard: [EN 10210-2]
-    parameters:
-        free: [type,l]
-        defaults: {type: "100/50/3.2", l: 3000}
-        types:
-          type: Table Index
-          h: Length (mm)
-          b: Length (mm)
-          t: Length (mm)
-          l: Length (mm)
-        description:
-          type: profile type
-          h: outside dimension height
-          b: outside dimension width
-          t: web thickness
-          l: profile length
-        tables:
-            index: type
-            columns: [h,b,t]
-            data:
-                #type         [  h     b    t   ]
                 100/50/3.2:   [  100,  50,  3.2 ]
                 100/50/4.0:   [  100,  50,  4.0 ]
                 100/50/5.0:   [  100,  50,  5.0 ]
@@ -701,36 +508,6 @@ classes:
                 180/100/8.0:   [  180,  100,  8.0 ]
                 180/100/10.0:   [  180,  100,  10.0 ]
                 180/100/12.5:   [  180,  100,  12.5 ]
-    source: EN 10210-2:2006, Table B.3
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-
-  - id: rectangular_hollow_200to500
-    naming:
-      template: "RHS%s, l=%s"
-      substitute: [type,l]
-    description: Square Hollow Section (RHS) 200 to 500
-    standard: [EN 10210-2]
-    parameters:
-        free: [type,l]
-        defaults: {type: "200/100/4.0", l: 3000}
-        types:
-          type: Table Index
-          h: Length (mm)
-          b: Length (mm)
-          t: Length (mm)
-          l: Length (mm)
-        description:
-          type: profile type
-          h: outside dimension height
-          b: outside dimension width
-          t: web thickness
-          l: profile length
-        tables:
-            index: type
-            columns: [h,b,t]
-            data:
-                #type         [  h     b    t   ]
-
                 200/100/4.0:   [  200,  100,  4.0 ]
                 200/100/5.0:   [  200,  100,  5.0 ]
                 200/100/6.3:   [  200,  100,  6.3 ]
