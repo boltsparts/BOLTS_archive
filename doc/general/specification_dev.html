@@ -1,0 +1,632 @@
+---
+  layout: base
+  title: Specification
+---
+<div class="page-title-bar">
+  <div class="inner-content">
+    <h2>{{ page.title }}</h2>
+  </div>
+</div>
+
+<div id="content">
+  <div class="inner-content">
+<div class="section" id="bolts-specification-version-0-3">
+<h1>BOLTS Specification Version 0.3</h1>
+<p>The BOLTS library consists of several different components, processes and
+conventions and a number of precisely defined concepts. The purpose of this
+document is to specify them.</p>
+<div class="section" id="parts-classes-standards-and-collections">
+<h2>Parts, Classes, Standards and Collections</h2>
+<p>In this section some concepts are defined, that will be used later in the
+specification of the <a class="reference internal" href="#blt-file">blt-file</a>.</p>
+<div class="section" id="parts">
+<span id="part"></span><h3>Parts</h3>
+<p>A BOLTS <a class="reference internal" href="#repository">repository</a> contains a various sorts of data about objects, that are in
+some way useful in CAD. A part is a object that can be described by a set of
+dimensions. E.g. a piece of paper is described by its width of 210mm and its
+height of 297mm.</p>
+</div>
+<div class="section" id="classes">
+<span id="class"></span><h3>Classes</h3>
+<p>However, one often encounters parts that are very similar to each other, for
+example just differing in their dimensions. These parts can then be more
+efficiently described as a class of parts. To continue with the paper example,
+a class describing pieces class could also contain a part with width 100mm and
+height 100mm.</p>
+<p>In a <a class="reference internal" href="#blt-file">blt-file</a> classes of parts are described, because this case is so frequent.
+Some parts are one of a kind, so it is not uncommon to have classes that
+contain just a single part.</p>
+<p>The classes of technical parts that BOLTS deals with are often specified by
+standards issued by standardization bodies. This can be specified for a class
+in the <a class="reference internal" href="#blt-file">blt-file</a>.</p>
+</div>
+<div class="section" id="collections">
+<span id="collection"></span><h3>Collections</h3>
+<p>It turns out to be convenient to organize the classes of a bolts repository in
+collections. A collection usually has one or few authors, the parts contained
+are in some sense related to each other and all the data of a collection is
+under the same licence.</p>
+<p>Each collection has a one word identifier, the collection id. The collection id
+is the filename (without extension) of the <a class="reference internal" href="#blt-file">blt-file</a> with the information about
+the collection, and also explicitly specified in the <a class="reference internal" href="#blt-file">blt-file</a>. For more
+details information see there.</p>
+</div>
+</div>
+<div class="section" id="the-repository">
+<span id="repository"></span><h2>The repository</h2>
+<p>A BOLTS repository is directory structure with a certain layout. It contains
+all the data and metadata. The root directory contains at least a &quot;data&quot;
+directory with the backend independent data in <a class="reference internal" href="#blt-file">blt-file</a>, plus optionally a
+number of database directories with data that can be used by a <a class="reference internal" href="#backend">backend</a>. See
+<a class="reference internal" href="#list-of-databases">list-of-databases</a> for details.</p>
+<div class="section" id="the-data-directory">
+<h3>The data directory</h3>
+<p>The data directory contains a number of <a class="reference internal" href="#blt-file">blt-file</a>, one for each <a class="reference internal" href="#collection">collection</a>.
+These files contain the backend independent information about the parts in the
+repository.</p>
+</div>
+<div class="section" id="the-databases">
+<span id="database"></span><h3>The databases</h3>
+<p>A database directory is a directory that contains data about certain aspects of
+the parts or data in a specific form.Backends can access this data to
+transform the parts data into specific forms or collect informations.</p>
+<p>In contrast to the data in the <a class="reference internal" href="#blt-file">blt-file</a>, the data in the database directories
+is optional. If for a <a class="reference internal" href="#class">class</a> this data is not available, the <a class="reference internal" href="#backend">backend</a> has to be
+able to deal with it in an appropriate manner, for example by not processing
+this class.</p>
+</div>
+</div>
+<div class="section" id="backends-processing-and-distributions">
+<h2>Backends, Processing and Distributions</h2>
+<p>In BOLTS the backend independent data and metadata is separated from the
+backend specific data. The former is held in <a class="reference internal" href="#blt-file">blt-file</a>, the latter in
+<a class="reference internal" href="#database">database</a> directories.</p>
+<div class="section" id="id1">
+<span id="backend"></span><h3>Backend</h3>
+<p id="distribution">A backend is a process that uses backend independent data and data from
+<a class="reference internal" href="#database">database</a>, transforms this data and outputs a set of files. This output is called
+the distribution.</p>
+<img alt="processing_0.3.png" src="processing_0.3.png" style="width: 100%;" />
+<p>Am example for a backend would be a process that uses the backend indepent data
+about parts, their geometries and dimensions together with a number of
+templates and stylesheets and produces a set of HTML pages with a nicely
+rendered, browsable description of the parts. Other backends could produce data
+that is suitable for use in specific CAD applications.</p>
+<p>Backends are not specified in detail by this specification.</p>
+</div>
+<div class="section" id="backend-independent-data-the-blt-file">
+<span id="blt-file"></span><h3>Backend independent data - the blt file</h3>
+<p>The backend independent data is stored in <a class="reference external" href="http://yaml.org/">yaml</a> files with
+the extension .blt. These files contain exactly one YAML document consisting of
+an associative array with the following keys:</p>
+<ul class="simple">
+<li>id: mandatory, string. The id of the collection. Must be identical to the
+filename of the blt file without the extenstion.</li>
+<li>name: optional, string. A name for the collection.</li>
+<li>description: optional, string. A description of the contents of this
+collection.</li>
+<li>author: mandatory, string or list of strings. The author of this collection
+with e-mail in &lt;&gt;. If multiple authors contributed significantly to this collection
+a list of authors may be given.</li>
+<li>license: mandatory, string. The name of the license for this collection and a
+URL pointing to the full text of the license enclosed in &lt;&gt;. Must be one of
+the <a class="reference internal" href="#supported-licenses">supported-licenses</a>.</li>
+<li>blt-version: mandatory, number. The version of the blt format this collection
+follows.</li>
+<li>classes: mandatory. An list of <a class="reference internal" href="#class-element">class-element</a>.</li>
+</ul>
+<p>The filename without the .blt extension is called the collection id. For
+consistency they are repeated in the id field. Collection ids are one word
+identifiers, which must be unique within the repository.  They should contain
+only letters, numbers and underscores, and should be descriptive, as they may
+be visible to the user. Some names can not be collection ids: common, gui,
+template</p>
+<div class="section" id="id2">
+<span id="class-element"></span><h4>Class element</h4>
+<p>A class element is an associative array that holds information about a
+<a class="reference internal" href="#class">class</a>. It has the following keys:</p>
+<ul class="simple">
+<li>id: mandatory, string. The id of the class. Class ids are one word
+identifiers, which must be unique within the repository. This class id is
+used as a way to refer to the class, when the standard field is not set.
+They should contain only letters, numbers and underscores, and should be
+descriptive, as they may be visible to the user.</li>
+<li>naming: mandatory, <a class="reference internal" href="#naming-element">naming-element</a>. A naming convention for the parts of this
+class.</li>
+<li>description: optional, string. A short description of the class.</li>
+<li>standard: optional, string or list of strings. The name of the standard, if
+class is standardized. In the case of multiple standards with identical
+specifications, a list of names can be given.</li>
+<li>status: optional, string. This can be used to indicate the status of the
+standard.  Possible values are &quot;active&quot; and &quot;withdrawn&quot;, if absent, &quot;active&quot;
+is assumed.</li>
+<li>replaces: optional, string or list of strings. Standards that are superseded
+by this standard.</li>
+<li>parameters: optional, <a class="reference internal" href="#parameter-element">parameter-element</a>: Parameters for this class.</li>
+<li>url: optional, string or list of strings. A url with relevant information
+regarding the parts of this class. For example a link to a vendor, or to the
+specifying standard.  In the case of several identical standards, a list of
+urls has to be given.</li>
+<li>notes: optional, string. Notes for this class. Can be used to keep questions
+or additional information.</li>
+<li>source: mandatory, string. A short description where the informations for this
+class originate. Should contain a URL if possible.</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<span id="parameter-element"></span><h4>Parameter element</h4>
+<p>A parameter element is an associative array that holds information about the
+parameters of a part. This information is used when doing
+<a class="reference internal" href="#parameter-collection">parameter-collection</a>. Parameters are often dimensions, but are not
+restricted to be. The following keys are contained in a parameter element.</p>
+<ul class="simple">
+<li>literal: optional, associative array. This array has as its key the parameter
+names of the literal parameters, as values the corresponding values. Literal
+parameters are rarely used.</li>
+<li>free: optional, list. This list contains the names of the parameters for
+which the user will provide this value.</li>
+<li>tables: optional, <a class="reference internal" href="#table-element">table-element</a> or list of table-elements. This array
+contains tabular data. Usually the table index will be a free variable, for
+details see <a class="reference internal" href="#table-element">table-element</a> and <a class="reference internal" href="#parameter-collection">parameter-collection</a>.</li>
+<li>tables2d: optional, <a class="reference internal" href="#table2d-element">table2d-element</a> or list of table2d-elements. This array
+contains tabular data. Usually row and column indices will be free variables,
+for details see <a class="reference internal" href="#table2d-element">table2d-element</a> and <a class="reference internal" href="#parameter-collection">parameter-collection</a>.</li>
+<li>types: mandatory, associative array. Contains as keys parameter names, as
+values their respective types. Possible types are: &quot;Length (mm)&quot;, Length
+(in)&quot;, &quot;Number&quot;, &quot;Bool&quot;, &quot;Table Index&quot;, &quot;String&quot;, &quot;Angle (deg)&quot;.</li>
+<li>defaults: optional, associative array. This array contains a default value
+for every free parameter. If absent, the default value defaults to the type
+specific values given in the table below.</li>
+<li>description: optional, associative array. This array contains short a short
+text for each parameter clarifying the meaning of the parameter in plain
+language.</li>
+<li>common: optional, list of lists of (lists or strings). This field contains a
+list of tuples that contain valaues for all free parameters in the order in
+which they are given in the free field. These tuples are  represented by a
+YAML list and contain common combinations of parameters. For more compact
+notation, every element of the tuple actually is a list of values, so the
+tuple represents all possible combinations of values for the parameters. A
+tuple element can also be &quot;:&quot; if the free variable is discrete (see table
+below), the being a shorthand for all possible values. Defaults to the empty
+list, if at least one free variable is not discrete. If all free variables
+are discrete, the default is the tuple with all possible parameter
+combinations.</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="40%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Type</th>
+<th class="head">Default Value</th>
+<th class="head">Discrete</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Length (mm)</td>
+<td>10</td>
+<td>no</td>
+</tr>
+<tr><td>Length (in)</td>
+<td>1</td>
+<td>no</td>
+</tr>
+<tr><td>Number</td>
+<td>1</td>
+<td>no</td>
+</tr>
+<tr><td>Bool</td>
+<td>False</td>
+<td>yes</td>
+</tr>
+<tr><td>Table Index</td>
+<td>&quot;&quot;</td>
+<td>yes</td>
+</tr>
+<tr><td>String</td>
+<td>&quot;&quot;</td>
+<td>no</td>
+</tr>
+<tr><td>Angle (deg)</td>
+<td>0</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>Some parameter names are forbidden: standard, name.</p>
+<p>The two values of the type Bool are true and false (lowercase).</p>
+<!-- Limits on parameters could go here -->
+</div>
+<div class="section" id="id4">
+<span id="table-element"></span><h4>Table element</h4>
+<p>Tables of data are very common in standards and very useful for specifying a
+<a class="reference internal" href="#class">class</a> of parts. A table element describes a table of values, where the row is
+specified by the value an index parameter, and each column contains the value
+for a parameter. A table element is an associative array that has the following
+keys:</p>
+<ul class="simple">
+<li>index: mandatory, string: name of the index parameter. Has to specified to be
+of type &quot;Table Index&quot; in the <a class="reference internal" href="#parameter-element">parameter-element</a>.</li>
+<li>columns: mandatory, list of strings: list of parameter names corresponding to the
+columns of the table.</li>
+<li>data: mandatory, associative array: The keys are possible values of the index
+parameter, the values a list of values compatible with the types of the
+parameters specified in columns.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<span id="table2d-element"></span><h4>Table2D element</h4>
+<p>In some cases, a <a class="reference internal" href="#table-element">table-element</a> is not powerful enough to represent the
+relationship between the values of free parameters and other parameters, for
+example if the value of a parameter depends on two free parameters at once.
+This case is covered by a table2d-element.</p>
+<p>A table2d-element allows to lookup the value of the result parameter for a row
+given by a rowindex and a column given by a colindex.</p>
+<p>A <a class="reference internal" href="#table2d-element">table2d-element</a> is an associative array with the following keys:</p>
+<ul class="simple">
+<li>rowindex: mandatory, string: name of the parameter that is used to select a
+row. Has to be specified to be of type &quot;Table Index&quot; in the
+<a class="reference internal" href="#parameter-element">parameter-element</a>.</li>
+<li>colindex: mandatory, string: name of the parameter that is used to select a
+column. Has to be specified to be of type &quot;Table Index&quot; in the
+<a class="reference internal" href="#parameter-element">parameter-element</a>.</li>
+<li>columns: mandatory, list of strings. The possible values for the colindex.</li>
+<li>result: mandatory, string. The name of the parameter whose value is
+determined with this table.</li>
+<li>data: mandatory, associative array: The keys are possible values of the
+rowindex parameter, the values a list of values for the columns from which
+one is selected by the colindex.</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<span id="naming-element"></span><h4>Naming element</h4>
+<p>The name of a part should be precise enough to completely describe it, and
+therefore depends on the values of (some of) the parameters. A naming element is
+an associative array that holds information about the name of the parts of a
+class. It has the keys:</p>
+<ul class="simple">
+<li>template: mandatory, string. A name template, can contain placeholders for
+strings &quot;%s&quot; and numbers &quot;s&quot;.</li>
+<li>substitute: optional, list. List of parameter names and that should be
+filled in for the placeholders in the template. If missing defaults to empty
+list. Besides the parameter names from the <a class="reference internal" href="#parameter-element">parameter-element</a>, also the
+special name &quot;standard&quot; can be used.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id7">
+<span id="parameter-collection"></span><h3>Parameter Collection</h3>
+<p>Parameter Collection is the process of assigning a value to each parameter. The
+set of all parameters is found by collecting parameter names from the fields of
+one or more <a class="reference internal" href="#parameter-element">parameter-element</a>:</p>
+<ul class="simple">
+<li>The keys of the literal field.</li>
+<li>The items of the free field.</li>
+<li>The index field of the <a class="reference internal" href="#table-element">table-element</a> s in the tables field.</li>
+<li>The columns field of the <a class="reference internal" href="#table-element">table-element</a> s in the tables field.</li>
+<li>The rowindex field of the <a class="reference internal" href="#table2d-element">table2d-element</a> s in the tables2d field</li>
+<li>The colindex field of the <a class="reference internal" href="#table2d-element">table2d-element</a> s in the tables2d field</li>
+<li>The result field of the <a class="reference internal" href="#table2d-element">table2d-element</a> s in the tables2d field</li>
+</ul>
+<p>It is an error condition if there is a parameter name present as a key in the
+types field, that is not in the set of all parameters.</p>
+<p>Then a value is assigned to each parameter. This can happen by:</p>
+<ul class="simple">
+<li>A literal value given in the literal field</li>
+<li>User or external input for parameters listed in the free field</li>
+<li>Table lookup for parameters listed in the columns field of a <a class="reference internal" href="#table-element">table-element</a></li>
+<li>Table2d lookup for parameters listed in the result field of a <a class="reference internal" href="#table2d-element">table2d-element</a></li>
+</ul>
+<p>It is an error condition if a parameter is not assigned a value or if there is
+more than one way to assign a value.</p>
+<p>The parameter values collected  in this way are for example used (among other
+properties) to populate the template given in the <a class="reference internal" href="#naming-element">naming-element</a>.</p>
+</div>
+<div class="section" id="id8">
+<span id="base-files"></span><h3>Base Files</h3>
+<p>Base files are <a class="reference external" href="http://yaml.org/">yaml</a> files, in which informations about
+the files for a collection in a <a class="reference internal" href="#database">database</a> directory are stored. They consist of
+a list of <a class="reference internal" href="#base-file-element">base-file-element</a>, one for each file they describe.</p>
+<div class="section" id="id10">
+<span id="base-file-element"></span><h4>Base file element</h4>
+<p>A base file element is an associative array containing informations about a
+file. Depending on the type of the file the contained keys are different.
+However, there are some keys that are present in every base file element:</p>
+<ul class="simple">
+<li>filename: mandatory, string. The filename of the file</li>
+<li>author: mandatory, string or list of strings. The author of the file with
+e-mail adress in &lt;&gt; or a list of several authors.</li>
+<li>license: mandatory, string. The license of the file. Must be one of the
+<a class="reference internal" href="#supported-licenses">supported-licenses</a>.</li>
+<li>type: mandatory, string. A string describing the type of the file.</li>
+<li>source: optional, string. A string describing the origin of the file.</li>
+</ul>
+<p>Different data bases contain different base-file-types, for a list see <a class="reference internal" href="#list-of-base-file-types">list-of-base-file-types</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<span id="list-of-databases"></span><h1>List of Databases</h1>
+<div class="section" id="drawings">
+<h2>Drawings</h2>
+<p>The drawings directory contains a number of subdirectories, one for
+each collection. In each of these directories, drawings of the parts can be
+stored, that illustrate the geometries of the parts and the meaning of the
+parameters.</p>
+<p>In each directory there is a .base file with the same name as the directory. It
+contains metadata in form of a list of <a class="reference internal" href="#base-file-element">base-file-element</a> of type
+&quot;drawing-dimensions&quot; or &quot;drawing-connector&quot; for the files in this directory.
+See <a class="reference internal" href="#base-file-type-drawing-dimensions">base-file-type-drawing-dimensions</a> and <a class="reference internal" href="#base-file-type-drawing-connectors">base-file-type-drawing-connectors</a>.</p>
+</div>
+<div class="section" id="openscad">
+<h2>OpenSCAD</h2>
+<p>The files containing all the informations necessary to build a geometrical
+representation of a class in OpenSCAD  reside in the &quot;openscad&quot; directory. This
+database directory contains a folder for each <a class="reference internal" href="#collection">collection</a> that contains files
+related to this collection, and the folder is named like the collection-id.</p>
+<p>To be able to do that it needs informations about base modules. These
+informations are stored in the <a class="reference internal" href="#base-files">base-files</a> of a collection. Base modules are
+OpenSCAD modules that take as parameters a subset of the parameters of the
+part (see <a class="reference internal" href="#parameter-collection">parameter-collection</a>), and construct the part according to these
+dimensions.</p>
+<p>These modules are stored in one or several files residing in the respective
+collection directory within the openscad directory, and the <a class="reference internal" href="#base-files">base-files</a>
+contains one <a class="reference internal" href="#base-file-element">base-file-element</a> of type &quot;modules&quot; (see <a class="reference internal" href="#base-file-type-module">base-file-type-module</a>) for
+each file with modules.</p>
+</div>
+<div class="section" id="freecad">
+<h2>FreeCAD</h2>
+<p>The &quot;freecad&quot; directory contains files that allow to build a geometrical
+representation of a class in FreeCAD. This directory contains a folder for each
+<a class="reference internal" href="#collection">collection</a> with the files related to classes in this collection.</p>
+<p>The geometrical representation can either be in the form of python function
+that constructs the part using the scripting facilities of FreeCAD, or in form
+of FreeCAD model files. The <a class="reference internal" href="#base-files">base-files</a> contains <a class="reference internal" href="#base-file-element">base-file-element</a> of type
+&quot;function&quot; (see <a class="reference internal" href="#base-file-type-function">base-file-type-function</a>) for the former form and of type
+&quot;fcstd&quot; (see <a class="reference internal" href="#base-file-type-fcstd">base-file-type-fcstd</a>) for the latter form.</p>
+</div>
+<div class="section" id="solidworks">
+<h2>SolidWorks</h2>
+<p>The &quot;solidworks&quot; directory contains files necessary to build &quot;design tables&quot;
+for use with the <a class="reference external" href="http://www.solidworks.com/">SolidWorks software</a>. This
+directory contains a folder for each <a class="reference internal" href="#collection">collection</a> with the files related to
+classes in this collection.</p>
+<p>The geometrical representation of the parts is supplied in the form of
+parametrized models. Together with &quot;design tables&quot; these models allow to easily
+obtain different sizes and variations of a part.</p>
+<p>All the information necessary to build the design table is contained in the
+<a class="reference internal" href="#base-files">base-files</a> , which contain a list of <a class="reference internal" href="#base-file-element">base-file-element</a> of type &quot;solidworks&quot;
+(see <a class="reference internal" href="#base-file-type-solidworks">base-file-type-solidworks</a> ).</p>
+</div>
+</div>
+<div class="section" id="id12">
+<span id="list-of-base-file-types"></span><h1>List of base file types</h1>
+<div class="section" id="drawing-dimensions">
+<span id="base-file-type-drawing-dimensions"></span><h2>Drawing Dimensions</h2>
+<p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> describes a drawing showing the dimensional
+parameters of a part. It is an associative array with the following keys:</p>
+<ul class="simple">
+<li>filename: mandatory, string. The filename of the file without the extension.
+Files with the same basename but different extensions are taken to be
+conversions to different file formats.</li>
+<li>author: mandatory, string or list of strings. The author of the file with
+e-mail adress in &lt;&gt; or a list of several authors.</li>
+<li>license: mandatory, string. The license of the file. Must be one of the
+<a class="reference internal" href="#supported-licenses">supported-licenses</a>.</li>
+<li>type: &quot;drawing-dimensions&quot;</li>
+<li>source: optional, string. A string describing the origin of the file.</li>
+<li>classids: mandatory, list of strings. The <a class="reference internal" href="#class">class</a> ids to which this drawing applies.</li>
+</ul>
+</div>
+<div class="section" id="drawing-connectors">
+<span id="base-file-type-drawing-connectors"></span><h2>Drawing Connectors</h2>
+<p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> describes a drawing showing the location of one
+or several connectors (see <a class="reference internal" href="#base-module-cs">base-module-cs</a>). It is an associative array with
+the following keys:</p>
+<ul class="simple">
+<li>filename: mandatory, string. The filename of the file without the extension.
+Files with the same basename but different extensions are taken to be
+conversions to different file formats.</li>
+<li>author: mandatory, string or list of strings. The author of the file with
+e-mail adress in &lt;&gt; or a list of several authors.</li>
+<li>license: mandatory, string. The license of the file. Must be one of the
+<a class="reference internal" href="#supported-licenses">supported-licenses</a>.</li>
+<li>type: &quot;drawing-connectors&quot;</li>
+<li>location: mandatory, string. Gives the name of the connector location that
+this drawing shows.</li>
+<li>source: optional, string. A string describing the origin of the file.</li>
+<li>classids: mandatory, list of strings. The <a class="reference internal" href="#class">class</a> ids to which this drawing applies.</li>
+</ul>
+</div>
+<div class="section" id="module">
+<span id="base-file-type-module"></span><h2>Module</h2>
+<p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> describes a file containing OpenSCAD modules.
+It is an associative array that contains the following keys:</p>
+<ul class="simple">
+<li>filename: mandatory, string. The filename of the file</li>
+<li>author: mandatory, string or list of strings. The author of the file with
+e-mail adress in &lt;&gt; or a list of several authors.</li>
+<li>license: mandatory, string. The license of the file. Must be one of the
+<a class="reference internal" href="#supported-licenses">supported-licenses</a></li>
+<li>type: &quot;module&quot;</li>
+<li>modules: mandatory, list of <a class="reference internal" href="#base-module-element">base-module-element</a>. A list of base module
+elements describing the modules in the file.</li>
+</ul>
+<div class="section" id="id13">
+<span id="base-module-element"></span><h3>Base module element</h3>
+<p>A base module element is a associative array describing an OpenSCAD module with
+the following keys:</p>
+<ul class="simple">
+<li>name: mandatory, string. The name of the module.</li>
+<li>arguments: mandatory, list of strings. A list with the arguments that need to
+be supplied to the module, in the correct order.  Is a subset of the
+parameters of the class, see <a class="reference internal" href="#parameter-collection">parameter-collection</a>.</li>
+<li>classids: mandatory, list of string. A list of class ids for which this base
+module should be used.</li>
+<li>parameters: optional, <a class="reference internal" href="#parameter-element">parameter-element</a>: Additional basespecific parameters.
+These parameters allow to represent additional paramters, which are not
+specific to the class, but to the base. This allows e.g. to let the user
+choose  between a detailed and a schematic representation of the part.</li>
+<li>connectors: optional, <a class="reference internal" href="#base-module-cs">base-module-cs</a>. Informations about the connectors
+attached to the part.</li>
+</ul>
+</div>
+<div class="section" id="base-module-connectors">
+<span id="base-module-cs"></span><h3>Base module connectors</h3>
+<p>A <a class="reference internal" href="#base-module-cs">base-module-cs</a> describes a set of local coordinate systems or connectors
+that are attached to specific points of the part to allow easy positioning.
+This is implemented by a OpenSCAD function that returns a coordinate system
+structure. This function has all the arguments of the module in which the
+<a class="reference internal" href="#base-module-cs">base-module-cs</a> is contained, and an additional argument &quot;location&quot; as the last
+argument. A <a class="reference internal" href="#base-module-cs">base-module-cs</a> is an associative array with the following keys:</p>
+<ul class="simple">
+<li>name: mandatory, string. The name of the function that returns the
+connectors.</li>
+<li>arguments: mandatory, list of strings. A list with arguments that need to be
+supplied to the connector function in the right order. Is a subset of the
+parameters of the class and &quot;location&quot;, the latter of which must be present.</li>
+<li>locations: mandatory, list of strings. A list of possible values that can be
+supplied for the argument &quot;location&quot; of the function.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="stl">
+<span id="base-file-type-stl"></span><h2>STL</h2>
+<p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> describes a file containing geometrical data in
+the STL format. It is an associative array with the following keys:</p>
+<ul class="simple">
+<li>filename: mandatory, string. The filename of the file</li>
+<li>author: mandatory, string or list of strings. The author of the file with
+e-mail adress in &lt;&gt; or a list of several authors.</li>
+<li>license: mandatory, string. The license of the file. Must be either &quot;CC0
+1.0&quot; or &quot;Public Domain&quot;.</li>
+<li>type: &quot;stl&quot;</li>
+<li>classids: mandatory, list of string. A list of class ids for which this base
+module should be used.</li>
+</ul>
+</div>
+<div class="section" id="function">
+<span id="base-file-type-function"></span><h2>Function</h2>
+<p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> describes a python file containing geometrical
+data in form of functions that build a part in a FreeCAD Document. It is an
+associative array with the following keys:</p>
+<ul class="simple">
+<li>filename: mandatory, string. The filename of the file</li>
+<li>author: mandatory, string or list of strings. The author of the file with
+e-mail adress in &lt;&gt; or a list of several authors.</li>
+<li>license: mandatory, string. The license of the file. Must be one of the
+<a class="reference internal" href="#supported-licenses">supported-licenses</a>.</li>
+<li>type: &quot;function&quot;</li>
+<li>functions: mandatory, list of <a class="reference internal" href="#base-function-element">base-function-element</a>.</li>
+</ul>
+<div class="section" id="id14">
+<span id="base-function-element"></span><h3>Base function element</h3>
+<p>A base function element is a associative array describing a python function
+with the following keys:</p>
+<ul class="simple">
+<li>name: mandatory, string. The name of the function.</li>
+<li>classids: mandatory, list of string. A list of class ids for which this base
+module should be used.</li>
+<li>parameters: optional, <a class="reference internal" href="#parameter-element">parameter-element</a>: Additional basespecific parameters.
+These parameters allow to represent additional paramters, which are not
+specific to the class, but to the base. This allows e.g. to let the user
+choose  between a detailed and a schematic representation of the part.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="fcstd">
+<span id="base-file-type-fcstd"></span><h2>FCSTD</h2>
+<p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> describes a file created with FreeCAD. It is an
+associative array with the following keys:</p>
+<ul class="simple">
+<li>filename: mandatory, string. The filename of the file</li>
+<li>author: mandatory, string or list of strings. The author of the file with
+e-mail adress in &lt;&gt; or a list of several authors.</li>
+<li>license: mandatory, string. The license of the file. Must be &quot;CC0 1.0&quot; or
+&quot;Public Domain&quot;.</li>
+<li>type: &quot;fcstd&quot;</li>
+<li>objects: mandatory, list of <a class="reference internal" href="#base-object-element">base-object-element</a>.</li>
+</ul>
+<div class="section" id="id15">
+<span id="base-object-element"></span><h3>Base object element</h3>
+<p>A base object element is an associative array describing an object in a FreeCAD
+Document. It has the following keys:</p>
+<ul class="simple">
+<li>objectname: mandatory, string. The name of the part in the document.</li>
+<li>classids: mandatory, list of string. A list of class ids for which this base
+part should be used.</li>
+<li>parameters: optional, <a class="reference internal" href="#parameter-element">parameter-element</a>: Additional basespecific parameters.
+These parameters allow to represent additional paramters, which are not
+specific to the class, but to the base. This allows e.g. to let the user
+choose  between a detailed and a schematic representation of the part.</li>
+<li>proptoparam: optional, associative array of associative arrays. This maps
+properties of objects to parameters. Keys to the first level of associative
+arrays are the object names in the source file, keys to the second level are
+the names of the properties and the values are the names of the parameter as
+specified in a <a class="reference internal" href="#parameter-element">parameter-element</a>. Defaults to {objectname : {&quot;Label&quot; :
+&quot;name&quot;}}</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id16">
+<span id="base-file-type-solidworks"></span><h2>Solidworks</h2>
+<p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> contains all the information necessary to
+create a design table that can be used together with a model file to create a
+&quot;configuration&quot;. It is an associative array with the following keys:</p>
+<ul class="simple">
+<li>filename: mandatory, string. The filename of the SolidWorks model file</li>
+<li>author: mandatory, string or list of strings. The author of the model file
+with e-mail adress in &lt;&gt; or a list of several authors.</li>
+<li>license: mandatory, string. The license of the file. Must be one of the
+<a class="reference internal" href="#supported-licenses">supported-licenses</a>.</li>
+<li>type: &quot;solidworks&quot;</li>
+<li>suffix: mandatory, string. A descriptive suffix that can be used as part of
+a filename. Gets appended to the model filename to construct the filename
+for the design table.</li>
+<li>params: mandatory, associative array. This describes the mapping from the
+parameters in the model files to the BOLTS parameter names. This has to
+apply to all classes that will be included in this table.</li>
+<li>metadata: optional, associative array. This describes the mapping from
+metadata fields to BOLTS parameter names. This has to apply to all classes
+that will be included in this table.</li>
+<li>source: optional, string. A string describing the origin of the file.</li>
+<li>classes: mandatory, list of <a class="reference internal" href="#base-designtable-class-element">base-designtable-class-element</a>.</li>
+</ul>
+<div class="section" id="id17">
+<span id="base-designtable-class-element"></span><h3>Base designtable class element</h3>
+<p>A designtable class element specifies the classes that should be included in a designtable.</p>
+<ul class="simple">
+<li>classid: mandatory, string. A classid that should be included in
+this designtable.</li>
+<li>naming: optional, <a class="reference internal" href="#naming-element">naming-element</a>. This describes the form of the
+configuration names in the design table. If absent, the naming field of the
+class is used.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="supported-licenses-in-bolts">
+<span id="supported-licenses"></span><h1>Supported Licenses in BOLTS</h1>
+<p>The license of a file contained in BOLTS must be one of the following:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></li>
+<li><a class="reference external" href="http://jreinhardt.github.io/BOLTS/public_domain.html">Public Domain</a></li>
+<li><a class="reference external" href="http://opensource.org/licenses/MIT">MIT</a></li>
+<li><a class="reference external" href="http://opensource.org/licenses/BSD-3-Clause">BSD 3-clause</a></li>
+<li><a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></li>
+<li><a class="reference external" href="http://www.gnu.org/licenses/lgpl-2.1">LGPL 2.1</a></li>
+<li><a class="reference external" href="http://www.gnu.org/licenses/lgpl-2.1">LGPL 2.1+</a></li>
+<li><a class="reference external" href="http://www.gnu.org/licenses/lgpl-3.0">LGPL 3.0</a></li>
+<li><a class="reference external" href="http://www.gnu.org/licenses/lgpl-3.0">LGPL 3.0+</a></li>
+<li><a class="reference external" href="http://www.gnu.org/licenses/gpl-2.0">GPL 2.0+</a></li>
+<li><a class="reference external" href="http://www.gnu.org/licenses/gpl-3.0">GPL 3.0</a></li>
+<li><a class="reference external" href="http://www.gnu.org/licenses/gpl-3.0">GPL 3.0+</a></li>
+</ul>
+<p>where a + indicates a clause that allows a later version of the license to be
+used.</p>
+</div>
+  </div>
+</div>
