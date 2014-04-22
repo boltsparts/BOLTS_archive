@@ -24,9 +24,9 @@ from math import sin,cos,fabs
 def ibeam_angled_flange(params,document):
     h = params['h']
     b = params['b']
-    t = params['t']
-    s = params['s']
-    d = params ['d']
+    tf = params['tf']
+    tw = params['tw']
+    hw = params ['hw']
     f = params ['f']
     g = params ['g']
     r1 = params ['r1']
@@ -40,8 +40,8 @@ def ibeam_angled_flange(params,document):
     #The profile is symmetric, we store the positions relative to the
     #origin for upper right quarter
     vertices = [
-        Vector((0.5*s,0,0)),
-        Vector((0.5*s,f,0)),
+        Vector((0.5*tw,0,0)),
+        Vector((0.5*tw,f,0)),
         Vector((0.5*b,0.5*h-g,0)),
         Vector((+0.5*b,0.5*h,0)),
         Vector((0,0.5*h,0)),
@@ -86,7 +86,7 @@ def ibeam_angled_flange(params,document):
 
     for edge in beam.Edges:
         for v in edge.Vertexes:
-            if fabs(fabs(v.Point[0]) - 0.5*s) > 1e-8 or fabs(fabs(v.Point[1]) - f) > 1e-8:
+            if fabs(fabs(v.Point[0]) - 0.5*tw) > 1e-8 or fabs(fabs(v.Point[1]) - f) > 1e-8:
                 break
         else:
             inner_fillets.append(edge)

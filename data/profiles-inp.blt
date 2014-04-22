@@ -34,21 +34,21 @@ classes:
         type: Table Index
         h: Length (mm)
         b: Length (mm)
-        s: Length (mm)
-        t: Length (mm)
+        tw: Length (mm)
+        tf: Length (mm)
         r1: Length (mm)
         r2: Length (mm)
-        d: Length (mm)
+        hw: Length (mm)
         f: Length (mm)
         g: Length (mm)
         l: Length (mm)
       description:
         type: beam type
         h: beam height
-        s: web thickness
-        t: ???
+        tw: web thickness
+        tf: flange thickness
         b: flange width
-        d: ???
+        hw: straight web height
         f: inner flange unfilleted length
         g: outer flange unfilleted length
         r1: outer fillet radius
@@ -56,9 +56,9 @@ classes:
         l: beam length
       tables:
         index: type
-        columns: [b,h,s,t,r1,r2,d,f,g]
+        columns: [b,h,tw,tf,r1,r2,hw,f,g]
         data:
-          #type b h s t r1 r2 d f g
+          #type b h tw tf r1 r2 hw f g
           "IPN80" : [ 42, 80, 3.9, 5.9, 3.9, 2.3, 59, 32.885, 4.40784 ]
           "IPN100" : [ 50, 100, 4.5, 6.8, 4.5, 2.7, 75.7, 41.7632, 5.04782 ]
           "IPN120" : [ 58, 120, 5.1, 7.7, 5.1, 3.1, 92.4, 50.6408, 5.68677 ]
