@@ -218,25 +218,20 @@ manually.
 
 Now we are done and can close Inkscape again.
 
-### update the blt files
+### update the base file
 
-The last step is to update the blt files by adding the line:
+The last step is to tell BOLTS about the drawing in the base file of the
+drawing directory by adding an entry of the form:
 
-    drawing: collid/drawing.png
+    - filename: washer1
+      author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+      license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+      type: drawing-dimensions
+      source: own work
+      classids: [plainwasher1, plainwasher2, plainwasherforcheesehead, heavydutyplainwasher]
 
-to the classes to which this drawing applies. The path is relative to the drawings directory.
-
-In the case of the washer the relevant part of the resulting file looks like this
-
-    - id: plainwasher1
-      naming:
-        template: Plain washer %s - %s
-        substitute: [standard, key]
-      drawing: washer/washer1.png
-      description: plain washer
-      standard: [ISO7089, EN7089, DINENISO7089, DINEN27089, DIN125A]
-
-and similarly for the other classes to which the drawing applies. Be careful,
-blt files are sensitive to whitespace, do not use tabs and keep the indentation
-intact.
-
+where classids is a list of classes that are covered by this drawing. The
+filename is relative to the subdirectory of the collection and given without
+extension to cover both svg and png versions. The type field distinguishes
+drawings that explain the parameters and dimensions of a part from other images
+that e.g. show [the location of connectors]({{site.baseurl}}/doc/openscad/basemodule.html#adding_connectors)
