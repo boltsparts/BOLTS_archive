@@ -1,0 +1,39 @@
+digraph G {
+rankdir=LR; nodesep=0.5; ranksep=1.5;splines=polyline;
+subgraph cluster_cl {
+label="Classes";
+"generic_circle_hollow" [width=3, height=0.8, fixedsize=true];
+"generic_square_hollow" [width=3, height=0.8, fixedsize=true];
+"generic_rectangular_hollow" [width=3, height=0.8, fixedsize=true];
+"circle_hollow" [width=3, height=0.8, fixedsize=true];
+"square_hollow" [width=3, height=0.8, fixedsize=true];
+"rectangular_hollow" [width=3, height=0.8, fixedsize=true];
+}
+subgraph cluster_std {
+label="Standards";
+"EN 10210-2 circular" [width=3, height=0.8, fixedsize=true];
+"EN 10210-2 square" [width=3, height=0.8, fixedsize=true];
+"EN 10210-2 rectangular" [width=3, height=0.8, fixedsize=true];
+}
+subgraph cluster_fcd {
+label="FreeCAD";
+"profiles-hot_finished-hollow.py:circle_hollow" [width=4, height=0.8, fixedsize=true];
+"profiles-hot_finished-hollow.py:square_hollow" [width=4, height=0.8, fixedsize=true];
+"profiles-hot_finished-hollow.py:rectangle_hollow" [width=4, height=0.8, fixedsize=true];
+"profiles-hot_finished-hollow.py:circle_hollow" [width=4, height=0.8, fixedsize=true];
+"profiles-hot_finished-hollow.py:square_hollow" [width=4, height=0.8, fixedsize=true];
+"profiles-hot_finished-hollow.py:rectangle_hollow" [width=4, height=0.8, fixedsize=true];
+}
+subgraph cluster_ocd {
+label="OpenSCAD";
+}
+"generic_circle_hollow" -> "profiles-hot_finished-hollow.py:circle_hollow";
+"generic_square_hollow" -> "profiles-hot_finished-hollow.py:square_hollow";
+"generic_rectangular_hollow" -> "profiles-hot_finished-hollow.py:rectangle_hollow";
+"circle_hollow" -> "profiles-hot_finished-hollow.py:circle_hollow";
+"EN 10210-2 circular" -> "circle_hollow";
+"square_hollow" -> "profiles-hot_finished-hollow.py:square_hollow";
+"EN 10210-2 square" -> "square_hollow";
+"rectangular_hollow" -> "profiles-hot_finished-hollow.py:rectangle_hollow";
+"EN 10210-2 rectangular" -> "rectangular_hollow";
+}
