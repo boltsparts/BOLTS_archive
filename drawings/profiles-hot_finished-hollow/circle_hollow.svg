@@ -14,9 +14,59 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="template.svg">
+   sodipodi:docname="circle_hollow.svg"
+   inkscape:export-filename="/home/jreinhardt/Models/BOLTS/drawings/profiles-hot_finished-hollow/circle_hollow.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <defs
-     id="defs4" />
+     id="defs4">
+    <marker
+       style="overflow:visible"
+       id="DistanceEnd"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DistanceEnd">
+      <g
+         id="g2301">
+        <path
+           style="fill:none;stroke:#ffffff;stroke-width:1.15;stroke-linecap:square"
+           d="M 0,0 L -2,0"
+           id="path2316" />
+        <path
+           style="fill:#000000;fill-rule:evenodd;stroke:none"
+           d="M 0,0 L -13,4 L -9,0 -13,-4 L 0,0 z "
+           id="path2312" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square"
+           d="M 0,-4 L 0,40"
+           id="path2314" />
+      </g>
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DistanceStart"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DistanceStart">
+      <g
+         id="g2300">
+        <path
+           style="fill:none;stroke:#ffffff;stroke-width:1.15;stroke-linecap:square"
+           d="M 0,0 L 2,0"
+           id="path2306" />
+        <path
+           style="fill:#000000;fill-rule:evenodd;stroke:none"
+           d="M 0,0 L 13,4 L 9,0 13,-4 L 0,0 z "
+           id="path2302" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square"
+           d="M 0,-4 L 0,40"
+           id="path2304" />
+      </g>
+    </marker>
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -24,9 +74,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="76.854102"
-     inkscape:cy="59.782317"
+     inkscape:zoom="7.919596"
+     inkscape:cx="100.06971"
+     inkscape:cy="112.61791"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -34,7 +84,34 @@
      inkscape:window-height="1031"
      inkscape:window-x="0"
      inkscape:window-y="25"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="1,0"
+       position="99.121218,137.12821"
+       id="guide3120" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="120.77636,129.8046"
+       id="guide3122" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="107.64438,120.77636"
+       id="guide3124" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="100.88898,119.45054"
+       id="guide3126" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="139.90613,129.29953"
+       id="guide4933" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="179.93342,113.51589"
+       id="guide4935" />
+  </sodipodi:namedview>
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -43,7 +120,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -283,181 +360,300 @@
            x="145.96315"
            sodipodi:role="line" /></text>
     </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#DistanceStart);marker-end:url(#DistanceEnd)"
+       d="m 120.77636,420.94627 -21.655142,0"
+       id="path3128"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#DistanceEnd);marker-end:url(#DistanceStart)"
+       d="m 126.40136,397.49134 0,1.32582"
+       id="path3130"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="107.23214"
+       y="427.99985"
+       id="text4925"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4927"
+         x="107.23214"
+         y="427.99985">D</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="128.83929"
+       y="398.81717"
+       id="text4929"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4931"
+         x="128.83929"
+         y="398.81717">t</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.4;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DistanceStart);marker-end:url(#DistanceEnd);stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 179.93342,425.2074 -40.02729,0"
+       id="path4937"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="158.72023"
+       y="432.53101"
+       id="text5509"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5511"
+         x="158.72023"
+         y="432.53101">l</tspan></text>
   </g>
   <g
      id="g50">
-<g id="View0001"
-   transform="rotate(0,110,100) translate(110,100) scale(0.5,0.5)"
-  >
-<g   stroke="rgb(0, 0, 0)"
-   stroke-width="0.7"
-   stroke-linecap="butt"
-   stroke-linejoin="miter"
-   fill="none"
-   transform="scale(1,-1)"
-  >
-<path id= "1" d=" M 20 15.65 L 20 -15.65 " />
-<path d="M20 15.65 A4.35 4.35 0 0 1 15.65 20" /><path d="M15.65 -20 A4.35 4.35 0 0 1 20 -15.65" /><path id= "4" d=" M -15.65 20 L 15.65 20 " />
-<path id= "5" d=" M 15.65 -20 L -15.65 -20 " />
-<path d="M-15.65 20 A4.35 4.35 0 0 1 -20 15.65" /><path d="M-20 -15.65 A4.35 4.35 0 0 1 -15.65 -20" /><path id= "8" d=" M -20 -15.65 L -20 15.65 " />
-<path d="M17.1 14.2 A2.9 2.9 0 0 1 14.2 17.1" /><path id= "10" d=" M -14.2 17.1 L 14.2 17.1 " />
-<path d="M-14.2 17.1 A2.9 2.9 0 0 1 -17.1 14.2" /><path id= "12" d=" M -17.1 -14.2 L -17.1 14.2 " />
-<path d="M-17.1 -14.2 A2.9 2.9 0 0 1 -14.2 -17.1" /><path id= "14" d=" M 14.2 -17.1 L -14.2 -17.1 " />
-<path d="M14.2 -17.1 A2.9 2.9 0 0 1 17.1 -14.2" /><path id= "16" d=" M 17.1 14.2 L 17.1 -14.2 " />
-</g>
-</g>
-
-
-
-<g id="View1001"
-   transform="rotate(0,40,100) translate(40,100) scale(0.5,0.5)"
-  >
-<g   stroke="rgb(0, 0, 0)"
-   stroke-width="0.7"
-   stroke-linecap="butt"
-   stroke-linejoin="miter"
-   fill="none"
-   transform="scale(1,-1)"
-  >
-<path id= "1" d=" M 0 -15.65 L 0 15.65 " />
-<path id= "2" d=" M 75 -15.65 L 75 15.65 " />
-<path d="M0,-15.65 L0,-16.137  L0,-16.618  L0,-17.0867  L0,-17.5374  L0,-17.9643  L0,-18.3622  L0,-18.7259  L0,-19.051  L0,-19.3333  L0,-19.5692  L0,-19.7559  L0,-19.8909  L0,-19.9726  L0,-20 " /><path d="M75,-15.65 L75,-16.137  L75,-16.618  L75,-17.0867  L75,-17.5374  L75,-17.9643  L75,-18.3622  L75,-18.7259  L75,-19.051  L75,-19.3333  L75,-19.5692  L75,-19.7559  L75,-19.8909  L75,-19.9726  L75,-20 " /><path id= "5" d=" M 0 -20 L 75 -20 " />
-<path id= "6" d=" M 0 20 L 75 20 " />
-<path d="M0,20 L0,19.9726  L0,19.8909  L0,19.7559  L0,19.5692  L0,19.3333  L0,19.051  L0,18.7259  L0,18.3622  L0,17.9643  L0,17.5374  L0,17.0867  L0,16.618  L0,16.137  L0,15.65 " /><path d="M75,20 L75,19.9726  L75,19.8909  L75,19.7559  L75,19.5692  L75,19.3333  L75,19.051  L75,18.7259  L75,18.3622  L75,17.9643  L75,17.5374  L75,17.0867  L75,16.618  L75,16.137  L75,15.65 " /></g>
-</g>
-
-
-
-<g id="View2001"
-   transform="rotate(0,180,100) translate(180,100) scale(0.5,0.5)"
-  >
-<g   stroke="rgb(0, 0, 0)"
-   stroke-width="0.7"
-   stroke-linecap="butt"
-   stroke-linejoin="miter"
-   fill="none"
-   transform="scale(1,-1)"
-  >
-<path d="M0,-20 L0,-19.9726  L0,-19.8909  L0,-19.7559  L0,-19.5692  L0,-19.3333  L0,-19.051  L0,-18.7259  L0,-18.3622  L0,-17.9643  L0,-17.5374  L0,-17.0867  L0,-16.618  L0,-16.137  L0,-15.65 " /><path d="M0,15.65 L0,16.137  L0,16.618  L0,17.0867  L0,17.5374  L0,17.9643  L0,18.3622  L0,18.7259  L0,19.051  L0,19.3333  L0,19.5692  L0,19.7559  L0,19.8909  L0,19.9726  L0,20 " /><path id= "3" d=" M 0 15.65 L 0 -15.65 " />
-<path d="M-75,-20 L-75,-19.9726  L-75,-19.8909  L-75,-19.7559  L-75,-19.5692  L-75,-19.3333  L-75,-19.051  L-75,-18.7259  L-75,-18.3622  L-75,-17.9643  L-75,-17.5374  L-75,-17.0867  L-75,-16.618  L-75,-16.137  L-75,-15.65 " /><path d="M-75,15.65 L-75,16.137  L-75,16.618  L-75,17.0867  L-75,17.5374  L-75,17.9643  L-75,18.3622  L-75,18.7259  L-75,19.051  L-75,19.3333  L-75,19.5692  L-75,19.7559  L-75,19.8909  L-75,19.9726  L-75,20 " /><path id= "6" d=" M -75 15.65 L -75 -15.65 " />
-<path id= "7" d=" M 0 -20 L -75 -20 " />
-<path id= "8" d=" M 0 20 L -75 20 " />
-</g>
-</g>
-
-
-
-<g id="View3001"
-   transform="rotate(0,250,100) translate(250,100) scale(0.5,0.5)"
-  >
-<g   stroke="rgb(0, 0, 0)"
-   stroke-width="0.7"
-   stroke-linecap="butt"
-   stroke-linejoin="miter"
-   fill="none"
-   transform="scale(1,-1)"
-  >
-<path id= "1" d=" M -20 15.65 L -20 -15.65 " />
-<path d="M-20 15.65 A4.35 4.35 0 0 0 -15.65 20" /><path d="M-15.65 -20 A4.35 4.35 0 0 0 -20 -15.65" /><path id= "4" d=" M 15.65 20 L -15.65 20 " />
-<path id= "5" d=" M -15.65 -20 L 15.65 -20 " />
-<path d="M15.65 20 A4.35 4.35 0 0 0 20 15.65" /><path d="M20 -15.65 A4.35 4.35 0 0 0 15.65 -20" /><path id= "8" d=" M 20 -15.65 L 20 15.65 " />
-<path d="M-17.1 14.2 A2.9 2.9 0 0 0 -14.2 17.1" /><path id= "10" d=" M 14.2 17.1 L -14.2 17.1 " />
-<path d="M14.2 17.1 A2.9 2.9 0 0 0 17.1 14.2" /><path id= "12" d=" M 17.1 -14.2 L 17.1 14.2 " />
-<path d="M17.1 -14.2 A2.9 2.9 0 0 0 14.2 -17.1" /><path id= "14" d=" M -14.2 -17.1 L 14.2 -17.1 " />
-<path d="M-14.2 -17.1 A2.9 2.9 0 0 0 -17.1 -14.2" /><path id= "16" d=" M -17.1 14.2 L -17.1 -14.2 " />
-</g>
-</g>
-
-
-
-<g id="View4001"
-   transform="rotate(270,110,35) translate(110,35) scale(0.5,0.5)"
-  >
-<g   stroke="rgb(0, 0, 0)"
-   stroke-width="0.7"
-   stroke-linecap="butt"
-   stroke-linejoin="miter"
-   fill="none"
-   transform="scale(1,-1)"
-  >
-<path id= "1" d=" M 0 20 L -75 20 " />
-<path d="M0,15.65 L0,16.137  L0,16.618  L0,17.0867  L0,17.5374  L0,17.9643  L0,18.3622  L0,18.7259  L0,19.051  L0,19.3333  L0,19.5692  L0,19.7559  L0,19.8909  L0,19.9726  L0,20 " /><path d="M-75,15.65 L-75,16.137  L-75,16.618  L-75,17.0867  L-75,17.5374  L-75,17.9643  L-75,18.3622  L-75,18.7259  L-75,19.051  L-75,19.3333  L-75,19.5692  L-75,19.7559  L-75,19.8909  L-75,19.9726  L-75,20 " /><path id= "4" d=" M 0 15.65 L 0 -15.65 " />
-<path d="M0,-20 L0,-19.9726  L0,-19.8909  L0,-19.7559  L0,-19.5692  L0,-19.3333  L0,-19.051  L0,-18.7259  L0,-18.3622  L0,-17.9643  L0,-17.5374  L0,-17.0867  L0,-16.618  L0,-16.137  L0,-15.65 " /><path id= "6" d=" M -75 15.65 L -75 -15.65 " />
-<path d="M-75,-20 L-75,-19.9726  L-75,-19.8909  L-75,-19.7559  L-75,-19.5692  L-75,-19.3333  L-75,-19.051  L-75,-18.7259  L-75,-18.3622  L-75,-17.9643  L-75,-17.5374  L-75,-17.0867  L-75,-16.618  L-75,-16.137  L-75,-15.65 " /><path id= "8" d=" M 0 -20 L -75 -20 " />
-</g>
-</g>
-
-
-
-<g id="View5001"
-   transform="rotate(270,110,165) translate(110,165) scale(0.5,0.5)"
-  >
-<g   stroke="rgb(0, 0, 0)"
-   stroke-width="0.7"
-   stroke-linecap="butt"
-   stroke-linejoin="miter"
-   fill="none"
-   transform="scale(1,-1)"
-  >
-<path id= "1" d=" M 0 20 L 75 20 " />
-<path d="M0,20 L0,19.9726  L0,19.8909  L0,19.7559  L0,19.5692  L0,19.3333  L0,19.051  L0,18.7259  L0,18.3622  L0,17.9643  L0,17.5374  L0,17.0867  L0,16.618  L0,16.137  L0,15.65 " /><path d="M75,20 L75,19.9726  L75,19.8909  L75,19.7559  L75,19.5692  L75,19.3333  L75,19.051  L75,18.7259  L75,18.3622  L75,17.9643  L75,17.5374  L75,17.0867  L75,16.618  L75,16.137  L75,15.65 " /><path id= "4" d=" M 0 -15.65 L 0 15.65 " />
-<path d="M0,-15.65 L0,-16.137  L0,-16.618  L0,-17.0867  L0,-17.5374  L0,-17.9643  L0,-18.3622  L0,-18.7259  L0,-19.051  L0,-19.3333  L0,-19.5692  L0,-19.7559  L0,-19.8909  L0,-19.9726  L0,-20 " /><path id= "6" d=" M 75 -15.65 L 75 15.65 " />
-<path d="M75,-15.65 L75,-16.137  L75,-16.618  L75,-17.0867  L75,-17.5374  L75,-17.9643  L75,-18.3622  L75,-18.7259  L75,-19.051  L75,-19.3333  L75,-19.5692  L75,-19.7559  L75,-19.8909  L75,-19.9726  L75,-20 " /><path id= "8" d=" M 0 -20 L 75 -20 " />
-</g>
-</g>
-
-
-
-<g id="View6001"
-   transform="rotate(0,215,35) translate(215,35) scale(0.5,0.5)"
-  >
-<g   stroke="rgb(0, 0, 0)"
-   stroke-width="0.7"
-   stroke-linecap="butt"
-   stroke-linejoin="miter"
-   fill="none"
-   transform="scale(1,-1)"
-  >
-<path id= "1" d=" M -39.7918 -53.5531 L 13.2412 -22.9345 " />
-<path id= "2" d=" M -66.2742 -7.68415 L -13.2412 22.9345 " />
-</g>
-<g   stroke="rgb(0, 0, 0)"
-   stroke-width="0.7"
-   stroke-linecap="butt"
-   stroke-linejoin="miter"
-   fill="none"
-   transform="scale(1,-1)"
-  >
-<path id= "1" d=" M 14.1421 4.61321 L 14.1421 -20.9431 " />
-<path id= "2" d=" M -38.8909 -26.0054 L -38.8909 -51.5618 " />
-<path d="M14.1421 4.61321 A4.35 2.51147 120 0 1 11.0662 9.94085" />
-<path d="M-38.8909 -26.0054 A4.35 2.51147 120 0 1 -41.9668 -20.6778" />
-<path d="M13.2412 -22.9345 A4.35 2.51147 120 0 1 14.1421 -20.9431" />
-<path d="M-41.9668 -53.3376 A4.35 2.51147 120 0 1 -39.7918 -53.5531" />
-<path d="M-39.7918 -53.5531 A4.35 2.51147 120 0 1 -38.8909 -51.5618" />
-<path id= "8" d=" M -11.0662 22.719 L 11.0662 9.94085 " />
-<path d="M-11.0662 22.719 A4.35 2.51147 120 0 1 -13.2412 22.9345" />
-<path id= "10" d=" M -64.0992 -7.8996 L -41.9668 -20.6778 " />
-<path id= "11" d=" M -41.9668 -53.3376 L -64.0992 -40.5595 " />
-<path d="M-64.0992 -7.8996 A4.35 2.51147 120 0 1 -66.2742 -7.68415" />
-<path d="M-66.2742 -7.68415 A4.35 2.51147 120 0 1 -67.1751 -9.67548" />
-<path d="M-67.1751 -35.2318 A4.35 2.51147 120 0 1 -64.0992 -40.5595" />
-<path id= "15" d=" M -67.1751 -35.2318 L -67.1751 -9.67548 " />
-<path d="M-40.9415 -26.0054 A2.9 1.67432 120 0 1 -42.9921 -22.4537" />
-<path id= "17" d=" M -63.0739 -10.8594 L -42.9921 -22.4537 " />
-<path d="M-63.0739 -10.8594 A2.9 1.67432 120 0 1 -64.5239 -10.7158" />
-<path d="M-64.5239 -10.7158 A2.9 1.67432 120 0 1 -65.1245 -12.0433" />
-<path id= "20" d=" M -65.1245 -35.2318 L -65.1245 -12.0433 " />
-<path d="M-65.1245 -35.2318 A2.9 1.67432 120 0 1 -63.0739 -38.7836" />
-<path id= "22" d=" M -42.9921 -50.3778 L -63.0739 -38.7836 " />
-<path d="M-42.9921 -50.3778 A2.9 1.67432 120 0 1 -41.5421 -50.5215" />
-<path d="M-41.5421 -50.5215 A2.9 1.67432 120 0 1 -40.9415 -49.1939" />
-<path id= "25" d=" M -40.9415 -26.0054 L -40.9415 -49.1939 " />
-</g>
-</g>
-
-
-
+    <g
+       id="View0001"
+       transform="rotate(0,110,100) translate(110,100) scale(1,1)">
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g53">
+        <circle
+           cx="0"
+           cy="0"
+           r="10.65"
+           id="circle55"
+           d="M 10.65,0 C 10.65,5.8818324 5.8818324,10.65 0,10.65 -5.8818324,10.65 -10.65,5.8818324 -10.65,0 c 0,-5.8818324 4.7681676,-10.65 10.65,-10.65 5.8818324,0 10.65,4.7681676 10.65,10.65 z" />
+        <circle
+           cx="0"
+           cy="0"
+           r="9.5"
+           id="circle57"
+           d="M 9.5,0 C 9.5,5.2467051 5.2467051,9.5 0,9.5 -5.2467051,9.5 -9.5,5.2467051 -9.5,0 c 0,-5.2467051 4.2532949,-9.5 9.5,-9.5 5.2467051,0 9.5,4.2532949 9.5,9.5 z" />
+      </g>
+    </g>
+    <g
+       id="View1001"
+       transform="rotate(0,40,100) translate(40,100) scale(1,1)">
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g60">
+        <path
+           id="1"
+           d=" M 40 10.65 L 0 10.65 " />
+        <path
+           id="2"
+           d=" M 40 -10.65 L 0 -10.65 " />
+      </g>
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g64">
+        <path
+           d="M0,0 L0,-1.19242  L0,-2.36985  L0,-3.51747  L0,-4.62086  L0,-5.66614  L0,-6.64017  L0,-7.53069  L0,-8.32651  L0,-9.01761  L0,-9.59532  L0,-10.0524  L0,-10.383  L0,-10.583  L0,-10.65 "
+           id="path66" />
+        <path
+           d="M0,10.65 L0,10.583  L0,10.383  L0,10.0524  L0,9.59532  L0,9.01761  L0,8.32651  L0,7.53069  L0,6.64017  L0,5.66614  L0,4.62086  L0,3.51747  L0,2.36985  L0,1.19242  L0,2.6085e-15 "
+           id="path68" />
+        <path
+           d="M40,0 L40,-1.19242  L40,-2.36985  L40,-3.51747  L40,-4.62086  L40,-5.66614  L40,-6.64017  L40,-7.53069  L40,-8.32651  L40,-9.01761  L40,-9.59532  L40,-10.0524  L40,-10.383  L40,-10.583  L40,-10.65 "
+           id="path70" />
+        <path
+           d="M40,10.65 L40,10.583  L40,10.383  L40,10.0524  L40,9.59532  L40,9.01761  L40,8.32651  L40,7.53069  L40,6.64017  L40,5.66614  L40,4.62086  L40,3.51747  L40,2.36985  L40,1.19242  L40,2.6085e-15 "
+           id="path72" />
+      </g>
+    </g>
+    <g
+       id="View2001"
+       transform="rotate(0,180,100) translate(180,100) scale(1,1)">
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g75">
+        <path
+           id="path77"
+           d=" M -40 -10.65 L 0 -10.65 " />
+        <path
+           id="path79"
+           d=" M -40 10.65 L 0 10.65 " />
+      </g>
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g81">
+        <path
+           d="M0,-10.65 L0,-10.383  L0,-9.59532  L0,-8.32651  L0,-6.64017  L0,-4.62086  L0,-2.36985  L0,-1.30425e-15  L0,2.36985  L0,4.62086  L0,6.64017  L0,8.32651  L0,9.59532  L0,10.383  L0,10.65 "
+           id="path83" />
+        <path
+           d="M-40,-10.65 L-40,-10.383  L-40,-9.59532  L-40,-8.32651  L-40,-6.64017  L-40,-4.62086  L-40,-2.36985  L-40,-1.30425e-15  L-40,2.36985  L-40,4.62086  L-40,6.64017  L-40,8.32651  L-40,9.59532  L-40,10.383  L-40,10.65 "
+           id="path85" />
+      </g>
+    </g>
+    <g
+       id="View3001"
+       transform="rotate(0,250,100) translate(250,100) scale(1,1)">
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g88">
+        <circle
+           cx="0"
+           cy="0"
+           r="10.65"
+           id="circle90"
+           d="M 10.65,0 C 10.65,5.8818324 5.8818324,10.65 0,10.65 -5.8818324,10.65 -10.65,5.8818324 -10.65,0 c 0,-5.8818324 4.7681676,-10.65 10.65,-10.65 5.8818324,0 10.65,4.7681676 10.65,10.65 z" />
+        <circle
+           cx="0"
+           cy="0"
+           r="9.5"
+           id="circle92"
+           d="M 9.5,0 C 9.5,5.2467051 5.2467051,9.5 0,9.5 -5.2467051,9.5 -9.5,5.2467051 -9.5,0 c 0,-5.2467051 4.2532949,-9.5 9.5,-9.5 5.2467051,0 9.5,4.2532949 9.5,9.5 z" />
+      </g>
+    </g>
+    <g
+       id="View4001"
+       transform="rotate(270,110,35) translate(110,35) scale(1,1)">
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g95">
+        <path
+           id="path97"
+           d=" M -40 -10.65 L 0 -10.65 " />
+      </g>
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g99">
+        <path
+           id="path101"
+           d=" M 0 10.65 L -40 10.65 " />
+        <path
+           d="M0,-10.65 L0,-10.383  L0,-9.59532  L0,-8.32651  L0,-6.64017  L0,-4.62086  L0,-2.36985  L0,-1.95637e-15  L0,2.36985  L0,4.62086  L0,6.64017  L0,8.32651  L0,9.59532  L0,10.383  L0,10.65 "
+           id="path103" />
+        <path
+           d="M-40,-10.65 L-40,-10.383  L-40,-9.59532  L-40,-8.32651  L-40,-6.64017  L-40,-4.62086  L-40,-2.36985  L-40,-1.95637e-15  L-40,2.36985  L-40,4.62086  L-40,6.64017  L-40,8.32651  L-40,9.59532  L-40,10.383  L-40,10.65 "
+           id="path105" />
+      </g>
+    </g>
+    <g
+       id="View5001"
+       transform="rotate(270,110,165) translate(110,165) scale(1,1)">
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g108">
+        <path
+           id="path110"
+           d=" M 40 -10.65 L 0 -10.65 " />
+      </g>
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g112">
+        <path
+           id="path114"
+           d=" M 0 10.65 L 40 10.65 " />
+        <path
+           d="M0,10.65 L0,10.383  L0,9.59532  L0,8.32651  L0,6.64017  L0,4.62086  L0,2.36985  L0,6.52124e-16  L0,-2.36985  L0,-4.62086  L0,-6.64017  L0,-8.32651  L0,-9.59532  L0,-10.383  L0,-10.65 "
+           id="path116" />
+        <path
+           d="M40,10.65 L40,10.383  L40,9.59532  L40,8.32651  L40,6.64017  L40,4.62086  L40,2.36985  L40,6.52124e-16  L40,-2.36985  L40,-4.62086  L40,-6.64017  L40,-8.32651  L40,-9.59532  L40,-10.383  L40,-10.65 "
+           id="path118" />
+      </g>
+    </g>
+    <g
+       id="View6001"
+       transform="rotate(0,215,35) translate(215,35) scale(1,1)">
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g121">
+        <path
+           id="path123"
+           d=" M -22.9593 -25.5531 L 5.325 -9.22317 " />
+        <path
+           id="path125"
+           d=" M -33.6093 -7.10676 L -5.325 9.22317 " />
+      </g>
+      <g
+         stroke="rgb(0, 0, 0)"
+         stroke-width="0.35"
+         stroke-linecap="butt"
+         stroke-linejoin="miter"
+         fill="none"
+         transform="scale(1,-1)"
+         id="g127">
+        <path
+           d="M7.53069 -4.34784 A10.65 6.14878 120 0 1 -5.325 9.22317"
+           id="path129" />
+        <path
+           d="M5.325 -9.22317 A10.65 6.14878 120 0 1 7.53069 -4.34784"
+           id="path131" />
+        <path
+           d="M-20.7536 -20.6778 A10.65 6.14878 120 0 1 -33.6093 -7.10676"
+           id="path133" />
+        <path
+           d="M-33.6093 -7.10676 A10.65 6.14878 120 0 1 -22.9593 -25.5531"
+           id="path135" />
+        <path
+           d="M-22.9593 -25.5531 A10.65 6.14878 120 0 1 -20.7536 -20.6778"
+           id="path137" />
+        <path
+           d="M-21.5668 -20.2083 A9.5 5.48483 120 0 1 -33.0343 -8.10269"
+           id="path139" />
+        <path
+           d="M-33.0343 -8.10269 A9.5 5.48483 120 0 1 -23.5343 -24.5572"
+           id="path141" />
+        <path
+           d="M-23.5343 -24.5572 A9.5 5.48483 120 0 1 -21.5668 -20.2083"
+           id="path143" />
+      </g>
+    </g>
   </g>
 </svg>
-

@@ -1,9 +1,0 @@
----
-- filename: rrw-square
-  author: Bernd Hahnebach <bernd@bimstatik.org>
-  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: drawing-dimensions
-  source: own work
-  classids: [rrw_square_swiss_stock, rrw_square]
-...
-
