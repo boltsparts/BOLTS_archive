@@ -12,6 +12,7 @@ label="Classes";
 "ibeam_ipeo" [width=3, height=0.8, fixedsize=true];
 "ibeam_iper" [width=3, height=0.8, fixedsize=true];
 "ibeam_ipev" [width=3, height=0.8, fixedsize=true];
+"inp" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_std {
 label="Standards";
@@ -33,6 +34,7 @@ label="FreeCAD";
 "profiles-rolled_i-beams.py:ibeam_parallel_flange" [width=4, height=0.8, fixedsize=true];
 "profiles-rolled_i-beams.py:ibeam_parallel_flange" [width=4, height=0.8, fixedsize=true];
 "profiles-rolled_i-beams.py:ibeam_parallel_flange" [width=4, height=0.8, fixedsize=true];
+"profiles-rolled_i-beams.py:ibeam_angled_flange" [width=4, height=0.8, fixedsize=true];
 }
 subgraph cluster_ocd {
 label="OpenSCAD";
@@ -52,4 +54,5 @@ label="OpenSCAD";
 "ibeam_ipeo" -> "profiles-rolled_i-beams.py:ibeam_parallel_flange";
 "ibeam_iper" -> "profiles-rolled_i-beams.py:ibeam_parallel_flange";
 "ibeam_ipev" -> "profiles-rolled_i-beams.py:ibeam_parallel_flange";
+"inp" -> "profiles-rolled_i-beams.py:ibeam_angled_flange";
 }
