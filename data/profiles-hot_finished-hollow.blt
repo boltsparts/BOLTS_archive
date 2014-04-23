@@ -79,8 +79,8 @@ classes:
     naming:
       template: "CHS%s, l=%s"
       substitute: [type,l]
-    description: Circular Hollow Section (CHS) 21.3 to 88.9
-    standard: [EN 10210-2]
+    description: Circular Hollow Section (CHS)
+    standard: [EN 10210-2 circular]
     parameters:
         free: [type,l]
         defaults: {type: "21.3/2.3", l: 3000}
@@ -325,8 +325,8 @@ classes:
     naming:
       template: "SHS%s, l=%s"
       substitute: [type,l]
-    description: Square Hollow Section (SHS) 40 to 90
-    standard: [EN 10210-2]
+    description: Square Hollow Section (SHS)
+    standard: [EN 10210-2 square]
     parameters:
         free: [type,l]
         defaults: {type: "40/2.6", l: 3000}
@@ -457,8 +457,8 @@ classes:
     naming:
       template: "RHS%s, l=%s"
       substitute: [type,l]
-    description: Rectangular Hollow Section (RHS) 50 to 90
-    standard: [EN 10210-2]
+    description: Rectangular Hollow Section (RHS)
+    standard: [EN 10210-2 rectangular]
     parameters:
         free: [type,l]
         defaults: {type: "50/30/2.6", l: 3000}
