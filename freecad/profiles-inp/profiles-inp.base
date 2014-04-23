@@ -1,0 +1,10 @@
+---
+- filename: profiles-inp.py
+  author: Bernd Hahnebach <bernd@bimstatik.org>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  type: function
+  functions:
+    - name: ibeam_angled_flange
+      classids: [inp]
+  source: created from scratch
+...
