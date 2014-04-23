@@ -1,3 +1,4 @@
 safe: true
 baseurl: /BOLTS
 exclude: [bolttools, output]
+markdown: kramdown
