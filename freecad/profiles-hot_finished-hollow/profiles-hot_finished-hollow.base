@@ -1,0 +1,37 @@
+---
+- filename: profiles-hot_finished-hollow.py
+  author: Bernd Hahnebach <bernd@bimstatik.org>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  type: function
+  functions:
+    - name: rectangle_hollow
+      parameters:
+        free: [arch]
+        types:
+          arch: Bool
+        description:
+          arch: If true, an Arch structure is created, if false, a Part feature.
+        defaults:
+          arch: true
+      classids: [rectangular_hollow,generic_rectangular_hollow]
+    - name: square_hollow
+      parameters:
+        free: [arch]
+        types:
+          arch: Bool
+        description:
+          arch: If true, an Arch structure is created, if false, a Part feature.
+        defaults:
+          arch: true
+      classids: [square_hollow,generic_square_hollow]
+    - name: circle_hollow
+      parameters:
+        free: [arch]
+        types:
+          arch: Bool
+        description:
+          arch: If true, an Arch structure is created, if false, a Part feature.
+        defaults:
+          arch: true
+      classids: [circle_hollow,generic_circle_hollow]
+...

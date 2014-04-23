@@ -5,5 +5,13 @@
   type: function
   functions:
     - name: cbeam_parallel_flange
+      parameters:
+        free: [arch]
+        types:
+          arch: Bool
+        description:
+          arch: If true, an Arch structure is created, if false, a Part feature.
+        defaults:
+          arch: true
       classids: [cbeam_upe, cbeam_uap]
 ...
