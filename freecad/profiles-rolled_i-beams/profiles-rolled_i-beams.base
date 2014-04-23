@@ -14,4 +14,6 @@
         defaults:
           arch: true
       classids: [ibeam_hea, ibeam_heaa, ibeam_heb, ibeam_hem, ibeam_ipe, ibeam_ipe750, ibeam_ipea, ibeam_ipeo, ibeam_iper, ibeam_ipev]
+    - name: ibeam_angled_flange
+      classids: [inp]
 ...
