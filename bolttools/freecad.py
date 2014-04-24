@@ -48,28 +48,6 @@ class BaseFunction(FreeCADGeometry):
 		else:
 			self.parameters = BOLTSParameters({"types" : {}})
 
-class BaseFcstd(FreeCADGeometry):
-	def __init__(self,obj,basefile, collname,backend_root):
-		check_schema(basefile,"basefcstd",
-			["filename","author","license","type","objects"],
-			["source"])
-		check_schema(obj,"basefcstd",
-			["objectname","classids"],
-			["proptoparam","parameters"]
-		)
-
-		FreeCADGeometry.__init__(self,basefile,collname,backend_root)
-		self.objectname = obj["objectname"]
-		self.proptoparam = {self.objectname : {"Label" : "name"}}
-		if "proptoparam" in obj:
-			self.proptoparam = obj["proptoparam"]
-		if "parameters" in obj:
-			self.parameters = BOLTSParameters(obj["parameters"])
-		else:
-			self.parameters = BOLTSParameters({"types" : {}})
-
-		self.classids = obj["classids"]
-
 class FreeCADData(DataBase):
 	def __init__(self,path):
 		DataBase.__init__(self,"freecad",path)
@@ -110,18 +88,5 @@ class FreeCADData(DataBase):
 							e.set_base(basefile["filename"])
 							e.set_collection(coll)
 							raise e
-				elif basefile["type"] == "fcstd":
-					basepath = join(self.backend_root,coll,basefile["filename"])
-					if not exists(basepath):
-						continue
-					for obj in basefile["objects"]:
-						try:
-							fcstd = BaseFcstd(obj,basefile,coll,self.backend_root)
-							for id in obj["classids"]:
-								if id in self.getbase:
-									raise NonUniqueBaseError(id)
-								self.getbase[id] = fcstd
-						except ParsingError as e:
-							e.set_base(basefile["filename"])
-							e.set_collection(coll)
-							raise e
+				else:
+					raise MalformedBaseError("Unknown base type %s" % basefile["type"])
