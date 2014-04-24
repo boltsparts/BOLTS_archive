@@ -32,64 +32,14 @@ import importlib
 
 from common import BackendExporter
 
-def copy_part_recursive(src_obj,dst_doc,srcdstmap):
-	# pylint: disable=F0401
-
-	if src_obj.Name in srcdstmap:
-		return srcdstmap[src_obj.Name]
-	obj_copy = dst_doc.copyObject(src_obj)
-	srcdstmap[src_obj.Name] = obj_copy
-	for prop_name in src_obj.PropertiesList:
-		prop = src_obj.getPropertyByName(prop_name)
-		if 'ReadOnly' in src_obj.getTypeOfProperty(prop_name):
-			pass
-		elif isinstance(prop,tuple) or isinstance(prop,list):
-			new_prop = []
-			for p_item in prop:
-				if isinstance(p_item,Part.Feature):
-					new_prop.append(copy_part_recursive(p_item,dst_doc,srcdstmap))
-				elif isinstance(p_item,Sketcher.Sketch):
-					new_prop.append(dst_doc.copyObject(p_item))
-				else:
-					new_prop.append(p_item)
-			if isinstance(prop,tuple):
-				new_prop = tuple(new_prop)
-			setattr(obj_copy,prop_name,new_prop)
-		elif isinstance(prop,Sketcher.Sketch):
-			setattr(obj_copy,prop_name,dst_doc.copyObject(prop))
-		elif isinstance(prop,Part.Feature):
-			setattr(obj_copy,prop_name,copy_part_recursive(prop,dst_doc,srcdstmap))
-		else:
-			setattr(obj_copy,prop_name,src_obj.getPropertyByName(prop_name))
-	obj_copy.touch()
-	return obj_copy
 
 
 def add_part(base,params,doc):
 	if base.type == "function":
 		module = importlib.import_module(base.module_name)
 		module.__dict__[base.name](params,doc)
-	elif base.type == "fcstd":
-		#copy part to doc
-		src_doc = FreeCAD.openDocument(base.path)
-		src_obj = src_doc.getObject(base.objectname)
-		if src_obj is None:
-			raise MalformedBaseError("No object %s found" % base.objectname)
-		#maps source name to destination object
-		srcdstmap = {}
-		dst_obj = copy_part_recursive(src_obj,doc,srcdstmap)
-
-		#set parameters
-		for obj_name,proptoparam in base.proptoparam.iteritems():
-			for prop,param in proptoparam.iteritems():
-				setattr(srcdstmap[obj_name],prop,params[param])
-
-		#finish presentation
-		dst_obj.touch()
-		doc.recompute()
-		FreeCAD.setActiveDocument(doc.Name)
-		FreeCAD.closeDocument(src_doc.Name)
-
+	else:
+		raise RuntimeError("Unknown base geometry type" % base.type)
 
 class IGESExporter(BackendExporter):
 	def __init__(self,repo,databases):
@@ -140,11 +90,7 @@ class IGESExporter(BackendExporter):
 
 					add_part(base,params,doc)
 
-					shape = None
-					if base.type == "function":
-						shape = doc.ActiveObject.Shape
-					elif base.type == "fcstd":
-						shape = doc.getObject(base.objectname).Shape
+					shape = doc.ActiveObject.Shape
 
 					shape.exportIges(join(ver_root,coll.id,filename))
 					FreeCAD.closeDocument(doc.Name)
