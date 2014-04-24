@@ -29,4 +29,46 @@
   type: drawing-dimensions
   source: own work
   classids: [tslot20x20-3s]
+- filename: vslot20x20
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-dimensions
+  source: own work
+  classids: [vslot20x20]
+- filename: vslot20x40
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-dimensions
+  source: own work
+  classids: [vslot20x40]
+- filename: vslot20x60
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-dimensions
+  source: own work
+  classids: [vslot20x60]
+- filename: vslot20x80
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-dimensions
+  source: own work
+  classids: [vslot20x80]
+- filename: openbuildsdualvwheel
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-dimensions
+  source: own work
+  classids: [openbuildsdualvwheel]
+- filename: openbuildssolidvwheel
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-dimensions
+  source: own work
+  classids: [openbuildssolidvwheel]
+- filename: openbuildssolidminivwheel
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+  type: drawing-dimensions
+  source: own work
+  classids: [openbuildssolidminivwheel]
 ...
