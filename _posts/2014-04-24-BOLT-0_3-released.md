@@ -24,11 +24,11 @@ came up with. It turns out I even managed to blog about most of it.
 * Many small and bigger improvements to the [webpage]({{site.baseurl}}/index.html)
 * Improved structure of code, resulting in smaller distribution files
 * Improvements for the [utility script]({{site.baseurl}}/doc/general/utility-script.html)
-* [Connectors for OpenSCAD]({{site.baseurl}}/2013/12/27/OpenSCAD-positioning.html)
+* [Connectors for OpenSCAD]({{site.baseurl}}/2013/12/28/OpenSCAD-positioning.html)
 * [An IGES backend and distribution]({{site.baseurl}}/2014/01/07/IGES-backend.html)
 * [PySide compatibility]({{site.baseurl}}/2014/01/13/PySide-and-Tables.html) for newer versions of FreeCAD
 * [2D tables]({{site.baseurl}}/2014/01/13/PySide-and-Tables.html)
-* [Colored threaded faces]({{site.baseurl}}/2014/02/02/News-Digest.html) in FreeCAD and OpenSCAD
+* [Colored threaded faces]({{site.baseurl}}/2014/02/03/News-Digest.html) in FreeCAD and OpenSCAD
 * More parts, the automatic counter claims 56 classes in 12 collection covering more than 2200 different parts (but this number is a bit inflated)
 
 What makes me very happy, is that people started to contribute parts, the

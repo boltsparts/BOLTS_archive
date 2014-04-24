@@ -28,7 +28,7 @@ explanation can be found [here](licensing.html). If you are unsure what to choos
 
 After the license header follows the collection header. It contains general
 details about the collection. A list of possible fields can be found in the
-[specification]({{site.baseurl}}/doc/general/specification.html#collection-header),
+[specification]({{site.baseurl}}/doc/general/specification_dev.html#collection-header),
 but alternatively looking at 
 [the other collections](https://github.com/jreinhardt/BOLTS/tree/master/data)
 should show you how this works.
@@ -36,7 +36,7 @@ should show you how this works.
 The field blt-version gives the version of the blt file format, which is not
 the necessarily identical to the version of BOLTS. Which version is the current
 one can be found in the
-[specification]({{site.baseurl}}/doc/general/specification.html#collection-header)
+[specification]({{site.baseurl}}/doc/general/specification_dev.html#collection-header)
 
 For the pipe collection the collection first part of the blt file looks like this:
 
@@ -128,7 +128,7 @@ can specify length and inner and outer diameter arbitrarily, and one class that
 provides pipes following DIN11850 Range 1.
 
 Again, more information and inspiration can be found in the 
-[specification](http://jreinhardt.github.io/BOLTS/doc/general/specification.html#class-element)
+[specification](http://jreinhardt.github.io/BOLTS/doc/general/specification_dev.html#class-element)
 or by looking at other collections.
 
 #### A generic pipe class
@@ -231,7 +231,7 @@ nominal diameter and the length. The inner and outer diameters will be obtained
 from a table, which is why the parameter `dn` is indicated to be of type `Table
 Index`. If the type of a parameter is not indicated, it defaults to `Length
 (mm)`. Other choices for types for parameters can be found in the
-[specification](http://jreinhardt.github.io/BOLTS/doc/general/specification.html#parameter-element)
+[specification](http://jreinhardt.github.io/BOLTS/doc/general/specification_dev.html#parameter-element)
 
 Then one or several tables can follow in the tables field. Here we have only
 one, linking the nominal diameter to the inner and outer diameter. Table
