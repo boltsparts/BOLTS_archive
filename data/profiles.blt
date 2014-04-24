@@ -179,4 +179,16 @@ classes:
     description: The OpenBuilds Delrin Dual V Wheels are great for use with any V Wheel Linear Guide System. They can be used with V-Slot Extrusion and OpenRail.
     source: dimensions from https://store-itwgldve.mybigcommerce.com//product_downloads/Open%20Source%20Downloads%20for%20Store/Dual%20V%20Wheels/OpenRail%20Dual%20V%20Wheels_Version3.zip
     url: http://openbuildspartstore.com/openbuilds-dual-v-wheel-delrin/
+  - id: openbuildssolidvwheel
+    naming:
+      template: OpenBuilds Solid V Wheel - Delrin
+    description: The OpenBuilds Delrin Solid V Wheels are great for use with any V Wheel Linear Guide System. They can be used with V-Slot Extrusion. For builds where heavier loads are required.
+    source: dimensions from http://cdn1.bigcommerce.com/server2300/itwgldve/products/178/images/947/Vwheel_Delrin_Solid_Version__98549.1388169567.1280.1280.jpg?c=1
+    url: http://openbuildspartstore.com/openbuilds-solid-v-wheel-delrin/
+  - id: openbuildssolidminivwheel
+    naming:
+      template: OpenBuilds Solid Mini V Wheel - Delrin
+    description: The OpenBuilds Delrin Solid Mini V Wheels are great for small form factor linear actuator guides. They can be used with V-Slot Extrusion.
+    source: dimensions from http://cdn1.bigcommerce.com/server2300/itwgldve/products/147/images/615/Mini_V_Wheels__98657.1369152029.1280.1280.jpg?c=1
+    url: http://openbuildspartstore.com/mini-v-wheel/
 ...
