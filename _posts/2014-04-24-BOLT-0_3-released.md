@@ -10,6 +10,8 @@ the Open Library of Technical Specifications. The distributions for
 a collection of IGES files can be found on the [Download
 page]({{site.baseurl}}/downloads.html).
 
+<!-- more -->
+
 There have been a lot of changes. git tells me, that (excluding changes in
 generated files and drawings) 171 files changed, 16313 insertions and 1085
 deletions happened. This still seems a bit high to me, probably due to binary
