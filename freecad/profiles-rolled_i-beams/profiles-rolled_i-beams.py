@@ -20,6 +20,59 @@ from FreeCAD import Vector
 from Part import makeCircle, makeLine
 import Part, Arch
 from math import sin,cos,fabs
+import math
+
+def edge_fillet(edges,radius):
+	"""
+	when given a list of two lines connected lines, returns a list of three
+	curves (line, arc, line) corresponding to a filleted edge
+	"""
+	l1 = edges[0]
+	l2 = edges[1]
+	assert(l1.Curve.EndPoint == l2.Curve.StartPoint)
+	dir1 =l1.Curve.EndPoint - l1.Curve.StartPoint
+	dir2 =l2.Curve.EndPoint - l2.Curve.StartPoint
+
+	normal = dir1.cross(dir2)
+
+	raw_angle = math.asin(normal[2]/dir1.Length/dir2.Length)
+	#This is the smaller angle enclosed by the two lines in radians
+	angle = math.pi - abs(raw_angle)
+
+	#to find the transition points of the fillet, we consider a rectangular
+	#triangle with one kathete equal to the radius and the other one lying on
+	#one of the input lines with length a
+	a = radius/math.tan(0.5*angle)
+	#parameter per length
+	ppl1 = (l1.Curve.LastParameter-l1.Curve.FirstParameter)/l1.Curve.length()
+	ppl2 = (l2.Curve.LastParameter-l2.Curve.FirstParameter)/l2.Curve.length()
+
+	t1 = l1.Curve.value(l1.Curve.LastParameter - a*ppl1)
+	t2 = l2.Curve.value(l1.Curve.FirstParameter + a*ppl2)
+
+	#to fine the center of the fillet radius, we construct the angle bisector
+	#between the two input lines, and get the distance of the center from the
+	#common point by a trigonometric consideration
+	bis = Part.makeLine(l1.Curve.EndPoint,(t1+t2).scale(0.5,0.5,0.5))
+	pplb = (bis.Curve.LastParameter-bis.Curve.FirstParameter)/bis.Curve.length()
+	d = radius/math.sin(0.5*angle)
+	center = bis.Curve.value(bis.Curve.FirstParameter + d*pplb)
+
+	#to construct the circle we need start and end angles
+	r1 = t1 - center
+	r2 = t2 - center
+	if raw_angle > 0:
+		alpha1 = math.atan2(r1[1],r1[0])*180/math.pi
+		alpha2 = math.atan2(r2[1],r2[0])*180/math.pi
+	else:
+		alpha2 = math.atan2(r1[1],r1[0])*180/math.pi
+		alpha1 = math.atan2(r2[1],r2[0])*180/math.pi
+		normal *= -1
+
+	return [Part.makeLine(l1.Curve.StartPoint,t1),
+		Part.makeCircle(radius,center,normal,alpha1,alpha2),
+		Part.makeLine(t2,l2.Curve.EndPoint)]
+
 
 def ibeam_parallel_flange(params,document):
         key = params['type']
@@ -113,9 +166,6 @@ def ibeam_angled_flange(params,document):
     l = params['l']
     name = params['name']
 
-    part = document.addObject("Part::Feature","BOLTS_part")
-    part.Label = name
-
     #The profile is symmetric, we store the positions relative to the
     #origin for upper right quarter
     vertices = [
@@ -134,14 +184,14 @@ def ibeam_angled_flange(params,document):
     for i in range(1,len(vertices)):
         plast = pcur
         pcur = Vector(vertices[i])
-        lines.append(makeLine(pcur,plast))
+        lines.append(makeLine(plast,pcur))
 
     #upper left quadrant
     for i in range(len(vertices)-2,-1,-1):
         plast = pcur
         pcur = Vector(vertices[i])
         pcur[0] *= -1
-        lines.append(makeLine(pcur,plast))
+        lines.append(makeLine(plast,pcur))
 
     #lower left quadrant
     for i in range(1,len(vertices)):
@@ -149,30 +199,37 @@ def ibeam_angled_flange(params,document):
         pcur = Vector(vertices[i])
         pcur[0] *= -1
         pcur[1] *= -1
-        lines.append(makeLine(pcur,plast))
+        lines.append(makeLine(plast,pcur))
 
     #lower right quadrant
     for i in range(len(vertices)-2,-1,-1):
         plast = pcur
         pcur = Vector(vertices[i])
         pcur[1] *= -1
-        lines.append(makeLine(pcur,plast))
+        lines.append(makeLine(plast,pcur))
 
-    beam  = Part.Face(Part.Wire(lines)).extrude(Vector(0,0,l))
+    fillets = [
+        (slice(0,2), r1), (slice(1,3), r2), (slice(5,7),  r2), (slice(6,8),  r1),
+        (slice(8,10),r1), (slice(9,11),r2), (slice(13,15),r1), (slice(14,16),r2)
+    ]
+    #add fillets in reverse order to not disturb the counting, as edges are added
+    fillets.reverse()
+    for fillet,r in fillets:
+        lines[fillet] = edge_fillet(lines[fillet],r)
 
-    inner_fillets = []
-    outer_fillets = []
+    F = Part.Face(Part.Wire(lines))
 
-    for edge in beam.Edges:
-        for v in edge.Vertexes:
-            if fabs(fabs(v.Point[0]) - 0.5*tw) > 1e-8 or fabs(fabs(v.Point[1]) - f) > 1e-8:
-                break
-        else:
-            inner_fillets.append(edge)
-        for v in edge.Vertexes:
-            if fabs(fabs(v.Point[0]) - 0.5*b) > 1e-8 or fabs(fabs(v.Point[1]) - (0.5*h-g)) > 1e-8:
-                break
-        else:
-            outer_fillets.append(edge)
+    if params['arch']:
+            part = Arch.makeStructure(name=name)
 
-    part.Shape = beam.makeFillet(r1,inner_fillets).makeFillet(r2,outer_fillets).removeSplitter()
+            prof = document.addObject("Part::Feature","Profile")
+            prof.Shape = F
+            part.Base = prof
+
+            part.Height = l
+    else:
+            part = document.addObject("Part::Feature","BOLTS_part")
+            part.Label = name
+
+            beam = F.extrude(Vector(0,0,l))
+            part.Shape = beam.removeSplitter()

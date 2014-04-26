@@ -15,5 +15,13 @@
           arch: true
       classids: [ibeam_hea, ibeam_heaa, ibeam_heb, ibeam_hem, ibeam_ipe, ibeam_ipe750, ibeam_ipea, ibeam_ipeo, ibeam_iper, ibeam_ipev]
     - name: ibeam_angled_flange
+      parameters:
+        free: [arch]
+        types:
+          arch: Bool
+        description:
+          arch: If true, an Arch structure is created, if false, a Part feature.
+        defaults:
+          arch: true
       classids: [inp]
 ...
