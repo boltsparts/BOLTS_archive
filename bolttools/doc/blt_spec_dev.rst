@@ -1,5 +1,5 @@
 ###############################
-BOLTS Specification Version 0.3
+BOLTS Specification Version 0.4
 ###############################
 
 The BOLTS library consists of several different components, processes and
@@ -427,11 +427,9 @@ The "freecad" directory contains files that allow to build a geometrical
 representation of a class in FreeCAD. This directory contains a folder for each
 collection_ with the files related to classes in this collection.
 
-The geometrical representation can either be in the form of python function
-that constructs the part using the scripting facilities of FreeCAD, or in form
-of FreeCAD model files. The base-files_ contains base-file-element_ of type
-"function" (see base-file-type-function_) for the former form and of type
-"fcstd" (see base-file-type-fcstd_) for the latter form.
+The geometrical representation is given form of python function that constructs
+the part using the scripting facilities of FreeCAD. The base-files_ contains
+base-file-element_ of type "function" (see base-file-type-function_).
 
 
 **********
@@ -562,24 +560,6 @@ argument. A base-module-cs_ is an associative array with the following keys:
 - locations: mandatory, list of strings. A list of possible values that can be
   supplied for the argument "location" of the function.
 
-.. _base-file-type-stl:
-
-***
-STL
-***
-
-This kind of base-file-element_ describes a file containing geometrical data in
-the STL format. It is an associative array with the following keys:
-
-- filename: mandatory, string. The filename of the file
-- author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
-- license: mandatory, string. The license of the file. Must be either "CC0
-  1.0" or "Public Domain".
-- type: "stl"
-- classids: mandatory, list of string. A list of class ids for which this base
-  module should be used.
-
 .. _base-file-type-function:
 
 ********
@@ -612,46 +592,6 @@ with the following keys:
   These parameters allow to represent additional paramters, which are not
   specific to the class, but to the base. This allows e.g. to let the user
   choose  between a detailed and a schematic representation of the part.
-
-.. _base-file-type-fcstd:
-
-*****
-FCSTD
-*****
-
-This kind of base-file-element_ describes a file created with FreeCAD. It is an
-associative array with the following keys:
-
-- filename: mandatory, string. The filename of the file
-- author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
-- license: mandatory, string. The license of the file. Must be "CC0 1.0" or
-  "Public Domain".
-- type: "fcstd"
-- objects: mandatory, list of base-object-element_.
-
-.. _base-object-element:
-
-Base object element
-===================
-
-A base object element is an associative array describing an object in a FreeCAD
-Document. It has the following keys:
-
-- objectname: mandatory, string. The name of the part in the document.
-- classids: mandatory, list of string. A list of class ids for which this base
-  part should be used.
-- parameters: optional, parameter-element_: Additional basespecific parameters.
-  These parameters allow to represent additional paramters, which are not
-  specific to the class, but to the base. This allows e.g. to let the user
-  choose  between a detailed and a schematic representation of the part.
-- proptoparam: optional, associative array of associative arrays. This maps
-  properties of objects to parameters. Keys to the first level of associative
-  arrays are the object names in the source file, keys to the second level are
-  the names of the properties and the values are the names of the parameter as
-  specified in a parameter-element_. Defaults to {objectname : {"Label" :
-  "name"}}
-
 
 .. _base-file-type-solidworks:
 

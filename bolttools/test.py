@@ -155,7 +155,6 @@ class TestOpenSCAD(unittest.TestCase):
 	def test_syntax(self):
 		os = openscad.OpenSCADData("test/syntax")
 		self.assertTrue("hexscrew1" in os.getbase)
-		self.assertTrue("cube1" in os.getbase)
 		self.assertTrue("singlerowradialbearing" in os.getbase)
 
 class TestFreeCAD(unittest.TestCase):

@@ -71,27 +71,6 @@ class BaseModule(OpenSCADGeometry):
 	def get_incantation(self,args):
 		return "%s(%s)" % (self.name,", ".join(args[arg] for arg in self.arguments))
 
-
-class BaseSTL(OpenSCADGeometry):
-	def __init__(self,basefile,collname):
-		check_schema(basefile,"basestl",
-			["filename","author","license","type","classids"],
-			["source"])
-		OpenSCADGeometry.__init__(self,basefile,collname)
-		self.classids = basefile["classids"]
-
-		if "parameters" in basefile:
-			self.parameters = BOLTSParameters(basefile["parameters"])
-		else:
-			self.parameters = BOLTSParameters({"types" : {}})
-
-	def get_copy_files(self):
-		return [self.path]
-	def get_include_files(self):
-		return []
-	def get_incantation(self,args):
-		return 'import("%s")' % join("base",self.filename)
-
 class Connectors:
 	def __init__(self,cs):
 		check_schema(cs,"connectors",
@@ -102,7 +81,6 @@ class Connectors:
 		if not "location" in self.arguments:
 			raise MissingLocationError(self.arguments)
 		self.locations = cs["locations"]
-
 
 class OpenSCADData(DataBase):
 	def __init__(self,path):
@@ -141,13 +119,5 @@ class OpenSCADData(DataBase):
 						except ParsingError as e:
 							e.set_base(basefile["filename"])
 							raise e
-				elif basefile["type"] == "stl":
-					try:
-						module = BaseSTL(basefile,coll)
-						for id in module.classids:
-							if id in self.getbase:
-								raise NonUniqueBaseError(id)
-							self.getbase[id] = module
-					except ParsingError as e:
-						e.set_base(basefile["filename"])
-						raise e
+				else:
+					raise MalformedBaseError("Unknown base type %s" % basefile["type"])

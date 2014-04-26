@@ -1,107 +1,28 @@
 ---
-- filename: tslot-20x20-1S.fcstd
+- filename: profiles.py
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: fcstd
-  objects:
-   - objectname: Fillet
-     classids: [tslot20x20-1s]
-     proptoparam:
-       Fillet : {Label : name}
-       Pad: {Length : l}
-  source: created from scratch, dimensions from http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
-- filename: tslot-20x20-2S.fcstd
-  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: fcstd
-  objects:
-   - objectname: Fillet
-     classids: [tslot20x20-2s]
-     proptoparam:
-       Fillet : {Label : name}
-       Pad: {Length : l}
-  source: created from scratch, dimensions from http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
-- filename: tslot-20x20-2SA.fcstd
-  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: fcstd
-  objects:
-   - objectname: Fillet
-     classids: [tslot20x20-2sa]
-     proptoparam:
-       Fillet : {Label : name}
-       Pad: {Length : l}
-  source: created from scratch, dimensions from http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
-- filename: tslot-20x20-3S.fcstd
-  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: fcstd
-  objects:
-   - objectname: Fillet
-     classids: [tslot20x20-3s]
-     proptoparam:
-       Fillet : {Label : name}
-       Pad: {Length : l}
-  source: created from scratch, dimensions from http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
-- filename: tslot-20x20.fcstd
-  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
-  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: fcstd
-  objects:
-   - objectname: Fillet
-     classids: [tslot20x20]
-     proptoparam:
-       Fillet : {Label : name}
-       Pad: {Length : l}
-  source: created from scratch, dimensions from http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
-- filename: 20x20_Vrail_s.fcstd
-  author: quick61 <http://forum.freecadweb.org/memberlist.php?mode=viewprofile&u=2030>
-  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: fcstd
-  objects:
-   - objectname: Pad
+  type: function
+  functions:
+   - name: vslot20x20
      classids: [vslot20x20]
-     proptoparam:
-       Pad: {Length : l, Label : name}
-  source: created from scratch, dimensions from https://store-itwgldve.mybigcommerce.com//product_downloads/Open%20Source%20Downloads%20for%20Store/VSLOT%20Extrusion/VSLOT%20Extrusion_10.zip
-- filename: 20x40_Vrail_s.fcstd
-  author: quick61 <http://forum.freecadweb.org/memberlist.php?mode=viewprofile&u=2030>
-  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: fcstd
-  objects:
-   - objectname: Pad
+   - name: vslot20x40
      classids: [vslot20x40]
-     proptoparam:
-       Pad: {Length : l, Label : name}
-  source: created from scratch, dimensions from https://store-itwgldve.mybigcommerce.com//product_downloads/Open%20Source%20Downloads%20for%20Store/VSLOT%20Extrusion/VSLOT%20Extrusion_10.zip
-- filename: 20x60_Vrail_s.fcstd
-  author: quick61 <http://forum.freecadweb.org/memberlist.php?mode=viewprofile&u=2030>
-  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: fcstd
-  objects:
-   - objectname: Pad
+   - name: vslot20x60
      classids: [vslot20x60]
-     proptoparam:
-       Pad: {Length : l, Label : name}
-  source: created from scratch, dimensions from https://store-itwgldve.mybigcommerce.com//product_downloads/Open%20Source%20Downloads%20for%20Store/VSLOT%20Extrusion/VSLOT%20Extrusion_10.zip
-- filename: 20x80_Vrail_s.fcstd
-  author: quick61 <http://forum.freecadweb.org/memberlist.php?mode=viewprofile&u=2030>
-  license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: fcstd
-  objects:
-   - objectname: Pad
+   - name: vslot20x80
      classids: [vslot20x80]
-     proptoparam:
-       Pad: {Length : l, Label : name}
   source: created from scratch, dimensions from https://store-itwgldve.mybigcommerce.com//product_downloads/Open%20Source%20Downloads%20for%20Store/VSLOT%20Extrusion/VSLOT%20Extrusion_10.zip
-- filename: V_Wheel.fcstd
-  author: quick61 <http://forum.freecadweb.org/memberlist.php?mode=viewprofile&u=2030>
+- filename: wheels.py
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
-  type: fcstd
-  objects:
-    - objectname: Revolution
+  type: function
+  functions:
+    - name: dualvwheel
       classids: [openbuildsdualvwheel]
-      proptoparam:
-        Revolution: {Label : name}
-  source: created from scratch, dimensions from https://store-itwgldve.mybigcommerce.com//product_downloads/Open%20Source%20Downloads%20for%20Store/Dual%20V%20Wheels/OpenRail%20Dual%20V%20Wheels_Version3.zip
+    - name: solidvwheel
+      classids: [openbuildssolidvwheel]
+    - name: minivwheel
+      classids: [openbuildssolidminivwheel]
+  source: created from scratch, dimensions from http://openbuildspartstore.com
 ...

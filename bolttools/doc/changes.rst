@@ -3,6 +3,12 @@ Changes of the BOLTS specifications
 ###################################
 
 **********
+0.3 to 0.4
+**********
+
+* removed fcstd and stl base geometries
+
+**********
 0.2 to 0.3
 **********
 
