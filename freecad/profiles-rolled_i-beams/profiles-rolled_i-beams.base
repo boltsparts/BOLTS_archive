@@ -12,7 +12,7 @@
         description:
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
-          arch: true
+          arch: false
       classids: [ibeam_hea, ibeam_heaa, ibeam_heb, ibeam_hem, ibeam_ipe, ibeam_ipe750, ibeam_ipea, ibeam_ipeo, ibeam_iper, ibeam_ipev]
     - name: ibeam_angled_flange
       parameters:
@@ -22,6 +22,6 @@
         description:
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
-          arch: true
+          arch: false
       classids: [inp]
 ...

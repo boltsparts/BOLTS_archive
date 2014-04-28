@@ -12,7 +12,7 @@
         description:
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
-          arch: true
+          arch: false
       classids: [rectangular_hollow,generic_rectangular_hollow]
     - name: square_hollow
       parameters:
@@ -22,7 +22,7 @@
         description:
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
-          arch: true
+          arch: false
       classids: [square_hollow,generic_square_hollow]
     - name: circle_hollow
       parameters:
@@ -32,6 +32,6 @@
         description:
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
-          arch: true
+          arch: false
       classids: [circle_hollow,generic_circle_hollow]
 ...
