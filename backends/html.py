@@ -25,7 +25,7 @@ from codecs import open
 
 from common import BackendExporter
 from license import LICENSES_SHORT
-import statistics, checker, openscad
+import statistics, checker, openscad, webgl
 
 #inspired by html.py but avoiding the dependency
 def html_table(table_data,header=None,row_classes=None):
@@ -70,6 +70,7 @@ class HTMLExporter(BackendExporter):
 
 		self.statistics = statistics.StatisticsExporter(repo,databases)
 		self.checker = checker.CheckerExporter(repo,databases)
+		self.webgl = webgl.WebGLExporter(repo,databases)
 
 	def write_output(self,out_root):
 		#load templates
@@ -88,6 +89,7 @@ class HTMLExporter(BackendExporter):
 		makedirs(join(html_root,"bodies"))
 		makedirs(join(html_root,"images"))
 		makedirs(join(html_root,"drawings"))
+		makedirs(join(html_root,"3DViews"))
 
 		#write unchanged files
 		for name in ["atom.xml","blog.html","contribute.html",
@@ -95,6 +97,10 @@ class HTMLExporter(BackendExporter):
 			copyfile(join(template_dir,name),join(out_root,name))
 
 		copyfile(join(template_dir,"no_drawing.png"),join(html_root,"drawings","no_drawing.png"))
+
+		#generate 3D views
+		template_3d = open(join(template_dir,"part_template.js")).read()
+		self.webgl.write_output(join(html_root,"3dviews"),template_3d)
 
 		#write specification collections, parts and bodies
 		for coll in self.repo.collections:
@@ -104,7 +110,8 @@ class HTMLExporter(BackendExporter):
 
 			for cl in coll.classes:
 				with open(join(html_root,"classes","%s.html" % cl.name),'w','utf8') as fid:
-					content = self._get_class_content(coll,cl)
+					threedview = exists(join(html_root,"3dviews",coll.id,cl.id + ".js"))
+					content = self._get_class_content(coll,cl,threedview)
 					fid.write(self.templates["class"].substitute(content))
 				#copy drawings
 				if cl.id in self.drawings.getdimensions:
@@ -374,7 +381,7 @@ class HTMLExporter(BackendExporter):
 		return params
 
 
-	def _get_class_content(self,coll,cl):
+	def _get_class_content(self,coll,cl,threedview):
 		params = {}
 
 		params["title"] = cl.name
@@ -389,6 +396,19 @@ class HTMLExporter(BackendExporter):
 				params["drawing"] = join(drawing.collection,drawing.filename+ ".png")
 		else:
 			params["drawing"] = "no_drawing.png"
+
+		#3D view
+
+		if threedview:
+			params["threedview"] = """
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r50/three.min.js"></script>
+<script type="text/javascript" src="html/3dviews/%s/%s.js"></script>
+<script type="text/javascript"> window.onload = function() {
+	attach_renderer(document.getElementById("threedview"));
+}</script>
+"""
+		else:
+			params["threedview"] = ""
 
 		#parameter descriptions
 		if len(cl.parameters.description) > 0:
