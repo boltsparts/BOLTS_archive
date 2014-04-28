@@ -10,8 +10,8 @@
 
 <div id="content">
   <div class="inner-content">
-<div class="section" id="bolts-specification-version-0-3">
-<h1>BOLTS Specification Version 0.3</h1>
+<div class="section" id="bolts-specification-version-0-4">
+<h1>BOLTS Specification Version 0.4</h1>
 <p>The BOLTS library consists of several different components, processes and
 conventions and a number of precisely defined concepts. The purpose of this
 document is to specify them.</p>
@@ -382,11 +382,9 @@ each file with modules.</p>
 <p>The &quot;freecad&quot; directory contains files that allow to build a geometrical
 representation of a class in FreeCAD. This directory contains a folder for each
 <a class="reference internal" href="#collection">collection</a> with the files related to classes in this collection.</p>
-<p>The geometrical representation can either be in the form of python function
-that constructs the part using the scripting facilities of FreeCAD, or in form
-of FreeCAD model files. The <a class="reference internal" href="#base-files">base-files</a> contains <a class="reference internal" href="#base-file-element">base-file-element</a> of type
-&quot;function&quot; (see <a class="reference internal" href="#base-file-type-function">base-file-type-function</a>) for the former form and of type
-&quot;fcstd&quot; (see <a class="reference internal" href="#base-file-type-fcstd">base-file-type-fcstd</a>) for the latter form.</p>
+<p>The geometrical representation is given form of python function that constructs
+the part using the scripting facilities of FreeCAD. The <a class="reference internal" href="#base-files">base-files</a> contains
+<a class="reference internal" href="#base-file-element">base-file-element</a> of type &quot;function&quot; (see <a class="reference internal" href="#base-file-type-function">base-file-type-function</a>).</p>
 </div>
 <div class="section" id="solidworks">
 <h2>SolidWorks</h2>
@@ -493,21 +491,6 @@ supplied for the argument &quot;location&quot; of the function.</li>
 </ul>
 </div>
 </div>
-<div class="section" id="stl">
-<span id="base-file-type-stl"></span><h2>STL</h2>
-<p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> describes a file containing geometrical data in
-the STL format. It is an associative array with the following keys:</p>
-<ul class="simple">
-<li>filename: mandatory, string. The filename of the file</li>
-<li>author: mandatory, string or list of strings. The author of the file with
-e-mail adress in &lt;&gt; or a list of several authors.</li>
-<li>license: mandatory, string. The license of the file. Must be either &quot;CC0
-1.0&quot; or &quot;Public Domain&quot;.</li>
-<li>type: &quot;stl&quot;</li>
-<li>classids: mandatory, list of string. A list of class ids for which this base
-module should be used.</li>
-</ul>
-</div>
 <div class="section" id="function">
 <span id="base-file-type-function"></span><h2>Function</h2>
 <p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> describes a python file containing geometrical
@@ -537,41 +520,7 @@ choose  between a detailed and a schematic representation of the part.</li>
 </ul>
 </div>
 </div>
-<div class="section" id="fcstd">
-<span id="base-file-type-fcstd"></span><h2>FCSTD</h2>
-<p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> describes a file created with FreeCAD. It is an
-associative array with the following keys:</p>
-<ul class="simple">
-<li>filename: mandatory, string. The filename of the file</li>
-<li>author: mandatory, string or list of strings. The author of the file with
-e-mail adress in &lt;&gt; or a list of several authors.</li>
-<li>license: mandatory, string. The license of the file. Must be &quot;CC0 1.0&quot; or
-&quot;Public Domain&quot;.</li>
-<li>type: &quot;fcstd&quot;</li>
-<li>objects: mandatory, list of <a class="reference internal" href="#base-object-element">base-object-element</a>.</li>
-</ul>
 <div class="section" id="id15">
-<span id="base-object-element"></span><h3>Base object element</h3>
-<p>A base object element is an associative array describing an object in a FreeCAD
-Document. It has the following keys:</p>
-<ul class="simple">
-<li>objectname: mandatory, string. The name of the part in the document.</li>
-<li>classids: mandatory, list of string. A list of class ids for which this base
-part should be used.</li>
-<li>parameters: optional, <a class="reference internal" href="#parameter-element">parameter-element</a>: Additional basespecific parameters.
-These parameters allow to represent additional paramters, which are not
-specific to the class, but to the base. This allows e.g. to let the user
-choose  between a detailed and a schematic representation of the part.</li>
-<li>proptoparam: optional, associative array of associative arrays. This maps
-properties of objects to parameters. Keys to the first level of associative
-arrays are the object names in the source file, keys to the second level are
-the names of the properties and the values are the names of the parameter as
-specified in a <a class="reference internal" href="#parameter-element">parameter-element</a>. Defaults to {objectname : {&quot;Label&quot; :
-&quot;name&quot;}}</li>
-</ul>
-</div>
-</div>
-<div class="section" id="id16">
 <span id="base-file-type-solidworks"></span><h2>Solidworks</h2>
 <p>This kind of <a class="reference internal" href="#base-file-element">base-file-element</a> contains all the information necessary to
 create a design table that can be used together with a model file to create a
@@ -595,7 +544,7 @@ that will be included in this table.</li>
 <li>source: optional, string. A string describing the origin of the file.</li>
 <li>classes: mandatory, list of <a class="reference internal" href="#base-designtable-class-element">base-designtable-class-element</a>.</li>
 </ul>
-<div class="section" id="id17">
+<div class="section" id="id16">
 <span id="base-designtable-class-element"></span><h3>Base designtable class element</h3>
 <p>A designtable class element specifies the classes that should be included in a designtable.</p>
 <ul class="simple">
