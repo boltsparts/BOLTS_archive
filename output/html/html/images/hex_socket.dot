@@ -4,6 +4,11 @@ subgraph cluster_cl {
 label="Classes";
 "hexsocketcountersunk" [width=3, height=0.8, fixedsize=true];
 "hexsocketheadcap" [width=3, height=0.8, fixedsize=true];
+"hexsocketsetscrewflat" [width=3, height=0.8, fixedsize=true];
+"hexsocketsetscrewcone" [width=3, height=0.8, fixedsize=true];
+"hexsocketsetscrewdog" [width=3, height=0.8, fixedsize=true];
+"hexsocketsetscrewcup" [width=3, height=0.8, fixedsize=true];
+"hexsocketsetscrewall" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_std {
 label="Standards";
@@ -13,6 +18,15 @@ label="Standards";
 "ISO4762" [width=3, height=0.8, fixedsize=true];
 "DINENISO4762" [width=3, height=0.8, fixedsize=true];
 "DIN912" [width=3, height=0.8, fixedsize=true];
+"DIN913" [width=3, height=0.8, fixedsize=true];
+"ISO4026" [width=3, height=0.8, fixedsize=true];
+"DIN914" [width=3, height=0.8, fixedsize=true];
+"ISO4027" [width=3, height=0.8, fixedsize=true];
+"DIN915" [width=3, height=0.8, fixedsize=true];
+"ISO4028" [width=3, height=0.8, fixedsize=true];
+"DIN916" [width=3, height=0.8, fixedsize=true];
+"ISO4029" [width=3, height=0.8, fixedsize=true];
+"ANSI B18.3.6M" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_fcd {
 label="FreeCAD";
@@ -30,4 +44,13 @@ label="OpenSCAD";
 "ISO4762" -> "hexsocketheadcap";
 "DINENISO4762" -> "hexsocketheadcap";
 "DIN912" -> "hexsocketheadcap";
+"DIN913" -> "hexsocketsetscrewflat";
+"ISO4026" -> "hexsocketsetscrewflat";
+"DIN914" -> "hexsocketsetscrewcone";
+"ISO4027" -> "hexsocketsetscrewcone";
+"DIN915" -> "hexsocketsetscrewdog";
+"ISO4028" -> "hexsocketsetscrewdog";
+"DIN916" -> "hexsocketsetscrewcup";
+"ISO4029" -> "hexsocketsetscrewcup";
+"ANSI B18.3.6M" -> "hexsocketsetscrewall";
 }

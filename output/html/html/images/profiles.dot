@@ -12,22 +12,21 @@ label="Classes";
 "vslot20x60" [width=3, height=0.8, fixedsize=true];
 "vslot20x80" [width=3, height=0.8, fixedsize=true];
 "openbuildsdualvwheel" [width=3, height=0.8, fixedsize=true];
+"openbuildssolidvwheel" [width=3, height=0.8, fixedsize=true];
+"openbuildssolidminivwheel" [width=3, height=0.8, fixedsize=true];
 }
 subgraph cluster_std {
 label="Standards";
 }
 subgraph cluster_fcd {
 label="FreeCAD";
-"tslot-20x20.fcstd:Fillet" [width=4, height=0.8, fixedsize=true];
-"tslot-20x20-1S.fcstd:Fillet" [width=4, height=0.8, fixedsize=true];
-"tslot-20x20-2S.fcstd:Fillet" [width=4, height=0.8, fixedsize=true];
-"tslot-20x20-2SA.fcstd:Fillet" [width=4, height=0.8, fixedsize=true];
-"tslot-20x20-3S.fcstd:Fillet" [width=4, height=0.8, fixedsize=true];
-"20x20_Vrail_s.fcstd:Pad" [width=4, height=0.8, fixedsize=true];
-"20x40_Vrail_s.fcstd:Pad" [width=4, height=0.8, fixedsize=true];
-"20x60_Vrail_s.fcstd:Pad" [width=4, height=0.8, fixedsize=true];
-"20x80_Vrail_s.fcstd:Pad" [width=4, height=0.8, fixedsize=true];
-"V_Wheel.fcstd:Revolution" [width=4, height=0.8, fixedsize=true];
+"profiles.py:vslot20x20" [width=4, height=0.8, fixedsize=true];
+"profiles.py:vslot20x40" [width=4, height=0.8, fixedsize=true];
+"profiles.py:vslot20x60" [width=4, height=0.8, fixedsize=true];
+"profiles.py:vslot20x80" [width=4, height=0.8, fixedsize=true];
+"wheels.py:dualvwheel" [width=4, height=0.8, fixedsize=true];
+"wheels.py:solidvwheel" [width=4, height=0.8, fixedsize=true];
+"wheels.py:minivwheel" [width=4, height=0.8, fixedsize=true];
 }
 subgraph cluster_ocd {
 label="OpenSCAD";
@@ -37,19 +36,16 @@ label="OpenSCAD";
 "aluminiumProfiles.scad:tslot_20x20_2sa_base" [width=4, height=0.8, fixedsize=true];
 "aluminiumProfiles.scad:tslot_20x20_3s_base" [width=4, height=0.8, fixedsize=true];
 }
-"tslot20x20" -> "tslot-20x20.fcstd:Fillet";
 "tslot20x20" -> "aluminiumProfiles.scad:tslot_20x20_base";
-"tslot20x20-1s" -> "tslot-20x20-1S.fcstd:Fillet";
 "tslot20x20-1s" -> "aluminiumProfiles.scad:tslot_20x20_1s_base";
-"tslot20x20-2s" -> "tslot-20x20-2S.fcstd:Fillet";
 "tslot20x20-2s" -> "aluminiumProfiles.scad:tslot_20x20_2s_base";
-"tslot20x20-2sa" -> "tslot-20x20-2SA.fcstd:Fillet";
 "tslot20x20-2sa" -> "aluminiumProfiles.scad:tslot_20x20_2sa_base";
-"tslot20x20-3s" -> "tslot-20x20-3S.fcstd:Fillet";
 "tslot20x20-3s" -> "aluminiumProfiles.scad:tslot_20x20_3s_base";
-"vslot20x20" -> "20x20_Vrail_s.fcstd:Pad";
-"vslot20x40" -> "20x40_Vrail_s.fcstd:Pad";
-"vslot20x60" -> "20x60_Vrail_s.fcstd:Pad";
-"vslot20x80" -> "20x80_Vrail_s.fcstd:Pad";
-"openbuildsdualvwheel" -> "V_Wheel.fcstd:Revolution";
+"vslot20x20" -> "profiles.py:vslot20x20";
+"vslot20x40" -> "profiles.py:vslot20x40";
+"vslot20x60" -> "profiles.py:vslot20x60";
+"vslot20x80" -> "profiles.py:vslot20x80";
+"openbuildsdualvwheel" -> "wheels.py:dualvwheel";
+"openbuildssolidvwheel" -> "wheels.py:solidvwheel";
+"openbuildssolidminivwheel" -> "wheels.py:minivwheel";
 }
