@@ -401,6 +401,7 @@ class HTMLExporter(BackendExporter):
 
 		if threedview:
 			params["threedview"] = """
+    <div id="threedview" style="border: 1px solid black"></div>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r50/three.min.js"></script>
 <script type="text/javascript" src="../3dviews/%s/%s.js"></script>
 <script type="text/javascript"> window.onload = function() {
