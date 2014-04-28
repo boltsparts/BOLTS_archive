@@ -1,7 +1,7 @@
 var camera, controls, scene, renderer;
 function attach_renderer(target) {
 
-	var SCREEN_WIDTH = 300, SCREEN_HEIGHT = 300;
+	var SCREEN_WIDTH = 600, SCREEN_HEIGHT = 300;
 	var VIEW_ANGLE = 35, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
 
 	renderer = new THREE.WebGLRenderer();

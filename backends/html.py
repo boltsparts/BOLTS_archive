@@ -402,11 +402,11 @@ class HTMLExporter(BackendExporter):
 		if threedview:
 			params["threedview"] = """
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r50/three.min.js"></script>
-<script type="text/javascript" src="html/3dviews/%s/%s.js"></script>
+<script type="text/javascript" src="../3dviews/%s/%s.js"></script>
 <script type="text/javascript"> window.onload = function() {
 	attach_renderer(document.getElementById("threedview"));
 }</script>
-"""
+""" % (coll.id,cl.id)
 		else:
 			params["threedview"] = ""
 

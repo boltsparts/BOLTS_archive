@@ -86,7 +86,13 @@ class WebGLExporter(BackendExporter):
 
 				doc = FreeCAD.newDocument()
 				add_part(base,params,doc)
-				importWebGL.export([FreeCAD.ActiveDocument.ActiveObject], join(out_path,coll.id,filename))
+
+				#find bounding box
+				part = FreeCAD.ActiveDocument.ActiveObject
+				bb = part.Shape.BoundBox
+				importWebGL.cameraPosition = (2*bb.XMax, 2*bb.YMax, 2*bb.ZMax)
+				importWebGL.wireframeStyle = "multimaterial"
+				importWebGL.export([part], join(out_path,coll.id,filename))
 				FreeCAD.closeDocument(doc.Name)
 
 			sys.path.pop()
