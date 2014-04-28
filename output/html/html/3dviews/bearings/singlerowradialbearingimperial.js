@@ -1,7 +1,7 @@
 var camera, controls, scene, renderer;
 function attach_renderer(target) {
 
-	var SCREEN_WIDTH = 300, SCREEN_HEIGHT = 300;
+	var SCREEN_WIDTH = 600, SCREEN_HEIGHT = 300;
 	var VIEW_ANGLE = 35, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
 
 	renderer = new THREE.WebGLRenderer();
@@ -15,7 +15,7 @@ function attach_renderer(target) {
 		NEAR, // Near plane
 		FAR // Far plane
 	);
-	camera.position.set(0,0,1000);
+	camera.position.set(2.43538245066,2.43538245066,0.625);
                 camera.lookAt( scene.position );
                  // placeholder for the FreeCAD camera
 	controls = new THREE.TrackballControls( camera );
@@ -792,8 +792,8 @@ function attach_renderer(target) {
                 var v759 = new THREE.Vector3(0.299360213301,0.921336000161,0.0546875);
                 var v760 = new THREE.Vector3(-0.181525648505,-0.951590774143,0.0546875);
                 var v761 = new THREE.Vector3(-0.961111116898,-0.121416570015,0.0546875);
-                var v762 = new THREE.Vector3(0.060828315794,-0.966838393165,0.0546875);
-                var v763 = new THREE.Vector3(0.848922096292,0.466698871786,0.0546875);
+                var v762 = new THREE.Vector3(0.848922096292,0.466698871786,0.0546875);
+                var v763 = new THREE.Vector3(0.060828315794,-0.966838393165,0.0546875);
                 var v764 = new THREE.Vector3(0.519082207636,0.81794267783,0.0546875);
                 var v765 = new THREE.Vector3(0.706188357814,0.663155008868,0.0546875);
                 var v766 = new THREE.Vector3(-0.961111116898,0.121416570015,0.0546875);
@@ -817,8 +817,8 @@ function attach_renderer(target) {
                 var v784 = new THREE.Vector3(0.299360213301,0.921336000161,0.2734375);
                 var v785 = new THREE.Vector3(-0.181525648505,-0.951590774143,0.2734375);
                 var v786 = new THREE.Vector3(-0.961111116898,-0.121416570015,0.2734375);
-                var v787 = new THREE.Vector3(0.848922096292,0.466698871786,0.2734375);
-                var v788 = new THREE.Vector3(0.060828315794,-0.966838393165,0.2734375);
+                var v787 = new THREE.Vector3(0.060828315794,-0.966838393165,0.2734375);
+                var v788 = new THREE.Vector3(0.848922096292,0.466698871786,0.2734375);
                 var v789 = new THREE.Vector3(0.519082207636,0.81794267783,0.2734375);
                 var v790 = new THREE.Vector3(0.706188357814,0.663155008868,0.2734375);
                 var v791 = new THREE.Vector3(-0.961111116898,0.121416570015,0.2734375);
@@ -5585,17 +5585,17 @@ function attach_renderer(target) {
                 geom.faces.push( new THREE.Face3(711, 759, 712) );
                 geom.faces.push( new THREE.Face3(720, 761, 757) );
                 geom.faces.push( new THREE.Face3(720, 757, 721) );
-                geom.faces.push( new THREE.Face3(762, 701, 760) );
-                geom.faces.push( new THREE.Face3(763, 707, 758) );
-                geom.faces.push( new THREE.Face3(764, 759, 711) );
+                geom.faces.push( new THREE.Face3(762, 707, 758) );
+                geom.faces.push( new THREE.Face3(763, 701, 760) );
                 geom.faces.push( new THREE.Face3(764, 711, 709) );
-                geom.faces.push( new THREE.Face3(700, 701, 762) );
+                geom.faces.push( new THREE.Face3(764, 759, 711) );
                 geom.faces.push( new THREE.Face3(765, 709, 707) );
-                geom.faces.push( new THREE.Face3(765, 707, 763) );
+                geom.faces.push( new THREE.Face3(765, 707, 762) );
                 geom.faces.push( new THREE.Face3(765, 764, 709) );
+                geom.faces.push( new THREE.Face3(700, 701, 763) );
                 geom.faces.push( new THREE.Face3(766, 761, 720) );
                 geom.faces.push( new THREE.Face3(719, 766, 720) );
-                geom.faces.push( new THREE.Face3(767, 700, 762) );
+                geom.faces.push( new THREE.Face3(767, 700, 763) );
                 geom.faces.push( new THREE.Face3(702, 700, 767) );
                 geom.faces.push( new THREE.Face3(768, 766, 719) );
                 geom.faces.push( new THREE.Face3(718, 768, 719) );
@@ -5635,17 +5635,17 @@ function attach_renderer(target) {
                 geom.faces.push( new THREE.Face3(737, 784, 736) );
                 geom.faces.push( new THREE.Face3(782, 786, 745) );
                 geom.faces.push( new THREE.Face3(746, 782, 745) );
-                geom.faces.push( new THREE.Face3(783, 732, 787) );
-                geom.faces.push( new THREE.Face3(785, 726, 788) );
-                geom.faces.push( new THREE.Face3(734, 736, 789) );
+                geom.faces.push( new THREE.Face3(785, 726, 787) );
+                geom.faces.push( new THREE.Face3(783, 732, 788) );
                 geom.faces.push( new THREE.Face3(736, 784, 789) );
+                geom.faces.push( new THREE.Face3(734, 736, 789) );
+                geom.faces.push( new THREE.Face3(787, 726, 725) );
                 geom.faces.push( new THREE.Face3(732, 734, 790) );
-                geom.faces.push( new THREE.Face3(787, 732, 790) );
+                geom.faces.push( new THREE.Face3(788, 732, 790) );
                 geom.faces.push( new THREE.Face3(734, 789, 790) );
-                geom.faces.push( new THREE.Face3(788, 726, 725) );
                 geom.faces.push( new THREE.Face3(745, 786, 791) );
                 geom.faces.push( new THREE.Face3(745, 791, 744) );
-                geom.faces.push( new THREE.Face3(788, 725, 792) );
+                geom.faces.push( new THREE.Face3(787, 725, 792) );
                 geom.faces.push( new THREE.Face3(792, 725, 727) );
                 geom.faces.push( new THREE.Face3(744, 791, 793) );
                 geom.faces.push( new THREE.Face3(744, 793, 743) );
@@ -5665,7 +5665,7 @@ function attach_renderer(target) {
                 geom.faces.push( new THREE.Face3(798, 735, 775) );
                 geom.faces.push( new THREE.Face3(740, 799, 739) );
                 geom.faces.push( new THREE.Face3(739, 799, 777) );
-                geom.faces.push( new THREE.Face3(767, 788, 792) );
+                geom.faces.push( new THREE.Face3(767, 787, 792) );
                 geom.faces.push( new THREE.Face3(767, 792, 794) );
                 geom.faces.push( new THREE.Face3(758, 751, 776) );
                 geom.faces.push( new THREE.Face3(769, 767, 794) );
@@ -5674,12 +5674,12 @@ function attach_renderer(target) {
                 geom.faces.push( new THREE.Face3(758, 776, 783) );
                 geom.faces.push( new THREE.Face3(773, 771, 798) );
                 geom.faces.push( new THREE.Face3(771, 796, 798) );
-                geom.faces.push( new THREE.Face3(763, 758, 787) );
-                geom.faces.push( new THREE.Face3(765, 763, 787) );
-                geom.faces.push( new THREE.Face3(758, 783, 787) );
+                geom.faces.push( new THREE.Face3(762, 758, 788) );
+                geom.faces.push( new THREE.Face3(765, 762, 788) );
+                geom.faces.push( new THREE.Face3(758, 783, 788) );
                 geom.faces.push( new THREE.Face3(773, 798, 775) );
                 geom.faces.push( new THREE.Face3(750, 773, 775) );
-                geom.faces.push( new THREE.Face3(765, 787, 790) );
+                geom.faces.push( new THREE.Face3(765, 788, 790) );
                 geom.faces.push( new THREE.Face3(751, 750, 776) );
                 geom.faces.push( new THREE.Face3(750, 775, 776) );
                 geom.faces.push( new THREE.Face3(764, 765, 789) );
@@ -5712,9 +5712,9 @@ function attach_renderer(target) {
                 geom.faces.push( new THREE.Face3(756, 755, 781) );
                 geom.faces.push( new THREE.Face3(760, 756, 781) );
                 geom.faces.push( new THREE.Face3(760, 781, 785) );
-                geom.faces.push( new THREE.Face3(760, 785, 788) );
-                geom.faces.push( new THREE.Face3(762, 760, 788) );
-                geom.faces.push( new THREE.Face3(767, 762, 788) );
+                geom.faces.push( new THREE.Face3(760, 785, 787) );
+                geom.faces.push( new THREE.Face3(763, 760, 787) );
+                geom.faces.push( new THREE.Face3(767, 763, 787) );
                 geom.faces.push( new THREE.Face3(800, 801, 802) );
                 geom.faces.push( new THREE.Face3(800, 803, 801) );
                 geom.faces.push( new THREE.Face3(804, 802, 805) );
@@ -6074,11 +6074,11 @@ function attach_renderer(target) {
                 geom.faces.push( new THREE.Face3(1005, 1003, 846) );
                 geom.faces.push( new THREE.Face3(1006, 842, 844) );
                 geom.faces.push( new THREE.Face3(808, 1002, 811) );
-                geom.faces.push( new THREE.Face3(808, 1007, 1002) );
                 geom.faces.push( new THREE.Face3(1006, 844, 1004) );
-                geom.faces.push( new THREE.Face3(824, 826, 1000) );
+                geom.faces.push( new THREE.Face3(808, 1007, 1002) );
                 geom.faces.push( new THREE.Face3(803, 1005, 848) );
                 geom.faces.push( new THREE.Face3(824, 1000, 1008) );
+                geom.faces.push( new THREE.Face3(824, 826, 1000) );
                 geom.faces.push( new THREE.Face3(1009, 824, 1008) );
                 geom.faces.push( new THREE.Face3(1010, 1005, 803) );
                 geom.faces.push( new THREE.Face3(1011, 840, 842) );
@@ -6089,8 +6089,8 @@ function attach_renderer(target) {
                 geom.faces.push( new THREE.Face3(1014, 803, 800) );
                 geom.faces.push( new THREE.Face3(822, 824, 1009) );
                 geom.faces.push( new THREE.Face3(818, 1013, 1012) );
-                geom.faces.push( new THREE.Face3(818, 1012, 814) );
                 geom.faces.push( new THREE.Face3(1014, 1010, 803) );
+                geom.faces.push( new THREE.Face3(818, 1012, 814) );
                 geom.faces.push( new THREE.Face3(818, 822, 1013) );
                 geom.faces.push( new THREE.Face3(1015, 838, 840) );
                 geom.faces.push( new THREE.Face3(1015, 840, 1011) );

@@ -1,7 +1,7 @@
 var camera, controls, scene, renderer;
 function attach_renderer(target) {
 
-	var SCREEN_WIDTH = 300, SCREEN_HEIGHT = 300;
+	var SCREEN_WIDTH = 600, SCREEN_HEIGHT = 300;
 	var VIEW_ANGLE = 35, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
 
 	renderer = new THREE.WebGLRenderer();
@@ -15,7 +15,7 @@ function attach_renderer(target) {
 		NEAR, // Near plane
 		FAR // Far plane
 	);
-	camera.position.set(0,0,1000);
+	camera.position.set(23.8126284064,23.8126284064,7.0);
                 camera.lookAt( scene.position );
                  // placeholder for the FreeCAD camera
 	controls = new THREE.TrackballControls( camera );
@@ -14367,18 +14367,18 @@ function attach_renderer(target) {
                 geom.faces.push( new THREE.Face3(2365, 2367, 2228) );
                 geom.faces.push( new THREE.Face3(2366, 2222, 2221) );
                 geom.faces.push( new THREE.Face3(2225, 2366, 2221) );
-                geom.faces.push( new THREE.Face3(2369, 2200, 2370) );
-                geom.faces.push( new THREE.Face3(2200, 2197, 2370) );
+                geom.faces.push( new THREE.Face3(2369, 2200, 2197) );
+                geom.faces.push( new THREE.Face3(2369, 2197, 2370) );
                 geom.faces.push( new THREE.Face3(2205, 2206, 2371) );
                 geom.faces.push( new THREE.Face3(2206, 2372, 2371) );
-                geom.faces.push( new THREE.Face3(2373, 2374, 2214) );
                 geom.faces.push( new THREE.Face3(2370, 2197, 2199) );
+                geom.faces.push( new THREE.Face3(2373, 2374, 2214) );
                 geom.faces.push( new THREE.Face3(2215, 2373, 2214) );
                 geom.faces.push( new THREE.Face3(2375, 2373, 2216) );
                 geom.faces.push( new THREE.Face3(2373, 2215, 2216) );
                 geom.faces.push( new THREE.Face3(2374, 2376, 2213) );
-                geom.faces.push( new THREE.Face3(2214, 2374, 2213) );
                 geom.faces.push( new THREE.Face3(2205, 2371, 2204) );
+                geom.faces.push( new THREE.Face3(2214, 2374, 2213) );
                 geom.faces.push( new THREE.Face3(2370, 2199, 2377) );
                 geom.faces.push( new THREE.Face3(2375, 2216, 2378) );
                 geom.faces.push( new THREE.Face3(2377, 2199, 2201) );
