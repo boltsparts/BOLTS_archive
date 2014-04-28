@@ -1,7 +1,7 @@
 var camera, controls, scene, renderer;
 function attach_renderer(target) {
 
-	var SCREEN_WIDTH = 300, SCREEN_HEIGHT = 300;
+	var SCREEN_WIDTH = 600, SCREEN_HEIGHT = 300;
 	var VIEW_ANGLE = 35, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
 
 	renderer = new THREE.WebGLRenderer();
@@ -15,7 +15,7 @@ function attach_renderer(target) {
 		NEAR, // Near plane
 		FAR // Far plane
 	);
-	camera.position.set(0,0,1000);
+	camera.position.set(182.0,408.0,6000.0);
                 camera.lookAt( scene.position );
                  // placeholder for the FreeCAD camera
 	controls = new THREE.TrackballControls( camera );
