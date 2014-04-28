@@ -1,6 +1,6 @@
 #!/bin/sh
 git checkout master -- output downloads
-git rm -rfq html
+rm -rf html
 mv output/html/* .
 git add html
 git rm -rfq output
