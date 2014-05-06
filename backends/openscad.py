@@ -93,7 +93,7 @@ class OpenSCADExporter(BackendExporter):
 		version_fid = open(join(out_path,"common","version.scad"),"w","utf8")
 		if stable:
 			major, minor = str(version).split('.')
-			version_fid.write('function BOLTS_version() = [%s, %s, %s];\n' %
+			version_fid.write('function BOLTS_version() = [%s, %s, "%s"];\n' %
 				 (major, minor, target_license))
 		else:
 			version_fid.write('function BOLTS_version() = "%s";\n' % version)
