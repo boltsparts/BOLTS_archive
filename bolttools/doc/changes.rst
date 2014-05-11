@@ -7,6 +7,13 @@ Changes of the BOLTS specifications
 **********
 
 * removed fcstd and stl base geometries
+* lifted restriction of collection id forbidding gui, common and template
+* added class name element and class standard element
+* reworked names and standard system in class elements
+* naming element renamed to substitution element, changed template requirements
+  and removed substitute field
+* lifted restriction of parameter names forbidding standard and name
+* added restrictions on characters usable for Table Index
 
 **********
 0.2 to 0.3

@@ -4,7 +4,7 @@ BOLTS Specification Version 0.4
 
 The BOLTS library consists of several different components, processes and
 conventions and a number of precisely defined concepts. The purpose of this
-document is to specify them.
+document is to specify them in detail.
 
 *****************************************
 Parts, Classes, Standards and Collections
@@ -20,8 +20,8 @@ Parts
 =====
 
 A BOLTS repository_ contains a various sorts of data about objects, that are in
-some way useful in CAD. A part is a object that can be described by a set of
-dimensions. E.g. a piece of paper is described by its width of 210mm and its
+some way useful in CAD. A part is an object that can be described by a set of
+parameters. E.g. a piece of paper is described by its width of 210mm and its
 height of 297mm.
 
 .. _class:
@@ -35,20 +35,24 @@ efficiently described as a class of parts. To continue with the paper example,
 a class describing pieces class could also contain a part with width 100mm and
 height 100mm.
 
-In a blt-file_ classes of parts are described, because this case is so frequent.
-Some parts are one of a kind, so it is not uncommon to have classes that
-contain just a single part.
+In a blt-file_ only classes of parts are described, because this case is so
+frequent.  Some parts are one of a kind, so it is not uncommon to have classes
+that contain just a single part.
+
 
 The classes of technical parts that BOLTS deals with are often specified by
 standards issued by standardization bodies. This can be specified for a class
-in the blt-file_.
+in the blt-file_. Within BOLTS, a class is referred to by its unique class id,
+but for the user a class may be known under multiple names or specified in
+multiple identical standards. To reflect this, classes can contain one or
+several  class-name-element_ and class-standard-element_ constructs.
 
 .. _collection:
 
 Collections
 ===========
 
-It turns out to be convenient to organize the classes of a bolts repository in
+It turns out to be convenient to organize the classes of a BOLTS repository in
 collections. A collection usually has one or few authors, the parts contained
 are in some sense related to each other and all the data of a collection is
 under the same licence.
@@ -56,7 +60,7 @@ under the same licence.
 Each collection has a one word identifier, the collection id. The collection id
 is the filename (without extension) of the blt-file_ with the information about
 the collection, and also explicitly specified in the blt-file_. For more
-details information see there.
+details see there.
 
 .. _repository:
 
@@ -67,15 +71,15 @@ The repository
 A BOLTS repository is directory structure with a certain layout. It contains
 all the data and metadata. The root directory contains at least a "data"
 directory with the backend independent data in blt-file_, plus optionally a
-number of database directories with data that can be used by a backend_. See
-list-of-databases_ for details.
+number of database directories with additional data that can be used by a
+backend_. See list-of-databases_ for details.
 
 The data directory
 ==================
 
 The data directory contains a number of blt-file_, one for each collection_.
-These files contain the backend independent information about the parts in the
-repository.
+These files contain the general, backend independent information about the
+classes in the repository.
 
 .. _database:
 
@@ -83,7 +87,7 @@ The databases
 =============
 
 A database directory is a directory that contains data about certain aspects of
-the parts or data in a specific form.Backends can access this data to
+the parts or data in a specific form. Backends can access this data to
 transform the parts data into specific forms or collect informations.
 
 In contrast to the data in the blt-file_, the data in the database directories
@@ -96,9 +100,9 @@ this class.
 Backends, Processing and Distributions
 **************************************
 
-In BOLTS the backend independent data and metadata is separated from the
-backend specific data. The former is held in blt-file_, the latter in
-database_ directories.
+In BOLTS the general, backend independent data and metadata is separated from
+the backend specific data for e.g. a particular CAD system. The former is held
+in blt-file_, the latter in database_ directories.
 
 .. _backend:
 
@@ -109,13 +113,13 @@ Backend
 
 A backend is a process that uses backend independent data and data from
 database_, transforms this data and outputs a set of files. This output is called
-the distribution.
+the distribution of this backend.
 
-.. image:: processing_0.3.png
+.. image:: processing_dev.png
    :width: 100%
 
 
-Am example for a backend would be a process that uses the backend indepent data
+An example for a backend would be a process that uses the backend indepent data
 about parts, their geometries and dimensions together with a number of
 templates and stylesheets and produces a set of HTML pages with a nicely
 rendered, browsable description of the parts. Other backends could produce data
@@ -128,9 +132,9 @@ Backends are not specified in detail by this specification.
 Backend independent data - the blt file
 =======================================
 
-The backend independent data is stored in `yaml <http://yaml.org/>`_ files with
-the extension .blt. These files contain exactly one YAML document consisting of
-an associative array with the following keys:
+The backend independent data is stored in files with the extension .blt
+containing `yaml <http://yaml.org/>`_ markup. These files contain exactly one
+YAML document consisting of an associative array with the following keys:
 
 - id: mandatory, string. The id of the collection. Must be identical to the
   filename of the blt file without the extenstion.
@@ -150,9 +154,7 @@ an associative array with the following keys:
 The filename without the .blt extension is called the collection id. For
 consistency they are repeated in the id field. Collection ids are one word
 identifiers, which must be unique within the repository.  They should contain
-only letters, numbers and underscores, and should be descriptive, as they may
-be visible to the user. Some names can not be collection ids: common, gui,
-template
+only letters, numbers and underscores, and should be descriptive.
 
 .. _class-element:
 
@@ -165,19 +167,12 @@ class_. It has the following keys:
 - id: mandatory, string. The id of the class. Class ids are one word
   identifiers, which must be unique within the repository. This class id is
   used as a way to refer to the class, when the standard field is not set.
-  They should contain only letters, numbers and underscores, and should be
-  descriptive, as they may be visible to the user.
-- naming: mandatory, naming-element_. A naming convention for the parts of this
-  class.
-- description: optional, string. A short description of the class.
-- standard: optional, string or list of strings. The name of the standard, if
-  class is standardized. In the case of multiple standards with identical
-  specifications, a list of names can be given.
-- status: optional, string. This can be used to indicate the status of the
-  standard.  Possible values are "active" and "withdrawn", if absent, "active"
-  is assumed.
-- replaces: optional, string or list of strings. Standards that are superseded
-  by this standard.
+  They should contain only letters, numbers and underscores.
+- names: optional, class-name-element_ or list of class-name-element_ . One or
+  several names for this class.
+- standards: optional, class-standard-element_ or list of
+  class-standard-element_ . One or several standards, in which the parts of this
+  class are specified.
 - parameters: optional, parameter-element_: Parameters for this class.
 - url: optional, string or list of strings. A url with relevant information
   regarding the parts of this class. For example a link to a vendor, or to the
@@ -187,6 +182,99 @@ class_. It has the following keys:
   or additional information.
 - source: mandatory, string. A short description where the informations for this
   class originate. Should contain a URL if possible.
+
+.. _class-name-element:
+
+Class Name Element
+------------------
+
+A class name element is a way to assign a name to a class. A class element
+should be used for general names, like "Hex head screws" and for names that are
+not derived from a standard issued by a standardisation body. For names that
+are derived from a standard, a class-standard-element_ is more appropriate.
+
+A class name element is an associative array with the following keys:
+
+- name: mandatory, identifier-element_. The name for the class.
+- labeling: mandatory, substitution-element_. A template for the name of a part from
+  this class, e.g. for a BOM.
+- description: optional, string. A short description of the class.
+
+The safe name of this class must be unique within the repository and provides a
+way to refer to this class.
+
+.. Maybe tag, vendor info, order url
+
+.. _class-standard-element:
+
+Class Standard Element
+----------------------
+
+A class standard element is similar to a class-name-element_, but is used
+specifically to associate a class with a formal standard, and allows to
+expresses additional facts about this standard.
+
+a class standard element is an associative array with the following keys:
+
+- standard: mandatory, identifier-element_. The name of the standard.
+- suffix: optional, identifier-element_. If a single standard specifies multiple
+  classes of parts, the suffix must be used to distinguish them.
+- labeling: mandatory, substitution-element_. A template for the name of a part from
+  this class, e.g. for a BOM.
+- body: mandatory, string. The standardisation body that issued the standard.
+- year: optional, integer. The year in which the standard was issued.
+- status: optional, string. This can be used to indicate the status of the
+  standard.  Possible values are "active" and "withdrawn", if absent, "active"
+  is assumed.
+- replaces: optional, string. Names of ths standards that are superseded by
+  this standard.
+- description: optional, string. A short description of the class.
+
+The safe name of this class or in case a suffix is givenm the concatenation of
+safe name and safe suffix must be unique within the repository and provide a
+way to refer to this class. If several classes are specified in the same
+standard, the safe and nice names of the corresponding class standard elements
+must be the same in all classes.
+
+.. _identifier-element:
+
+Identifier element
+------------------
+
+To be able to uniquely refer to class in different circumstances, it is
+necessary to have both a safe and a nice name. The former is used in file names
+or as function or variable name in a script, and therefore has to obey certain
+constraints. The latter is used in places, where no such constraints apply,
+like GUIs or web pages.
+
+These two names are bundled up in a identifier-element_, an associative array
+with the following keys:
+
+- nice: mandatory, string. A nice name for the class.
+- safe: optional, string. A safe name for the class. This means, it contains
+  only alphanumerical characters and underscores. Defaults to a sanitized
+  version of the nice name.
+
+.. _substitution-element:
+
+Substitution element
+--------------------
+
+One also wants to have name or labels for a part derived from a class. This
+name usually depends on the value of the parameters and, like with the
+identifier-element_, must be available in a safe and nice form for use in
+different situations. The restrictions on the safe name are a bit weaker than
+with the identifier-element_.
+
+To insert the value of a parameter into this name, a placeholder of the form
+`%(parameter)s` can be inserted.
+
+- nice: mandatory, string. A nice name for the part.
+- safe: mandatory, string. A safe name for the class. This means they must be
+  ASCII with no forward or backward slashes, no question marks, no asterisk, no
+  colon, no pipe, no quotes, no lesser or greater than signs, no spaces.
+  Defaults to a sanitized version of the nice name.
+
 
 .. _parameter-element:
 
@@ -242,11 +330,11 @@ String        ""              no
 Angle (deg)   0               no
 ============  ==============  =========
 
-Some parameter names are forbidden: standard, name.
+The two values of the type Bool are true and false (lowercase). Table index
+values (keys) are strings, and must be ASCII with no forward or backward
+slashes, no question marks, no asterisk, no colon, no pipe, no quotes, no
+lesser or greater than signs, no spaces.
 
-The two values of the type Bool are true and false (lowercase).
-
-.. Limits on parameters could go here
 
 .. _table-element:
 
@@ -255,7 +343,7 @@ Table element
 
 Tables of data are very common in standards and very useful for specifying a
 class_ of parts. A table element describes a table of values, where the row is
-specified by the value an index parameter, and each column contains the value
+specified by the value of an index parameter, and each column contains the value
 for a parameter. A table element is an associative array that has the following
 keys:
 
@@ -265,7 +353,8 @@ keys:
   columns of the table.
 - data: mandatory, associative array: The keys are possible values of the index
   parameter, the values a list of values compatible with the types of the
-  parameters specified in columns.
+  parameters specified in columns. Note the restriction on the keys described
+  in parameter-element_.
 
 .. _table2d-element:
 
@@ -275,18 +364,19 @@ Table2D element
 In some cases, a table-element_ is not powerful enough to represent the
 relationship between the values of free parameters and other parameters, for
 example if the value of a parameter depends on two free parameters at once.
-This case is covered by a table2d-element.
+This case is covered by a table2d element. A table2d-element allows to lookup
+the value of the result parameter for a row given by a rowindex and a column
+given by a colindex.
 
-A table2d-element allows to lookup the value of the result parameter for a row
-given by a rowindex and a column given by a colindex.
-
-A table2d-element_ is an associative array with the following keys:
+A table2d element  is an associative array with the following keys:
 
 - rowindex: mandatory, string: name of the parameter that is used to select a
   row. Has to be specified to be of type "Table Index" in the
+  parameter-element_. Note the restriction on the keys described in
   parameter-element_.
 - colindex: mandatory, string: name of the parameter that is used to select a
   column. Has to be specified to be of type "Table Index" in the
+  parameter-element_. Note the restriction on the keys described in
   parameter-element_.
 - columns: mandatory, list of strings. The possible values for the colindex.
 - result: mandatory, string. The name of the parameter whose value is
@@ -294,26 +384,6 @@ A table2d-element_ is an associative array with the following keys:
 - data: mandatory, associative array: The keys are possible values of the
   rowindex parameter, the values a list of values for the columns from which
   one is selected by the colindex.
-
-
-.. _naming-element:
-
-
-Naming element
---------------
-
-The name of a part should be precise enough to completely describe it, and
-therefore depends on the values of (some of) the parameters. A naming element is
-an associative array that holds information about the name of the parts of a
-class. It has the keys:
-
-- template: mandatory, string. A name template, can contain placeholders for
-  strings "%s" and numbers "s".
-- substitute: optional, list. List of parameter names and that should be
-  filled in for the placeholders in the template. If missing defaults to empty
-  list. Besides the parameter names from the parameter-element_, also the
-  special name "standard" can be used.
-
 
 .. _parameter-collection:
 
@@ -346,13 +416,13 @@ It is an error condition if a parameter is not assigned a value or if there is
 more than one way to assign a value.
 
 The parameter values collected  in this way are for example used (among other
-properties) to populate the template given in the naming-element_.
+things) to populate the template given in the substitution-element_.
 
 
-.. _base-files:
+.. _base-file:
 
-Base Files
-==========
+Base File
+=========
 
 Base files are `yaml <http://yaml.org/>`_ files, in which informations about
 the files for a collection in a database_ directory are stored. They consist of
@@ -404,19 +474,20 @@ OpenSCAD
 
 The files containing all the informations necessary to build a geometrical
 representation of a class in OpenSCAD  reside in the "openscad" directory. This
-database directory contains a folder for each collection_ that contains files
+database directory contains a folder for each collection_ which contains files
 related to this collection, and the folder is named like the collection-id.
 
-To be able to do that it needs informations about base modules. These
-informations are stored in the base-files_ of a collection. Base modules are
-OpenSCAD modules that take as parameters a subset of the parameters of the
-part (see parameter-collection_), and construct the part according to these
-dimensions.
+One ingredient for this are base modules,  OpenSCAD modules that take as
+parameters a subset of the parameters of the part (see parameter-collection_),
+and construct the part according to these dimensions. These modules are stored
+in one or several files residing in the respective collection directory within
+the openscad database directory
 
-These modules are stored in one or several files residing in the respective
-collection directory within the openscad directory, and the base-files_
-contains one base-file-element_ of type "modules" (see base-file-type-module_) for
-each file with modules.
+In order to integrate the base modules properly, BOLTS needs informations about
+them. These informations are stored in the base-file_ of a collection, in form
+of one base-file-element_ of type "modules" (see base-file-type-module_) for
+every file with one or more modules.
+
 
 
 *******
@@ -425,11 +496,12 @@ FreeCAD
 
 The "freecad" directory contains files that allow to build a geometrical
 representation of a class in FreeCAD. This directory contains a folder for each
-collection_ with the files related to classes in this collection.
+collection_, containing the files related to classes in this collection.
 
-The geometrical representation is given form of python function that constructs
-the part using the scripting facilities of FreeCAD. The base-files_ contains
-base-file-element_ of type "function" (see base-file-type-function_).
+The geometrical representation for a part is obtained from a python function
+that constructs the part using the scripting facilities of FreeCAD. The
+base-file_ contains a base-file-element_ of type "function" for every python
+module with one or more of these functions (see base-file-type-function_).
 
 
 **********
@@ -437,7 +509,7 @@ SolidWorks
 **********
 
 The "solidworks" directory contains files necessary to build "design tables"
-for use with the `SolidWorks software <http://www.solidworks.com/>`_. This
+for use with the `SolidWorks software <http://www.solidworks.com/>`_. The
 directory contains a folder for each collection_ with the files related to
 classes in this collection.
 
@@ -446,7 +518,7 @@ parametrized models. Together with "design tables" these models allow to easily
 obtain different sizes and variations of a part.
 
 All the information necessary to build the design table is contained in the
-base-files_ , which contain a list of base-file-element_ of type "solidworks"
+base-file_ , which contain a list of base-file-element_ of type "solidworks"
 (see base-file-type-solidworks_ ).
 
 
@@ -630,10 +702,8 @@ A designtable class element specifies the classes that should be included in a d
 
 - classid: mandatory, string. A classid that should be included in
   this designtable.
-- naming: optional, naming-element_. This describes the form of the
-  configuration names in the design table. If absent, the naming field of the
-  class is used.
-
+- naming: mandatory, substitution-element_. This describes the form of the
+  configuration names in the design table.
 
 .. _supported-licenses:
 
