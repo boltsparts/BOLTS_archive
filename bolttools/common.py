@@ -114,7 +114,7 @@ class Lexicographical(Sorting):
 
 SORTINGS = [Numerical(), Lexicographical()]
 
-class BOLTSParameters:
+class Parameters:
 	"""
 	Python class that holds all the informations about the parameters of a
 	BOLTS class, and implements common operations on them
@@ -130,7 +130,7 @@ class BOLTSParameters:
 	}
 	def __init__(self,param):
 		"""
-		Create a new BOLTSParameters instance
+		Create a new Parameters instance
 
 		param: dictionary from YAML parsing
 		"""
@@ -158,17 +158,17 @@ class BOLTSParameters:
 		if "tables" in param:
 			if isinstance(param["tables"],list):
 				for table in param["tables"]:
-					self.tables.append(BOLTSTable(table))
+					self.tables.append(Table(table))
 			else:
-				self.tables.append(BOLTSTable(param["tables"]))
+				self.tables.append(Table(param["tables"]))
 
 		self.tables2d = []
 		if "tables2d" in param:
 			if isinstance(param["tables2d"],list):
 				for table in param["tables2d"]:
-					self.tables2d.append(BOLTSTable2D(table))
+					self.tables2d.append(Table2D(table))
 			else:
-				self.tables2d.append(BOLTSTable2D(param["tables2d"]))
+				self.tables2d.append(Table2D(param["tables2d"]))
 
 		self.description = {}
 		if "description" in param:
@@ -313,10 +313,10 @@ class BOLTSParameters:
 
 	def union(self,other):
 		"""
-		Return a new BOLTSParameter instance that is the union of this
-		and another BOLTSParameter instance
+		Return a new Parameter instance that is the union of this
+		and another Parameter instance
 		"""
-		res = BOLTSParameters({"types" : {}})
+		res = Parameters({"types" : {}})
 		res.literal.update(self.literal)
 		res.literal.update(other.literal)
 		res.free = self.free + other.free
@@ -360,14 +360,14 @@ class BOLTSParameters:
 					break
 		return res
 
-class BOLTSTable:
+class Table:
 	"""
 	Class representing a table where the values for a number of parameter
 	(in the columns) can be looked up for a given row key.
 	"""
 	def __init__(self,table):
 		"""
-		Create a new BOLTSTable instance
+		Create a new Table instance
 
 		table: dictionary from YAML parsing
 		"""
@@ -397,14 +397,14 @@ class BOLTSTable:
 		"""
 		return dict(zip(self.columns,self.data[key]))
 
-class BOLTSTable2D:
+class Table2D:
 	"""
 	Class representing a 2D table where the values for a parameter can be
 	looked up for a given row and column key.
 	"""
 	def __init__(self,table):
 		"""
-		Create a new BOLTSTable2D instance
+		Create a new Table2D instance
 
 		table: dictionary from YAML parsing
 		"""
@@ -439,7 +439,7 @@ class BOLTSTable2D:
 		row = self.data[row]
 		return {self.result : row[self.columns.index(col)]}
 
-class BOLTSNamePair:
+class NamePair:
 	"""
 	Class to represent a pair of names for use in different situations.
 
@@ -482,23 +482,23 @@ class BOLTSNamePair:
 		return self.nice
 
 
-class BOLTSIdentifier(BOLTSNamePair):
+class Identifier(NamePair):
 	"""Python class for identifying a BOLTS class"""
 	def __init__(self,ident):
 		check_schema(ident,"identifier",
 			["nice"],
 			["safe"]
 		)
-		BOLTSNamePair.__init__(self,ident,set(string.ascii_letters + string.digits + '_'))
+		NamePair.__init__(self,ident,set(string.ascii_letters + string.digits + '_'))
 
-class BOLTSSubstitution(BOLTSNamePair):
+class Substitution(NamePair):
 	"""Python class for identifying a part derived from a BOLTS class"""
 	def __init__(self,subst):
 		check_schema(subst,"substitution",
 			['nice'],
 			['safe']
 		)
-		BOLTSNamePair.__init__(self,subst,set(string.printable).difference(set("""/\\?*|"'>""")))
+		NamePair.__init__(self,subst,set(string.printable).difference(set("""/\\?*|"'>""")))
 	def get_safe_name(self,params):
 		res = self.safe % params
 		for c in res:

@@ -110,7 +110,7 @@ class TestSorting(unittest.TestCase):
 class TestParameter(unittest.TestCase):
 
 	def test_type(self):
-		self.assertRaises(UnknownTypeError,lambda: common.BOLTSParameters(yaml.load("""
+		self.assertRaises(UnknownTypeError,lambda: common.Parameters(yaml.load("""
 literal:
   test: 125
 types:
@@ -120,7 +120,7 @@ description:
 """)))
 
 	def test_missing_type(self):
-		self.assertRaises(MissingTypeError,lambda: common.BOLTSParameters(yaml.load("""
+		self.assertRaises(MissingTypeError,lambda: common.Parameters(yaml.load("""
 literal:
   test: 125
 free: [inp]
@@ -131,11 +131,11 @@ description:
 """)))
 
 	def test_unknown_parameter(self):
-		self.assertRaises(UnknownParameterError,lambda: common.BOLTSParameters(yaml.load("""
+		self.assertRaises(UnknownParameterError,lambda: common.Parameters(yaml.load("""
 types:
   test: Length (mm)
 """)))
-		self.assertRaises(UnknownParameterError,lambda: common.BOLTSParameters(yaml.load("""
+		self.assertRaises(UnknownParameterError,lambda: common.Parameters(yaml.load("""
 free: [test2]
 description:
   test: Test length
@@ -144,7 +144,7 @@ types:
 """)))
 
 	def setUp(self):
-		self.params = common.BOLTSParameters(yaml.load("""
+		self.params = common.Parameters(yaml.load("""
 literal:
   lit: 21
 free: [ind,ind2]
@@ -209,7 +209,7 @@ description:
 		self.assertEqual(res['col2'],4)
 
 	def test_union(self):
-		params2 = common.BOLTSParameters(yaml.load("""
+		params2 = common.Parameters(yaml.load("""
 literal:
   lit2: 23
 free: [barbar]
@@ -228,7 +228,7 @@ defaults:
 
 class TestTable(unittest.TestCase):
 	def test_init(self):
-		res = common.BOLTSTable(yaml.load("""
+		res = common.Table(yaml.load("""
 index: ind
 columns: [col1]
 data:
@@ -240,7 +240,7 @@ data:
 		self.assertEqual(res.get_values('row1'),{'col1' : 1})
 
 	def test_rows(self):
-		res = common.BOLTSTable(yaml.load("""
+		res = common.Table(yaml.load("""
 index: ind
 columns: [col1]
 data:
@@ -252,7 +252,7 @@ data:
 
 class TestTable2D(unittest.TestCase):
 	def test_init(self):
-		res = common.BOLTSTable2D(yaml.load("""
+		res = common.Table2D(yaml.load("""
 colindex: ind
 rowindex: ind2
 result: tab
@@ -265,7 +265,7 @@ data:
 		self.assertEqual(res.get_value('bar','row1'),{'tab' : 1.2})
 
 	def test_rows(self):
-		res = common.BOLTSTable2D(yaml.load("""
+		res = common.Table2D(yaml.load("""
 colindex: ind
 rowindex: ind2
 result: tab
@@ -279,34 +279,34 @@ data:
 
 class TestIdentifier(unittest.TestCase):
 	def test_init(self):
-		res = common.BOLTSIdentifier(yaml.load("""
+		res = common.Identifier(yaml.load("""
 nice: Test Part
 """))
 		self.assertEqual(res.nice,'Test Part')
 		self.assertEqual(res.safe,'Test_Part')
 
 	def test_sanitize(self):
-		res = common.BOLTSIdentifier(yaml.load(u"""
+		res = common.Identifier(yaml.load(u"""
 nice: Test Part with/Garba%;üe
 """))
 		self.assertEqual(res.safe,'Test_Part_with_Garbae')
 
 	def test_check(self):
-		self.assertRaises(ValueError,lambda: common.BOLTSIdentifier(yaml.load(u"""
+		self.assertRaises(ValueError,lambda: common.Identifier(yaml.load(u"""
 nice: Test Part with/Garba%;üe
 safe: Test Part with/Garba%;üe
 """)))
 
 class TestSubstitution(unittest.TestCase):
 	def test_init(self):
-		res = common.BOLTSSubstitution(yaml.load("""
+		res = common.Substitution(yaml.load("""
 nice: Test Part %(name)s
 """))
 		self.assertEqual(res.get_nice_name({'name' : 'Foo'}),'Test Part Foo')
 		self.assertEqual(res.get_safe_name({'name' : 'Foo'}),'Test_Part_Foo')
 
 	def test_check(self):
-		self.assertRaises(ValueError,lambda: common.BOLTSSubstitution(yaml.load(u"""
+		self.assertRaises(ValueError,lambda: common.Substitution(yaml.load(u"""
 nice: Test Part with/Garba%;üe
 safe: Test Part with/Garba%;üe
 """)))
