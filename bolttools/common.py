@@ -19,21 +19,26 @@
 
 import re
 import math
+import string
 from os.path import join
 from copy import deepcopy
 
 from errors import *
 
-RE_ANGLED = re.compile("([^<]*)<([^>]*)>")
 
 def parse_angled(string):
+	"""
+	Parse strings of the form "Something <something.else>", which are often
+	used for names and email addresses
+	"""
+	RE_ANGLED = re.compile("([^<]*)<([^>]*)>")
 	match = RE_ANGLED.match(string)
 	if match is None:
 		raise MalformedStringError("Expected string containing <>")
 	return match.group(1).strip(), match.group(2).strip()
 
 def check_schema(yaml_dict, element_name, mandatory_fields, optional_fields):
-	#check dict from YAML parsing for correct and complete fields
+	"""Check a dict resulting from YAML parsing for correct and complete fields"""
 	for key in yaml_dict.keys():
 		if key in mandatory_fields:
 			mandatory_fields.remove(key)
@@ -46,14 +51,14 @@ def check_schema(yaml_dict, element_name, mandatory_fields, optional_fields):
 
 ALL_TYPES = ["Length (mm)", "Length (in)", "Number", "Bool", "Table Index", "String","Angle (deg)"]
 
-def convert_type(pname,tname,value):
-	""" Convert from strings to python types """
+def convert_raw_parameter_value(pname,tname,value):
+	""" Convert from strings from YAML parsing to python types and check conformity with the corresponding BOLTS type"""
 	numbers = ["Length (mm)", "Length (in)", "Number","Angle (deg)"]
 	positive = ["Length (mm)", "Length (in)"]
 
 	#Check
 	if not tname in ALL_TYPES:
-		raise ValueError("Unknown Type in table for parameter %s: %s" % (pname,tname))
+		raise UnknownTypeError(tname)
 
 	#Convert
 	if value == "None":
@@ -65,21 +70,28 @@ def convert_type(pname,tname,value):
 		elif tname == "Angle (deg)" and math.fabs(value) > 360:
 			raise ValueError("Angles must be 360 > alpha > -360: %s is %f" % (pname,value))
 	elif tname == "Bool":
-		if not value in ["True","False"]:
-			raise ValueError("Unknown value for bool parameter %s: %s" % value)
-		value = bool(value)
+		if value == "true":
+			value = True
+		elif value == "false":
+			value = False
+		else:
+			raise ValueError("Unknown value for bool parameter %s: %s" % (pname,value))
 
 	return value
 
 class Sorting:
+	"""Base class for classes for sorting choices for a Table Index"""
 	def __init__(self):
 		pass
 	def is_applicable(self,choices):
-		return False
+		"""check whether this way of sorting is applicable to a set of choices"""
+		raise NotImplementedError
 	def sort(self,choices):
-		return choices
+		"""returns a sorted copy of choices"""
+		raise NotImplementedError
 
 class Numerical(Sorting):
+	"""Sorts according to the numbers that are contained in the key"""
 	def __init__(self):
 		Sorting.__init__(self)
 		self.re = re.compile("[^0-9]*([0-9]+\.*[0-9]*)[^0-9]*$")
@@ -91,7 +103,8 @@ class Numerical(Sorting):
 	def sort(self,choices):
 		return sorted(choices, key=lambda x: float(self.re.match(x).group(1)))
 
-class Alphabetical(Sorting):
+class Lexicographical(Sorting):
+	"""Sorts keys in lexicographical order"""
 	def __init__(self):
 		Sorting.__init__(self)
 	def is_applicable(self,choices):
@@ -99,9 +112,13 @@ class Alphabetical(Sorting):
 	def sort(self,choices):
 		return sorted(choices)
 
-SORTINGS = [Numerical(), Alphabetical()]
+SORTINGS = [Numerical(), Lexicographical()]
 
 class BOLTSParameters:
+	"""
+	Python class that holds all the informations about the parameters of a
+	BOLTS class, and implements common operations on them
+	"""
 	type_defaults = {
 		"Length (mm)" : 10,
 		"Length (in)" : 1,
@@ -112,6 +129,11 @@ class BOLTSParameters:
 		"Angle (deg)" : 0
 	}
 	def __init__(self,param):
+		"""
+		Create a new BOLTSParameters instance
+
+		param: dictionary from YAML parsing
+		"""
 		check_schema(param,"parameters",
 			["types"],
 			["literal","free","tables","tables2d","defaults","common","description"]
@@ -124,7 +146,9 @@ class BOLTSParameters:
 		self.literal = {}
 		if "literal" in param:
 			for pname,val in param["literal"].iteritems():
-				self.literal[pname] = convert_type(pname,self.types[pname],val)
+				if not pname in self.types:
+					raise MissingTypeError(pname)
+				self.literal[pname] = convert_raw_parameter_value(pname,self.types[pname],val)
 
 		self.free = []
 		if "free" in param:
@@ -252,6 +276,7 @@ class BOLTSParameters:
 					self.common.append([])
 
 	def _populate_common(self, tup, values, idx):
+		#helper function for recursively populating the dict of common parameters
 		if idx == len(self.free):
 			self.common.append(values)
 		else:
@@ -270,27 +295,34 @@ class BOLTSParameters:
 					self._populate_common(tup,values + [v], idx+1)
 
 	def collect(self,free):
+		"""
+		Derive parameter values for all parameters from given values
+		for the free parameters
+		"""
 		res = {}
 		res.update(self.literal)
 		res.update(free)
 		for table in self.tables:
-			res.update(dict(zip(table.columns,table.data[res[table.index]])))
+			res.update(table.get_values(res[table.index]))
 		for table in self.tables2d:
-			row = table.data[res[table.rowindex]]
-			res[table.result] = row[table.columns.index(res[table.colindex])]
+			res.update(table.get_value(res[table.rowindex],res[table.colindex]))
 		for pname in self.parameters:
 			if not pname in res:
 				raise KeyError("Parameter value not collected: %s" % pname)
 		return res
 
 	def union(self,other):
+		"""
+		Return a new BOLTSParameter instance that is the union of this
+		and another BOLTSParameter instance
+		"""
 		res = BOLTSParameters({"types" : {}})
 		res.literal.update(self.literal)
 		res.literal.update(other.literal)
 		res.free = self.free + other.free
 		res.tables = self.tables + other.tables
 		res.tables2d = self.tables2d + other.tables2d
-		res.parameters = list(set(self.parameters))
+		res.parameters = list(set(self.parameters + other.parameters))
 
 		for pname,tname in self.types.iteritems():
 			res.types[pname] = tname
@@ -321,7 +353,6 @@ class BOLTSParameters:
 				res.choices[pname] &= set(other.choices[pname])
 			else:
 				res.choices[pname] = set(other.choices[pname])
-		sortings = [Numerical(), Alphabetical()]
 		for pname in res.choices:
 			for sort in SORTINGS:
 				if sort.is_applicable(res.choices[pname]):
@@ -330,7 +361,16 @@ class BOLTSParameters:
 		return res
 
 class BOLTSTable:
+	"""
+	Class representing a table where the values for a number of parameter
+	(in the columns) can be looked up for a given row key.
+	"""
 	def __init__(self,table):
+		"""
+		Create a new BOLTSTable instance
+
+		table: dictionary from YAML parsing
+		"""
 		check_schema(table,"table",
 			["index","columns","data"],
 			[]
@@ -347,10 +387,27 @@ class BOLTSTable:
 			if len(row) != len(self.columns):
 				raise ValueError("Column is missing for row: %s" % key)
 			for i in range(len(self.columns)):
-				row[i] = convert_type(self.columns[i],col_types[i],row[i])
+				row[i] = convert_raw_parameter_value(self.columns[i],col_types[i],row[i])
+
+	def get_values(self,key):
+		"""
+		Look up parameter values for a given row key
+
+		returns: dictionary with parametername : value pairs
+		"""
+		return dict(zip(self.columns,self.data[key]))
 
 class BOLTSTable2D:
+	"""
+	Class representing a 2D table where the values for a parameter can be
+	looked up for a given row and column key.
+	"""
 	def __init__(self,table):
+		"""
+		Create a new BOLTSTable2D instance
+
+		table: dictionary from YAML parsing
+		"""
 		check_schema(table,"table2d",
 			["rowindex","colindex","columns","result","data"],
 			[]
@@ -372,23 +429,84 @@ class BOLTSTable2D:
 			if len(row) != len(self.columns):
 				raise ValueError("Column is missing for row: %s" % key)
 			for i in range(len(self.columns)):
-				row[i] = convert_type(self.result,types[self.result],row[i])
+				row[i] = convert_raw_parameter_value(self.result,types[self.result],row[i])
+	def get_value(self,row,col):
+		"""
+		Look up parameter value for a given row key
 
-class BOLTSNaming:
-	def __init__(self,name):
-		check_schema(name,"naming",
-			["template"],
-			["substitute"]
+		returns: dictionary with parametername : value pair
+		"""
+		row = self.data[row]
+		return {self.result : row[self.columns.index(col)]}
+
+class BOLTSNamePair:
+	"""
+	Class to represent a pair of names for use in different situations.
+
+	yd: dictionary from yaml
+	allowed: set of characters that are allowed in the safe name
+	"""
+	def __init__(self,yd,allowed):
+		self.allowed = allowed
+		self.nice = yd['nice']
+		if 'safe' in yd:
+			self.safe = yd['safe']
+			self._check(self.safe)
+		else:
+			self.safe = self.nice
+			self._sanitize(string.whitespace,'_')
+			self._sanitize(' -/\\','_')
+			self._sanitize(self.allowed,'',True)
+
+	def _check(self,inp):
+		#check for only allowed characters
+		for c in inp:
+			if not c in self.allowed:
+				raise ValueError('String %s contains forbidden characters: %s' % (inp,c))
+	def _sanitize(self,charset,replace,invert=False):
+		#replace the characters in charset in self.safe by the
+		# character replace. If invert is True, replace the characters
+		if not invert:
+			for c in charset:
+				self.safe = self.safe.replace(c,replace)
+		else:
+			for c in self.safe:
+				if not c in charset:
+					self.safe = self.safe.replace(c,replace)
+
+	def get_safe_name(self):
+		"""return the safe name"""
+		return self.safe
+	def get_nice_name(self):
+		"""return the nice name"""
+		return self.nice
+
+
+class BOLTSIdentifier(BOLTSNamePair):
+	"""Python class for identifying a BOLTS class"""
+	def __init__(self,ident):
+		check_schema(ident,"identifier",
+			["nice"],
+			["safe"]
 		)
+		BOLTSNamePair.__init__(self,ident,set(string.ascii_letters + string.digits + '_'))
 
-		self.template = name["template"]
-		self.substitute = []
-		if "substitute" in name:
-			self.substitute = name["substitute"]
-
-	def get_name(self,params):
-		return self.template % tuple(params[s] for s in self.substitute)
-
+class BOLTSSubstitution(BOLTSNamePair):
+	"""Python class for identifying a part derived from a BOLTS class"""
+	def __init__(self,subst):
+		check_schema(subst,"substitution",
+			['nice'],
+			['safe']
+		)
+		BOLTSNamePair.__init__(self,subst,set(string.printable).difference(set("""/\\?*|"'>""")))
+	def get_safe_name(self,params):
+		res = self.safe % params
+		for c in res:
+			if c in string.whitespace:
+				res = res.replace(c,'_')
+		return res
+	def get_nice_name(self,params):
+		return self.nice % params
 
 class DataBase:
 	def __init__(self,name,path):
@@ -396,6 +514,10 @@ class DataBase:
 		self.backend_root = join(path,name)
 
 class BaseElement:
+	"""
+	Base class for representing BaseElements, yaml structures that describe
+	the contents of file
+	"""
 	def __init__(self,basefile,collname):
 		self.collection = collname
 
