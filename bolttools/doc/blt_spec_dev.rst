@@ -271,9 +271,9 @@ To insert the value of a parameter into this name, a placeholder of the form
 
 - nice: mandatory, string. A nice name for the part.
 - safe: mandatory, string. A safe name for the class. This means they must be
-  ASCII with no forward or backward slashes, no question marks, no asterisk, no
-  colon, no pipe, no quotes, no lesser or greater than signs, no spaces.
-  Defaults to a sanitized version of the nice name.
+  ASCII printable with no forward or backward slashes, no question marks, no
+  asterisk, no colon, no pipe, no quotes, no lesser or greater than signs, no
+  whitespace.  Defaults to a sanitized version of the nice name.
 
 
 .. _parameter-element:
