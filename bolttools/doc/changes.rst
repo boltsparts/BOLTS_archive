@@ -14,6 +14,7 @@ Changes of the BOLTS specifications
   and removed substitute field
 * lifted restriction of parameter names forbidding standard and name
 * added restrictions on characters usable for Table Index
+* added syntax to group non-standardized parts together
 
 **********
 0.2 to 0.3

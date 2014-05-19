@@ -149,7 +149,7 @@ YAML document consisting of an associative array with the following keys:
   the supported-licenses_.
 - blt-version: mandatory, number. The version of the blt format this collection
   follows.
-- classes: mandatory. An list of class-element_.
+- classes: mandatory. A list of class-element_.
 
 The filename without the .blt extension is called the collection id. For
 consistency they are repeated in the id field. Collection ids are one word
@@ -196,6 +196,10 @@ are derived from a standard, a class-standard-element_ is more appropriate.
 A class name element is an associative array with the following keys:
 
 - name: mandatory, identifier-element_. The name for the class.
+- group: optional, identifier-element_. Can be used to group class names
+  together, similar to the suffix in a class-standard-element_. Useful for
+  parts that are not standardized by a standardisation body, but by e.g. a
+  vendor.
 - labeling: mandatory, substitution-element_. A template for the name of a part from
   this class, e.g. for a BOM.
 - description: optional, string. A short description of the class.
