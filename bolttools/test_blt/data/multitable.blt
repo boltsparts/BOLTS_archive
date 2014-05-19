@@ -1,0 +1,117 @@
+#bolttools - a framework for creation of part libraries
+#Copyright (C) 2013 Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+#
+#This library is free software; you can redistribute it and/or
+#modify it under the terms of the GNU Lesser General Public
+#License as published by the Free Software Foundation; either
+#version 2.1 of the License, or any later version.
+#
+#This library is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#Lesser General Public License for more details.
+#
+#You should have received a copy of the GNU Lesser General Public
+#License along with this library; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+---
+id: multitable
+name: BOLTS hexagon fasteners
+description: various standard hex bolts and screws
+author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+license: LGPL 2.1 <http://www.gnu.org/licenses/lgpl-2.1>
+blt-version: 0.4
+classes:
+  - id: hexscrew1
+    names:
+      - name:
+          nice: Metric hex head screws
+          safe: hex_head_screws_metric
+        labeling:
+          nice: Hex head screw %(key)s x %(length)s
+        description: Metric hex head screws
+    standards:
+      - body: DIN
+        status: withdrawn
+        standard:
+          nice: DIN 933
+          safe: DIN933
+        labeling:
+          nice: Hex head screw DIN 933 %(key)s x %(length)s
+        description: Metrix hex head screws according DIN 933
+    parameters:
+        free: [key, l]
+        types:
+            key: Table Index
+            l: Length (mm)
+            d1: Length (mm)
+            k: Length (mm)
+            s: Length (mm)
+            e: Length (mm)
+            h: Length (mm)
+        tables:
+          - index: key
+            columns: [d1, k, s]
+            data:
+                #key   [  d1    k      s    ]
+                M1.6:  [  1.6,  1.1,   3.2  ]
+                M2:    [  2,    1.4,   4,   ]
+                M2.5:  [  2.5,  1.7,   5,   ]
+                M3:    [  3,    2,     5.5  ]
+                M3.5:  [  3.5,  2.4,   6,   ]
+                M4:    [  4,    2.8,   7,   ]
+                M5:    [  5,    3.5,   8,   ]
+                M6:    [  6,    4,     10,  ]
+                M7:    [  7,    4.8,   11,  ]
+                M8:    [  8,    5.3,   13,  ]
+                M10:   [  10,   6.4,   17,  ]
+                M12:   [  12,   7.5,   19,  ]
+                M14:   [  14,   8.8,   22,  ]
+                M16:   [  16,   10,    24,  ]
+                M18:   [  18,   11.5,  27,  ]
+                M20:   [  20,   12.5,  30,  ]
+                M22:   [  22,   14,    32,  ]
+                M24:   [  24,   15,    36,  ]
+                M27:   [  27,   17,    41,  ]
+                M30:   [  30,   18.7,  46,  ]
+                M33:   [  33,   21,    50,  ]
+                M36:   [  36,   22.5,  55,  ]
+                M39:   [  39,   25,    60,  ]
+                M42:   [  42,   26,    65,  ]
+                M45:   [  45,   28,    70,  ]
+                M48:   [  48,   30,    75,  ]
+                M52:   [  52,   33,    80,  ]
+                M64:   [  64,   40,    95,  ]
+          - index: key
+            columns: [e, h]
+            data:
+                #key   [  e        h     ]
+                M1.6:  [  3.48,    None  ]
+                M2:    [  4.32,    None  ]
+                M2.5:  [  5.45,    None  ]
+                M3:    [  6.01,    1.5   ]
+                M3.5:  [  6.58,    None  ]
+                M4:    [  7.66,    2.1   ]
+                M5:    [  8.79,    2.4   ]
+                M6:    [  11.05,   3     ]
+                M7:    [  12.12,   None  ]
+                M8:    [  14.38,   3.75  ]
+                M10:   [  18.90,   4.5   ]
+                M12:   [  21.10,   5.25  ]
+                M14:   [  24.49,   6     ]
+                M16:   [  26.75,   6     ]
+                M18:   [  30.14,   7.5   ]
+                M20:   [  33.53,   7.5   ]
+                M22:   [  35.72,   7.5   ]
+                M24:   [  39.98,   9     ]
+                M27:   [  45.20,   9     ]
+                M30:   [  50.85,   10.5  ]
+                M33:   [  55.37,   10.5  ]
+                M36:   [  60.79,   12    ]
+                M39:   [  66.44,   None  ]
+                M42:   [  71.30,   None  ]
+                M45:   [  76.95,   None  ]
+                M48:   [  82.60,   None  ]
+                M52:   [  88.25,   None  ]
+    source: http://almetal.nl/en/techinfo/hex/hd933.htm
+...

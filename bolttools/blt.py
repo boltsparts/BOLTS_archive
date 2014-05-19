@@ -22,92 +22,308 @@ from os.path import splitext, exists, join
 from codecs import open
 
 from errors import *
-from common import BOLTSParameters, BOLTSNaming, parse_angled, check_schema
+from common import Parameters, Identifier, Substitution, parse_angled, check_schema
 
-CURRENT_VERSION = 0.3
+CURRENT_VERSION = 0.4
 
-class BOLTSRepository:
-	#order is important
-	standard_bodies = ["DINENISO","DINEN","DINISO","DIN","EN","ISO","ANSI","ASME"]
-	def __init__(self,path):
-		self.path = path
-		self.collections = []
+class DesignationMixin:
+	"""
+	Mixin for classes that allow to refer to a class.
+	"""
+	def __init__(self):
+		pass
+	def get_id(self):
+		raise NotImplementedError
 
-		#check for conformity
-		if not exists(path):
-			e = MalformedRepositoryError("Repo directory does not exist")
-			e.set_repo_path(path)
+class ClassName(DesignationMixin):
+	"""
+	Python class to provide a name for a BOLTS class, corresponding to a
+	ClassNameElement in the blt file.
+	"""
+	def __init__(self,cn,clid):
+		check_schema(cn,"classname",
+			["name","labeling"],
+			["description","group"]
+		)
+		DesignationMixin.__init__(self)
+
+		try:
+			self.name = Identifier(cn['name'])
+			self.labeling = Substitution(cn['labeling'])
+		except ParsingError as e:
+			e.set_class(self.id)
 			raise e
-		if not exists(join(path,"data")):
-			e = MalformedRepositoryError("No data directory found")
-			e.set_repo_path(path)
+
+		self.description = ''
+		if 'description' in cn:
+			self.description = cn['description']
+
+		try:
+			if 'group' in cn:
+				self.group = Identifier(cn['group'])
+			else:
+				self.group = Identifier({'nice' : ""})
+		except ParsingError as e:
+			e.set_class(clid)
 			raise e
 
-		#load collection data
-		for filename in os.listdir(join(path,"data")):
-			if splitext(filename)[1] == ".blt":
+		self.classid = clid
+	def get_id(self):
+		if self.group.get_safe_name():
+			return self.group.get_safe_name() + "_" + self.name.get_safe_name()
+		else:
+			return self.name.get_safe_name()
 
-				coll = list(yaml.load_all(open(join(path,"data",filename),"r","utf8")))
-				if len(coll) == 0:
-					raise MalformedCollectionError(
-							"No YAML document found in file %s" % filename)
-				if len(coll) > 1:
-					raise MalformedCollectionError(
-							"More than one YAML document found in file %s" % filename)
 
-				try:
-					self.collections.append(BOLTSCollection(coll[0]))
-				except ParsingError as e:
-					e.set_repo_path(path)
-					e.set_collection(filename)
-					raise e
+class StandardName(DesignationMixin):
+	"""
+	Python class to provide a standard name for a BOLTS class, corresponding to a
+	ClassStandardElement in the blt file.
+	"""
+	def __init__(self,sn,clid):
+		check_schema(sn,'classstandard',
+			['standard','labeling','body'],
+			['suffix','year','status','replaces','description']
+		)
+		DesignationMixin.__init__(self)
 
-				if not self.collections[-1].id == splitext(filename)[0]:
-					raise MalformedCollectionError(
-						"Collection ID is not identical with file name: %s" % filename)
+		try:
+			self.standard = Identifier(sn['standard'])
+			if 'suffix' in sn:
+				self.suffix = Identifier(sn['suffix'])
+			else:
+				self.suffix = Identifier({'nice' : ""})
+			self.labeling = Substitution(sn['labeling'])
+		except ParsingError as e:
+			e.set_class(clid)
+			raise e
 
-				if self.collections[-1].id in ["common","gui","template"]:
-					raise MalformedCollectionError(
-							"Forbidden collection id: %s" % id)
+		self.body = sn['body']
+		self.year = None
+		if 'year' in sn:
+			self.year = sn['year']
+		self.status = "active"
+		if 'status' in sn:
+			self.status = sn['status']
+		self.replacedby = None
+		self.replaces = None
+		if 'replaces' in sn:
+			self.replaces = sn['replaces']
+		self.description = ""
+		if 'description' in sn:
+			self.description = sn['description']
 
-		self.standardized = dict((body,[]) for body in self.standard_bodies)
+		self.classid = clid
+	def get_id(self):
+		if self.suffix.get_safe_name():
+			return self.standard.get_safe_name() + '_' + self.suffix.get_safe_name()
+		else:
+			return self.standard.get_safe_name()
 
-		#find standard parts and their respective standard bodies
-		for coll in self.collections:
-			for cl in coll.classes:
-				#order is important
-				for body in self.standard_bodies:
-					if cl.name.startswith(body):
-						self.standardized[body].append(cl)
-						cl.standard_body = body
-						break
 
-		#fill in obsolescence data
-		for coll in self.collections:
-			for cl in coll.classes:
-				if cl.replaces is None:
-					continue
-				#order in standard_bodies is important
-				for body in self.standard_bodies:
-					if cl.replaces.startswith(body):
-						idx = [c.name for c in self.standardized[body]].index(cl.replaces)
-						self.standardized[body][idx].replacedby = cl.name
-						break
+class Class:
+	"""
+	Python class representing a BOLTS class. There is no direct
+	correspondance between a class in the blt file and this python class,
+	some aspects are covered by other classes
+	"""
+	def __init__(self,cl):
+		check_schema(cl,"class",
+			["source","id"],
+			["names","standards","parameters","url","notes"]
+		)
 
-		#check for nonunique class ids
-		classids = []
-		for coll in self.collections:
-			for cl in coll.classes_by_ids():
-				if cl.id in classids:
-					raise NonUniqueClassIdError(cl.id)
-				classids.append(cl.id)
+		self.id = cl["id"]
 
-class BOLTSCollection:
+		try:
+			if "parameters" in cl:
+				self.parameters = Parameters(cl["parameters"])
+			else:
+				self.parameters = Parameters({"types" : {}})
+		except ParsingError as e:
+			e.set_class(self.id)
+			raise e
+
+		self.url = ""
+		if "url" in cl:
+			self.url = cl["url"]
+
+		self.notes = ""
+		if "notes" in cl:
+			self.notes = cl["notes"]
+
+		self.source = cl["source"]
+
+class ContainerMixin:
+	"""A mixin that provides the infrastrucutre to contain a number of BOLTS classes"""
+	def __init__(self,allowed=['name_single','name_group','standard_single','standard_multi']):
+		self.allowed = allowed
+
+		self.names_single = {}
+		self.names_group = {}
+		self.standards_single = {}
+		self.standards_multi = {}
+		self.everything = {}
+
+	def add_name_single(self,cn):
+		if not 'name_single' in self.allowed:
+			raise ValueError("This container is not allowed to hold names")
+		if cn.get_id() in self.everything:
+			raise MalformedRepositoryError("Duplicate name %s" % cn.get_id())
+		self.names_single[cn.get_id()] = cn
+		self.everything[cn.get_id()] = cn
+
+	def contains_name_single(self,id):
+		return id in self.names_single
+	
+	def get_name_single(self,id):
+		return self.names_single[id]
+
+	def all_names_single(self):
+		for name in self.names_single.values():
+			yield name
+
+	def add_name_group(self,cng):
+		if not 'name_group' in self.allowed:
+			raise ValueError("This container is not allowed to hold name groups")
+		if cng.get_id() in self.everything:
+			raise MalformedRepositoryError("Duplicate name %s" % cng.get_id())
+
+		for cn in cng.all_names_single():
+			if cn.get_id() in self.everything:
+				raise MalformedRepositoryError("Duplicate name %s" % cn.get_id())
+		self.names_group[cng.get_id()] = cng
+		self.everything[cng.get_id()] = cng
+		for cn in cng.all_names_single():
+			self.everything[cn.get_id()] = cn
+
+	def contains_name_group(self,id):
+		return id in self.names_group
+
+	def get_name_group(self,id):
+		return self.names_group[id]
+
+	def all_names_group(self):
+		for ng in self.names_group.values():
+			yield ng
+
+	def add_standard_single(self,cs):
+		if not 'standard_single' in self.allowed:
+			raise ValueError("This container is not allowed to hold single standards")
+		if cs.get_id() in self.everything:
+			raise MalformedRepositoryError("Duplicate standard %s" % cs.get_id())
+
+		self.standards_single[cs.get_id()] = cs
+		self.everything[cs.get_id()] = cs
+
+	def contains_standard_single(self,id):
+		return id in self.standards_single
+
+	def get_standard_single(self,id):
+		return self.standards_single[id]
+
+	def all_standards_single(self):
+		for standard in self.standards_single.values():
+			yield standard
+
+	def add_standard_multi(self,cs):
+		if not 'standard_multi' in self.allowed:
+			raise ValueError("This container is not allowed to hold multi standards")
+		if cs.get_id() in self.everything:
+			raise MalformedRepositoryError("Duplicate standard %s" % cs.get_id())
+		for st in cs.all_standards_single():
+			if st.get_id() in self.everything:
+				raise MalformedRepositoryError("Duplicate standard %s" % st.get_id())
+
+		self.standards_multi[cs.get_id()] = cs
+		self.everything[cs.get_id()] = cs
+		for st in cs.all_standards_single():
+			self.everything[st.get_id()] = st
+
+	def contains_standard_multi(self,id):
+		return id in self.standards_multi
+
+	def get_standard_multi(self,id):
+		return self.standards_multi[id]
+
+	def all_standards_multi(self):
+		for standard in self.standards_multi.values():
+			yield standard
+
+	def contains_standard(self,id):
+		if id in self.standards_single:
+			return True
+		else:
+			for ms in self.standards_multi.values():
+				if ms.contains_standard_single(id):
+					return True
+		return False
+
+	def get_standard(self,id):
+		"""returns single standards"""
+		if id in self.standards_single:
+			return self.standards_single[id]
+		else:
+			for ms in self.standards_multi.values():
+				if ms.contains_standard_single(id):
+					return ms.get_standard_single(id)
+		raise KeyError('id: %s not known' % id)
+
+	def all_standards(self):
+		"""returns single standards"""
+		for standard in self.standards_single.values():
+			yield standard
+		for ms in self.standards_multi.values():
+			for standard in ms.all_standards_single():
+				yield standard
+
+	def contains_name(self,id):
+		if id in self.names_single:
+			return True
+		else:
+			for ng in self.names_group.values():
+				if ng.contains_name_single(id):
+					return True
+		return False
+
+	def get_name(self,id):
+		""" returns single names, no name groups"""
+		if id in self.names_single:
+			return self.names_single[id]
+		else:
+			for ng in self.names_group.values():
+				if ng.contains_name_single(id):
+					return ms.get_name_single(id)
+		raise KeyError('id: %s not known' % id)
+
+	def all_names(self):
+		""" returns single names, no name groups"""
+		for name in self.names_single.values():
+			yield name
+		for ng in self.names_group.values():
+			for name in ng.all_names_single():
+				yield name
+
+	def contains(self,id):
+		return id in self.everything
+	
+	def get(self,id):
+		"""might return any designation"""
+		return self.everything[id]
+
+
+
+
+class Collection(ContainerMixin):
+	"""
+	Container for all classes contained in a BOLTS Collection
+	"""
 	def __init__(self,coll):
 		check_schema(coll,"collection",
 			["id","author","license","blt-version","classes"],
 			["name","description"]
 		)
+		ContainerMixin.__init__(self)
 
 		version = coll["blt-version"]
 		if version != CURRENT_VERSION:
@@ -139,99 +355,180 @@ class BOLTSCollection:
 		self.license_name = match[0]
 		self.license_url = match[1]
 
-		#parse classes
-		if not isinstance(coll["classes"],list):
-			raise MalformedCollectionError("No class in collection %s"% self.id)
+class StandardBody(ContainerMixin):
+	"""
+	Container for standard names that are specified by a common
+	standardisation body
+	"""
+	def __init__(self,body):
+		self.body = body
+		ContainerMixin.__init__(self,['standard_single','standard_multi'])
 
-		self.classes = []
-		classids = []
-		for cl in coll["classes"]:
-			names = cl["id"]
-			if cl["id"] in classids:
-				raise NonUniqueClassIdError(cl["id"])
-			classids.append(cl["id"])
-			if "standard" in cl:
-				names = cl["standard"]
-			if isinstance(names,str):
-				names = [names]
-			for name in names:
-				try:
-					self.classes.append(BOLTSClass(cl,name))
-				except ParsingError as e:
-					e.set_class(name)
-					raise
+class MultipartStandard(ContainerMixin,DesignationMixin):
+	"""
+	Container for all standard names that are covered by a single standard
+	"""
+	def __init__(self,standard):
+		ContainerMixin.__init__(self,['standard_single'])
+		DesignationMixin.__init__(self)
 
-	def classes_by_ids(self):
-		class_ids = []
-		for cl in self.classes:
-			if cl.id in class_ids:
+		self.standard = standard
+
+	def get_id(self):
+		return self.standard.get_safe_name()
+
+	def add_standard_single(self,cs):
+		if cs.standard != self.standard:
+			raise RuntimeError("Multipart standard with conflicting standards: %s %s" %
+				(cs.standard.get_safe_name(), self.standard.get_safe_name()))
+		ContainerMixin.add_standard_single(self,cs)
+
+class NameGroup(ContainerMixin,DesignationMixin):
+	"""
+	Container for all class names that are part of a common group
+	"""
+	def __init__(self,group):
+		ContainerMixin.__init__(self,['name_single'])
+		DesignationMixin.__init__(self)
+
+		self.group = group
+	def get_id(self,cn):
+		return self.group.get_safe_name()
+
+	def add_name_single(self,cn):
+		if self.group != cn.group:
+			raise RunrimeError("Name group with conflicting group names: %s %s" %
+				(cn.group.get_safe_name(), self.group.get_safe_name()))
+
+class Repository(ContainerMixin):
+	def __init__(self,path):
+		ContainerMixin.__init__(self)
+
+		#check for conformity
+		if not exists(path):
+			e = MalformedRepositoryError("Repo directory does not exist")
+			e.set_repo_path(path)
+			raise e
+		if not exists(join(path,"data")):
+			e = MalformedRepositoryError("No data directory found")
+			e.set_repo_path(path)
+			raise e
+
+		self.path = path
+
+		self.classes = {}
+
+		self.collections = {}
+
+		self.standard_bodies = {}
+
+		self.name_groups = {}
+
+		#load collection data
+		for filename in os.listdir(join(path,"data")):
+			if splitext(filename)[1] != ".blt":
 				continue
-			class_ids.append(cl.id)
-			yield cl
 
-#In contrast to the class-element specified in the blt, this structure has only
-#one name, a blt class element gets split into several BOLTSClasses during
-#parsing
-class BOLTSClass:
-	def __init__(self,cl,name):
-		check_schema(cl,"class",
-			["naming","source","id"],
-			["description","standard","status","replaces","parameters",
-				"url","notes"]
-		)
+			raw_coll = list(yaml.load_all(open(join(path,"data",filename),"r","utf8")))
+			if len(raw_coll) == 0:
+				raise MalformedCollectionError(
+						"No YAML document found in file %s" % filename)
+			if len(raw_coll) > 1:
+				raise MalformedCollectionError(
+						"More than one YAML document found in file %s" % filename)
+			#we only consider the first YAML document
+			raw_coll = raw_coll[0]
 
-		self.id = cl["id"]
+			if not isinstance(raw_coll["classes"],list):
+				raise MalformedCollectionError("No class in collection %s"% raw_coll["id"])
 
-		try:
-			self.naming = BOLTSNaming(cl["naming"])
-		except ParsingError as e:
-			e.set_class(self.id)
-			raise e
+			if raw_coll["id"] in self.collections:
+				raise MalformedCollectionError("Duplicate collection id %s" % raw_coll["id"])
 
-		self.drawing = None
-		if "drawing" in cl:
-			self.drawing = cl["drawing"]
+			if raw_coll["id"] != splitext(filename)[0]:
+				raise MalformedCollectionError(
+					"Collection ID is not identical with file name: %s" % filename)
 
-		self.description = ""
-		if "description" in cl:
-			self.description = cl["description"]
+			try:
+				coll = Collection(raw_coll)
+				self.collections[coll.id] = coll
+			except ParsingError as e:
+				e.set_repo_path(path)
+				e.set_collection(filename)
+				raise e
 
-		self.standard_body = None
-		self.standard = None
-		self.body = None
-		self.status = "active"
-		self.replaces = None
-		if "standard" in cl:
-			self.standard = cl["standard"]
-			if isinstance(self.standard,str):
-				self.standard = [self.standard]
-			if "status" in cl:
-				self.status = cl["status"]
-				if not self.status in ["active","withdrawn"]:
-					raise ValueError
-			if "replaces" in cl:
-				self.replaces = cl["replaces"]
-		#gets updated later by the repo
-		self.replacedby = None
+			for cl in raw_coll['classes']:
 
-		try:
-			if "parameters" in cl:
-				self.parameters = BOLTSParameters(cl["parameters"])
-			else:
-				self.parameters = BOLTSParameters({"types" : {}})
-		except ParsingError as e:
-			e.set_class(self.id)
-			raise e
+				if cl["id"] in self.classes:
+					raise MalformedRepositoryError("Duplicate class id %s" % cl["id"])
 
-		self.url = ""
-		if "url" in cl:
-			self.url = cl["url"]
+				cls = Class(cl)
+				self.classes[cls.id] = cls
 
-		self.notes = ""
-		if "notes" in cl:
-			self.notes = cl["notes"]
+				names = []
+				standards = []
+				if 'names' in cl:
+					if isinstance(cl['names'],list):
+						names = cl['names']
+					else:
+						names = [cl['names']]
+				if 'standards' in cl:
+					if isinstance(cl['standards'],list):
+						standards = cl['standards']
+					else:
+						standards = [cl['standards']]
 
-		self.source = cl["source"]
+				if len(names+standards) == 0:
+					raise MalformedCollectionError(
+						"Encountered class with no names: %s" % raw_coll["id"])
 
-		self.name = name
-		self.openscadname = name.replace("-","_").replace(" ","_").replace(".","_")
+				for cn in names:
+					name = ClassName(cn,cl['id'])
+
+					groupname = name.group.get_safe_name()
+
+					if groupname:
+						for cont in [self,coll]:
+							group = None
+							if groupname in cont.name_groups:
+								group = cont.get_name_group(groupname)
+							else:
+								group = NameGroup(name.group)
+								cont.add_name_group(group)
+							group.add_name_single(name)
+					else:
+						for cont in [self,coll]:
+							cont.add_name_single(name)
+
+				for sn in standards:
+					standard = StandardName(sn,cl['id'])
+
+					body = None
+					if standard.body in self.standard_bodies:
+						body = self.standard_bodies[standard.body]
+					else:
+						body = StandardBody(standard.body)
+						self.standard_bodies[standard.body] = body
+
+					if standard.suffix.get_safe_name():
+						for cont in [self,coll,body]:
+							mult = None
+							if cont.contains_standard_multi(standard.standard):
+								mult = cont.get_standard_multi(standard.standard)
+							else:
+								mult = MultipartStandard(standard.standard)
+								cont.add_standard_multi(mult)
+							mult.add_standard_single(standard)
+					else:
+						for cont in [self,coll,body]:
+							cont.add_standard_single(standard)
+
+
+		#fill in obsolescence data
+		for standard in self.all_standards():
+			if standard.replaces is None:
+				continue
+			if not self.contains_standard(standard.replaces):
+				raise MalformedRepositoryError(
+					"Unknown replace field in standard %s" % standard.get_id())
+			standard.replacedby = standard.replaces
