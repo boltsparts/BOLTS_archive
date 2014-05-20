@@ -462,8 +462,15 @@ class Repository(ContainerMixin):
 				if cl["id"] in self.classes:
 					raise MalformedRepositoryError("Duplicate class id %s" % cl["id"])
 
-				cls = Class(cl)
-				self.classes[cls.id] = cls
+
+				try:
+					cls = Class(cl)
+					self.classes[cls.id] = cls
+				except ParsingError as e:
+					e.set_class(cl["id"])
+					e.set_repo_path(path)
+					e.set_collection(filename)
+					raise e
 
 				names = []
 				standards = []
