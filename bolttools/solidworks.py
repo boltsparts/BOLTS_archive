@@ -23,7 +23,7 @@ from os.path import join, exists, splitext
 from codecs import open
 
 from errors import *
-from common import BaseElement, DataBase, BOLTSParameters, BOLTSNaming, check_schema
+from common import BaseElement, DataBase, Parameters, Substitution, check_schema
 
 class DesignTableClass:
 	def __init__(self,cl):
@@ -36,7 +36,7 @@ class DesignTableClass:
 		
 		self.naming = None
 		if "naming" in cl:
-			self.naming = BOLTSNaming(cl["naming"])
+			self.naming = Substitution(cl["naming"])
 
 
 class DesignTable(BaseElement):

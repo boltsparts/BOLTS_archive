@@ -23,7 +23,7 @@ from os.path import join, exists, splitext
 from codecs import open
 
 from errors import *
-from common import BaseElement, DataBase, BOLTSParameters, check_schema
+from common import BaseElement, DataBase, Parameters, check_schema
 
 class Drawing(BaseElement):
 	def __init__(self,basefile,collname,backend_root):

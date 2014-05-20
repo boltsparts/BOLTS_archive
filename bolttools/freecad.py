@@ -19,7 +19,7 @@ from os.path import join, exists, basename, splitext
 # pylint: disable=W0622
 from codecs import open
 
-from common import check_schema, DataBase, BaseElement, BOLTSParameters
+from common import check_schema, DataBase, BaseElement, Parameters
 from errors import *
 
 class FreeCADGeometry(BaseElement):
@@ -44,9 +44,9 @@ class BaseFunction(FreeCADGeometry):
 		self.classids = function["classids"]
 		self.module_name = splitext(basename(self.filename))[0]
 		if "parameters" in function:
-			self.parameters = BOLTSParameters(function["parameters"])
+			self.parameters = Parameters(function["parameters"])
 		else:
-			self.parameters = BOLTSParameters({"types" : {}})
+			self.parameters = Parameters({"types" : {}})
 
 class FreeCADData(DataBase):
 	def __init__(self,path):

@@ -22,7 +22,7 @@ from os.path import join, exists
 from codecs import open
 
 from errors import *
-from common import DataBase, BaseElement, BOLTSParameters, check_schema
+from common import DataBase, BaseElement, Parameters, check_schema
 
 
 class OpenSCADGeometry(BaseElement):
@@ -56,9 +56,9 @@ class BaseModule(OpenSCADGeometry):
 		self.classids = mod["classids"]
 
 		if "parameters" in mod:
-			self.parameters = BOLTSParameters(mod["parameters"])
+			self.parameters = Parameters(mod["parameters"])
 		else:
-			self.parameters = BOLTSParameters({"types" : {}})
+			self.parameters = Parameters({"types" : {}})
 
 		self.connectors = None
 		if "connectors" in mod:
