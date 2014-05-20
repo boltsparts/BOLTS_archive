@@ -30,21 +30,16 @@ names:
       safe: roundBattery 
       nice: Round Batteries
     labeling:
-      safe: "%(T)s_Battery"
       nice: "%(T)s Battery"
     description: Most common round single cell battery sizes
-  - name:
-      safe: commonBattery
-      nice: Common Batteries
+  - name: Common Batteries
     labeling:
       safe: "%(T)s_Battery"
       nice: "%(T)s Battery"
     description: Most common round single cell battery sizes
 standards:
   - body: IEC
-    standard:
-      safe: IEC60086
-      nice: IEC 60086
+    standard: IEC 60086
     suffix:
       safe: Cat1
       nice: Category 1
@@ -90,12 +85,20 @@ source: http://en.wikipedia.org/wiki/List_of_battery_sizes
 
 		self.assertEqual(len(res),2)
 
+		#use noop substitution
+		self.assertEqual(res[0].labeling.get_safe_name({'T' : '%(T)s'}),'%(T)s_Battery')
+		self.assertEqual(res[1].labeling.get_safe_name({'T' : '%(T)s'}),'%(T)s_Battery')
+
 	def test_standardname(self):
 		res = []
 		for sn in self.cl['standards']:
 			res.append(blt.StandardName(sn,self.cl['id']))
 
 		self.assertEqual(len(res),1)
+		self.assertEqual(res[0].standard.get_safe_name(),'IEC60086')
+		self.assertEqual(res[0].standard.get_nice_name(),'IEC 60086')
+		self.assertEqual(res[0].suffix.get_safe_name(),'Cat1')
+		self.assertEqual(res[0].suffix.get_nice_name(),'Category 1')
 
 class MockDesignation(blt.DesignationMixin):
 	def __init__(self,id,subids=[]):

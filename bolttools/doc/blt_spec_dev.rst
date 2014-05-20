@@ -195,13 +195,17 @@ are derived from a standard, a class-standard-element_ is more appropriate.
 
 A class name element is an associative array with the following keys:
 
-- name: mandatory, identifier-element_. The name for the class.
-- group: optional, identifier-element_. Can be used to group class names
-  together, similar to the suffix in a class-standard-element_. Useful for
-  parts that are not standardized by a standardisation body, but by e.g. a
-  vendor.
-- labeling: mandatory, substitution-element_. A template for the name of a part from
-  this class, e.g. for a BOM.
+- name: mandatory, string or identifier-element_. The name for the class. If
+  given as a string, this is interpreted as the nice name of the identifier
+  element.
+- group: optional, string or identifier-element_. Can be used to group class
+  names together, similar to the suffix in a class-standard-element_. Useful
+  for parts that are not standardized by a standardisation body, but by e.g. a
+  vendor. If given as a string is taken as the nice name of the identifier
+  element.
+- labeling: mandatory, string or substitution-element_. A template for the name
+  of a part from this class, e.g. for a BOM. If given as string is taken to be
+  the nice name.
 - description: optional, string. A short description of the class.
 
 The safe name of this class must be unique within the repository and provides a
@@ -220,11 +224,15 @@ expresses additional facts about this standard.
 
 a class standard element is an associative array with the following keys:
 
-- standard: mandatory, identifier-element_. The name of the standard.
-- suffix: optional, identifier-element_. If a single standard specifies multiple
-  classes of parts, the suffix must be used to distinguish them.
-- labeling: mandatory, substitution-element_. A template for the name of a part from
-  this class, e.g. for a BOM.
+- standard: mandatory, string or identifier-element_. The name of the standard.
+  If given as a string is taken as the nice name of an identifier element.
+- suffix: optional, string or identifier-element_. If a single standard
+  specifies multiple classes of parts, the suffix must be used to distinguish
+  them. If given as a string is taken as the nice name of the identifier
+  element.
+- labeling: mandatory, string or substitution-element_. A template for the name
+  of a part from this class, e.g. for a BOM. If given as a string is taken as
+  the nice name.
 - body: mandatory, string. The standardisation body that issued the standard.
 - year: optional, integer. The year in which the standard was issued.
 - status: optional, string. This can be used to indicate the status of the

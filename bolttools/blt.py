@@ -48,8 +48,14 @@ class ClassName(DesignationMixin):
 		DesignationMixin.__init__(self)
 
 		try:
-			self.name = Identifier(cn['name'])
-			self.labeling = Substitution(cn['labeling'])
+			if isinstance(cn['name'],str):
+				self.name = Identifier({'nice' : cn['name']})
+			else:
+				self.name = Identifier(cn['name'])
+			if isinstance(cn['labeling'],str):
+				self.labeling = Substitution({'nice' : cn['labeling']})
+			else:
+				self.labeling = Substitution(cn['labeling'])
 		except ParsingError as e:
 			e.set_class(self.id)
 			raise e
@@ -60,7 +66,10 @@ class ClassName(DesignationMixin):
 
 		try:
 			if 'group' in cn:
-				self.group = Identifier(cn['group'])
+				if isinstance(cn['group'],str):
+					self.group = Identifier({'nice' : cn['group']})
+				else:
+					self.group = Identifier(cn['group'])
 			else:
 				self.group = Identifier({'nice' : ""})
 		except ParsingError as e:
@@ -88,12 +97,21 @@ class StandardName(DesignationMixin):
 		DesignationMixin.__init__(self)
 
 		try:
-			self.standard = Identifier(sn['standard'])
+			if isinstance(sn['standard'],str):
+				self.standard = Identifier({'nice' : sn['standard']})
+			else:
+				self.standard = Identifier(sn['standard'])
 			if 'suffix' in sn:
-				self.suffix = Identifier(sn['suffix'])
+				if isinstance(sn['suffix'],str):
+					self.suffix = Identifier({'nice' : sn['suffix']})
+				else:
+					self.suffix = Identifier(sn['suffix'])
 			else:
 				self.suffix = Identifier({'nice' : ""})
-			self.labeling = Substitution(sn['labeling'])
+			if isinstance(sn['labeling'],str):
+				self.labeling = Substitution({'nice' : sn['labeling']})
+			else:
+				self.labeling = Substitution(sn['labeling'])
 		except ParsingError as e:
 			e.set_class(clid)
 			raise e
