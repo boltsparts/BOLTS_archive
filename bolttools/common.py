@@ -446,33 +446,15 @@ class NamePair:
 	yd: dictionary from yaml
 	allowed: set of characters that are allowed in the safe name
 	"""
-	def __init__(self,yd,allowed):
+	def __init__(self,safe,nice,allowed):
 		self.allowed = allowed
-		self.nice = yd['nice']
-		if 'safe' in yd:
-			self.safe = yd['safe']
-			self._check(self.safe)
-		else:
-			self.safe = self.nice
-			self._sanitize(string.whitespace,'_')
-			self._sanitize(' -/\\','_')
-			self._sanitize(self.allowed,'',True)
+		self.nice = nice
+		self.safe = safe
 
-	def _check(self,inp):
 		#check for only allowed characters
-		for c in inp:
+		for c in self.safe:
 			if not c in self.allowed:
-				raise ValueError('String %s contains forbidden characters: %s' % (inp,c))
-	def _sanitize(self,charset,replace,invert=False):
-		#replace the characters in charset in self.safe by the
-		# character replace. If invert is True, replace the characters
-		if not invert:
-			for c in charset:
-				self.safe = self.safe.replace(c,replace)
-		else:
-			for c in self.safe:
-				if not c in charset:
-					self.safe = self.safe.replace(c,replace)
+				raise ValueError('String %s contains forbidden characters: %s' % (self.safe,c))
 
 	def get_safe_name(self):
 		"""return the safe name"""
@@ -489,7 +471,35 @@ class Identifier(NamePair):
 			["nice"],
 			["safe"]
 		)
-		NamePair.__init__(self,ident,set(string.ascii_letters + string.digits + '_'))
+
+		allowed = set(string.ascii_letters + string.digits + '_')
+
+		sane = self._sanitize(ident['nice'],allowed)
+
+		if "safe" in ident:
+			NamePair.__init__(self,ident['safe'],ident['nice'],allowed)
+		else:
+			NamePair.__init__(self,sane,ident['nice'],allowed)
+
+
+	def _sanitize(self,inp,allowed):
+		#try to make it camelCase
+		parts = inp.split()
+		res = []
+		for p in parts:
+			if p.isupper():
+				res.append(p)
+			else:
+				res.append(p.capitalize())
+
+		res = "".join(res)
+		#remove all disallowed characters
+		for c in res[:]:
+			if not c in allowed:
+				res = res.replace(c,'')
+		return res
+
+
 
 class Substitution(NamePair):
 	"""Python class for identifying a part derived from a BOLTS class"""
@@ -498,7 +508,24 @@ class Substitution(NamePair):
 			['nice'],
 			['safe']
 		)
-		NamePair.__init__(self,subst,set(string.printable).difference(set("""/\\?*|"'>""")))
+
+		allowed = set(string.printable).difference(set("""/\\?*|"'>"""))
+
+		sane = self._sanitize(subst['nice'],allowed)
+
+		if "safe" in subst:
+			NamePair.__init__(self,subst['safe'],subst['nice'],allowed)
+		else:
+			NamePair.__init__(self,sane,subst['nice'],allowed)
+
+	def _sanitize(self,inp,allowed):
+		inp = "_".join(inp.split())
+		#remove all disallowed characters
+		for c in inp[:]:
+			if not c in allowed:
+				inp = inp.replace(c,'')
+		return inp
+
 	def get_safe_name(self,params):
 		res = self.safe % params
 		for c in res:

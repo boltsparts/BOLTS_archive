@@ -283,13 +283,13 @@ class TestIdentifier(unittest.TestCase):
 nice: Test Part
 """))
 		self.assertEqual(res.nice,'Test Part')
-		self.assertEqual(res.safe,'Test_Part')
+		self.assertEqual(res.safe,'TestPart')
 
 	def test_sanitize(self):
 		res = common.Identifier(yaml.load(u"""
 nice: Test Part with/Garba%;üe
 """))
-		self.assertEqual(res.safe,'Test_Part_with_Garbae')
+		self.assertEqual(res.safe,'TestPartWithgarbae')
 
 	def test_check(self):
 		self.assertRaises(ValueError,lambda: common.Identifier(yaml.load(u"""
