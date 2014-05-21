@@ -15,9 +15,9 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ---
-id: profiles
-name: Profiles
-description: various profiles and extrusions
+id: extrusions
+name: Extrusions and small profiles
+description: Various small profiles and extrusions
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.3
