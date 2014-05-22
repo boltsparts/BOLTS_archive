@@ -462,6 +462,13 @@ class NamePair:
 	def get_nice_name(self):
 		"""return the nice name"""
 		return self.nice
+	
+	def __eq__(self,other):
+		return self.safe == other.safe and self.nice == other.nice
+	
+	def __ne__(self,other):
+		return self.safe != other.safe or self.nice != other.nice
+
 
 
 class Identifier(NamePair):

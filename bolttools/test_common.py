@@ -296,6 +296,15 @@ nice: Test Part with/Garba%;üe
 nice: Test Part with/Garba%;üe
 safe: Test Part with/Garba%;üe
 """)))
+	def test_equality(self):
+		res = [common.Identifier(yaml.load("""
+nice: Test Part
+"""))]
+		res.append(common.Identifier({'nice' : 'Test Part', 'safe' : 'Test_Part'}))
+		self.assertTrue(res[0] == res[0])
+		self.assertFalse(res[0] == res[1])
+		self.assertTrue(res[0] != res[1])
+		self.assertFalse(res[0] != res[0])
 
 class TestSubstitution(unittest.TestCase):
 	def test_init(self):

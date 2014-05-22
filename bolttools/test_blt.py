@@ -222,6 +222,7 @@ class TestContainer(unittest.TestCase):
 		self.assertEqual(len([i for i in self.cnt.all_standards()]),3)
 
 
+#TODO: slow?
 class TestRepository(unittest.TestCase):
 	def setUp(self):
 		self.repo = blt.Repository("test_blt")
@@ -229,16 +230,16 @@ class TestRepository(unittest.TestCase):
 	def test_repository(self):
 		self.assertTrue("hexagonthinnut1" in self.repo.classes)
 		self.assertTrue('nut' in self.repo.collections)
-		self.assertEqual(len(self.repo.classes),5)
-		self.assertEqual(len(self.repo.collections),1)
+		self.assertEqual(len(self.repo.classes),11)
+		self.assertEqual(len(self.repo.collections),2)
 
 		self.assertEqual(self.repo.get_standard("DIN439_B").replacedby,"ISO4035")
 
 	def test_accessors(self):
-		self.assertEqual(len([n for n in self.repo.all_names_single()]),3)
+		self.assertEqual(len([n for n in self.repo.all_names_single()]),7)
 		self.assertEqual(len([n for n in self.repo.all_names_group()]),0)
-		self.assertEqual(len([n for n in self.repo.all_standards()]),7)
-		self.assertEqual(len([n for n in self.repo.all_standards_multi()]),1)
+		self.assertEqual(len([n for n in self.repo.all_standards()]),14)
+		self.assertEqual(len([n for n in self.repo.all_standards_multi()]),4)
 
 		self.assertEqual(self.repo.get_class_by_id('hexagonnut2').id,'hexagonnut2')
 

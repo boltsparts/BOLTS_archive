@@ -1,0 +1,696 @@
+#BOLTS - Open Library of Technical Specifications
+#Copyright (C) 2013 Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+#Copyright (C) 2013 Javier Martínez García <jaeco@gmx.com>
+#
+#This library is free software; you can redistribute it and/or
+#modify it under the terms of the GNU Lesser General Public
+#License as published by the Free Software Foundation; either
+#version 2.1 of the License, or any later version.
+#
+#This library is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#Lesser General Public License for more details.
+#
+#You should have received a copy of the GNU Lesser General Public
+#License along with this library; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+---
+id: bearings
+name: Bearings
+description: various ball bearings
+author: [Johannes Reinhardt <jreinhardt@ist-dein-freund.de>, Javier Martínez García <jaeco@gmx.com>]
+license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+blt-version: 0.4
+classes:
+  - id: singlerowradialbearing
+    names:
+      name: Radial Ball Bearing
+      labeling: Radial Ball Bearing %(key)s%(postfix)s
+      description: single row radial contact ball bearing, with single or double shields, single or double seal or open, metric sizes
+    standards:
+      body: DIN
+      standard: DIN 625
+      suffix: "1"
+      labeling: Radial Ball Bearing DIN625-1 %(key)s%(postfix)s
+      description: single row radial contact ball bearing, with single or double shields, single or double seal or open
+    parameters:
+        free: [key,type]
+        defaults: {key: "608", type: "open"}
+        types:
+          key: Table Index
+          type: Table Index
+          postfix: String
+          d1: Length (mm)
+          d2: Length (mm)
+          B: Length (mm)
+          r_fillet: Length (mm)
+        description:
+          key: Model designation
+          type: Type of bearing protection
+          postfix: Postfix to the model designation for the protection type
+          d1: inner diameter
+          d2: outer diameter
+          B: thickness
+          r_fillet: fillet radius
+        tables:
+          - index: key
+            columns: [d1, d2, B, r_fillet]
+            data:
+              #key,[d1, d2, B ]
+              "607" : [ 7, 19, 6, 0.5 ]
+              "608" : [ 8, 22, 7, 0.5 ]
+              "609" : [ 9, 24, 7, 0.5 ]
+              "623" : [ 3, 10, 4, 0.3 ]
+              "624" : [ 4, 13, 5, 0.4 ]
+              "625" : [ 5, 16, 5, 0.5 ]
+              "626" : [ 6, 19, 6, 0.5 ]
+              "627" : [ 7, 22, 7, 0.5 ]
+              "629" : [ 9, 26, 8, 1.0 ]
+              "634" : [ 4, 16, 5, 0.5 ]
+              "635" : [ 5, 19, 6, 0.5 ]
+              "16002": [ 15, 32, 8, 0.5 ]
+              "16003": [ 17, 35, 8, 0.5 ]
+              "16004": [ 20, 42, 8, 0.5 ]
+              "16005": [ 25, 47, 8, 0.5 ]
+              "16006": [ 30, 55, 9, 0.5 ]
+              "16007": [ 35, 62, 9, 0.5 ]
+              "16100": [ 10, 28, 8, 0.5 ]
+              "16101": [ 12, 30, 8, 0.5 ]
+              "6000": [ 10, 26, 8, 0.5 ]
+              "6001": [ 12, 28, 8, 0.5 ]
+              "6002": [ 15, 32, 9, 0.5 ]
+              "6003": [ 17, 35, 10, 0.5 ]
+              "6004": [ 20, 42, 12, 1 ]
+              "6005": [ 25, 47, 12, 1 ]
+              "6006": [ 30, 55, 13, 1.5 ]
+              "6007": [ 35, 62, 14, 1.5 ]
+              "6200": [ 10, 30, 9, 1 ]
+              "6201": [ 12, 32, 10, 1 ]
+              "6202": [ 15, 35, 11, 1 ]
+              "6203": [ 17, 40, 12, 1 ]
+              "6204": [ 20, 47, 14, 1.5 ]
+              "6205": [ 25, 52, 15, 1.5 ]
+              "6206": [ 30, 62, 16, 1.5 ]
+              "6300": [ 10, 35, 11, 1 ]
+              "6301": [ 12, 37, 12, 1.5 ]
+              "6302": [ 15, 42, 13, 1.5 ]
+              "6303": [ 17, 47, 14, 1.5 ]
+              "6304": [ 20, 52, 15, 2 ]
+              "6305": [ 25, 62, 17, 2 ]
+          - index: type
+            columns: [ postfix ]
+            data:
+              "open" : [""]
+              "shielded, single" : ["-Z"]
+              "shielded, double" : ["-ZZ"]
+              "sealed, single" : ["-RS"]
+              "sealed, double" : ["-2RS"]
+    source: http://www.kgm-kugeln.de/show.php?ID=4589 and http://reprap.org/wiki/Ball_bearing. Fillet radii and dimensions for 623, 624, 634, 635 and 607 are taken from a old (~1980s) paper catalogue of Steyr.
+  - id: singlerowradialbearingimperial
+    names:
+      name: Radial Ball Bearing imperial
+      labeling: imperial Radial Ball Bearing %(key)s%(postfix)s
+      description: single row radial contact ball bearing, imperial sizes
+    parameters:
+        free: [key]
+        defaults: {key: "RLS8"}
+        literal: {type: "open"}
+        types:
+          key: Table Index
+          d1: Length (in)
+          d2: Length (in)
+          B: Length (in)
+          r_fillet: Length (in)
+          type: String
+        description:
+          key: Model designation
+          type: Type of bearing protection
+          d1: inner diameter
+          d2: outer diameter
+          B: thickness
+          r_fillet: fillet radius
+        tables:
+          - index: key
+            columns: [d1, d2, B, r_fillet]
+            data:
+              #key,[d1, d2, B ]
+              "RLS4" : [ 0.5, 1.3125, 0.375, 0.03125 ]
+              "RLS5" : [ 0.625, 1.5625, 0.4375, 0.03125 ]
+              "RLS6" : [ 0.75, 1.875, 0.5625, 0.0625 ]
+              "RLS7" : [ 0.875, 2, 0.5625, 0.0625 ]
+              "RLS8" : [ 1, 2.25, 0.625, 0.0625 ]
+              "RLS9" : [ 1.125, 2.5, 0.625, 0.0625 ]
+              "RLS10": [ 1.25, 2.75, 0.6875, 0.0625 ]
+              "RLS11": [ 1.375, 3, 0.6875, 0.0625 ]
+              "RLS12": [ 1.5, 3.25, 0.75, 0.09375 ]
+              "RLS13": [ 1.625, 3.5, 0.75, 0.09375 ]
+              "RLS14": [ 1.75, 3.75, 0.8125, 0.09375 ]
+              "RLS15": [ 1.875, 4, 0.8125, 0.09375 ]
+              "RLS16": [ 2, 4, 0.8125, 0.09375 ]
+              "RLS18": [ 2.25, 4.5, 0.875, 0.09375 ]
+              "RLS20": [ 2.5, 5, 0.9375, 0.09375 ]
+              "RLS22": [ 2.75, 5.25, 0.9375, 0.09375 ]
+              "RLS24": [ 3, 5.75, 1.0625, 0.09375 ]
+              "RLS26": [ 3.25, 6, 1.0625, 0.09375 ]
+              "RMS4" : [ 0.5, 1.625, 0.625, 0.0625 ]
+              "RMS5" : [ 0.625, 1.8125, 0.625, 0.0625 ]
+              "RMS6" : [ 0.75, 2, 0.6875, 0.0625 ]
+              "RMS7" : [ 0.875, 2.25, 0.6875, 0.0625 ]
+              "RMS8" : [ 1, 2.5, 0.75, 0.09375 ]
+              "RMS9" : [ 1.125, 2.8125, 0.8125, 0.09375 ]
+              "RMS10": [ 1.25, 3.125, 0.875, 0.09375 ]
+              "RMS11": [ 1.375, 3.5, 0.875, 0.09375 ]
+              "RMS12": [ 1.5, 3.75, 0.9375, 0.09375 ]
+              "RMS13": [ 1.625, 4, 0.9375, 0.09375 ]
+              "RMS14": [ 1.75, 4.25, 1.0625, 0.09375 ]
+              "RMS15": [ 1.875, 4.5, 1.0625, 0.09375 ]
+              "RMS16": [ 2, 4.5, 1.0625, 0.09375 ]
+              "RMS18": [ 2.25, 5, 1.25, 0.125 ]
+              "RMS20": [ 2.5, 5.5, 1.25, 0.125 ]
+              "RMS22": [ 2.75, 6.125, 1.375, 0.125 ]
+              "RMS24": [ 3, 7, 1.5625, 0.15625 ]
+              "RMS26": [ 3.25, 7.5, 1.5625, 0.15625 ]
+    source: Old (~1980s) paper catalog of Steyr.
+  - id: doublerowradialbearing
+    names:
+      name: Double row ball bearing
+      labeling: Double row ball bearing %(key)s
+      description: Deep groove double row radial ball bearing, metric sizes
+    standards:
+      body: DIN
+      standard: DIN 625
+      suffix: "3"
+      labeling: Double row radial ball bearing DIN 625-3 %(key)s
+      description: Deep groove double row radial ball bearing, metric sizes
+    parameters:
+      free: [key]
+      defaults: {key: "4202-B-TVH"}
+      types:
+        key: Table Index
+        d1: Length (mm)
+        d2: Length (mm)
+        B: Length (mm)
+      description:
+        key: Model designation
+        d1: inner diameter
+        d2: outer diameter
+        B: thickness
+      tables:
+        index: key
+        columns: [d1,d2,B]
+        data:
+            "4200-B-TVH" : [10,30,14]
+            "4201-B-TVH" : [12,32,14]
+            "4202-B-TVH" : [15,35,14]
+            "4203-B-TVH" : [17,40,16]
+            "4204-B-TVH" : [20,47,18]
+            "4205-B-TVH" : [25,52,18]
+            "4206-B-TVH" : [30,62,20]
+            "4207-B-TVH" : [35,72,23]
+            "4208-B-TVH" : [40,80,23]
+            "4209-B-TVH" : [45,85,23]
+            "4210-B-TVH" : [50,90,23]
+            "4211-B-TVH" : [55,100,25]
+            "4212-B-TVH" : [60,110,28]
+            "4213-B-TVH" : [65,120,31]
+            "4214-B-TVH" : [70,125,31]
+            "4215-B-TVH" : [75,130,31]
+            "4216-B-TVH" : [80,140,33]
+            "4217-B-TVH" : [85,150,36]
+            "4218-B-TVH" : [90,160,40]
+    source: http://medias.schaeffler.de/medias/es!hp.ec.br/42..-B?#42..-B
+  - id: axialthrustbearing
+    names:
+      name: Axial thrust bearing
+      labeling: Axial thrust bearing %(key)s
+      description: axial thrust bearing, single direction
+    standards:
+      - body: DIN
+        standard: DIN 711
+        labeling: Axial thrust bearing DIN 711 %(key)s
+        description: axial thrust bearing, single direction
+      - body: ISO
+        standard: ISO 104
+        labeling: Axial thrust bearing ISO 104 %(key)s
+        description: axial thrust bearing, single direction
+    parameters:
+        free: [key]
+        defaults: {key: "51200"}
+        types:
+          key: Table Index
+          d_w: Length (mm)
+          D_w: Length (mm)
+          d_g: Length (mm)
+          D_g: Length (mm)
+          T: Length (mm)
+          r_fillet: Length (mm)
+        description:
+          key: Model designation
+          d_w: inner diameter, shaft side
+          D_w: outer diameter, shaft side
+          d_g: inner diameter
+          D_g: outer diameter
+          T: thickness
+          r_fillet: fillet radius
+        tables:
+             index: key
+             columns: [d_w,d_g,D_g,D_w,T,r_fillet]
+             data:
+                 "51100" : [10, 11, 24, 24, 9, 0.5]
+                 "51101" : [12, 13, 26, 26, 9, 0.5]
+                 "51102" : [15, 16, 28, 28, 9, 0.5]
+                 "51103" : [17, 18, 30, 30, 9, 0.5]
+                 "51104" : [20, 21, 35, 35, 10, 0.5]
+                 "51105" : [25, 26, 42, 42, 11, 1]
+                 "51106" : [30, 32, 47, 47, 11, 1]
+                 "51107" : [35, 37, 52, 52, 12, 1]
+                 "51108" : [40, 42, 60, 60, 13, 1]
+                 "51109" : [45, 47, 65, 65, 14, 1]
+                 "51110" : [50, 52, 70, 70, 14, 1]
+                 "51111" : [55, 57, 78, 78, 16, 1]
+                 "51112" : [60, 62, 85, 85, 17, 1.5]
+                 "51113" : [65, 67, 90, 90, 18, 1.5]
+                 "51114" : [70, 72, 95, 95, 18, 1.5]
+                 "51115" : [75, 77, 100, 100, 19, 1.5]
+                 "51116" : [80, 82, 105, 105, 19, 1.5]
+                 "51117" : [85, 87, 110, 110, 19, 1.5]
+                 "51118" : [90, 92, 120, 120, 22, 1.5]
+                 "51120" : [100, 102, 135, 135, 25, 1.5]
+                 "51122" : [110, 112, 145, 145, 25, 1.5]
+                 "51124" : [120, 122, 155, 155, 25, 1.5]
+                 "51126" : [130, 132, 170, 170, 30, 1.5]
+                 "51128" : [140, 142, 180, 178, 31, 1.5]
+                 "51130" : [150, 152, 190, 188, 31, 1.5]
+                 "51132" : [160, 162, 200, 198, 31, 1.5]
+                 "51134" : [170, 172, 215, 213, 34, 2]
+                 "51136" : [180, 183, 225, 222, 34, 2]
+                 "51138" : [190, 193, 240, 237, 37, 2]
+                 "51140" : [200, 203, 250, 247, 37, 2]
+                 "51144" : [220, 223, 270, 267, 37, 2]
+                 "51148" : [240, 243, 300, 297, 45, 2.5]
+                 "51152" : [260, 263, 320, 317, 45, 2.5]
+                 "51156" : [280, 283, 350, 347, 53, 2.5]
+                 "51160" : [300, 304, 380, 376, 62, 3]
+                 "51164" : [320, 324, 400, 396, 63, 3]
+                 "51168" : [340, 344, 420, 416, 64, 3]
+                 "51200" : [10, 12, 26, 26, 11, 1]
+                 "51201" : [12, 14, 28, 28, 11, 1]
+                 "51202" : [15, 17, 32, 32, 12, 1]
+                 "51203" : [17, 19, 35, 35, 12, 1]
+                 "51204" : [20, 22, 40, 40, 14, 1]
+                 "51205" : [25, 27, 47, 47, 15, 1]
+                 "51206" : [30, 32, 52, 52, 16, 1]
+                 "51207" : [35, 37, 62, 62, 18, 1.5]
+                 "51208" : [40, 42, 68, 68, 19, 1.5]
+                 "51209" : [45, 47, 73, 73, 20, 1.5]
+                 "51210" : [50, 52, 78, 78, 22, 1.5]
+                 "51211" : [55, 57, 90, 90, 25, 1.5]
+                 "51212" : [60, 62, 95, 95, 26, 1.5]
+                 "51213" : [65, 67, 100, 100, 27, 1.5]
+                 "51214" : [70, 72, 105, 105, 27, 1.5]
+                 "51215" : [75, 77, 110, 110, 27, 1.5]
+                 "51216" : [80, 82, 115, 115, 28, 1.5]
+                 "51217" : [85, 88, 125, 125, 31, 1.5]
+                 "51218" : [90, 93, 135, 135, 35, 2]
+                 "51220" : [100, 103, 150, 150, 38, 2]
+                 "51222" : [110, 113, 160, 160, 38, 2]
+                 "51224" : [120, 123, 170, 170, 39, 2]
+                 "51226" : [130, 133, 190, 187, 45, 2.5]
+                 "51228" : [140, 143, 200, 197, 46, 2.5]
+                 "51230" : [150, 153, 215, 212, 50, 2.5]
+                 "51232" : [160, 163, 225, 222, 51, 2.5]
+                 "51234" : [170, 173, 240, 237, 55, 2.5]
+                 "51236" : [180, 183, 250, 247, 56, 2.5]
+                 "51238" : [190, 194, 270, 267, 62, 3]
+                 "51240" : [200, 204, 280, 277, 62, 3]
+                 "51244" : [220, 224, 300, 297, 63, 3]
+                 "51248" : [240, 244, 340, 335, 78, 3.5]
+                 "51252" : [260, 264, 360, 355, 79, 3.5]
+                 "51256" : [280, 284, 380, 375, 80, 3.5]
+                 "51260" : [300, 304, 420, 415, 95, 4]
+                 "51264" : [320, 325, 440, 435, 95, 4]
+                 "51268" : [340, 345, 460, 455, 96, 4]
+                 "51305" : [25, 27, 52, 52, 18, 1.5]
+                 "51306" : [30, 32, 60, 60, 21, 1.5]
+                 "51307" : [35, 37, 68, 68, 24, 1.5]
+                 "51308" : [40, 42, 78, 78, 26, 1.5]
+                 "51309" : [45, 47, 85, 85, 28, 1.5]
+                 "51310" : [50, 52, 95, 95, 31, 2]
+                 "51311" : [55, 57, 105, 105, 35, 2]
+                 "51312" : [60, 62, 110, 110, 35, 2]
+                 "51313" : [65, 67, 115, 115, 36, 2]
+                 "51314" : [70, 72, 125, 125, 40, 2]
+                 "51315" : [75, 77, 135, 135, 44, 2.5]
+                 "51316" : [80, 82, 140, 140, 44, 2.5]
+                 "51317" : [85, 88, 150, 150, 49, 2.5]
+                 "51318" : [90, 93, 155, 155, 50, 2.5]
+                 "51320" : [100, 103, 170, 170, 55, 2.5]
+                 "51322" : [110, 110, 190, 187, 63, 3]
+                 "51324" : [120, 123, 210, 205, 70, 3.5]
+                 "51326" : [130, 134, 225, 220, 75, 3.5]
+                 "51328" : [140, 144, 240, 235, 80, 3.5]
+                 "51330" : [150, 154, 250, 245, 80, 3.5]
+                 "51332" : [160, 164, 270, 265, 87, 4]
+                 "51334" : [170, 174, 280, 275, 87, 4]
+                 "51336" : [180, 184, 300, 295, 95, 4]
+                 "51338" : [190, 195, 320, 315, 105, 5]
+                 "51340" : [200, 205, 340, 335, 110, 5]
+                 "51344" : [220, 225, 360, 355, 112, 5]
+                 "51348" : [240, 245, 380, 375, 112, 5]
+                 "51352" : [260, 265, 420, 415, 130, 6]
+                 "51356" : [280, 285, 440, 435, 130, 6]
+                 "51405" : [25, 27, 60, 60, 24, 1.5]
+                 "51406" : [30, 32, 70, 70, 28, 1.5]
+                 "51407" : [35, 37, 80, 80, 32, 2]
+                 "51408" : [40, 42, 90, 90, 36, 2]
+                 "51409" : [45, 47, 100, 100, 39, 2]
+                 "51410" : [50, 52, 110, 110, 43, 2.5]
+                 "51411" : [55, 57, 120, 120, 48, 2.5]
+                 "51412" : [60, 62, 130, 130, 51, 2.5]
+                 "51413" : [65, 68, 140, 140, 56, 3]
+                 "51414" : [70, 73, 150, 150, 60, 3]
+                 "51415" : [75, 78, 160, 160, 65, 3]
+                 "51416" : [80, 83, 170, 170, 68, 3.5]
+                 "51417" : [85, 88, 180, 177, 72, 3.5]
+                 "51418" : [90, 93, 190, 187, 77, 3.5]
+                 "51420" : [100, 103, 210, 205, 85, 4]
+                 "51422" : [110, 113, 230, 225, 95, 4]
+                 "51424" : [120, 123, 250, 245, 102, 5]
+                 "51426" : [130, 133, 270, 265, 110, 5]
+                 "51428" : [140, 144, 280, 275, 112, 5]
+                 "51430" : [150, 154, 300, 295, 120, 5]
+                 "51432" : [160, 164, 320, 315, 130, 6]
+                 "51434" : [170, 174, 340, 335, 135, 6]
+    source: http://medias.schaeffler.de/medias/de!hp.ec/1_R*0*C00002*23#23 und old (~1980s) paper catalogue of Steyr.
+  - id: needleroller
+    standards:
+      - body: DIN
+        standard: DIN 5405
+        suffix: "1"
+        labeling: Needle roller DIN 5405-1 %(key)s
+        description: Needle roller without cage
+      - body: ISO
+        standard: ISO 3030
+        labeling: Needle roller ISO 3030 %(key)s
+        description: Needle roller without cage
+    parameters:
+        free: [key]
+        defaults: {key: "K10X13X10-TV"}
+        types:
+          key: Table Index
+          Fw: Length (mm)
+          Ew: Length (mm)
+          Bc: Length (mm)
+        description:
+          key: Model designation
+          Fw: inner diameter
+          Ew: outer diameter
+          Bc: length
+        common: []
+        tables:
+            index: key
+            columns: [Fw,Ew,Bc]
+            data:
+                "K3X5X7-TV" : [3, 5, 7 ]
+                "K3X5X9-TV" : [3, 5, 9 ]
+                "K3X6X7-TV" : [3, 6, 7 ]
+                "K4X7X7-TV" : [4, 7, 7 ]
+                "K4X7X10-TV" : [4, 7, 10 ]
+                "K5X8X8-TV" : [5, 8, 8 ]
+                "K5X8X10-TV" : [5, 8, 10 ]
+                "K6X9X8-TV" : [6, 9, 8 ]
+                "K6X9X10-TV" : [6, 9, 10 ]
+                "K6X10X13-TV" : [6, 10, 13 ]
+                "K7X9X7-TV" : [7, 9, 7 ]
+                "K7X10X8-TV" : [7, 10, 8 ]
+                "K7X10X10-TV" : [7, 10, 10 ]
+                "K8X11X8-TV" : [8, 11, 8 ]
+                "K8X11X10-TV" : [8, 11, 10 ]
+                "K8X11X13-TV" : [8, 11, 13 ]
+                "K8X12X10-TV" : [8, 12, 10 ]
+                "K9X12X10-TV" : [9, 12, 10 ]
+                "K9X12X13-TV" : [9, 12, 13 ]
+                "K10X13X10-TV" : [10, 13, 10 ]
+                "K10X13X13-TV" : [10, 13, 13 ]
+                "K10X13X16-TV" : [10, 13, 16 ]
+                "K10X14X10-TV" : [10, 14, 10 ]
+                "K10X14X13-TV" : [10, 14, 13 ]
+                "K10X16X12-TV" : [10, 16, 12 ]
+                "K12X15X10-TV" : [12, 15, 10 ]
+                "K12X15X13-TV" : [12, 15, 13 ]
+                "K12X16X13-TV" : [12, 16, 13 ]
+                "K12X17X13-TV" : [12, 17, 13 ]
+                "K12X18X12-TV" : [12, 18, 12 ]
+                "K14X18X10" : [14, 18, 10 ]
+                "K14X18X13" : [14, 18, 13 ]
+                "K14X18X15-TV" : [14, 18, 15 ]
+                "K14X18X17" : [14, 18, 17 ]
+                "K14X20X12" : [14, 20, 12 ]
+                "K15X18X17-TV" : [15, 18, 17 ]
+                "K15X19X10" : [15, 19, 10 ]
+                "K15X19X13" : [15, 19, 13 ]
+                "K15X19X17" : [15, 19, 17 ]
+                "K15X20X13" : [15, 20, 13 ]
+                "K15X21X15" : [15, 21, 15 ]
+                "K15X21X21" : [15, 21, 21 ]
+                "K16X20X10" : [16, 20, 10 ]
+                "K16X20X13" : [16, 20, 13 ]
+                "K16X20X17" : [16, 20, 17 ]
+                "K16X22X12" : [16, 22, 12 ]
+                "K16X22X16" : [16, 22, 16 ]
+                "K16X22X20" : [16, 22, 20 ]
+                "K16X24X20" : [16, 24, 20 ]
+                "K17X21X10" : [17, 21, 10 ]
+                "K17X21X13" : [17, 21, 13 ]
+                "K17X21X17" : [17, 21, 17 ]
+                "K18X22X10" : [18, 22, 10 ]
+                "K18X22X13" : [18, 22, 13 ]
+                "K18X22X17" : [18, 22, 17 ]
+                "K18X24X12" : [18, 24, 12 ]
+                "K18X24X13" : [18, 24, 13 ]
+                "K18X24X20" : [18, 24, 20 ]
+                "K18X25X22" : [18, 25, 22 ]
+                "K19X23X13" : [19, 23, 13 ]
+                "K19X23X17" : [19, 23, 17 ]
+                "K20X24X10" : [20, 24, 10 ]
+                "K20X24X13" : [20, 24, 13 ]
+                "K20X24X17" : [20, 24, 17 ]
+                "K20X26X12" : [20, 26, 12 ]
+                "K20X26X13" : [20, 26, 13 ]
+                "K20X26X17" : [20, 26, 17 ]
+                "K20X26X20" : [20, 26, 20 ]
+                "K20X28X16" : [20, 28, 16 ]
+                "K20X28X20" : [20, 28, 20 ]
+                "K20X28X25" : [20, 28, 25 ]
+                "K20X30X30" : [20, 30, 30 ]
+                "K21X25X13" : [21, 25, 13 ]
+                "K22X26X10" : [22, 26, 10 ]
+                "K22X26X13" : [22, 26, 13 ]
+                "K22X26X17" : [22, 26, 17 ]
+                "K22X28X17" : [22, 28, 17 ]
+                "K22X29X16" : [22, 29, 16 ]
+                "K22X30X15-TV" : [22, 30, 15 ]
+                "K22X32X24" : [22, 32, 24 ]
+                "K23X35X16-TV" : [23, 35, 16 ]
+                "K24X28X10" : [24, 28, 10 ]
+                "K24X28X13" : [24, 28, 13 ]
+                "K24X28X17" : [24, 28, 17 ]
+                "K24X30X17" : [24, 30, 17 ]
+                "K25X29X10" : [25, 29, 10 ]
+                "K25X29X13" : [25, 29, 13 ]
+                "K25X29X17" : [25, 29, 17 ]
+                "K25X30X17" : [25, 30, 17 ]
+                "K25X30X20" : [25, 30, 20 ]
+                "K25X31X17" : [25, 31, 17 ]
+                "K25X31X21" : [25, 31, 21 ]
+                "K25X32X16" : [25, 32, 16 ]
+                "K25X33X20" : [25, 33, 20 ]
+                "K25X33X24" : [25, 33, 24 ]
+                "K25X35X30" : [25, 35, 30 ]
+                "K26X30X13" : [26, 30, 13 ]
+                "K26X30X17" : [26, 30, 17 ]
+                "K28X33X13" : [28, 33, 13 ]
+                "K28X33X17" : [28, 33, 17 ]
+                "K28X34X17" : [28, 34, 17 ]
+                "K28X35X16" : [28, 35, 16 ]
+                "K28X35X18" : [28, 35, 18 ]
+                "K28X40X25" : [28, 40, 25 ]
+                "K30X34X13" : [30, 34, 13 ]
+                "K30X35X13" : [30, 35, 13 ]
+                "K30X35X17" : [30, 35, 17 ]
+                "K30X35X27" : [30, 35, 27 ]
+                "K30X37X16" : [30, 37, 16 ]
+                "K30X37X18" : [30, 37, 18 ]
+                "K30X40X18" : [30, 40, 18 ]
+                "K30X40X30" : [30, 40, 30 ]
+                "K32X37X13" : [32, 37, 13 ]
+                "K32X37X17" : [32, 37, 17 ]
+                "K32X37X27" : [32, 37, 27 ]
+                "K32X38X20" : [32, 38, 20 ]
+                "K32X39X16" : [32, 39, 16 ]
+                "K32X39X18" : [32, 39, 18 ]
+                "K32X40X25" : [32, 40, 25 ]
+                "K32X46X32" : [32, 46, 32 ]
+                "K35X40X13" : [35, 40, 13 ]
+                "K35X40X17" : [35, 40, 17 ]
+                "K35X40X25" : [35, 40, 25 ]
+                "K35X40X27-TV" : [35, 40, 27 ]
+                "K35X42X16" : [35, 42, 16 ]
+                "K35X42X18" : [35, 42, 18 ]
+                "K35X42X20" : [35, 42, 20 ]
+                "K35X42X30" : [35, 42, 30 ]
+                "K35X45X20" : [35, 45, 20 ]
+                "K35X45X30" : [35, 45, 30 ]
+                "K37X42X17" : [37, 42, 17 ]
+                "K38X43X17" : [38, 43, 17 ]
+                "K38X43X27" : [38, 43, 27 ]
+                "K38X46X20" : [38, 46, 20 ]
+                "K38X46X32" : [38, 46, 32 ]
+                "K40X45X13" : [40, 45, 13 ]
+                "K40X45X17" : [40, 45, 17 ]
+                "K40X45X27" : [40, 45, 27 ]
+                "K40X47X18" : [40, 47, 18 ]
+                "K40X47X20" : [40, 47, 20 ]
+                "K40X48X20" : [40, 48, 20 ]
+                "K42X47X13" : [42, 47, 13 ]
+                "K42X47X17" : [42, 47, 17 ]
+                "K42X50X20" : [42, 50, 20 ]
+                "K43X48X17" : [43, 48, 17 ]
+                "K43X48X27" : [43, 48, 27 ]
+                "K45X50X17" : [45, 50, 17 ]
+                "K45X50X27" : [45, 50, 27 ]
+                "K45X52X18" : [45, 52, 18 ]
+                "K45X53X20" : [45, 53, 20 ]
+                "K45X53X21" : [45, 53, 21 ]
+                "K45X53X28" : [45, 53, 28 ]
+                "K45X59X18-TV" : [45, 59, 18 ]
+                "K45X59X32" : [45, 59, 32 ]
+                "K47X52X17" : [47, 52, 17 ]
+                "K47X52X27" : [47, 52, 27 ]
+                "K50X55X13.5" : [50, 55, 13.5 ]
+                "K50X55X17" : [50, 55, 17 ]
+                "K50X55X20" : [50, 55, 20 ]
+                "K50X55X30" : [50, 55, 30 ]
+                "K50X57X18" : [50, 57, 18 ]
+                "K50X58X20" : [50, 58, 20 ]
+                "K50X58X25" : [50, 58, 25 ]
+                "K52X57X12" : [52, 57, 12 ]
+                "K55X60X20" : [55, 60, 20 ]
+                "K55X60X27" : [55, 60, 27 ]
+                "K55X60X30" : [55, 60, 30 ]
+                "K55X62X18" : [55, 62, 18 ]
+                "K55X63X20" : [55, 63, 20 ]
+                "K55X63X25" : [55, 63, 25 ]
+                "K55X63X32" : [55, 63, 32 ]
+                "K58X65X18" : [58, 65, 18 ]
+                "K60X65X20" : [60, 65, 20 ]
+                "K60X65X30" : [60, 65, 30 ]
+                "K60X68X20" : [60, 68, 20 ]
+                "K60X68X23" : [60, 68, 23 ]
+                "K60X68X25" : [60, 68, 25 ]
+                "K60X75X42" : [60, 75, 42 ]
+                "K64X70X16" : [64, 70, 16 ]
+                "K65X70X20" : [65, 70, 20 ]
+                "K65X70X30" : [65, 70, 30 ]
+                "K65X73X23" : [65, 73, 23 ]
+                "K65X73X30" : [65, 73, 30 ]
+                "K68X74X20" : [68, 74, 20 ]
+                "K68X74X30" : [68, 74, 30 ]
+                "K70X76X20" : [70, 76, 20 ]
+                "K70X76X30" : [70, 76, 30 ]
+                "K70X78X30" : [70, 78, 30 ]
+                "K72X80X20" : [72, 80, 20 ]
+                "K73X79X20" : [73, 79, 20 ]
+                "K75X81X20" : [75, 81, 20 ]
+                "K75X81X30" : [75, 81, 30 ]
+                "K75X83X23" : [75, 83, 23 ]
+                "K75X83X30" : [75, 83, 30 ]
+                "K80X86X20" : [80, 86, 20 ]
+                "K80X88X30" : [80, 88, 30 ]
+                "K85X92X20" : [85, 92, 20 ]
+                "K90X97X20" : [90, 97, 20 ]
+                "K90X98X27" : [90, 98, 27 ]
+                "K90X98X30" : [90, 98, 30 ]
+                "K95X103X30" : [95, 103, 30 ]
+                "K100X107X21" : [100, 107, 21 ]
+                "K100X108X27" : [100, 108, 27 ]
+                "K100X108X30" : [100, 108, 30 ]
+                "K105X112X21" : [105, 112, 21 ]
+                "K110X117X24" : [110, 117, 24 ]
+                "K110X118X30" : [110, 118, 30 ]
+                "K115X123X27" : [115, 123, 27 ]
+                "K120X127X24" : [120, 127, 24 ]
+                "K125X133X35" : [125, 133, 35 ]
+                "K130X137X24" : [130, 137, 24 ]
+                "K135X143X35" : [135, 143, 35 ]
+                "K145X153X26" : [145, 153, 26 ]
+                "K150X160X46" : [150, 160, 46 ]
+                "K155X163X26" : [155, 163, 26 ]
+                "K160X170X46" : [160, 170, 46 ]
+                "K165X173X26" : [165, 173, 26 ]
+                "K175X183X32" : [175, 183, 32 ]
+                "K185X195X37" : [185, 195, 37 ]
+                "K195X205X37" : [195, 205, 37 ]
+                "K210X220X42" : [210, 220, 42 ]
+                "K220X230X42" : [220, 230, 42 ]
+                "K240X250X42" : [240, 250, 42 ]
+                "K265X280X50" : [265, 280, 50 ]
+    source: http://medias.schaeffler.de/medias/de!hp.ec/1_R*0*C028*13#13
+    notes: no common parameters, because there are so many different types and I do not know which are useful.
+  - id: cylindricalrollerbearing
+    standards:
+      body: DIN
+      standard: DIN 5412
+      suffix: "1"
+      labeling: Cylindrical roller bearing %(key)s
+      description: Cylindrical single row roller bearing
+    parameters:
+        free: [key]
+        defaults: {key: N204-E-TVP2}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          d2: Length (mm)
+          B: Length (mm)
+        description:
+          key: Model designation
+          d1: inner diameter
+          d2: outer diameter
+          B: thickness
+        tables:
+            index: key
+            columns: [d1,d2,B]
+            data:
+              "N202-E-TVP2" : [15,35,11]
+              "N203-E-TVP2" : [17,40,12]
+              "N204-E-TVP2" : [20,47,14]
+              "N205-E-TVP2" : [25,52,15]
+              "N206-E-TVP2" : [30,62,16]
+              "N207-E-TVP2" : [35,72,17]
+              "N208-E-TVP2" : [40,80,18]
+              "N209-E-TVP2" : [45,85,19]
+              "N210-E-TVP2" : [50,90,20]
+              "N211-E-TVP2" : [55,100,21]
+              "N212-E-TVP2" : [60,110,22]
+              "N213-E-TVP2" : [65,120,23]
+              "N214-E-TVP2" : [70,125,24]
+              "N215-E-TVP2" : [75,130,25]
+              "N216-E-TVP2" : [80,140,26]
+              "N217-E-TVP2" : [85,150,28]
+              "N218-E-TVP2" : [90,160,30]
+              "N219-E-TVP2" : [95,170,32]
+              "N220-E-TVP2" : [100,180,34]
+              "N221-E-M1" : [105,190,36]
+              "N222-E-TVP2" : [110,200,38]
+              "N224-E-TVP2" : [120,215,40]
+              "N226-E-TVP2" : [130,230,40]
+              "N228-E-M1" : [140,250,42]
+              "N230-E-M1" : [150,270,45]
+              "N232-E-M1" : [160,290,48]
+              "N234-E-M1" : [170,310,52]
+              "N236-E-M1" : [180,320,52]
+              "N238-E-M1" : [190,340,55]
+              "N240-E-M1" : [200,360,58]
+              "N248-E-TB-M1" : [240,440,72]
+    source: http://medias.schaeffler.de/medias/de!hp.ec.br/N2..-E?#N2..-E
