@@ -480,7 +480,6 @@ class Repository(ContainerMixin):
 				if cl["id"] in self.classes:
 					raise MalformedRepositoryError("Duplicate class id %s" % cl["id"])
 
-
 				try:
 					cls = Class(cl)
 					self.classes[cls.id] = cls
@@ -548,7 +547,6 @@ class Repository(ContainerMixin):
 						for cont in [self,coll,body]:
 							cont.add_standard_single(standard)
 
-
 		#fill in obsolescence data
 		for standard in self.all_standards():
 			if standard.replaces is None:
@@ -556,4 +554,10 @@ class Repository(ContainerMixin):
 			if not self.contains_standard(standard.replaces):
 				raise MalformedRepositoryError(
 					"Unknown replace field in standard %s" % standard.get_id())
-			standard.replacedby = standard.replaces
+			self.get_standard(standard.replaces).replacedby = standard.get_id()
+	def get_class_by_id(self,id):
+		return self.classes[id]
+	def get_class_by_name(self,name):
+		return self.classes[self.get_name(name)]
+	def get_class_by_standard(self,standard):
+		return self.classes[self.get_standard(standard)]

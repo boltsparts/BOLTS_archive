@@ -227,14 +227,20 @@ class TestRepository(unittest.TestCase):
 		self.repo = blt.Repository("test_blt")
 
 	def test_repository(self):
-		self.assertEqual(len(self.repo.classes),2)
-		self.assertEqual(len(self.repo.collections),2)
-		self.assertEqual(len(self.repo.standard_bodies),2)
+		self.assertTrue("hexagonthinnut1" in self.repo.classes)
+		self.assertTrue('nut' in self.repo.collections)
+		self.assertEqual(len(self.repo.classes),5)
+		self.assertEqual(len(self.repo.collections),1)
+
+		self.assertEqual(self.repo.get_standard("DIN439_B").replacedby,"ISO4035")
 
 	def test_accessors(self):
 		self.assertEqual(len([n for n in self.repo.all_names_single()]),3)
 		self.assertEqual(len([n for n in self.repo.all_names_group()]),0)
-		self.assertEqual(len([n for n in self.repo.all_standards()]),2)
+		self.assertEqual(len([n for n in self.repo.all_standards()]),7)
+		self.assertEqual(len([n for n in self.repo.all_standards_multi()]),1)
+
+		self.assertEqual(self.repo.get_class_by_id('hexagonnut2').id,'hexagonnut2')
 
 	def test_ids(self):
 		self.repo.contains('DIN933')
@@ -247,7 +253,7 @@ class TestRepository(unittest.TestCase):
 		self.repo.contains_name_single('roundBatteries')
 
 	def test_bodies(self):
-		self.assertEqual(len(self.repo.standard_bodies),2)
+		self.assertEqual(len(self.repo.standard_bodies),5)
 		self.assertTrue('DIN' in self.repo.standard_bodies)
 
 

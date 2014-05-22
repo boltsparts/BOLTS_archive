@@ -1,0 +1,366 @@
+#BOLTS - Open Library of Technical Specifications
+#Copyright (C) 2013 Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+#
+#This library is free software; you can redistribute it and/or
+#modify it under the terms of the GNU Lesser General Public
+#License as published by the Free Software Foundation; either
+#version 2.1 of the License, or any later version.
+#
+#This library is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#Lesser General Public License for more details.
+#
+#You should have received a copy of the GNU Lesser General Public
+#License along with this library; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+---
+id: nut
+name: Nuts
+description: various standard nuts
+author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+blt-version: 0.4
+classes:
+  - id: hexagonthinnut1
+    names:
+      name: Metric hexagon thin nut
+      labeling: Metric hexagon thin nut %(key)s
+      description: Thin hexagon nut, metric sizes
+    standards:
+      - body: ISO
+        standard: ISO 4035
+        labeling: Hexagon thin nut ISO 4035 %(key)s
+        replaces: DIN439_B
+        description: Thin hexagon nut, metric sizes
+      - body: DINENISO
+        standard: DINENISO 4035
+        labeling: Hexagon thin nut DINENISO 4035 %(key)s
+        description: Thin hexagon nut, metric sizes
+    parameters:
+        free: [key]
+        defaults: {key: "M3"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          s: Length (mm)
+          e_min: Length (mm)
+          m_max: Length (mm)
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          e_min: head diameter
+          m_max: thickness
+        tables:
+            index: key
+            columns: [d1, s, m_max, e_min]
+            data:
+                #key    [  d1    s     m_max   e_min   ]
+                M1.6:   [  1.6,  3.2,  1,      3.48,   ]
+                M1.7:   [  1.7,  3.2,  1,      3.48,   ]
+                M2:     [  2,    4,    1.2,    4.32,   ]
+                M2.3:   [  2.3,  4.5,  1.2,    5.2,    ]
+                M2.5:   [  2.5,  5,    1.6,    5.45,   ]
+                M2.6:   [  2.6,  5.5,  1.8,    6.01,   ]
+                M3:     [  3,    5.5,  1.8,    6.01,   ]
+                M3.5:   [  3.5,  6,    2,      6.58,   ]
+                M4:     [  4,    7,    2.2,    7.66,   ]
+                M5:     [  5,    8,    2.7,    8.79,   ]
+                M6:     [  6,    10,   3.2,    11.05,  ]
+                M8:     [  8,    13,   4,      14.38   ]
+                M10:    [  10,   16,   5,      17.77   ]
+                M12:    [  12,   18,   6,      20.03   ]
+                M14:    [  14,   21,   7,      23.35   ]
+                M16:    [  16,   24,   8,      26.75   ]
+                M18:    [  18,   27,   9,      29.56   ]
+                M20:    [  20,   30,   10,     32.95   ]
+                M22:    [  22,   34,   11,     37.29   ]
+                M24:    [  24,   36,   12,     39.55   ]
+                M27:    [  27,   41,   13.5,   45.20   ]
+                M30:    [  20,   46,   15,     50.85   ]
+                M33:    [  33,   50,   16.5,   55.37   ]
+                M36:    [  36,   55,   18,     60.79   ]
+                M39:    [  39,   60,   19.5,   66.44   ]
+                M42:    [  42,   65,   21,     71.30   ]
+                M45:    [  45,   70,   22.5,   76.95   ]
+                M48:    [  48,   75,   24,     82.60   ]
+                M52:    [  42,   80,   26,     88.25   ]
+                M56:    [  56,   85,   28,     93.56   ]
+                M60:    [  60,   90,   30,     99.21   ]
+                M64:    [  64,   95,   32,     104.86  ]
+    source: http://almetal.nl/en/techinfo/nut/nd439.htm
+  - id: hexagonthinnut2
+    standards:
+      body: DIN
+      standard: DIN 439
+      suffix: B
+      status: withdrawn
+      labeling: Hexagon thin nut DIN 439 %(key)s
+      description: Thin hexagon nut, metrix size, old
+    parameters:
+        free: [key]
+        defaults: {key: M3}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          s: Length (mm)
+          e_min: Length (mm)
+          m_max: Length (mm)
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          e_min: head diameter
+          m_max: thickness
+        tables:
+            index: key
+            columns: [d1, s, m_max, e_min]
+            data:
+                #key    [  d1    s     m_max   e_min   ]
+                M1.6:   [  1.6,  3.2,  1,      3.48,   ]
+                M1.7:   [  1.7,  3.2,  1,      3.48,   ]
+                M2:     [  2,    4,    1.2,    4.32,   ]
+                M2.3:   [  2.3,  4.5,  1.2,    5.2,    ]
+                M2.5:   [  2.5,  5,    1.6,    5.45,   ]
+                M2.6:   [  2.6,  5.5,  1.8,    6.01,   ]
+                M3:     [  3,    5.5,  1.8,    6.01,   ]
+                M3.5:   [  3.5,  6,    2,      6.58,   ]
+                M4:     [  4,    7,    2.2,    7.66,   ]
+                M5:     [  5,    8,    2.7,    8.79,   ]
+                M6:     [  6,    10,   3.2,    11.05,  ]
+                M8:     [  8,    13,   4,      14.38   ]
+                M10:    [  10,   17,   5,      18.90   ]
+                M12:    [  12,   19,   6,      21.10   ]
+                M14:    [  14,   22,   7,      24.49   ]
+                M16:    [  16,   24,   8,      26.75   ]
+                M18:    [  18,   27,   9,      29.56   ]
+                M20:    [  20,   30,   10,     32.95   ]
+                M22:    [  22,   32,   11,     35.03   ]
+                M24:    [  24,   36,   12,     39.55   ]
+                M27:    [  27,   41,   13.5,   45.20   ]
+                M30:    [  20,   46,   15,     50.85   ]
+                M33:    [  33,   50,   16.5,   55.37   ]
+                M36:    [  36,   55,   18,     60.79   ]
+                M39:    [  39,   60,   19.5,   66.44   ]
+                M42:    [  42,   65,   21,     71.30   ]
+                M45:    [  45,   70,   22.5,   76.95   ]
+                M48:    [  48,   75,   24,     82.60   ]
+                M52:    [  42,   80,   26,     88.25   ]
+                M56:    [  56,   85,   28,     93.56   ]
+                M60:    [  60,   90,   30,     99.21   ]
+                M64:    [  64,   95,   32,     104.86  ]
+    source: http://almetal.nl/en/techinfo/nut/nd439.htm
+  - id: hexagonnut1
+    names:
+      name: Metric hexagon nut
+      labeling: Metric hexagon nut %(key)
+      description: Hexagon nut, metric sizes
+    standards:
+      body: ISO
+      standard:
+        safe: ISO4032
+        nice: ISO 4032
+      labeling: Hexagon nut ISO 4032 %(key)
+      description: Hexagon nut, metric sizes
+      replaces: DIN934
+    parameters:
+        free: [key]
+        defaults: {key: "M3"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          s: Length (mm)
+          e_min: Length (mm)
+          m_max: Length (mm)
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          e_min: head diameter
+          m_max: thickness
+        tables:
+            index: key
+            columns: [d1, s, m_max, e_min]
+            data:
+                #key    [  d1    s     m_max   e_min   ]
+                M1:     [  1,    2.5,  0.8,    2.71    ]
+                M1.2:   [  1.2,  3,    1,      3.28    ]
+                M1.4:   [  1.4,  3,    1.2,    3.28    ]
+                M1.6:   [  1.6,  3.2,  1.3,    3.48    ]
+                M1.7:   [  1.7,  3.4,  1.4,    3.82    ]
+                M1.8:   [  1.8,  3.5,  1.4,    3.82    ]
+                M2:     [  2,    4,    1.6,    4.32    ]
+                M2.3:   [  2.3,  4.5,  1.8,    4.88    ]
+                M2.5:   [  2.5,  5,    2,      5.45    ]
+                M3:     [  3,    5.5,  2.4,    6.01    ]
+                M3.5:   [  3.5,  6,    2.8,    6.58    ]
+                M4:     [  4,    7,    3.2,    7.66    ]
+                M5:     [  5,    8,    4.7,    8.79    ]
+                M6:     [  6,    10,   5.2,    11.05   ]
+                M7:     [  7,    11,   5.5,    12.12   ]
+                M8:     [  8,    13,   6.8,    14.38   ]
+                M10:    [  10,   16,   8.4,    17.77   ]
+                M12:    [  12,   18,   10.8,   20.03   ]
+                M14:    [  14,   21,   12.8,   23.35   ]
+                M16:    [  16,   24,   14.8,   26.75   ]
+                M18:    [  18,   27,   15.8,   29.56   ]
+                M20:    [  20,   30,   18,     32.95   ]
+                M22:    [  22,   34,   19.4,   37.29   ]
+                M24:    [  24,   36,   21.5,   39.55   ]
+                M27:    [  27,   41,   23.8,   45.29   ]
+                M30:    [  30,   46,   25.6,   50.85   ]
+                M33:    [  33,   50,   28.7,   55.37   ]
+                M36:    [  36,   55,   31.0,   60.79   ]
+                M39:    [  39,   60,   33.4,   66.44   ]
+                M42:    [  42,   65,   34,     71.30   ]
+                M45:    [  45,   70,   36,     76.95   ]
+                M48:    [  48,   75,   38,     82.60   ]
+                M52:    [  52,   80,   42,     88.25   ]
+                M56:    [  56,   85,   45,     93.56   ]
+                M60:    [  60,   90,   48,     99.21   ]
+                M64:    [  64,   95,   51,     104.86  ]
+                M68:    [  68,   100,  54,     110.51  ]
+                M72:    [  72,   105,  58,     116.16  ]
+                M76:    [  76,   110,  61,     121.81  ]
+                M80:    [  80,   115,  64,     127.46  ]
+                M85:    [  85,   120,  68,     133.11  ]
+                M90:    [  90,   130,  72,     144.08  ]
+                M95:    [  95,   135,  76,     150.74  ]
+                M100:   [  100,  145,  80,     161.02  ]
+                M105:   [  105,  150,  84,     167.69  ]
+                M110:   [  110,  155,  88,     172.32  ]
+                M120:   [  120,  170,  96,     190.29  ]
+                M125:   [  125,  180,  100,    200.57  ]
+                M140:   [  140,  200,  112,    220.80  ]
+    source: http://almetal.nl/en/techinfo/nut/nd934.htm
+  - id: hexagonnut2
+    standards:
+      body: DIN
+      standard: DIN 934
+      labeling: Hexagon nut DIN 934 %(key)s
+      status: withdrawn
+      description: Hexagon nut, metric sizes
+    parameters:
+        free: [key]
+        defaults: {key: "M3"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          s: Length (mm)
+          e_min: Length (mm)
+          m_max: Length (mm)
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          e_min: head diameter
+          m_max: thickness
+        tables:
+            index: key
+            columns: [d1, s, m_max, e_min]
+            data:
+                #key    [  d1    s     m_max   e_min   ]
+                M1:     [  1,    2.5,  0.8,    2.71    ]
+                M1.2:   [  1.2,  3,    1,      3.28    ]
+                M1.4:   [  1.4,  3,    1.2,    3.28    ]
+                M1.6:   [  1.6,  3.2,  1.3,    3.48    ]
+                M1.7:   [  1.7,  3.4,  1.4,    3.82    ]
+                M1.8:   [  1.8,  3.5,  1.4,    3.82    ]
+                M2:     [  2,    4,    1.6,    4.32    ]
+                M2.3:   [  2.3,  4.5,  1.8,    4.88    ]
+                M2.5:   [  2.5,  5,    2,      5.45    ]
+                M3:     [  3,    5.5,  2.4,    6.01    ]
+                M3.5:   [  3.5,  6,    2.8,    6.58    ]
+                M4:     [  4,    7,    3.2,    7.66    ]
+                M5:     [  5,    8,    4,      8.79    ]
+                M6:     [  6,    10,   5,      11.05   ]
+                M7:     [  7,    11,   5.5,    12.12   ]
+                M8:     [  8,    13,   6.5,    14.38   ]
+                M10:    [  10,   17,   8,      18.90   ]
+                M12:    [  12,   19,   10,     21.10   ]
+                M14:    [  14,   22,   11,     24.49   ]
+                M16:    [  16,   24,   13,     26.75   ]
+                M18:    [  18,   27,   15,     29.56   ]
+                M20:    [  20,   30,   16,     32.95   ]
+                M22:    [  22,   32,   18,     35.03   ]
+                M24:    [  24,   36,   19,     39.55   ]
+                M27:    [  27,   41,   22,     45.29   ]
+                M30:    [  30,   46,   24,     50.85   ]
+                M33:    [  33,   50,   26,     55.37   ]
+                M36:    [  36,   55,   29,     60.79   ]
+                M39:    [  39,   60,   31,     66.44   ]
+                M42:    [  42,   65,   34,     71.30   ]
+                M45:    [  45,   70,   36,     76.95   ]
+                M48:    [  48,   75,   38,     82.60   ]
+                M52:    [  52,   80,   42,     88.25   ]
+                M56:    [  56,   85,   45,     93.56   ]
+                M60:    [  60,   90,   48,     99.21   ]
+                M64:    [  64,   95,   51,     104.86  ]
+                M68:    [  68,   100,  54,     110.51  ]
+                M72:    [  72,   105,  58,     116.16  ]
+                M76:    [  76,   110,  61,     121.81  ]
+                M80:    [  80,   115,  64,     127.46  ]
+                M85:    [  85,   120,  68,     133.11  ]
+                M90:    [  90,   130,  72,     144.08  ]
+                M95:    [  95,   135,  76,     150.74  ]
+                M100:   [  100,  145,  80,     161.02  ]
+                M105:   [  105,  150,  84,     167.69  ]
+                M110:   [  110,  155,  88,     172.32  ]
+                M120:   [  120,  170,  96,     190.29  ]
+                M125:   [  125,  180,  100,    200.57  ]
+                M140:   [  140,  200,  112,    220.80  ]
+    source: http://almetal.nl/en/techinfo/nut/nd934.htm
+  - id: hexagonnut3
+    names:
+      name: Imperial hexagon nut
+      labeling:  Imperial hexagon nut
+      description: Hexagon nut, imperial sizes
+    standards:
+      - body: ANSI
+        standard: ANSI B18.2.2
+        labeling: Hexagon nut ANSI B18.2.2 %(key)
+        description: Hexagon nut, imperial sizes
+      - body: ASME
+        standard: ASME B18.2.2
+        labeling: Hexagon nut ASME B18.2.2 %(key)
+        description: Hexagon nut, imperial sizes
+    parameters:
+        free: [key]
+        defaults: {key: "3/8 in"}
+        types:
+          key: Table Index
+          d1: Length (in)
+          s: Length (in)
+          m_max: Length (in)
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          m_max: thickness
+        tables:
+            index: key
+            columns: [d1, s, m_max]
+            data:
+                #key         [  d1    s     m_max]
+                "1/4 in"   : [ .2500, .4375, .21875 ]
+                "5/16 in"  : [ .3125, .5,    .265625 ]
+                "3/8 in"   : [ .3750, .5625, .328125 ]
+                "7/16 in"  : [ .4375, .6875, .375 ]
+                "1/2 in"   : [ .5000, .75, .4375 ]
+                "9/16 in"  : [ .5625, .875, .484375 ]
+                "5/8 in"   : [ .6250, .9375, .546875 ]
+                "3/4 in"   : [ .7500, 1.125, .640625 ]
+                "7/8 in"   : [ .8750, 1.3125, .75 ]
+                "1 in"     : [ 1.0000, 1.5, .859375]
+                "1-1/8 in" : [ 1.1250, 1.6875, .96875 ]
+                "1-3/8 in" : [ 1.3750, 2.0625, 1.171875 ]
+                "1-1/2 in" : [ 1.500, 2.25, 1.28125 ]
+                "1-5/8 in" : [ 1.6250, 2.4375, 1.390625 ]
+                "1-3/4 in" : [ 1.7500, 2.625, 1.5 ]
+                "2 in"     : [ 2.0000, 3.0, 1.71875 ]
+                "2-1/4 in" : [ 2.2500, 3.375, 1.9375 ]
+                "2-1/2 in" : [ 2.5000, 3.75, 2.15625 ]
+                "2-3/4 in" : [ 2.7500, 4.125, 2.375 ]
+                "3 in"     : [ 3.0000, 4.5, 2.59375 ]
+    source: http://www.smithfast.com/finishedhexnuts.html
