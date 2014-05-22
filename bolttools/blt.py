@@ -132,12 +132,12 @@ class StandardName(DesignationMixin):
 			self.description = sn['description']
 
 		self.classid = clid
+
 	def get_id(self):
 		if self.suffix.get_safe_name():
 			return self.standard.get_safe_name() + '_' + self.suffix.get_safe_name()
 		else:
 			return self.standard.get_safe_name()
-
 
 class Class:
 	"""
@@ -396,7 +396,7 @@ class MultipartStandard(ContainerMixin,DesignationMixin):
 		return self.standard.get_safe_name()
 
 	def add_standard_single(self,cs):
-		if cs.standard != self.standard:
+		if not cs.standard == self.standard:
 			raise RuntimeError("Multipart standard with conflicting standards: %s %s" %
 				(cs.standard.get_safe_name(), self.standard.get_safe_name()))
 		ContainerMixin.add_standard_single(self,cs)
@@ -537,8 +537,8 @@ class Repository(ContainerMixin):
 					if standard.suffix.get_safe_name():
 						for cont in [self,coll,body]:
 							mult = None
-							if cont.contains_standard_multi(standard.standard):
-								mult = cont.get_standard_multi(standard.standard)
+							if cont.contains_standard_multi(standard.standard.get_safe_name()):
+								mult = cont.get_standard_multi(standard.standard.get_safe_name())
 							else:
 								mult = MultipartStandard(standard.standard)
 								cont.add_standard_multi(mult)
