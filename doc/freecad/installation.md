@@ -29,13 +29,13 @@ If you get an error that says something like:
 
     No module named yaml
 
-then this is because the yaml library for python is not installed. If you are using Linux, then you can usually get it using your package manager. If you are on windows you can get an installer [here](http://pyyaml.org/wiki/PyYAML).
+then this is because the yaml library for python is not installed. If you are using Linux, then you can usually get it using your package manager. If you are on windows you can get an installer [here](http://pyyaml.org/wiki/PyYAML); you have to install YAML for the version of Python (first two digits) that is bundled with FreeCAD. You can find out which version that is from the first line of the python console in FreeCAD. If it is not opened, you can make it visible by checking it in the Menu View under point Views.
 
 If you get an error that says something like:
 
     No module named importlib
 
-then you are using a older version of python where the importlib library is not included. You can get it [here](https://pypi.python.org/pypi/importlib/1.0.2). For importlib no convenient installer is available for windows. Instructions on how to install a python module without an installer can be found [here](http://docs.python.org/2/install/index.html).
+then you are using a older version of python where the importlib library is not included. You can get it [here](https://pypi.python.org/pypi/importlib/1.0.2). For importlib no convenient installer is available for windows. Instructions on how to install a python module without an installer can be found [here](http://docs.python.org/2/install/index.html). Again you should use the version for the python version bundled with FreeCAD.
 
 If you get a message that says
 
@@ -43,7 +43,7 @@ If you get a message that says
 
 then there is a part of the PySide Qt bindings missing. For Debian and Ubuntu this is contained in the package pyside-tools.
 
-If you get different errors, than please try the latest development snapshot. If it still does not work, please report that problem. There is a number of places where you can do so, a list can be found [on the contribute page]({{site.baseurl}}/contribute.html).
+If you get different errors, than please try the latest development snapshot. If it still does not work, please report that problem. The simplest way to do so is to use the comments below, but there is a number of of other places where you can report problems, a list can be found [on the contribute page]({{site.baseurl}}/contribute.html).
 
 ### Next steps
 
