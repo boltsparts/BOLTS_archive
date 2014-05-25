@@ -16,7 +16,7 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-from bolttools.blt import BOLTSRepository
+from bolttools.blt import Repository
 from bolttools.freecad import FreeCADData
 from bolttools.openscad import OpenSCADData
 from bolttools.drawings import DrawingsData
@@ -34,7 +34,7 @@ from datetime import datetime
 
 def export(args):
 	#load data
-	repo = BOLTSRepository(args.repo)
+	repo = Repository(args.repo)
 	dbs = {}
 	dbs["openscad"] = OpenSCADData(args.repo)
 	dbs["freecad"] = FreeCADData(args.repo)
@@ -74,7 +74,7 @@ def test(args):
 		freecad_process.wait()
 
 def check(args):
-	repo = BOLTSRepository(args.repo)
+	repo = Repository(args.repo)
 	dbs = {}
 	dbs["openscad"] = OpenSCADData(args.repo)
 	dbs["freecad"] = FreeCADData(args.repo)
@@ -88,7 +88,7 @@ def check(args):
 		print check.print_table(),
 
 def tasks(args):
-	repo = BOLTSRepository(args.repo)
+	repo = Repository(args.repo)
 	dbs = {}
 	dbs["openscad"] = OpenSCADData(args.repo)
 	dbs["freecad"] = FreeCADData(args.repo)
@@ -102,7 +102,7 @@ def tasks(args):
 		print task.print_table(),
 
 def connectors(args):
-	repo = BOLTSRepository(args.repo)
+	repo = Repository(args.repo)
 	dbs = {}
 	dbs["openscad"] = OpenSCADData(args.repo)
 	dbs["drawings"] = DrawingsData(args.repo)
@@ -126,7 +126,7 @@ def release(args):
 	if args.kind == "development" and not args.version is None:
 		print "No explicit version can be given for development releases"
 		exit(2)
-	repo = BOLTSRepository(args.repo)
+	repo = Repository(args.repo)
 
 	version = datetime.now().strftime("%Y%m%d%H%M")
 	stable = args.kind == "stable"
