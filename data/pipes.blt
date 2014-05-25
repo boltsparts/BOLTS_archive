@@ -24,13 +24,17 @@ name: Pipes
 description: metric and imperial pipes
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: MIT <http://opensource.org/licenses/MIT>
-blt-version: 0.3
+blt-version: 0.4
 classes:
   - id: genericpipe
-    naming:
-      template: Pipe OD %g ID %g length %g
-      substitute: [od, id, l]
-    description: a generic pipe
+    names:
+      name:
+        nice: Generic pipe
+        safe: genericPipe
+      labeling:
+        nice: Pipe OD %(od)s ID %(id)s length %(l)s
+        safe: Pipe_OD_%(od)s_ID_%(id)s_length_%(l)s
+      description: a generic pipe
     parameters:
       free: [od, id, l]
       defaults: {od: 13, id: 10, l: 1000}
@@ -44,11 +48,18 @@ classes:
         l: length
     source: No source information used
   - id: din11850range2
-    naming:
-      template: DIN11850 Range 2 DN %s length %g
-      substitute: [dn, l]
-    description: pipe
-    standard: DIN11850 Range 2
+    standards:
+      body: DIN
+      standard:
+        safe: DIN11850
+        nice: DIN 11850
+      suffix:
+        safe: Range_2
+        nice: Range 2
+      labeling:
+        nice: DIN 11850 Range 2 DN %(dn)s length %(l)s
+        safe: DIN11850_Range_2_DN_%(dn)s_length_%(l)s
+      description: Pipe according to DIN11850 Range 2
     parameters:
       free: [dn, l]
       defaults: {dn: "10", l: 1000}
@@ -84,11 +95,25 @@ classes:
     notes: More tables can be found here http://www.gillain.com/en/tubes-and-components/p/detail/food-tubes-din-11850. The data there contradicts the one in Wikipedia, e.g. for DN32.
     source: de.wikipedia.org/wiki/Rohr_(Technik)#Abmessungen
   - id: nominalpipesize
-    naming:
-      template: "%s %s Length: %s"
-      substitute: [nps, sched, l]
-    description: Welded and seamless wrought steel pipe for high or low temperatures and pressures
-    standard: [ANSI B36.10M, ASME B36.10M, API 5L]
+    standards:
+      - body: ANSI
+        standard:
+          nice: ANSI B36.10M
+        labeling:
+          nice: Wrought steel pipe ANSI B36.10M %(nps)s %(sched)s Length %(l)s
+        description: Welded and seamless wrought steel pipe for high or low temperatures and pressures
+      - body: ASME
+        standard:
+          nice: ASME B36.10M
+        labeling:
+          nice: Wrought steel pipe ASME B36.10M %(nps)s %(sched)s Length %(l)s
+        description: Welded and seamless wrought steel pipe for high or low temperatures and pressures
+      - body: API
+        standard:
+          nice: API 5L
+        labeling:
+          nice: Wrought steel pipe API 5L %(nps)s %(sched)s Length %(l)s
+        description: Welded and seamless wrought steel pipe for high or low temperatures and pressures
     parameters:
       free: [nps, sched, l]
       defaults: { nps: "NPS 1/2", sched: "40", l: 50 }

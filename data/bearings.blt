@@ -21,15 +21,19 @@ name: Bearings
 description: various ball bearings
 author: [Johannes Reinhardt <jreinhardt@ist-dein-freund.de>, Javier Martínez García <jaeco@gmx.com>]
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-blt-version: 0.3
+blt-version: 0.4
 classes:
   - id: singlerowradialbearing
-    naming:
-        template: Ball bearing %s %s%s
-        substitute: [standard, key, postfix]
-    description: single row radial contact ball bearing, with single or double
-      shields, single or double seal or open
-    standard: DIN625-1
+    names:
+      name: Radial Ball Bearing
+      labeling: Radial Ball Bearing %(key)s%(postfix)s
+      description: single row radial contact ball bearing, with single or double shields, single or double seal or open, metric sizes
+    standards:
+      body: DIN
+      standard: DIN 625
+      suffix: "1"
+      labeling: Radial Ball Bearing DIN625-1 %(key)s%(postfix)s
+      description: single row radial contact ball bearing, with single or double shields, single or double seal or open
     parameters:
         free: [key,type]
         defaults: {key: "608", type: "open"}
@@ -104,10 +108,10 @@ classes:
               "sealed, double" : ["-2RS"]
     source: http://www.kgm-kugeln.de/show.php?ID=4589 and http://reprap.org/wiki/Ball_bearing. Fillet radii and dimensions for 623, 624, 634, 635 and 607 are taken from a old (~1980s) paper catalogue of Steyr.
   - id: singlerowradialbearingimperial
-    naming:
-        template: Ball bearing %s
-        substitute: [key]
-    description: single row radial contact ball bearing, imperial sizes
+    names:
+      name: Radial Ball Bearing imperial
+      labeling: imperial Radial Ball Bearing %(key)s%(postfix)s
+      description: single row radial contact ball bearing, imperial sizes
     parameters:
         free: [key]
         defaults: {key: "RLS8"}
@@ -169,11 +173,16 @@ classes:
               "RMS26": [ 3.25, 7.5, 1.5625, 0.15625 ]
     source: Old (~1980s) paper catalog of Steyr.
   - id: doublerowradialbearing
-    naming:
-      template: Double row ball bearing %s %s
-      substitute: [standard,key]
-    description: Deep groove double row ball bearing
-    standard: [DIN625-3]
+    names:
+      name: Double row ball bearing
+      labeling: Double row ball bearing %(key)s
+      description: Deep groove double row radial ball bearing, metric sizes
+    standards:
+      body: DIN
+      standard: DIN 625
+      suffix: "3"
+      labeling: Double row radial ball bearing DIN 625-3 %(key)s
+      description: Deep groove double row radial ball bearing, metric sizes
     parameters:
       free: [key]
       defaults: {key: "4202-B-TVH"}
@@ -212,11 +221,19 @@ classes:
             "4218-B-TVH" : [90,160,40]
     source: http://medias.schaeffler.de/medias/es!hp.ec.br/42..-B?#42..-B
   - id: axialthrustbearing
-    naming:
-        template: Axial thrust bearing %s %s
-        substitute: [standard, key]
-    description: axial thrust bearing, single direction
-    standard: [DIN711, ISO104]
+    names:
+      name: Axial thrust bearing
+      labeling: Axial thrust bearing %(key)s
+      description: axial thrust bearing, single direction
+    standards:
+      - body: DIN
+        standard: DIN 711
+        labeling: Axial thrust bearing DIN 711 %(key)s
+        description: axial thrust bearing, single direction
+      - body: ISO
+        standard: ISO 104
+        labeling: Axial thrust bearing ISO 104 %(key)s
+        description: axial thrust bearing, single direction
     parameters:
         free: [key]
         defaults: {key: "51200"}
@@ -367,11 +384,16 @@ classes:
                  "51434" : [170, 174, 340, 335, 135, 6]
     source: http://medias.schaeffler.de/medias/de!hp.ec/1_R*0*C00002*23#23 und old (~1980s) paper catalogue of Steyr.
   - id: needleroller
-    naming:
-        template: Needle roller %s %s
-        substitute: [standard, key]
-    description: Needle roller without cage
-    standard: [DIN5405-1,ISO 3030]
+    standards:
+      - body: DIN
+        standard: DIN 5405
+        suffix: "1"
+        labeling: Needle roller DIN 5405-1 %(key)s
+        description: Needle roller without cage
+      - body: ISO
+        standard: ISO 3030
+        labeling: Needle roller ISO 3030 %(key)s
+        description: Needle roller without cage
     parameters:
         free: [key]
         defaults: {key: "K10X13X10-TV"}
@@ -617,11 +639,12 @@ classes:
     source: http://medias.schaeffler.de/medias/de!hp.ec/1_R*0*C028*13#13
     notes: no common parameters, because there are so many different types and I do not know which are useful.
   - id: cylindricalrollerbearing
-    naming:
-        template: cylindrical roller bearing %s %s
-        substitute: [standard, key]
-    description: Cylindrical single row roller bearing
-    standard: [DIN5412-1]
+    standards:
+      body: DIN
+      standard: DIN 5412
+      suffix: "1"
+      labeling: Cylindrical roller bearing %(key)s
+      description: Cylindrical single row roller bearing
     parameters:
         free: [key]
         defaults: {key: N204-E-TVP2}

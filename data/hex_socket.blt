@@ -20,14 +20,26 @@ name: Hexagon socket fasteners
 description: various standard hex socket bolts and screws
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-blt-version: 0.3
+blt-version: 0.4
 classes:
   - id: hexsocketcountersunk
-    naming:
-        template: hex socket countersunk head screw %s - %s %d
-        substitute: [standard, key, l]
-    description: hexagon socket countersunk head screw
-    standard: [ISO10642, DINISO10642, DIN7991]
+    names:
+      name: Metric hex socket countersunk head screw
+      labeling: Hex socket countersunk head screw %(key)s %(l)
+      description: Hexagon socket countersunk head screw, metric sizes
+    standards:
+      - body: ISO
+        standard: ISO 10642
+        labeling: Hex socket countersunk head screw ISO 10642 %(key)s %(l)
+        description: Hexagon socket countersunk head screw, metric sizes
+      - body: DIN ISO
+        standard: DIN ISO 10642
+        labeling: Hex socket countersunk head screw DIN ISO 10642 %(key)s %(l)
+        description: Hexagon socket countersunk head screw, metric sizes
+      - body: DIN
+        standard: DIN 7991
+        labeling: Hex socket countersunk head screw DIN 7991 %(key)s %(l)
+        description: Hexagon socket countersunk head screw, metric sizes
     parameters:
         free: [key, l]
         defaults: {key: "M3", l: 20}
@@ -82,11 +94,23 @@ classes:
     source: http://almetal.nl/en/techinfo/soc/sd7991.htm
     notes: The OpenSCAD base module does not use alpha
   - id: hexsocketheadcap
-    naming:
-        template: hex socket head cap screw %s - %s %d
-        substitute: [standard, key, l]
-    description: hexagon socket head cap screw
-    standard: [ISO4762, DINENISO4762, DIN912]
+    names:
+      name: Metric hex socket head cap screw
+      labeling: Hex socket head cap screw %(key)s %(l)s
+      description: hexagon socket head cap screw, metric sizes
+    standards:
+      - body: ISO
+        standard: ISO 4762
+        labeling: Hex socket head cap screw ISO 4762 %(key)s %(l)s
+        description: hexagon socket head cap screw
+      - body: DINENISO
+        standard: DINENISO 4762
+        labeling: Hex socket head cap screw DINENISO 4762 %(key)s %(l)s
+        description: hexagon socket head cap screw
+      - body: DIN
+        standard: DIN 912
+        labeling: Hex socket head cap screw DIN 912 %(key)s %(l)s
+        description: hexagon socket head cap screw
     parameters:
         free: [key, l]
         defaults: {key: "M3", l: 20}
@@ -151,11 +175,15 @@ classes:
                 M64:   [  64,   96,    140,   64,   46,    38,    None  ]
     source: http://almetal.nl/en/techinfo/soc/sd912.htm, common parameters from http://shop.zweygart.de/befestigung/schrauben-metrisch/zylinderkopf/p29246.html
   - id: hexsocketsetscrewflat
-    naming:
-      template: socket set screw flat point %s %s %d
-      substitute: [standard, key, length]
-    description: Hexagon socket set screw with flat point
-    standard: [DIN913, ISO4026]
+    standards:
+      - body: DIN
+        standard: DIN 913
+        labeling: Hex socket set screw flat point DIN 913 %(key)s %(l)s
+        description: Hexagon socket set screw with flat point
+      - body: ISO
+        standard: ISO 4026
+        labeling: Hex socket set screw flat point ISO 4026 %(key)s %(l)s
+        description: Hexagon socket set screw with flat point
     parameters:
       free: [key,l]
       types:
@@ -203,11 +231,15 @@ classes:
           "M20": [ 20, 15,  8,   11.43,10  ]
     source: http://www.fullermetric.com/products/socket/din913socket_set_screw_flat_point.aspx
   - id: hexsocketsetscrewcone
-    naming:
-      template: socket set screw cone point %s %s %d
-      substitute: [standard, key, length]
-    description: Hexagon socket set screw with cone point
-    standard: [DIN914, ISO4027]
+    standards:
+      - body: DIN
+        standard: DIN 914
+        labeling: Hex socket set screw cone point DIN 914 %(key)s %(l)s
+        description: Hexagon socket set screw with cone point
+      - body: ISO
+        standard: ISO 4027
+        labeling: Hex socket set screw flat cone ISO 4027 %(key)s %(l)s
+        description: Hexagon socket set screw with cone point
     parameters:
       free: [key,l]
       types:
@@ -251,11 +283,15 @@ classes:
           "M12": [ 12, 3,    4.5, 6.86, 6   ]
     source: http://www.fullermetric.com/products/socket/din914socket_set_screw_cone_point.aspx
   - id: hexsocketsetscrewdog
-    naming:
-      template: socket set screw dog point %s %s %d
-      substitute: [standard, key, length]
-    description: Hexagon socket set screw with dog point
-    standard: [DIN915, ISO4028]
+    standards:
+      - body: DIN
+        standard: DIN 915
+        labeling: Hex socket set screw dog point DIN 915 %(key)s %(l)s
+        description: Hexagon socket set screw with dog point
+      - body: ISO
+        standard: ISO 4028
+        labeling: Hex socket set screw dog cone ISO 4028 %(key)s %(l)s
+        description: Hexagon socket set screw with dog point
     parameters:
       free: [key,l]
       types:
@@ -305,11 +341,15 @@ classes:
           "M24": [ 24, 18,  10,  13.72,12  ]
     source: http://www.fullermetric.com/products/socket/din915socket_set_screw_dog_point.aspx
   - id: hexsocketsetscrewcup
-    naming:
-      template: socket set screw cup point %s %s %d
-      substitute: [standard, key, length]
-    description: Hexagon socket set screw with cup point
-    standard: [DIN916, ISO4029]
+    standards:
+      - body: DIN
+        standard: DIN 916
+        labeling: Hex socket set screw cup point DIN 916 %(key)s %(l)s
+        description: Hexagon socket set screw with cup point
+      - body: ISO
+        standard: ISO 4029
+        labeling: Hex socket set screw cup cone ISO 4029 %(key)s %(l)s
+        description: Hexagon socket set screw with cup point
     parameters:
       free: [key,l]
       types:
@@ -365,11 +405,15 @@ classes:
           "M24"  : [ 24, 16,  10,  13.72, 12  ]
     source: http://www.fullermetric.com/products/socket/din915socket_set_screw_dog_point.aspx
   - id: hexsocketsetscrewall
-    naming:
-      template: socket set screw %s point %s %s %d
-      substitute: [standard, point, key, length]
-    description: Hexagon socket set screw with cup point
-    standard: [ANSI B18.3.6M]
+    names:
+      name: Hex socket set screw
+      labeling: Hex socket set screw %(point)s point %(key)s %(length)s
+      description: Hexagon socket set screws
+    standards:
+      body: ANSI
+      standard: ANSI B18.3.6M
+      labeling: Hex socket set screw ANSI B18.3.6M %(point)s point %(key)s %(length)s
+      description: Hexagon socket set screws
     parameters:
       free: [key,l,point]
       types:

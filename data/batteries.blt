@@ -24,13 +24,23 @@ name: Batteries
 description: This collection contains different sorts of batteries
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: MIT <http://opensource.org/licenses/MIT>
-blt-version: 0.3
+blt-version: 0.4
 classes:
 - id: roundBattery
-  naming:
-     template: "%s Battery"
-     substitute: [T]
-  description: Most common round single cell battery sizes
+  names:
+    - name: Round Batteries
+      labeling: "%(T)s Battery"
+      description: Most common round single cell battery sizes
+  standards:
+    - body: IEC
+      standard: IEC 60086
+      suffix:
+        safe: Cat1
+        nice: Category 1
+      labeling:
+        nice: "IEC 60086 Category 1 Battery %(T)s"
+        safe: "IEC60086_Cat1_Battery_%(T)s"
+      description: Cylindrical cells with protruding positive and recessed or flat negative terminals.
   parameters:
     free: [T]
     defaults: {T: "AAA"}

@@ -20,15 +20,17 @@ name: Hexagon fasteners
 description: various standard hex bolts and screws
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-blt-version: 0.3
+blt-version: 0.4
 classes:
   - id: hexscrew1
-    naming:
-        template:  Hexagon head screw %s - %s%s %d
-        substitute: [standard, key, pitch_name, l]
-    description: hexagon head screw
-    standard: DIN933
-    status: withdrawn
+    standards:
+      body: DIN
+      status: withdrawn
+      standard: DIN 933
+      labeling:
+        nice: Hexagon head screw DIN 933 %(key)s%(pitch_name)s - %(l)s
+        safe: hexagon_head_screw_DIN933_%(key)s%(pitch_name)s_%(l)s
+      description: Hexagon head screw according to DIN933
     parameters:
         free: [key, l, thread_type]
         defaults: {key: "M3", l: 20, thread_type: "coarse"}
@@ -208,11 +210,39 @@ classes:
               "M68" : ["", "", "x4", "", ""]
     source: Dimensions from http://almetal.nl/en/techinfo/hex/hd933.htm, commmon lengths from http://freecadweb.org/wiki/index.php?title=Macro_screw_maker1_2, thread pitch data from http://almetal.nl/en/techinfo/gti/scthmc.htm
   - id: hexscrew2
-    naming:
-        template: Hexagon head screw %s - %s %d
-        substitute: [standard, key, l]
-    description: hexagon head screw
-    standard: [ISO4017, DINENISO4017, DINEN24017]
+    names:
+      name:
+        safe: hexagonHeadScrew
+        nice: Hexagon head screw
+      labeling:
+        nice: Hexagon head screw %(key)s - %(l)s
+        safe: hexagon_head_screw_%(key)s_%(l)s
+      description: Hexagon head screw
+    standards:
+      - body: ISO
+        standard:
+          safe: ISO4017
+          nice: ISO 4017
+        labeling:
+          nice: Hexagon head screw ISO 4017 %(key)s - %(l)s
+          nice: hexagon_head_screw_ISO4017_%(key)s_%(l)s
+        description: Hexagon head screw according to ISO4017
+      - body: DINENISO
+        standard:
+          safe: DINENISO4017
+          nice: DIN EN ISO 4017
+        labeling:
+          nice: Hexagon head screw DIN EN ISO 4017 %(key)s - %(l)s
+          safe: hexagon_head_screw_DINENISO4017_%(key)s_%(l)s
+        description: Hexagon head screw according to DINENISO4017
+      - body: ENISO
+        standard:
+          safe: ENISO24017
+          nice: EN ISO 24017
+        labeling:
+          nice: Hexagon head screw EN ISO 24017 %(key)s - %(l)s
+          safe: hexagon_head_screw_ENISO24017_%(key)s_%(l)s
+        description: Hexagon head screw according to ENISO24017
     parameters:
         free: [key, l]
         defaults: {key: "M3", l: 20}
@@ -267,12 +297,24 @@ classes:
                 M64:   [  64,   40,    95,   104.86,  None  ]
     source: http://almetal.nl/en/techinfo/hex/hd933.htm
   - id: hexbolt1
-    naming:
-        template: Hexagon head bolt %s - %s %d
-        substitute: [standard, key, l]
-    description: hexagon head bolt
-    standard: DIN931
-    status: withdrawn
+    names:
+      name:
+        safe: hexagonHeadBolt
+        nice: Hexagon head bolt
+      labeling:
+        nice: Hexagon head bolt %(key)s - %(l)s
+        safe: hexagon_head_bolt_%(key)s_%(l)s
+      description: Hexagon head bolt
+    standards:
+      body: DIN
+      status: withdrawn
+      standard:
+        safe: DIN931
+        nice: DIN 931
+      labeling:
+        nice: Hexagon head bolt DIN 931 %(key)s - %(l)s
+        safe: hexagon_head_bolt_DIN931_%(key)s_%(l)s
+      description: Hexagon head bolt according to DIN931
     parameters:
         free: [key, l]
         defaults: {key: "M3", l: 20}
@@ -337,12 +379,32 @@ classes:
                 M64:  [  64.0,  40.0,   95.0,   None,   140.0,  153.0,  104.86  ]
     source: http://almetal.nl/en/techinfo/hex/hd931.htm, common parameters from http://shop.zweygart.de/p29262.html
   - id: hexbolt2
-    naming:
-        template: Hexagon head bolt %s - %s %d
-        substitute: [standard, key, l]
-    description: hexagon head bolt
-    standard: [ISO4014, DINENISO4014, DINEN24014]
-    replaces: DIN931
+    standards:
+      - body: ISO
+        replaces: DIN931
+        standard:
+          safe: ISO4014
+          nice: ISO 4014
+        labeling:
+          nice: Hexagon head bolt ISO 4014 %(key)s - %(l)s
+          safe: hexagon_head_bolt_ISO4014_%(key)s_%(l)s
+        description: Hexagon head bolt according to ISO 4014
+      - body: DINENISO
+        standard:
+          safe: DINENISO4014
+          nice: DINENISO 4014
+        labeling:
+          nice: Hexagon head bolt DINENISO 4014 %(key)s - %(l)s
+          safe: hexagon_head_bolt_DINENISO4014_%(key)s_%(l)s
+        description: Hexagon head bolt according to DINENISO 4014
+      - body: DINEN
+        standard:
+          safe: DINEN24014
+          nice: DINEN 24014
+        labeling:
+          nice: Hexagon head bolt DINEN 24014 %(key)s - %(l)s
+          safe: hexagon_head_bolt_DINEN24014_%(key)s_%(l)s
+        description: Hexagon head bolt according to DINEN 24014
     parameters:
         free: [key, l]
         defaults: {key: "M3", l: 20}

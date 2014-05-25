@@ -20,15 +20,23 @@ name: Nuts
 description: various standard nuts
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-blt-version: 0.3
+blt-version: 0.4
 classes:
   - id: hexagonthinnut1
-    naming:
-      template: Hexagon thin nut %s - %s
-      substitute: [standard, key]
-    description: hexagon thin nuts
-    standard: [ISO4035, DINENISO4035]
-    replaces: DIN439B
+    names:
+      name: Metric hexagon thin nut
+      labeling: Metric hexagon thin nut %(key)s
+      description: Thin hexagon nut, metric sizes
+    standards:
+      - body: ISO
+        standard: ISO 4035
+        labeling: Hexagon thin nut ISO 4035 %(key)s
+        replaces: DIN439_B
+        description: Thin hexagon nut, metric sizes
+      - body: DINENISO
+        standard: DINENISO 4035
+        labeling: Hexagon thin nut DINENISO 4035 %(key)s
+        description: Thin hexagon nut, metric sizes
     parameters:
         free: [key]
         defaults: {key: "M3"}
@@ -83,12 +91,13 @@ classes:
                 M64:    [  64,   95,   32,     104.86  ]
     source: http://almetal.nl/en/techinfo/nut/nd439.htm
   - id: hexagonthinnut2
-    naming:
-        template: Hexagon thin nut %s - %s
-        substitute: [standard, key]
-    description: hexagon thin nuts
-    standard: DIN439B
-    status: withdrawn
+    standards:
+      body: DIN
+      standard: DIN 439
+      suffix: B
+      status: withdrawn
+      labeling: Hexagon thin nut DIN 439 %(key)s
+      description: Thin hexagon nut, metrix size, old
     parameters:
         free: [key]
         defaults: {key: M3}
@@ -143,12 +152,16 @@ classes:
                 M64:    [  64,   95,   32,     104.86  ]
     source: http://almetal.nl/en/techinfo/nut/nd439.htm
   - id: hexagonnut1
-    naming:
-      template: Hexagon nut %s - %s
-      substitute: [standard, key]
-    description: hexagon nuts
-    standard: ISO4032
-    replaces: DIN934
+    names:
+      name: Metric hexagon nut
+      labeling: Metric hexagon nut %(key)
+      description: Hexagon nut, metric sizes
+    standards:
+      body: ISO
+      standard: ISO 4032
+      labeling: Hexagon nut ISO 4032 %(key)
+      description: Hexagon nut, metric sizes
+      replaces: DIN934
     parameters:
         free: [key]
         defaults: {key: "M3"}
@@ -220,12 +233,12 @@ classes:
                 M140:   [  140,  200,  112,    220.80  ]
     source: http://almetal.nl/en/techinfo/nut/nd934.htm
   - id: hexagonnut2
-    naming:
-      template: Hexagon nut %s - %s
-      substitute: [standard, key]
-    description: hexagon nuts
-    standard: DIN934
-    status: withdrawn
+    standards:
+      body: DIN
+      standard: DIN 934
+      labeling: Hexagon nut DIN 934 %(key)s
+      status: withdrawn
+      description: Hexagon nut, metric sizes
     parameters:
         free: [key]
         defaults: {key: "M3"}
@@ -297,12 +310,19 @@ classes:
                 M140:   [  140,  200,  112,    220.80  ]
     source: http://almetal.nl/en/techinfo/nut/nd934.htm
   - id: hexagonnut3
-    naming:
-      template: Hexagon nut %s - %s
-      substitute: [standard, key]
-    description: finished hexagon nut
-    standard: [ANSI B18.2.2, ASME B18.2.2]
-    status: active
+    names:
+      name: Imperial hexagon nut
+      labeling:  Imperial hexagon nut
+      description: Hexagon nut, imperial sizes
+    standards:
+      - body: ANSI
+        standard: ANSI B18.2.2
+        labeling: Hexagon nut ANSI B18.2.2 %(key)
+        description: Hexagon nut, imperial sizes
+      - body: ASME
+        standard: ASME B18.2.2
+        labeling: Hexagon nut ASME B18.2.2 %(key)
+        description: Hexagon nut, imperial sizes
     parameters:
         free: [key]
         defaults: {key: "3/8 in"}

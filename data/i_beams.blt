@@ -15,19 +15,24 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 ---
-id: profiles-rolled_i-beams
+id: i_beams
 name: I-Beam profiles (rolled)
 description: various rolled i-beam profiles
 author: Bernd Hahnebach <bernd@bimstatik.org>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-blt-version: 0.3
+blt-version: 0.4
 classes:
   - id: ibeam_hea
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: HEA profile, metric european standard i-beam profile
-    standard: [DIN1025-3]
+    names:
+      name: HEA Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: HEA profile, metric european standard i-beam profile
+    standards:
+      body: DIN
+      standard: DIN 1025
+      suffix: "3"
+      labeling: DIN1025-3 %(type)s, l=%(l)s
+      description: HEA profile, metric european standard i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "HEA200", l: 3000}
@@ -79,10 +84,10 @@ classes:
     source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam, also specified in EN53-62
   - id: ibeam_heaa
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: HEAA profile, metric european i-beam profile
+    names:
+      name: HEAA Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: HEAA profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "HEAA200", l: 3000}
@@ -134,11 +139,16 @@ classes:
     source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
   - id: ibeam_heb
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: HEB profile, metric european standard i-beam profile
-    standard: [DIN1025-2]
+    names:
+      name: HEB Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: HEB profile, metric european standard i-beam profile
+    standards:
+      body: DIN
+      standard: DIN 1025
+      suffix: "2"
+      labeling: DIN1025-2 %(type)s, l=%(l)s
+      description: HEB profile, metric european standard i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "HEB200", l: 3000}
@@ -190,11 +200,16 @@ classes:
     source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam, also specified in EN53-62
   - id: ibeam_hem
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: HEM profile, metric european standard i-beam profile
-    standard: [DIN1025-4]
+    names:
+      name: HEM Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: HEM profile, metric european standard i-beam profile
+    standards:
+      body: DIN
+      standard: DIN 1025
+      suffix: "4"
+      labeling: DIN1025-4 %(type)s, l=%(l)s
+      description: HEM profile, metric european standard i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "HEM200", l: 3000}
@@ -246,11 +261,20 @@ classes:
     source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam, also specified in EN53-62
   - id: ibeam_ipe
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: IPE profile, metric european standard i-beam profile
-    standard: [DIN1025-5, EN19-57]
+    names:
+      name: IPE Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: IPE profile, metric european standard i-beam profile
+    standards:
+      - body: DIN
+        standard: DIN 1025
+        suffix: "5"
+        labeling: DIN1025-5 %(type)s, l=%(l)s
+        description: IPE profile, metric european standard i-beam profile
+      - body: EN
+        standard: EN 19-57
+        labeling: EN 19-57 %(type)s, l=%(l)s
+        description: IPE profile, metric european standard i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "IPE200", l: 3000}
@@ -296,10 +320,10 @@ classes:
     source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
   - id: ibeam_ipe750
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: IPE 750 profile, metric european i-beam profile
+    names:
+      name: IPE 750 Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: IPE 750 profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "IPE750x137", l: 3000}
@@ -333,10 +357,10 @@ classes:
     source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
   - id: ibeam_ipea
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: IPEa profile, metric european i-beam profile
+    names:
+      name: IPEa Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: IPEa profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "IPEa200", l: 3000}
@@ -380,10 +404,10 @@ classes:
     source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
   - id: ibeam_ipeo
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: IPEo profile, metric european i-beam profile
+    names:
+      name: IPEo Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: IPEo profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "IPEo200", l: 3000}
@@ -424,10 +448,10 @@ classes:
     source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
   - id: ibeam_iper
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: IPEr profile, metric european i-beam profile
+    names:
+      name: IPEr Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: IPEr profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "IPEr200", l: 3000}
@@ -470,10 +494,10 @@ classes:
     source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
   - id: ibeam_ipev
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: IPEv profile, metric european i-beam profile
+    names:
+      name: IPEv Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: IPEv profile, metric european i-beam profile
     parameters:
         free: [type,l]
         defaults: {type: "IPEv400", l: 3000}
@@ -506,10 +530,19 @@ classes:
     source: http://www.bauforumstahl.de/Querschnittswerte
     notes: http://en.wikipedia.org/wiki/I-beam
   - id: inp
-    naming:
-      template: "%s, l=%s"
-      substitute: [type,l]
-    description: INP profile
+    names:
+      - name: INP Profile
+        labeling: "%(type)s, l=%(l)s"
+        description: INP profile
+      - name: IPN Profile
+        labeling: "%(type)s, l=%(l)s"
+        description: IPN profile
+    standards:
+      body: DIN
+      standard: DIN 1025
+      suffix: "1"
+      labeling: DIN1025-1 %(type)s, l=%(l)s
+      description: IPN profile, metric european standard i-beam profile
     parameters:
       free: [type, l]
       defaults: {type: "IPN100", l: 3000}

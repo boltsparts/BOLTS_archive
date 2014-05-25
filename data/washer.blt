@@ -20,14 +20,35 @@ name: Washers
 description: various standard washers
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-blt-version: 0.3
+blt-version: 0.4
 classes:
   - id: plainwasher1
-    naming:
-      template: Plain washer %s - %s
-      substitute: [standard, key]
-    description: plain washer
-    standard: [ISO7089, EN7089, DINENISO7089, DINEN27089, DIN125A]
+    names:
+      name: Metric plain washer
+      labeling: Plain washer %(key)s
+      description: Plain washer, metric sizes
+    standards:
+      - body: ISO
+        standard: ISO 7089
+        labeling: Plain washer ISO 7089 %(key)s
+        description: Plain washer, metric sizes
+      - body: EN
+        standard: EN 7089
+        labeling: Plain washer EN 7089 %(key)s
+        description: Plain washer, metric sizes
+      - body: DINEN
+        standard: DINEN 27089
+        labeling: Plain washer DINEN 27089 %(key)s
+        description: Plain washer, metric sizes
+      - body: DINENISO
+        standard: DINENISO 7089
+        labeling: Plain washer DINENISO 7089 %(key)s
+        description: Plain washer, metric sizes
+      - body: DIN
+        standard: DIN 125
+        suffix: A
+        labeling: Plain washer DIN 125A %(key)s
+        description: Plain washer, metric sizes
     parameters:
         free: [key]
         defaults: {key: "M3"}
@@ -93,11 +114,28 @@ classes:
                 M100:  [  104,   175,  14    ]
     source: http://almetal.nl/en/techinfo/wsh/wd125.htm
   - id: plainwasherchamfered
-    naming:
-      template: Plain washer with chamfer %s - %s
-      substitute: [standard, key]
-    description: plain washer with chamfer
-    standard: [ISO7090, DINISO7090, DINENISO7090, DIN125B]
+    names:
+      name: Metric plain washer with chamfer
+      labeling: Plain washer chamfered %(key)s
+      description: Plain washer with chamfer, metric sizes
+    standards:
+      - body: ISO
+        standard: ISO 7090
+        labeling: Plain washer chamfered ISO 7090 %(key)s
+        description: Plain washer with chamfer, metric sizes
+      - body: DINISO
+        standard: DIN ISO 7090
+        labeling: Plain washer chamfered DIN ISO 7090 %(key)s
+        description: Plain washer with chamfer, metric sizes
+      - body: DINENISO
+        standard: DIN EN ISO 7090
+        labeling: Plain washer chamfered DIN EN ISO 7090 %(key)s
+        description: Plain washer with chamfer, metric sizes
+      - body: DIN
+        standard: DIN 125
+        suffix: B
+        labeling: Plain washer chamfered DIN 125B %(key)s
+        description: Plain washer with chamfer, metric sizes
     parameters:
         free: [key]
         defaults: {key: "M3"}
@@ -116,11 +154,23 @@ classes:
     notes: Are there precise specifications about the chamfer?
     source: http://almetal.nl/en/techinfo/wsh/wd125.htm
   - id: plainwasher2
-    naming:
-      template: Plain washer %s - %s
-      substitute: [standard, key]
-    description: plain washer
-    standard: [DIN126, DINISO7091, DINENISO7091, ISO7091]
+    standards:
+      - body: ISO
+        standard: ISO 7091
+        labeling: Plain washer ISO 7091 %(key)s
+        description: Plain washer, metric sizes
+      - body: DINISO
+        standard: DIN ISO 7091
+        labeling: Plain washer DIN ISO 7091 %(key)s
+        description: Plain washer, metric sizes
+      - body: DINENISO
+        standard: DINENISO 7091
+        labeling: Plain washer DINENISO 7091 %(key)s
+        description: Plain washer, metric sizes
+      - body: DIN
+        standard: DIN 126
+        labeling: Plain washer DIN 126 %(key)s
+        description: Plain washer, metric sizes
     parameters:
         free: [key]
         defaults: {key: "M10"}
@@ -168,11 +218,27 @@ classes:
                 M100:  [  107.0,  175.0,  14.0  ]
     source: http://almetal.nl/en/techinfo/wsh/wd126.htm
   - id: plainwasherforcheesehead
-    naming:
-      template: Plain washer %s - %s
-      substitute: [standard, key]
-    description: plain washer for cheese head screws
-    standard: [DIN433, ISO7092, DINISO7092, DINENISO7092]
+    names:
+      name: Metric plain washer for cheese head screws
+      labeling: Plain washer for cheese head screws %(key)s
+      description: Plain washer for cheese head screws, metric sizes
+    standards:
+      - body: DIN
+        standard: DIN 433
+        labeling: Plain washer for cheese head screws DIN 433 %(key)s
+        description: Plain washer for cheese head screws
+      - body: ISO
+        standard: ISO 7092
+        labeling: Plain washer for cheese head screws ISO 7092 %(key)s
+        description: Plain washer for cheese head screws
+      - body: DINISO
+        standard: DIN ISO 7092
+        labeling: Plain washer for cheese head screws DIN ISO 7092 %(key)s
+        description: Plain washer for cheese head screws
+      - body: DINENISO
+        standard: DIN EN ISO 7092
+        labeling: Plain washer for cheese head screws DIN EN ISO 7092 %(key)s
+        description: Plain washer for cheese head screws
     parameters:
         free: [key]
         defaults: {key: "M3"}
@@ -219,11 +285,15 @@ classes:
     source: http://almetal.nl/en/techinfo/wsh/wd433.htm
     notes: unclear whether chamfered version exists
   - id: heavydutyplainwasher
-    naming:
-      template: Heavy duty plain washer %s - %s
-      substitute: [standard, key]
-    description: heavy duty plain washer
-    standard: DIN7349
+    names:
+      name: Metric heavy duty plain washer
+      labeling: Heavy duty plain washer %(key)s
+      description: Heavy duty plain washer, metric sizes
+    standards:
+      body: DIN
+      standard: DIN 7349
+      labeling: Heavy duty plain washer DIN 7349 %(key)s
+      description: Heavy duty plain washer, metric sizes
     parameters:
         free: [key]
         defaults: {key: "M10"}

@@ -15,18 +15,18 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 ---
-id: profiles-hot_finished-hollow
+id: profiles_hollow
 name: Hollow sections
 description: Hot finished structural hollow sections
 author: [Bernd Hahnebach <bernd@bimstatik.org>, Johannes Reinhardt <jreinhardt@ist-dein-freund.de>]
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
-blt-version: 0.3
+blt-version: 0.4
 classes:
   - id: generic_circle_hollow
-    naming:
-      template: "Circular hollow profile %s/%s, l=%s"
-      substitute: [D,t,l]
-    description: a generic circular hollow profile
+    names:
+      name: Circular hollow profile
+      labeling: "Circular hollow profile %(D)s/%(t)s l=%(l)s"
+      description: Generic circular hollow profile
     parameters:
         free: [D,t,l]
         defaults: {D: 21.3, t: 2.3, l: 3000}
@@ -40,10 +40,10 @@ classes:
           l: profile length
     source: No source information used
   - id: generic_square_hollow
-    naming:
-      template: "Square hollow profile %s/%s, l=%s"
-      substitute: [b,t,l]
-    description: a generic square hollow profile
+    names:
+      name: Square hollow profile
+      labeling: "Square hollow profile %(b)s/%(t)s l=%(l)s"
+      description: Generic square hollow profile
     parameters:
         free: [b,t,l]
         defaults: {b: 40, t: 2.6, l: 3000}
@@ -57,10 +57,10 @@ classes:
           l: profile length
     source: No source information used
   - id: generic_rectangular_hollow
-    naming:
-      template: "Rectangular hollow profile %s-%s-%s, l=%s"
-      substitute: [h, b, t, l]
-    description: a generic rectangular hollow profile
+    names:
+      name: Rectangular hollow profile
+      labeling: "Rectangular hollow profile %(h)s-%(b)s-%(t)s, l=%(l)s"
+      description: a generic rectangular hollow profile
     parameters:
       free: [h, b, t, l]
       defaults: {h: 100, b: 100, t: 6.3, l: 2500}
@@ -76,11 +76,19 @@ classes:
           l: profile length
     source: No source information used
   - id: circle_hollow
-    naming:
-      template: "CHS%s, l=%s"
-      substitute: [type,l]
-    description: Circular Hollow Section (CHS)
-    standard: [EN 10210-2 circular]
+    standards:
+      - body: DIN EN
+        standard: DIN EN 10210-2
+        suffix: circular
+        year: 2006
+        labeling: "CHS DIN EN 10210-2 %(type)s, l=%(l)s"
+        description: Circular Hollow Section (CHS)
+      - body: EN
+        standard: EN 10210-2
+        suffix: circular
+        year: 2006
+        labeling: "CHS EN 10210-2 %(type)s, l=%(l)s"
+        description: Circular Hollow Section (CHS)
     parameters:
         free: [type,l]
         defaults: {type: "21.3/2.3", l: 3000}
@@ -322,11 +330,19 @@ classes:
     source: EN 10210-2:2006, Table B.1
     notes: http://en.wikipedia.org/wiki/Structural_steel
   - id: square_hollow
-    naming:
-      template: "SHS%s, l=%s"
-      substitute: [type,l]
-    description: Square Hollow Section (SHS)
-    standard: [EN 10210-2 square]
+    standards:
+      - body: DIN EN
+        standard: DIN EN 10210-2
+        suffix: square
+        year: 2006
+        labeling: "SHS DIN EN 10210-2 %(type)s, l=%(l)s"
+        description: Square Hollow Section (SHS)
+      - body: EN
+        standard: EN 10210-2
+        suffix: square
+        year: 2006
+        labeling: "SHS EN 10210-2 %(type)s, l=%(l)s"
+        description: Square Hollow Section (SHS)
     parameters:
         free: [type,l]
         defaults: {type: "40/2.6", l: 3000}
@@ -454,11 +470,19 @@ classes:
     source: EN 10210-2:2006, Table B.2
     notes: http://en.wikipedia.org/wiki/Structural_steel
   - id: rectangular_hollow
-    naming:
-      template: "RHS%s, l=%s"
-      substitute: [type,l]
-    description: Rectangular Hollow Section (RHS)
-    standard: [EN 10210-2 rectangular]
+    standards:
+      - body: DIN EN
+        standard: DIN EN 10210-2
+        suffix: rectangular
+        year: 2006
+        labeling: "RHS DIN EN 10210-2 %(type)s, l=%(l)s"
+        description: Rectangular Hollow Section (RHS)
+      - body: EN
+        standard: EN 10210-2
+        suffix: rectangular
+        year: 2006
+        labeling: "RHS EN 10210-2 %(type)s, l=%(l)s"
+        description: Rectangular Hollow Section (RHS)
     parameters:
         free: [type,l]
         defaults: {type: "50/30/2.6", l: 3000}
