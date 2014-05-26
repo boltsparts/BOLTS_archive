@@ -17,7 +17,7 @@ message make sure you have [BOLTS for FreeCAD installed](installation.html).
 
 Select the `start_bolts.FCMacro` from the drop-down list. The various fields can be filled with `start BOLTS standard parts library` or something similar.
 
-Then click on the three dots next to Pixmap, choose add icons and navigate to the BOLTS folder in your macro path (this might be tricky, as the macro folder is hidden). Add the subfolder icons. Finally choose the golden bolt icon with filename `bolts32.png`.
+Then click on the three dots next to Pixmap, choose add icons and navigate to the BOLTS folder in your macro path (this might be tricky, as the macro folder is hidden). Add the subfolder icons by clicking `Open`. Finally choose the golden bolt icon with filename `bolts32.png`.
 
 When you are done, it should look like this:
 
