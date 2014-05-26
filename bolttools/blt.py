@@ -16,6 +16,7 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 import yaml
+import string
 import os
 from os.path import splitext, exists, join
 # pylint: disable=W0622
@@ -466,6 +467,10 @@ class Repository(ContainerMixin):
 			if raw_coll["id"] != splitext(filename)[0]:
 				raise MalformedCollectionError(
 					"Collection ID is not identical with file name: %s" % filename)
+			for c in raw_coll["id"]:
+				if not c in string.ascii_letters +  string.digits + "_":
+					raise MalformedCollectionError(
+						"Collection ID contains invalid character: %s" % c)
 
 			try:
 				coll = Collection(raw_coll)
