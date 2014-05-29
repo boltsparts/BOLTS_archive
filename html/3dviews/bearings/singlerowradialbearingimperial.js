@@ -6074,11 +6074,11 @@ function attach_renderer(target) {
                 geom.faces.push( new THREE.Face3(1005, 1003, 846) );
                 geom.faces.push( new THREE.Face3(1006, 842, 844) );
                 geom.faces.push( new THREE.Face3(808, 1002, 811) );
-                geom.faces.push( new THREE.Face3(808, 1007, 1002) );
                 geom.faces.push( new THREE.Face3(1006, 844, 1004) );
-                geom.faces.push( new THREE.Face3(824, 826, 1000) );
+                geom.faces.push( new THREE.Face3(808, 1007, 1002) );
                 geom.faces.push( new THREE.Face3(803, 1005, 848) );
                 geom.faces.push( new THREE.Face3(824, 1000, 1008) );
+                geom.faces.push( new THREE.Face3(824, 826, 1000) );
                 geom.faces.push( new THREE.Face3(1009, 824, 1008) );
                 geom.faces.push( new THREE.Face3(1010, 1005, 803) );
                 geom.faces.push( new THREE.Face3(1011, 840, 842) );
@@ -6089,8 +6089,8 @@ function attach_renderer(target) {
                 geom.faces.push( new THREE.Face3(1014, 803, 800) );
                 geom.faces.push( new THREE.Face3(822, 824, 1009) );
                 geom.faces.push( new THREE.Face3(818, 1013, 1012) );
-                geom.faces.push( new THREE.Face3(818, 1012, 814) );
                 geom.faces.push( new THREE.Face3(1014, 1010, 803) );
+                geom.faces.push( new THREE.Face3(818, 1012, 814) );
                 geom.faces.push( new THREE.Face3(818, 822, 1013) );
                 geom.faces.push( new THREE.Face3(1015, 838, 840) );
                 geom.faces.push( new THREE.Face3(1015, 840, 1011) );
@@ -8150,7 +8150,7 @@ function attach_renderer(target) {
                 var basematerial = new THREE.MeshBasicMaterial( { color: 0x888888 } );
                 var mesh = new THREE.Mesh( geom, basematerial );
                 scene.add( mesh );
-                var linematerial = new THREE.LineBasicMaterial({color: 0x000000,});
+                var linematerial = new THREE.LineBasicMaterial({linewidth: 1, color: 0x000000,});
                 var wire = new THREE.Geometry();
                 wire.vertices.push(new THREE.Vector3(1.125, 0.0, 0.03125));
                 wire.vertices.push(new THREE.Vector3(1.125, 0.0, 0.28125));

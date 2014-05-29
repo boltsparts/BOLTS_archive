@@ -274,7 +274,7 @@ function attach_renderer(target) {
                 var basematerial = new THREE.MeshBasicMaterial( { color: 0x888888 } );
                 var mesh = new THREE.Mesh( geom, basematerial );
                 scene.add( mesh );
-                var linematerial = new THREE.LineBasicMaterial({color: 0x000000,});
+                var linematerial = new THREE.LineBasicMaterial({linewidth: 1, color: 0x000000,});
                 var wire = new THREE.Geometry();
                 wire.vertices.push(new THREE.Vector3(0.28125, 0.16237976321, 0.0));
                 wire.vertices.push(new THREE.Vector3(-1.38777878078e-17, 0.324759526419, 0.0));
