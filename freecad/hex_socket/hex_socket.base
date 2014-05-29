@@ -1,0 +1,12 @@
+---
+- filename: hex_socket.py
+  author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  type: function
+  functions:
+    - name: hex_socket1
+      classids: [hexsocketcountersunk]
+    - name: hex_socket2
+      classids: [hexsocketheadcap]
+...
+
