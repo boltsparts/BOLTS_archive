@@ -32,7 +32,7 @@ already available in computer readable and structured form. All it took were 50
 lines of code.
 
 As a user one can not do very much with it, apart from
-[viewing the contents of the tracker](http://thingtracker.net/tools/viewer/?trackerURL={{site.baseurl}}/thingtracker.json#).
+[viewing the contents of the tracker](http://thingtracker.net/tools/viewer/?trackerURL=http://jreinhardt.github.io/BOLTS/thingtracker.json#).
 The only way in which this is or might be useful is to raise awareness and
 activity for TTN and to help with the development of the TTN and of tools using
 it.
