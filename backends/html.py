@@ -16,12 +16,14 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 import string
+import json
 from os import listdir, makedirs, walk
 from os.path import join, basename, splitext, exists, relpath
 import subprocess
 from shutil import copyfile
 # pylint: disable=W0622
 from codecs import open
+from datetime import datetime
 
 from common import BackendExporter
 from license import LICENSES_SHORT
@@ -185,6 +187,78 @@ class HTMLExporter(BackendExporter):
 			#render dots to png
 			with open(join(image_path,"%s.png" % coll.id),'wb') as fid:
 				fid.write(subprocess.check_output(["dot","-Tpng",join(image_path,"%s.dot" % coll.id)]))
+
+		#write thing tracker
+		tracker = {}
+		tracker["version"] = 0.0
+		#TODO: hardcoded, not good
+		tracker["url"] = "http://jreinhardt.github.io/BOLTS/bolts_ttn.json"
+		tracker["description"] = "A ThingTracker for BOLTS"
+		tracker["updated"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S%z")
+		tracker["trackersCount"] = 0
+		tracker["trackersTraversalDepth"] = 0
+		tracker["maintainers"] = [{
+			"name" : "Johannes Reinhardt",
+			"url" : "https://github.com/jreinhardt",
+			"email" : "bolts@ist-dein-freund.de"
+		}]
+
+		things = []
+		for coll in self.repo.collections:
+			for cl in coll.classes:
+				thing = {}
+				thing["title"] = cl.name
+				 #TODO: hardcoded, not good
+				thing["url"] = "http://jreinhardt.github.io/BOLTS/html/classes/%s.html" % cl.name
+				thing["authors"] = []
+				thing["licenses"] = []
+				thing["description"] = cl.description or "No description available"
+
+				for mail,name in zip(coll.author_mails,coll.author_names):
+					thing["authors"].append({
+						'name' : name,
+						'mail' : mail
+				})
+				thing["licenses"].append(coll.license_name)
+
+				if cl.id in self.freecad.getbase:
+					base = self.freecad.getbase[cl.id]
+					for mail,name in zip(base.author_mails,base.author_names):
+						thing["authors"].append({
+							'name' : name,
+							'mail' : mail
+						})
+					thing["licenses"].append(base.license_name)
+
+				if cl.id in self.openscad.getbase:
+					base = self.openscad.getbase[cl.id]
+					for mail,name in zip(base.author_mails,base.author_names):
+						thing["authors"].append({
+							'name' : name,
+							'mail' : mail
+						})
+					thing["licenses"].append(base.license_name)
+
+				if cl.id in self.drawings.getdimensions:
+					drawing = self.drawings.getdimensions[cl.id]
+					if not drawing.get_png() is None:
+						#TODO: hardcoded, not good
+						thing["thumbnailUrls"] = [
+							"http://jreinhardt.github.io/BOLTS/html/%s/%s.png" % (coll.id,drawing.filename)]
+				thing["tags"] = ["BOLTS",coll.name]
+				things.append(thing)
+		tracker["thingsCount"] = len(things)
+		tracker["things"] = things
+
+
+		with open(join(out_root,"thingtracker.json"),'w','utf8') as fid:
+			fid.write(json.dumps(tracker))
+
+
+
+
+
+
 
 	def _get_coll_base_graph_dot(self,coll):
 		res = []
