@@ -133,3 +133,9 @@ class IncompatibleDescriptionError(Exception):
 		self.msg = "Description conflict on Parameter union for %s: %s is not %s" % (pname,d1,d2)
 	def __str__(self):
 		return self.msg
+
+class LimitExceededError(Exception):
+	def __init__(self,src,dst):
+		self.msg = "Destination limit exceeded when trying to insert link %s,%s" % (src,dst)
+	def __str__(self):
+		return self.msg
