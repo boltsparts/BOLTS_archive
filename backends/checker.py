@@ -79,23 +79,18 @@ class MissingBaseTable(ErrorTable):
 		ErrorTable.__init__(self,
 			"Missing base geometries",
 			"Some classes can not be used in one or more CAD packages, because no geometry is available.",
-			["Class id","Collection","Standards","FreeCAD","OpenSCAD"]
+			["Class id","Collection","FreeCAD","OpenSCAD"]
 		)
 
 	def populate(self,repo,dbs):
-		for coll in repo.collections:
-			for cl in coll.classes_by_ids():
-				row = []
-				row.append(cl.id)
-				row.append(coll.id)
-				if cl.standard is None:
-					row.append(cl.standard)
-				else:
-					row.append(', '.join(cl.standard))
-				row.append(cl.id in dbs["freecad"].getbase)
-				row.append(cl.id in dbs["openscad"].getbase)
-				if not (row[-1] and row[-2]):
-					self.rows.append(row)
+		for cl in repo.classes.values():
+			row = []
+			row.append(cl.id)
+			row.append(repo.collection_classes.get_src(cl).name)
+			row.append(cl.id in dbs["freecad"].getbase)
+			row.append(cl.id in dbs["openscad"].getbase)
+			if not (row[-1] and row[-2]):
+				self.rows.append(row)
 
 class UnknownClassTable(ErrorTable):
 	def __init__(self):
@@ -106,16 +101,10 @@ class UnknownClassTable(ErrorTable):
 		)
 
 	def populate(self,repo,dbs):
-		ids = []
-		for coll in repo.collections:
-			for cl in coll.classes_by_ids():
-				ids.append(cl.id)
-		for db in dbs:
-			if not db in ["openscad","freecad"]:
-				continue
+		for db in ["openscad","freecad"]:
 			for base in dbs[db].getbase.values():
 				for cl_id in base.classids:
-					if cl_id not in ids:
+					if cl_id not in repo.classes:
 						row = []
 						row.append(cl_id)
 						row.append(db)
@@ -126,44 +115,34 @@ class MissingCommonParametersTable(ErrorTable):
 		ErrorTable.__init__(self,
 			"Missing common parameters",
 			"Some classes have no common parameters defined.",
-			["Class ID","Collection","Standards"]
+			["Class ID","Collection"]
 		)
 
 	def populate(self,repo,dbs):
-		for coll in repo.collections:
-			for cl in coll.classes_by_ids():
-				if cl.parameters.common is None:
-					row = []
-					row.append(cl.id)
-					row.append(coll.id)
-					if cl.standard is None:
-						row.append(cl.standard)
-					else:
-						row.append(', '.join(cl.standard))
-					self.rows.append(row)
+		for cl in repo.classes.values():
+			if cl.parameters.common is None:
+				row = []
+				row.append(cl.id)
+				row.append(repo.collection_classes.get_src(cl).name)
+				self.rows.append(row)
 
 class MissingConnectorsTable(ErrorTable):
 	def __init__(self):
 		ErrorTable.__init__(self,
 			"Missing connectors",
-			"Some classes have no connectors specified.",
-			["Class ID","Collection","Standards"]
+			"Some classes have no connectors for OpenSCAD specified.",
+			["Class ID","Collection"]
 		)
 
 	def populate(self,repo,dbs):
-		for coll in repo.collections:
-			for cl in coll.classes_by_ids():
-				if cl.id in dbs["openscad"].getbase:
-					base = dbs["openscad"].getbase[cl.id]
-					if base.connectors is None:
-						row = []
-						row.append(cl.id)
-						row.append(coll.id)
-						if cl.standard is None:
-							row.append(cl.standard)
-						else:
-							row.append(', '.join(cl.standard))
-						self.rows.append(row)
+		for cl in repo.classes.values():
+			if cl.id in dbs["openscad"].getbase:
+				base = dbs["openscad"].getbase[cl.id]
+				if base.connectors is None:
+					row = []
+					row.append(cl.id)
+					row.append(repo.collection_classes.get_src(cl).name)
+					self.rows.append(row)
 
 class UnknownConnectorLocationTable(ErrorTable):
 	def __init__(self):
@@ -173,27 +152,26 @@ class UnknownConnectorLocationTable(ErrorTable):
 			["Class id", "Locations", "Collection"]
 		)
 	def populate(self,repo,dbs):
-		for coll in repo.collections:
-			for cl in coll.classes_by_ids():
-				if cl.id in dbs["openscad"].getbase:
-					#find all locations
-					base = dbs["openscad"].getbase[cl.id]
-					locations = []
-					if base.type == "module" and not base.connectors is None:
-						locations = base.connectors.locations
+		for cl in repo.classes.values():
+			if cl.id in dbs["openscad"].getbase:
+				#find all locations
+				base = dbs["openscad"].getbase[cl.id]
+				locations = []
+				if base.type == "module" and not base.connectors is None:
+					locations = base.connectors.locations
 
-					#collect all locations covered by drawings
-					covered = []
-					if cl.id in dbs["drawings"].getconnectors:
-						for loc in dbs["drawings"].getconnectors[cl.id]:
-							covered.append(loc)
-					unknown = set(covered) - set(locations)
-					if len(unknown) > 0:
-						row = []
-						row.append(cl.id)
-						row.append(",".join(list(uncovered)))
-						row.append(coll.id)
-						self.rows.append(row)
+				#collect all locations covered by drawings
+				covered = []
+				if cl.id in dbs["drawings"].getconnectors:
+					for loc in dbs["drawings"].getconnectors[cl.id]:
+						covered.append(loc)
+				unknown = set(covered) - set(locations)
+				if len(unknown) > 0:
+					row = []
+					row.append(cl.id)
+					row.append(",".join(list(uncovered)))
+					row.append(repo.collection_classes.get_src(cl).name)
+					self.rows.append(row)
 
 
 class MissingDrawingTable(ErrorTable):
@@ -201,48 +179,39 @@ class MissingDrawingTable(ErrorTable):
 		ErrorTable.__init__(self,
 			"Missing drawings",
 			"Some classes do not have associated drawings.",
-			["Class id", "Drawing type", "Locations", "Collection", "Standards"]
+			["Class id", "Drawing type", "Locations", "Collection"]
 		)
 
 	def populate(self,repo,dbs):
-		for coll in repo.collections:
-			for cl in coll.classes_by_ids():
-				#dimension drawings
-				if not cl.id in dbs["drawings"].getdimensions:
+		for cl in repo.classes.values():
+			#dimension drawings
+			if not cl.id in dbs["drawings"].getdimensions:
+				row = []
+				row.append(cl.id)
+				row.append("Dimensions")
+				row.append("-")
+				row.append(repo.collection_classes.get_src(cl).name)
+				self.rows.append(row)
+			#connector drawings
+			if cl.id in dbs["openscad"].getbase:
+				#find all locations
+				base = dbs["openscad"].getbase[cl.id]
+				locations = []
+				if base.type == "module" and not base.connectors is None:
+					locations = base.connectors.locations
+
+				covered = []
+				if cl.id in dbs["drawings"].getconnectors:
+					for loc in dbs["drawings"].getconnectors[cl.id]:
+						covered.append(loc)
+				uncovered = set(locations) - set(covered)
+				if len(uncovered) > 0:
 					row = []
 					row.append(cl.id)
-					row.append("Dimensions")
-					row.append("-")
-					row.append(coll.id)
-					if cl.standard is None:
-						row.append(cl.standard)
-					else:
-						row.append(', '.join(cl.standard))
+					row.append("Connectors")
+					row.append(",".join(list(uncovered)))
+					row.append(repo.collection_classes.get_src(cl).name)
 					self.rows.append(row)
-				#connector drawings
-				if cl.id in dbs["openscad"].getbase:
-					#find all locations
-					base = dbs["openscad"].getbase[cl.id]
-					locations = []
-					if base.type == "module" and not base.connectors is None:
-						locations = base.connectors.locations
-
-					covered = []
-					if cl.id in dbs["drawings"].getconnectors:
-						for loc in dbs["drawings"].getconnectors[cl.id]:
-							covered.append(loc)
-					uncovered = set(locations) - set(covered)
-					if len(uncovered) > 0:
-						row = []
-						row.append(cl.id)
-						row.append("Connectors")
-						row.append(",".join(list(uncovered)))
-						row.append(coll.id)
-						if cl.standard is None:
-							row.append(cl.standard)
-						else:
-							row.append(', '.join(cl.standard))
-						self.rows.append(row)
 
 
 class MissingSVGSourceTable(ErrorTable):
@@ -272,7 +241,7 @@ class UnsupportedLicenseTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		#collections
-		for coll in repo.collections:
+		for coll in repo.collections.values():
 			if not license.check_license(coll.license_name,coll.license_url):
 				row = []
 				row.append("Collection")
@@ -325,14 +294,14 @@ class UnknownFileTable(ErrorTable):
 		for db in dbs:
 			if db in ["drawings","solidworks"]:
 				continue
-			for coll in repo.collections:
+			for coll in repo.collections.values():
 				path = join(repo.path,db,coll.id)
 				if not exists(path):
 					continue
 				files = listdir(path)
 
 				#remove files known from bases
-				for cl in coll.classes_by_ids():
+				for cl in repo.collection_classes.get_dsts(coll):
 					if not cl.id in dbs[db].getbase:
 						continue
 					base = dbs[db].getbase[cl.id]
@@ -349,7 +318,7 @@ class UnknownFileTable(ErrorTable):
 					self.rows.append(row)
 
 		if "drawings" in dbs:
-			for coll in repo.collections:
+			for coll in repo.collections.values():
 				path = join(repo.path,"drawings",coll.id)
 				if not exists(path):
 					continue
@@ -357,7 +326,7 @@ class UnknownFileTable(ErrorTable):
 				files = listdir(path)
 
 				#remove files known from bases
-				for cl in coll.classes_by_ids():
+				for cl in repo.collection_classes.get_dsts(coll):
 					if not cl.id in dbs["drawings"].getdimensions:
 						continue
 					drawing = dbs["drawings"].getdimensions[cl.id]
@@ -367,7 +336,8 @@ class UnknownFileTable(ErrorTable):
 					if not drawing.get_svg() is None:
 						if basename(drawing.get_svg()) in files:
 							files.remove(basename(drawing.get_svg()))
-				for cl in coll.classes_by_ids():
+
+				for cl in repo.collection_classes.get_dsts(coll):
 					if not cl.id in dbs["drawings"].getconnectors:
 						continue
 					drawings = dbs["drawings"].getconnectors[cl.id]
@@ -389,7 +359,7 @@ class UnknownFileTable(ErrorTable):
 					self.rows.append(row)
 
 		if "solidworks" in dbs:
-			for coll in repo.collections:
+			for coll in repo.collections.values():
 				path = join(repo.path,"solidworks",coll.id)
 				if not exists(path):
 					continue
@@ -421,16 +391,15 @@ class NonconformingParameternameTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		schema = re.compile("[a-zA-z][a-z0-9_]*")
-		for coll in repo.collections:
-			for cl in coll.classes_by_ids():
-				for pname in cl.parameters.parameters:
-					match = schema.match(pname)
-					if match is None or (not match.group(0) == pname):
-						row = []
-						row.append(pname)
-						row.append(cl.id)
-						row.append(coll.id)
-						self.rows.append(row)
+		for cl in repo.classes.values():
+			for pname in cl.parameters.parameters:
+				match = schema.match(pname)
+				if match is None or (not match.group(0) == pname):
+					row = []
+					row.append(pname)
+					row.append(cl.id)
+					row.append(repo.collection_classes.get_src(cl).name)
+					self.rows.append(row)
 
 class MissingBaseConnectionTable(ErrorTable):
 	def __init__(self):
@@ -452,14 +421,13 @@ class MissingBaseConnectionTable(ErrorTable):
 		#consolidate geo equivalent sets TODO: what is that operation called in cs lingo? algos?
 		while True:
 			geo_cns = []
-			for coll in repo.collections:
-				for cl in coll.classes_by_ids():
-					cn = set([])
-					for eq in geo_eq:
-						if cl.id in eq:
-							cn = cn.union(eq)
-					if not cn in geo_cns:
-						geo_cns.append(cn)
+			for cl in repo.classes.values():
+				cn = set([])
+				for eq in geo_eq:
+					if cl.id in eq:
+						cn = cn.union(eq)
+				if not cn in geo_cns:
+					geo_cns.append(cn)
 			if len(geo_cns) == len(geo_eq):
 				geo_eq = geo_cns
 				break
@@ -492,28 +460,23 @@ class MissingParameterDescriptionTable(ErrorTable):
 		ErrorTable.__init__(self,
 			"Missing parameter description",
 			"Some classes have no human readable description of their parameters.",
-			["Class id","Collection","Standards","parameters"]
+			["Class id","Collection","parameters"]
 		)
 
 	def populate(self,repo,dbs):
-		for coll in repo.collections:
-			for cl in coll.classes_by_ids():
-				row = []
-				row.append(cl.id)
-				row.append(coll.id)
-				if cl.standard is None:
-					row.append(cl.standard)
-				else:
-					row.append(', '.join(cl.standard))
+		for cl in repo.classes.values():
+			row = []
+			row.append(cl.id)
+			row.append(repo.collection_classes.get_src(cl).name)
 
-				missing = []
-				for pname in cl.parameters.parameters:
-					if not pname in cl.parameters.description:
-						missing.append(pname)
+			missing = []
+			for pname in cl.parameters.parameters:
+				if not pname in cl.parameters.description:
+					missing.append(pname)
 
-				if len(missing) > 0:
-					row.append(', '.join(missing))
-					self.rows.append(row)
+			if len(missing) > 0:
+				row.append(', '.join(missing))
+				self.rows.append(row)
 
 
 class CheckerExporter(BackendExporter):

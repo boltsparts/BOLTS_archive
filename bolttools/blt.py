@@ -267,6 +267,7 @@ class Repository:
 		self.multistandard_standards = Links()
 		self.body_standards = Links()
 		self.body_multistandards = Links()
+		self.collection_classes = Links()
 		self.collection_standards = Links()
 		self.collection_multistandards = Links()
 		self.collection_names = Links()
@@ -323,6 +324,8 @@ class Repository:
 					e.set_repo_path(path)
 					e.set_collection(filename)
 					raise e
+
+				self.collection_classes.add_link(coll,cls)
 
 				names = []
 				standards = []
