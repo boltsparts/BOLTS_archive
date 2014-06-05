@@ -79,6 +79,61 @@ def convert_raw_parameter_value(pname,tname,value):
 
 	return value
 
+class Links:
+	"""
+	Class to represent a 1 to N mapping between objects, where every
+	destination has at most one source that is mapped onto it, i.e. its
+	inverse is injective.
+	"""
+	def __init__(self,N=None):
+		"""
+		Create a new Links instance. N gives an upper bound for the
+		number of destinations for a source, None represents infinity.
+		"""
+		assert(N is None or N > 0)
+		self.N = N
+		self.srctodsts = {}
+		self.dsttosrc = {}
+
+	def add_link(self,src,dst):
+		"""
+		Add a link from src to dst
+		"""
+		if src in self.srctodsts:
+			if not self.N is None and len(self.srctodsts[src]) >= self.N:
+				raise LimitExceededError(src,dst)
+			self.srctodsts[src].append(dst)
+		else:
+			self.srctodsts[src] = [dst]
+		if dst in self.dsttosrc:
+			raise ValueError("Destination already used %s" % dst)
+		self.dsttosrc[dst] = src
+
+	def contains_src(self,src):
+		"""
+		Indicates whether there is a link with source src
+		"""
+		return src in self.srctodsts
+
+	def contains_dst(self,dst):
+		"""
+		Indicates whether there is a link with destination dst
+		"""
+		return dst in self.dsttosrc
+
+	def get_dsts(self,src):
+		"""
+		Return a list of destinations of the mapping for this src.
+		"""
+		return self.srctodsts[src]
+
+	def get_src(self,dst):
+		"""
+		Return the source that gets mapped onto this dst.
+		"""
+		return self.dsttosrc[dst]
+
+
 class Sorting:
 	"""Base class for classes for sorting choices for a Table Index"""
 	def __init__(self):

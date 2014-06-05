@@ -21,6 +21,34 @@ import yaml
 import unittest
 from errors import *
 
+class TestLinks(unittest.TestCase):
+	def test_limit(self):
+		a = common.Links(2)
+		a.add_link("a",1)
+		a.add_link("a",2)
+		self.assertRaises(LimitExceededError,lambda: a.add_link("a",3))
+
+	def test_errors(self):
+		a = common.Links()
+		a.add_link("a",1)
+		self.assertRaises(ValueError,lambda: a.add_link("b",1))
+
+	def test_accessors(self):
+		a = common.Links()
+		a.add_link("a",1)
+		a.add_link("a",2)
+		a.add_link("b",3)
+		a.add_link("c",4)
+
+		self.assertEqual(set(a.get_dsts("a")),set([1,2]))
+		self.assertEqual(set(a.get_dsts("b")),set([3]))
+
+		self.assertEqual(a.get_src(1),"a")
+		self.assertEqual(a.get_src(2),"a")
+		self.assertEqual(a.get_src(3),"b")
+		self.assertEqual(a.get_src(4),"c")
+
+
 class TestParseAngled(unittest.TestCase):
 	def test_wellformed(self):
 		res = common.parse_angled("Johannes Reinhardt <jreinhardt@ist-dein-freund.de>")

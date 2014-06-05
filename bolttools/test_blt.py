@@ -21,33 +21,6 @@ import yaml
 import unittest
 from errors import *
 
-class TestLinks(unittest.TestCase):
-	def test_limit(self):
-		a = blt.Links(2)
-		a.add_link("a",1)
-		a.add_link("a",2)
-		self.assertRaises(LimitExceededError,lambda: a.add_link("a",3))
-
-	def test_errors(self):
-		a = blt.Links()
-		a.add_link("a",1)
-		self.assertRaises(ValueError,lambda: a.add_link("b",1))
-
-	def test_accessors(self):
-		a = blt.Links()
-		a.add_link("a",1)
-		a.add_link("a",2)
-		a.add_link("b",3)
-		a.add_link("c",4)
-
-		self.assertEqual(set(a.get_dsts("a")),set([1,2]))
-		self.assertEqual(set(a.get_dsts("b")),set([3]))
-
-		self.assertEqual(a.get_src(1),"a")
-		self.assertEqual(a.get_src(2),"a")
-		self.assertEqual(a.get_src(3),"b")
-		self.assertEqual(a.get_src(4),"c")
-
 class TestClass(unittest.TestCase):
 	def setUp(self):
 		self.cl = yaml.load("""
