@@ -108,7 +108,7 @@ source: http://en.wikipedia.org/wiki/List_of_battery_sizes
 	def test_classname(self):
 		res = []
 		for cn in self.cl['names']:
-			res.append(blt.ClassName(cn,self.cl['id']))
+			res.append(blt.ClassName(cn))
 
 		self.assertEqual(len(res),2)
 
@@ -119,7 +119,7 @@ source: http://en.wikipedia.org/wiki/List_of_battery_sizes
 	def test_standardname(self):
 		res = []
 		for sn in self.cl['standards']:
-			res.append(blt.StandardName(sn,self.cl['id']))
+			res.append(blt.StandardName(sn))
 
 		self.assertEqual(len(res),1)
 		self.assertEqual(res[0].standard.get_safe_name(),'IEC60086')
@@ -148,107 +148,6 @@ class MockDesignation(blt.DesignationMixin):
 			raise KeyError("Key not found")
 		return MockDesignation(id)
 
-
-class TestContainer(unittest.TestCase):
-	def test_permissions(self):
-		cnt = blt.ContainerMixin()
-		cnt.add_standard_single(MockDesignation("id1"))
-		cnt.add_standard_multi(MockDesignation("id2"))
-		cnt.add_name_single(MockDesignation("id3"))
-		cnt.add_name_group(MockDesignation("id4",["id5"]))
-
-		cnt = blt.ContainerMixin([])
-		self.assertRaises(ValueError,lambda: cnt.add_standard_single(MockDesignation("id1")))
-		self.assertRaises(ValueError,lambda: cnt.add_standard_multi(MockDesignation("id2")))
-		self.assertRaises(ValueError,lambda: cnt.add_name_single(MockDesignation("id3")))
-		self.assertRaises(ValueError,lambda: cnt.add_name_group(MockDesignation("id3")))
-
-	def setUp(self):
-		self.cnt = blt.ContainerMixin()
-		self.cnt.add_name_single(MockDesignation("id1"))
-		self.cnt.add_standard_single(MockDesignation("id2"))
-		self.cnt.add_name_single(MockDesignation("id3"))
-		self.cnt.add_standard_multi(MockDesignation("id4",["id6","id8"]))
-		self.cnt.add_name_group(MockDesignation("id7",["id9"]))
-
-	def test_collisions(self):
-		self.assertRaises(MalformedRepositoryError,
-				lambda: self.cnt.add_name_single(MockDesignation("id1")))
-		self.assertRaises(MalformedRepositoryError,
-				lambda: self.cnt.add_name_group(MockDesignation("id1")))
-		self.assertRaises(MalformedRepositoryError,
-				lambda: self.cnt.add_name_group(MockDesignation("id5",["id1"])))
-		self.assertRaises(MalformedRepositoryError,
-				lambda: self.cnt.add_standard_single(MockDesignation("id1")))
-		self.assertRaises(MalformedRepositoryError,
-				lambda: self.cnt.add_standard_multi(MockDesignation("id1",[])))
-		self.assertRaises(MalformedRepositoryError,
-				lambda: self.cnt.add_standard_multi(MockDesignation("id5",["id1"])))
-
-	def test_contains(self):
-		self.assertTrue(self.cnt.contains_name_single('id3'))
-		self.assertFalse(self.cnt.contains_name_single('id5'))
-
-		self.assertTrue(self.cnt.contains_name_group('id7'))
-		self.assertFalse(self.cnt.contains_name_group('id6'))
-		self.assertFalse(self.cnt.contains_name_group('id5'))
-
-		self.assertTrue(self.cnt.contains_name('id1'))
-		self.assertTrue(self.cnt.contains_name('id9'))
-		self.assertFalse(self.cnt.contains_name('id5'))
-		self.assertFalse(self.cnt.contains_name('id7'))
-
-		self.assertTrue(self.cnt.contains_standard_single('id2'))
-		self.assertFalse(self.cnt.contains_standard_single('id3'))
-
-		self.assertTrue(self.cnt.contains_standard_multi('id4'))
-		self.assertFalse(self.cnt.contains_standard_multi('id3'))
-		self.assertFalse(self.cnt.contains_standard_single('id6'))
-
-		self.assertTrue(self.cnt.contains_standard('id2'))
-		self.assertTrue(self.cnt.contains_standard('id6'))
-		self.assertFalse(self.cnt.contains_standard('id1'))
-
-		self.assertTrue(self.cnt.contains('id1'))
-		self.assertTrue(self.cnt.contains('id2'))
-		self.assertTrue(self.cnt.contains('id4'))
-		self.assertTrue(self.cnt.contains('id6'))
-		self.assertFalse(self.cnt.contains('id5'))
-
-	def test_accessors(self):
-		self.cnt.get_name_single('id3')
-		self.assertRaises(KeyError, lambda: self.cnt.get_name_single('id5'))
-
-		self.cnt.get_name_group('id7')
-		self.assertRaises(KeyError, lambda: self.cnt.get_name_group('id4'))
-
-		self.cnt.get_standard_single('id2')
-		self.assertRaises(KeyError, lambda: self.cnt.get_standard_single('id3'))
-
-		self.cnt.get_standard_multi('id4')
-		self.assertRaises(KeyError, lambda: self.cnt.get_standard_multi('id3'))
-		self.assertRaises(KeyError, lambda: self.cnt.get_standard_single('id6'))
-
-		self.cnt.get_standard('id2')
-		self.cnt.get_standard('id6')
-		self.assertRaises(KeyError, lambda: self.cnt.get_standard('id1'))
-
-		self.cnt.get('id1')
-		self.cnt.get('id2')
-		self.cnt.get('id4')
-		self.cnt.get('id6')
-		self.cnt.get('id7')
-		self.cnt.get('id9')
-		self.assertRaises(KeyError, lambda: self.cnt.get('id5'))
-
-	def test_iterators(self):
-		self.assertEqual(len([i for i in self.cnt.all_names_single()]),2)
-		self.assertEqual(len([i for i in self.cnt.all_names_group()]),1)
-		self.assertEqual(len([i for i in self.cnt.all_standards_single()]),1)
-		self.assertEqual(len([i for i in self.cnt.all_standards_multi()]),1)
-		self.assertEqual(len([i for i in self.cnt.all_standards()]),3)
-
-
 #TODO: slow?
 class TestRepository(unittest.TestCase):
 	def setUp(self):
@@ -260,29 +159,13 @@ class TestRepository(unittest.TestCase):
 		self.assertEqual(len(self.repo.classes),11)
 		self.assertEqual(len(self.repo.collections),2)
 
-		self.assertEqual(self.repo.get_standard("DIN439_B").replacedby,"ISO4035")
-
 	def test_accessors(self):
-		self.assertEqual(len([n for n in self.repo.all_names_single()]),7)
-		self.assertEqual(len([n for n in self.repo.all_names_group()]),0)
-		self.assertEqual(len([n for n in self.repo.all_standards()]),14)
-		self.assertEqual(len([n for n in self.repo.all_standards_multi()]),4)
-
-		self.assertEqual(self.repo.get_class_by_id('hexagonnut2').id,'hexagonnut2')
-
-	def test_ids(self):
-		self.repo.contains('DIN933')
-		self.repo.contains_standard_single('DIN933')
-		self.repo.contains('IEC60086_Cat1')
-		self.repo.contains('IEC60086')
-		self.repo.contains_standard_multi('IEC60086')
-
-		self.repo.contains('roundBatteries')
-		self.repo.contains_name_single('roundBatteries')
+		self.assertEqual(len([1 for n in self.repo.iternames()]),7)
+		self.assertEqual(len([1 for n in self.repo.iterstandards()]),14)
 
 	def test_bodies(self):
-		self.assertEqual(len(self.repo.standard_bodies),5)
-		self.assertTrue('DIN' in self.repo.standard_bodies)
+		self.assertEqual(len(self.repo.bodies),5)
+		self.assertTrue('DIN' in self.repo.bodies)
 
 
 if __name__ == '__main__':
