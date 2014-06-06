@@ -1,0 +1,161 @@
+#.+
+# .context    : BOLTS - Open Library of Technical Specifications
+# .title      : flanges
+# .kind       : BOLTS blt file
+# .author     : Fabrizio Pollastri <f.pollastri@inrim.it>
+# .site       : Torino - Italy
+# .creation   : 12-May2014
+# .license    : MIT <http://opensource.org/licenses/MIT>
+#
+# Copyright (c) 2014 Fabrizio Pollastri <f.pollastri@inrim.it>
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#.-
+---
+id: flanges
+name: Flanges
+description: various standard flanges
+author: Fabrizio Pollastri <f.pollastri@inrim.it>
+license: MIT <http://opensource.org/licenses/MIT>
+blt-version: 0.3
+classes:
+  - id: plateflangeen1092-1pn6
+    naming:
+      template: Plate flange EN1092-1 PN6 T01 %s
+      substitute: [dn]
+    description: Plate flange EN1092-1 type 01 pn6
+    standard: [EN1092-1 T01 PN6]
+    replaces: 
+    parameters:
+        free: [dn]
+        defaults: {dn: "DN100"}
+        types:
+          dn: Table Index
+          d1: Length (mm)
+          k: Length (mm)
+          D: Length (mm)
+          b: Length (mm)
+          d2: Length (mm)
+          bn: Number
+        description:
+          dn: nominal diameter
+          d1: hole diameter
+          k: bolt circle diameter
+          D: outside diameter
+          b: thickness
+          d2: bolt hole diameter
+          bn: bolts number
+        tables:
+          - index: dn
+            columns: [d1, k, D, b, d2, bn]
+            data:
+                #dn     [  d1     k      D      b     d2     bn  ]
+                DN15:   [  22.0,  55.0,  80.0,  12.0, 11.0,  4   ]
+                DN20:   [  27.5,  65.0,  90.0,  14.0, 11.0,  4   ]
+                DN25:   [  34.5,  75.0,  100.0, 14.0, 11.0,  4   ]
+                DN32:   [  43.5,  90.0,  120.0, 16.0, 14.0,  4   ]
+                DN40:   [  49.5,  100.0, 130.0, 16.0, 14.0,  4   ]
+                DN50:   [  61.5,  110.0, 140.0, 16.0, 14.0,  4   ]
+                DN65:   [  77.5,  130.0, 160.0, 16.0, 14.0,  4   ]
+                DN80:   [  90.5,  150.0, 190.0, 18.0, 18.0,  4   ]
+                DN100:  [  116.0, 170.0, 210.0, 18.0, 18.0,  4   ]
+                DN125:  [  141.5, 200.0, 240.0, 20.0, 18.0,  8   ]
+                DN150:  [  170.5, 225.0, 265.0, 20.0, 18.0,  8   ]
+                DN200:  [  221.5, 280.0, 320.0, 22.0, 18.0,  8   ]
+                DN250:  [  276.5, 335.0, 375.0, 24.0, 18.0,  12  ]
+                DN300:  [  327.5, 395.0, 440.0, 24.0, 22.0,  12  ]
+                DN350:  [  359.5, 445.0, 490.0, 26.0, 22.0,  12  ]
+                DN400:  [  411.0, 495.0, 540.0, 28.0, 22.0,  16  ]
+                DN450:  [  462.0, 550.0, 595.0, 30.0, 22.0,  16  ]
+                DN500:  [  513.5, 600.0, 645.0, 30.0, 22.0,  20  ]
+                DN600:  [  616.5, 705.0, 755.0, 32.0, 26.0,  20  ]
+                DN700:  [  714.2, 810.0, 860.0, 40.0, 26.0,  24  ]
+                DN800:  [  815.8, 920.0, 975.0, 44.0, 30.0,  24  ]
+                DN900:  [  917.4, 1020.0,1075.0,48.0, 30.0,  24  ]
+                DN1000: [  1019.0,1120.0,1175.0,52.0, 30.0,  28  ]
+                DN1200: [  1224.0,1340.0,1405.0,60.0, 33.0,  32  ]
+                DN1400: [  1424.0,1560.0,1630.0,72.0, 36.0,  36  ]
+                DN1600: [  1624.0,1760.0,1830.0,80.0, 36.0,  40  ]
+                DN1800: [  1826.0,1970.0,2045.0,88.0, 39.0,  44  ]
+                DN2000: [  2026.0,2180.0,2265.0,96.0, 42.0,  48  ]
+    source: http://www.zetamec.com/en-01-pn6_eng.htm
+  - id: blindflangeen1092-1pn6
+    naming:
+      template: Blind flange EN1092-1 PN6 T05 %s
+      substitute: [dn]
+    description: Blind flange EN1092-1 type 05 pn6
+    standard: [EN1092-1 T05 PN6]
+    replaces: 
+    parameters:
+        free: [dn]
+        defaults: {dn: "DN100"}
+        types:
+          dn: Table Index
+          d1: Length (mm)
+          k: Length (mm)
+          D: Length (mm)
+          b: Length (mm)
+          d2: Length (mm)
+          bn: Number
+        description:
+          dn: nominal diameter
+          d1: hole diameter
+          k: bolt circle diameter
+          D: outside diameter
+          b: thickness
+          d2: bolt hole diameter
+          bn: bolts number
+        tables:
+          - index: dn
+            columns: [d1, k, D, b, d2, bn]
+            data:
+                #dn     [  d1     k      D      b     d2     bn  ]
+                DN15:   [  22.0,  55.0,  80.0,  12.0, 11.0,  4   ]
+                DN20:   [  27.5,  65.0,  90.0,  14.0, 11.0,  4   ]
+                DN25:   [  34.5,  75.0,  100.0, 14.0, 11.0,  4   ]
+                DN32:   [  43.5,  90.0,  120.0, 14.0, 14.0,  4   ]
+                DN40:   [  49.5,  100.0, 130.0, 14.0, 14.0,  4   ]
+                DN50:   [  61.5,  110.0, 140.0, 14.0, 14.0,  4   ]
+                DN65:   [  77.5,  130.0, 160.0, 14.0, 14.0,  4   ]
+                DN80:   [  90.5,  150.0, 190.0, 16.0, 18.0,  4   ]
+                DN100:  [  116.0, 170.0, 210.0, 16.0, 18.0,  4   ]
+                DN125:  [  141.5, 200.0, 240.0, 18.0, 18.0,  8   ]
+                DN150:  [  170.5, 225.0, 265.0, 18.0, 18.0,  8   ]
+                DN200:  [  221.5, 280.0, 320.0, 20.0, 18.0,  8   ]
+                DN250:  [  276.5, 335.0, 375.0, 22.0, 18.0,  12  ]
+                DN300:  [  327.5, 395.0, 440.0, 22.0, 22.0,  12  ]
+                DN350:  [  359.5, 445.0, 490.0, 22.0, 22.0,  12  ]
+                DN400:  [  411.0, 495.0, 540.0, 22.0, 22.0,  16  ]
+                DN450:  [  462.0, 550.0, 595.0, 24.0, 22.0,  16  ]
+                DN500:  [  513.5, 600.0, 645.0, 24.0, 22.0,  20  ]
+                DN600:  [  616.5, 705.0, 755.0, 30.0, 26.0,  20  ]
+                DN700:  [  714.2, 810.0, 860.0, 40.0, 26.0,  24  ]
+                DN800:  [  815.8, 920.0, 975.0, 44.0, 30.0,  24  ]
+                DN900:  [  917.4, 1020.0,1075.0,48.0, 30.0,  24  ]
+                DN1000: [  1019.0,1120.0,1175.0,52.0, 30.0,  28  ]
+                DN1200: [  1224.0,1340.0,1405.0,60.0, 33.0,  32  ]
+                DN1400: [  1424.0,1560.0,1630.0,68.0, 36.0,  36  ]
+                DN1600: [  1624.0,1760.0,1830.0,76.0, 36.0,  40  ]
+                DN1800: [  1826.0,1970.0,2045.0,84.0, 39.0,  44  ]
+                DN2000: [  2026.0,2180.0,2265.0,92.0, 42.0,  48  ]
+    source: http://www.zetamec.com/en-05-pn6_eng.htm
+...
