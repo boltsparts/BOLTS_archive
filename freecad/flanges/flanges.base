@@ -1,0 +1,11 @@
+---
+- filename: flanges.py
+  author: Fabrizio Pollastri <f.pollastri@inrim.it>
+  license: MIT <http://opensource.org/licenses/MIT>
+  type: function
+  functions:
+    - name: plate_flange
+      classids: [plateflangeen1092-1pn6]
+    - name: blind_flange
+      classids: [blindflangeen1092-1pn6]
+...
