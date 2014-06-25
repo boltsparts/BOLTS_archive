@@ -27,8 +27,9 @@ from common import DataBase, BaseElement, Parameters, check_schema
 
 class OpenSCADGeometry(BaseElement):
 	def __init__(self,basefile,collname):
-		BaseElement.__init__(self,basefile,collname)
+		BaseElement.__init__(self,basefile)
 		self.filename = basefile["filename"]
+		#TODO: move this out somehow, so that collname can be dropped
 		self.path = join(collname,self.filename)
 	def get_copy_files(self):
 		"Returns the path of the files to copy relative to the backend_root"
@@ -83,18 +84,14 @@ class Connectors:
 		self.locations = cs["locations"]
 
 class OpenSCADData(DataBase):
-	def __init__(self,path):
-		DataBase.__init__(self,"openscad",path)
+	def __init__(self,repo):
+		DataBase.__init__(self,"openscad",repo)
 		#maps class id to base module
 		self.getbase = {}
 
-		if not exists(path):
-			e = MalformedRepositoryError("Repo directory does not exist")
-			e.set_repo_path(path)
-			raise e
 		if not exists(join(self.backend_root)):
 			e = MalformedRepositoryError("openscad directory does not exist")
-			e.set_repo_path(path)
+			e.set_repo_path(repo.path)
 			raise e
 
 		for coll in listdir(self.backend_root):

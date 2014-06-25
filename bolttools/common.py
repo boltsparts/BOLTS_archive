@@ -650,18 +650,19 @@ class Substitution(NamePair):
 		return self.nice % params
 
 class DataBase:
-	def __init__(self,name,path):
-		self.repo_root = path
-		self.backend_root = join(path,name)
+	def __init__(self,name,repo):
+		self.name = name
+		self.repo = repo
+
+		self.repo_root = self.repo.path
+		self.backend_root = join(self.repo.path,name)
 
 class BaseElement:
 	"""
 	Base class for representing BaseElements, yaml structures that describe
 	the contents of file
 	"""
-	def __init__(self,basefile,collname):
-		self.collection = collname
-
+	def __init__(self,basefile):
 		self.authors = basefile["author"]
 		if isinstance(self.authors,str):
 			self.authors = [self.authors]
@@ -679,6 +680,7 @@ class BaseElement:
 
 		self.type = basefile["type"]
 
-		self.source = ""
 		if "source" in basefile:
 			self.source = basefile["source"]
+		else:
+			self.source = ""

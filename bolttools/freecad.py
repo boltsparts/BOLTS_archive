@@ -24,7 +24,7 @@ from errors import *
 
 class FreeCADGeometry(BaseElement):
 	def __init__(self,basefile,collname,backend_root):
-		BaseElement.__init__(self,basefile,collname)
+		BaseElement.__init__(self,basefile)
 		self.filename = basefile["filename"]
 		self.path = join(backend_root,collname,self.filename)
 
@@ -49,17 +49,13 @@ class BaseFunction(FreeCADGeometry):
 			self.parameters = Parameters({"types" : {}})
 
 class FreeCADData(DataBase):
-	def __init__(self,path):
-		DataBase.__init__(self,"freecad",path)
+	def __init__(self,repo):
+		DataBase.__init__(self,"freecad",repo)
 		self.getbase = {}
 
-		if not exists(path):
-			e = MalformedRepositoryError("Repo directory does not exist")
-			e.set_repo_path(path)
-			raise e
-		if not exists(join(self.backend_root)):
+		if not exists(self.backend_root):
 			e = MalformedRepositoryError("freecad directory does not exist")
-			e.set_repo_path(path)
+			e.set_repo_path(repo.path)
 			raise e
 
 		for coll in listdir(self.backend_root):

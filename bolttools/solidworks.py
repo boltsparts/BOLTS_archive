@@ -65,17 +65,13 @@ class DesignTable(BaseElement):
 			self.classes.append(DesignTableClass(cl))
 
 class SolidWorksData(DataBase):
-	def __init__(self,path):
-		DataBase.__init__(self,"solidworks",path)
+	def __init__(self,repo):
+		DataBase.__init__(self,"solidworks",repo)
 		self.designtables = []
 
-		if not exists(path):
-			e = MalformedRepositoryError("Repo directory does not exist")
-			e.set_repo_path(path)
-			raise e
-		if not exists(join(self.backend_root)):
+		if not exists(self.backend_root):
 			e = MalformedRepositoryError("solidworks directory does not exist")
-			e.set_repo_path(path)
+			e.set_repo_path(repo.path)
 			raise e
 
 		for coll in listdir(self.backend_root):
