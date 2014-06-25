@@ -36,10 +36,10 @@ def export(args):
 	#load data
 	repo = Repository(args.repo)
 	dbs = {}
-	dbs["openscad"] = OpenSCADData(args.repo)
-	dbs["freecad"] = FreeCADData(args.repo)
-	dbs["drawings"] = DrawingsData(args.repo)
-	dbs["solidworks"] = SolidWorksData(args.repo)
+	dbs["openscad"] = OpenSCADData(repo)
+	dbs["freecad"] = FreeCADData(repo)
+	dbs["drawings"] = DrawingsData(repo)
+	dbs["solidworks"] = SolidWorksData(repo)
 
 	license = LICENSES_SHORT[args.license]
 
@@ -76,10 +76,10 @@ def test(args):
 def check(args):
 	repo = Repository(args.repo)
 	dbs = {}
-	dbs["openscad"] = OpenSCADData(args.repo)
-	dbs["freecad"] = FreeCADData(args.repo)
-	dbs["drawings"] = DrawingsData(args.repo)
-	dbs["solidworks"] = SolidWorksData(args.repo)
+	dbs["openscad"] = OpenSCADData(repo)
+	dbs["freecad"] = FreeCADData(repo)
+	dbs["drawings"] = DrawingsData(repo)
+	dbs["solidworks"] = SolidWorksData(repo)
 
 	from backends.checker import CheckerExporter
 	checker = CheckerExporter(repo,dbs)
@@ -90,10 +90,10 @@ def check(args):
 def tasks(args):
 	repo = Repository(args.repo)
 	dbs = {}
-	dbs["openscad"] = OpenSCADData(args.repo)
-	dbs["freecad"] = FreeCADData(args.repo)
-	dbs["drawings"] = DrawingsData(args.repo)
-	dbs["solidworks"] = SolidWorksData(args.repo)
+	dbs["openscad"] = OpenSCADData(repo)
+	dbs["freecad"] = FreeCADData(repo)
+	dbs["drawings"] = DrawingsData(repo)
+	dbs["solidworks"] = SolidWorksData(repo)
 
 	from backends.checker import CheckerExporter
 	checker = CheckerExporter(repo,dbs)
@@ -104,8 +104,8 @@ def tasks(args):
 def connectors(args):
 	repo = Repository(args.repo)
 	dbs = {}
-	dbs["openscad"] = OpenSCADData(args.repo)
-	dbs["drawings"] = DrawingsData(args.repo)
+	dbs["openscad"] = OpenSCADData(repo)
+	dbs["drawings"] = DrawingsData(repo)
 
 	out_path = os.path.join(repo.path,"output","connectordrawings")
 
@@ -141,8 +141,8 @@ def release(args):
 	from backends.freecad import FreeCADExporter
 
 	dbs = {}
-	dbs["openscad"] = OpenSCADData(args.repo)
-	dbs["freecad"] = FreeCADData(args.repo)
+	dbs["openscad"] = OpenSCADData(repo)
+	dbs["freecad"] = FreeCADData(repo)
 
 	backend_names = {"freecad" : "FreeCAD", "openscad" : "OpenSCAD", "iges" : "IGES"}
 

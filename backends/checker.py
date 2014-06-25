@@ -126,7 +126,40 @@ class MissingCommonParametersTable(ErrorTable):
 				row.append(repo.collection_classes.get_src(cl).name)
 				self.rows.append(row)
 
-class MissingConnectorsTable(ErrorTable):
+class UnknownConnectorLocationTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Unknown locations",
+			"Some connector locations are mentioned that are not defined.",
+			["Class id", "Locations", "Collection"]
+		)
+
+	def populate(self,repo,dbs):
+		for cl in repo.classes.values():
+			if not cl.id in dbs["openscad"].getbase:
+				continue
+			#find all locations
+			base = dbs["openscad"].getbase[cl.id]
+			locations = []
+			if base.type == "module" and not base.connectors is None:
+				locations = base.connectors.locations
+
+			#collect all locations covered by drawings
+			covered = []
+			if dbs["drawings"].connectors_classes.contains_dst(cl):
+				for con in dbs["drawings"].connectors_classes.get_srcs(cl):
+					for loc in dbs["drawings"].locations_connectors.get_srcs(con):
+						covered.append(loc)
+
+			unknown = set(covered) - set(locations)
+			if len(unknown) > 0:
+				row = []
+				row.append(cl.id)
+				row.append(",".join(list(uncovered)))
+				row.append(repo.collection_classes.get_src(cl).name)
+				self.rows.append(row)
+
+class MissingConnectorTable(ErrorTable):
 	def __init__(self):
 		ErrorTable.__init__(self,
 			"Missing connectors",
@@ -136,43 +169,17 @@ class MissingConnectorsTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		for cl in repo.classes.values():
-			if cl.id in dbs["openscad"].getbase:
-				base = dbs["openscad"].getbase[cl.id]
-				if base.connectors is None:
-					row = []
-					row.append(cl.id)
-					row.append(repo.collection_classes.get_src(cl).name)
-					self.rows.append(row)
+			if not cl.id in dbs["openscad"].getbase:
+				continue
 
-class UnknownConnectorLocationTable(ErrorTable):
-	def __init__(self):
-		ErrorTable.__init__(self,
-			"Unknown locations",
-			"Some connector locations are mentioned that are not defined.",
-			["Class id", "Locations", "Collection"]
-		)
-	def populate(self,repo,dbs):
-		for cl in repo.classes.values():
-			if cl.id in dbs["openscad"].getbase:
-				#find all locations
-				base = dbs["openscad"].getbase[cl.id]
-				locations = []
-				if base.type == "module" and not base.connectors is None:
-					locations = base.connectors.locations
+			base = dbs["openscad"].getbase[cl.id]
+			if base.type == "module" and not base.connectors is None:
+				continue
 
-				#collect all locations covered by drawings
-				covered = []
-				if cl.id in dbs["drawings"].getconnectors:
-					for loc in dbs["drawings"].getconnectors[cl.id]:
-						covered.append(loc)
-				unknown = set(covered) - set(locations)
-				if len(unknown) > 0:
-					row = []
-					row.append(cl.id)
-					row.append(",".join(list(uncovered)))
-					row.append(repo.collection_classes.get_src(cl).name)
-					self.rows.append(row)
-
+			row = []
+			row.append(cl.id)
+			row.append(repo.collection_classes.get_src(cl).name)
+			self.rows.append(row)
 
 class MissingDrawingTable(ErrorTable):
 	def __init__(self):
@@ -185,7 +192,7 @@ class MissingDrawingTable(ErrorTable):
 	def populate(self,repo,dbs):
 		for cl in repo.classes.values():
 			#dimension drawings
-			if not cl.id in dbs["drawings"].getdimensions:
+			if not dbs["drawings"].dimension_classes.contains_dst(cl):
 				row = []
 				row.append(cl.id)
 				row.append("Dimensions")
@@ -193,43 +200,47 @@ class MissingDrawingTable(ErrorTable):
 				row.append(repo.collection_classes.get_src(cl).name)
 				self.rows.append(row)
 			#connector drawings
-			if cl.id in dbs["openscad"].getbase:
-				#find all locations
-				base = dbs["openscad"].getbase[cl.id]
-				locations = []
-				if base.type == "module" and not base.connectors is None:
-					locations = base.connectors.locations
+			if not cl.id in dbs["openscad"].getbase:
+				continue
+			#find all locations
+			base = dbs["openscad"].getbase[cl.id]
+			locations = []
+			if base.type == "module" and not base.connectors is None:
+				locations = base.connectors.locations
 
-				covered = []
-				if cl.id in dbs["drawings"].getconnectors:
-					for loc in dbs["drawings"].getconnectors[cl.id]:
+			#collect all locations covered by drawings
+			covered = []
+			if dbs["drawings"].connectors_classes.contains_dst(cl):
+				for con in dbs["drawings"].connectors_classes.get_srcs(cl):
+					for loc in dbs["drawings"].locations_connectors.get_srcs(con):
 						covered.append(loc)
-				uncovered = set(locations) - set(covered)
-				if len(uncovered) > 0:
-					row = []
-					row.append(cl.id)
-					row.append("Connectors")
-					row.append(",".join(list(uncovered)))
-					row.append(repo.collection_classes.get_src(cl).name)
-					self.rows.append(row)
 
+			uncovered = set(locations) - set(covered)
+			if len(uncovered) > 0:
+				row = []
+				row.append(cl.id)
+				row.append("Connectors")
+				row.append(",".join(list(uncovered)))
+				row.append(repo.collection_classes.get_src(cl).name)
+				self.rows.append(row)
 
 class MissingSVGSourceTable(ErrorTable):
 	def __init__(self):
 		ErrorTable.__init__(self,
 			"Missing svg drawings",
 			"Some drawings have no svg version.",
-			["Filename","Class ID"]
+			["Collection", "Filename"]
 		)
 
 	def populate(self,repo,dbs):
-		for id,draw in dbs["drawings"].getdimensions.iteritems():
+		#connector drawings come without svg source, so dimensions only
+		for draw in dbs["drawings"].dimensions:
 			if draw.get_svg() is None:
 				row = []
+				coll = dbs["drawings"].collection_dimensions.get_src(draw)
+				row.append(coll.name)
 				row.append(draw.filename)
-				row.append(id)
 				self.rows.append(row)
-		#connector drawings come without svg source
 
 class UnsupportedLicenseTable(ErrorTable):
 	def __init__(self):
@@ -262,25 +273,24 @@ class UnsupportedLicenseTable(ErrorTable):
 					row.append(",".join(coll.authors))
 					self.rows.append(row)
 		#drawings
-		for id, draw in dbs["drawings"].getdimensions.iteritems():
+		for draw in dbs["drawings"].dimensions:
 			if not license.check_license(draw.license_name,draw.license_url):
 				row = []
 				row.append("drawing-dimension")
-				row.append(id)
+				row.append(",".join([cl.id for cl in dbs["drawings"].dimension_classes.get_dsts()]))
 				row.append(draw.license_name)
 				row.append(draw.license_url)
 				row.append(",".join(coll.authors))
 				self.rows.append(row)
-		for id, draws in dbs["drawings"].getconnectors.iteritems():
-			for draw in draws.values():
-				if not license.check_license(draw.license_name,draw.license_url):
-					row = []
-					row.append("drawing-connector")
-					row.append(id)
-					row.append(draw.license_name)
-					row.append(draw.license_url)
-					row.append(",".join(coll.authors))
-					self.rows.append(row)
+		for draw in dbs["drawings"].connectors:
+			if not license.check_license(draw.license_name,draw.license_url):
+				row = []
+				row.append("drawing-connector")
+				row.append(",".join([cl.id for cl in dbs["drawings"].connector_classes.get_dsts()]))
+				row.append(draw.license_name)
+				row.append(draw.license_url)
+				row.append(",".join(coll.authors))
+				self.rows.append(row)
 
 class UnknownFileTable(ErrorTable):
 	def __init__(self):
@@ -327,27 +337,18 @@ class UnknownFileTable(ErrorTable):
 
 				#remove files known from bases
 				for cl in repo.collection_classes.get_dsts(coll):
-					if not cl.id in dbs["drawings"].getdimensions:
-						continue
-					drawing = dbs["drawings"].getdimensions[cl.id]
-					if not drawing.get_png() is None:
-						if basename(drawing.get_png()) in files:
-							files.remove(basename(drawing.get_png()))
-					if not drawing.get_svg() is None:
-						if basename(drawing.get_svg()) in files:
-							files.remove(basename(drawing.get_svg()))
-
-				for cl in repo.collection_classes.get_dsts(coll):
-					if not cl.id in dbs["drawings"].getconnectors:
-						continue
-					drawings = dbs["drawings"].getconnectors[cl.id]
-					for drawing in drawings.values():
-						if not drawing.get_png() is None:
-							if basename(drawing.get_png()) in files:
-								files.remove(basename(drawing.get_png()))
-						if not drawing.get_svg() is None:
-							if basename(drawing.get_svg()) in files:
-								files.remove(basename(drawing.get_svg()))
+					drawings = []
+					if dbs["drawings"].dimension_classes.contains_dst(cl):
+						drawings.append(dbs["drawings"].dimension_classes.get_src(cl))
+					if dbs["drawings"].connectors_classes.contains_dst(cl):
+						drawings += dbs["drawings"].connectors_classes.get_srcs(cl)
+					for draw in drawings:
+						if not draw.get_png() is None:
+							if basename(draw.get_png()) in files:
+								files.remove(basename(draw.get_png()))
+						if not draw.get_svg() is None:
+							if basename(draw.get_svg()) in files:
+								files.remove(basename(draw.get_svg()))
 
 				#check what is left
 				for filename in files:
@@ -410,7 +411,7 @@ class MissingBaseConnectionTable(ErrorTable):
 		)
 
 	def populate(self,repo,dbs):
-		#collect sets of geo equivalent classes
+		#collect sets of classes with equivalent geometry
 		geo_eq = []
 		for db in ["freecad","openscad"]:
 			for base in dbs[db].getbase.values():
@@ -440,19 +441,22 @@ class MissingBaseConnectionTable(ErrorTable):
 				for eq in geo_eq:
 					if not classids.isdisjoint(eq) and eq > classids:
 						self.rows.append([db,base.filename,str(eq - classids)])
-		for base in dbs["drawings"].getdimensions.values():
-			for base in dbs[db].getbase.values():
-				classids = set(base.classids)
-				for eq in geo_eq:
-					if not classids.isdisjoint(eq) and eq > classids:
-						self.rows.append([db,base.filename,str(eq - classids)])
-		for bases in dbs["drawings"].getconnectors.values():
-			for base in bases.values():
-				for base in dbs[db].getbase.values():
-					classids = set(base.classids)
-					for eq in geo_eq:
-						if not classids.isdisjoint(eq) and eq > classids:
-							self.rows.append([db,base.filename,str(eq - classids)])
+		drawings = dbs["drawings"]
+		for draw in drawings.dimensions:
+			if not drawings.dimension_classes.contains_src(draw):
+				continue
+			classids = set([cl.id for cl in drawings.dimension_classes.get_dsts(draw)])
+			for eq in geo_eq:
+				if not classids.isdisjoint(eq) and eq > classids:
+					self.rows.append(["drawings",base.filename,str(eq - classids)])
+
+		for draw in drawings.connectors:
+			if not drawings.connectors_classes.contains_src(draw):
+				continue
+			classids = set([cl.id for cl in drawings.connectors_classes.get_dsts(draw)])
+			for eq in geo_eq:
+				if not classids.isdisjoint(eq) and eq > classids:
+					self.rows.append(["connector",base.filename,str(eq - classids)])
 
 
 class MissingParameterDescriptionTable(ErrorTable):
@@ -494,7 +498,7 @@ class CheckerExporter(BackendExporter):
 
 		self.tasks = {}
 		self.tasks["missingcommonparameters"] = MissingCommonParametersTable()
-		self.tasks["missingconnectors"] = MissingConnectorsTable()
+		self.tasks["missingconnectors"] = MissingConnectorTable()
 		self.tasks["missingbase"] = MissingBaseTable()
 		self.tasks["missingdrawing"] = MissingDrawingTable()
 		self.tasks["missingsvgsource"] = MissingSVGSourceTable()

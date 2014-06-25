@@ -23,15 +23,14 @@ from os.path import join, exists, splitext
 from codecs import open
 
 from errors import *
-from common import BaseElement, DataBase, Parameters, check_schema
+from common import BaseElement, DataBase, Parameters, check_schema, Links, BipartiteLinks
 
 class Drawing(BaseElement):
 	def __init__(self,basefile,collname,backend_root):
-		BaseElement.__init__(self,basefile,collname)
-		self.collection = collname
+		BaseElement.__init__(self,basefile)
 		self.filename = basefile["filename"]
+		#TODO: move this out so that collname and backend_root can be dropped
 		self.path = join(backend_root,collname,self.filename)
-		self.classids = basefile["classids"]
 
 		self.versions = {}
 	 	for version in iglob(self.path + ".*"):
@@ -67,15 +66,19 @@ class DrawingConnectors(Drawing):
 		self.location = basefile["location"]
 
 class DrawingsData(DataBase):
-	def __init__(self,path):
-		DataBase.__init__(self,"drawings", path)
-		self.getdimensions = {}
-		self.getconnectors = {}
+	def __init__(self,repo):
+		DataBase.__init__(self,"drawings", repo)
+		self.dimensions = []
+		self.connectors = []
+		self.locations = []
 
-		if not exists(path):
-			e = MalformedRepositoryError("Repo directory does not exist")
-			e.set_repo_path(path)
-			raise e
+		self.dimension_classes = Links()
+		self.connectors_classes = BipartiteLinks()
+		self.locations_connectors = BipartiteLinks()
+
+		self.collection_dimensions = Links()
+		self.collection_connectors = Links()
+
 		if not exists(join(self.backend_root)):
 			e = MalformedRepositoryError("drawings directory does not exist")
 			e.set_repo_path(path)
@@ -86,24 +89,33 @@ class DrawingsData(DataBase):
 			if not exists(basefilename):
 				#skip directory that is no collection
 				continue
+			if coll not in repo.collections:
+				raise MalformedRepositoryError(
+					"Drawings for unknown collection found: %s " % coll)
+					
 			base_info =  list(yaml.load_all(open(basefilename,"r","utf8")))
 			if len(base_info) != 1:
 				raise MalformedCollectionError(
-						"Not exactly one YAML document found in file %s" % basefilename)
+					"Not exactly one YAML document found in file %s" % basefilename)
 			base_info = base_info[0]
 
 			for drawing_element in base_info:
 				if drawing_element["type"] == "drawing-dimensions":
-					draw = DrawingDimensions(drawing_element, coll, self.backend_root)
+					draw = DrawingDimensions(drawing_element,coll,self.backend_root)
+					self.dimensions.append(draw)
 					for id in drawing_element["classids"]:
-						self.getdimensions[id] = draw
+						self.dimension_classes.add_link(draw,self.repo.classes[id])
+					self.collection_dimensions.add_link(repo.collections[coll],draw)
 				if drawing_element["type"] == "drawing-connector":
-					draw = DrawingConnectors(drawing_element, coll, self.backend_root)
+					draw = DrawingConnectors(drawing_element,coll,self.backend_root)
+					if not draw.location in self.locations:
+						self.locations.append(draw.location)
+					self.locations_connectors.add_link(draw.location,draw)
+
+					self.connectors.append(draw)
 					for id in drawing_element["classids"]:
-						if not id in self.getconnectors:
-							self.getconnectors[id] = {draw.location: draw}
-						elif draw.location not in self.getconnectors[id]:
-							self.getconnectors[id][draw.location] = draw
-						else:
-							raise MalformedRepositoryError("More than one drawing for location %s of class %s" % 
-								(draw.location,id))
+						self.connectors_classes.add_link(draw,self.repo.classes[id])
+					self.collection_connectors.add_link(repo.collections[coll],draw)
+
+	def iterconnectors(self):
+		pass
