@@ -14,7 +14,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from os import listdir
-from os.path import join, exists, basename, splitext
+from os.path import join, exists, basename, splitext, isdir
 import re
 
 from common import BackendExporter
@@ -87,28 +87,10 @@ class MissingBaseTable(ErrorTable):
 			row = []
 			row.append(cl.id)
 			row.append(repo.collection_classes.get_src(cl).name)
-			row.append(cl.id in dbs["freecad"].getbase)
-			row.append(cl.id in dbs["openscad"].getbase)
+			row.append(dbs["freecad"].base_classes.contains_dst(cl))
+			row.append(dbs["openscad"].base_classes.contains_dst(cl))
 			if not (row[-1] and row[-2]):
 				self.rows.append(row)
-
-class UnknownClassTable(ErrorTable):
-	def __init__(self):
-		ErrorTable.__init__(self,
-			"Unknown classes",
-			"Some classes are mentioned in base files, but never defined in blt files.",
-			["Class id", "Database"]
-		)
-
-	def populate(self,repo,dbs):
-		for db in ["openscad","freecad"]:
-			for base in dbs[db].getbase.values():
-				for cl_id in base.classids:
-					if cl_id not in repo.classes:
-						row = []
-						row.append(cl_id)
-						row.append(db)
-						self.rows.append(row)
 
 class MissingCommonParametersTable(ErrorTable):
 	def __init__(self):
@@ -126,60 +108,21 @@ class MissingCommonParametersTable(ErrorTable):
 				row.append(repo.collection_classes.get_src(cl).name)
 				self.rows.append(row)
 
-class UnknownConnectorLocationTable(ErrorTable):
-	def __init__(self):
-		ErrorTable.__init__(self,
-			"Unknown locations",
-			"Some connector locations are mentioned that are not defined.",
-			["Class id", "Locations", "Collection"]
-		)
-
-	def populate(self,repo,dbs):
-		for cl in repo.classes.values():
-			if not cl.id in dbs["openscad"].getbase:
-				continue
-			#find all locations
-			base = dbs["openscad"].getbase[cl.id]
-			locations = []
-			if base.type == "module" and not base.connectors is None:
-				locations = base.connectors.locations
-
-			#collect all locations covered by drawings
-			covered = []
-			if dbs["drawings"].connectors_classes.contains_dst(cl):
-				for con in dbs["drawings"].connectors_classes.get_srcs(cl):
-					for loc in dbs["drawings"].locations_connectors.get_srcs(con):
-						covered.append(loc)
-
-			unknown = set(covered) - set(locations)
-			if len(unknown) > 0:
-				row = []
-				row.append(cl.id)
-				row.append(",".join(list(uncovered)))
-				row.append(repo.collection_classes.get_src(cl).name)
-				self.rows.append(row)
-
 class MissingConnectorTable(ErrorTable):
 	def __init__(self):
 		ErrorTable.__init__(self,
 			"Missing connectors",
-			"Some classes have no connectors for OpenSCAD specified.",
-			["Class ID","Collection"]
+			"Some OpenSCAD bases have no connectors specified.",
+			["Collection","Class IDs"]
 		)
 
 	def populate(self,repo,dbs):
-		for cl in repo.classes.values():
-			if not cl.id in dbs["openscad"].getbase:
-				continue
-
-			base = dbs["openscad"].getbase[cl.id]
-			if base.type == "module" and not base.connectors is None:
-				continue
-
-			row = []
-			row.append(cl.id)
-			row.append(repo.collection_classes.get_src(cl).name)
-			self.rows.append(row)
+		for base in dbs["openscad"].bases:
+			if not dbs["openscad"].base_connectors.contains_src(base):
+				row = []
+				row.append(dbs["openscad"].collection_bases.get_src(base).name)
+				row.append(",".join([cl.id for cl in dbs["openscad"].base_classes.get_dsts(base)]))
+				self.rows.append(row)
 
 class MissingDrawingTable(ErrorTable):
 	def __init__(self):
@@ -199,21 +142,24 @@ class MissingDrawingTable(ErrorTable):
 				row.append("-")
 				row.append(repo.collection_classes.get_src(cl).name)
 				self.rows.append(row)
+
 			#connector drawings
-			if not cl.id in dbs["openscad"].getbase:
+			if not dbs["openscad"].base_classes.contains_dst(cl):
+				#if no OpenSCAD base exists for this class
 				continue
+
 			#find all locations
-			base = dbs["openscad"].getbase[cl.id]
-			locations = []
-			if base.type == "module" and not base.connectors is None:
-				locations = base.connectors.locations
+			base = dbs["openscad"].base_classes.get_src(cl)
+			if not dbs["openscad"].base_connectors.contains_src(base):
+				#if no connector is defined fot this base
+				continue
+			locations = dbs["openscad"].base_connectors.get_dst(base).locations
 
 			#collect all locations covered by drawings
 			covered = []
 			if dbs["drawings"].connectors_classes.contains_dst(cl):
 				for con in dbs["drawings"].connectors_classes.get_srcs(cl):
-					for loc in dbs["drawings"].locations_connectors.get_srcs(con):
-						covered.append(loc)
+					covered += dbs["drawings"].locations_connectors.get_srcs(con)
 
 			uncovered = set(locations) - set(covered)
 			if len(uncovered) > 0:
@@ -223,6 +169,42 @@ class MissingDrawingTable(ErrorTable):
 				row.append(",".join(list(uncovered)))
 				row.append(repo.collection_classes.get_src(cl).name)
 				self.rows.append(row)
+
+class UnknownConnectorLocationTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Unknown locations",
+			"Some connector locations are mentioned that are not defined.",
+			["Class id", "Locations", "Collection"]
+		)
+
+	def populate(self,repo,dbs):
+		for cl in repo.classes.values():
+			if not dbs["openscad"].base_classes.contains_dst(cl):
+				#if no OpenSCAD base exists for this class
+				continue
+
+			#find all locations
+			base = dbs["openscad"].base_classes.get_src(cl)
+			if not dbs["openscad"].base_connectors.contains_src(base):
+				#if no connector is defined fot this base
+				continue
+			locations = dbs["openscad"].base_connectors.get_dst(base).locations
+
+			#collect all locations covered by drawings
+			covered = []
+			if dbs["drawings"].connectors_classes.contains_dst(cl):
+				for con in dbs["drawings"].connectors_classes.get_srcs(cl):
+					covered += dbs["drawings"].locations_connectors.get_srcs(con)
+
+			unknown = set(covered) - set(locations)
+			if len(unknown) > 0:
+				row = []
+				row.append(cl.id)
+				row.append(",".join(list(unknown)))
+				row.append(repo.collection_classes.get_src(cl).name)
+				self.rows.append(row)
+
 
 class MissingSVGSourceTable(ErrorTable):
 	def __init__(self):
@@ -263,11 +245,11 @@ class UnsupportedLicenseTable(ErrorTable):
 				self.rows.append(row)
 		#bases
 		for db in ["openscad","freecad"]:
-			for id, base in dbs[db].getbase.iteritems():
+			for base in dbs[db].bases:
 				if not license.check_license(base.license_name,base.license_url):
 					row = []
 					row.append(db)
-					row.append(id)
+					row.append(",".join([cl.id for cl in dbs[db].base_classes.get_dsts(id)]))
 					row.append(base.license_name)
 					row.append(base.license_url)
 					row.append(",".join(coll.authors))
@@ -277,7 +259,7 @@ class UnsupportedLicenseTable(ErrorTable):
 			if not license.check_license(draw.license_name,draw.license_url):
 				row = []
 				row.append("drawing-dimension")
-				row.append(",".join([cl.id for cl in dbs["drawings"].dimension_classes.get_dsts()]))
+				row.append(",".join([cl.id for cl in dbs["drawings"].dimension_classes.get_dsts(draw)]))
 				row.append(draw.license_name)
 				row.append(draw.license_url)
 				row.append(",".join(coll.authors))
@@ -301,86 +283,103 @@ class UnknownFileTable(ErrorTable):
 		)
 
 	def populate(self,repo,dbs):
-		for db in dbs:
-			if db in ["drawings","solidworks"]:
-				continue
-			for coll in repo.collections.values():
-				path = join(repo.path,db,coll.id)
-				if not exists(path):
-					continue
-				files = listdir(path)
+		if "freecad" in dbs:
+			for collid in listdir(join(repo.path,"freecad")):
+				path = join(repo.path,"freecad",collid)
+				if isdir(path):
+					files = listdir(path)
+				else:
+					files = [collid]
 
-				#remove files known from bases
-				for cl in repo.collection_classes.get_dsts(coll):
-					if not cl.id in dbs[db].getbase:
-						continue
-					base = dbs[db].getbase[cl.id]
-					if base.filename in files:
-						files.remove(base.filename)
+				if collid in repo.collections:
+					if "%s.base" % collid in files:
+						files.remove("%s.base" % collid)
+						for cl in repo.collection_classes.get_dsts(repo.collections[collid]):
+							if not dbs["freecad"].base_classes.contains_dst(cl):
+								continue
+							base = dbs["freecad"].base_classes.get_src(cl)
+							if base.filename in files:
+								files.remove(base.filename)
 
-				#check what is left
 				for filename in files:
-					if splitext(filename)[1] == ".base":
-						continue
 					row = []
 					row.append(filename)
 					row.append(path)
 					self.rows.append(row)
+
+		if "openscad" in dbs:
+			for collid in listdir(join(repo.path,"openscad")):
+				path = join(repo.path,"openscad",collid)
+				if isdir(path):
+					files = listdir(path)
+				else:
+					files = [path]
+
+				if collid in repo.collections:
+					if "%s.base" % collid in files:
+						files.remove("%s.base" % collid)
+						for cl in repo.collection_classes.get_dsts(repo.collections[collid]):
+							if not dbs["openscad"].base_classes.contains_dst(cl):
+								continue
+							base = dbs["openscad"].base_classes.get_src(cl)
+							if base.filename in files:
+								files.remove(base.filename)
+
+				for filename in files:
+					row = []
+					row.append(filename)
+					row.append(path)
+					self.rows.append(row)
+
+#			if "solidworks" in dbs:
+#				files = []
+#				path = join(repo.path,"solidworks",coll.id)
+#				if exists(path):
+#					files = listdir(path)
+#
+#				if "%s.base" % coll.id in files:
+#					files.remove("%s.base" % coll.id)
+#				for dtable in dbs["solidworks"].designtables:
+#					if not coll.id == dtable.collection:
+#						continue
+#					files.remove(dtable.filename)
+#
+#				for filename in files:
+#					row = []
+#					row.append(filename)
+#					row.append(path)
+#					self.rows.append(row)
 
 		if "drawings" in dbs:
-			for coll in repo.collections.values():
-				path = join(repo.path,"drawings",coll.id)
-				if not exists(path):
-					continue
+			for collid in listdir(join(repo.path,"drawings")):
+				path = join(repo.path,"drawings",collid)
+				if isdir(path):
+					files = listdir(path)
+				else:
+					files = [collid]
 
-				files = listdir(path)
+				if collid in repo.collections:
+					if "%s.base" % collid in files:
+						files.remove("%s.base" % collid)
+						for cl in repo.collection_classes.get_dsts(repo.collections[collid]):
+							drawings = []
+							if dbs["drawings"].dimension_classes.contains_dst(cl):
+								drawings.append(dbs["drawings"].dimension_classes.get_src(cl))
+							if dbs["drawings"].connectors_classes.contains_dst(cl):
+								drawings += dbs["drawings"].connectors_classes.get_srcs(cl)
+							for draw in drawings:
+								if not draw.get_png() is None:
+									if basename(draw.get_png()) in files:
+										files.remove(basename(draw.get_png()))
+								if not draw.get_svg() is None:
+									if basename(draw.get_svg()) in files:
+										files.remove(basename(draw.get_svg()))
 
-				#remove files known from bases
-				for cl in repo.collection_classes.get_dsts(coll):
-					drawings = []
-					if dbs["drawings"].dimension_classes.contains_dst(cl):
-						drawings.append(dbs["drawings"].dimension_classes.get_src(cl))
-					if dbs["drawings"].connectors_classes.contains_dst(cl):
-						drawings += dbs["drawings"].connectors_classes.get_srcs(cl)
-					for draw in drawings:
-						if not draw.get_png() is None:
-							if basename(draw.get_png()) in files:
-								files.remove(basename(draw.get_png()))
-						if not draw.get_svg() is None:
-							if basename(draw.get_svg()) in files:
-								files.remove(basename(draw.get_svg()))
-
-				#check what is left
-				for filename in files:
-					if splitext(filename)[1] == ".base":
-						continue
-					row = []
-					row.append(filename)
-					row.append(path)
-					self.rows.append(row)
-
-		if "solidworks" in dbs:
-			for coll in repo.collections.values():
-				path = join(repo.path,"solidworks",coll.id)
-				if not exists(path):
-					continue
-
-				files = listdir(path)
-
-				#remove files known from bases
-				for dtable in dbs["solidworks"].designtables:
-					if not coll.id == dtable.collection:
-						continue
-					files.remove(dtable.filename)
-
-				#check what is left
-				for filename in files:
-					if splitext(filename)[1] == ".base":
-						continue
-					row = []
-					row.append(filename)
-					row.append(path)
-					self.rows.append(row)
+			for filename in files:
+				row = []
+				row.append(filename)
+				row.append(path)
+				self.rows.append(row)
 
 class NonconformingParameternameTable(ErrorTable):
 	def __init__(self):
@@ -402,6 +401,40 @@ class NonconformingParameternameTable(ErrorTable):
 					row.append(repo.collection_classes.get_src(cl).name)
 					self.rows.append(row)
 
+
+
+class HyperUnionFind:
+	"""
+	Naive implementation of a disjoint set or union find datastructure for
+	hypergraphs
+	"""
+	def __init__(self):
+		self.components = {}
+	def make_set(self,x):
+		for comp in self.components.values():
+			assert(not x in comp)
+		self.components[x] = set([x])
+	def find_set(self,x):
+		for c,comp in self.components.iteritems():
+			if x in comp:
+				return c
+		raise ValueError("Unknown element: %s" % x)
+	def union(self,x,y):
+		rx = self.find_set(x)
+		ry = self.find_set(y)
+		self.components[rx] |= self.components[ry]
+		del self.components[ry]
+	def process_edge(self,e):
+		rep = None
+		for v in e:
+			if rep is None:
+				rep = v
+			else:
+				if self.find_set(rep) != self.find_set(v):
+					self.union(rep,v)
+	def get_set(self,x):
+		return self.components[self.find_set(x)]
+
 class MissingBaseConnectionTable(ErrorTable):
 	def __init__(self):
 		ErrorTable.__init__(self,
@@ -412,52 +445,38 @@ class MissingBaseConnectionTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		#collect sets of classes with equivalent geometry
-		geo_eq = []
-		for db in ["freecad","openscad"]:
-			for base in dbs[db].getbase.values():
-				geo_eq.append(set(base.classids))
+		union = HyperUnionFind()
+		for cl in repo.classes.values():
+			union.make_set(cl.id)
+		#find connected components of the hypergraph formed by the equivalent geometry relations
+		for base in dbs["freecad"].bases:
+			union.process_edge(set(base.classids))
+		for base in dbs["openscad"].bases:
+			union.process_edge(set(base.classids))
 		for dtable in dbs["solidworks"].designtables:
-			geo_eq.append(set([dtc.classid for dtc in dtable.classes]))
-
-		#consolidate geo equivalent sets TODO: what is that operation called in cs lingo? algos?
-		while True:
-			geo_cns = []
-			for cl in repo.classes.values():
-				cn = set([])
-				for eq in geo_eq:
-					if cl.id in eq:
-						cn = cn.union(eq)
-				if not cn in geo_cns:
-					geo_cns.append(cn)
-			if len(geo_cns) == len(geo_eq):
-				geo_eq = geo_cns
-				break
-			geo_eq = geo_cns
+			union.process_edge(set([dtc.classid for dtc in dtable.classes]))
 
 		#check whether we are missing something
 		for db in ["freecad","openscad"]:
-			for base in dbs[db].getbase.values():
+			for base in dbs[db].bases:
+				eq = union.get_set(base.classids[0])
 				classids = set(base.classids)
-				for eq in geo_eq:
-					if not classids.isdisjoint(eq) and eq > classids:
-						self.rows.append([db,base.filename,str(eq - classids)])
+				if  eq > classids:
+					self.rows.append([db,base.filename,",".join(eq - classids)])
+
 		drawings = dbs["drawings"]
+
 		for draw in drawings.dimensions:
-			if not drawings.dimension_classes.contains_src(draw):
-				continue
 			classids = set([cl.id for cl in drawings.dimension_classes.get_dsts(draw)])
-			for eq in geo_eq:
-				if not classids.isdisjoint(eq) and eq > classids:
-					self.rows.append(["drawings",base.filename,str(eq - classids)])
+			eq = union.get_set(drawings.dimension_classes.get_dsts(draw)[0].id)
+			if  eq > classids:
+				self.rows.append(["Dimension drawing",draw.filename,",".join(eq - classids)])
 
 		for draw in drawings.connectors:
-			if not drawings.connectors_classes.contains_src(draw):
-				continue
 			classids = set([cl.id for cl in drawings.connectors_classes.get_dsts(draw)])
-			for eq in geo_eq:
-				if not classids.isdisjoint(eq) and eq > classids:
-					self.rows.append(["connector",base.filename,str(eq - classids)])
-
+			eq = union.get_set(drawings.connectors_classes.get_dsts(draw)[0].id)
+			if  eq > classids:
+				self.rows.append(["Connector drawing",draw.filename,",".join(eq - classids)])
 
 class MissingParameterDescriptionTable(ErrorTable):
 	def __init__(self):
@@ -488,7 +507,6 @@ class CheckerExporter(BackendExporter):
 		BackendExporter.__init__(self,repo,databases)
 
 		self.checks = {}
-		self.checks["unknownclass"] = UnknownClassTable()
 		self.checks["unsupportedlicense"] = UnsupportedLicenseTable()
 		self.checks["unknownfile"] = UnknownFileTable()
 		self.checks["nonconformingparametername"] = NonconformingParameternameTable()
