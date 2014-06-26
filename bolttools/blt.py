@@ -434,3 +434,12 @@ class Repository:
 				coll = self.collection_standards.get_src(std)
 			cl = self.class_standards.get_src(std)
 			yield (coll, multistandard, std, cl)
+
+	def iterclasses(self):
+		for cl in self.classes.values():
+			coll = self.collection_classes.get_src(cl)
+			yield (coll,cl)
+
+	def itercollections(self):
+		for coll in self.collections.values():
+			yield coll

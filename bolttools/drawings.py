@@ -125,3 +125,46 @@ class DrawingsData(DataBase):
 					for id in drawing_element["classids"]:
 						self.condrawings_classes.add_link(draw,self.repo.classes[id])
 					self.collection_condrawings.add_link(repo.collections[coll],draw)
+
+	def iterclasses(self):
+		for cl in self.repo.classes.values():
+			coll = self.repo.collection_classes.get_src(cl)
+			if self.condrawings_classes.contains_dst(cl):
+				condrawings = self.condrawings_classes.get_srcs(cl)
+			else:
+				condrawings = []
+			if self.dimdrawing_classes.contains_dst(cl):
+				dimdrawing = self.dimdrawing_classes.get_src(cl)
+			else:
+				None
+			yield(coll,cl,dimdrawing,condrawings)
+
+	def iterdimdrawings(self,coll=None):
+		if not coll is None:
+			if self.collection_dimdrawings.contains_src(coll):
+				for draw in self.collection_dimdrawings.get_dsts(coll):
+					classes = self.dimdrawings_classes.get_dsts(draw)
+					yield (coll,classes,draw)
+		else:
+			for draw in self.dimdrawings:
+				coll = self.collection_dimdrawings.get_src(draw);
+				classes = self.dimdrawing_classes.get_dsts(draw)
+				yield (coll,classes,draw)
+
+	def itercondrawings(self,cl=None,coll=None):
+		if not cl is None:
+			if self.condrawings_classes.contains_dst(cl):
+				for draw in self.condrawings_classes.get_srcs(cl):
+					coll = self.collection_condrawings.get_src(draw);
+					classes = self.condrawings_classes.get_dsts(draw)
+					yield (coll,classes,draw)
+		elif not coll is None:
+			if self.collection_condrawings.contains_src(coll):
+				for draw in self.collection_conrawings.get_dsts(coll):
+					classes = self.condrawings_classes.get_dsts(draw)
+					yield (coll,classes,draw)
+		else:
+			for draw in self.condrawings:
+				coll = self.collection_condrawings.get_src(draw);
+				classes = self.condrawings_classes.get_dsts(draw)
+				yield (coll,classes,draw)

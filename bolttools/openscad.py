@@ -128,3 +128,28 @@ class OpenSCADData(DataBase):
 							raise e
 				else:
 					raise MalformedBaseError("Unknown base type %s" % basefile["type"])
+
+	def iterclasses(self):
+		for cl in self.repo.classes.values():
+			coll = self.repo.collection_classes.get_src(cl)
+			if self.base_classes.contains_dst(cl):
+				base = self.base_classes.get_src(cl)
+				yield(coll,cl,base)
+
+	def iterbases(self,cl=None,coll=None):
+		if not cl is None:
+			if self.base_classes.contains_dst(cl):
+				for base in self.base_classes.get_dsts(cl):
+					coll = self.collection_bases.get_src(base)
+					classes = self.base_classes.get_dsts(base)
+					yield (coll,classes,base)
+		elif not coll is None:
+			if self.collection_bases.contains_src(coll):
+				for base in self.collection_bases.get_dsts(coll):
+					classes = self.base_classes.get_dsts(base)
+					yield (coll,classes,base)
+		else:
+			for base in self.bases:
+				coll = self.collection_bases.get_src(base)
+				classes = self.base_classes.get_dsts(base)
+				yield (coll,classes,base)

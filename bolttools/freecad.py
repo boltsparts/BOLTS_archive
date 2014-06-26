@@ -97,7 +97,24 @@ class FreeCADData(DataBase):
 	def iterclasses(self):
 		for cl in self.repo.classes:
 			coll = self.repo.collection_classes.get_src(cl)
-			if not self.base_classes.contains_dst(cl):
-				continue
-			base = self.base_classes.get_src(cl)
-			yield(coll,cl,base)
+			if self.base_classes.contains_dst(cl):
+				base = self.base_classes.get_src(cl)
+				yield(coll,cl,base)
+
+	def iterbases(self,cl=None,coll=None):
+		if not cl is None:
+			if self.base_classes.contains_dst(cl):
+				for base in self.base_classes.get_dsts(cl):
+					coll = self.collection_bases.get_src(base)
+					classes = self.base_classes.get_dsts(base)
+					yield (coll,classes,base)
+		elif not coll is None:
+			if self.collection_bases.contains_src(coll):
+				for base in self.collection_bases.get_dsts(coll):
+					classes = self.base_classes.get_dsts(base)
+					yield (coll,classes,base)
+		else:
+			for base in self.bases:
+				coll = self.collection_bases.get_src(base)
+				classes = self.base_classes.get_dsts(base)
+				yield (coll,classes,base)
