@@ -186,6 +186,60 @@ class BipartiteLinks:
 		"""
 		return self.dsttosrcs[dst]
 
+class BijectiveLinks:
+	"""
+	Class to represent a 1 to 1 mapping between objects, where every
+	object is either source or destination.
+	"""
+	def __init__(self):
+		"""
+		Create a new BipartiteLinks instance.
+		"""
+		self.srctodst = {}
+		self.dsttosrc = {}
+
+	def add_link(self,src,dst):
+		"""
+		Add a link from src to dst
+		"""
+		if src in self.dsttosrc:
+			raise ValueError("Source already used as destination %s" % dst)
+		if dst in self.srctodst:
+			raise ValueError("Destination already used as source %s" % dst)
+
+		if src in self.srctodst:
+			raise ValueError("Source %s already has as destination %s" % (src,self.srctodst[src]))
+		else:
+			self.srctodst[src] = dst
+		if dst in self.dsttosrc:
+			raise ValueError("Source %s already has as destination %s" % (src,self.srctodst[src]))
+		else:
+			self.dsttosrc[dst] = src
+
+	def contains_src(self,src):
+		"""
+		Indicates whether there is a link with source src
+		"""
+		return src in self.srctodst
+
+	def contains_dst(self,dst):
+		"""
+		Indicates whether there is a link with destination dst
+		"""
+		return dst in self.dsttosrc
+
+	def get_dst(self,src):
+		"""
+		Return the destination of the mapping for this src.
+		"""
+		return self.srctodst[src]
+
+	def get_src(self,dst):
+		"""
+		Return the source of the mapping for this dst.
+		"""
+		return self.dsttosrc[dst]
+
 class Sorting:
 	"""Base class for classes for sorting choices for a Table Index"""
 	def __init__(self):
