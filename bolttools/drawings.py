@@ -68,16 +68,16 @@ class DrawingConnectors(Drawing):
 class DrawingsData(DataBase):
 	def __init__(self,repo):
 		DataBase.__init__(self,"drawings", repo)
-		self.dimensions = []
-		self.connectors = []
-		self.locations = []
+		self.dimdrawings = []
+		self.condrawings = []
+		self.conlocations = []
 
-		self.dimension_classes = Links()
-		self.connectors_classes = BipartiteLinks()
-		self.locations_connectors = BipartiteLinks()
+		self.dimdrawing_classes = Links()
+		self.condrawings_classes = BipartiteLinks()
+		self.conlocations_condrawings = BipartiteLinks()
 
-		self.collection_dimensions = Links()
-		self.collection_connectors = Links()
+		self.collection_dimdrawings = Links()
+		self.collection_condrawings = Links()
 
 		if not exists(join(self.backend_root)):
 			e = MalformedRepositoryError("drawings directory does not exist")
@@ -105,26 +105,23 @@ class DrawingsData(DataBase):
 					if draw.get_svg() is None and draw.get_png() is None:
 						raise MalformedRepositoryError("No drawing files present for %s/%s" % (coll,draw.filename))
 
-					self.dimensions.append(draw)
+					self.dimdrawings.append(draw)
 
 					if drawing_element["classids"] == []:
 						raise MalformedBaseError("Drawing with no associated classes found")
 					for id in drawing_element["classids"]:
-						self.dimension_classes.add_link(draw,self.repo.classes[id])
-					self.collection_dimensions.add_link(repo.collections[coll],draw)
+						self.dimdrawing_classes.add_link(draw,self.repo.classes[id])
+					self.collection_dimdrawings.add_link(repo.collections[coll],draw)
 				if drawing_element["type"] == "drawing-connector":
 					draw = DrawingConnectors(drawing_element,coll,self.backend_root)
 					if draw.get_svg() is None and draw.get_png() is None:
 						raise MalformedRepositoryError("No drawing files present for %s/%s" % (coll,draw.filename))
 
-					if not draw.location in self.locations:
-						self.locations.append(draw.location)
-					self.locations_connectors.add_link(draw.location,draw)
+					if not draw.location in self.conlocations:
+						self.conlocations.append(draw.location)
+					self.conlocations_condrawings.add_link(draw.location,draw)
 
-					self.connectors.append(draw)
+					self.condrawings.append(draw)
 					for id in drawing_element["classids"]:
-						self.connectors_classes.add_link(draw,self.repo.classes[id])
-					self.collection_connectors.add_link(repo.collections[coll],draw)
-
-	def iterconnectors(self):
-		pass
+						self.condrawings_classes.add_link(draw,self.repo.classes[id])
+					self.collection_condrawings.add_link(repo.collections[coll],draw)
