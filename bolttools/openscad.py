@@ -22,14 +22,13 @@ from os.path import join, exists
 from codecs import open
 
 from errors import *
-from common import DataBase, BaseElement, Parameters, check_schema
+from common import DataBase, BaseElement, Parameters, check_schema, Links
 
 
 class OpenSCADGeometry(BaseElement):
 	def __init__(self,basefile,collname):
 		BaseElement.__init__(self,basefile)
 		self.filename = basefile["filename"]
-		#TODO: move this out somehow, so that collname can be dropped
 		self.path = join(collname,self.filename)
 	def get_copy_files(self):
 		"Returns the path of the files to copy relative to the backend_root"
@@ -61,10 +60,6 @@ class BaseModule(OpenSCADGeometry):
 		else:
 			self.parameters = Parameters({"types" : {}})
 
-		self.connectors = None
-		if "connectors" in mod:
-			self.connectors = Connectors(mod["connectors"])
-
 	def get_copy_files(self):
 		return [self.path]
 	def get_include_files(self):
@@ -86,8 +81,12 @@ class Connectors:
 class OpenSCADData(DataBase):
 	def __init__(self,repo):
 		DataBase.__init__(self,"openscad",repo)
-		#maps class id to base module
-		self.getbase = {}
+
+		self.bases = []
+		self.connectors = []
+
+		self.base_classes = Links()
+		self.base_connectors = Links()
 
 		if not exists(join(self.backend_root)):
 			e = MalformedRepositoryError("openscad directory does not exist")
@@ -109,10 +108,19 @@ class OpenSCADData(DataBase):
 					for mod in basefile["modules"]:
 						try:
 							module = BaseModule(mod,basefile,coll)
+							self.bases.append(module)
+
+							if "connectors" in mod:
+								connectors = Connectors(mod["connectors"])
+								self.base_connectors.add_link(module,connectors)
+
 							for id in module.classids:
-								if id in self.getbase:
+								if not id in repo.classes:
+									raise MalformedBaseError(
+										"Unknown class %s" % id)
+								if self.base_classes.contains_dst(repo.classes[id]):
 									raise NonUniqueBaseError(id)
-								self.getbase[id] = module
+								self.base_classes.add_link(module,repo.classes[id])
 						except ParsingError as e:
 							e.set_base(basefile["filename"])
 							raise e
