@@ -22,7 +22,7 @@ from os.path import join, exists
 from codecs import open
 
 from errors import *
-from common import DataBase, BaseElement, Parameters, check_schema, Links
+from common import DataBase, BaseElement, Parameters, check_schema, Links, BijectiveLinks
 
 
 class OpenSCADGeometry(BaseElement):
@@ -86,7 +86,8 @@ class OpenSCADData(DataBase):
 		self.connectors = []
 
 		self.base_classes = Links()
-		self.base_connectors = Links()
+		self.collection_bases = Links()
+		self.base_connectors = BijectiveLinks()
 
 		if not exists(join(self.backend_root)):
 			e = MalformedRepositoryError("openscad directory does not exist")
@@ -109,6 +110,7 @@ class OpenSCADData(DataBase):
 						try:
 							module = BaseModule(mod,basefile,coll)
 							self.bases.append(module)
+							self.collection_bases.add_link(repo.collections[coll],module)
 
 							if "connectors" in mod:
 								connectors = Connectors(mod["connectors"])

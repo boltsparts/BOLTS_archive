@@ -54,6 +54,7 @@ class FreeCADData(DataBase):
 		self.bases = []
 
 		self.base_classes = Links()
+		self.collection_bases = Links()
 
 		if not exists(self.backend_root):
 			e = MalformedRepositoryError("freecad directory does not exist")
@@ -79,6 +80,7 @@ class FreeCADData(DataBase):
 						try:
 							function = BaseFunction(func,basefile,coll,self.backend_root)
 							self.bases.append(function)
+							self.collection_bases.add_link(repo.collections[coll],function)
 							for id in func["classids"]:
 								if not id in repo.classes:
 									raise MalformedBaseError(
