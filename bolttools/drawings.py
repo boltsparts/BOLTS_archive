@@ -102,6 +102,9 @@ class DrawingsData(DataBase):
 			for drawing_element in base_info:
 				if drawing_element["type"] == "drawing-dimensions":
 					draw = DrawingDimensions(drawing_element,coll,self.backend_root)
+					if draw.get_svg() is None and draw.get_png() is None:
+						raise MalformedRepositoryError("No drawing files present for %s/%s" % (coll,draw.filename))
+
 					self.dimensions.append(draw)
 
 					if drawing_element["classids"] == []:
@@ -111,6 +114,9 @@ class DrawingsData(DataBase):
 					self.collection_dimensions.add_link(repo.collections[coll],draw)
 				if drawing_element["type"] == "drawing-connector":
 					draw = DrawingConnectors(drawing_element,coll,self.backend_root)
+					if draw.get_svg() is None and draw.get_png() is None:
+						raise MalformedRepositoryError("No drawing files present for %s/%s" % (coll,draw.filename))
+
 					if not draw.location in self.locations:
 						self.locations.append(draw.location)
 					self.locations_connectors.add_link(draw.location,draw)
