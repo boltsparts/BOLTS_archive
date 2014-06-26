@@ -7,5 +7,6 @@ output/iges/*
 output/openscad/*
 output/solidworks/*
 output/connectordrawings/*
+bolttools/.coverage
 .sass-cache
 _site
