@@ -69,6 +69,26 @@ class TestBipartiteLinks(unittest.TestCase):
 		self.assertEqual(set(a.get_srcs(1)),set(["a","b"]))
 		self.assertEqual(set(a.get_srcs(2)),set(["a","c"]))
 
+class TestBijectiveLinks(unittest.TestCase):
+	def test_errors(self):
+		a = common.BijectiveLinks()
+		a.add_link("a",1)
+		
+		self.assertRaises(ValueError,lambda: a.add_link(1,2))
+		self.assertRaises(ValueError,lambda: a.add_link(2,"a"))
+		self.assertRaises(ValueError,lambda: a.add_link("a",3))
+		self.assertRaises(ValueError,lambda: a.add_link(4,1))
+
+	def test_accessors(self):
+		a = common.BijectiveLinks()
+		a.add_link("a",1)
+		a.add_link("b",2)
+		a.add_link("c",3)
+
+		self.assertEqual(a.get_dst("a"),1)
+
+		self.assertEqual(a.get_src(2),"b")
+
 
 class TestParseAngled(unittest.TestCase):
 	def test_wellformed(self):
