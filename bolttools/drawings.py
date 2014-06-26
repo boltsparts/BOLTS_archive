@@ -103,6 +103,9 @@ class DrawingsData(DataBase):
 				if drawing_element["type"] == "drawing-dimensions":
 					draw = DrawingDimensions(drawing_element,coll,self.backend_root)
 					self.dimensions.append(draw)
+
+					if drawing_element["classids"] == []:
+						raise MalformedBaseError("Drawing with no associated classes found")
 					for id in drawing_element["classids"]:
 						self.dimension_classes.add_link(draw,self.repo.classes[id])
 					self.collection_dimensions.add_link(repo.collections[coll],draw)
