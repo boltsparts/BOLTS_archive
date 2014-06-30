@@ -25,23 +25,13 @@ from errors import *
 from common import DataBase, BaseElement, Parameters, check_schema, Links, BijectiveLinks
 
 
-class OpenSCADGeometry(BaseElement):
+class SCADFile(BaseElement):
 	def __init__(self,basefile,collname):
 		BaseElement.__init__(self,basefile)
 		self.filename = basefile["filename"]
 		self.path = join(collname,self.filename)
-	def get_copy_files(self):
-		"Returns the path of the files to copy relative to the backend_root"
-		raise NotImplementedError
-	def get_include_files(self):
-		"Returns the path of the files to copy relative to the base folder in output"
-		raise NotImplementedError
-	def get_incantation(self,args):
-		"Return the incantation of the base that produces the geometry"
-		raise NotImplementedError
 
-
-class BaseModule(OpenSCADGeometry):
+class SCADModule(BaseElement):
 	def __init__(self,mod,basefile,collname):
 		check_schema(mod,"basemodule",
 			["name", "arguments","classids"],
@@ -50,7 +40,8 @@ class BaseModule(OpenSCADGeometry):
 			["filename","author","license","type","modules"],
 			["source"])
 
-		OpenSCADGeometry.__init__(self,basefile,collname)
+		BaseElement.__init__(self,basefile)
+
 		self.name = mod["name"]
 		self.arguments = mod["arguments"]
 		self.classids = mod["classids"]
@@ -59,13 +50,6 @@ class BaseModule(OpenSCADGeometry):
 			self.parameters = Parameters(mod["parameters"])
 		else:
 			self.parameters = Parameters({"types" : {}})
-
-	def get_copy_files(self):
-		return [self.path]
-	def get_include_files(self):
-		return [self.filename]
-	def get_incantation(self,args):
-		return "%s(%s)" % (self.name,", ".join(args[arg] for arg in self.arguments))
 
 class Connectors:
 	def __init__(self,cs):
@@ -82,12 +66,14 @@ class OpenSCADData(DataBase):
 	def __init__(self,repo):
 		DataBase.__init__(self,"openscad",repo)
 
-		self.bases = []
+		self.modules = []
+		self.scadfiles = []
 		self.connectors = []
 
-		self.base_classes = Links()
-		self.collection_bases = Links()
-		self.base_connectors = BijectiveLinks()
+		self.module_classes = Links()
+		self.scadfile_modules = Links()
+		self.collection_modules = Links()
+		self.module_connectors = BijectiveLinks()
 
 		if not exists(join(self.backend_root)):
 			e = MalformedRepositoryError("openscad directory does not exist")
@@ -105,24 +91,27 @@ class OpenSCADData(DataBase):
 						"No YAML document found in file %s" % basefilename)
 			base = base[0]
 			for basefile in base:
+				scadfile = SCADFile(basefile,coll)
 				if basefile["type"] == "module":
 					for mod in basefile["modules"]:
 						try:
-							module = BaseModule(mod,basefile,coll)
-							self.bases.append(module)
-							self.collection_bases.add_link(repo.collections[coll],module)
+							module = SCADModule(mod,basefile,coll)
+							self.modules.append(module)
+							self.collection_modules.add_link(repo.collections[coll],module)
+							self.scadfiles.append(scadfile)
+							self.scadfile_modules.add_link(scadfile,module)
 
 							if "connectors" in mod:
 								connectors = Connectors(mod["connectors"])
-								self.base_connectors.add_link(module,connectors)
+								self.module_connectors.add_link(module,connectors)
 
 							for id in module.classids:
 								if not id in repo.classes:
 									raise MalformedBaseError(
 										"Unknown class %s" % id)
-								if self.base_classes.contains_dst(repo.classes[id]):
+								if self.module_classes.contains_dst(repo.classes[id]):
 									raise NonUniqueBaseError(id)
-								self.base_classes.add_link(module,repo.classes[id])
+								self.module_classes.add_link(module,repo.classes[id])
 						except ParsingError as e:
 							e.set_base(basefile["filename"])
 							raise e
@@ -132,24 +121,24 @@ class OpenSCADData(DataBase):
 	def iterclasses(self):
 		for cl in self.repo.classes.values():
 			coll = self.repo.collection_classes.get_src(cl)
-			if self.base_classes.contains_dst(cl):
-				base = self.base_classes.get_src(cl)
-				yield(coll,cl,base)
+			if self.module_classes.contains_dst(cl):
+				module = self.module_classes.get_src(cl)
+				yield(coll,cl,module)
 
-	def iterbases(self,cl=None,coll=None):
+	def itermodules(self,cl=None,coll=None):
 		if not cl is None:
-			if self.base_classes.contains_dst(cl):
-				for base in self.base_classes.get_dsts(cl):
-					coll = self.collection_bases.get_src(base)
-					classes = self.base_classes.get_dsts(base)
-					yield (coll,classes,base)
+			if self.module_classes.contains_dst(cl):
+				for module in self.module_classes.get_dsts(cl):
+					coll = self.collection_modules.get_src(module)
+					classes = self.module_classes.get_dsts(module)
+					yield (coll,classes,module)
 		elif not coll is None:
-			if self.collection_bases.contains_src(coll):
-				for base in self.collection_bases.get_dsts(coll):
-					classes = self.base_classes.get_dsts(base)
-					yield (coll,classes,base)
+			if self.collection_modules.contains_src(coll):
+				for module in self.collection_modules.get_dsts(coll):
+					classes = self.module_classes.get_dsts(module)
+					yield (coll,classes,module)
 		else:
-			for base in self.bases:
-				coll = self.collection_bases.get_src(base)
-				classes = self.base_classes.get_dsts(base)
-				yield (coll,classes,base)
+			for module in self.modules:
+				coll = self.collection_modules.get_src(module)
+				classes = self.module_classes.get_dsts(module)
+				yield (coll,classes,module)
