@@ -73,6 +73,7 @@ class OpenSCADData(DataBase):
 		self.module_classes = Links()
 		self.scadfile_modules = Links()
 		self.collection_modules = Links()
+		self.collection_scadfiles = Links()
 		self.module_connectors = BijectiveLinks()
 
 		if not exists(join(self.backend_root)):
@@ -92,13 +93,14 @@ class OpenSCADData(DataBase):
 			base = base[0]
 			for basefile in base:
 				scadfile = SCADFile(basefile,coll)
+				self.scadfiles.append(scadfile)
+				self.collection_scadfiles.add_link(repo.collections[coll],scadfile)
 				if basefile["type"] == "module":
 					for mod in basefile["modules"]:
 						try:
 							module = SCADModule(mod,basefile,coll)
 							self.modules.append(module)
 							self.collection_modules.add_link(repo.collections[coll],module)
-							self.scadfiles.append(scadfile)
 							self.scadfile_modules.add_link(scadfile,module)
 
 							if "connectors" in mod:
@@ -142,3 +144,13 @@ class OpenSCADData(DataBase):
 				coll = self.collection_modules.get_src(module)
 				classes = self.module_classes.get_dsts(module)
 				yield (coll,classes,module)
+
+	def iterscadfiles(self,coll=None):
+		if not coll is None:
+			if self.collection_scadfiles.contains_src(coll):
+				for sf in self.collection_scadfiles.get_dsts(coll):
+					yield (coll,sf)
+		else:
+			for sf in self.scadfiles:
+				coll = self.collection_scadfiles.get_src(sf)
+				yield (coll, sf)
