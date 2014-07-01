@@ -28,18 +28,16 @@ from common import Links, Parameters, Identifier, Substitution, parse_angled, ch
 CURRENT_VERSION = 0.4
 
 
-class DesignationMixin:
+class Designation:
 	"""
-	Mixin for classes that allow to refer to a class.
+	Base class for python classes to refer to a BOLTS class.
 	"""
 	def __init__(self):
 		pass
 	def get_id(self):
 		raise NotImplementedError
 
-
-
-class ClassName(DesignationMixin):
+class ClassName(Designation):
 	"""
 	Python class to provide a name for a BOLTS class, corresponding to a
 	ClassNameElement in the blt file.
@@ -49,7 +47,7 @@ class ClassName(DesignationMixin):
 			["name","labeling"],
 			["description","group"]
 		)
-		DesignationMixin.__init__(self)
+		Designation.__init__(self)
 
 		try:
 			if isinstance(cn['name'],str):
@@ -83,7 +81,7 @@ class ClassName(DesignationMixin):
 			return self.name.get_safe_name()
 
 
-class StandardName(DesignationMixin):
+class StandardName(Designation):
 	"""
 	Python class to provide a standard name for a BOLTS class, corresponding to a
 	ClassStandardElement in the blt file.
@@ -93,7 +91,7 @@ class StandardName(DesignationMixin):
 			['standard','labeling','body'],
 			['suffix','year','status','replaces','description']
 		)
-		DesignationMixin.__init__(self)
+		Designation.__init__(self)
 
 		if isinstance(sn['standard'],str):
 			self.standard = Identifier({'nice' : sn['standard']})
@@ -214,27 +212,27 @@ class StandardBody:
 	def __init__(self,body):
 		self.body = body
 
-class MultiStandard(DesignationMixin):
+class MultiStandard(Designation):
 	"""
 	Container for all standard names that are covered by a single standard
 	"""
 	def __init__(self,standard):
-		DesignationMixin.__init__(self)
+		Designation.__init__(self)
 
 		self.standard = standard
 
 	def get_id(self):
 		return self.standard.get_safe_name()
 
-class MultiName(DesignationMixin):
+class MultiName(Designation):
 	"""
 	Container for class names that are closely related, e.g. variations of a part
 	"""
 	def __init__(self,group):
-		DesignationMixin.__init__(self)
+		Designation.__init__(self)
 
 		self.group = group
-	def get_id(self,cn):
+	def get_id(self):
 		return self.group.get_safe_name()
 
 class Repository:
@@ -422,7 +420,6 @@ class Repository:
 				coll = self.collection_names.get_src(name)
 			cl = self.class_names.get_src(name)
 			yield (coll, multiname, name, cl)
-
 
 	def iterstandards(self):
 		for std in self.standards.values():
