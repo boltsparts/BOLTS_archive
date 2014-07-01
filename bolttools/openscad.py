@@ -120,6 +120,18 @@ class OpenSCADData(DataBase):
 				else:
 					raise MalformedBaseError("Unknown base type %s" % basefile["type"])
 
+	def iternames(self):
+		for coll,multiname,name,cl in self.repo.iternames():
+			if self.module_classes.contains_dst(cl):
+				module = self.module_classes.get_src(cl)
+				yield (coll,multiname,name,cl,module)
+
+	def iterstandards(self):
+		for coll,multistd,std,cl in self.repo.iterstandards():
+			if self.module_classes.contains_dst(cl):
+				module = self.module_classes.get_src(cl)
+				yield (coll,multistd,std,cl,module)
+
 	def iterclasses(self):
 		for cl in self.repo.classes.values():
 			coll = self.repo.collection_classes.get_src(cl)
