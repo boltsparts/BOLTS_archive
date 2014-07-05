@@ -81,7 +81,7 @@ class ClassName(Designation):
 			return self.name.get_safe_name()
 
 
-class StandardName(Designation):
+class ClassStandard(Designation):
 	"""
 	Python class to provide a standard name for a BOLTS class, corresponding to a
 	ClassStandardElement in the blt file.
@@ -368,7 +368,7 @@ class Repository:
 
 				for sn in standards:
 					try:
-						standard = StandardName(sn)
+						standard = ClassStandard(sn)
 					except ParsingError as e:
 						e.set_class(cls.id)
 						raise e

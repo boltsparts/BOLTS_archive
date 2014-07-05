@@ -92,7 +92,7 @@ source: http://en.wikipedia.org/wiki/List_of_battery_sizes
 	def test_standardname(self):
 		res = []
 		for sn in self.cl['standards']:
-			res.append(blt.StandardName(sn))
+			res.append(blt.ClassStandard(sn))
 
 		self.assertEqual(len(res),1)
 		self.assertEqual(res[0].standard.get_safe_name(),'IEC60086')
@@ -100,7 +100,7 @@ source: http://en.wikipedia.org/wiki/List_of_battery_sizes
 		self.assertEqual(res[0].suffix.get_safe_name(),'Cat1')
 		self.assertEqual(res[0].suffix.get_nice_name(),'Category 1')
 
-class MockDesignation(blt.DesignationMixin):
+class MockDesignation(blt.Designation):
 	def __init__(self,id,subids=[]):
 		self.id = id
 		self.subids = subids
