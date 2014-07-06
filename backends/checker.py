@@ -507,6 +507,35 @@ class MissingParameterDescriptionTable(ErrorTable):
 				row.append(', '.join(missing))
 				self.rows.append(row)
 
+class PointlessGroupTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"One element groups",
+			"Some standard- or name groups have only one element. This can be due to a typo or because only one part of the group is present in BOLTS. In the latter case no group should be defined.",
+			["Group","Name","Type","Collection"]
+		)
+
+	def populate(self,repo,dbs):
+		#name
+		for mname,names,coll in repo.itermultinames(["multiname","names","collection"]):
+			if len(names) == 1:
+				row = []
+				row.append(mname.group.get_nice_name())
+				row.append(names[0].name.get_nice_name())
+				row.append("Name")
+				row.append(coll.id)
+				self.rows.append(row)
+		#standard
+		for mstd,standards,coll in repo.itermultistandards(["multistandard","standards","collection"]):
+			if len(standards) == 1:
+				row = []
+				row.append(mstd.standard.get_nice_name())
+				row.append(standards[0].standard.get_nice_name())
+				row.append("Standard")
+				row.append(coll.id)
+				self.rows.append(row)
+
+
 
 class CheckerExporter(BackendExporter):
 	def __init__(self,repo,databases):
@@ -519,6 +548,7 @@ class CheckerExporter(BackendExporter):
 		self.checks["missingbaseconnection"] = MissingBaseConnectionTable()
 		self.checks["missingparameterdescription"] = MissingParameterDescriptionTable()
 		self.checks["unknownconnectors"] = UnknownConnectorLocationTable()
+		self.checks["pointlessgroup"] = PointlessGroupTable()
 
 		self.tasks = {}
 		self.tasks["missingcommonparameters"] = MissingCommonParametersTable()
