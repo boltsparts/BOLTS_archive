@@ -33,10 +33,10 @@ classes:
       description: Most common round single cell battery sizes
   standards:
     - body: IEC
-      standard: IEC 60086
-      suffix:
-        safe: Cat1
-        nice: Category 1
+      standard:
+        nice: IEC 60086 Category 1
+        safe: IEC60086Cat1
+      group: IEC 60086
       labeling:
         nice: "IEC 60086 Category 1 Battery %(T)s"
         safe: "IEC60086_Cat1_Battery_%(T)s"

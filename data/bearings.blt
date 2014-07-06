@@ -30,8 +30,8 @@ classes:
       description: single row radial contact ball bearing, with single or double shields, single or double seal or open, metric sizes
     standards:
       body: DIN
-      standard: DIN 625
-      suffix: "1"
+      standard: DIN 625-1
+      group: DIN 625
       labeling: Radial Ball Bearing DIN625-1 %(key)s%(postfix)s
       description: single row radial contact ball bearing, with single or double shields, single or double seal or open
     parameters:
@@ -179,8 +179,8 @@ classes:
       description: Deep groove double row radial ball bearing, metric sizes
     standards:
       body: DIN
-      standard: DIN 625
-      suffix: "3"
+      standard: DIN 625-3
+      group: DIN 625
       labeling: Double row radial ball bearing DIN 625-3 %(key)s
       description: Deep groove double row radial ball bearing, metric sizes
     parameters:
@@ -386,8 +386,8 @@ classes:
   - id: needleroller
     standards:
       - body: DIN
-        standard: DIN 5405
-        suffix: "1"
+        standard: DIN 5405-1
+        group: DIN 5405
         labeling: Needle roller DIN 5405-1 %(key)s
         description: Needle roller without cage
       - body: ISO
@@ -641,8 +641,8 @@ classes:
   - id: cylindricalrollerbearing
     standards:
       body: DIN
-      standard: DIN 5412
-      suffix: "1"
+      standard: DIN 5412-1
+      group: DIN 5412
       labeling: Cylindrical roller bearing %(key)s
       description: Cylindrical single row roller bearing
     parameters:

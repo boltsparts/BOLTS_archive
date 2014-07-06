@@ -78,14 +78,14 @@ classes:
   - id: circle_hollow
     standards:
       - body: DIN EN
-        standard: DIN EN 10210-2
-        suffix: circular
+        standard: DIN EN 10210-2 circular
+        group: DIN EN 10210-2
         year: 2006
         labeling: "CHS DIN EN 10210-2 %(type)s, l=%(l)s"
         description: Circular Hollow Section (CHS)
       - body: EN
-        standard: EN 10210-2
-        suffix: circular
+        standard: EN 10210-2 circular
+        group: EN 10210-2
         year: 2006
         labeling: "CHS EN 10210-2 %(type)s, l=%(l)s"
         description: Circular Hollow Section (CHS)
@@ -332,14 +332,14 @@ classes:
   - id: square_hollow
     standards:
       - body: DIN EN
-        standard: DIN EN 10210-2
-        suffix: square
+        standard: DIN EN 10210-2 square
+        group: DIN EN 10210-2
         year: 2006
         labeling: "SHS DIN EN 10210-2 %(type)s, l=%(l)s"
         description: Square Hollow Section (SHS)
       - body: EN
-        standard: EN 10210-2
-        suffix: square
+        standard: EN 10210-2 square
+        group: EN 10210-2
         year: 2006
         labeling: "SHS EN 10210-2 %(type)s, l=%(l)s"
         description: Square Hollow Section (SHS)
@@ -472,14 +472,14 @@ classes:
   - id: rectangular_hollow
     standards:
       - body: DIN EN
-        standard: DIN EN 10210-2
-        suffix: rectangular
+        standard: DIN EN 10210-2 rectangular
+        group: DIN EN 10210-2
         year: 2006
         labeling: "RHS DIN EN 10210-2 %(type)s, l=%(l)s"
         description: Rectangular Hollow Section (RHS)
       - body: EN
-        standard: EN 10210-2
-        suffix: rectangular
+        standard: EN 10210-2 rectangular
+        group: EN 10210-2
         year: 2006
         labeling: "RHS EN 10210-2 %(type)s, l=%(l)s"
         description: Rectangular Hollow Section (RHS)

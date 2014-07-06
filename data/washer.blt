@@ -45,8 +45,8 @@ classes:
         labeling: Plain washer DINENISO 7089 %(key)s
         description: Plain washer, metric sizes
       - body: DIN
-        standard: DIN 125
-        suffix: A
+        standard: DIN 125 A
+        group: DIN 125
         labeling: Plain washer DIN 125A %(key)s
         description: Plain washer, metric sizes
     parameters:
@@ -132,8 +132,8 @@ classes:
         labeling: Plain washer chamfered DIN EN ISO 7090 %(key)s
         description: Plain washer with chamfer, metric sizes
       - body: DIN
-        standard: DIN 125
-        suffix: B
+        standard: DIN 125 B
+        group: DIN 125
         labeling: Plain washer chamfered DIN 125B %(key)s
         description: Plain washer with chamfer, metric sizes
     parameters:

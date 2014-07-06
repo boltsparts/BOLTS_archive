@@ -29,8 +29,8 @@ classes:
       description: HEA profile, metric european standard i-beam profile
     standards:
       body: DIN
-      standard: DIN 1025
-      suffix: "3"
+      standard: DIN 1025-3
+      group: DIN 1025
       labeling: DIN1025-3 %(type)s, l=%(l)s
       description: HEA profile, metric european standard i-beam profile
     parameters:
@@ -145,8 +145,8 @@ classes:
       description: HEB profile, metric european standard i-beam profile
     standards:
       body: DIN
-      standard: DIN 1025
-      suffix: "2"
+      standard: DIN 1025-2
+      group: DIN 1025
       labeling: DIN1025-2 %(type)s, l=%(l)s
       description: HEB profile, metric european standard i-beam profile
     parameters:
@@ -206,8 +206,8 @@ classes:
       description: HEM profile, metric european standard i-beam profile
     standards:
       body: DIN
-      standard: DIN 1025
-      suffix: "4"
+      standard: DIN 1025-4
+      group: DIN 1025
       labeling: DIN1025-4 %(type)s, l=%(l)s
       description: HEM profile, metric european standard i-beam profile
     parameters:
@@ -267,8 +267,8 @@ classes:
       description: IPE profile, metric european standard i-beam profile
     standards:
       - body: DIN
-        standard: DIN 1025
-        suffix: "5"
+        standard: DIN 1025-5
+        group: DIN 1025
         labeling: DIN1025-5 %(type)s, l=%(l)s
         description: IPE profile, metric european standard i-beam profile
       - body: EN
@@ -539,8 +539,8 @@ classes:
         description: IPN profile
     standards:
       body: DIN
-      standard: DIN 1025
-      suffix: "1"
+      standard: DIN 1025-1
+      group: DIN 1025
       labeling: DIN1025-1 %(type)s, l=%(l)s
       description: IPN profile, metric european standard i-beam profile
     parameters:

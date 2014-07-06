@@ -50,12 +50,8 @@ classes:
   - id: din11850range2
     standards:
       body: DIN
-      standard:
-        safe: DIN11850
-        nice: DIN 11850
-      suffix:
-        safe: Range_2
-        nice: Range 2
+      standard: DIN 11850 Range 2
+      group: DIN 11850
       labeling:
         nice: DIN 11850 Range 2 DN %(dn)s length %(l)s
         safe: DIN11850_Range_2_DN_%(dn)s_length_%(l)s
