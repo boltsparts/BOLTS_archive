@@ -639,10 +639,10 @@ class NamePair:
 			if not c in self.allowed:
 				raise ValueError('String %s contains forbidden characters: %s' % (self.safe,c))
 
-	def get_safe_name(self):
+	def get_safe(self):
 		"""return the safe name"""
 		return self.safe
-	def get_nice_name(self):
+	def get_nice(self):
 		"""return the nice name"""
 		return self.nice
 	
@@ -716,13 +716,13 @@ class Substitution(NamePair):
 				inp = inp.replace(c,'')
 		return inp
 
-	def get_safe_name(self,params):
+	def get_safe(self,params):
 		res = self.safe % params
 		for c in res:
 			if c in string.whitespace:
 				res = res.replace(c,'_')
 		return res
-	def get_nice_name(self,params):
+	def get_nice(self,params):
 		return self.nice % params
 
 class DataBase:

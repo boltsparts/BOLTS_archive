@@ -86,8 +86,8 @@ source: http://en.wikipedia.org/wiki/List_of_battery_sizes
 		self.assertEqual(len(res),2)
 
 		#use noop substitution
-		self.assertEqual(res[0].labeling.get_safe_name({'T' : '%(T)s'}),'%(T)s_Battery')
-		self.assertEqual(res[1].labeling.get_safe_name({'T' : '%(T)s'}),'%(T)s_Battery')
+		self.assertEqual(res[0].labeling.get_safe({'T' : '%(T)s'}),'%(T)s_Battery')
+		self.assertEqual(res[1].labeling.get_safe({'T' : '%(T)s'}),'%(T)s_Battery')
 
 	def test_standardname(self):
 		res = []
@@ -95,8 +95,8 @@ source: http://en.wikipedia.org/wiki/List_of_battery_sizes
 			res.append(blt.ClassStandard(sn))
 
 		self.assertEqual(len(res),1)
-		self.assertEqual(res[0].standard.get_safe_name(),'IEC60086Cat1')
-		self.assertEqual(res[0].standard.get_nice_name(),'IEC 60086 Category 1')
+		self.assertEqual(res[0].standard.get_safe(),'IEC60086Cat1')
+		self.assertEqual(res[0].standard.get_nice(),'IEC 60086 Category 1')
 
 class MockDesignation(blt.Designation):
 	def __init__(self,id,subids=[]):

@@ -520,8 +520,8 @@ class PointlessGroupTable(ErrorTable):
 		for mname,names,coll in repo.itermultinames(["multiname","names","collection"]):
 			if len(names) == 1:
 				row = []
-				row.append(mname.group.get_nice_name())
-				row.append(names[0].name.get_nice_name())
+				row.append(mname.group.get_nice())
+				row.append(names[0].name.get_nice())
 				row.append("Name")
 				row.append(coll.id)
 				self.rows.append(row)
@@ -529,8 +529,8 @@ class PointlessGroupTable(ErrorTable):
 		for mstd,standards,coll in repo.itermultistandards(["multistandard","standards","collection"]):
 			if len(standards) == 1:
 				row = []
-				row.append(mstd.standard.get_nice_name())
-				row.append(standards[0].standard.get_nice_name())
+				row.append(mstd.standard.get_nice())
+				row.append(standards[0].standard.get_nice())
 				row.append("Standard")
 				row.append(coll.id)
 				self.rows.append(row)

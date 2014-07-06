@@ -76,10 +76,7 @@ class ClassName(Designation):
 			self.group = Identifier({'nice' : ""})
 
 	def get_id(self):
-		if self.group.get_safe_name():
-			return self.group.get_safe_name() + "_" + self.name.get_safe_name()
-		else:
-			return self.name.get_safe_name()
+		return self.name.get_safe()
 
 
 class ClassStandard(Designation):
@@ -126,7 +123,7 @@ class ClassStandard(Designation):
 			self.description = sn['description']
 
 	def get_id(self):
-			return self.standard.get_safe_name()
+		return self.standard.get_safe()
 
 class Class:
 	"""
@@ -220,7 +217,7 @@ class MultiStandard(Designation):
 		self.standard = standard
 
 	def get_id(self):
-		return self.standard.get_safe_name()
+		return self.standard.get_safe()
 
 class MultiName(Designation):
 	"""
@@ -231,7 +228,7 @@ class MultiName(Designation):
 
 		self.group = group
 	def get_id(self):
-		return self.group.get_safe_name()
+		return self.group.get_safe()
 
 class Repository:
 	def __init__(self,path):
@@ -352,7 +349,7 @@ class Repository:
 					self.names[name.get_id()] = name
 					self.class_names.add_link(cls,name)
 
-					multinameid = name.group.get_safe_name()
+					multinameid = name.group.get_safe()
 					if multinameid:
 						if not multinameid in self.multinames:
 							multiname = MultiName(name.group)
@@ -386,7 +383,7 @@ class Repository:
 
 					self.body_standards.add_link(body,standard)
 
-					multistdid = standard.group.get_safe_name()
+					multistdid = standard.group.get_safe()
 					if multistdid:
 						if not multistdid in self.multistandards:
 							multistd = MultiStandard(standard.group)

@@ -380,8 +380,8 @@ class TestSubstitution(unittest.TestCase):
 		res = common.Substitution(yaml.load("""
 nice: Test Part %(name)s
 """))
-		self.assertEqual(res.get_nice_name({'name' : 'Foo'}),'Test Part Foo')
-		self.assertEqual(res.get_safe_name({'name' : 'Foo'}),'Test_Part_Foo')
+		self.assertEqual(res.get_nice({'name' : 'Foo'}),'Test Part Foo')
+		self.assertEqual(res.get_safe({'name' : 'Foo'}),'Test_Part_Foo')
 
 	def test_check(self):
 		self.assertRaises(ValueError,lambda: common.Substitution(yaml.load(u"""
