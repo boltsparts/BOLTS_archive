@@ -49,6 +49,28 @@ def check_schema(yaml_dict, element_name, mandatory_fields, optional_fields):
 	if len(mandatory_fields) > 0:
 		raise MissingFieldError(element_name,mandatory_fields)
 
+def check_iterator_arguments(items,primary,optional,kwargs):
+	#check items
+	if primary not in items:
+		raise ValueError("Primary object of iterator not found in items: %s" % primary)
+	for it in items:
+		if it == primary:
+			continue
+		if not it in optional:
+			raise ValueError("Unknown item requested in iterator: %s" % it)
+	#check filters
+	filters = ["filter_%s" % o for o in optional]
+	for k in kwargs:
+		if not k in filters:
+			raise ValueError("Unknown argument %s for iterator" % k)
+
+def filter_iterator_items(its,kwargs):
+	for i in its:
+		fil = "filter_" + i
+		if fil in kwargs and not its[i] in kwargs[fil]:
+			return False
+	return True
+
 ALL_TYPES = ["Length (mm)", "Length (in)", "Number", "Bool", "Table Index", "String","Angle (deg)"]
 
 def convert_raw_parameter_value(pname,tname,value):

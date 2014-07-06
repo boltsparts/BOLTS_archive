@@ -24,6 +24,7 @@ from codecs import open
 
 from errors import *
 from common import Links, Parameters, Identifier, Substitution, parse_angled, check_schema
+from common import check_iterator_arguments, filter_iterator_items
 
 CURRENT_VERSION = 0.4
 
@@ -410,33 +411,68 @@ class Repository:
 							(standard.replaces,standard.get_id()))
 				self.standard_replaced.add_link(standard,self.standards[standard.replaces])
 
-	def iternames(self):
+	def iternames(self,items=["name"],**kwargs):
+		"""
+		Iterator over all names of the repo.
+		
+		Possible items to request: name, multiname, collection, class
+		"""
+		check_iterator_arguments(items,"name",["multiname","collection","class"],kwargs)
+
 		for name in self.names.values():
+			its = {"name" : name}
+			its["class"] = self.class_names.get_src(name)
 			if  self.multiname_names.contains_dst(name):
-				multiname = self.multiname_names.get_src(name)
-				coll = self.collection_multinames.get_src(multiname)
+				its["multiname"] = self.multiname_names.get_src(name)
+				its["collection"] = self.collection_multinames.get_src(multiname)
 			else:
-				multiname = None
-				coll = self.collection_names.get_src(name)
-			cl = self.class_names.get_src(name)
-			yield (coll, multiname, name, cl)
+				its["multiname"] = None
+				its["collection"] = self.collection_names.get_src(name)
 
-	def iterstandards(self):
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)
+
+	def iterstandards(self,items=["standard"],**kwargs):
+		"""
+		Iterator over all standards of the repo.
+		
+		Possible items to request: standard, multistandard, collection, class
+		"""
+		check_iterator_arguments(items,"standard",["multistandard","collection","class"],kwargs)
+
 		for std in self.standards.values():
-			if  self.multistandard_standards.contains_dst(std):
-				multistandard = self.multistandard_standards.get_src(std)
-				coll = self.collection_multistandards.get_src(multistandard)
-			else:
-				multistandard = None
-				coll = self.collection_standards.get_src(std)
-			cl = self.class_standards.get_src(std)
-			yield (coll, multistandard, std, cl)
+			its = {"standard" : std}
+			its["class"] = self.class_standards.get_src(std)
 
-	def iterclasses(self):
+			if  self.multistandard_standards.contains_dst(std):
+				its["multistandard"] = self.multistandard_standards.get_src(std)
+				its["collection"] = self.collection_multistandards.get_src(its["multistandard"])
+			else:
+				its["multistandard"] = None
+				its["collection"] = self.collection_standards.get_src(std)
+
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)
+
+	def iterclasses(self,items=["class"],**kwargs):
+		"""
+		Iterator over all classes of the repo.
+		
+		Possible items to request: class, collection
+		"""
+		check_iterator_arguments(items,"class",["collection"],kwargs)
+
 		for cl in self.classes.values():
-			coll = self.collection_classes.get_src(cl)
-			yield (coll,cl)
+			its = {"class" : cl}
+			its["collection"] = self.collection_classes.get_src(cl)
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)
 
 	def itercollections(self):
+		"""
+		Iterator over all collections of the repo.
+		
+		Not possible to request items
+		"""
 		for coll in self.collections.values():
 			yield coll

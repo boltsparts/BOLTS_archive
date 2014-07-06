@@ -24,6 +24,7 @@ from codecs import open
 
 from errors import *
 from common import BaseElement, DataBase, Parameters, check_schema, Links, BipartiteLinks
+from common import check_iterator_arguments, filter_iterator_items
 
 class Drawing(BaseElement):
 	def __init__(self,basefile,collname,backend_root):
@@ -126,45 +127,57 @@ class DrawingsData(DataBase):
 						self.condrawings_classes.add_link(draw,self.repo.classes[id])
 					self.collection_condrawings.add_link(repo.collections[coll],draw)
 
-	def iterclasses(self):
-		for cl in self.repo.classes.values():
-			coll = self.repo.collection_classes.get_src(cl)
+	def iterclasses(self,items=["class"],**kwargs):
+		"""
+		Iterator over all classes of the repo.
+		
+		Possible items to request: class, collection, dimdrawing, condrawings
+		"""
+		check_iterator_arguments(items,"class",["collection","dimdrawing","condrawings"],kwargs)
+
+		for cl,coll in self.repo.iterclasses(["class","collection"]):
+			its = {"class" : cl, "collection" : coll}
 			if self.condrawings_classes.contains_dst(cl):
-				condrawings = self.condrawings_classes.get_srcs(cl)
+				its["condrawings"] = self.condrawings_classes.get_srcs(cl)
 			else:
-				condrawings = []
+				its["condrawings"] = []
 			if self.dimdrawing_classes.contains_dst(cl):
-				dimdrawing = self.dimdrawing_classes.get_src(cl)
+				its["dimdrawing"] = self.dimdrawing_classes.get_src(cl)
 			else:
-				None
-			yield(coll,cl,dimdrawing,condrawings)
+				its["dimdrawing"] = None
 
-	def iterdimdrawings(self,coll=None):
-		if not coll is None:
-			if self.collection_dimdrawings.contains_src(coll):
-				for draw in self.collection_dimdrawings.get_dsts(coll):
-					classes = self.dimdrawings_classes.get_dsts(draw)
-					yield (coll,classes,draw)
-		else:
-			for draw in self.dimdrawings:
-				coll = self.collection_dimdrawings.get_src(draw);
-				classes = self.dimdrawing_classes.get_dsts(draw)
-				yield (coll,classes,draw)
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)
 
-	def itercondrawings(self,cl=None,coll=None):
-		if not cl is None:
-			if self.condrawings_classes.contains_dst(cl):
-				for draw in self.condrawings_classes.get_srcs(cl):
-					coll = self.collection_condrawings.get_src(draw);
-					classes = self.condrawings_classes.get_dsts(draw)
-					yield (coll,classes,draw)
-		elif not coll is None:
-			if self.collection_condrawings.contains_src(coll):
-				for draw in self.collection_conrawings.get_dsts(coll):
-					classes = self.condrawings_classes.get_dsts(draw)
-					yield (coll,classes,draw)
-		else:
-			for draw in self.condrawings:
-				coll = self.collection_condrawings.get_src(draw);
-				classes = self.condrawings_classes.get_dsts(draw)
-				yield (coll,classes,draw)
+	def iterdimdrawings(self,items=["dimdrawing"],**kwargs):
+		"""
+		Iterator over all dimension drawings of the repo.
+		
+		Possible items to request: dimdrawing, classes, collection
+		"""
+		check_iterator_arguments(items,"dimdrawing",["classes", "collection"],kwargs)
+
+		for draw in self.dimdrawings:
+			its = {"dimdrawing" : draw}
+			its["collection"] = self.collection_dimdrawings.get_src(draw);
+			its["classes"] = self.dimdrawing_classes.get_dsts(draw)
+
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)
+
+	def itercondrawings(self,items=["condrawing"],**kwargs):
+		"""
+		Iterator over all connector drawings of the repo.
+		
+		Possible items to request: condrawing, conlocations, classes, collection
+		"""
+		check_iterator_arguments(items,"condrawing",["conlocations", "classes", "collection"],kwargs)
+
+		for draw in self.condrawings:
+			its = {"condrawing" : draw}
+			its["collection"] = self.collection_condrawings.get_src(draw)
+			its["classes"] = self.condrawings_classes.get_dsts(draw)
+			its["conlocations"] = self.conlocations_condrawings.get_srcs(draw)
+
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)

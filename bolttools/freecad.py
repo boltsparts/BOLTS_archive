@@ -20,6 +20,7 @@ from os.path import join, exists, basename, splitext
 from codecs import open
 
 from common import check_schema, DataBase, BaseElement, Parameters, Links
+from common import check_iterator_arguments, filter_iterator_items
 from errors import *
 
 class FreeCADGeometry(BaseElement):
@@ -94,27 +95,35 @@ class FreeCADData(DataBase):
 							raise e
 				else:
 					raise MalformedBaseError("Unknown base type %s" % basefile["type"])
-	def iterclasses(self):
-		for cl in self.repo.classes:
-			coll = self.repo.collection_classes.get_src(cl)
-			if self.base_classes.contains_dst(cl):
-				base = self.base_classes.get_src(cl)
-				yield(coll,cl,base)
 
-	def iterbases(self,cl=None,coll=None):
-		if not cl is None:
+	def iterclasses(self,items=["class"],**kwargs):
+		"""
+		Iterator over all classes of the repo.
+		
+		Possible items to request: class, collection, base
+		"""
+		check_iterator_arguments(items,"class",["collection","base"],kwargs)
+
+		for cl,coll in self.repo.iterclasses("class","collection, base"):
+			its = {"class" : cl, "collection" : coll}
 			if self.base_classes.contains_dst(cl):
-				for base in self.base_classes.get_dsts(cl):
-					coll = self.collection_bases.get_src(base)
-					classes = self.base_classes.get_dsts(base)
-					yield (coll,classes,base)
-		elif not coll is None:
-			if self.collection_bases.contains_src(coll):
-				for base in self.collection_bases.get_dsts(coll):
-					classes = self.base_classes.get_dsts(base)
-					yield (coll,classes,base)
-		else:
-			for base in self.bases:
-				coll = self.collection_bases.get_src(base)
-				classes = self.base_classes.get_dsts(base)
-				yield (coll,classes,base)
+				its["base"] = self.base_classes.get_src(cl)
+
+				if filter_iterator_items(its,kwargs):
+					yield tuple(its[key] for key in items)
+
+	def iterbases(self,items=["base"],**kwargs):
+		"""
+		Iterator over all freecad bases of the repo.
+		
+		Possible items to request: base, classes, collection
+		"""
+		check_iterator_arguments(items,"base",["classes", "collection"],kwargs)
+
+		for base in self.bases:
+			its = {"base" : base}
+			its["collection"] = self.collection_bases.get_src(base)
+			its["classes"] = self.base_classes.get_dsts(base)
+
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)

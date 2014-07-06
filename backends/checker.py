@@ -83,7 +83,7 @@ class MissingBaseTable(ErrorTable):
 		)
 
 	def populate(self,repo,dbs):
-		for coll,cl in repo.iterclasses():
+		for coll,cl in repo.iterclasses(["collection","class"]):
 			row = []
 			row.append(cl.id)
 			row.append(coll.name)
@@ -101,7 +101,7 @@ class MissingCommonParametersTable(ErrorTable):
 		)
 
 	def populate(self,repo,dbs):
-		for coll,cl in repo.iterclasses():
+		for coll,cl in repo.iterclasses(["collection","class"]):
 			if cl.parameters.common is None:
 				row = []
 				row.append(cl.id)
@@ -117,7 +117,7 @@ class MissingConnectorTable(ErrorTable):
 		)
 
 	def populate(self,repo,dbs):
-		for coll,classes,module in dbs["openscad"].itermodules():
+		for coll,classes,module in dbs["openscad"].itermodules(["collection","classes","module"]):
 			if not dbs["openscad"].module_connectors.contains_src(module):
 				row = []
 				row.append(coll.name)
@@ -134,7 +134,7 @@ class MissingDrawingTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		#dimension drawings
-		for coll,cl,dimdrawing,condrawings in dbs["drawings"].iterclasses():
+		for coll,cl,dimdrawing in dbs["drawings"].iterclasses(["collection","class","dimdrawing"]):
 			if dimdrawing is None:
 				row = []
 				row.append(cl.id)
@@ -144,7 +144,7 @@ class MissingDrawingTable(ErrorTable):
 				self.rows.append(row)
 
 		#connector drawings
-		for coll,cl,module in dbs["openscad"].iterclasses():
+		for coll,cl,module in dbs["openscad"].iterclasses(["collection","class","module"]):
 			#find all locations
 			if not dbs["openscad"].module_connectors.contains_src(module):
 				#if no connector is defined fot this module
@@ -153,8 +153,9 @@ class MissingDrawingTable(ErrorTable):
 
 			#collect all locations covered by drawings
 			covered = []
-			for coll,classes,draw in dbs["drawings"].itercondrawings(cl):
-				covered += dbs["drawings"].conlocations_condrawings.get_srcs(draw)
+			for draw,conlocs,classes in dbs["drawings"].itercondrawings(["condrawing","conlocations","classes"]):
+				if cl in classes:
+					covered += conlocs
 
 			uncovered = set(locations) - set(covered)
 			if len(uncovered) > 0:
@@ -174,7 +175,7 @@ class UnknownConnectorLocationTable(ErrorTable):
 		)
 
 	def populate(self,repo,dbs):
-		for coll,cl,module in dbs["openscad"].iterclasses():
+		for coll,cl,module in dbs["openscad"].iterclasses(["collection","class","module"]):
 			#find all locations
 			if not dbs["openscad"].module_connectors.contains_src(module):
 				#if no connector is defined fot this module
@@ -183,8 +184,9 @@ class UnknownConnectorLocationTable(ErrorTable):
 
 			#collect all locations covered by drawings
 			covered = []
-			for coll,classes,draw in dbs["drawings"].itercondrawings(cl):
-				covered += dbs["drawings"].conlocations_condrawings.get_srcs(draw)
+			for draw,conlocs,classes in dbs["drawings"].itercondrawings(["condrawing","conlocations","classes"]):
+				if cl in classes:
+					covered += conlocs
 
 			unknown = set(covered) - set(locations)
 			if len(unknown) > 0:
@@ -205,7 +207,7 @@ class MissingSVGSourceTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		#connector drawings come without svg source, so dimensions only
-		for coll,classes,draw in dbs["drawings"].iterdimdrawings():
+		for coll,draw in dbs["drawings"].iterdimdrawings(["collection","dimdrawing"]):
 			if draw.get_svg() is None:
 				row = []
 				row.append(coll.name)
@@ -233,7 +235,7 @@ class UnsupportedLicenseTable(ErrorTable):
 				self.rows.append(row)
 
 		#openscad
-		for coll,classes,module in dbs["openscad"].itermodules():
+		for coll,classes,module in dbs["openscad"].itermodules(["collection","classes","module"]):
 			if not license.check_license(module.license_name,module.license_url):
 				row = []
 				row.append("OpenSCAD")
@@ -244,7 +246,7 @@ class UnsupportedLicenseTable(ErrorTable):
 				self.rows.append(row)
 
 		#freecad
-		for coll,classes,base in dbs["freecad"].iterbases():
+		for coll,classes,base in dbs["freecad"].iterbases(["collection","classes","base"]):
 			if not license.check_license(base.license_name,base.license_url):
 				row = []
 				row.append("FreeCAD")
@@ -255,7 +257,7 @@ class UnsupportedLicenseTable(ErrorTable):
 				self.rows.append(row)
 
 		#drawings
-		for coll,classes,draw in dbs["drawings"].iterdimdrawings():
+		for coll,classes,draw in dbs["drawings"].iterdimdrawings(["collection","classes","dimdrawing"]):
 			if not license.check_license(draw.license_name,draw.license_url):
 				row = []
 				row.append("drawing-dimension")
@@ -264,7 +266,8 @@ class UnsupportedLicenseTable(ErrorTable):
 				row.append(draw.license_url)
 				row.append(",".join(coll.authors))
 				self.rows.append(row)
-		for coll,classes,draw in dbs["drawings"].itercondrawings():
+
+		for coll,classes,draw in dbs["drawings"].itercondrawings(["collection","classes","condrawing"]):
 			if not license.check_license(draw.license_name,draw.license_url):
 				row = []
 				row.append("drawing-connector")
@@ -446,36 +449,36 @@ class MissingBaseConnectionTable(ErrorTable):
 	def populate(self,repo,dbs):
 		#collect sets of classes with equivalent geometry
 		union = HyperUnionFind()
-		for cl in repo.classes.values():
+		for cl, in repo.iterclasses():
 			union.make_set(cl.id)
 		#find connected components of the hypergraph formed by the equivalent geometry relations
-		for coll,classes,base in dbs["freecad"].iterbases():
+		for base, in dbs["freecad"].iterbases():
 			union.process_edge(set(base.classids))
-		for coll,classes,module in dbs["openscad"].itermodules():
+		for module, in dbs["openscad"].itermodules():
 			union.process_edge(set(module.classids))
 		for dtable in dbs["solidworks"].designtables:
 			union.process_edge(set([dtc.classid for dtc in dtable.classes]))
 
 		#check whether we are missing something
-		for coll,classes,module in dbs["openscad"].itermodules():
+		for module, in dbs["openscad"].itermodules():
 			eq = union.get_set(module.classids[0])
 			classids = set(module.classids)
 			if  eq > classids:
 				self.rows.append(["OpenSCAD",module.filename,",".join(eq - classids)])
 
-		for coll,classes,base in dbs["freecad"].iterbases():
+		for base, in dbs["freecad"].iterbases():
 			eq = union.get_set(base.classids[0])
 			classids = set(base.classids)
 			if  eq > classids:
 				self.rows.append(["FreeCAD",base.filename,",".join(eq - classids)])
 
-		for coll,classes,draw in dbs["drawings"].iterdimdrawings():
+		for classes,draw in dbs["drawings"].iterdimdrawings(["classes","dimdrawing"]):
 			classids = set([cl.id for cl in classes])
 			eq = union.get_set(classes[0].id)
 			if  eq > classids:
 				self.rows.append(["Dimension drawing",draw.filename,",".join(eq - classids)])
 
-		for coll,classes,draw in dbs["drawings"].itercondrawings():
+		for classes,draw in dbs["drawings"].itercondrawings(["classes","condrawing"]):
 			classids = set([cl.id for cl in classes])
 			eq = union.get_set(classes[0].id)
 			if  eq > classids:

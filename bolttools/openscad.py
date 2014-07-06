@@ -23,6 +23,7 @@ from codecs import open
 
 from errors import *
 from common import DataBase, BaseElement, Parameters, check_schema, Links, BijectiveLinks
+from common import check_iterator_arguments, filter_iterator_items
 
 
 class SCADFile(BaseElement):
@@ -120,49 +121,80 @@ class OpenSCADData(DataBase):
 				else:
 					raise MalformedBaseError("Unknown base type %s" % basefile["type"])
 
-	def iternames(self):
-		for coll,multiname,name,cl in self.repo.iternames():
-			if self.module_classes.contains_dst(cl):
-				module = self.module_classes.get_src(cl)
-				yield (coll,multiname,name,cl,module)
+	def iternames(self,items=["name"],**kwargs):
+		"""
+		Iterator over all names of the repo.
+		
+		Possible items to request: name, multiname, collection, class, module
+		"""
+		check_iterator_arguments(items,"name",["multiname","collection","class","module"],kwargs)
 
-	def iterstandards(self):
-		for coll,multistd,std,cl in self.repo.iterstandards():
-			if self.module_classes.contains_dst(cl):
-				module = self.module_classes.get_src(cl)
-				yield (coll,multistd,std,cl,module)
+		for name,multiname,coll,cl in self.repo.iternames(["name","multiname","collection","class"]):
+			its = {"name" : name, "multiname" : multiname, "collection" : coll, "class" : cl}
 
-	def iterclasses(self):
-		for cl in self.repo.classes.values():
-			coll = self.repo.collection_classes.get_src(cl)
 			if self.module_classes.contains_dst(cl):
-				module = self.module_classes.get_src(cl)
-				yield(coll,cl,module)
+				its["module"] = self.module_classes.get_src(cl)
+				if filter_iterator_items(its,kwargs):
+					yield tuple(its[key] for key in items)
 
-	def itermodules(self,cl=None,coll=None):
-		if not cl is None:
+	def iterstandards(self,items=["standard"],**kwargs):
+		"""
+		Iterator over all standards of the repo.
+		
+		Possible items to request: standard, multistandard, collection, class, module
+		"""
+		check_iterator_arguments(items,"standard",["multistandard","collection","class","module"],kwargs)
+
+		for standard,multistandard,coll,cl in self.repo.iterstandards(["standard","multistandard","collection","class"]):
+			its = {"standard" : standard, "multistandard" : multistandard, "collection" : coll, "class" : cl}
+
 			if self.module_classes.contains_dst(cl):
-				for module in self.module_classes.get_dsts(cl):
-					coll = self.collection_modules.get_src(module)
-					classes = self.module_classes.get_dsts(module)
-					yield (coll,classes,module)
-		elif not coll is None:
-			if self.collection_modules.contains_src(coll):
-				for module in self.collection_modules.get_dsts(coll):
-					classes = self.module_classes.get_dsts(module)
-					yield (coll,classes,module)
-		else:
-			for module in self.modules:
-				coll = self.collection_modules.get_src(module)
-				classes = self.module_classes.get_dsts(module)
-				yield (coll,classes,module)
+				its["module"] = self.module_classes.get_src(cl)
+				if filter_iterator_items(its,kwargs):
+					yield tuple(its[key] for key in items)
 
-	def iterscadfiles(self,coll=None):
-		if not coll is None:
-			if self.collection_scadfiles.contains_src(coll):
-				for sf in self.collection_scadfiles.get_dsts(coll):
-					yield (coll,sf)
-		else:
-			for sf in self.scadfiles:
-				coll = self.collection_scadfiles.get_src(sf)
-				yield (coll, sf)
+	def iterclasses(self,items=["class"],**kwargs):
+		"""
+		Iterator over all classes of the repo.
+		
+		Possible items to request: class, collection, module
+		"""
+		check_iterator_arguments(items,"class",["collection","module"],kwargs)
+
+		for cl, coll in self.repo.iterclasses(["class","collection"]):
+			its = {"class" : cl, "collection" : coll}
+			if self.module_classes.contains_dst(cl):
+				its["module"] = self.module_classes.get_src(cl)
+				if filter_iterator_items(its,kwargs):
+					yield tuple(its[key] for key in items)
+
+	def itermodules(self,items=["module"],**kwargs):
+		"""
+		Iterator over all OpenSCAD modules of the repo.
+
+		Possible items to request: module, classes, collection
+		"""
+		check_iterator_arguments(items,"module",["classes","collection"],kwargs)
+
+		for module in self.modules:
+			its = {"module" : module}
+			its["collection"] = self.collection_modules.get_src(module)
+			its["classes"] = self.module_classes.get_dsts(module)
+
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)
+
+	def iterscadfiles(self,items=["scadfile"],**kwargs):
+		"""
+		Iterator over all OpenSCAD files of the repo.
+
+		Possible items to request: scadfile, collection
+		"""
+		check_iterator_items(items,"scadfile",["collection"],kwargs)
+
+		for sf in self.scadfiles:
+			its = {"scadfile" : sf}
+			its["collection"] = self.collection_scadfiles.get_src(sf)
+
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)
