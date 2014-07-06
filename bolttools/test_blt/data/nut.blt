@@ -31,7 +31,6 @@ classes:
       - body: ISO
         standard: ISO 4035
         labeling: Hexagon thin nut ISO 4035 %(key)s
-        replaces: DIN439_B
         description: Thin hexagon nut, metric sizes
       - body: DINENISO
         standard: DINENISO 4035
@@ -93,8 +92,8 @@ classes:
   - id: hexagonthinnut2
     standards:
       body: DIN
-      standard: DIN 439
-      suffix: B
+      standard: DIN 439 B
+      group: DIN 439
       status: withdrawn
       labeling: Hexagon thin nut DIN 439 %(key)s
       description: Thin hexagon nut, metrix size, old
@@ -158,9 +157,7 @@ classes:
       description: Hexagon nut, metric sizes
     standards:
       body: ISO
-      standard:
-        safe: ISO4032
-        nice: ISO 4032
+      standard: ISO 4032
       labeling: Hexagon nut ISO 4032 %(key)
       description: Hexagon nut, metric sizes
       replaces: DIN934

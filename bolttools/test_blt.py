@@ -39,10 +39,10 @@ names:
     description: Most common round single cell battery sizes
 standards:
   - body: IEC
-    standard: IEC 60086
-    suffix:
-      safe: Cat1
-      nice: Category 1
+    standard:
+      nice: IEC 60086 Category 1
+      safe: IEC60086Cat1
+    group: IEC 60086
     labeling:
       nice: "IEC60086 Cat 1 Battery %(T)s"
     description: Cylindrical cells with protruding positive and recessed or flat negative terminals.
@@ -95,10 +95,8 @@ source: http://en.wikipedia.org/wiki/List_of_battery_sizes
 			res.append(blt.ClassStandard(sn))
 
 		self.assertEqual(len(res),1)
-		self.assertEqual(res[0].standard.get_safe_name(),'IEC60086')
-		self.assertEqual(res[0].standard.get_nice_name(),'IEC 60086')
-		self.assertEqual(res[0].suffix.get_safe_name(),'Cat1')
-		self.assertEqual(res[0].suffix.get_nice_name(),'Category 1')
+		self.assertEqual(res[0].standard.get_safe_name(),'IEC60086Cat1')
+		self.assertEqual(res[0].standard.get_nice_name(),'IEC 60086 Category 1')
 
 class MockDesignation(blt.Designation):
 	def __init__(self,id,subids=[]):
@@ -139,6 +137,11 @@ class TestRepository(unittest.TestCase):
 	def test_bodies(self):
 		self.assertEqual(len(self.repo.bodies),5)
 		self.assertTrue('DIN' in self.repo.bodies)
+
+	def test_multistandards(self):
+		for std,mstd in self.repo.iterstandards(["standard","multistandard"]):
+			if not mstd is None:
+				self.assertIn(std,self.repo.multistandard_standards.get_dsts(mstd))
 
 
 if __name__ == '__main__':

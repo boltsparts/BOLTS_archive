@@ -90,7 +90,7 @@ class ClassStandard(Designation):
 	def __init__(self,sn):
 		check_schema(sn,'classstandard',
 			['standard','labeling','body'],
-			['suffix','year','status','replaces','description']
+			['group','year','status','replaces','description']
 		)
 		Designation.__init__(self)
 
@@ -98,13 +98,13 @@ class ClassStandard(Designation):
 			self.standard = Identifier({'nice' : sn['standard']})
 		else:
 			self.standard = Identifier(sn['standard'])
-		if 'suffix' in sn:
-			if isinstance(sn['suffix'],str):
-				self.suffix = Identifier({'nice' : sn['suffix']})
+		if 'group' in sn:
+			if isinstance(sn['group'],str):
+				self.group = Identifier({'nice' : sn['group']})
 			else:
-				self.suffix = Identifier(sn['suffix'])
+				self.group = Identifier(sn['group'])
 		else:
-			self.suffix = Identifier({'nice' : ""})
+			self.group = Identifier({'nice' : ""})
 		if isinstance(sn['labeling'],str):
 			self.labeling = Substitution({'nice' : sn['labeling']})
 		else:
@@ -126,9 +126,6 @@ class ClassStandard(Designation):
 			self.description = sn['description']
 
 	def get_id(self):
-		if self.suffix.get_safe_name():
-			return self.standard.get_safe_name() + '_' + self.suffix.get_safe_name()
-		else:
 			return self.standard.get_safe_name()
 
 class Class:
@@ -387,10 +384,12 @@ class Repository:
 						body = StandardBody(bodyid)
 						self.bodies[bodyid] = body
 
-					multistdid = standard.suffix.get_safe_name()
+					self.body_standards.add_link(body,standard)
+
+					multistdid = standard.group.get_safe_name()
 					if multistdid:
 						if not multistdid in self.multistandards:
-							multistd = MultiStandard(standard.standard)
+							multistd = MultiStandard(standard.group)
 							self.multistandards[multistdid] = multistd
 							self.body_multistandards.add_link(body,multistd)
 							self.collection_multistandards.add_link(coll,multistd)
@@ -399,8 +398,6 @@ class Repository:
 
 						self.multistandard_standards.add_link(multistd,standard)
 					else:
-						self.body_standards.add_link(body,standard)
-
 						self.collection_standards.add_link(coll,standard)
 
 		for standard in self.standards.values():
