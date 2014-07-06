@@ -199,7 +199,7 @@ A class name element is an associative array with the following keys:
   given as a string, this is interpreted as the nice name of the identifier
   element.
 - group: optional, string or identifier-element_. Can be used to group class
-  names together, similar to the suffix in a class-standard-element_. Useful
+  names together, similar to the group in a class-standard-element_. Useful
   for parts that are not standardized by a standardisation body, but by e.g. a
   vendor. If given as a string is taken as the nice name of the identifier
   element.
@@ -226,10 +226,10 @@ a class standard element is an associative array with the following keys:
 
 - standard: mandatory, string or identifier-element_. The name of the standard.
   If given as a string is taken as the nice name of an identifier element.
-- suffix: optional, string or identifier-element_. If a single standard
-  specifies multiple classes of parts, the suffix must be used to distinguish
-  them. If given as a string is taken as the nice name of the identifier
-  element.
+- group: optional, string or identifier-element_. If a single standard
+  specifies multiple classes of parts, the group can be used to collect the
+  substandards together. If the group is given as a string is taken as the nice
+  name of the identifier element.
 - labeling: mandatory, string or substitution-element_. A template for the name
   of a part from this class, e.g. for a BOM. If given as a string is taken as
   the nice name.
@@ -242,11 +242,12 @@ a class standard element is an associative array with the following keys:
   this standard.
 - description: optional, string. A short description of the class.
 
-The safe name of this class or in case a suffix is givenm the concatenation of
-safe name and safe suffix must be unique within the repository and provide a
-way to refer to this class. If several classes are specified in the same
-standard, the safe and nice names of the corresponding class standard elements
-must be the same in all classes.
+If a group field is specified it has to be identical in all standards that
+belong to this group. In this case the standard fields have to contain a suffix
+or similar to distinguish them from the group, while still being unique.  If
+several classes are specified in the same standard, the safe and nice names of
+the corresponding class standard elements must be the same in all classes.
+.. not sure I still understand this last sentence.
 
 .. _identifier-element:
 
