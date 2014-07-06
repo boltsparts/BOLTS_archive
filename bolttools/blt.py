@@ -429,6 +429,22 @@ class Repository:
 			if filter_iterator_items(its,kwargs):
 				yield tuple(its[key] for key in items)
 
+	def itermultinames(self,items=["multiname"],**kwargs):
+		"""
+		Iterator over all multinames of the repo.
+
+		Possible items to rerquest: multiname, names, collection
+		"""
+		check_iterator_arguments(items,"multiname",["names","collection"],kwargs)
+
+		for mname in self.multinames.values():
+			its = {"multiname" : mname}
+			its["names"] = self.multiname_names.get_dsts(mname)
+			its["collection"] = self.collection_multinames.get_src(mname)
+
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)
+
 	def iterstandards(self,items=["standard"],**kwargs):
 		"""
 		Iterator over all standards of the repo.
@@ -448,6 +464,23 @@ class Repository:
 			else:
 				its["multistandard"] = None
 				its["collection"] = self.collection_standards.get_src(std)
+
+			if filter_iterator_items(its,kwargs):
+				yield tuple(its[key] for key in items)
+
+	def itermultistandards(self,items=["multistandard"],**kwargs):
+		"""
+		Iterator over all multistandards of the repo.
+
+		Possible items to rerquest: multistandard, standards, collection, body
+		"""
+		check_iterator_arguments(items,"multistandard",["standards","collection","body"],kwargs)
+
+		for mstandard in self.multistandards.values():
+			its = {"multistandard" : mstandard}
+			its["standards"] = self.multistandard_standards.get_dsts(mstandard)
+			its["collection"] = self.collection_multistandards.get_src(mstandard)
+			its["body"] = self.body_multistandards.get_src(mstandard)
 
 			if filter_iterator_items(its,kwargs):
 				yield tuple(its[key] for key in items)
