@@ -387,7 +387,6 @@ classes:
     standards:
       - body: DIN
         standard: DIN 5405-1
-        group: DIN 5405
         labeling: Needle roller DIN 5405-1 %(key)s
         description: Needle roller without cage
       - body: ISO
@@ -642,7 +641,6 @@ classes:
     standards:
       body: DIN
       standard: DIN 5412-1
-      group: DIN 5412
       labeling: Cylindrical roller bearing %(key)s
       description: Cylindrical single row roller bearing
     parameters:

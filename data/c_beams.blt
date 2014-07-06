@@ -30,7 +30,6 @@ classes:
     standards:
       body: DIN
       standard: DIN 1026-2
-      group: DIN 1026
       labeling: DIN1026-2 %(type)s, l=%(l)s
       description: UPE profile, metric european standard c-beam profile
     parameters:

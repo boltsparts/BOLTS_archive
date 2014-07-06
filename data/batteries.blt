@@ -36,7 +36,6 @@ classes:
       standard:
         nice: IEC 60086 Category 1
         safe: IEC60086Cat1
-      group: IEC 60086
       labeling:
         nice: "IEC 60086 Category 1 Battery %(T)s"
         safe: "IEC60086_Cat1_Battery_%(T)s"

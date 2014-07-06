@@ -94,7 +94,6 @@ classes:
     standards:
       body: DIN
       standard: DIN 439 B
-      group: DIN 439
       status: withdrawn
       labeling: Hexagon thin nut DIN 439 %(key)s
       description: Thin hexagon nut, metrix size, old

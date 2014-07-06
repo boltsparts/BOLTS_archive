@@ -51,7 +51,6 @@ classes:
     standards:
       body: DIN
       standard: DIN 11850 Range 2
-      group: DIN 11850
       labeling:
         nice: DIN 11850 Range 2 DN %(dn)s length %(l)s
         safe: DIN11850_Range_2_DN_%(dn)s_length_%(l)s
