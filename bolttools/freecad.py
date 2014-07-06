@@ -104,11 +104,43 @@ class FreeCADData(DataBase):
 		"""
 		check_iterator_arguments(items,"class",["collection","base"],kwargs)
 
-		for cl,coll in self.repo.iterclasses("class","collection, base"):
+		for cl,coll in self.repo.iterclasses(["class","collection"]):
 			its = {"class" : cl, "collection" : coll}
 			if self.base_classes.contains_dst(cl):
 				its["base"] = self.base_classes.get_src(cl)
 
+				if filter_iterator_items(its,kwargs):
+					yield tuple(its[key] for key in items)
+
+	def iterstandards(self,items=["standard"],**kwargs):
+		"""
+		Iterator over all standards of the repo.
+
+		Possible items to request: standard, multistandard, body, collection, class, base
+		"""
+		check_iterator_arguments(items,"standard",["multistandard","body", "collection","class","base"],kwargs)
+
+		parent = ["standard","multistandard","body", "collection","class"]
+		for tup in self.repo.iterstandards(parent):
+			its = dict(zip(parent,tup))
+			if self.base_classes.contains_dst(its["class"]):
+				its["base"] = self.base_classes.get_src(its["class"])
+				if filter_iterator_items(its,kwargs):
+					yield tuple(its[key] for key in items)
+
+	def iternames(self,items=["name"],**kwargs):
+		"""
+		Iterator over all names of the repo.
+
+		Possible items to request: name, multiname, collection, class, base
+		"""
+		check_iterator_arguments(items,"name",["multiname", "collection","class","base"],kwargs)
+
+		parent = ["name","multiname", "collection","class"]
+		for tup in self.repo.iternames(parent):
+			its = dict(zip(parent,tup))
+			if self.base_classes.contains_dst(its["class"]):
+				its["base"] = self.base_classes.get_src(its["class"])
 				if filter_iterator_items(its,kwargs):
 					yield tuple(its[key] for key in items)
 

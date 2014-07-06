@@ -436,13 +436,14 @@ class Repository:
 		"""
 		Iterator over all standards of the repo.
 		
-		Possible items to request: standard, multistandard, collection, class
+		Possible items to request: standard, multistandard, body, collection, class
 		"""
-		check_iterator_arguments(items,"standard",["multistandard","collection","class"],kwargs)
+		check_iterator_arguments(items,"standard",["multistandard","body","collection","class"],kwargs)
 
 		for std in self.standards.values():
 			its = {"standard" : std}
 			its["class"] = self.class_standards.get_src(std)
+			its["body"] = self.body_standards.get_src(std)
 
 			if  self.multistandard_standards.contains_dst(std):
 				its["multistandard"] = self.multistandard_standards.get_src(std)
@@ -476,3 +477,12 @@ class Repository:
 		"""
 		for coll in self.collections.values():
 			yield coll
+
+	def iterbodies(self):
+		"""
+		Iterator over all standard bodies of the repo.
+		
+		Not possible to request items
+		"""
+		for body in self.bodies.values():
+			yield body
