@@ -17,7 +17,7 @@
 ---
 id: hex_socket
 name: Hexagon socket fasteners
-description: various standard hex socket bolts and screws
+description: Various standard hex socket bolts and screws
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4
@@ -97,20 +97,20 @@ classes:
     names:
       name: Metric hex socket head cap screw
       labeling: Hex socket head cap screw %(key)s %(l)s
-      description: hexagon socket head cap screw, metric sizes
+      description: Hexagon socket head cap screw, metric sizes
     standards:
       - body: ISO
         standard: ISO 4762
         labeling: Hex socket head cap screw ISO 4762 %(key)s %(l)s
-        description: hexagon socket head cap screw
+        description: Hexagon socket head cap screw
       - body: DINENISO
         standard: DINENISO 4762
         labeling: Hex socket head cap screw DINENISO 4762 %(key)s %(l)s
-        description: hexagon socket head cap screw
+        description: Hexagon socket head cap screw
       - body: DIN
         standard: DIN 912
         labeling: Hex socket head cap screw DIN 912 %(key)s %(l)s
-        description: hexagon socket head cap screw
+        description: Hexagon socket head cap screw
     parameters:
         free: [key, l]
         defaults: {key: "M3", l: 20}

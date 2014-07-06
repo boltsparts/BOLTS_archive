@@ -17,7 +17,7 @@
 ---
 id: i_beams
 name: I-Beam profiles (rolled)
-description: various rolled i-beam profiles
+description: Various rolled i-beam profiles
 author: Bernd Hahnebach <bernd@bimstatik.org>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4

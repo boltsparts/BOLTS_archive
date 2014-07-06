@@ -17,7 +17,7 @@
 ---
 id: hex
 name: Hexagon fasteners
-description: various standard hex bolts and screws
+description: Various standard hex bolts and screws
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4

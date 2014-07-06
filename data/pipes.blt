@@ -21,7 +21,7 @@
 ---
 id: pipes
 name: Pipes
-description: metric and imperial pipes
+description: Metric and imperial pipes
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: MIT <http://opensource.org/licenses/MIT>
 blt-version: 0.4
@@ -34,7 +34,7 @@ classes:
       labeling:
         nice: Pipe OD %(od)s ID %(id)s length %(l)s
         safe: Pipe_OD_%(od)s_ID_%(id)s_length_%(l)s
-      description: a generic pipe
+      description: A generic pipe
     parameters:
       free: [od, id, l]
       defaults: {od: 13, id: 10, l: 1000}

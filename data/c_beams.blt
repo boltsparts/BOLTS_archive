@@ -17,7 +17,7 @@
 ---
 id: c_beams
 name: C-Beam profiles (rolled)
-description: various rolled c-beam profiles
+description: Various rolled c-beam profiles
 author: Bernd Hahnebach <bernd@bimstatik.org>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4

@@ -511,7 +511,7 @@ class PointlessGroupTable(ErrorTable):
 	def __init__(self):
 		ErrorTable.__init__(self,
 			"One element groups",
-			"Some standard- or name groups have only one element. This can be due to a typo or because only one part of the group is present in BOLTS. In the latter case no group should be defined.",
+			"Some standard- or name groups have only one element, either due to a typo or because only one part of the group is present in BOLTS. In the latter case no group should be defined.",
 			["Group","Name","Type","Collection"]
 		)
 
@@ -535,6 +535,52 @@ class PointlessGroupTable(ErrorTable):
 				row.append(coll.id)
 				self.rows.append(row)
 
+class LowercaseDescriptionTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"One element groups",
+			"The first word of descriptions of names, standards and collections must be capitalized",
+			["Name","Type","Collection","Description"]
+		)
+
+	def populate(self,repo,dbs):
+		#name
+		for name, coll in repo.iternames(["name","collection"]):
+			if not name.description[0].isupper():
+				row = []
+				row.append(name.name.get_nice())
+				row.append("Name")
+				row.append(coll.id)
+				if len(name.description) > 10:
+					row.append(name.description[:7] + '...')
+				else:
+					row.append(name.description)
+				self.rows.append(row)
+		#standard
+		for standard, coll in repo.iterstandards(["standard","collection"]):
+			if not standard.description[0].isupper():
+				row = []
+				row.append(standard.standard.get_nice())
+				row.append("Standard")
+				row.append(coll.id)
+				if len(standard.description) > 10:
+					row.append(standard.description[:7] + '...')
+				else:
+					row.append(standard.description)
+				self.rows.append(row)
+		#collections
+		for coll in repo.itercollections():
+			if not coll.description[0].isupper():
+				row = []
+				row.append(coll.name)
+				row.append("Collection")
+				row.append(coll.id)
+				if len(coll.description) > 10:
+					row.append(coll.description[:7] + '...')
+				else:
+					row.append(coll.description)
+				self.rows.append(row)
+
 
 
 class CheckerExporter(BackendExporter):
@@ -549,6 +595,7 @@ class CheckerExporter(BackendExporter):
 		self.checks["missingparameterdescription"] = MissingParameterDescriptionTable()
 		self.checks["unknownconnectors"] = UnknownConnectorLocationTable()
 		self.checks["pointlessgroup"] = PointlessGroupTable()
+		self.checks["lowercasedescription"] = LowercaseDescriptionTable()
 
 		self.tasks = {}
 		self.tasks["missingcommonparameters"] = MissingCommonParametersTable()

@@ -17,7 +17,7 @@
 ---
 id: nut
 name: Nuts
-description: various standard nuts
+description: Various standard nuts
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4

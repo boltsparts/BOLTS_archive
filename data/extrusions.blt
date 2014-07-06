@@ -26,7 +26,7 @@ classes:
     names:
       name: T slot extrusion 20x20
       labeling: T slot extrusion 20x20x%(l)s
-      description: generic T slot aluminium extrusion 20mmx20mm
+      description: Generic T slot aluminium extrusion 20mmx20mm
     parameters:
       free: [l]
       defaults: {l: 100}
@@ -37,7 +37,7 @@ classes:
     names:
       name: T slot extrusion one slot 20x20
       labeling: T slot extrusion one slot 20x20x%(l)s
-      description: generic T slot aluminium extrusion one slot 20mmx20mm
+      description: Generic T slot aluminium extrusion one slot 20mmx20mm
     parameters:
       free: [l]
       defaults: {l: 100}
@@ -48,7 +48,7 @@ classes:
     names:
       name: T slot extrusion two slots (opp.) 20x20
       labeling: T slot extrusion two slots (opp.) 20x20x%(l)s
-      description: generic T slot aluminium extrusion two oppositeslots 20mmx20mm
+      description: Generic T slot aluminium extrusion two oppositeslots 20mmx20mm
     parameters:
       free: [l]
       defaults: {l: 100}
@@ -59,7 +59,7 @@ classes:
     names:
       name: T slot extrusion two slots 20x20x
       labeling: T slot extrusion two slots 20x20x%(l)s
-      description: generic T slot aluminium extrusion two neighboring slots 20mmx20mm
+      description: Generic T slot aluminium extrusion two neighboring slots 20mmx20mm
     parameters:
       free: [l]
       defaults: {l: 100}
@@ -70,7 +70,7 @@ classes:
     names:
       name: T slot extrusion three slots 20x20x
       labeling: T slot extrusion three slots 20x20x%(l)s
-      description: generic T slot extrusion three slots 20mmx20mm
+      description: Generic T slot extrusion three slots 20mmx20mm
     parameters:
       free: [l]
       defaults: {l: 100}

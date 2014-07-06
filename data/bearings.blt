@@ -18,7 +18,7 @@
 ---
 id: bearings
 name: Bearings
-description: various ball bearings
+description: Various ball and roller bearings
 author: [Johannes Reinhardt <jreinhardt@ist-dein-freund.de>, Javier Martínez García <jaeco@gmx.com>]
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4
@@ -27,13 +27,13 @@ classes:
     names:
       name: Radial Ball Bearing
       labeling: Radial Ball Bearing %(key)s%(postfix)s
-      description: single row radial contact ball bearing, with single or double shields, single or double seal or open, metric sizes
+      description: Single row radial contact ball bearing, with single or double shields, single or double seal or open, metric sizes
     standards:
       body: DIN
       standard: DIN 625-1
       group: DIN 625
       labeling: Radial Ball Bearing DIN625-1 %(key)s%(postfix)s
-      description: single row radial contact ball bearing, with single or double shields, single or double seal or open
+      description: Single row radial contact ball bearing, with single or double shields, single or double seal or open
     parameters:
         free: [key,type]
         defaults: {key: "608", type: "open"}
@@ -111,7 +111,7 @@ classes:
     names:
       name: Radial Ball Bearing imperial
       labeling: imperial Radial Ball Bearing %(key)s%(postfix)s
-      description: single row radial contact ball bearing, imperial sizes
+      description: Single row radial contact ball bearing, imperial sizes
     parameters:
         free: [key]
         defaults: {key: "RLS8"}
@@ -224,16 +224,16 @@ classes:
     names:
       name: Axial thrust bearing
       labeling: Axial thrust bearing %(key)s
-      description: axial thrust bearing, single direction
+      description: Axial thrust bearing, single direction
     standards:
       - body: DIN
         standard: DIN 711
         labeling: Axial thrust bearing DIN 711 %(key)s
-        description: axial thrust bearing, single direction
+        description: Axial thrust bearing, single direction
       - body: ISO
         standard: ISO 104
         labeling: Axial thrust bearing ISO 104 %(key)s
-        description: axial thrust bearing, single direction
+        description: Axial thrust bearing, single direction
     parameters:
         free: [key]
         defaults: {key: "51200"}

@@ -46,7 +46,7 @@ classes:
       labeling:
         safe: Tube_Bar_Crimped_Ends_OD_%(od)s_ID_%(id)s_CG_%(cg)s_CL_%(cl)s_HD_%(hd)s_RL_%(rl)s_TL_%(tl)s_SD_%(sd)s
         nice: Tube Bar Crimped Ends OD %(od)s ID %(id)s CG %(cg)s CL %(cl)s HD %(hd)s RL %(rl)s TL %(tl)s SD %(sd)s
-      description: a connecting bar made with a round tube crimped at both ends
+      description: A connecting bar made with a round tube crimped at both ends
     parameters:
       free: [od, id, cg, cl, hd, rl, tl, sd]
       defaults: {od: 33.7, id: 27.9, cg: 6, hd: 16, cl: 50, rl: 50, tl: 50, sd: False}
