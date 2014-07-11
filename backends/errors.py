@@ -41,10 +41,20 @@ class IncompatibleLicenseError(Exception):
 	def __str__(self):
 		return self.msg
 
-class BackendNotAvailableError(BackendError):
-	def __init__(self,backendname):
-		BackendError.__init__(self,backendname)
-		self.msg = "The backend is not available in this repo"
+class DatabaseNotAvailableError(BackendError):
+	def __init__(self,backendname,db):
+		BackendError.__init__(self,"")
+		self.msg = "The database %s is required by this backend, but was not passed" % db
+
+class MissingArgumentError(BackendError):
+	def __init__(self,backendname,kw):
+		BackendError.__init__(self,"")
+		self.msg = "The required keyword argument %s was not supplied" % kw
+
+class UnknownArgumentError(BackendError):
+	def __init__(self,backendname,kw):
+		BackendError.__init__(self,"")
+		self.msg = "An unknown keyword argument %s was supplied" % kw
 
 class ModuleNameCollisionError(Exception):
 	def __init__(self,modulename):

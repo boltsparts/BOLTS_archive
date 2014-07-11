@@ -17,7 +17,7 @@ from os import listdir
 from os.path import join, exists, basename, splitext, isdir
 import re
 
-from common import BackendExporter
+from common import Backend
 import license
 from errors import *
 
@@ -583,9 +583,9 @@ class LowercaseDescriptionTable(ErrorTable):
 
 
 
-class CheckerExporter(BackendExporter):
+class CheckerBackend(Backend):
 	def __init__(self,repo,databases):
-		BackendExporter.__init__(self,repo,databases)
+		Backend.__init__(self,repo,"checker",databases)
 
 		self.checks = {}
 		self.checks["unsupportedlicense"] = UnsupportedLicenseTable()

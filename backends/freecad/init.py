@@ -42,8 +42,8 @@ from gui.freecad_bolts import BoltsWidget
 
 #import repo
 rootpath =  dirname(__file__)
-repo = bolttools.blt.BOLTSRepository(rootpath)
-freecad = bolttools.freecad.FreeCADData(rootpath)
+repo = bolttools.blt.Repository(rootpath)
+freecad = bolttools.freecad.FreeCADData(repo)
 
 widget = None
 
