@@ -21,15 +21,15 @@ from codecs import open
 from datetime import datetime
 from PyQt4 import uic
 
-from common import BackendExporter
+from common import Backend
 import license
 from errors import *
 
-class FreeCADExporter(BackendExporter):
+class FreeCADBackend(Backend):
 	def __init__(self,repo,databases):
-		BackendExporter.__init__(self,repo,databases)
-		self.freecad = databases["freecad"]
-	def write_output(self,out_path,target_license,version,stable=False):
+		Backend.__init__(self,repo,"freecad",databases,["freecad"])
+	def write_output(self,out_path,**kwargs):
+		args = self.validate_arguments(kwargs,["target_license","version"])
 
 		self.clear_output_dir(out_path)
 		bolts_path = join(out_path,"BOLTS")
@@ -42,9 +42,9 @@ class FreeCADExporter(BackendExporter):
 
 		#copy files
 		#bolttools
-		if not license.is_combinable_with("LGPL 2.1+",target_license):
+		if not license.is_combinable_with("LGPL 2.1+",args["target_license"]):
 			raise IncompatibleLicenseError(
-				"bolttools is LGPL 2.1+, which is not compatible with %s" % target_license)
+				"bolttools is LGPL 2.1+, which is not compatible with %s" % args["target_license"])
 		copytree(join(self.repo.path,"bolttools"),join(bolts_path,"bolttools"))
 		#remove the test suite and documentation, to save space
 		rmtree(join(bolts_path,"bolttools","test"))
@@ -54,13 +54,13 @@ class FreeCADExporter(BackendExporter):
 		date = datetime.now()
 		version_file = open(join(bolts_path,"VERSION"),"w")
 		version_file.write("%s\n%d-%d-%d\n%s\n" %
-			(version, date.year, date.month, date.day, target_license))
+			(args["version"], date.year, date.month, date.day, args["target_license"]))
 		version_file.close()
 
 		#freecad gui code
-		if not license.is_combinable_with("LGPL 2.1+",target_license):
+		if not license.is_combinable_with("LGPL 2.1+",args["target_license"]):
 			raise IncompatibleLicenseError(
-				"FreeCAD gui files are LGPL 2.1+, which is not compatible with %s" % target_license)
+				"FreeCAD gui files are LGPL 2.1+, which is not compatible with %s" % args["target_license"])
 		if not exists(join(bolts_path,"freecad")):
 			makedirs(join(bolts_path,"freecad"))
 		if not exists(join(bolts_path,"data")):
@@ -76,8 +76,8 @@ class FreeCADExporter(BackendExporter):
 		#compile ui files
 		uic.compileUiDir(join(bolts_path,"gui"))
 
-		for coll in self.repo.collections:
-			if not license.is_combinable_with(coll.license_name,target_license):
+		for coll in self.repo.itercollections():
+			if not license.is_combinable_with(coll.license_name,args["target_license"]):
 				continue
 			copy(join(self.repo.path,"data","%s.blt" % coll.id),
 				join(bolts_path,"data","%s.blt" % coll.id))
@@ -93,13 +93,10 @@ class FreeCADExporter(BackendExporter):
 
 			open(join(bolts_path,"freecad",coll.id,"__init__.py"),"w").close()
 
-			for cl in coll.classes:
-				if not cl.id in self.freecad.getbase:
-					continue
-				base = self.freecad.getbase[cl.id]
+			for base, in self.dbs["freecad"].iterbases(filter_collection=[coll]):
 				if not base.license_name in license.LICENSES:
 					continue
-				if not license.is_combinable_with(base.license_name,target_license):
+				if not license.is_combinable_with(base.license_name,args["target_license"]):
 					continue
 				copy(join(self.repo.path,"freecad",coll.id,basename(base.filename)),
 					join(bolts_path,"freecad",coll.id,basename(base.filename)))

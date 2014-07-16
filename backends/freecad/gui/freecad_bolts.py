@@ -58,13 +58,13 @@ import sys
 from os import listdir
 from BOLTS.bolttools import blt
 from BOLTS.bolttools import freecad
-from BOLTS.bolttools.blt import BOLTSClass, BOLTSCollection, BOLTSRepository
+from BOLTS.bolttools.blt import Collection, Repository, ClassName, ClassStandard
 import importlib
 
-def add_part(base,params,doc):
+def add_part(collection, base,params,doc):
 	if isinstance(base,freecad.BaseFunction):
 		module = importlib.import_module("BOLTS.freecad.%s.%s" %
-			(base.collection,base.module_name))
+			(collection.id,base.module_name))
 		module.__dict__[base.name](params,doc)
 	else:
 		raise  RuntimeError("Unknown base geometry type: %s" % type(base))
@@ -170,7 +170,8 @@ class BoltsWidget(QBoltsWidget):
 		self.ui.setupUi(self)
 
 		self.repo = repo
-		self.freecad = freecad
+		self.dbs = {}
+		self.dbs["freecad"] = freecad
 
 		self.param_widgets = {}
 		self.props_widgets = {}
@@ -181,25 +182,53 @@ class BoltsWidget(QBoltsWidget):
 		self.std_root.setData(0,32,None)
 
 		#set up collections
-		for coll in self.repo.collections:
+		for coll in self.repo.itercollections():
 			coll_item = QtGui.QTreeWidgetItem(self.coll_root,[coll.name, coll.description])
 			coll_item.setData(0,32,coll)
-			for cl in coll.classes:
-				if not cl.id in self.freecad.getbase:
-					continue
-				cl_item = QtGui.QTreeWidgetItem(coll_item,[cl.name, cl.description])
-				cl_item.setData(0,32,cl)
+
+			multinames = {}
+			multistds = {}
+
+			#names
+			for name,multiname in self.dbs["freecad"].iternames(['name','multiname'],filter_collection=[coll]):
+				item = None
+				if multiname is None:
+					item = QtGui.QTreeWidgetItem(coll_item,[name.name.get_nice(), name.description])
+				else:
+					if not multiname in multinames:
+						multinames[multiname] = QtGui.QTreeWidgetItem(coll_item,[multiname.group.get_nice(),""])
+					item = QtGui.QTreeWidgetItem(multinames[multiname],[name.name.get_nice(), name.description])
+
+				item.setData(0,32,name)
+
+			#single names
+			for std,multistd in self.dbs["freecad"].iterstandards(['standard','multistandard'],filter_collection = [coll]):
+				item = None
+				if multistd is None:
+					item = QtGui.QTreeWidgetItem(coll_item,[std.standard.get_nice(), std.description])
+				else:
+					if not multistd in multistds:
+						multistds[multistd] = QtGui.QTreeWidgetItem(coll_item,[multistd.standard.get_nice(),""])
+					item = QtGui.QTreeWidgetItem(multistds[multistd],[std.standard.get_nice(), std.description])
+
+				item.setData(0,32,std)
+
+		multistds = {}
 
 		#set up standards
-		for body in repo.standard_bodies:
-			std_item = QtGui.QTreeWidgetItem(self.std_root,[body, "Standards issued by %s" % body])
+		for body in repo.iterbodies():
+			std_item = QtGui.QTreeWidgetItem(self.std_root,[body.body, "Standards issued by %s" % body.body])
 			std_item.setData(0,32,None)
-			for cl in repo.standardized[body]:
-				if not cl.id in self.freecad.getbase:
-					continue
-				cl_item = QtGui.QTreeWidgetItem(std_item,[cl.name, cl.description])
-				cl_item.setData(0,32,cl)
+			#single standards
+			for std,multistd in self.dbs["freecad"].iterstandards(['standard','multistandard'], filter_body = [body]):
+				if multistd is None:
+					item = QtGui.QTreeWidgetItem(std_item,[std.standard.get_nice(), std.description])
+				else:
+					if not multistd in multistds:
+						multistds[multistd] = QtGui.QTreeWidgetItem(std_item,[multistd.standard.get_nice(),""])
+					item = QtGui.QTreeWidgetItem(multistds[multistd],[std.standard.get_nice(), std.description])
 
+				item.setData(0,32,std)
 
 		self.remove_empty_items(self.coll_root)
 
@@ -208,7 +237,7 @@ class BoltsWidget(QBoltsWidget):
 		for child in children:
 			self.remove_empty_items(child)
 			data = unpack(child.data(0,32))
-			if not isinstance(data,BOLTSClass) and child.childCount() == 0:
+			if not (isinstance(data,ClassName) or isinstance(data,ClassStandard)) and child.childCount() == 0:
 				root_item.removeChild(child)
 
 	def setup_param_widgets(self,cl,base):
@@ -251,22 +280,31 @@ class BoltsWidget(QBoltsWidget):
 		for widget in self.props_widgets:
 			self.ui.props_layout.addWidget(widget)
 
-	def setup_props_class(self,cl):
+	def setup_props_standard(self,std):
 		#construct widgets
-		self.props_widgets.append(PropertyWidget(self.ui.props,"Name",cl.name))
-		if cl.description:
-			self.props_widgets.append(PropertyWidget(self.ui.props,"Description",cl.description))
-		if not cl.standard is None:
-			if cl.status == "withdrawn":
-				self.props_widgets.append(PropertyWidget(self.ui.props,"Status","<font color='red'>%s</font>" % cl.status))
-			else:
-				self.props_widgets.append(PropertyWidget(self.ui.props,"Status","<font color='green'>%s</font>" % cl.status))
-			if not cl.replaces is None:
-				self.props_widgets.append(PropertyWidget(self.ui.props,"Replaces",cl.replaces))
-			if not cl.replacedby is None:
-				self.props_widgets.append(PropertyWidget(self.ui.props,"Replacedby",cl.replacedby))
-		if cl.url:
-			self.props_widgets.append(PropertyWidget(self.ui.props,"URL",cl.url))
+		self.props_widgets.append(PropertyWidget(self.ui.props,"Name",std.standard.get_nice()))
+		if std.description:
+			self.props_widgets.append(PropertyWidget(self.ui.props,"Description",std.description))
+		if std.status == "withdrawn":
+			self.props_widgets.append(PropertyWidget(self.ui.props,"Status","<font color='red'>%s</font>" % std.status))
+		else:
+			self.props_widgets.append(PropertyWidget(self.ui.props,"Status","<font color='green'>%s</font>" % std.status))
+		if not std.replaces is None:
+			self.props_widgets.append(PropertyWidget(self.ui.props,"Replaces",std.replaces))
+		if not std.replacedby is None:
+			self.props_widgets.append(PropertyWidget(self.ui.props,"Replacedby",std.replacedby))
+		self.props_widgets.append(PropertyWidget(self.ui.props,"ID",std.get_id()))
+
+		#add them to layout
+		for widget in self.props_widgets:
+			self.ui.props_layout.addWidget(widget)
+
+	def setup_props_name(self,name):
+		#construct widgets
+		self.props_widgets.append(PropertyWidget(self.ui.props,"Name",name.name.get_nice()))
+		if name.description:
+			self.props_widgets.append(PropertyWidget(self.ui.props,"Description",name.description))
+		self.props_widgets.append(PropertyWidget(self.ui.props,"ID",name.get_id()))
 
 		#add them to layout
 		for widget in self.props_widgets:
@@ -284,22 +322,24 @@ class BoltsWidget(QBoltsWidget):
 
 		data = unpack(items[0].data(0,32))
 
-		if not isinstance(data,BOLTSClass):
+		if isinstance(data,ClassName):
+			cl = self.repo.class_names.get_src(data)
+		elif isinstance(data,ClassStandard):
+			cl = self.repo.class_standards.get_src(data)
+		else:
 			return
 
 		params = {}
 		#read parameters from widgets
 		for key in self.param_widgets:
 			params[key] = self.param_widgets[key].getValue()
-		params = data.parameters.collect(params)
-		params['standard'] = data.name
+		params = cl.parameters.collect(params)
 
-		params['name'] = data.naming.template % \
-			tuple(params[k] for k in data.naming.substitute)
+		params['name'] = data.labeling.get_nice(params)
 
 		lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
 
-		for key,tp in data.parameters.types.iteritems():
+		for key,tp in cl.parameters.types.iteritems():
 			if tp in lengths:
 				if params[key] is None:
 					#A undefined value is not necessarily fatal
@@ -314,8 +354,9 @@ class BoltsWidget(QBoltsWidget):
 
 		#add part
 		try:
-			base = self.freecad.getbase[data.id]
-			add_part(base,params,FreeCAD.ActiveDocument)
+			base = self.dbs["freecad"].base_classes.get_src(cl)
+			coll = self.repo.collection_classes.get_src(cl)
+			add_part(coll,base,params,FreeCAD.ActiveDocument)
 			FreeCADGui.SendMsgToActiveView("ViewFit")
 			FreeCAD.ActiveDocument.recompute()
 		except ValueError as e:
@@ -343,8 +384,15 @@ class BoltsWidget(QBoltsWidget):
 			self.param_widgets[key].setParent(None)
 		self.param_widgets = {}
 
-		if isinstance(data,BOLTSClass):
-			self.setup_props_class(data)
-			self.setup_param_widgets(data,self.freecad.getbase[data.id])
-		elif isinstance(data,BOLTSCollection):
+		if isinstance(data,ClassName):
+			self.setup_props_name(data)
+			cl = self.repo.class_names.get_src(data)
+			base = self.dbs["freecad"].base_classes.get_src(cl)
+			self.setup_param_widgets(cl,base)
+		elif isinstance(data,ClassStandard):
+			self.setup_props_standard(data)
+			cl = self.repo.class_standards.get_src(data)
+			base = self.dbs["freecad"].base_classes.get_src(cl)
+			self.setup_param_widgets(cl,base)
+		elif isinstance(data,Collection):
 			self.setup_props_collection(data)
