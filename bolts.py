@@ -45,24 +45,24 @@ def export(args):
 
 	out_path = os.path.join(repo.path,"output",args.target)
 	if args.target == "openscad":
-		from backends.openscad import OpenSCADExporter
-		OpenSCADExporter(repo,dbs).write_output(out_path,license,"development")
+		from backends.openscad import OpenSCADBackend
+		OpenSCADBackend(repo,dbs).write_output(out_path,target_license=license,version="development")
 		copyfile(os.path.join(repo.path,"backends","licenses",args.license.strip("+")),
 			os.path.join(out_path,"LICENSE"))
 	elif args.target == "freecad":
-		from backends.freecad import FreeCADExporter
-		FreeCADExporter(repo,dbs).write_output(out_path,license,"development")
+		from backends.freecad import FreeCADBackend
+		FreeCADBackend(repo,dbs).write_output(out_path,target_license=license,version="development")
 		copyfile(os.path.join(repo.path,"backends","licenses",args.license.strip("+")),
 			os.path.join(out_path,"BOLTS","LICENSE"))
 	elif args.target == "html":
-		from backends.html import HTMLExporter
-		HTMLExporter(repo,dbs).write_output(out_path)
+		from backends.html import HTMLBackend
+		HTMLBackend(repo,dbs).write_output(out_path)
 	elif args.target == "solidworks":
-		from backends.solidworks import SolidWorksExporter
-		SolidWorksExporter(repo,dbs).write_output(out_path,"development")
+		from backends.solidworks import SolidWorksBackend
+		SolidWorksBackend(repo,dbs).write_output(out_path,"development")
 	elif args.target == "iges":
-		from backends.exchange import IGESExporter
-		IGESExporter(repo,dbs).write_output(out_path,"development")
+		from backends.exchange import IGESBackend
+		IGESBackend(repo,dbs).write_output(out_path,"development")
 
 def test(args):
 	exec_dir = os.path.join(args.repo,"output",args.target)
@@ -81,8 +81,8 @@ def check(args):
 	dbs["drawings"] = DrawingsData(repo)
 	dbs["solidworks"] = SolidWorksData(repo)
 
-	from backends.checker import CheckerExporter
-	checker = CheckerExporter(repo,dbs)
+	from backends.checker import CheckerBackend
+	checker = CheckerBackend(repo,dbs)
 
 	for check in checker.checks.values():
 		print check.print_table(),
@@ -95,8 +95,8 @@ def tasks(args):
 	dbs["drawings"] = DrawingsData(repo)
 	dbs["solidworks"] = SolidWorksData(repo)
 
-	from backends.checker import CheckerExporter
-	checker = CheckerExporter(repo,dbs)
+	from backends.checker import CheckerBackend
+	checker = CheckerBackend(repo,dbs)
 
 	for task in checker.tasks.values():
 		print task.print_table(),
@@ -109,8 +109,8 @@ def connectors(args):
 
 	out_path = os.path.join(repo.path,"output","connectordrawings")
 
-	from backends.connectordrawings import ConnectorDrawingsExporter
-	ConnectorDrawingsExporter(repo,dbs).write_output(out_path)
+	from backends.connectordrawings import ConnectorDrawingsBackend
+	ConnectorDrawingsBackend(repo,dbs).write_output(out_path)
 
 
 
