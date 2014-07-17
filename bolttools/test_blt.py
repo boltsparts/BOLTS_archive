@@ -131,8 +131,13 @@ class TestRepository(unittest.TestCase):
 		self.assertEqual(len(self.repo.collections),2)
 
 	def test_accessors(self):
-		self.assertEqual(len([1 for n in self.repo.iternames(["name"])]),7)
-		self.assertEqual(len([1 for n in self.repo.iterstandards(["standard"])]),14)
+		self.assertEqual(len([1 for n in self.repo.iternames()]),7)
+		self.assertEqual(len([1 for n in self.repo.iterstandards()]),14)
+
+	def test_filters(self):
+		self.assertEqual(len(list(self.repo.iternames(filter_collection=self.repo.collections['nut']))),3)
+		self.assertEqual(len(list(self.repo.itermultistandards(filter_standards=self.repo.standards['DIN439B']))),1)
+		
 
 	def test_bodies(self):
 		self.assertEqual(len(self.repo.bodies),5)

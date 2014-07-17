@@ -20,6 +20,7 @@
 import re
 import math
 import string
+import collections
 from os.path import join
 from copy import deepcopy
 
@@ -67,8 +68,13 @@ def check_iterator_arguments(items,primary,optional,kwargs):
 def filter_iterator_items(its,kwargs):
 	for i in its:
 		fil = "filter_" + i
-		if fil in kwargs and not its[i] in kwargs[fil]:
-			return False
+		if fil in kwargs:
+			if type(its[i]) == type(kwargs[fil]):
+				return kwargs[fil] is its[i]
+			elif type(its[i]) != type(kwargs[fil]) and isinstance(its[i],collections.Container):
+				return kwargs[fil] in its[i]
+			else:
+				raise ValueError("Strange filter argument: %s" % kwargs[fil])
 	return True
 
 ALL_TYPES = ["Length (mm)", "Length (in)", "Number", "Bool", "Table Index", "String","Angle (deg)"]
