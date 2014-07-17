@@ -26,19 +26,19 @@ module BOLTS_warning(msg){
 }
 
 
-module check_dimension_defined(dim, descr){
+module BOLTS_check_dimension_defined(dim, descr){
 	if(dim == "None"){
 		BOLTS_error(str("Dimension unspecified",descr));
 	}
 }
 
-module check_dimension_positive(dim, message){
+module BOLTS_check_dimension_positive(dim, message){
 	if(dim < 0){
 		BOLTS_error(message);
 	}
 }
 
-function convert_to_default_unit(value,unit) =
+function BOLTS_convert_to_default_unit(value,unit) =
 	(BOLTS_DEFAULT_UNIT == unit) ? value :
 		(unit == "in") ? value*25.4 :
 			value/25.4;
@@ -57,7 +57,7 @@ function type(P) =
 		?	"string"
 		:	"vector";
 
-module check_parameter_type(part_name,name,value,param_type){
+module BOLTS_check_parameter_type(part_name,name,value,param_type){
 	if(param_type=="Length (mm)"){
 		if(type(value) != "number"){
 			BOLTS_error(str("Expected a Length (mm) as parameter ",name," for ",part_name,", but ",value," is not numerical"));
@@ -92,12 +92,12 @@ module check_parameter_type(part_name,name,value,param_type){
 }
 
 
-module thread_external(d1,l){
+module BOLTS_thread_external(d1,l){
 	color(BOLTS_THREAD_COLOR)
 		cylinder(r=0.5*d1,h= l);
 }
 
-module hex_head(k,s){
+module BOLTS_hex_head(k,s){
 	a = s/tan(60);
 	translate([0,0,-k/2]) union(){
 		rotate([0,0, 30]) cube([a,s,k],true);
@@ -106,7 +106,7 @@ module hex_head(k,s){
 	}
 }
 
-module hex_socket_neg(t,s){
+module BOLTS_hex_socket_neg(t,s){
 	a = s/tan(60);
 	//The fudging here is to avoid coincident faces when subtracting from a
 	//body (see e.g. hex_socket)

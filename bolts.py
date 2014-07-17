@@ -46,7 +46,7 @@ def export(args):
 	out_path = os.path.join(repo.path,"output",args.target)
 	if args.target == "openscad":
 		from backends.openscad import OpenSCADBackend
-		OpenSCADBackend(repo,dbs).write_output(out_path,target_license=license,version="development")
+		OpenSCADBackend(repo,dbs).write_output(out_path,target_license=license,version="development",expand=args.debug)
 		copyfile(os.path.join(repo.path,"backends","licenses",args.license.strip("+")),
 			os.path.join(out_path,"LICENSE"))
 	elif args.target == "freecad":
@@ -210,6 +210,8 @@ parser_export.add_argument("-l","--license",
 	choices=["lgpl2.1","lgpl2.1+","lgpl3","lgpl3+","gpl3","gpl3+"],
 	default="lgpl2.1",
 	help="the license of the exported license")
+parser_export.add_argument("--debug", dest='debug', action="store_true",
+	help="take special measures to ease debugging")
 parser_export.set_defaults(func=export)
 
 parser_test = subparsers.add_parser("test")

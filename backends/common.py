@@ -21,6 +21,8 @@ from os import listdir,makedirs, remove
 from os.path import join, exists, isfile
 from shutil import rmtree
 
+UNITS = {"Length (mm)" : "mm", "Length (in)" : "in"}
+
 class Backend:
 	"""
 	Base class for backends.

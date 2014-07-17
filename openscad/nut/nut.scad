@@ -21,7 +21,7 @@ module nut1(d1, s, m_max){
 	a = s/tan(60);
 	translate([0,0,m_max]){
 		difference(){
-			hex_head(m_max,s);
+			BOLTS_hex_head(m_max,s);
 			translate([0,0,-d1]) cylinder(r=d1/2,h=m_max+ 2*d1);
 		}
 	}
