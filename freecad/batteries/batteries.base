@@ -5,6 +5,6 @@
   type: function
   functions:
     - name: roundBattery
-      classids: [roundBattery]
+      classids: [round_battery]
 ...
 

@@ -4,19 +4,19 @@
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-dimensions
   source: own work
-  classids: [roundBattery]
+  classids: [round_battery]
 - filename: roundBattery-minus
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-connector
   source: own work
   location: minus
-  classids: [roundBattery]
+  classids: [round_battery]
 - filename: roundBattery-plus
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-connector
   source: own work
   location: plus
-  classids: [roundBattery]
+  classids: [round_battery]
 ...

@@ -5,5 +5,5 @@
   type: function
   functions:
     - name: tube_bar_crimped_ends
-      classids: [tube bar crimped ends]
+      classids: [tubebarcrimpedends]
 ...

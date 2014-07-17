@@ -6,7 +6,7 @@
   modules:
     - name: roundBatteryBase
       arguments: [h,d]
-      classids: [roundBattery]
+      classids: [round_battery]
       connectors:
         name: roundBatteryConn
         arguments: [h,location]

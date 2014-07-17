@@ -17,25 +17,25 @@
         free: [detailed]
         types: {detailed: Bool}
         defaults: {detailed: false}
-      classids: [tslot20x20-1s]
+      classids: [tslot20x20_1s]
     - name: tslot_20x20_2s_base
       arguments: [l,detailed]
       parameters:
         free: [detailed]
         types: {detailed: Bool}
         defaults: {detailed: false}
-      classids: [tslot20x20-2s]
+      classids: [tslot20x20_2s]
     - name: tslot_20x20_2sa_base
       arguments: [l]
       parameters:
         free: [detailed]
         types: {detailed: Bool}
         defaults: {detailed: false}
-      classids: [tslot20x20-2sa]
+      classids: [tslot20x20_2sa]
     - name: tslot_20x20_3s_base
       arguments: [l,detailed]
       parameters:
         free: [detailed]
         types: {detailed: Bool}
         defaults: {detailed: false}
-      classids: [tslot20x20-3s]
+      classids: [tslot20x20_3s]

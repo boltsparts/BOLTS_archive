@@ -33,7 +33,7 @@ classes:
       types: { l: Length (mm) }
       description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
-  - id: tslot20x20-1s
+  - id: tslot20x20_1s
     names:
       name: T slot extrusion one slot 20x20
       labeling: T slot extrusion one slot 20x20x%(l)s
@@ -44,7 +44,7 @@ classes:
       types: { l: Length (mm) }
       description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
-  - id: tslot20x20-2s
+  - id: tslot20x20_2s
     names:
       name: T slot extrusion two slots (opp.) 20x20
       labeling: T slot extrusion two slots (opp.) 20x20x%(l)s
@@ -55,7 +55,7 @@ classes:
       types: { l: Length (mm) }
       description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
-  - id: tslot20x20-2sa
+  - id: tslot20x20_2sa
     names:
       name: T slot extrusion two slots 20x20x
       labeling: T slot extrusion two slots 20x20x%(l)s
@@ -66,7 +66,7 @@ classes:
       types: { l: Length (mm) }
       description: {l: Length}
     source: roughly following http://www13.boschrexroth-us.com/partstream/Load_Category.aspx?Category=20mm%20Series&menu=1,1,1
-  - id: tslot20x20-3s
+  - id: tslot20x20_3s
     names:
       name: T slot extrusion three slots 20x20x
       labeling: T slot extrusion three slots 20x20x%(l)s
