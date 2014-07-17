@@ -157,14 +157,15 @@ class OpenSCADData(DataBase):
 		"""
 		Iterator over all classes of the repo.
 		
-		Possible items to request: class, collection, module
+		Possible items to request: class, collection, scadfile, module
 		"""
-		check_iterator_arguments(items,"class",["collection","module"],kwargs)
+		check_iterator_arguments(items,"class",["collection","scadfile","module"],kwargs)
 
 		for cl, coll in self.repo.iterclasses(["class","collection"]):
 			its = {"class" : cl, "collection" : coll}
 			if self.module_classes.contains_dst(cl):
 				its["module"] = self.module_classes.get_src(cl)
+				its["scadfile"] = self.scadfile_modules.get_src(its["module"])
 				if filter_iterator_items(its,kwargs):
 					yield tuple(its[key] for key in items)
 
