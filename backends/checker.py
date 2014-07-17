@@ -395,16 +395,33 @@ class NonconformingParameternameTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		schema = re.compile("[a-zA-z][a-z0-9_]*")
-		for cl in repo.classes.values():
+		for cl,coll in repo.iterclasses(["class","collection"]):
 			for pname in cl.parameters.parameters:
 				match = schema.match(pname)
 				if match is None or (not match.group(0) == pname):
 					row = []
 					row.append(pname)
 					row.append(cl.id)
-					row.append(repo.collection_classes.get_src(cl).name)
+					row.append(coll.name)
 					self.rows.append(row)
 
+class NonconformingClassIdTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Nonconforming Class ids",
+			"Class ids must contain only letters, numbers and underscores.",
+			["Class id","Collection"]
+		)
+
+	def populate(self,repo,dbs):
+		schema = re.compile("[a-z0-9_]*")
+		for cl,coll in repo.iterclasses(["class","collection"]):
+			match = schema.match(cl.id)
+			if match is None or (not match.group(0) == cl.id):
+				row = []
+				row.append(cl.id)
+				row.append(coll.name)
+				self.rows.append(row)
 
 class HyperUnionFind:
 	"""
@@ -591,6 +608,7 @@ class CheckerBackend(Backend):
 		self.checks["unsupportedlicense"] = UnsupportedLicenseTable()
 		self.checks["unknownfile"] = UnknownFileTable()
 		self.checks["nonconformingparametername"] = NonconformingParameternameTable()
+		self.checks["nonconformingclassids"] = NonconformingClassIdTable()
 		self.checks["missingbaseconnection"] = MissingBaseConnectionTable()
 		self.checks["missingparameterdescription"] = MissingParameterDescriptionTable()
 		self.checks["unknownconnectors"] = UnknownConnectorLocationTable()
