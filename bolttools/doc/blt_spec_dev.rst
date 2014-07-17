@@ -167,7 +167,7 @@ class_. It has the following keys:
 - id: mandatory, string. The id of the class. Class ids are one word
   identifiers, which must be unique within the repository. This class id is
   used as a way to refer to the class, when the standard field is not set.
-  They should contain only letters, numbers and underscores.
+  They must contain only letters, numbers and underscores.
 - names: optional, class-name-element_ or list of class-name-element_ . One or
   several names for this class.
 - standards: optional, class-standard-element_ or list of
