@@ -423,6 +423,39 @@ class NonconformingClassIdTable(ErrorTable):
 				row.append(coll.name)
 				self.rows.append(row)
 
+class InvalidLabelingTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Invalid labelings",
+			"Labelings of standards and names must be formattable by python, see https://docs.python.org/2.7/library/stdtypes.html#string-formatting",
+			["ID","Type","Class id","Collection"]
+		)
+
+	def populate(self,repo,dbs):
+		for std,cl,coll in repo.iterstandards(["standard","class","collection"]):
+			args = dict([ (p,"") for p in cl.parameters.parameters])
+			try:
+				std.labeling.get_nice(args)
+			except:
+				row = []
+				row.append(std.get_id())
+				row.append("Standard")
+				row.append(cl.id)
+				row.append(coll.name)
+				self.rows.append(row)
+
+		for name,cl,coll in repo.iternames(["name","class","collection"]):
+			args = dict([ (p,"") for p in cl.parameters.parameters])
+			try:
+				name.labeling.get_nice(args)
+			except:
+				row = []
+				row.append(name.get_id())
+				row.append("Name")
+				row.append(cl.id)
+				row.append(coll.name)
+				self.rows.append(row)
+
 class HyperUnionFind:
 	"""
 	Naive implementation of a disjoint set or union find datastructure for
@@ -614,6 +647,7 @@ class CheckerBackend(Backend):
 		self.checks["unknownconnectors"] = UnknownConnectorLocationTable()
 		self.checks["pointlessgroup"] = PointlessGroupTable()
 		self.checks["lowercasedescription"] = LowercaseDescriptionTable()
+		self.checks["invalidlabeling"] = InvalidLabelingTable()
 
 		self.tasks = {}
 		self.tasks["missingcommonparameters"] = MissingCommonParametersTable()
