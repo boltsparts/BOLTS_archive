@@ -190,7 +190,7 @@ class OpenSCADData(DataBase):
 
 		Possible items to request: scadfile, collection
 		"""
-		check_iterator_items(items,"scadfile",["collection"],kwargs)
+		check_iterator_arguments(items,"scadfile",["collection"],kwargs)
 
 		for sf in self.scadfiles:
 			its = {"scadfile" : sf}
