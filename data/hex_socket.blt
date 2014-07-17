@@ -25,20 +25,20 @@ classes:
   - id: hexsocketcountersunk
     names:
       name: Metric hex socket countersunk head screw
-      labeling: Hex socket countersunk head screw %(key)s %(l)
+      labeling: Hex socket countersunk head screw %(key)s %(l)s
       description: Hexagon socket countersunk head screw, metric sizes
     standards:
       - body: ISO
         standard: ISO 10642
-        labeling: Hex socket countersunk head screw ISO 10642 %(key)s %(l)
+        labeling: Hex socket countersunk head screw ISO 10642 %(key)s %(l)s
         description: Hexagon socket countersunk head screw, metric sizes
       - body: DIN ISO
         standard: DIN ISO 10642
-        labeling: Hex socket countersunk head screw DIN ISO 10642 %(key)s %(l)
+        labeling: Hex socket countersunk head screw DIN ISO 10642 %(key)s %(l)s
         description: Hexagon socket countersunk head screw, metric sizes
       - body: DIN
         standard: DIN 7991
-        labeling: Hex socket countersunk head screw DIN 7991 %(key)s %(l)
+        labeling: Hex socket countersunk head screw DIN 7991 %(key)s %(l)s
         description: Hexagon socket countersunk head screw, metric sizes
     parameters:
         free: [key, l]
@@ -407,12 +407,12 @@ classes:
   - id: hexsocketsetscrewall
     names:
       name: Hex socket set screw
-      labeling: Hex socket set screw %(point)s point %(key)s %(length)s
+      labeling: Hex socket set screw %(point)s point %(key)s %(l)s
       description: Hexagon socket set screws
     standards:
       body: ANSI
       standard: ANSI B18.3.6M
-      labeling: Hex socket set screw ANSI B18.3.6M %(point)s point %(key)s %(length)s
+      labeling: Hex socket set screw ANSI B18.3.6M %(point)s point %(key)s %(l)s
       description: Hexagon socket set screws
     parameters:
       free: [key,l,point]

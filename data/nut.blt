@@ -153,12 +153,12 @@ classes:
   - id: hexagonnut1
     names:
       name: Metric hexagon nut
-      labeling: Metric hexagon nut %(key)
+      labeling: Metric hexagon nut %(key)s
       description: Hexagon nut, metric sizes
     standards:
       body: ISO
       standard: ISO 4032
-      labeling: Hexagon nut ISO 4032 %(key)
+      labeling: Hexagon nut ISO 4032 %(key)s
       description: Hexagon nut, metric sizes
       replaces: DIN934
     parameters:
@@ -316,11 +316,11 @@ classes:
     standards:
       - body: ANSI
         standard: ANSI B18.2.2
-        labeling: Hexagon nut ANSI B18.2.2 %(key)
+        labeling: Hexagon nut ANSI B18.2.2 %(key)s
         description: Hexagon nut, imperial sizes
       - body: ASME
         standard: ASME B18.2.2
-        labeling: Hexagon nut ASME B18.2.2 %(key)
+        labeling: Hexagon nut ASME B18.2.2 %(key)s
         description: Hexagon nut, imperial sizes
     parameters:
         free: [key]

@@ -110,7 +110,7 @@ classes:
   - id: singlerowradialbearingimperial
     names:
       name: Radial Ball Bearing imperial
-      labeling: imperial Radial Ball Bearing %(key)s%(postfix)s
+      labeling: imperial Radial Ball Bearing %(key)s
       description: Single row radial contact ball bearing, imperial sizes
     parameters:
         free: [key]
