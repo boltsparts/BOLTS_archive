@@ -103,6 +103,11 @@ class OpenSCADBackend(Backend):
 				if tablename in modules:
 					raise ModuleNameCollisionError(tablename)
 				modules.append(tablename)
+			#stub module
+			modulename = "%s_geo" % cl.id
+			if modulename in modules:
+				raise ModuleNameCollisionError(modulename)
+			modules.append(modulename)
 			#dim accessors
 			accessorname = "%s_dims" % cl.id
 			if accessorname in modules:
@@ -297,6 +302,14 @@ class OpenSCADBackend(Backend):
 			fid.write("function %s_conn(location,%s) = new_cs(\n" % (cl.id, get_signature(params)))
 			fid.write("\torigin=%s[0],\n\taxes=%s[1]);\n\n" % (call,call))
 
+		#class stub
+		fid.write("module %s_geo(%s){\n" % (cl.id, get_signature(params,False)))
+		#module call
+		dims = '%s_dims(%s)' % (cl.id,get_signature(params,False))
+		fid.write('\t%s(\n\t\t' % module.name)
+		fid.write(',\n\t\t'.join(['get_dim(%s,"%s")' % (dims,p) for p in module.arguments]))
+		fid.write("\n\t);\n};\n\n")
+
 		#standards
 		for std, in self.dbs["openscad"].iterstandards(filter_class=cl):
 
@@ -328,10 +341,8 @@ class OpenSCADBackend(Backend):
 			fid.write("\t} else {\n")
 
 			#module call
-			dims = '%s_dims(%s)' % (cl.id,get_signature(params,False))
-			fid.write('\t\t%s(\n\t\t\t' % module.name)
-			fid.write(',\n\t\t\t'.join(['get_dim(%s,"%s")' % (dims,p) for p in module.arguments]))
-			fid.write("\n\t\t);\n\t}\n};\n\n")
+			fid.write('\t\t%s_geo(%s);\n' % (cl.id,get_signature(params,False)))
+			fid.write("\t}\n};\n\n")
 
 			#dims
 			fid.write('function %s_dims(%s) = %s_dims(%s);\n\n' %
@@ -349,7 +360,7 @@ class OpenSCADBackend(Backend):
 
 			#checks
 			for pname in params.free:
-				fid.write('\tcheck_parameter_type("%s","%s",%s,"%s");\n' %
+				fid.write('\tBOLTS_check_parameter_type("%s","%s",%s,"%s");\n' %
 					(name.get_id(),pname,args[pname],params.types[pname]))
 
 			#bom mode
@@ -365,10 +376,8 @@ class OpenSCADBackend(Backend):
 			fid.write("\t} else {\n")
 
 			#module call
-			dims = '%s_dims(%s)' % (cl.id,get_signature(params,False))
-			fid.write('\t\t%s(\n\t\t\t' % module.name)
-			fid.write(',\n\t\t\t'.join(['get_dim(%s,"%s")' % (dims,p) for p in module.arguments]))
-			fid.write("\n\t\t);\n\t}\n};\n\n")
+			fid.write('\t\t%s_geo(%s);\n' % (cl.id,get_signature(params,False)))
+			fid.write("\t}\n};\n\n")
 
 			#dims
 			fid.write('function %s_dims(%s) = %s_dims(%s);\n\n' %
