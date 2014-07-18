@@ -72,6 +72,10 @@ def test(args):
 	elif args.target == "openscad":
 		freecad_process = Popen(["openscad"],cwd=exec_dir)
 		freecad_process.wait()
+	elif args.target == "website":
+		import website
+		from website import app
+		app.run(debug=True)
 
 def check(args):
 	repo = Repository(args.repo)
@@ -217,7 +221,7 @@ parser_export.set_defaults(func=export)
 parser_test = subparsers.add_parser("test")
 parser_test.add_argument("target",
 	type=str,
-	choices=["openscad","freecad"],
+	choices=["openscad","freecad","website"],
 	help="the backend to test")
 parser_test.set_defaults(func=test)
 
