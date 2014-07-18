@@ -14,58 +14,50 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-from common import BackendExporter
-from openscad import OpenSCADExporter,get_signature
+from common import Backend
+from openscad import OpenSCADBackend,get_signature
 from errors import *
 from os import makedirs
 from os.path import join, exists
 
-class ConnectorDrawingsExporter(BackendExporter):
+class ConnectorDrawingsBackend(Backend):
 	def __init__(self,repo,databases):
-		BackendExporter.__init__(self,repo,databases)
-		self.dbs = databases
+		Backend.__init__(self,repo,"connectordrawings",databases,["openscad","drawings"])
 
-	def write_output(self,out_path):
+	def write_output(self,out_path,**kwargs):
+		args = self.validate_arguments(kwargs)
+
 		#clear output and copy files
 		self.clear_output_dir(out_path)
 
 		#export BOLTS for openscad
-		OpenSCADExporter(self.repo,self.dbs).write_output(out_path,"GPL 3.0+","development")
+		OpenSCADBackend(self.repo,self.dbs).write_output(out_path,target_license="GPL 3.0+",version="development")
 
-		#find missing connector drawings
-		for coll in self.repo.collections:
-			modules = []
-			for cl in coll.classes_by_ids():
-				if cl.id in self.dbs["openscad"].getbase:
-					base = self.dbs["openscad"].getbase[cl.id]
-					if base.name in modules:
-						continue
+		#connector drawings
+		for coll,cl,module in self.dbs["openscad"].iterclasses(['collection','class','module']):
+			#find all locations
+			if not self.dbs["openscad"].module_connectors.contains_src(module):
+				#if no connector is defined fot this base
+				continue
+			locations = self.dbs["openscad"].module_connectors.get_dst(module).locations
 
-					#find all locations
-					locations = []
-					if base.type == "module" and not base.connectors is None:
-						locations = base.connectors.locations
+			#collect all locations covered by drawings
+			covered = []
+			for draw, in self.dbs["drawings"].itercondrawings(filter_classes=cl):
+				covered += self.dbs["drawings"].conlocations_condrawings.get_srcs(draw)
 
-					covered = []
-					if cl.id in self.dbs["drawings"].getconnectors:
-						for loc in self.dbs["drawings"].getconnectors[cl.id]:
-							covered.append(loc)
-					uncovered = set(locations) - set(covered)
+			uncovered = set(locations) - set(covered)
+			if len(uncovered) == 0:
+				continue
 
-					for loc in uncovered:
-						if not exists(join(out_path,"scad",coll.id)):
-							makedirs(join(out_path,"scad",coll.id))
-						fid = open(join(out_path,"scad",coll.id,"%s-%s.scad" % (base.name,loc)),"w")
-						fid.write("include <../../BOLTS.scad>\n")
-						fid.write("$fn=50;\n")
-						fid.write("%%%s(%s);\n" %
-							(cl.openscadname,get_signature(cl,cl.parameters.union(base.parameters)))
-						)
-						fid.write('show_cs(%s_conn("%s",%s));\n' %
-							(cl.openscadname,loc,get_signature(cl,cl.parameters.union(base.parameters)))
-						)
-						fid.close()
+			for loc in uncovered:
+				if not exists(join(out_path,"scad",coll.id)):
+					makedirs(join(out_path,"scad",coll.id))
+				fid = open(join(out_path,"scad",coll.id,"%s-%s.scad" % (module.name,loc)),"w")
+				fid.write("include <../../BOLTS.scad>\n")
+				fid.write("$fn=50;\n")
 
-					modules.append(base.name)
-
-		
+				params = cl.parameters.union(module.parameters)
+				fid.write("%%%s(%s);\n" % (cl.id,get_signature(params)))
+				fid.write('show_cs(%s_conn("%s",%s));\n' % (cl.id,loc,get_signature(params)))
+				fid.close()
