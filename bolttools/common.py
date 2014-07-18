@@ -572,6 +572,12 @@ class Table:
 	def _normalize_and_check_types(self,types):
 		col_types = [types[col] for col in self.columns]
 		for key in self.data:
+			#check key
+			for char in key:
+				if char in '\\/?*:|"\'<>\t\n\r':
+					raise MalformedTableIndexError(key)
+
+			#check row
 			row = self.data[key]
 			if len(row) != len(self.columns):
 				raise ValueError("Column is missing for row: %s" % key)
@@ -612,8 +618,18 @@ class Table2D:
 			raise ValueError("Row- and ColIndex are identical. In this case a ordinary table should be used.")
 
 	def _normalize_and_check_types(self,types):
+		#check column keys
+		for key in self.columns:
+			for char in key:
+				if char in '\\/?*:|"\'<>\t\n\r':
+					raise MalformedTableIndexError(key)
 		res_type = types[self.result]
 		for key in self.data:
+			#check key
+			for char in key:
+				if char in '\\/?*:|"\'<>\t\n\r':
+					raise MalformedTableIndexError(key)
+			#check row
 			row = self.data[key]
 			if len(row) != len(self.columns):
 				raise ValueError("Column is missing for row: %s" % key)
