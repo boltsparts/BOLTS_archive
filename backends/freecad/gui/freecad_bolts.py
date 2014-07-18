@@ -190,7 +190,7 @@ class BoltsWidget(QBoltsWidget):
 			multistds = {}
 
 			#names
-			for name,multiname in self.dbs["freecad"].iternames(['name','multiname'],filter_collection=[coll]):
+			for name,multiname in self.dbs["freecad"].iternames(['name','multiname'],filter_collection=coll):
 				item = None
 				if multiname is None:
 					item = QtGui.QTreeWidgetItem(coll_item,[name.name.get_nice(), name.description])
@@ -202,7 +202,7 @@ class BoltsWidget(QBoltsWidget):
 				item.setData(0,32,name)
 
 			#single names
-			for std,multistd in self.dbs["freecad"].iterstandards(['standard','multistandard'],filter_collection = [coll]):
+			for std,multistd in self.dbs["freecad"].iterstandards(['standard','multistandard'],filter_collection = coll):
 				item = None
 				if multistd is None:
 					item = QtGui.QTreeWidgetItem(coll_item,[std.standard.get_nice(), std.description])
@@ -220,7 +220,7 @@ class BoltsWidget(QBoltsWidget):
 			std_item = QtGui.QTreeWidgetItem(self.std_root,[body.body, "Standards issued by %s" % body.body])
 			std_item.setData(0,32,None)
 			#single standards
-			for std,multistd in self.dbs["freecad"].iterstandards(['standard','multistandard'], filter_body = [body]):
+			for std,multistd in self.dbs["freecad"].iterstandards(['standard','multistandard'], filter_body = body):
 				if multistd is None:
 					item = QtGui.QTreeWidgetItem(std_item,[std.standard.get_nice(), std.description])
 				else:
