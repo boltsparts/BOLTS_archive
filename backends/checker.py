@@ -224,7 +224,7 @@ class UnsupportedLicenseTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		#collections
-		for coll in repo.itercollections():
+		for coll, in repo.itercollections():
 			if not license.check_license(coll.license_name,coll.license_url):
 				row = []
 				row.append("Collection")
@@ -619,7 +619,7 @@ class LowercaseDescriptionTable(ErrorTable):
 					row.append(standard.description)
 				self.rows.append(row)
 		#collections
-		for coll in repo.itercollections():
+		for coll, in repo.itercollections():
 			if not coll.description[0].isupper():
 				row = []
 				row.append(coll.name)

@@ -753,6 +753,7 @@ class DataBase:
 		self.repo = repo
 
 		self.repo_root = self.repo.path
+		#TODO: rename to data_root
 		self.backend_root = join(self.repo.path,name)
 
 class BaseElement:

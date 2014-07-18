@@ -503,7 +503,7 @@ class Repository:
 		Not possible to request items
 		"""
 		for coll in self.collections.values():
-			yield coll
+			yield (coll,)
 
 	def iterbodies(self):
 		"""
@@ -512,4 +512,4 @@ class Repository:
 		Not possible to request items
 		"""
 		for body in self.bodies.values():
-			yield body
+			yield (body,)

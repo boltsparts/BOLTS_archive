@@ -76,7 +76,7 @@ class FreeCADBackend(Backend):
 		#compile ui files
 		uic.compileUiDir(join(bolts_path,"gui"))
 
-		for coll in self.repo.itercollections():
+		for coll, in self.repo.itercollections():
 			if not license.is_combinable_with(coll.license_name,args["target_license"]):
 				continue
 			copy(join(self.repo.path,"data","%s.blt" % coll.id),

@@ -182,7 +182,7 @@ class BoltsWidget(QBoltsWidget):
 		self.std_root.setData(0,32,None)
 
 		#set up collections
-		for coll in self.repo.itercollections():
+		for coll, in self.repo.itercollections():
 			coll_item = QtGui.QTreeWidgetItem(self.coll_root,[coll.name, coll.description])
 			coll_item.setData(0,32,coll)
 
@@ -216,7 +216,7 @@ class BoltsWidget(QBoltsWidget):
 		multistds = {}
 
 		#set up standards
-		for body in repo.iterbodies():
+		for body, in repo.iterbodies():
 			std_item = QtGui.QTreeWidgetItem(self.std_root,[body.body, "Standards issued by %s" % body.body])
 			std_item.setData(0,32,None)
 			#single standards
