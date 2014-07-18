@@ -4,11 +4,11 @@
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-dimensions
   source: own work
-  classids: [plateflangeen1092-1pn6]
+  classids: [plateflange]
 - filename: blindflangeen1092-1pn6
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-dimensions
   source: own work
-  classids: [blindflangeen1092-1pn6]
+  classids: [blindflange]
 ...

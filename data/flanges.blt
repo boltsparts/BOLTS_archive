@@ -33,18 +33,18 @@
 ---
 id: flanges
 name: Flanges
-description: various standard flanges
+description: Various standard flanges
 author: Fabrizio Pollastri <f.pollastri@inrim.it>
 license: MIT <http://opensource.org/licenses/MIT>
-blt-version: 0.3
+blt-version: 0.4
 classes:
-  - id: plateflangeen1092-1pn6
-    naming:
-      template: Plate flange EN1092-1 PN6 T01 %s
-      substitute: [dn]
-    description: Plate flange EN1092-1 type 01 pn6
-    standard: [EN1092-1 T01 PN6]
-    replaces: 
+  - id: plateflange
+    standards:
+      body: EN
+      standard: EN1092-1 PN6 T01
+      group: EN1092
+      labeling: Plate flange EN1092-1 PN6 T01 %(dn)s
+      description: Plate flange EN1092-1 type 01 pn6
     parameters:
         free: [dn]
         defaults: {dn: "DN100"}
@@ -98,13 +98,13 @@ classes:
                 DN1800: [  1826.0,1970.0,2045.0,88.0, 39.0,  44  ]
                 DN2000: [  2026.0,2180.0,2265.0,96.0, 42.0,  48  ]
     source: http://www.zetamec.com/en-01-pn6_eng.htm
-  - id: blindflangeen1092-1pn6
-    naming:
-      template: Blind flange EN1092-1 PN6 T05 %s
-      substitute: [dn]
-    description: Blind flange EN1092-1 type 05 pn6
-    standard: [EN1092-1 T05 PN6]
-    replaces: 
+  - id: blindflange
+    standards:
+      body: EN
+      standard: EN1092-1 PN6 T05
+      group: EN1092
+      labeling: Blind flange EN1092-1 PN6 T05 %(dn)s
+      description: Blind flange EN1092-1 type 05 pn6
     parameters:
         free: [dn]
         defaults: {dn: "DN100"}

@@ -5,7 +5,7 @@
   type: function
   functions:
     - name: plate_flange
-      classids: [plateflangeen1092-1pn6]
+      classids: [plateflange]
     - name: blind_flange
-      classids: [blindflangeen1092-1pn6]
+      classids: [blindflange]
 ...
