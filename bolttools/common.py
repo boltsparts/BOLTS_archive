@@ -708,7 +708,10 @@ class Identifier(NamePair):
 		#remove all disallowed characters
 		for c in res[:]:
 			if not c in allowed:
-				res = res.replace(c,'')
+				if c in '- ':
+					res = res.replace(c,'_')
+				else:
+					res = res.replace(c,'')
 		return res
 
 
