@@ -111,7 +111,7 @@ classes:
         description: Welded and seamless wrought steel pipe for high or low temperatures and pressures
     parameters:
       free: [nps, sched, l]
-      defaults: { nps: "NPS 1/2", sched: "40", l: 50 }
+      defaults: { nps: "NPS 0.5", sched: "40", l: 50 }
       types:
         nps: Table Index
         sched: Table Index
@@ -128,20 +128,20 @@ classes:
         - index: nps
           columns: [od]
           data:
-            "NPS 1/8" :   [ .405  ]
-            "NPS 1/4" :   [ .540  ]
-            "NPS 3/8" :   [ .675  ]
-            "NPS 1/2" :   [ .840  ]
-            "NPS 3/4" :   [ 1.050 ]
+            "NPS 0.125" : [ .405  ]
+            "NPS 0.25" :  [ .540  ]
+            "NPS 0.375" : [ .675  ]
+            "NPS 0.5" :   [ .840  ]
+            "NPS 0.75" :  [ 1.050 ]
             "NPS 1" :     [ 1.315 ]
-            "NPS 1 1/4" : [ 1.660 ]
-            "NPS 1 1/2" : [ 1.900 ]
+            "NPS 1.25" :  [ 1.660 ]
+            "NPS 1.5" :   [ 1.900 ]
             "NPS 2" :     [ 2.375 ]
-            "NPS 2 1/2" : [ 2.875 ]
+            "NPS 2.5" :   [ 2.875 ]
             "NPS 3" :     [ 3.500 ]
-            "NPS 3 1/2" : [ 4.000 ]
+            "NPS 3.5" :   [ 4.000 ]
             "NPS 4" :     [ 4.500 ]
-            "NPS 4 1/2" : [ 5.000 ]
+            "NPS 4.5" :   [ 5.000 ]
             "NPS 5" :     [ 5.563 ]
             "NPS 6" :     [ 6.625 ]
             "NPS 7" :     [ 7.625 ]
@@ -169,20 +169,20 @@ classes:
           result: wall
           columns: ["5s","5","10s","10","20","30","40s","40","60","80s","80","100","120","140","160"]
           data:
-            "NPS 1/8" :   [ None, .035, .049, .049, None, None, .068, .068, None, .095, .095, None, None, None, None]
-            "NPS 1/4" :   [ None, .049, .065, .065, None, None, .088, .088, None, .119, .119, None, None, None, None]
-            "NPS 3/8" :   [ None, .049, .065, .065, None, None, .091, .091, None, .126, .126, None, None, None, None]
-            "NPS 1/2" :   [ .065, .065, .083, .083, None, None, .109, .109, None, .147, .147, None, None, None, .187]
-            "NPS 3/4" :   [ .065, .065, .083, .083, None, None, .113, .113, None, .154, .154, None, None, None, .218]
+            "NPS 0.125" :   [ None, .035, .049, .049, None, None, .068, .068, None, .095, .095, None, None, None, None]
+            "NPS 0.25" :  [ None, .049, .065, .065, None, None, .088, .088, None, .119, .119, None, None, None, None]
+            "NPS 0.375" : [ None, .049, .065, .065, None, None, .091, .091, None, .126, .126, None, None, None, None]
+            "NPS 0.5" :   [ .065, .065, .083, .083, None, None, .109, .109, None, .147, .147, None, None, None, .187]
+            "NPS 0.75" :  [ .065, .065, .083, .083, None, None, .113, .113, None, .154, .154, None, None, None, .218]
             "NPS 1" :     [ .065, .065, .109, .109, None, None, .133, .133, None, .179, .179, None, None, None, .250]
-            "NPS 1 1/4" : [ .065, .065, .109, .109, None, None, .140, .140, None, .191, .191, None, None, None, .250]
-            "NPS 1 1/2" : [ .065, .065, .109, .109, None, None, .145, .145, None, .200, .200, None, None, None, .281]
+            "NPS 1.25" :  [ .065, .065, .109, .109, None, None, .140, .140, None, .191, .191, None, None, None, .250]
+            "NPS 1.5" :   [ .065, .065, .109, .109, None, None, .145, .145, None, .200, .200, None, None, None, .281]
             "NPS 2" :     [ .065, .065, .109, .109, None, None, .154, .154, None, .218, .218, None, None, None, .343]
-            "NPS 2 1/2" : [ .083, .083, .120, .120, None, None, .203, .203, None, .276, .276, None, None, None, .375]
+            "NPS 2.5" :   [ .083, .083, .120, .120, None, None, .203, .203, None, .276, .276, None, None, None, .375]
             "NPS 3" :     [ .083, .083, .120, .120, None, None, .216, .216, None, .300, .300, None, None, None, .437]
-            "NPS 3 1/2" : [ .083, .083, .120, .120, None, None, .226, .226, None, .318, .318, None, None, None, None]
+            "NPS 3.5" :   [ .083, .083, .120, .120, None, None, .226, .226, None, .318, .318, None, None, None, None]
             "NPS 4" :     [ .083, .083, .120, .120, None, None, .237, .237, .281, .337, .337, None, .437, None, .531]
-            "NPS 4 1/2" : [ None, None, None, None, None, None, None, .247, None, None, .355, None, None, None, None]
+            "NPS 4.5" :   [ None, None, None, None, None, None, None, .247, None, None, .355, None, None, None, None]
             "NPS 5" :     [ .109, .109, .134, .134, None, None, .258, .258, None, .375, .375, None, .500, None, .625]
             "NPS 6" :     [ .109, .109, .134, .134, None, None, .280, .280, None, .432, .432, None, .562, None, .718]
             "NPS 7" :     [ None, None, None, None, None, None, None, .301, None, None, .500, None, None, None, None]
