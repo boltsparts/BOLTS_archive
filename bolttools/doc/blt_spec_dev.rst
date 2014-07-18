@@ -346,7 +346,7 @@ Angle (deg)   0               no
 The two values of the type Bool are true and false (lowercase). Table index
 values (keys) are strings, and must be ASCII with no forward or backward
 slashes, no question marks, no asterisk, no colon, no pipe, no quotes, no
-lesser or greater than signs, no spaces.
+lesser or greater than signs.
 
 
 .. _table-element:
