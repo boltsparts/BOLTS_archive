@@ -506,8 +506,8 @@ class MissingBaseConnectionTable(ErrorTable):
 			union.process_edge(set(base.classids))
 		for module, in dbs["openscad"].itermodules():
 			union.process_edge(set(module.classids))
-		for dtable in dbs["solidworks"].designtables:
-			union.process_edge(set([dtc.classid for dtc in dtable.classes]))
+#		for dtable in dbs["solidworks"].designtables:
+#			union.process_edge(set([dtc.classid for dtc in dtable.classes]))
 
 		#check whether we are missing something
 		for module, in dbs["openscad"].itermodules():

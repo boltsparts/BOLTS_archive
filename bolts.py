@@ -20,7 +20,7 @@ from bolttools.blt import Repository
 from bolttools.freecad import FreeCADData
 from bolttools.openscad import OpenSCADData
 from bolttools.drawings import DrawingsData
-from bolttools.solidworks import SolidWorksData
+#from bolttools.solidworks import SolidWorksData
 
 from backends.license import LICENSES_SHORT
 
@@ -39,7 +39,7 @@ def export(args):
 	dbs["openscad"] = OpenSCADData(repo)
 	dbs["freecad"] = FreeCADData(repo)
 	dbs["drawings"] = DrawingsData(repo)
-	dbs["solidworks"] = SolidWorksData(repo)
+#	dbs["solidworks"] = SolidWorksData(repo)
 
 	license = LICENSES_SHORT[args.license]
 
@@ -57,9 +57,9 @@ def export(args):
 	elif args.target == "html":
 		from backends.html import HTMLBackend
 		HTMLBackend(repo,dbs).write_output(out_path)
-	elif args.target == "solidworks":
-		from backends.solidworks import SolidWorksBackend
-		SolidWorksBackend(repo,dbs).write_output(out_path,"development")
+#	elif args.target == "solidworks":
+#		from backends.solidworks import SolidWorksBackend
+#		SolidWorksBackend(repo,dbs).write_output(out_path,"development")
 	elif args.target == "iges":
 		from backends.exchange import IGESBackend
 		IGESBackend(repo,dbs).write_output(out_path,"development")
@@ -79,7 +79,7 @@ def check(args):
 	dbs["openscad"] = OpenSCADData(repo)
 	dbs["freecad"] = FreeCADData(repo)
 	dbs["drawings"] = DrawingsData(repo)
-	dbs["solidworks"] = SolidWorksData(repo)
+#	dbs["solidworks"] = SolidWorksData(repo)
 
 	from backends.checker import CheckerBackend
 	checker = CheckerBackend(repo,dbs)
@@ -93,7 +93,7 @@ def tasks(args):
 	dbs["openscad"] = OpenSCADData(repo)
 	dbs["freecad"] = FreeCADData(repo)
 	dbs["drawings"] = DrawingsData(repo)
-	dbs["solidworks"] = SolidWorksData(repo)
+#	dbs["solidworks"] = SolidWorksData(repo)
 
 	from backends.checker import CheckerBackend
 	checker = CheckerBackend(repo,dbs)
@@ -203,7 +203,7 @@ subparsers = parser.add_subparsers()
 parser_export = subparsers.add_parser("export")
 parser_export.add_argument("target",
 	type=str,
-	choices=["openscad","freecad","html","solidworks","iges"],
+	choices=["openscad","freecad","html","iges"],
 	help="the distribution to create")
 parser_export.add_argument("-l","--license",
 	type=str,
