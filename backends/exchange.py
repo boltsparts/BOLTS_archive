@@ -25,26 +25,20 @@ try:
 except:
 	raise MissingFreeCADError()
 
-from os.path import join
+from os.path import join, exists
 from os import makedirs, remove
 from datetime import datetime
 import importlib
 
-from common import BackendExporter
-
-
+from common import Backend
 
 def add_part(base,params,doc):
-	if base.type == "function":
-		module = importlib.import_module(base.module_name)
-		module.__dict__[base.name](params,doc)
-	else:
-		raise RuntimeError("Unknown base geometry type" % base.type)
+	module = importlib.import_module(base.module_name)
+	module.__dict__[base.name](params,doc)
 
-class IGESExporter(BackendExporter):
+class IGESBackend(Backend):
 	def __init__(self,repo,databases):
-		BackendExporter.__init__(self,repo, databases)
-		self.freecad = databases["freecad"]
+		Backend.__init__(self,repo,"iges",databases,["freecad"])
 
 	def write_output(self,out_path,version,stable=False):
 		self.clear_output_dir(out_path)
@@ -63,16 +57,14 @@ class IGESExporter(BackendExporter):
 		write_bytecode = sys.dont_write_bytecode
 		sys.dont_write_bytecode = True
 
-		for coll in self.repo.collections:
-			makedirs(join(ver_root,coll.id))
+		for coll in self.repo.itercollections():
+			if not exists(join(ver_root,coll.id)):
+				makedirs(join(ver_root,coll.id))
+
 			sys.path.append(join(self.repo.path,"freecad",coll.id))
-			for cl in coll.classes:
-				if not cl.id in self.freecad.getbase:
-					continue
+			for cl,base in self.dbs["freecad"].iterclasses(["class","base"],filter_collection=coll):
 				if cl.parameters.common is None:
 					continue
-
-				base = self.freecad.getbase[cl.id]
 
 				for free in cl.parameters.common:
 					try:
@@ -80,20 +72,24 @@ class IGESExporter(BackendExporter):
 					except:
 						print "A problem occured when parameters for %s where collected for %s" % (free,cl.id)
 						raise
-					params["standard"] = cl.name
-					name = cl.naming.get_name(params)
-					params["name"] = name
-					filename = name + ".igs"
-					filename = filename.replace(" ","_").replace("/","-")
 
-					doc = FreeCAD.newDocument()
+					for std, in self.dbs["freecad"].iterstandards(filter_class=cl):
+						params['name'] = std.labeling.get_nice(params)
+						filename = std.labeling.get_safe(params) + ".igs"
+						doc = FreeCAD.newDocument()
+						add_part(base,params,doc)
+						shape = doc.ActiveObject.Shape
+						shape.exportIges(join(ver_root,coll.id,filename))
+						FreeCAD.closeDocument(doc.Name)
 
-					add_part(base,params,doc)
-
-					shape = doc.ActiveObject.Shape
-
-					shape.exportIges(join(ver_root,coll.id,filename))
-					FreeCAD.closeDocument(doc.Name)
+					for name, in self.dbs["freecad"].iternames(filter_class=cl):
+						params['name'] = name.labeling.get_nice(params)
+						filename = name.labeling.get_safe(params) + ".igs"
+						doc = FreeCAD.newDocument()
+						add_part(base,params,doc)
+						shape = doc.ActiveObject.Shape
+						shape.exportIges(join(ver_root,coll.id,filename))
+						FreeCAD.closeDocument(doc.Name)
 			sys.path.pop()
 
 		#restore byte code writing
