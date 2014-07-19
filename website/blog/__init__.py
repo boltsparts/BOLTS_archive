@@ -1,9 +1,12 @@
-from flask import Blueprint, render_template, abort, redirect
+from flask import Blueprint, render_template, abort, redirect, request
 from os.path import exists,join
 from os import listdir
 from yaml import load
+import markdown
 import datetime
 import re
+from urlparse import urljoin
+from werkzeug.contrib.atom import AtomFeed
 
 blog = Blueprint("blog",__name__,template_folder="templates",static_folder="static")
 
@@ -97,5 +100,17 @@ def archive():
 @blog.route("/atom")
 @blog.route("/atom.xml")
 def feed():
-	pass
+	feed = AtomFeed("Recent Blog Entries", feed_url=request.url, url=request.url_root)
 
+	for post in posts.get_posts()[:-21:-1]:
+		feed.add(
+			post["title"],
+			markdown.markdown(post["content"]),
+			content_type="html",
+			author=post["author"],
+			url=urljoin(request.url,post["url"]),
+			updated=post["updated"],
+			published=post["date"],
+			summary=markdown.markdown(post["teaser"]),
+			summary_type="html")
+	return feed.get_response()
