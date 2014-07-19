@@ -6,7 +6,10 @@
     <article>
       <header>
         <h1><a href="/blog/{{ post.url }}">{{ post.title }}</a></h1>
-        <p>Posted on {{ post.date }} by {{ post.author }}</p>
+        <p>Posted on {{ post.date }} by {{ post.author }}
+        {%- if not post.updated is none -%}
+        , last update {{ post.updated }}
+        {%- endif %}</p>
       </header>
       <div class="entry-content">
         {{ post.content|markdown }}

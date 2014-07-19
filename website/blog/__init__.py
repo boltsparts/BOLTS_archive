@@ -38,6 +38,11 @@ class Posts:
 				else:
 					post["date"] = datetime.datetime(year,month,day)
 
+				if 'updated' in header:
+					post["updated"] = header["updated"]
+				else:
+					post["updated"] = None
+
 				if 'author' in header:
 					match = re.match("([^<]*)<([^>]*)>",header["author"])
 					if match is None:
