@@ -1,0 +1,19 @@
+{% extends "doc.html" %}
+
+{% block content %}
+<div id="blog">
+  <div id="blog-single">
+    <article>
+      <header>
+        <h1>{{ doc.title }}</h1>
+      </header>
+      <div class="entry-content">
+        {{ doc.content|markdown }}
+      </div>
+    </article>
+
+    <div id="comments"></div>
+  </div>
+</div>
+
+{% endblock %}

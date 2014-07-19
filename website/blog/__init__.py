@@ -27,7 +27,7 @@ class Posts:
 			post["url"] = "%s/%s/%s/%s" % (year,month,day,post["slug"])
 
 			with open(join(path,filename)) as fid:
-				_, header, content = fid.read().split('---')
+				header, content = fid.read().split('\n---\n')
 				header = load(header)
 				post["content"] = content
 				post["teaser"] = content.split('<!-- more -->')[0].strip()

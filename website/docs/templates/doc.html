@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block titlebar %}
+  <div class="page-title-bar">
+    <div class="inner-content">
+      <h2>Documentation for BOLTS {{ page.version }}</h2>
+      <a {% if page.version == page.stable %}class="active"{% endif %} href="{{ url_for('.index',version=page.stable) }}">stable</a>
+      <a {% if page.version == "dev" %}class="active"{% endif %} href="{{ url_for('.index',version='dev') }}">dev</a>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+  <div class="inner-content">
+    {% for audience,cats in auds | dictsort | reverse %}
+    <h1>{{audience | capitalize}} Documentation</h1>
+    <div class="cols">
+      {% if cats.freecad != [] %}
+      <div class="col">
+        <h3>FreeCAD</h3>
+        <ul>
+          {% for doc in cats.freecad %}
+          <li><a href="freecad/{{ doc.filename }}">{{ doc.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% if cats.openscad != [] %}
+      <div class="col">
+        <h3>OpenSCAD</h3>
+        <ul>
+          {% for doc in cats.openscad %}
+          <li><a href="openscad/{{ doc.filename }}">{{ doc.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% if cats.general != [] %}
+      <div class="col">
+        <h3>General</h3>
+        <ul>
+          {% for doc in cats.general %}
+          <li><a href="general/{{ doc.filename }}">{{ doc.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

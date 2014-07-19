@@ -7,9 +7,11 @@ from bolttools.openscad import OpenSCADData
 from bolttools.drawings import DrawingsData
 from bolttools.statistics import Statistics
 from blog import blog
+from docs import docs
 
 app = Flask(__name__)
 app.register_blueprint(blog,url_prefix='/blog')
+app.register_blueprint(docs,url_prefix='/doc')
 app.debug = True
 
 Markdown(app)
