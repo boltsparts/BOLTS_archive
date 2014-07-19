@@ -1,0 +1,74 @@
+
+{% include head.html %}
+<body>
+  <script type="text/javascript" class="juvia">
+  (function() {
+      var options = {
+          container    : '#comments',
+          site_key     : 'ohhwmpfhyi2olb7tpe20roqcc5qznm8',
+          topic_key    : location.pathname,
+          topic_url    : location.href,
+          topic_title  : document.title || location.href,
+          comment_order: 'latest-first'
+      };
+
+      function makeQueryString(options) {
+          var key, params = [];
+          for (key in options) {
+              params.push(
+                  encodeURIComponent(key) +
+                  '=' +
+                  encodeURIComponent(options[key]));
+          }
+          return params.join('&');
+      }
+
+      function makeApiUrl(options) {
+          // Makes sure that each call generates a unique URL, otherwise
+          // the browser may not actually perform the request.
+          if (!('_juviaRequestCounter' in window)) {
+              window._juviaRequestCounter = 0;
+          }
+
+          var result =
+              '//j.stbuehler.de/api/show_topic.js' +
+              '?_c=' + window._juviaRequestCounter +
+              '&' + makeQueryString(options);
+          window._juviaRequestCounter++;
+          return result;
+      }
+
+      var s       = document.createElement('script');
+      s.async     = true;
+      s.type      = 'text/javascript';
+      s.className = 'juvia';
+      s.src       = makeApiUrl(options);
+      (document.getElementsByTagName('head')[0] ||
+       document.getElementsByTagName('body')[0]).appendChild(s);
+  })();
+  </script>
+
+
+  {% include header.html %}
+  <div class="page-title-bar">
+    <div class="inner-content">
+      <h2>{{ page.title }}</h2>
+    </div>
+  </div>
+  <div class="page-type-subnav">
+
+    <div id="content">
+      <article>
+        {{ content }}
+
+        <div id="comments"></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  {% include footer.html %}
+
+  {% include piwik.html %}
+</body>
+</html>

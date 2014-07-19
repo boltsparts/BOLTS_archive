@@ -1,0 +1,92 @@
+// Blog specific
+
+@media all and (max-width: $break-large - 1) {
+  #blog-nav {
+    padding: 12px 20px 0;
+  }
+  #blog-content {
+    padding: 20px;
+  }
+}
+
+@media all and (min-width: $break-large) {
+  #blog {
+    @include container;
+    padding: 20px 0 0;
+    #blog-nav {
+      @include span-columns(2);
+      @include omega;
+    }
+    #blog-content {
+      @include span-columns(4);
+    }
+    #blog-single {
+      @include prefix(1);
+      @include span-columns(4);
+    }
+    article {
+      max-width: 600px;
+    }
+  }
+}
+
+#blog {
+  article {
+    font-size: 14px;
+    @include micro-clearfix;
+  }
+  img {
+    max-width: 100%;
+  }
+  h2 {
+    margin-top: 0;
+  }
+}
+
+#blog-nav {
+  a {
+    @include muted-links;
+  }
+  h4 {
+    margin-top: 12px;
+  }
+  .date {
+    color: #BBB;
+    font-size: 11px;
+  }
+}
+
+#blog article {
+  header {
+    p {
+      color: #999;
+    }
+  }
+  h1 {
+    @include display-font;
+    text-transform: none;
+    a {
+      color: darken($link-color, 10%);
+      border: none;
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+  img.shaded {
+    @include box-shadow(2px 2px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.1));
+    
+  }
+  margin: 0 0 24px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid #DDD;
+  &:last-child {
+    margin: 0;
+    border: none;
+  }
+}
+
+// Blog comments using Disqus
+#disqus_thread {
+  max-width: 600px;
+}

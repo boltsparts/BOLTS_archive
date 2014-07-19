@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block banner %}
+<div id="banner">
+  <div class="inner-content">
+    <div class="copy">
+      <h1>BOLTS</h1>
+      <p class="intro">BOLTS is an Open Library of Technical Specifications.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+  <div class="inner-content">
+    <div class="cols">
+      <div class="col">
+        <h3> What is BOLTS?</h3>
+        <p>The aim of BOLTS is to build a free and open-source standard parts library for CAD applications. It does so by providing a common database that can be utilized by many different CAD applications.</p>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>What is a standard parts library?</h3>
+        <p>When you use a CAD software to create a design, this design consists usually of two different types of components: Custom parts that are specific to your purposes and have to be custom made (e.g. by 3D printing), and standard parts like nuts and bolts that you can buy in a hardware store.</p>
+        <p>A standard parts library relieves you from the tedious task of modeling standard parts by providing them readily usable, so that you can focus on the interesting aspects of your design.</p>
+        <p>While many commercial vendors offer standard parts libraries with their tools or for a fee, there is no free (as in freedom) standard parts library, yet. BOLTS tries to fill this gap.</p>
+      </div>
+      <div class="col">
+        <img width="80%" src="/static/images/parts_library.png"/>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>How does BOLTS work?</h3>
+        <p>BOLTS leverages the parametric abilities that most CAD applications provide. This allows to obtain a huge number of different sizes and variants of a part from a single model.</p>
+        <p>Dimensions and metadata of all the sizes and versions of the part are kept in special files. BOLTS can then use this data and the parametric models of the parts to automatically build standard parts libraries ("BOLTS for ...") for different CAD tools, that the user just can simply download and use.</p>
+        <p> So in a sense BOLTS is a tool to create standard parts libraries.</p>
+      </div>
+      <div class="col">
+        <a href="/static/images/bolts_process.png"><img width="80%" src="/static/images/bolts_process.png"/></a>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>How can I help?</h3>
+        <p>You can help BOLTS by modeling parts in one of the supported CAD tools, by adding dimensions and metadata for new parts, or by creating drawings for the <a href="/html/index.html">online part directory</a>.</p>
+        <p>These tasks are relatively easy, and most of them do not require programming skills. To learn more, check out <a href="/contribute.html">this page</a>, it has more information and links to detailed descriptions of the different tasks.</p>
+      </div>
+      <div class="col">
+        <h3>Statistics</h3>
+        <ul>
+          <li> <a href="/contributors.html">{{ stats.contributors }} people</a> contributed</li>
+          <li> {{ stats.classes }} classes in</li>
+          <li> {{ stats.collections }} <a href="/html/index.html">collections</a> following</li>
+          <li> {{ stats.standards }} different standards issued by</li>
+          <li> {{ stats.bodies }} <a href="/html/index.html">standardization organisations</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>Quickstart: Using BOLTS for OpenSCAD</h3>
+        <p>Download the tarball with BOLTS for <a href="http://www.openscad.org/">OpenSCAD</a> from the <a href="/downloads.html">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the top of your scad file:</p>
+        <pre><code>
+include <bolts.scad>
+        </code></pre>
+        <p> You can now use BOLTS to add standard parts like a <a href="/html/classes/ISO7089.html">washer</a>:</p>
+        <pre><code>
+ISO7089("M4");
+        </code></pre>
+        <p>For more information see the <a href="/doc/index.html">Documentation</a>
+      </div>
+      <div class="col">
+        <a href="/static/images/openscad-bolt.png"><img width="80%" src="/static/images/openscad-bolt.png"/></a>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>Quickstart: Using BOLTS for FreeCAD</h3>
+        <p>Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="/downloads.html">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab. You also have to make sure to have <a href="https://bitbucket.org/xi/pyyaml">pyyaml</a> installed.</p>
+        <p> After starting FreeCAD, choose <code>Macros</code> from the <code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code></p>
+        <p>A widget should appear. There you can select a part from the tree, give values for the parameters and add it to the current document.</p>
+        <p>For more information see the <a href="/doc/index.html">Documentation</a>
+      </div>
+      <div class="col">
+        <a href="/static/images/freecad-bearing.png"><img width="80%" src="/static/images/freecad-bearing.png"/></a>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>Quickstart: Using BOLTS for IGES</h3>
+        <p>Download the tarball with BOLTS for <a href="http://en.wikipedia.org/wiki/IGES">IGES</a> from the <a href="/downloads.html">Downloads page</a> and extract it into a folder. This can require several hundred MByte of space.</p>
+        <p>IES is a widely supported format, so almost every CAD tool can use it. The details depend on the specific application, but usually one has to open or import a IGES file to be able to use the part.
+        <p>The files are structured in subdirectories, which correspond to the collections shown <a href="/html/index.html">in the Specifications</a>. Not all sizes or variants of all parts are available in BOLTS for IGES, if you miss something <a href="/contribute.html">get in touch</a>.
+      </div>
+      <div class="col">
+        <a href="/static/images/iges-quickstart.png"><img width="80%" src="/static/images/iges-quickstart.png"/></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
