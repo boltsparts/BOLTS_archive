@@ -1,0 +1,20 @@
+{% extends "blog.html" %}
+
+{% block content %}
+<div id="blog">
+  <div id="blog-single">
+    <article>
+      <header>
+        <h1><a href="/blog/{{ post.url }}">{{ post.title }}</a></h1>
+        <p>Posted on {{ post.date }} by {{ post.author }}</p>
+      </header>
+      <div class="entry-content">
+        {{ post.content|markdown }}
+      </div>
+    </article>
+
+    <div id="comments"></div>
+  </div>
+</div>
+{% endblock %}
+

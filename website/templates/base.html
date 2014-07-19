@@ -13,7 +13,7 @@
   <div class="inner-content">
     <nav id="nav">
       <a {% if page.title == "Home" %}class="active"{% endif %} href="/index.html">Home</a>
-      <a {% if page.title == "Blog" %}class="active"{% endif %} href="/blog.html">Blog</a>
+      <a {% if page.title == "Blog" %}class="active"{% endif %} href="/blog">Blog</a>
       <a {% if page.title == "Parts list" %}class="active"{% endif %} href="/html/index.html">Parts list</a>
       <a {% if page.title == "Documentation" %}class="active"{% endif %} href="/doc/index.html">Documentation</a>
       <a {% if page.title == "Contribute" %}class="active"{% endif %} href="/contribute.html">Contribute</a>
@@ -27,6 +27,7 @@
 </div>
 {% endblock %}
 {% block banner %}{% endblock %}
+{% block titlebar %}{% endblock %}
 {% block content %}{% endblock %}
 {% block footer %}
 <footer id="footer">

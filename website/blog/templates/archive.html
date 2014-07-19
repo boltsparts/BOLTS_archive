@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block titlebar %}
+  <div class="page-title-bar">
+    <div class="inner-content">
+      <h2>Blog Archive</h2>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div id="blog">
+  <div id="blog-content">
+    <ul class="bordered-list">
+      {% for post in posts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <span class="date">{{ post.date | datetime }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
