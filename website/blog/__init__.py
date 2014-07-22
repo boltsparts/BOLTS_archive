@@ -17,6 +17,8 @@ class Posts:
 		self.posts = []
 
 		for filename in listdir(path):
+			if filename.startswith('.'):
+				continue
 			post = {}
 
 			parts = filename.split('-')
@@ -58,7 +60,7 @@ class Posts:
 					raise ValueError("Nonunique url: %s"% post["url"])
 				self.urls[post["url"]] = post
 				if post["slug"] in self.slugs:
-					raise ValueError("Nonunique url: %s"% post["slug"])
+					raise ValueError("Nonunique slug: %s"% post["slug"])
 				self.slugs[post["slug"]] = post
 
 		self.posts = sorted(self.urls.values(),key = lambda x: x["date"])
@@ -93,7 +95,7 @@ def post(year,month,day,slug):
 
 @blog.route("/")
 @blog.route("/index.html")
-def home():
+def index():
 	page = {"title" : "Blog"}
 	return render_template("blog.html",page=page,posts=posts.get_posts()[:-6:-1])
 
@@ -114,7 +116,7 @@ def feed():
 			content_type="html",
 			author=post["author"],
 			url=urljoin(request.url,post["url"]),
-			updated=post["updated"],
+			updated=post["updated"] or post["date"],
 			published=post["date"],
 			summary=markdown.markdown(post["teaser"]),
 			summary_type="html")
