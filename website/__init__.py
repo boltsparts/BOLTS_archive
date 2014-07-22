@@ -9,9 +9,9 @@ from jinja2 import contextfilter, Markup
 import markdown
 import re
 from os.path import join
-from blog import blog
-from docs import docs,STABLE
-from parts import parts
+from website.blog import blog
+from website.docs import docs,STABLE
+from website.parts import parts
 
 
 app = Flask(__name__)
@@ -52,7 +52,6 @@ def get_subs(version):
 			**dict(zip(['year','month','day','slug'],(a.strip() for a in m.group(2).split('/'))))
 		),
 		'url' : lambda m: url_for(m.group(2)),
-		'collection' : lambda m: 'NotImplemented',#<a href...
 		'collection_url' : lambda m: 'NotImplemented',#<a href...
 		'standard' : lambda m: 'NotImplemented',#'<a href="%s">%s</a>' % (m.group(2),url_for('parts.standard',m.group(2))),
 		'name' : lambda m: 'NotImplemented',#'<a href="%s">%s</a>' % (m.group(2),url_for('parts.standard',m.name(2))),
