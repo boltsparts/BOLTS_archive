@@ -10,7 +10,7 @@ import markdown
 import re
 from os.path import join
 from blog import blog
-from docs import docs
+from docs import docs,STABLE
 from parts import parts
 
 
@@ -39,33 +39,58 @@ def _format_datetime(value, format='medium'):
 		format="EE dd.MM.y HH:mm"
 	return format_datetime(value, format)
 
-@app.template_filter('markdown')
-@contextfilter
-def markdownsub(ctx,value):
-	if 'page' in ctx.parent and 'version' in ctx.parent['page']:
-		version = ctx.parent['page']['version']
-	else:
-		version = None
-	mkd = markdown.markdown(value)
-	subs = {
-		'static' : lambda m: url_for('docs.static',filename=join(version,m.group(2))),
+def get_subs(version):
+	return {
 		'doc' : lambda m: url_for('docs.document',
 			version=version,
 			**dict(zip(['cat','filename'],(a.strip() for a in m.group(2).split(','))))
 		),
+		'doc_version' : lambda m: url_for('docs.document',
+			**dict(zip(['version','cat','filename'],(a.strip() for a in m.group(2).split(','))))
+		),
+		'blog' : lambda m: url_for('blog.post',
+			**dict(zip(['year','month','day','slug'],(a.strip() for a in m.group(2).split('/'))))
+		),
 		'url' : lambda m: url_for(m.group(2)),
+		'collection' : lambda m: 'NotImplemented',#<a href...
+		'collection_url' : lambda m: 'NotImplemented',#<a href...
 		'standard' : lambda m: 'NotImplemented',#'<a href="%s">%s</a>' % (m.group(2),url_for('parts.standard',m.group(2))),
 		'name' : lambda m: 'NotImplemented',#'<a href="%s">%s</a>' % (m.group(2),url_for('parts.standard',m.name(2))),
 		'standard_url' : lambda m: 'NotImplemented',#url_for('parts.standard',m.group(2)),
 		'name_url' : lambda m: 'NotImplemented',#url_for('parts.standard',m.name(2)),
 	}
+
+def markdownsub(ctx,value,subs):
+	mkd = markdown.markdown(value)
 	subs = re.sub('{{\s*([^(]*)\(([^\)]*)\)\s*}}',lambda m: subs[m.group(1)](m),mkd)
 	return Markup(subs)
+
+@app.template_filter('markdown_docs')
+@contextfilter
+def markdown_docs(ctx,value):
+	if 'page' in ctx.parent and 'version' in ctx.parent['page']:
+		version = ctx.parent['page']['version']
+	else:
+		version = STABLE
+	subs = get_subs(version)
+	subs['static'] = lambda m: url_for('docs.static',filename=join(version,m.group(2)))
+	return markdownsub(ctx,value,subs)
+
+@app.template_filter('markdown_blog')
+@contextfilter
+def markdown_blog(ctx,value):
+	if 'page' in ctx.parent and 'version' in ctx.parent['page']:
+		version = ctx.parent['page']['version']
+	else:
+		version = str(STABLE)
+	subs = get_subs(version)
+	subs['static'] = lambda m: url_for('blog.static',filename=join(m.group(2)))
+	return markdownsub(ctx,value,subs)
 
 
 @app.route("/")
 @app.route("/index.html")
-def hello():
+def index():
 	page = {"title" : "Home"}
 
 	return render_template("home.html",page=page, stats = stats.get_statistics())
@@ -93,7 +118,7 @@ def contribute():
 
 @app.route("/contributors")
 @app.route("/contributors.html")
-def contribute():
+def contributors():
 	page = {"title" : "Contributors"}
 
 	return render_template("contributors.html",page=page)
