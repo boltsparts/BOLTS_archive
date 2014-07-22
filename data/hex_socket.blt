@@ -32,7 +32,7 @@ classes:
         standard: ISO 10642
         labeling: Hex socket countersunk head screw ISO 10642 %(key)s %(l)s
         description: Hexagon socket countersunk head screw, metric sizes
-      - body: DIN ISO
+      - body: DINISO
         standard: DIN ISO 10642
         labeling: Hex socket countersunk head screw DIN ISO 10642 %(key)s %(l)s
         description: Hexagon socket countersunk head screw, metric sizes

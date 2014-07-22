@@ -77,7 +77,7 @@ classes:
     source: No source information used
   - id: circle_hollow
     standards:
-      - body: DIN EN
+      - body: DINEN
         standard: DIN EN 10210-2 circular
         group: DIN EN 10210-2
         year: 2006
@@ -331,7 +331,7 @@ classes:
     notes: http://en.wikipedia.org/wiki/Structural_steel
   - id: square_hollow
     standards:
-      - body: DIN EN
+      - body: DINEN
         standard: DIN EN 10210-2 square
         group: DIN EN 10210-2
         year: 2006
@@ -471,7 +471,7 @@ classes:
     notes: http://en.wikipedia.org/wiki/Structural_steel
   - id: rectangular_hollow
     standards:
-      - body: DIN EN
+      - body: DINEN
         standard: DIN EN 10210-2 rectangular
         group: DIN EN 10210-2
         year: 2006
