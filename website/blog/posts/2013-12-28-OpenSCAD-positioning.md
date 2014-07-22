@@ -5,12 +5,12 @@
 ---
 
 I am looking for ways to make it easier to use parts from
-[BOLTS]({{site.baseurl}}/index.html) in OpenSCAD. At the
-moment it is a bit awkward because one has to know precisely how the
-BOLTS part is positioned and oriented  and then has to translate and
-rotate it around. This often requires the knowledge of some dimensions
-of the part, so one has to query BOLTS about it, and suddenly it is a
-lot of code that is difficult to read and annoying to write.
+[BOLTS]({{ url(index) }})) in OpenSCAD. At the moment it is a bit awkward
+because one has to know precisely how the BOLTS part is positioned and oriented
+and then has to translate and rotate it around. This often requires the
+knowledge of some dimensions of the part, so one has to query BOLTS about it,
+and suddenly it is a lot of code that is difficult to read and annoying to
+write.
 
 <!-- more -->
 
@@ -65,7 +65,7 @@ operation can be used to position and orient the part. This way things like
 "put that bolt the so that its tip is here" or "the head of that bolt should
 be at this point" can be expressed in a compact and readable way.
 
-[<img alt="Connector positions" src="{{ site.baseurl }}/images/openscad-connectors.png" style="width: 100%;"/>]({{ site.baseurl }}/images/openscad-connectors.png)
+[<img alt="Connector positions" src="{{ static(openscad-connectors.png) }}" style="width: 100%;"/>]({{ static(openscad-connectors.png) }})
 
 ### Example: Bolted connection
 
@@ -98,20 +98,19 @@ which is readable, compact and flexible. To change the position or
 orientation of the bolted connection, one just has to change cube_cs.
 Changing the size of the bolts and washers change M4 is also easy.
 
-[<img alt="Bolted connection example" src="{{ site.baseurl }}/images/openscad-positioningexample.png" style="width: 100%;"/>]({{ site.baseurl }}/images/openscad-positioningexample.png)
+[<img alt="Bolted connection example" src="{{ static(images/openscad-positioningexample.png) }}" style="width: 100%;"/>]({{ static(images/openscad-positioningexample.png) }})
 
 ### Try it
 
 You can try this functionality with the most recent development snapshot from
-the [BOLTS page]({{site.baseurl}}/downloads.html). Either
-place the contents of the archive in the same directory as the .scad files that
-use BOLTS, or follow the instructions on 
-[how to install BOLTS for OpenSCAD]({{site.baseurl}}/doc/openscad/installation.html).
+the [BOLTS page]({{ url(downloads) }}). Either place the contents of the
+archive in the same directory as the .scad files that use BOLTS, or follow the
+instructions on 
+[how to install BOLTS for OpenSCAD]({{ doc(openscad,installation) }}).
 
 Not all parts have connectors yet, but nuts, washers, hex bolts and
 batteries do. The names of the connectors are listed in the OpenSCAD section of the
-[part page]({{site.baseurl}}/html/index.html).
+[part page]({{ url(part.index) }}).
 
 There is no documentation for this feature (apart from this blog post), because
 I might still change the way things work.
-

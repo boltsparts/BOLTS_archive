@@ -21,15 +21,14 @@ For BOLTS this was a bit difficult, because I want it to be compatible with all
 Versions of FreeCAD on all systems, but in the end it worked out. At least I
 hope. I do not have access to a Windows Computer, so I could not test that. If
 you do and run FreeCAD 0.13 or 0.14, it would be great if you could test
-whether the latest 
-[development snapshot]({{site.baseurl}}/downloads.html) works for you.
+whether the latest [development snapshot]({{ url(downloads) }}) works for you.
 
 ### 2D Tables
 
 BOLTS needs to provide a way to express the relationship between the parameters
-of parts. As an example, the dimensions of the head of a 
-[hexagon head screw]({{site.baseurl}}/html/classes/ISO4017.html) 
-are determined by the diameter of the shaft.
+of parts. As an example, the dimensions of the head of a
+[hexagon head screw]({{ standard_url(ISO4017) }}) are determined by the
+diameter of the shaft.
 
 These relationships are usually expressed by tables. For most parameters these
 tables are 1D, i.e. they only depend only on one other quantity. BOLTS can
@@ -38,7 +37,7 @@ handle tables of this type for a long time.
 However, sometimes a parameter depends on two other quantities at once. For
 example, the wall thickness of 
 [NPS Pipes](http://www.engineersedge.com/pipe_schedules.htm)
-depends both on the diameter and the schedule. 
+depends both on the diameter and the schedule.
 
 Since today, BOLTS can also handle this kind of tables. I used NPS pipes as
 test case while developing this feature, so they are now also contained in

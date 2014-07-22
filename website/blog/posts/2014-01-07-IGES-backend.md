@@ -18,11 +18,11 @@ of files (about 1000), and forces us to choose which sizes should be included
 at export time.
 
 This choice is codified in the blt files in form of common parameter
-combinations, I have [blogged about this]({{site.baseurl}}/2013/11/29/BLT-file-progress.html)
+combinations, I have [blogged about this]({{ blog(2013/11/29/BLT-file-progress) }})
 a while ago. I have not yet specified common parameters for all classes of
 parts, and BOLTS can not guess them in some cases. These parts are then ignored
 and not exported to IGES. A list of parts that miss common parameter
-information can be found on the [tasks page]({{site.baseurl}}/tasks.html). One
+information can be found on the [tasks page]({{ url(tasks) }}). One
 only has to lookup a few vendor sites on the internet and find the most common
 sizes and variations of parameters for the part and enter them into the blt
 file.
@@ -44,7 +44,7 @@ without problems.
 As mentioned earlier, the IGES distribution consists of a lot of files, many of
 which are very similar. It currently has around 1600 files with a total size of
 around 120 MByte. These files are compressed into a single file which can then
-be downloaded from the [download section]({{site.baseurl}}/downloads.html).
+be downloaded from the [download section]({{ url(downloads) }}).
 
 In contrast to the FreeCAD and OpenSCAD distributions of BOLTS, which are
 available both as zip and tar.gz, the IGES distribution is only available as
@@ -52,7 +52,6 @@ tar.xz, because this format achieves significantly better compression for this
 kind of content. The 120 MByte of IGES files result in a 12 MByte zip file, but
 only in a 2 MByte tar.xz file.
 
-On Windows, tar.xz files can be decompressed using the [7z tool](http://www.7-zip.org/). On most
-Linux distributions the common tools to work with compressed data can handle
-tar.xz, or at least packages are available for xz-tools.
-
+On Windows, tar.xz files can be decompressed using the [7z tool](http://www.7-zip.org/). 
+On most Linux distributions the common tools to work with compressed data can
+handle tar.xz, or at least packages are available for xz-tools.

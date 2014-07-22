@@ -18,19 +18,19 @@
         <p>Posted on {{ post.date | datetime }} by {{ post.author }}</p>
       </header>
       <div class="entry-content">
-        {{ post.teaser|markdown }}
+        {{ post.teaser | markdown_blog }}
         <p><a href="/blog/{{ post.url }}">Read more</a></p>
       </div>
     </article>
     {% endfor %}
-    <p>Older posts can be found in the <a href="/blog/all">Blog archive</a>.</p>
+    <p>Older posts can be found in the <a href="{{ url_for('.archive') }}">Blog archive</a>.</p>
   </div>
   <div id="blog-nav">
     <h4>Welcome to the BOLTS blog</h4>
-    <p>The latest and greatest on BOLTS. <a href="/atom">Subscribe the RSS feed</a> for updates.</p>
+    <p>The latest and greatest on BOLTS. <a href="{{ url_for('.atom') }}">Subscribe the RSS feed</a> for updates.</p>
 
     <h4>Post archive</h4>
-    <p>View all posts in the <a href="/blog/all">Blog archive</a>.</p>
+    <p>View all posts in the <a href="{{ url_for('.archive') }}">Blog archive</a>.</p>
   </div>
 </div>
 {% endblock %}

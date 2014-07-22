@@ -52,20 +52,13 @@ the the types and defaults fields).
 BOLTS has a check to encourage complete coverage of all parameters and
 complains if unknown parameters are described.
 
-This information is used in the 
-[generated html documentation]({{site.baseurl}}/html/classes/ISO4035.html)
- for each part, just below the drawing, to give it more context.
+This information is used in the [html documentation]({{ standard_url(ISO4035) }})
+for each part, just below the drawing, to give it more context.
 
 It is also shown as a tooltip in the FreeCAD widget, when hovering above the
 widget for the free parameters:
 
-[<img alt="Descriptive Tooltips" src="{{ site.baseurl }}/images/freecad_tooltip.png" style="width: 100%;"/>]({{ site.baseurl }}/images/freecad_tooltip.png)
+[<img alt="Descriptive Tooltips" src="{{ static(freecad_tooltip.png) }}" style="width: 100%;"/>]({{ static(freecad_tooltip.png) }})
 
 This feature (along with a few more improvements and fixes) is available in the
-latest development snapshot from the 
-[download section]({{site.baseurl}}/downloads.html).
-
-
-
-
-
+latest development snapshot from the [download section]({{ url(downloads) }}).

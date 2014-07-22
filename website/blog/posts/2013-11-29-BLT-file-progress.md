@@ -3,13 +3,13 @@
   author: Johannes <jreinhardt@ist-dein-freund.de>
 ---
 
-This post should now appear on [Planet RepRap](http://planet.arcol.hu/), hi everybody reading this from there. This is the development blog for [BOLTS]({{site.baseurl}}/index.html). BOLTS tries to build an open standard parts library for a number of CAD applications.
+This post should now appear on [Planet RepRap](http://planet.arcol.hu/), hi everybody reading this from there. This is the development blog for [BOLTS]({{ url(index) }}). BOLTS tries to build an open standard parts library for a number of CAD applications.
 
-BOLTS is a rather young project, but is already useable with [OpenSCAD](http://www.openscad.org/) and [FreeCAD](http://freecadweb.org/). Its youth is noticeable by the still relatively [small number of parts]({{site.baseurl}}/html/index.html), though. It is not difficult to add more parts and [well documented]({{site.baseurl}}/doc/index.html), so if you are missing a part in BOLTS, or just think BOLTS is a good idea, [please help out with improving it]({{site.baseurl}}/contribute.html).
+BOLTS is a rather young project, but is already useable with [OpenSCAD](http://www.openscad.org/) and [FreeCAD](http://freecadweb.org/). Its youth is noticeable by the still relatively [small number of parts]({{ url(parts.index) }})), though. It is not difficult to add more parts and [well documented]({{ url(docs.index) }}), so if you are missing a part in BOLTS, or just think BOLTS is a good idea, [please help out with improving it]({{ url(contribute) }}).
 
-If you want to try out BOLTS or learn more about it, you should head to its [webpage]({{site.baseurl}}/index.html).
+If you want to try out BOLTS or learn more about it, you should head to its [webpage]({{ url(index) }}).
 
-The rest of this post reports on recent developments of one of the important components 
+The rest of this post reports on recent developments of one of the important components
 
 <!-- more -->
 
@@ -21,7 +21,7 @@ The user usually does not get in contact with these files, but to add new parts,
 
 At the moment, the format of these files is the area where most of the developments happen. On one hand the format must be flexible and expressive enough to be able to describe all the aspects of the different kinds of parts that might end up in BOLTS. On the other hand, it should be structured and consistent enough to be processable by humans and computers without being annoying. There are quite a few things left that I want to incorporate [before the next release](https://github.com/jreinhardt/BOLTS/issues?milestone=3&state=open).
 
-One thing that I already implemented is the possibility to markup common parameter combinations. During the work on what will  become [BOLTS for SolidWorks]({{site.baseurl}}/2013/11/14/Marketing.html), it became evident that the current format was not able to express all the things that are necessary to automatically generate a standard library for SolidWorks.
+One thing that I already implemented is the possibility to markup common parameter combinations. During the work on what will become [BOLTS for SolidWorks]({{ blog(2013/11/14/Marketing) }}), it became evident that the current format was not able to express all the things that are necessary to automatically generate a standard library for SolidWorks.
 
 A part can have parameters that are discrete choices (like the thread for a bolt: M3, M4, ...) or continuous (like the length of the bolt). For FreeCAD and OpenSCAD BOLTS handles the continuous parameters by letting the user specify the value, and then constructing the part. But for SolidWorks (and also for a future STEP backend), one is restricted to a discrete set of combinations.
 
