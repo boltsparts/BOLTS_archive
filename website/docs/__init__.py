@@ -81,12 +81,12 @@ def static_version(version,filename):
 
 @docs.route("/")
 @docs.route("/index.html")
-def home():
-	return redirect(url_for(".index",version=STABLE))
+def index():
+	return redirect(url_for(".version_index",version=STABLE))
 
 @docs.route("/<version>")
 @docs.route("/<version>/index.html")
-def index(version):
+def version_index(version):
 	if not version in SOURCES:
 		abort(404)
 	src = SOURCES[version]
