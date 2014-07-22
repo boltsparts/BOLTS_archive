@@ -9,9 +9,9 @@ from jinja2 import contextfilter, Markup
 import markdown
 import re
 from os.path import join
-from website.blog import blog
-from website.docs import docs,STABLE
-from website.parts import parts
+from blog import blog
+from docs import docs,STABLE
+from parts import parts, repo, dbs
 
 
 app = Flask(__name__)
@@ -22,12 +22,6 @@ app.register_blueprint(parts,url_prefix='/parts')
 app.debug = True
 
 Babel(app)
-
-repo = Repository(".")
-dbs = {}
-dbs["openscad"] = OpenSCADData(repo)
-dbs["freecad"] = FreeCADData(repo)
-dbs["drawings"] = DrawingsData(repo)
 
 stats = Statistics(repo,dbs)
 
