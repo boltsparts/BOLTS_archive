@@ -24,7 +24,7 @@ from bolttools.drawings import DrawingsData
 
 from backends.license import LICENSES_SHORT
 
-from os import getcwd
+from os import getcwd,walk,listdir
 from shutil import make_archive, copyfile
 import os.path
 from subprocess import call, Popen
@@ -75,7 +75,21 @@ def test(args):
 	elif args.target == "website":
 		import website
 		from website import app
-		app.run(debug=True)
+		extra_files = []
+		blog_path = os.path.join(args.repo,"website","blog","posts")
+		for filename in listdir(blog_path):
+			if filename.startswith('.'):
+				continue
+			extra_files.append(os.path.join(blog_path,filename))
+
+		doc_path = os.path.join(args.repo,"website","docs","sources")
+		for dirpath,_,filenames in walk(doc_path):
+			for filename in filenames:
+				if filename.startswith('.'):
+					continue
+				extra_files.append(os.path.join(dirpath,filename))
+
+		app.run(debug=True,extra_files=extra_files)
 
 def check(args):
 	repo = Repository(args.repo)
