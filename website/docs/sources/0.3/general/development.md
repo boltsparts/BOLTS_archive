@@ -138,7 +138,7 @@ in the commit by
     git add filename2
     git add filename3 filename4
 
-with 
+with
 
     git status
 

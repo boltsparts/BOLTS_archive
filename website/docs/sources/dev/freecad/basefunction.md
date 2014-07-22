@@ -3,13 +3,12 @@
   audience: contributors
 ---
 
-You need to have FreeCAD and [FreeCAD for BOLTS installed](installation.html).
+You need to have FreeCAD and [FreeCAD for BOLTS installed]({{ doc(freecad, installation) }}).
 
-This assumes that the [blt file]({{page.docroot}}/general/blt-files.html)  for
-this part is already created, and you have a python function that creates the
-part that you want to add to BOLTS. For more information on part scripting in
-FreeCAD see the 
-[FreeCAD documentation on this topic](http://freecadweb.org/wiki/index.php?title=Power_users_hub).
+This assumes that the [blt file]({{ doc(general, blt-files) }})  for this part
+is already created, and you have a python function that creates the part that
+you want to add to BOLTS. For more information on part scripting in FreeCAD see
+the [FreeCAD documentation on this topic](http://freecadweb.org/wiki/index.php?title=Power_users_hub).
 
 
 ### The function
@@ -30,7 +29,8 @@ As an example we  use the follwing function to create washers:
         inner = Part.makeCylinder(d1,s)
         part.Shape = outer.cut(inner).removeSplitter()
 
-This function uses the CSG facilities of FreeCAD, but it is equally possible to use BRep scripting.
+This function uses the CSG facilities of FreeCAD, but it is equally possible to
+use BRep scripting.
 
 It is necessary to write the function such that it is a function of two
 parameters, a dict of parameter names and values, and a FreeCAD document. The
@@ -57,7 +57,7 @@ this collection (in this case `washer.base`).
 The base file provides BOLTS with all the informations it needs to know about
 the files in a collection directory, it is a kind of manifest file. It contains
 a list of sections (more precisely 
-[base file elements]({{page.docroot}}/general/specification.html))
+[base file elements]({{ doc(general, specification) }}))
 , each describing one file:
 
     ---
@@ -85,7 +85,9 @@ FreeCAD. As a file can contain more than one function, a list of elements
 follows, that describe the individual functions. In our case there is only
 one, called washer1.
 
-There is the possibility to add an optional `source` field which allows to give informations about the origin of the file. If there is a URL from which this file was downloaded, this can be included here.
+There is the possibility to add an optional `source` field which allows to give
+informations about the origin of the file. If there is a URL from which this
+file was downloaded, this can be included here.
 
 The `classids` field contains a list of classids to which this function
 applies.  BOLTS contains four different classes that describe washers, so in
@@ -94,31 +96,42 @@ a single entry. Be careful, that the parameter names for all classes in this
 list must be the same, otherwise the parameter dict contains unexpected
 entries or names can not be found.
 
-When working on base files, pay attention to whitespace and identation and do not use tabs.
+When working on base files, pay attention to whitespace and identation and do
+not use tabs.
 
 ### Testing
 
-You should now test the newly added part. This is most easily done on the command line by typing
+You should now test the newly added part. This is most easily done on the
+command line by typing
 
     ./bolts.py export freecad
     ./bolts.py test freecad
 
-in the repo directory. This will fire up a FreeCAD instance with the module search path set appropriately, so that typing
+in the repo directory. This will fire up a FreeCAD instance with the module
+search path set appropriately, so that typing
 
     import BOLTS
 
 on the FreeCAD python console should do the trick.
 
-If BOLTS is started successfully, try adding the newly added part to the current document with different combinations of parameters.
+If BOLTS is started successfully, try adding the newly added part to the
+current document with different combinations of parameters.
 
-If nothing happens when you try to add the file, there is probably an error occuring during the execution of the function. Such errors are suppressed by the gui system, so that no error messages are displayed. You can circumvent this by activating the `Add part` button manually. To do this type
+If nothing happens when you try to add the file, there is probably an error
+occuring during the execution of the function. Such errors are suppressed by
+the gui system, so that no error messages are displayed. You can circumvent
+this by activating the `Add part` button manually. To do this type
 
     BOLTS.widget.ui.addButton.clicked.emit(True)
 
-in the FreeCAD python console. This should display exceptions if they occur and also the output from `print` statements.
+in the FreeCAD python console. This should display exceptions if they occur and
+also the output from `print` statements.
 
-When fixing a bug, you have to close FreeCAD, and repeat this step from the beginning. This is a rather tedious development cycle, so taking care when writing the function pays off in this case.
+When fixing a bug, you have to close FreeCAD, and repeat this step from the
+beginning. This is a rather tedious development cycle, so taking care when
+writing the function pays off in this case.
 
 ### Next steps
 
-You might want to [contribute]({{page.docroot}}/general/development.html) this part to BOLTS, so that every user can profit from your efforts.
+You might want to [contribute]({{ doc(general, development) }}) this part to
+BOLTS, so that every user can profit from your efforts.

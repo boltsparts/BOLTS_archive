@@ -4,7 +4,7 @@
 ---
 
 This tutorial shows you the preferred way to make a class from a
-[collection]({{page.docroot}}/general/blt-files.html) available in OpenSCAD.
+[collection]({{ doc(general,blt-files) }}) available in OpenSCAD.
 
 This assumes that you have already a module available that takes a number of
 parameters as input and builds the part that the class describes.
@@ -24,7 +24,7 @@ Or you try to find out if someone else has done this already. There are a number
 
 However, to use code written by someone else, you need to make sure that there
 are no licensing problems. I wrote about licensing in BOLTS
-[here]({{page.docroot}}/general/licensing.html). If the code has no licensing
+[here]({{ doc(general,licensing) }}). If the code has no licensing
 information or is published under a incompatible license, you can try to
 contact the author and ask him to dual-license with a license that allows
 inclusion in BOLTS.
@@ -73,7 +73,7 @@ This collection directory must also contain the base file for this directory.
 The base file provides BOLTS with all the informations it needs to know about
 the files in a collection directory, it is a kind of manifest file. It
 contains a list of sections 
-(more precisely [base file elements]({{page.docroot}}/general/specification.html)),
+(more precisely [base file elements]({{ doc(general,specification) }})),
 each describing one file.
 
 For the pipes collection the base file is `openscad/pipes/pipes.base` and has
@@ -99,7 +99,7 @@ then follows the list of modules that are contained in the file.
 In the case of `pipe.scad` there is only one module called `pipe`. The
 arguments field gives the parameters that need to be supplied to the module.
 The parameters must be a subset of the parameters of the class as it is
-defined in the [blt file]({{page.docroot}}/general/blt-files.html).
+defined in the [blt file]({{ doc(general,blt-files) }}).
 
 The `classids` field contains a list of classids which this module can
 represent. Be careful, that the parameter names and meanings for all classes
@@ -114,7 +114,7 @@ file was downloaded, this can be included here.
 
 Now it should be tested that the newly added part really works. This is most
 conveniently done using the 
-[utility script]({{page.docroot}}/general/utility-script.html):
+[utility script]({{ doc(general,utility-script) }}):
 
     ./bolts.py export openscad
     ./bolts.py test openscad
@@ -130,7 +130,7 @@ should give you a pipe with nominal diameter 10 and 1m length.
 
 ### Adding connectors
 
-[Connectors]({{site.baseurl}}/doc/openscad/usage.html#using_connectors)
+[Connectors]({{ doc(openscad,usage) }})
 simplify the positioning of parts in OpenSCAD, but require a bit of
 preparation. Three things need to be added: A function for the connectors
 and a entry in the base file and drawings for the documentation.
@@ -179,7 +179,7 @@ infos:
     ...
 
 This is a good time to test again. You can use the utility script like shown
-[earlier]({{page.docroot}}/openscad/basemodule.html#testing). Make sure all
+[earlier]({{ doc(openscad,basemodule) }}). Make sure all
 connectors are where they should be and that this remains the case when you use
 a range of parameters.
 
@@ -198,7 +198,7 @@ png using `Design->export as image...`. Make sure that it is easy to understand
 from the picture where the connector is located on the part, and how it is
 oriented.The images go into the `pipes` subdirectory of the `drawings` folder.
 
-[<img alt="Finding a good angle" src="{{ site.baseurl }}/images/openscad-connectordrawings.png" style="width: 100%;"/>]({{ site.baseurl }}/images/openscad-connectordrawings.png)
+[<img alt="Finding a good angle" src="{{ static(openscad-connectordrawings.png) }}" style="width: 100%;"/>]({{ static(openscad-connectordrawings.png) }})
 
 The final step is to add entries to the base file in this folder to tell BOLTS
 about all the drawings. Here is an example how it looks for the `front-in`
@@ -225,5 +225,5 @@ with `Missing Connectors` and `Missing Drawings`.
 
 ### Next steps
 
-You might want to [contribute]({{page.docroot}}/general/development.html) this
+You might want to [contribute]({{ doc(general,development) }}) this
 part to BOLTS, so that every user can profit from your efforts.

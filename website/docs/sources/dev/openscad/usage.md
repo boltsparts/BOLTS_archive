@@ -3,7 +3,7 @@
   audience: user
 ---
 
-You need to have [installed BOLTS for OpenSCAD](installation.html).
+You need to have [installed BOLTS for OpenSCAD]({{ doc(openscad,installation) }}).
 
 ### Inserting parts
 
@@ -22,7 +22,7 @@ required parts for a design.
 
 But most people do not know the standard numbers for the parts that they want
 to use. For this reason BOLTS offers on its webpage a
-[browsable overview]({{site.baseurl}}/html/index.html)
+[browsable overview]({{ url(parts.index) }})
 over all parts that it provides. There one can browse through the different
 collections and check out which standards of a standardization body are
 available in BOLTS.
@@ -31,15 +31,14 @@ Each part has a dedicated page, where one can find more detailed informations
 about this part, a drawing and tables with dimensions. The information that is
 most interesting for our purposes can be found in the section OpenSCAD. There
 it says either that the part is not available for OpenSCAD (in which case you
-might consider [to help making it available]({{site.baseurl}}/contribute.html)),
+might consider [to help making it available]({{ doc(general,contribute) }})),
 or gives details how to use it.
 
-The hexagon bolt [ISO4014]({{site.baseurl}}/html/classes/ISO4014.html) is
-available, and in the subsection `Incantations` the first tells us how to
-insert it in our scad code. The module name is ISO4014, it takes two
-parameters, a key (default value "M3"), and the length l (default value 20).
-The meaning of the parameters can be checked in the drawing and the tables on
-he page.
+The hexagon bolt [ISO4014]({{ standard_url(ISO4014) }}) is available, and in
+the subsection `Incantations` the first tells us how to insert it in our scad
+code. The module name is ISO4014, it takes two parameters, a key (default value
+"M3"), and the length l (default value 20).  The meaning of the parameters can
+be checked in the drawing and the tables on he page.
 
 So to insert a M3x20 hexagon bolt into our design, we just write
 
@@ -68,7 +67,8 @@ dims is now a list of lists with the content
 
      [["s", 0.8], ["d2", 9], ["key", "M4"], ["d1", 4.3]]
 
-A specific dimension (like the inner diameter) can now either be accessed using list indices
+A specific dimension (like the inner diameter) can now either be accessed using
+list indices
 
     echo(dims[3][0]);
 
@@ -114,7 +114,7 @@ displacement in the connector coordinate system can be specified.
 
 Many parts in BOLTS already have connectors connectors defined, to check what a
 specific part provides, check the part page in the
-[online reference]({{site.baseurl}}/html/index.html). For parts with connectors
+[online reference]({{ url(parts.index) }}). For parts with connectors
 a function is available with the same name as the part, but with a `_conn`
 appended. This function takes the name of the connector as first argument and
 the same arguments as the part as further arguments and returns the connector.
@@ -156,7 +156,7 @@ This structure is illustrated again by the following example:
 
 This results in
 
-[<img alt="Bolted connection example" src="{{ site.baseurl }}/images/openscad-positioningexample.png" style="width: 100%;"/>]({{ site.baseurl }}/images/openscad-positioningexample.png)
+[<img alt="Bolted connection example" src="{{ static(openscad-positioningexample.png) }}" style="width: 100%;"/>]({{ static(openscad-positioningexample.png) }})
 
 
 ### Check for errors
@@ -183,7 +183,7 @@ BOLTS will tell you
 
     Error: Expected a Length (mm) as parameter l for ISO4014, but -40 is negative
 
-Or if you use a standard, that is not used anymore (like [DIN931]({{site.baseurl}}/html/classes/DIN931.html)):
+Or if you use a standard, that is not used anymore (like {{ standard(DIN931) }}):
 
     DIN931("M4",20);
 

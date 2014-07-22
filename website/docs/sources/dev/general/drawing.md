@@ -6,18 +6,18 @@
 ### Prerequisites
 
 You need to have installed [FreeCAD](http://freecadweb.org/) and [BOLTS for
-FreeCAD]({{ page.docroot }}freecad/installation.html) and the free Vector Graphics Editor
+FreeCAD]({{ doc(freecad,installation) }}) and the free Vector Graphics Editor
 [Inkscape](http://inkscape.org/).
 
 If the part for which you want to create the drawing is not in BOLTS for
 FreeCAD, you also need [OpenSCAD](http://www.openscad.org/) and [BOLTS for
-OpenSCAD]({{ page.docroot }}openscad/installation.html).
+OpenSCAD]({{ doc(openscad,installation) }}).
 
 ### Follow this guide and contribute
 
-There is a [list of classes]({{ site.baseurl }}/tasks.html) for which no
-drawing is available. You are invited to pick one, follow this guide and
-contribute the result.
+There is a [list of classes]({{ url(tasks) }}) for which no drawing is
+available. You are invited to pick one, follow this guide and contribute the
+result.
 
 ### Scope
 
@@ -47,7 +47,7 @@ You can skip this step if you want to create a drawing for a part that is only
 in BOLTS for OpenSCAD.
 
 Start FreeCAD. Add a part of the class for which you want to create the
-drawing, as described [here]({{ page.docroot }}freecad/usage.html). The value of the
+drawing, as described [here]({{ doc(freecad,usage) }}). The value of the
 parameters does not matter too much, the default values will be usually fine.
 
 
@@ -63,13 +63,13 @@ code
     ISO7089();
 
 The first line includes the BOLTS library. The second line creates a
-part, in this case [a washer]({{ site.baseurl }}/html/classes/ISO7089.html).
+part, in this case [a washer]({{ standard_url(ISO7089) }}).
 
 If you hit F5, or select Design->Compile, the part should appear in the preview
 window. You can now export the part to a CSG file by choosing Design->Export as
 CSG....
 
-[<img alt="Part from BOLTS in OpenSCAD" src="{{ site.baseurl }}/images/openscad_drawing2.png" style="width: 100%;"/>]({{ site.baseurl }}/images/openscad_drawing2.png)
+[<img alt="Part from BOLTS in OpenSCAD" src="{{ static(openscad_drawing2.png) }}" style="width: 100%;"/>]({{ static(openscad_drawing2.png) }})
 
 Save the file to some place where you can find it again, it is only temporary
 and you can remove it afterwards.
@@ -80,7 +80,7 @@ You can close OpenSCAD now.
 
 Start FreeCAD. Then select File->Open and select the CSG file that you created in the previous step.
 
-[<img alt="Loading a CSG file into FreeCAD" src="{{ site.baseurl }}/images/openscad_drawing3.png" style="width: 100%;"/>]({{ site.baseurl }}/images/openscad_drawing3.png)
+[<img alt="Loading a CSG file into FreeCAD" src="{{ static(openscad_drawing3.png) }}" style="width: 100%;"/>]({{ static(openscad_drawing3.png) }})
 
 The part should now be visible in the preview window.
 
@@ -97,7 +97,7 @@ Now we can use the python console in FreeCAD to create a drawing:
     BOLTS.make_drawing(4.5,obj)
 
 The first line starts BOLTS for FreeCAD (see also
-[here]({{ page.docroot }}freecad/usage.html)), the second one creates a variable containing
+[here]({{ doc(freecad,usage) }}), the second one creates a variable containing
 the part and the third line calls a helper function from the BOLTS module.
 
 This helper function has two parameters, a scaling factor and the object, and
@@ -106,7 +106,7 @@ the object.
 
 Now an additional object should have vanished in the combo view, a page. 
 
-[<img alt="Finished drawing of washer" src="{{ site.baseurl }}/images/drawing1.png" style="width: 100%;"/>]({{ site.baseurl }}/images/drawing1.png)
+[<img alt="Finished drawing of washer" src="{{ static(drawing1.png) }}" style="width: 100%;"/>]({{ static(drawing1.png) }})
 
 You can open it in a new drawing viewer by double clicking on it. There will be
 nothing visible, because the drawing needs to be recomputed, which you can do
@@ -121,7 +121,7 @@ If the scaling factor was not good, you can close the Drawing Viewer, delete
 the Page Object from the Combo View and type the last line again, with an
 adjusted scaling factor.
 
-[<img alt="Finished drawing of washer" src="{{ site.baseurl }}/images/drawing2.png" style="width: 100%;"/>]({{ site.baseurl }}/images/drawing2.png)
+[<img alt="Finished drawing of washer" src="{{ static(drawing2.png) }}" style="width: 100%;"/>]({{ static(drawing2.png) }})
 
 When you are happy with the drawing, change to the Drawing Workbench, make sure
 the page object is selected in the Combo View and then choose Drawing->Export
@@ -146,14 +146,14 @@ dimensions. The image below shows a possible choice: The inner diameter will be
 indicated on the left side of the front view, the outer below. The thickness
 will be indicated on the left side view.
 
-[<img alt="Guidelines" src="{{ site.baseurl }}/images/drawing3.png" style="width: 100%;"/>]({{ site.baseurl }}/images/drawing3.png)
+[<img alt="Guidelines" src="{{ static(drawing3.png) }}" style="width: 100%;"/>]({{ static(drawing3.png) }})
 
 Select the bezier line tool (Shift-F6 or the corresponding icon). Then click on
 one of the guidelines, press Ctrl to lock in the angle to vertical or
 horizontal and then click on the other guideline. The cursor should snap to the
 guideline. Now finish the path by pressing Enter. Repeat for all dimensions.
 
-[<img alt="Raw dimension lines" src="{{ site.baseurl }}/images/drawing4.png" style="width: 100%;"/>]({{ site.baseurl }}/images/drawing4.png)
+[<img alt="Raw dimension lines" src="{{ static(drawing4.png) }}" style="width: 100%;"/>]({{ static(drawing4.png) }})
 
 To convert these lines into nice dimensions open the fill and stroke dialog
 using Object->Fill and Stroke and select the Stroke Style tab. Change to the
@@ -173,17 +173,17 @@ DistanceEnd as Start Marker and DistanceStart as End Marker.
 
 Repeat for all lines.
 
-[<img alt="Dimension lines" src="{{ site.baseurl }}/images/drawing5.png" style="width: 100%;"/>]({{ site.baseurl }}/images/drawing5.png)
+[<img alt="Dimension lines" src="{{ static(drawing5.png) }}" style="width: 100%;"/>]({{ static(drawing5.png) }})
 
 Then choose the text tool in the toolbar on the left and add the dimension
 names. You can look them up on the
-[Specification page]({{ site.baseurl}}/html/classes/ISO7089.html) by following
+[Specification page]({{ standard_url(ISO7089) }}) by following
 the source url or by checking the blt file.
 
 In the case of the washer we have inner diameter d1, outer diameter d2 and
 thickness s.
 
-[<img alt="Dimension lines with names" src="{{ site.baseurl }}/images/drawing6.png" style="width: 100%;"/>]({{ site.baseurl }}/images/drawing6.png)
+[<img alt="Dimension lines with labels" src="{{ static(drawing6.png) }}" style="width: 100%;"/>]({{ static(drawing6.png) }})
 
 Now remove the guidelines by hovering over them until they change color and
 then pressing delete.
@@ -233,4 +233,4 @@ where classids is a list of classes that are covered by this drawing. The
 filename is relative to the subdirectory of the collection and given without
 extension to cover both svg and png versions. The type field distinguishes
 drawings that explain the parameters and dimensions of a part from other images
-that e.g. show [the location of connectors]({{site.baseurl}}/doc/openscad/basemodule.html#adding_connectors)
+that e.g. show [the location of connectors]({{ doc(openscad,basemodule) }}#adding_connectors)

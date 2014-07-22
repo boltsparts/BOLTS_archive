@@ -7,7 +7,7 @@
 ### Download
 
 You can download a stable release or development snapshot of BOLTS for OpenSCAD
-from the [download page]({{site.baseurl}}/downloads.html). There are different
+from the [download page]({{ url(downloads) }}). There are different
 archive types and licenses available, if you do not know which one you want,
 you should be fine with the GPL 3.0 zip version.
 
@@ -39,5 +39,5 @@ directory, or you can save the two lines into a scad file in the directory.
 
 The preview window should now show a hexagon bolt.
 
-[<img alt="Successful installation" src="{{ site.baseurl }}/images/openscad-installation.png" style="width: 100%;"/>]({{ site.baseurl }}/images/openscad-installation.png)
+[<img alt="Successful installation" src="{{ static(openscad-installation.png) }}" style="width: 100%;"/>]({{ static(openscad-installation.png) }})
 

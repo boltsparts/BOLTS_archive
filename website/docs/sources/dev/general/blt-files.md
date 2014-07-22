@@ -27,15 +27,15 @@ explanation can be found [here](licensing.html). If you are unsure what to choos
 
 After the license header follows the collection header. It contains general
 details about the collection. A list of possible fields can be found in the
-[specification]({{site.baseurl}}/doc/general/specification_dev.html#collection-header),
-but alternatively looking at 
+[specification]({{ doc(general,specification) }}#collection-header), but
+alternatively looking at
 [the other collections](https://github.com/jreinhardt/BOLTS/tree/master/data)
 should show you how this works.
 
 The field blt-version gives the version of the blt file format, which is not
 the necessarily identical to the version of BOLTS. Which version is the current
 one can be found in the
-[specification]({{site.baseurl}}/doc/general/specification_dev.html#collection-header)
+[specification]({{ doc(general,specification) }}#collection-header)
 
 For the pipe collection the collection first part of the blt file looks like this:
 
@@ -77,8 +77,8 @@ the license field of the collection header.
 A email address must be given for the author, to have a way of contacting the
 author e.g. for licensing problems.  The license in the license field and the
 license header must agree and be one of the [licenses that BOLTS
-allows](licensing.html). If more than one person contributed significantly,
-then a list of authors can be given:
+allows]({{ doc(general,licensing) }}). If more than one person contributed
+significantly, then a list of authors can be given:
 
     author: [Johannes Reinhardt <jreinhardt@ist-dein-freund.de>, John Doe <doe@domain.tld>]
 
@@ -87,13 +87,14 @@ YAML uses indentation to mark up the structure of the document, so pay
 attention to whitespace and do not use tabs. The amount of spaces for a
 indentation level is arbitrary, but four spaces is recommended.
 
-After the collection header follows the list of classes contained in the collection. How to add a class is explained in the next section.
+After the collection header follows the list of classes contained in the
+collection. How to add a class is explained in the next section.
 
 ### Adding classes to a collection
 
 After the header follows a list of class descriptions. If you are not sure that
 you know what a class is in BOLTS, you can read a bit about it
-[here](introduction.html).
+[here]({{ doc(general,introduction) }}).
 
 Much of the most important information that BOLTS needs to know about a class
 concerns the different parameters of the part, their types, units and tables
@@ -126,9 +127,9 @@ We will now add two classes: One for a completely general pipe where the user
 can specify length and inner and outer diameter arbitrarily, and one class that
 provides pipes following DIN11850 Range 1.
 
-Again, more information and inspiration can be found in the 
-[specification](http://jreinhardt.github.io/BOLTS/doc/general/specification_dev.html#class-element)
-or by looking at other collections.
+Again, more information and inspiration can be found in the
+[specification]({{ doc(general,specification) }}#class-element) or by looking
+at other collections.
 
 #### A generic pipe class
 
@@ -154,10 +155,10 @@ a template with placeholders (the parts with the %), and the list of parameter
 values that should be inserted there. The placeholders follow the rules of
 [python string formatting](http://docs.python.org/2/library/stdtypes.html#string-formatting)
 
-So a 1000mm long pipe with 12mm outer
-diameter and 10mm inner diameter would get the name `Pipe OD 12 mm ID 10 mm
-length 1000 mm`, which completely specifies the part. You can send someone
-shopping for that and he will come back with the right part.
+So a 1000mm long pipe with 12mm outer diameter and 10mm inner diameter would
+get the name `Pipe OD 12 mm ID 10 mm length 1000 mm`, which completely
+specifies the part. You can send someone shopping for that and he will come
+back with the right part.
 
 In the parameters field we specify that the part has three free parameters
 called `od`, `id` and `l`. It is a good idea to use short but expressive
@@ -179,9 +180,9 @@ available and rather expensive, but often vendors provide drawings or tables or
 other technical information. Technical information is a good term to search
 for. Usually you get a big table of dimensions.
 
-In the case of pipes, it was very easy to find this information, 
-[Wikipedia got it (in German)](http://de.wikipedia.org/wiki/Rohr_%28Technik%29#Abmessungen). 
-A bit of search also reveals a 
+In the case of pipes, it was very easy to find this information,
+[Wikipedia got it (in German)](http://de.wikipedia.org/wiki/Rohr_%28Technik%29#Abmessungen).
+A bit of search also reveals a
 [vendor site with more tables](http://www.gillain.com/en/tubes-and-components/p/detail/food-tubes-din-11850).
 
 The class for DIN11850 looks like this
@@ -230,7 +231,7 @@ nominal diameter and the length. The inner and outer diameters will be obtained
 from a table, which is why the parameter `dn` is indicated to be of type `Table
 Index`. If the type of a parameter is not indicated, it defaults to `Length
 (mm)`. Other choices for types for parameters can be found in the
-[specification](http://jreinhardt.github.io/BOLTS/doc/general/specification_dev.html#parameter-element)
+[specification]({{ doc(general,specification) }}#parameter-element)
 
 Then one or several tables can follow in the tables field. Here we have only
 one, linking the nominal diameter to the inner and outer diameter. Table
@@ -249,18 +250,18 @@ where we got the data for the table from.
 ### Testing
 
 To test whether you got it right, you can use the [utility
-script](utility-script.html) to regenerate the html documentation. If there are
-any problems with your blt file, you should get a error message.
+script]({{ doc(general,utility-script) }}) to regenerate the html
+documentation. If there are any problems with your blt file, you should get a
+error message.
 
 ### Further steps
 
-A collection becomes really useful, when [base geometries](introduction.html)
+A collection becomes really useful, when [base geometries]({{ doc(general,introduction) }})
 for its classes exist. Maybe you want to implement a 
-[base module for OpenSCAD]({{site.baseurl}}/doc/openscad/basemodule.html)
+[base module for OpenSCAD]({{ doc(openscad,basemodule) }})
 or a 
-[base function for FreeCAD]({{site.baseurl}}/doc/freecad/basefunction.html)
+[base function for FreeCAD]({{ doc(freecad,basefunction) }})
 for your newly created collection.
 
-(Actually, the 
-[base module tutorial]({{site.baseurl}}/doc/openscad/basemodule.html)
+(Actually, the [base module tutorial]({{ doc(openscad,basemodule) }})
 explains how to setup a base-module for the pipe collection.)

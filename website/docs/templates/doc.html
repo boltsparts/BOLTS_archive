@@ -21,7 +21,7 @@
         <h3>FreeCAD</h3>
         <ul>
           {% for doc in cats.freecad %}
-          <li><a href="freecad/{{ doc.filename }}">{{ doc.title }}</a></li>
+          <li><a href="{{ url_for('.document',version=page.version,cat='freecad',filename=doc.filename) }}">{{ doc.title }}</a></li>
           {% endfor %}
         </ul>
       </div>
@@ -31,7 +31,7 @@
         <h3>OpenSCAD</h3>
         <ul>
           {% for doc in cats.openscad %}
-          <li><a href="openscad/{{ doc.filename }}">{{ doc.title }}</a></li>
+          <li><a href="{{ url_for('.document',version=page.version,cat='openscad',filename=doc.filename) }}">{{ doc.title }}</a></li>
           {% endfor %}
         </ul>
       </div>
@@ -41,7 +41,7 @@
         <h3>General</h3>
         <ul>
           {% for doc in cats.general %}
-          <li><a href="general/{{ doc.filename }}">{{ doc.title }}</a></li>
+          <li><a href="{{ url_for('.document',version=page.version,cat='general',filename=doc.filename) }}">{{ doc.title }}</a></li>
           {% endfor %}
         </ul>
       </div>
