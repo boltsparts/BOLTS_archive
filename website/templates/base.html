@@ -4,20 +4,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="/static/css/screen.css" type="text/css" media="screen">
-  <link rel="shortcut icon" href="/static//favicon.ico" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/screen.css') }}" type="text/css" media="screen">
+  <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}" />
 </head>
 <body>
 {% block header %}
 <div id="header">
   <div class="inner-content">
     <nav id="nav">
-      <a {% if page.title == "Home" %}class="active"{% endif %} href="/index.html">Home</a>
-      <a {% if page.title == "Blog" %}class="active"{% endif %} href="/blog">Blog</a>
-      <a {% if page.title == "Parts list" %}class="active"{% endif %} href="/html/index.html">Parts list</a>
-      <a {% if page.title == "Documentation" %}class="active"{% endif %} href="/doc/index.html">Documentation</a>
-      <a {% if page.title == "Contribute" %}class="active"{% endif %} href="/contribute.html">Contribute</a>
-      <a {% if page.title == "Downloads" %}class="active"{% endif %} href="/downloads.html">Downloads</a>
+      <a {% if page.title == "Home" %}class="active"{% endif %} href="{{ url_for('index') }}">Home</a>
+      <a {% if page.title == "Blog" %}class="active"{% endif %} href="{{ url_for('blog.index') }}">Blog</a>
+      <a {% if page.title == "Parts list" %}class="active"{% endif %} href="{{ url_for('parts.index') }}">Parts list</a>
+      <a {% if page.title == "Documentation" %}class="active"{% endif %} href="{{ url_for('blog.index') }}">Documentation</a>
+      <a {% if page.title == "Contribute" %}class="active"{% endif %} href="{{ url_for('contribute') }}">Contribute</a>
+      <a {% if page.title == "Downloads" %}class="active"{% endif %} href="{{ url_for('downloads') }}">Downloads</a>
     </nav>
     <div id="social">
       <span>Follow us on:</span>
@@ -33,7 +33,7 @@
 <footer id="footer">
   <div class="inner-content">
     <p class="first-child">© Johannes Reinhardt</p>
-    <p class="last-child">Title Image by <a href="http://www.flickr.com/photos/dkpphotography/9468970843">Dhruv Patel</a>, Theme by <a href="http://wolfslittlestore.be">Wolf's Little Store</a></p>
+    <p class="last-child">Title Image by <a href="http://www.flickr.com/photos/dkpphotography/9468970843">Dhruv Patel</a>, Theme based on a <a href="https://github.com/Wolfr/cactus-jekyll-theme">design</a> by <a href="http://wolfslittlestore.be">Wolf's Little Store</a></p>
   </div>
 </footer>
 {% endblock %}
