@@ -78,6 +78,7 @@ def filter_iterator_items(its,kwargs):
 	return True
 
 ALL_TYPES = ["Length (mm)", "Length (in)", "Number", "Bool", "Table Index", "String","Angle (deg)"]
+UNITS = {"Length (mm)" : "mm", "Length (in)" : "in", "Angle (deg)" : "deg"}
 
 def convert_raw_parameter_value(pname,tname,value):
 	""" Convert from strings from YAML parsing to python types and check conformity with the corresponding BOLTS type"""
