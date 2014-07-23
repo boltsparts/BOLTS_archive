@@ -382,7 +382,7 @@ classes:
                  "51430" : [150, 154, 300, 295, 120, 5]
                  "51432" : [160, 164, 320, 315, 130, 6]
                  "51434" : [170, 174, 340, 335, 135, 6]
-    source: http://medias.schaeffler.de/medias/de!hp.ec/1_R*0*C00002*23#23 und old (~1980s) paper catalogue of Steyr.
+    source: http://medias.schaeffler.de/medias/de!hp.ec/1_R*0*C00002*23#23 and old (~1980s) paper catalogue of Steyr.
   - id: needleroller
     standards:
       - body: DIN
