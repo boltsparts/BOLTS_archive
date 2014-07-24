@@ -15,7 +15,7 @@
       <a {% if page.title == "Home" %}class="active"{% endif %} href="{{ url_for('index') }}">Home</a>
       <a {% if page.title == "Blog" %}class="active"{% endif %} href="{{ url_for('blog.index') }}">Blog</a>
       <a {% if page.title == "Parts list" %}class="active"{% endif %} href="{{ url_for('parts.index') }}">Parts list</a>
-      <a {% if page.title == "Documentation" %}class="active"{% endif %} href="{{ url_for('blog.index') }}">Documentation</a>
+      <a {% if page.title == "Documentation" %}class="active"{% endif %} href="{{ url_for('docs.index') }}">Documentation</a>
       <a {% if page.title == "Contribute" %}class="active"{% endif %} href="{{ url_for('contribute') }}">Contribute</a>
       <a {% if page.title == "Downloads" %}class="active"{% endif %} href="{{ url_for('downloads') }}">Downloads</a>
     </nav>

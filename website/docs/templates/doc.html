@@ -4,8 +4,8 @@
   <div class="page-title-bar">
     <div class="inner-content">
       <h2>Documentation for BOLTS {{ page.version }}</h2>
-      <a {% if page.version == page.stable %}class="active"{% endif %} href="{{ url_for('.index',version=page.stable) }}">stable</a>
-      <a {% if page.version == "dev" %}class="active"{% endif %} href="{{ url_for('.index',version='dev') }}">dev</a>
+      <a {% if page.version == page.stable %}class="active"{% endif %} href="{{ url_for('.version_index',version=page.stable) }}">stable</a>
+      <a {% if page.version == "dev" %}class="active"{% endif %} href="{{ url_for('.version_index',version='dev') }}">dev</a>
     </div>
   </div>
 {% endblock %}
