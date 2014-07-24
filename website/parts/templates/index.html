@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block titlebar %}
+  <div class="page-title-bar">
+    <div class="inner-content">
+      <h2>Parts list</h2>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+  <div class="inner-content">
+    <div class="cols">
+      <div class="col">
+        <h1>Collections</h1>
+          <table class="table">
+            {% for coll in collections %}
+            <tr><td><a href="{{ url_for('.collection',id=coll.id) }}">{{ coll.name }}</a></td></tr>
+            {% endfor %}
+          </table>
+      </div>
+
+      <div class="col">
+        <h1>Standardisation bodies</h1>
+          <table class="table">
+            {% for body in bodies %}
+            <tr><td><a href="{{ url_for('.body',id=body) }}">{{ body }}</a></td></tr>
+            {% endfor %}
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

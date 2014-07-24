@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div id="content">
+  <div class="inner-content">
+    <h1>{{ std.standard.get_nice() }}</h1>
+    {{ props }}
+
+    {% if not parameters.drawing is undefined %}
+    <h2>Drawings</h2>
+    <a href="{{ parameters.drawing }}"><img width=600 src="{{ parameters.drawing }}"></a>
+    {% endif %}
+    {{ parameters.description }}
+
+    <h2>Description</h2>
+    <p>{{ std.description }}</p>
+
+    <h2>FreeCAD</h2>
+    {% if not freecad is none %}
+    {{ freecad.props }}
+    {% else %}
+    <p>This part is not availaible for FreeCAD</p>
+    {% endif %}
+
+    <h2>OpenSCAD</h2>
+    {% if not openscad is none %}
+    {{ openscad.props }}
+    <h3>Incantations</h3>
+      <pre><code>{{ openscad.incantation_module }}
+{{ openscad.incantation_dims }}
+{{ openscad.incantation_conn }}</code></pre>
+    <h3>Connectors</h3>
+      {{ openscad.connectors }}
+    {% else %}
+    <p>This part is not availaible for OpenSCAD</p>
+    {% endif %}
+
+    <h2>Dimensions</h2>
+      {% for table in parameters.tables %}
+      {{ table }}
+      {% endfor %}
+      {% for table in parameters.tables2d %}
+      {{ table }}
+      {% endfor %}
+  </div>
+</div>
+{% endblock %}
