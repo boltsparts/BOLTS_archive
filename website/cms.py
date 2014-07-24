@@ -22,8 +22,10 @@ def get_subs(version):
 		'collection_url' : lambda m: url_for('parts.collection',id=m.group(2)),
 		'standard' : lambda m: html.a(m.group(2),href=url_for('parts.standard',id=m.group(2))),
 		'name' : lambda m: html.a(m.group(2),href=url_for('parts.name',id=m.group(2))),
+		'body' : lambda m: html.a(m.group(2),href=url_for('parts.body',id=m.group(2))),
 		'standard_url' : lambda m: url_for('parts.standard',id=m.group(2)),
-		'name_url' : lambda m: url_for('parts.name',id=m.group(2))
+		'name_url' : lambda m: url_for('parts.name',id=m.group(2)),
+		'body_url' : lambda m: url_for('parts.body',id=m.group(2))
 	}
 
 def markdownsub(ctx,value,subs):

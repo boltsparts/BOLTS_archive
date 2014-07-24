@@ -15,10 +15,10 @@ The most difficult part is to find the right module. Modules are named after
 the standard that specifies the dimensions of a part. If a part is not
 standardized, the module has a descriptive name.
 
-It might seem a bit awkward to refer to a simple bolt as DIN931 or ISO4014, but
-by using this naming scheme, the part is uniquely specified, and this
-information is useful when assembling a bill of materials or shopping for all
-required parts for a design.
+It might seem a bit awkward to refer to a simple bolt as {{ standard(DIN931) }}
+or {{ standard(ISO4014) }}, but by using this naming scheme, the part is
+uniquely specified, and this information is useful when assembling a bill of
+materials or shopping for all required parts for a design.
 
 But most people do not know the standard numbers for the parts that they want
 to use. For this reason BOLTS offers on its webpage a
@@ -34,11 +34,11 @@ it says either that the part is not available for OpenSCAD (in which case you
 might consider [to help making it available]({{ doc(general,contribute) }})),
 or gives details how to use it.
 
-The hexagon bolt [ISO4014]({{ standard_url(ISO4014) }}) is available, and in
-the subsection `Incantations` the first tells us how to insert it in our scad
-code. The module name is ISO4014, it takes two parameters, a key (default value
-"M3"), and the length l (default value 20).  The meaning of the parameters can
-be checked in the drawing and the tables on he page.
+The hexagon bolt {{ standard(ISO4014) }} is available, and in the subsection
+`Incantations` the first tells us how to insert it in our scad code. The module
+name is `ISO4014`, it takes two parameters, a key (default value "M3"), and the
+length l (default value 20).  The meaning of the parameters can be checked in
+the drawing and the tables on he page.
 
 So to insert a M3x20 hexagon bolt into our design, we just write
 
@@ -59,7 +59,7 @@ file by hand, but BOLTS offers a more flexible way: On can obtain a list of all
 parameters of the part using the second line listes in the `Incantation`
 section of the part page.
 
-For example for a M4 washer according to DIN125A:
+For example for a M4 washer according to {{ standard(DIN125A) }}:
 
     dims = DIN125A_dims("M4");
 

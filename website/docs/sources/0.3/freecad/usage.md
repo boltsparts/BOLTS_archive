@@ -28,24 +28,25 @@ are displayed.
 
 [<img alt="Expanded treeview" src="{{ static(partsselector2.png) }}" style="width: 100%;"/>]({{ static(partsselector2.png) }})
 
-You can see that some parts (like DIN931, DIN933) are visible twice in this
-screenshot, once in the hexagon fastener collection, once in the list of DIN
-standards.
+You can see that some parts (like {{ standard(DIN931) }}, {{ standard(DIN933) }})
+are visible twice in this screenshot, once in the hexagon fastener collection,
+once in the list of {{ body(DIN) }} standards.
 
 ### Specify parameters and insert the part
 
-If you select a part, for example ISO4017, another hexagon fastener, below the
-information area additional elements appear that allow to give values for the
-parameters of the part that are not yet specify.
+If you select a part, for example {{ standard(ISO4017) }}, another hexagon
+fastener, below the information area additional elements appear that allow to
+give values for the parameters of the part that are not yet specify.
 
 To lookup the meaning of the parameters, one can consult the
 [BOLTS specification page of this part]({{ standard_url(ISO4017) }}).
 The navigation of the [specification pages]({{ url(parts.index) }})
 is structured in the same way as the navigation in the parts selector.
 
-In the case of ISO4017, we need to give a length and a diameter. The diameter
-can be chosen from the drop down list that lists all choices known to BOLTS,
-the length can be entered in the line edit. It only accepts positive numbers.
+In the case of {{ standard(ISO4017) }}, we need to give a length and a
+diameter. The diameter can be chosen from the drop down list that lists all
+choices known to BOLTS, the length can be entered in the line edit. It only
+accepts positive numbers.
 
 Once the parameters are specified, the part can be inserted into the active
 document by clicking the `Add part` button. In the combo view on the right side
