@@ -284,7 +284,7 @@ class Numerical(Sorting):
 	"""Sorts according to the numbers that are contained in the key"""
 	def __init__(self):
 		Sorting.__init__(self)
-		self.re = re.compile("[^0-9]*([0-9]+\.*[0-9]*)[^0-9]*$")
+		self.re = re.compile("[^0-9]*([0-9]+\.*[0-9]*)[^0-9]?.*$")
 	def is_applicable(self,choices):
 		for choice in choices:
 			if self.re.match(choice) is None:
