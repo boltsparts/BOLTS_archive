@@ -76,7 +76,7 @@ for version in listdir(join(docs.root_path,"sources")):
 		pass
 	SOURCES[version] = Documentation(join(docs.root_path,"sources",version))
 versions.sort()
-print versions
+
 STABLE = versions[-2]
 DEV = versions[-1]
 
