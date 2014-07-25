@@ -6,9 +6,11 @@
     <h1>{{ std.standard.get_nice() }}</h1>
     {{ props }}
 
-    {% if not parameters.drawing is undefined %}
+    {% if not parameters.drawing is none %}
     <h2>Drawings</h2>
     <a href="{{ parameters.drawing }}"><img width=600 src="{{ parameters.drawing }}"></a>
+    {% else %}
+    <h2>Parameters</h2>
     {% endif %}
     {{ parameters.description }}
 
