@@ -8,6 +8,7 @@ MarkupSafe==0.23
 PyYAML==3.11
 Werkzeug==0.9.6
 argparse==1.2.1
+docutils==0.12
 itsdangerous==0.24
 pytz==2014.4
 speaklater==1.3

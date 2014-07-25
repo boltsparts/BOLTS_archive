@@ -58,6 +58,15 @@
       {% endif %}
     </div>
     {% endfor %}
+    <h1>Specification</h1>
+    <div class="cols">
+      <div class="col">
+        <h3>BLT files</h3>
+        <ul>
+          <li><a href="{{ url_for('.specification',version=page.version) }}">blt file format specification</a></li>
+          <li><a href="{{ url_for('.changes') }}">Changelog</a></li>
+        </ul>
+      </div>
   </div>
 </div>
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "doc.html" %}
+
+{% block content %}
+<div id="blog">
+  <div id="blog-single">
+    <article>
+      <div class="entry-content">
+        {{ content | safe }}
+      </div>
+    </article>
+
+    <div id="comments"></div>
+  </div>
+</div>
+
+{% endblock %}

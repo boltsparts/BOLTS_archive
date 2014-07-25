@@ -6,6 +6,7 @@ from urlparse import urljoin
 from os import walk, listdir
 from ..cache import cache
 import re
+from docutils import core
 
 docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static")
 
@@ -20,6 +21,22 @@ def split_yaml_header(fid):
 		header.append(line)
 	content = ''.join(line for line in fid)
 	return load('\n'.join(header)),content
+
+class Specification:
+	def __init__(self,path):
+		self.version = {}
+		self.changes = open(join(path,"changes.rst")).read()
+
+		spec_pattern = re.compile("blt_spec_([0-9]\.[0-9])\.rst")
+
+		for filename in listdir(path):
+			match = spec_pattern.match(filename)
+			if not match is None:
+				self.version[match.group(1)] = open(join(path,filename)).read()
+	def get_version(self,version):
+		return self.version[version]
+	def get_changes(self):
+		return self.changes
 
 class Documentation:
 	def __init__(self,path):
@@ -80,6 +97,8 @@ versions.sort()
 STABLE = versions[-2]
 DEV = versions[-1]
 
+SPECS = Specification(join(docs.root_path,"specs"))
+
 @docs.route("/static/<version>/<filename>")
 def static_version(version,filename):
 	return send_from_directory(docs.static_folder,safe_join(version,filename))
@@ -94,7 +113,7 @@ def index():
 @cache.cached()
 def version_index(version):
 	if not version in SOURCES:
-		abort(404)
+		return abort(404)
 	src = SOURCES[version]
 	doc_structure = {}
 	for aud in src.get_audiences():
@@ -109,10 +128,35 @@ def version_index(version):
 @cache.cached()
 def document(version,cat,filename):
 	if not version in SOURCES:
-		abort(404)
+		return abort(404)
 	src = SOURCES[version]
 	doc = list(src.get_documents(category=cat,filename=filename))
 	if len(doc) != 1:
-		abort(404)
-	page = {"title" : "Documentation", "stable" : STABLE, "version" : version}
+		return abort(404)
+	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : version}
 	return render_template("page.html",page=page,doc=doc[0])
+
+@docs.route("/<version>/specification")
+@docs.route("/<version>/specification.html")
+@cache.cached()
+def specification(version):
+	parts = core.publish_parts(
+		source=SPECS.get_version(version),
+		writer_name="html"
+	)
+	content = parts["body_pre_docinfo"]+parts["fragment"]
+	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : version}
+	return render_template("spec.html",page=page,content = content)
+
+@docs.route("/changes")
+@docs.route("/changes.html")
+@cache.cached()
+def changes():
+	parts = core.publish_parts(
+		source=SPECS.get_changes(),
+		writer_name="html"
+	)
+	content = parts["body_pre_docinfo"]+parts["fragment"]
+	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : version}
+	return render_template("spec.html",page=page,content = content)
+
