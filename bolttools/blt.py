@@ -382,6 +382,7 @@ class Repository:
 						self.bodies[bodyid] = body
 
 					self.body_standards.add_link(body,standard)
+					self.collection_standards.add_link(coll,standard)
 
 					multistdid = standard.group.get_safe()
 					if multistdid:
@@ -394,8 +395,6 @@ class Repository:
 							multistd = self.multistandards[multistdid]
 
 						self.multistandard_standards.add_link(multistd,standard)
-					else:
-						self.collection_standards.add_link(coll,standard)
 
 		for standard in self.standards.values():
 			if not standard.replaces is None:
