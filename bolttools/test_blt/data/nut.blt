@@ -17,7 +17,7 @@
 ---
 id: nut
 name: Nuts
-description: various standard nuts
+description: Various standard nuts
 author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4
@@ -31,6 +31,7 @@ classes:
       - body: ISO
         standard: ISO 4035
         labeling: Hexagon thin nut ISO 4035 %(key)s
+        replaces: DIN439B
         description: Thin hexagon nut, metric sizes
       - body: DINENISO
         standard: DINENISO 4035
@@ -93,7 +94,6 @@ classes:
     standards:
       body: DIN
       standard: DIN 439 B
-      group: DIN 439
       status: withdrawn
       labeling: Hexagon thin nut DIN 439 %(key)s
       description: Thin hexagon nut, metrix size, old
@@ -153,12 +153,12 @@ classes:
   - id: hexagonnut1
     names:
       name: Metric hexagon nut
-      labeling: Metric hexagon nut %(key)
+      labeling: Metric hexagon nut %(key)s
       description: Hexagon nut, metric sizes
     standards:
       body: ISO
       standard: ISO 4032
-      labeling: Hexagon nut ISO 4032 %(key)
+      labeling: Hexagon nut ISO 4032 %(key)s
       description: Hexagon nut, metric sizes
       replaces: DIN934
     parameters:
@@ -316,15 +316,15 @@ classes:
     standards:
       - body: ANSI
         standard: ANSI B18.2.2
-        labeling: Hexagon nut ANSI B18.2.2 %(key)
+        labeling: Hexagon nut ANSI B18.2.2 %(key)s
         description: Hexagon nut, imperial sizes
       - body: ASME
         standard: ASME B18.2.2
-        labeling: Hexagon nut ASME B18.2.2 %(key)
+        labeling: Hexagon nut ASME B18.2.2 %(key)s
         description: Hexagon nut, imperial sizes
     parameters:
         free: [key]
-        defaults: {key: "3/8 in"}
+        defaults: {key: "0.375 in"}
         types:
           key: Table Index
           d1: Length (in)
@@ -340,24 +340,24 @@ classes:
             columns: [d1, s, m_max]
             data:
                 #key         [  d1    s     m_max]
-                "1/4 in"   : [ .2500, .4375, .21875 ]
-                "5/16 in"  : [ .3125, .5,    .265625 ]
-                "3/8 in"   : [ .3750, .5625, .328125 ]
-                "7/16 in"  : [ .4375, .6875, .375 ]
-                "1/2 in"   : [ .5000, .75, .4375 ]
-                "9/16 in"  : [ .5625, .875, .484375 ]
-                "5/8 in"   : [ .6250, .9375, .546875 ]
-                "3/4 in"   : [ .7500, 1.125, .640625 ]
-                "7/8 in"   : [ .8750, 1.3125, .75 ]
+                "0.25 in"   : [ .2500, .4375, .21875 ]
+                "0.3125 in"  : [ .3125, .5,    .265625 ]
+                "0.375 in"   : [ .3750, .5625, .328125 ]
+                "0.4375 in"  : [ .4375, .6875, .375 ]
+                "0.5 in"   : [ .5000, .75, .4375 ]
+                "0.5625 in"  : [ .5625, .875, .484375 ]
+                "0.625 in"   : [ .6250, .9375, .546875 ]
+                "0.75 in"   : [ .7500, 1.125, .640625 ]
+                "0.875 in"   : [ .8750, 1.3125, .75 ]
                 "1 in"     : [ 1.0000, 1.5, .859375]
-                "1-1/8 in" : [ 1.1250, 1.6875, .96875 ]
-                "1-3/8 in" : [ 1.3750, 2.0625, 1.171875 ]
-                "1-1/2 in" : [ 1.500, 2.25, 1.28125 ]
-                "1-5/8 in" : [ 1.6250, 2.4375, 1.390625 ]
-                "1-3/4 in" : [ 1.7500, 2.625, 1.5 ]
+                "1.125 in" : [ 1.1250, 1.6875, .96875 ]
+                "1.375 in" : [ 1.3750, 2.0625, 1.171875 ]
+                "1.5 in" : [ 1.500, 2.25, 1.28125 ]
+                "1.625 in" : [ 1.6250, 2.4375, 1.390625 ]
+                "1.75 in" : [ 1.7500, 2.625, 1.5 ]
                 "2 in"     : [ 2.0000, 3.0, 1.71875 ]
-                "2-1/4 in" : [ 2.2500, 3.375, 1.9375 ]
-                "2-1/2 in" : [ 2.5000, 3.75, 2.15625 ]
-                "2-3/4 in" : [ 2.7500, 4.125, 2.375 ]
+                "2.25 in" : [ 2.2500, 3.375, 1.9375 ]
+                "2.5 in" : [ 2.5000, 3.75, 2.15625 ]
+                "2.75 in" : [ 2.7500, 4.125, 2.375 ]
                 "3 in"     : [ 3.0000, 4.5, 2.59375 ]
     source: http://www.smithfast.com/finishedhexnuts.html
