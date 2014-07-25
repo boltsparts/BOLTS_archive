@@ -5,15 +5,34 @@ from bolttools.freecad import FreeCADData
 from bolttools.openscad import OpenSCADData
 from bolttools.drawings import DrawingsData
 from bolttools.statistics import Statistics
-from os.path import join
+from os.path import join, exists
+from os import environ, makedirs
+from shutil import rmtree
+from cache import cache
 from blog import blog
 from docs import docs
 from parts import parts, repo, dbs
 from . import utils, html, cms
 
 app = Flask(__name__)
+
+cachedir = join(environ["OPENSHIFT_DATA_DIR"],"cache")
+#clear cache
+rmtree(cachedir)
+makedirs(cachedir)
+
+app.config['CACHE_DIR'] = cachedir
+
+#set timeout to about a month, as content only changes on push, and we clear
+#the cache then. This results in a lazy static site generator
+app.config['CACHE_TYPE'] = 'filesystem'
+app.config['CACHE_DEFAULT_TIMEOUT'] = 3000000
+
+cache.init_app(app)
+
 app.register_blueprint(blog,url_prefix='/blog')
 app.register_blueprint(docs,url_prefix='/doc')
+#for compatibility with old links
 app.register_blueprint(parts,url_prefix='/html')
 app.register_blueprint(parts,url_prefix='/parts')
 app.debug = True
@@ -35,6 +54,7 @@ app.jinja_env.filters['markdown_blog'] = cms.markdown_blog
 
 @app.route("/")
 @app.route("/index.html")
+@cache.cached()
 def index():
 	page = {"title" : "Home"}
 
@@ -42,6 +62,7 @@ def index():
 
 @app.route("/downloads")
 @app.route("/downloads.html")
+@cache.cached()
 def downloads():
 	page = {"title" : "Downloads"}
 
@@ -49,6 +70,7 @@ def downloads():
 
 @app.route("/tasks")
 @app.route("/tasks.html")
+@cache.cached()
 def tasks():
 	page = {"title" : "Contribute"}
 
@@ -56,6 +78,7 @@ def tasks():
 
 @app.route("/contribute")
 @app.route("/contribute.html")
+@cache.cached()
 def contribute():
 	page = {"title" : "Contribute"}
 
@@ -63,6 +86,7 @@ def contribute():
 
 @app.route("/contributors")
 @app.route("/contributors.html")
+@cache.cached()
 def contributors():
 	page = {"title" : "Contributors"}
 

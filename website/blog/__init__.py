@@ -7,6 +7,7 @@ import datetime
 import re
 from urlparse import urljoin
 from werkzeug.contrib.atom import AtomFeed
+from ..cache import cache
 
 blog = Blueprint("blog",__name__,template_folder="templates",static_folder="static")
 
@@ -85,6 +86,7 @@ posts = Posts(join(blog.root_path,"posts"))
 
 @blog.route("/<int:year>/<int:month>/<int:day>/<slug>")
 @blog.route("/<int:year>/<int:month>/<int:day>/<slug>.html")
+@cache.cached()
 def post(year,month,day,slug):
 	post = posts.get_slug(slug)
 	if post is None:
@@ -95,17 +97,20 @@ def post(year,month,day,slug):
 
 @blog.route("/")
 @blog.route("/index.html")
+@cache.cached()
 def index():
 	page = {"title" : "Blog"}
 	return render_template("blog.html",page=page,posts=posts.get_posts()[:-6:-1])
 
 @blog.route("/all")
+@cache.cached()
 def archive():
 	page = {"title" : "Blog"}
 	return render_template("archive.html",page=page,posts=posts.get_posts()[::-1])
 
 @blog.route("/atom")
 @blog.route("/atom.xml")
+@cache.cached()
 def feed():
 	feed = AtomFeed("Recent Blog Entries", feed_url=request.url, url=request.url_root)
 

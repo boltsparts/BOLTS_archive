@@ -4,6 +4,7 @@ from flask.helpers import safe_join, send_from_directory
 from yaml import safe_load as load
 from urlparse import urljoin
 from os import walk, listdir
+from ..cache import cache
 import re
 
 docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static")
@@ -86,6 +87,7 @@ def index():
 
 @docs.route("/<version>")
 @docs.route("/<version>/index.html")
+@cache.cached()
 def version_index(version):
 	if not version in SOURCES:
 		abort(404)
@@ -100,6 +102,7 @@ def version_index(version):
 
 @docs.route("/<version>/<cat>/<filename>")
 @docs.route("/<version>/<cat>/<filename>.html")
+@cache.cached()
 def document(version,cat,filename):
 	if not version in SOURCES:
 		abort(404)
