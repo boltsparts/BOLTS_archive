@@ -18,7 +18,8 @@ app = Flask(__name__)
 
 cachedir = join(environ["OPENSHIFT_DATA_DIR"],"cache")
 #clear cache
-rmtree(cachedir)
+if exists(cachedir):
+	rmtree(cachedir)
 makedirs(cachedir)
 
 app.config['CACHE_DIR'] = cachedir
