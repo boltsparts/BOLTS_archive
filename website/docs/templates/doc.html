@@ -3,9 +3,19 @@
 {% block titlebar %}
   <div class="page-title-bar">
     <div class="inner-content">
-      <h2>Documentation for BOLTS {{ page.version }}</h2>
-      <a {% if page.version == page.stable %}class="active"{% endif %} href="{{ url_for('.version_index',version=page.stable) }}">stable</a>
-      <a {% if page.version == "dev" %}class="active"{% endif %} href="{{ url_for('.version_index',version='dev') }}">dev</a>
+      {% if page.version == page.stable %}
+      <h2>Documentation for BOLTS {{ page.version }} (current stable version)</h2>
+      <a class="active" href="{{ url_for('.version_index',version=page.stable) }}">stable</a>
+      <a href="{{ url_for('.version_index',version=page.dev) }}">dev</a>
+      {% elif page.version == page.dev %}
+      <h2>Documentation for BOLTS {{ page.version }} (development version)</h2>
+      <a href="{{ url_for('.version_index',version=page.stable) }}">stable</a>
+      <a class="active" href="{{ url_for('.version_index',version=page.dev) }}">dev</a>
+      {% else %}
+      <h2>Documentation for BOLTS {{ page.version }} (outdated)</h2>
+      <a href="{{ url_for('.version_index',version=page.stable) }}">stable</a>
+      <a class="active" href="{{ url_for('.version_index',version=page.dev) }}">dev</a>
+      {% endif %}
     </div>
   </div>
 {% endblock %}

@@ -68,13 +68,17 @@ class Documentation:
 		return res
 
 SOURCES = {}
-STABLE = 0
+versions = []
 for version in listdir(join(docs.root_path,"sources")):
 	try:
-		STABLE = max(STABLE,float(version))
+		versions.append(float(version))
 	except:
 		pass
 	SOURCES[version] = Documentation(join(docs.root_path,"sources",version))
+versions.sort()
+print versions
+STABLE = versions[-2]
+DEV = versions[-1]
 
 @docs.route("/static/<version>/<filename>")
 def static_version(version,filename):
@@ -97,7 +101,7 @@ def version_index(version):
 		doc_structure[aud] = {}
 		for cat in src.get_categories():
 			doc_structure[aud][cat] = list(src.get_documents(category=cat,audience=aud))
-	page = {"title" : "Documentation", "stable" : STABLE, "version" : version}
+	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : version}
 	return render_template("doc.html",page=page,auds=doc_structure)
 
 @docs.route("/<version>/<cat>/<filename>")
