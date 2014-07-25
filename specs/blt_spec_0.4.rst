@@ -115,7 +115,7 @@ A backend is a process that uses backend independent data and data from
 database_, transforms this data and outputs a set of files. This output is called
 the distribution of this backend.
 
-.. image:: processing_dev.png
+.. image:: processing.png
    :width: 100%
 
 
