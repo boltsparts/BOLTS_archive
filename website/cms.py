@@ -7,28 +7,29 @@ from . import html
 from os.path import join
 
 def get_subs(version):
+	lang_code = "en"
 	return {
 		'doc' : lambda m: url_for('docs.document',
 			version=version,
-			lang_code="en",
+			lang_code=lang_code,
 			**dict(zip(['cat','filename'],(a.strip() for a in m.group(2).split(','))))
 		),
 		'doc_version' : lambda m: url_for('docs.document',
-			lang_code="en",
+			lang_code=lang_code,
 			**dict(zip(['version','cat','filename'],(a.strip() for a in m.group(2).split(','))))
 		),
 		'blog' : lambda m: url_for('blog.post',
-			lang_code="en",
+			lang_code=lang_code,
 			**dict(zip(['year','month','day','slug'],(a.strip() for a in m.group(2).split('/'))))
 		),
-		'url' : lambda m: url_for(m.group(2)),
-		'collection_url' : lambda m: url_for('parts.collection',id=m.group(2)),
-		'standard' : lambda m: html.a(m.group(2),href=url_for('parts.standard',id=m.group(2))),
-		'name' : lambda m: html.a(m.group(2),href=url_for('parts.name',id=m.group(2))),
-		'body' : lambda m: html.a(m.group(2),href=url_for('parts.body',id=m.group(2))),
-		'standard_url' : lambda m: url_for('parts.standard',id=m.group(2)),
-		'name_url' : lambda m: url_for('parts.name',id=m.group(2)),
-		'body_url' : lambda m: url_for('parts.body',id=m.group(2))
+		'url' : lambda m: url_for(m.group(2),lang_code = lang_code),
+		'collection_url' : lambda m: url_for('parts.collection',id=m.group(2),lang_code=lang_code),
+		'standard' : lambda m: html.a(m.group(2),href=url_for('parts.standard',id=m.group(2),lang_code = lang_code)),
+		'name' : lambda m: html.a(m.group(2),href=url_for('parts.name',id=m.group(2),lang_code = lang_code)),
+		'body' : lambda m: html.a(m.group(2),href=url_for('parts.body',id=m.group(2),lang_code = lang_code)),
+		'standard_url' : lambda m: url_for('parts.standard',id=m.group(2),lang_code = lang_code),
+		'name_url' : lambda m: url_for('parts.name',id=m.group(2,lang_code = lang_code)),
+		'body_url' : lambda m: url_for('parts.body',id=m.group(2),lang_code = lang_code)
 	}
 
 def markdownsub(ctx,value,subs):

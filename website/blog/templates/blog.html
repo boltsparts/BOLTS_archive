@@ -14,7 +14,7 @@
     {% for post in posts %}
     <article>
       <header>
-        <h1><a href="/blog/{{ post.url }}">{{ post.title }}</a></h1>
+        <h1><a href="{{ url_for('blog.post',**post.url_values) }}">{{ post.title }}</a></h1>
         <p>Posted on {{ post.date | datetimeformat }} by {{ post.author }}</p>
       </header>
       <div class="entry-content">

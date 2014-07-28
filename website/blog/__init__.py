@@ -36,7 +36,7 @@ class Posts:
 			month = int(parts[1])
 			day = int(parts[2])
 			post["slug"] = '.'.join('-'.join(parts[3:]).split('.')[:-1])
-			post["url"] = "%s/%s/%s/%s" % (year,month,day,post["slug"])
+			post["url_values"] = {"year" : year, "month" : month, "day" : day, "slug" : post["slug"]}
 
 			with open(join(path,filename)) as fid:
 				header, content = fid.read().split('\n---\n')
@@ -66,20 +66,11 @@ class Posts:
 				else:
 					post["author"] = "Unknown"
 
-				if post["url"] in self.urls:
-					raise ValueError("Nonunique url: %s"% post["url"])
-				self.urls[post["url"]] = post
 				if post["slug"] in self.slugs:
 					raise ValueError("Nonunique slug: %s"% post["slug"])
 				self.slugs[post["slug"]] = post
 
-		self.posts = sorted(self.urls.values(),key = lambda x: x["date"])
-
-	def get_url(self,url):
-		if url in self.urls:
-			return self.urls[url]
-		else:
-			return None
+		self.posts = sorted(self.slugs.values(),key = lambda x: x["date"])
 
 	def get_slug(self,slug):
 		if slug in self.slugs:
