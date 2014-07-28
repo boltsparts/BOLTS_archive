@@ -15,7 +15,7 @@ OpenSCAD]({{ doc(openscad,installation) }}).
 
 ### Follow this guide and contribute
 
-There is a [list of classes]({{ url(tasks) }}) for which no drawing is
+There is a [list of classes]({{ url(main.tasks) }}) for which no drawing is
 available. You are invited to pick one, follow this guide and contribute the
 result.
 

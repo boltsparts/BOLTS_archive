@@ -7,7 +7,7 @@
 ### Download
 
 You can download a stable release or development snapshot of BOLTS for OpenSCAD
-from the [download page]({{ url(downloads) }}). There are different
+from the [download page]({{ url(main.downloads) }}). There are different
 archive types and licenses available, if you do not know which one you want,
 you should be fine with the GPL 3.0 zip version.
 
