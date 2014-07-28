@@ -15,7 +15,7 @@
     <article>
       <header>
         <h1><a href="/blog/{{ post.url }}">{{ post.title }}</a></h1>
-        <p>Posted on {{ post.date | datetime }} by {{ post.author }}</p>
+        <p>Posted on {{ post.date | datetimeformat }} by {{ post.author }}</p>
       </header>
       <div class="entry-content">
         {{ post.teaser | markdown_blog }}

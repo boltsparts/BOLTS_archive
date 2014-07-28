@@ -38,17 +38,9 @@ app.register_blueprint(parts,url_prefix='/html')
 app.register_blueprint(parts,url_prefix='/parts')
 app.debug = True
 
-Babel(app)
+babel = Babel(app)
 
 stats = Statistics(repo,dbs)
-
-@app.template_filter('datetime')
-def _format_datetime(value, format='medium'):
-	if format == 'full':
-		format="EEEE, d. MMMM y 'at' HH:mm"
-	elif format == 'medium':
-		format="EE dd.MM.y HH:mm"
-	return format_datetime(value, format)
 
 app.jinja_env.filters['markdown_docs'] = cms.markdown_docs
 app.jinja_env.filters['markdown_blog'] = cms.markdown_blog
