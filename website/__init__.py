@@ -50,7 +50,6 @@ app.jinja_env.globals['gettext_parts'] = translation.gettext_parts
 @babel.localeselector
 def get_locale():
 	#the four most popular languages from the website
-	return "de"
 	return request.accept_languages.best_match(['en','es','de','fr'])
 
 @app.route("/")
