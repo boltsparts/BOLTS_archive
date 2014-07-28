@@ -5,7 +5,7 @@
 
 ### Download a BOLTS for FreeCAD release
 
-You can find the most recent BOLTS for FreeCAD release at the [Downloads Page]({{ url(downloads) }}).
+You can find the most recent BOLTS for FreeCAD release at the [Downloads Page]({{ url(main.downloads) }}).
 
 There are different archive types available, if you are unsure, which to choose use the zip.
 
@@ -60,7 +60,7 @@ If you get different errors, than please try the latest development snapshot.
 If it still does not work, please report that problem. The simplest way to do
 so is to use the comments below, but there is a number of of other places where
 you can report problems, a list can be found
-[on the contribute page]({{ url(contribute) }}).
+[on the contribute page]({{ url(main.contribute) }}).
 
 ### Next steps
 
