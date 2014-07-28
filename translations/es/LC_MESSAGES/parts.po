@@ -1,0 +1,1481 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2014 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2014-07-28 14:06+0200\n"
+"PO-Revision-Date: 2014-07-28 13:14+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#. collection name
+msgid "C-Beam profiles (rolled)"
+msgstr ""
+
+#. collection description
+msgid "Various rolled c-beam profiles"
+msgstr ""
+
+#. collection name
+msgid "Bearings"
+msgstr ""
+
+#. collection description
+msgid "Various ball and roller bearings"
+msgstr ""
+
+#. collection name
+msgid "Pipes"
+msgstr ""
+
+#. collection description
+msgid "Metric and imperial pipes"
+msgstr ""
+
+#. collection name
+msgid "Hexagon fasteners"
+msgstr ""
+
+#. collection description
+msgid "Various standard hex bolts and screws"
+msgstr ""
+
+#. collection name
+msgid "I-Beam profiles (rolled)"
+msgstr ""
+
+#. collection description
+msgid "Various rolled i-beam profiles"
+msgstr ""
+
+#. collection name
+msgid "Batteries"
+msgstr ""
+
+#. collection description
+msgid "This collection contains different sorts of batteries"
+msgstr ""
+
+#. collection name
+msgid "Hollow sections"
+msgstr ""
+
+#. collection description
+msgid "Hot finished structural hollow sections"
+msgstr ""
+
+#. collection name
+msgid "Flanges"
+msgstr ""
+
+#. collection description
+msgid "Various standard flanges"
+msgstr ""
+
+#. collection name
+msgid "Hexagon socket fasteners"
+msgstr ""
+
+#. collection description
+msgid "Various standard hex socket bolts and screws"
+msgstr ""
+
+#. collection name
+msgid "Washers"
+msgstr ""
+
+#. collection description
+msgid "Various standard washers"
+msgstr ""
+
+#. collection name
+msgid "Connecting Bars"
+msgstr ""
+
+#. collection description
+msgid "Bars connecting together mechanical parts"
+msgstr ""
+
+#. collection name
+msgid "Nuts"
+msgstr ""
+
+#. collection description
+msgid "Various standard nuts"
+msgstr ""
+
+#. collection name
+msgid "Extrusions and small profiles"
+msgstr ""
+
+#. collection description
+msgid "Various small profiles and extrusions"
+msgstr ""
+
+#. Parameter description e
+#. Parameter description e_min
+#. Parameter description d2
+msgid "head diameter"
+msgstr ""
+
+#. Parameter description b2
+msgid "threaded length of shaft for 125 mm < l < 200 mm"
+msgstr ""
+
+#. Parameter description k
+#. Parameter description k_max
+msgid "head length"
+msgstr ""
+
+#. Parameter description l
+msgid "length excluding head"
+msgstr ""
+
+#. Parameter description s
+msgid "width across flats"
+msgstr ""
+
+#. Parameter description b1
+msgid "threaded length of shaft for l < 125 mm"
+msgstr ""
+
+#. Parameter description key
+msgid "Thread designation"
+msgstr ""
+
+#. Parameter description b3
+msgid "threaded length of shaft for l > 200 mm"
+msgstr ""
+
+#. Parameter description d1
+msgid "threaded shaft diamater"
+msgstr ""
+
+#. Parameter description finish_name
+msgid "Material finish used in labeling"
+msgstr ""
+
+#. Parameter description finish
+msgid "Material finish"
+msgstr ""
+
+#. Parameter description l
+msgid "Length"
+msgstr ""
+
+#. Parameter description b
+msgid "flange width"
+msgstr ""
+
+#. Parameter description h
+msgid "beam height"
+msgstr ""
+
+#. Parameter description l
+msgid "beam length"
+msgstr ""
+
+#. Parameter description r
+#. Parameter description r_fillet
+msgid "fillet radius"
+msgstr ""
+
+#. Parameter description tw
+#. Parameter description t
+msgid "web thickness"
+msgstr ""
+
+#. Parameter description tf
+msgid "flange thickness"
+msgstr ""
+
+#. Parameter description type
+msgid "beam type"
+msgstr ""
+
+#. Parameter description t
+#. Parameter description b
+#. Parameter description s
+#. Parameter description m_max
+#. Parameter description B
+#. Parameter description T
+msgid "thickness"
+msgstr ""
+
+#. Parameter description type
+msgid "profile type"
+msgstr ""
+
+#. Parameter description l
+msgid "profile length"
+msgstr ""
+
+#. Parameter description D
+msgid "outside diameter"
+msgstr ""
+
+#. Parameter description r1
+msgid "outer fillet radius"
+msgstr ""
+
+#. Parameter description r2
+msgid "inner fillet radius"
+msgstr ""
+
+#. Parameter description f
+msgid "inner flange unfilleted length"
+msgstr ""
+
+#. Parameter description hw
+msgid "straight web height"
+msgstr ""
+
+#. Parameter description g
+msgid "outer flange unfilleted length"
+msgstr ""
+
+#. Parameter description dn
+msgid "nominal diameter"
+msgstr ""
+
+#. Parameter description k
+msgid "bolt circle diameter"
+msgstr ""
+
+#. Parameter description d2
+msgid "bolt hole diameter"
+msgstr ""
+
+#. Parameter description bn
+msgid "bolts number"
+msgstr ""
+
+#. Parameter description d1
+#. Parameter description hd
+msgid "hole diameter"
+msgstr ""
+
+#. Parameter description od
+#. Parameter description d2
+#. Parameter description D_g
+#. Parameter description Ew
+msgid "outer diameter"
+msgstr ""
+
+#. Parameter description id
+#. Parameter description d1
+#. Parameter description d_g
+#. Parameter description Fw
+msgid "inner diameter"
+msgstr ""
+
+#. Parameter description l
+#. Parameter description Bc
+msgid "length"
+msgstr ""
+
+#. Parameter description wall
+msgid "wall thickness"
+msgstr ""
+
+#. Parameter description sched
+msgid "Pipe schedule"
+msgstr ""
+
+#. Parameter description nps
+msgid "Nominal pipe size"
+msgstr ""
+
+#. Parameter description e
+msgid "width across edges"
+msgstr ""
+
+#. Parameter description d
+msgid "diameter"
+msgstr ""
+
+#. Parameter description point
+msgid "point type"
+msgstr ""
+
+#. Parameter description l
+msgid "total length"
+msgstr ""
+
+#. Parameter description t
+#. Parameter description t_min
+msgid "socket depth"
+msgstr ""
+
+#. Parameter description d1
+msgid "maximum point diameter"
+msgstr ""
+
+#. Parameter description b
+msgid "outside dimension"
+msgstr ""
+
+#. Parameter description h
+msgid "section height"
+msgstr ""
+
+#. Parameter description b
+msgid "section width"
+msgstr ""
+
+#. Parameter description h
+msgid "height"
+msgstr ""
+
+#. Parameter description T
+msgid "Type Code"
+msgstr ""
+
+#. Parameter description h
+msgid "outside dimension height"
+msgstr ""
+
+#. Parameter description b
+msgid "outside dimension width"
+msgstr ""
+
+#. Parameter description key
+msgid "Model designation"
+msgstr ""
+
+#. Parameter description postfix
+msgid "Postfix to the model designation for the protection type"
+msgstr ""
+
+#. Parameter description type
+msgid "Type of bearing protection"
+msgstr ""
+
+#. Parameter description D_w
+msgid "outer diameter, shaft side"
+msgstr ""
+
+#. Parameter description d_w
+msgid "inner diameter, shaft side"
+msgstr ""
+
+#. Parameter description h_max
+msgid "maximum unthreaded length of shaft"
+msgstr ""
+
+#. Parameter description l
+msgid "shaft length"
+msgstr ""
+
+#. Parameter description alpha
+msgid "head angle"
+msgstr ""
+
+#. Parameter description L
+msgid ""
+"threshold threading length, shaft is completely threaded for screws "
+"shorter than L"
+msgstr ""
+
+#. Parameter description d1
+msgid "shaft diameter"
+msgstr ""
+
+#. Parameter description b
+msgid "threaded length of shaft"
+msgstr ""
+
+#. Parameter description h
+msgid "unthreaded length of shaft"
+msgstr ""
+
+#. Parameter description thread_type
+msgid "type of thread"
+msgstr ""
+
+#. Parameter description pitch
+msgid "thread pitch"
+msgstr ""
+
+#. Parameter description pitch_name
+msgid "pitch indication for the part name"
+msgstr ""
+
+#. Parameter description cl
+msgid "crimp length"
+msgstr ""
+
+#. Parameter description cg
+msgid "crimp gap"
+msgstr ""
+
+#. Parameter description tl
+msgid "transition length"
+msgstr ""
+
+#. Parameter description rl
+msgid "round length"
+msgstr ""
+
+#. Parameter description sd
+msgid "true = side crimped, false = symmetrically crimped"
+msgstr ""
+
+#. ClassName name nice
+msgid "Radial Ball Bearing imperial"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "imperial Radial Ball Bearing %(key)s"
+msgstr ""
+
+#. ClassName description
+msgid "Single row radial contact ball bearing, imperial sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "T slot extrusion one slot 20x20"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "T slot extrusion one slot 20x20x%(l)s"
+msgstr ""
+
+#. ClassName description
+msgid "Generic T slot aluminium extrusion one slot 20mmx20mm"
+msgstr ""
+
+#. ClassName name nice
+msgid "V-Slot 20x20mm"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "%(finish_name)s V-Slot 20x20mm Length: %(l)s"
+msgstr ""
+
+#. ClassName description
+msgid ""
+"V-Slot is a high quality extruded aluminum profile building block that "
+"has an extremely smooth linear v groove rail on all 4 sides."
+msgstr ""
+
+#. ClassName name nice
+msgid "UAE Profile"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "%(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "UAP profile, metric european standard c-beam profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "T slot extrusion two slots (opp.) 20x20"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "T slot extrusion two slots (opp.) 20x20x%(l)s"
+msgstr ""
+
+#. ClassName description
+msgid "Generic T slot aluminium extrusion two oppositeslots 20mmx20mm"
+msgstr ""
+
+#. ClassName name nice
+msgid "T slot extrusion three slots 20x20"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "T slot extrusion three slots 20x20x%(l)s"
+msgstr ""
+
+#. ClassName description
+msgid "Generic T slot extrusion three slots 20mmx20mm"
+msgstr ""
+
+#. ClassName name nice
+msgid "Square hollow profile"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Square hollow profile %(b)s/%(t)s l=%(l)s"
+msgstr ""
+
+#. ClassName description
+msgid "Generic square hollow profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "IPN Profile"
+msgstr ""
+
+#. ClassName description
+msgid "IPN profile"
+msgstr ""
+
+#. ClassName name nice
+#. ClassName description
+msgid "Hexagon head screw"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Hexagon head screw %(key)s - %(l)s"
+msgstr ""
+
+#. ClassName name nice
+msgid "Axial thrust bearing"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Axial thrust bearing %(key)s"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "Axial thrust bearing, single direction"
+msgstr ""
+
+#. ClassName name nice
+msgid "Rectangular hollow profile"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Rectangular hollow profile %(h)s-%(b)s-%(t)s, l=%(l)s"
+msgstr ""
+
+#. ClassName description
+msgid "A generic rectangular hollow profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "Radial Ball Bearing"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Radial Ball Bearing %(key)s%(postfix)s"
+msgstr ""
+
+#. ClassName description
+msgid ""
+"Single row radial contact ball bearing, with single or double shields, "
+"single or double seal or open, metric sizes"
+msgstr ""
+
+#. ClassName name nice
+#. ClassName description
+msgid "Hexagon head bolt"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Hexagon head bolt %(key)s - %(l)s"
+msgstr ""
+
+#. ClassName name nice
+msgid "UPE Profile"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "UPE profile, metric european standard c-beam profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "V-Slot 20x40mm"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "%(finish)s V-Slot 20x40mm Length: %(l)s"
+msgstr ""
+
+#. ClassName name nice
+msgid "Metric hexagon nut"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Metric hexagon nut %(key)s"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "Hexagon nut, metric sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "Metric plain washer for cheese head screws"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Plain washer for cheese head screws %(key)s"
+msgstr ""
+
+#. ClassName description
+msgid "Plain washer for cheese head screws, metric sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "Round Batteries"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "%(T)s Battery"
+msgstr ""
+
+#. ClassName description
+msgid "Most common round single cell battery sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "Circular hollow profile"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Circular hollow profile %(D)s/%(t)s l=%(l)s"
+msgstr ""
+
+#. ClassName description
+msgid "Generic circular hollow profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "IPEa Profile"
+msgstr ""
+
+#. ClassName description
+msgid "IPEa profile, metric european i-beam profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "Metric hex socket head cap screw"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Hex socket head cap screw %(key)s %(l)s"
+msgstr ""
+
+#. ClassName description
+msgid "Hexagon socket head cap screw, metric sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "IPEr Profile"
+msgstr ""
+
+#. ClassName description
+msgid "IPEr profile, metric european i-beam profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "IPE Profile"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "IPE profile, metric european standard i-beam profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "Metric plain washer with chamfer"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Plain washer chamfered %(key)s"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "Plain washer with chamfer, metric sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "Metric heavy duty plain washer"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Heavy duty plain washer %(key)s"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "Heavy duty plain washer, metric sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "HEA Profile"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "HEA profile, metric european standard i-beam profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "Metric hex socket countersunk head screw"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Hex socket countersunk head screw %(key)s %(l)s"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "Hexagon socket countersunk head screw, metric sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "HEAA Profile"
+msgstr ""
+
+#. ClassName description
+msgid "HEAA profile, metric european i-beam profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "Metric hexagon thin nut"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Metric hexagon thin nut %(key)s"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "Thin hexagon nut, metric sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "INP Profile"
+msgstr ""
+
+#. ClassName description
+msgid "INP profile"
+msgstr ""
+
+#. ClassName name nice
+#. ClassName labeling nice
+msgid "OpenBuilds Solid V Wheel - Delrin"
+msgstr ""
+
+#. ClassName description
+msgid ""
+"The OpenBuilds Delrin Solid V Wheels are great for use with any V Wheel "
+"Linear Guide System. They can be used with V-Slot Extrusion. For builds "
+"where heavier loads are required."
+msgstr ""
+
+#. ClassName name nice
+msgid "HEB Profile"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "HEB profile, metric european standard i-beam profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "T slot extrusion two slots 20x20"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "T slot extrusion two slots 20x20x%(l)s"
+msgstr ""
+
+#. ClassName description
+msgid "Generic T slot aluminium extrusion two neighboring slots 20mmx20mm"
+msgstr ""
+
+#. ClassName name nice
+msgid "Tube bar crimped ends"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid ""
+"Tube Bar Crimped Ends OD %(od)s ID %(id)s CG %(cg)s CL %(cl)s HD %(hd)s "
+"RL %(rl)s TL %(tl)s SD %(sd)s"
+msgstr ""
+
+#. ClassName description
+msgid "A connecting bar made with a round tube crimped at both ends"
+msgstr ""
+
+#. ClassName name nice
+#. ClassName labeling nice
+msgid "OpenBuilds Solid Mini V Wheel - Delrin"
+msgstr ""
+
+#. ClassName description
+msgid ""
+"The OpenBuilds Delrin Solid Mini V Wheels are great for small form factor"
+" linear actuator guides. They can be used with V-Slot Extrusion."
+msgstr ""
+
+#. ClassName name nice
+msgid "Hex socket set screw"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Hex socket set screw %(point)s point %(key)s %(l)s"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "Hexagon socket set screws"
+msgstr ""
+
+#. ClassName name nice
+#. ClassName labeling nice
+msgid "Imperial hexagon nut"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "Hexagon nut, imperial sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "IPEv Profile"
+msgstr ""
+
+#. ClassName description
+msgid "IPEv profile, metric european i-beam profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "HEM Profile"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "HEM profile, metric european standard i-beam profile"
+msgstr ""
+
+#. ClassName name nice
+#. ClassName labeling nice
+msgid "OpenBuilds Dual V Wheel - Delrin"
+msgstr ""
+
+#. ClassName description
+msgid ""
+"The OpenBuilds Delrin Dual V Wheels are great for use with any V Wheel "
+"Linear Guide System. They can be used with V-Slot Extrusion and OpenRail."
+msgstr ""
+
+#. ClassName name nice
+msgid "V-Slot 20x80mm"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "%(finish)s V-Slot 20x80mm Length: %(l)s"
+msgstr ""
+
+#. ClassName name nice
+msgid "Generic pipe"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Pipe OD %(od)s ID %(id)s length %(l)s"
+msgstr ""
+
+#. ClassName description
+msgid "A generic pipe"
+msgstr ""
+
+#. ClassName name nice
+msgid "Double row ball bearing"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Double row ball bearing %(key)s"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "Deep groove double row radial ball bearing, metric sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "T slot extrusion 20x20"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "T slot extrusion 20x20x%(l)s"
+msgstr ""
+
+#. ClassName description
+msgid "Generic T slot aluminium extrusion 20mmx20mm"
+msgstr ""
+
+#. ClassName name nice
+msgid "IPE 750 Profile"
+msgstr ""
+
+#. ClassName description
+msgid "IPE 750 profile, metric european i-beam profile"
+msgstr ""
+
+#. ClassName name nice
+msgid "Metric plain washer"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "Plain washer %(key)s"
+msgstr ""
+
+#. ClassName description
+#. ClassStandard description
+msgid "Plain washer, metric sizes"
+msgstr ""
+
+#. ClassName name nice
+msgid "V-Slot 20x60mm"
+msgstr ""
+
+#. ClassName labeling nice
+#, python-format
+msgid "%(finish)s V-Slot 20x60mm Length: %(l)s"
+msgstr ""
+
+#. ClassName name nice
+msgid "IPEo Profile"
+msgstr ""
+
+#. ClassName description
+msgid "IPEo profile, metric european i-beam profile"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "NFA45-255 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "CHS DIN EN 10210-2 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Circular Hollow Section (CHS)"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "CHS EN 10210-2 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer DINENISO 7091 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer chamfered DIN EN ISO 7090 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket countersunk head screw DIN ISO 10642 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer EN 7089 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "DIN1026-2 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "DIN 11850 Range 2 DN %(dn)s length %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Pipe according to DIN11850 Range 2"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer for cheese head screws ISO 7092 %(key)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Plain washer for cheese head screws"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket set screw dog cone ISO 4028 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon socket set screw with dog point"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "IEC 60086 Category 1 Battery %(T)s"
+msgstr ""
+
+#. ClassStandard description
+msgid ""
+"Cylindrical cells with protruding positive and recessed or flat negative "
+"terminals."
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer ISO 7091 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket set screw cup cone ISO 4029 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon socket set screw with cup point"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer DIN 126 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon nut ANSI B18.2.2 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket head cap screw DINENISO 4762 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon socket head cap screw"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Cylindrical roller bearing %(key)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Cylindrical single row roller bearing"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer ISO 7089 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Wrought steel pipe API 5L %(nps)s %(sched)s Length %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid ""
+"Welded and seamless wrought steel pipe for high or low temperatures and "
+"pressures"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "DIN1025-2 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer DINENISO 7089 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon head screw EN ISO 24017 %(key)s - %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon head screw according to ENISO24017"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Axial thrust bearing DIN 711 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "RHS EN 10210-2 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Rectangular Hollow Section (RHS)"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket countersunk head screw DIN 7991 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket countersunk head screw ISO 10642 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Axial thrust bearing ISO 104 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Wrought steel pipe ASME B36.10M %(nps)s %(sched)s Length %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "hexagon_head_screw_ISO4017_%(key)s_%(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon head screw according to ISO4017"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket set screw ANSI B18.3.6M %(point)s point %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "DIN1025-3 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon head bolt DINEN 24014 %(key)s - %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon head bolt according to DINEN 24014"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon thin nut ISO 4035 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "DIN1025-4 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket head cap screw ISO 4762 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Wrought steel pipe ANSI B36.10M %(nps)s %(sched)s Length %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Double row radial ball bearing DIN 625-3 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "RHS DIN EN 10210-2 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer for cheese head screws DIN EN ISO 7092 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "SHS DIN EN 10210-2 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Square Hollow Section (SHS)"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "DIN1025-5 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon thin nut DINENISO 4035 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Radial Ball Bearing DIN625-1 %(key)s%(postfix)s"
+msgstr ""
+
+#. ClassStandard description
+msgid ""
+"Single row radial contact ball bearing, with single or double shields, "
+"single or double seal or open"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer chamfered DIN 125B %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer DIN 125A %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "DIN1025-1 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "IPN profile, metric european standard i-beam profile"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket head cap screw DIN 912 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon head bolt DINENISO 4014 %(key)s - %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon head bolt according to DINENISO 4014"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Heavy duty plain washer DIN 7349 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon head screw DIN EN ISO 4017 %(key)s - %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon head screw according to DINENISO4017"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plate flange EN1092-1 PN6 T01 %(dn)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Plate flange EN1092-1 type 01 pn6"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Needle roller DIN 5405-1 %(key)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Needle roller without cage"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Blind flange EN1092-1 PN6 T05 %(dn)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Blind flange EN1092-1 type 05 pn6"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "SHS EN 10210-2 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon head bolt DIN 931 %(key)s - %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon head bolt according to DIN931"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket set screw flat cone ISO 4027 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon socket set screw with cone point"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon head screw DIN 933 %(key)s%(pitch_name)s - %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon head screw according to DIN933"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon nut ISO 4032 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon nut DIN 934 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket set screw flat point DIN 913 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon socket set screw with flat point"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon head bolt ISO 4014 %(key)s - %(l)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Hexagon head bolt according to ISO 4014"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer chamfered ISO 7090 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket set screw cup point DIN 916 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket set screw dog point DIN 915 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket set screw cone point DIN 914 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer chamfered DIN ISO 7090 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer DIN ISO 7091 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer for cheese head screws DIN ISO 7092 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon thin nut DIN 439 %(key)s"
+msgstr ""
+
+#. ClassStandard description
+msgid "Thin hexagon nut, metrix size, old"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hex socket set screw flat point ISO 4026 %(key)s %(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Hexagon nut ASME B18.2.2 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer for cheese head screws DIN 433 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Needle roller ISO 3030 %(key)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "EN 19-57 %(type)s, l=%(l)s"
+msgstr ""
+
+#. ClassStandard labeling nice
+#, python-format
+msgid "Plain washer DINEN 27089 %(key)s"
+msgstr ""
+

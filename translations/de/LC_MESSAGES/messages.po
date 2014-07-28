@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-28 11:01+0200\n"
-"PO-Revision-Date: 2014-07-28 11:07+0200\n"
+"POT-Creation-Date: 2014-07-28 14:06+0200\n"
+"PO-Revision-Date: 2014-07-28 14:06+0200\n"
 "Last-Translator: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -19,9 +19,88 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
+#: website/parts/__init__.py:39
+msgid "Author"
+msgid_plural "Authors"
+msgstr[0] "Autor"
+msgstr[1] "Autoren"
+
+#: website/parts/__init__.py:102 website/parts/__init__.py:150
+#: website/parts/__init__.py:160
+msgid "License"
+msgstr "Lizenz"
+
+#: website/parts/__init__.py:103
+msgid "Collection"
+msgstr ""
+
+#: website/parts/__init__.py:107
+msgid "Identical to"
+msgstr "Identisch mit"
+
+#: website/parts/__init__.py:109
+msgid "Status"
+msgstr "Status"
+
+#: website/parts/__init__.py:110
+msgid "Standard body"
+msgstr "Standardisierungsbehörde"
+
+#: website/parts/__init__.py:112
+msgid "Replaces"
+msgstr "Ersetzt"
+
+#: website/parts/__init__.py:114
+msgid "Replaced by"
+msgstr "Ersetzt durch"
+
+#: website/parts/__init__.py:118
+msgid "Source"
+msgstr "Quellen"
+
+#: website/parts/__init__.py:138
+msgid "Parameter Name"
+msgstr "Parametername"
+
+#: website/parts/__init__.py:138 website/parts/templates/name.html:17
+msgid "Description"
+msgstr "Beschreibung"
+
+#: website/parts/__init__.py:181
+msgid "Location"
+msgstr ""
+
+#: website/parts/__init__.py:181
+msgid "Drawing"
+msgstr ""
+
+#: website/parts/templates/name.html:10
+msgid "Drawings"
+msgstr "Zeichnungen"
+
+#: website/parts/templates/name.html:13
+msgid "Parameters"
+msgstr "Parameter"
+
+#: website/parts/templates/name.html:24
+msgid "This part is not availaible for FreeCAD"
+msgstr "Dieses Teil ist für FreeCAD nicht verfügbar"
+
+#: website/parts/templates/name.html:30
+msgid "Incantations"
+msgstr "Aufruf"
+
+#: website/parts/templates/name.html:37
+msgid "This part is not availaible for OpenSCAD"
+msgstr "Dieses Teil ist für OpenSCAD nicht verfügbar"
+
+#: website/parts/templates/name.html:40
+msgid "Tables"
+msgstr "Tabellen"
+
 #: website/templates/home.html:8
 msgid "BOLTS is an Open Library of Technical Specifications."
-msgstr "BOLTS ist eine Offene Bibliothek für technische Spezifikationen"
+msgstr "BOLTS ist eine offene Bibliothek für technische Spezifikationen."
 
 #: website/templates/home.html:19
 msgid "What is BOLTS?"
@@ -33,9 +112,6 @@ msgid ""
 "for CAD applications. It does so by providing a common database that can be "
 "utilized by many different CAD applications."
 msgstr ""
-"Das Ziel von BOLTS ist es eine freie und quelloffene Standardteilebibliothek "
-"für CAD Applikationen aufzubauen. Dazu stellt BOLTS eine gemeinsame "
-"Datenbasis bereit, die für verschiedenen CAD Programme genutzt werden kann."
 
 #: website/templates/home.html:27
 msgid "What is a standard parts library?"
@@ -65,7 +141,7 @@ msgstr ""
 
 #: website/templates/home.html:38
 msgid "How does BOLTS work?"
-msgstr "Wie funktioniert BOLTS?"
+msgstr ""
 
 #: website/templates/home.html:39
 msgid ""
@@ -85,12 +161,10 @@ msgstr ""
 #: website/templates/home.html:41
 msgid "So in a sense BOLTS is a tool to create standard parts libraries."
 msgstr ""
-"In einem gewissen Sinne ist BOLTS also ein Werkzeug zur Erstellung von "
-"Standardteilebibliotheken."
 
 #: website/templates/home.html:49
 msgid "How can I help?"
-msgstr "Wie kann ich helfen?"
+msgstr "Wie kann ich mithelfen?"
 
 #: website/templates/home.html:50
 msgid ""
@@ -109,4 +183,4 @@ msgstr ""
 
 #: website/templates/home.html:54
 msgid "Statistics"
-msgstr "Statistik"
+msgstr "Statistiken"

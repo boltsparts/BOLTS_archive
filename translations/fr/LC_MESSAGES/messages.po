@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-28 11:01+0200\n"
-"PO-Revision-Date: 2014-07-28 10:46+0200\n"
+"POT-Creation-Date: 2014-07-28 14:06+0200\n"
+"PO-Revision-Date: 2014-07-28 13:12+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
@@ -17,6 +17,85 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
+
+#: website/parts/__init__.py:39
+msgid "Author"
+msgid_plural "Authors"
+msgstr[0] ""
+msgstr[1] ""
+
+#: website/parts/__init__.py:102 website/parts/__init__.py:150
+#: website/parts/__init__.py:160
+msgid "License"
+msgstr ""
+
+#: website/parts/__init__.py:103
+msgid "Collection"
+msgstr ""
+
+#: website/parts/__init__.py:107
+msgid "Identical to"
+msgstr ""
+
+#: website/parts/__init__.py:109
+msgid "Status"
+msgstr ""
+
+#: website/parts/__init__.py:110
+msgid "Standard body"
+msgstr ""
+
+#: website/parts/__init__.py:112
+msgid "Replaces"
+msgstr ""
+
+#: website/parts/__init__.py:114
+msgid "Replaced by"
+msgstr ""
+
+#: website/parts/__init__.py:118
+msgid "Source"
+msgstr ""
+
+#: website/parts/__init__.py:138
+msgid "Parameter Name"
+msgstr ""
+
+#: website/parts/__init__.py:138 website/parts/templates/name.html:17
+msgid "Description"
+msgstr ""
+
+#: website/parts/__init__.py:181
+msgid "Location"
+msgstr ""
+
+#: website/parts/__init__.py:181
+msgid "Drawing"
+msgstr ""
+
+#: website/parts/templates/name.html:10
+msgid "Drawings"
+msgstr ""
+
+#: website/parts/templates/name.html:13
+msgid "Parameters"
+msgstr ""
+
+#: website/parts/templates/name.html:24
+msgid "This part is not availaible for FreeCAD"
+msgstr ""
+
+#: website/parts/templates/name.html:30
+msgid "Incantations"
+msgstr ""
+
+#: website/parts/templates/name.html:37
+msgid "This part is not availaible for OpenSCAD"
+msgstr ""
+
+#: website/parts/templates/name.html:40
+msgid "Tables"
+msgstr ""
 
 #: website/templates/home.html:8
 msgid "BOLTS is an Open Library of Technical Specifications."
@@ -106,7 +185,4 @@ msgstr ""
 #: website/templates/home.html:54
 msgid "Statistics"
 msgstr ""
-
-#~ msgid ""
-#~ msgstr ""
 
