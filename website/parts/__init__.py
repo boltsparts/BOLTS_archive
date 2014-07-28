@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, abort, redirect, request, url_for
+from flask.ext.babelex import gettext, ngettext
 from flask.helpers import safe_join, send_from_directory
 from os.path import join
 from os import environ
@@ -9,6 +10,7 @@ from bolttools.drawings import DrawingsData
 from backends.openscad import get_signature
 from .. import html,utils
 from ..cache import cache
+from ..translation import parts_domain, gettext_parts
 
 parts = Blueprint("parts",__name__,template_folder="templates")
 
@@ -30,14 +32,11 @@ def get_identical_links(cl,prt):
 		for n in repo.class_names.get_dsts(cl):
 			if n is prt:
 				continue
-			identical.append(html.a(n.name.get_nice(),href=url_for('.name',id=n.get_id())))
+			identical.append(html.a(gettext_parts(n.name.get_nice()),href=url_for('.name',id=n.get_id())))
 	return identical
 
 def format_author_prop(author_list):
-	if len(author_list) > 1:
-		return ('Authors', ', '.join(author_list))
-	else:
-		return ('Author', ', '.join(author_list))
+	return (ngettext('Author','Authors',len(author_list)),', '.join(author_list))
 
 @parts.route('/')
 @parts.route('/index.html')
@@ -100,23 +99,23 @@ def standard(id):
 	#properties
 	props = []
 	props.append(format_author_prop(coll.author_names))
-	props.append(('License',html.a(coll.license_name,href=coll.license_url)))
-	props.append(('Collection',html.a(coll.name,href=url_for('.collection',id=coll.id))))
+	props.append((gettext('License'),html.a(coll.license_name,href=coll.license_url)))
+	props.append((gettext('Collection'),html.a(coll.name,href=url_for('.collection',id=coll.id))))
 
 	identical = get_identical_links(cl,std)
 	if len(identical) > 0:
-		props.append(('Identical to',', '.join(identical)))
+		props.append((gettext('Identical to'),', '.join(identical)))
 
-	props.append(('Status',std.status))
-	props.append(('Standard body',html.a(std.body,href=url_for('.body',id=std.body))))
+	props.append((gettext('Status'),std.status))
+	props.append((gettext('Standard body'),html.a(std.body,href=url_for('.body',id=std.body))))
 	if not std.replaces is None:
-		props.append(('Replaces',std.replaces))
+		props.append((gettext('Replaces'),std.replaces))
 	if not std.replacedby is None:
-		props.append(('Replaced by',std.replacedby))
+		props.append((gettext('Replaced by'),std.replacedby))
 	if not cl.url == "":
 		props.append(('URL',cl.url))
 	props.append(('ID',std.get_id()))
-	props.append(('Source',cl.source))
+	props.append((gettext('Source'),cl.source))
 
 	#parameters
 	parameters = {}
@@ -136,8 +135,8 @@ def standard(id):
 		parameters["drawing"] = url_for('.drawing',coll=coll.id,filename = "%s.png" % draw.filename)
 
 	parameters["description"] = html.table({
-		"header" : ["Parameter Name","Description"],
-		"data" : [[p,cl.parameters.description[p]] for p in cl.parameters.parameters],
+		"header" : [gettext("Parameter Name"),gettext("Description")],
+		"data" : [[p,gettext_parts(cl.parameters.description[p])] for p in cl.parameters.parameters],
 		"class" : "table"
 	})
 
@@ -148,7 +147,7 @@ def standard(id):
 
 		freecad["props"] = []
 		freecad["props"].append(format_author_prop(base.author_names))
-		freecad["props"].append(('License',html.a(base.license_name,href=base.license_url)))
+		freecad["props"].append((gettext('License'),html.a(base.license_name,href=base.license_url)))
 		freecad["props"] = html.properties(freecad["props"])
 
 	#openscad
@@ -158,7 +157,7 @@ def standard(id):
 
 		openscad["props"] = []
 		openscad["props"].append(format_author_prop(module.author_names))
-		openscad["props"].append(('License',html.a(module.license_name,href=module.license_url)))
+		openscad["props"].append((gettext('License'),html.a(module.license_name,href=module.license_url)))
 		openscad["props"] = html.properties(openscad["props"])
 
 		params = cl.parameters.union(module.parameters)
@@ -179,7 +178,7 @@ def standard(id):
 						conns.append([loc,html.a(html.img(src=draw_url,width="200"),href=draw_url)])
 
 			openscad["connectors"] = html.table({
-					"header" : ["Location","Drawing"],
+					"header" : [gettext("Location"),gettext("Drawing")],
 					"class" : "table",
 					"data" : conns})
 		else:
