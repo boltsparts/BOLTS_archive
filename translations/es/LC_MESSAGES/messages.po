@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-28 18:33+0200\n"
+"POT-Creation-Date: 2014-07-28 21:46+0200\n"
 "PO-Revision-Date: 2014-07-28 13:12+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -157,6 +157,7 @@ msgid "Parameter Name"
 msgstr ""
 
 #: website/parts/__init__.py:146 website/parts/templates/name.html:17
+#: website/parts/templates/standard.html:17
 msgid "Description"
 msgstr ""
 
@@ -168,46 +169,60 @@ msgstr ""
 msgid "Drawing"
 msgstr ""
 
+#: website/parts/templates/body.html:6
+#, python-format
+msgid "Specifications by %(body)s"
+msgstr ""
+
+#: website/parts/templates/index.html:16
+msgid "Collections"
+msgstr ""
+
+#: website/parts/templates/index.html:25
+msgid "Standardisation bodies"
+msgstr ""
+
 #: website/parts/templates/name.html:10
+#: website/parts/templates/standard.html:10
 msgid "Drawings"
 msgstr ""
 
 #: website/parts/templates/name.html:13
+#: website/parts/templates/standard.html:13
 msgid "Parameters"
 msgstr ""
 
 #: website/parts/templates/name.html:24
+#: website/parts/templates/standard.html:24
 msgid "This part is not availaible for FreeCAD"
 msgstr ""
 
 #: website/parts/templates/name.html:30
+#: website/parts/templates/standard.html:30
 msgid "Incantations"
 msgstr ""
 
+#: website/parts/templates/name.html:34
+#: website/parts/templates/standard.html:34
+msgid "Connectors"
+msgstr ""
+
 #: website/parts/templates/name.html:37
+#: website/parts/templates/standard.html:37
 msgid "This part is not availaible for OpenSCAD"
 msgstr ""
 
 #: website/parts/templates/name.html:40
+#: website/parts/templates/standard.html:40
 msgid "Tables"
 msgstr ""
 
 #~ msgid ""
-#~ "You can help BOLTS by modeling "
-#~ "parts in one of the supported CAD"
-#~ " tools, by adding dimensions and "
-#~ "metadata for new parts, or by "
-#~ "creating drawings for the <a "
-#~ "href=\"/html/index.html\">online part directory</a>."
 #~ msgstr ""
 
-#~ msgid ""
-#~ "These tasks are relatively easy, and "
-#~ "most of them do not require "
-#~ "programming skills. To learn more, check"
-#~ " out <a href=\"/contribute.html\">this page</a>,"
-#~ " it has more information and links"
-#~ " to detailed descriptions of the "
-#~ "different tasks."
+#~ msgid " Specifications by %(body)s"
+#~ msgstr ""
+
+#~ msgid "Dimensions"
 #~ msgstr ""
 

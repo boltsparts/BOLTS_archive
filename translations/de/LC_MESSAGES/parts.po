@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-28 18:33+0200\n"
-"PO-Revision-Date: 2014-07-28 14:12+0200\n"
+"POT-Creation-Date: 2014-07-28 21:46+0200\n"
+"PO-Revision-Date: 2014-07-28 21:24+0200\n"
 "Last-Translator: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -32,15 +32,15 @@ msgstr "Lager"
 
 #. collection description
 msgid "Various ball and roller bearings"
-msgstr ""
+msgstr "Verschiedene Kugel- und Rollenlager"
 
 #. collection name
 msgid "Pipes"
-msgstr ""
+msgstr "Rohre"
 
 #. collection description
 msgid "Metric and imperial pipes"
-msgstr ""
+msgstr "Metrische und zöllische Rohre"
 
 #. collection name
 msgid "Hexagon fasteners"
@@ -48,7 +48,7 @@ msgstr ""
 
 #. collection description
 msgid "Various standard hex bolts and screws"
-msgstr ""
+msgstr "Verschiedene Sechskantschrauben und -bolzen"
 
 #. collection name
 msgid "I-Beam profiles (rolled)"
@@ -60,7 +60,7 @@ msgstr ""
 
 #. collection name
 msgid "Batteries"
-msgstr ""
+msgstr "Batterien"
 
 #. collection description
 msgid "This collection contains different sorts of batteries"
@@ -76,11 +76,11 @@ msgstr ""
 
 #. collection name
 msgid "Flanges"
-msgstr ""
+msgstr "Flansche"
 
 #. collection description
 msgid "Various standard flanges"
-msgstr ""
+msgstr "Verschiedene Standardflansche"
 
 #. collection name
 msgid "Hexagon socket fasteners"
@@ -92,7 +92,7 @@ msgstr ""
 
 #. collection name
 msgid "Washers"
-msgstr ""
+msgstr "Unterlagsscheiben"
 
 #. collection description
 msgid "Various standard washers"
@@ -108,11 +108,11 @@ msgstr ""
 
 #. collection name
 msgid "Nuts"
-msgstr ""
+msgstr "Muttern"
 
 #. collection description
 msgid "Various standard nuts"
-msgstr ""
+msgstr "Verschiedene Standardmuttern"
 
 #. collection name
 msgid "Extrusions and small profiles"
@@ -126,7 +126,7 @@ msgstr ""
 #. Parameter description e_min
 #. Parameter description d2
 msgid "head diameter"
-msgstr ""
+msgstr "Kopfdurchmesser"
 
 #. Parameter description b2
 msgid "threaded length of shaft for 125 mm < l < 200 mm"
@@ -139,11 +139,11 @@ msgstr "Kopflänge"
 
 #. Parameter description l
 msgid "length excluding head"
-msgstr ""
+msgstr "Länge exklusive Kopf"
 
 #. Parameter description s
 msgid "width across flats"
-msgstr ""
+msgstr "Schlüsselweite"
 
 #. Parameter description b1
 msgid "threaded length of shaft for l < 125 mm"
@@ -171,7 +171,7 @@ msgstr ""
 
 #. Parameter description l
 msgid "Length"
-msgstr ""
+msgstr "Länge"
 
 #. Parameter description b
 msgid "flange width"
@@ -302,7 +302,7 @@ msgstr ""
 
 #. Parameter description d
 msgid "diameter"
-msgstr ""
+msgstr "Durchmesser"
 
 #. Parameter description point
 msgid "point type"
