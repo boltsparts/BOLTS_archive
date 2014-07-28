@@ -9,6 +9,7 @@ from os.path import join, exists
 from os import environ, makedirs
 from shutil import rmtree
 from cache import cache
+import translation
 from blog import blog
 from docs import docs
 from parts import parts, repo, dbs
@@ -38,18 +39,18 @@ app.register_blueprint(parts,url_prefix='/html')
 app.register_blueprint(parts,url_prefix='/parts')
 app.debug = True
 
-trans_dir = join(environ["OPENSHIFT_REPO_DIR"],"translations")
-domain = Domain(trans_dir)
-babel = Babel(app,default_domain=domain)
+babel = Babel(app,default_domain=translation.messages_domain)
 
 stats = Statistics(repo,dbs)
 
 app.jinja_env.filters['markdown_docs'] = cms.markdown_docs
 app.jinja_env.filters['markdown_blog'] = cms.markdown_blog
+app.jinja_env.globals['gettext_parts'] = translation.gettext_parts
 
 @babel.localeselector
 def get_locale():
 	#the four most popular languages from the website
+	return "de"
 	return request.accept_languages.best_match(['en','es','de','fr'])
 
 @app.route("/")
