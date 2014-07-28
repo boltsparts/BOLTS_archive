@@ -26,6 +26,7 @@ from backends.license import LICENSES_SHORT
 
 from os import getcwd,walk,listdir
 from shutil import make_archive, copyfile
+from tempfile import mkstemp
 import os.path
 from subprocess import call, Popen
 import argparse
@@ -144,7 +145,28 @@ def connectors(args):
 	from backends.connectordrawings import ConnectorDrawingsBackend
 	ConnectorDrawingsBackend(repo,dbs).write_output(out_path)
 
+def translate(args):
+	if args.update_translation:
+		#from website
+		#with NamedTemporaryFile() as fid:
+		_,fname = mkstemp(suffix=".pot")
+		os.system("pybabel extract -F website/babel.cfg -o %s website/" % fname)
+		os.system("pybabel update -D messages -i %s -d translations/" % fname)
+		os.remove(fname)
 
+		#TODO: from website content
+
+		#from parts data
+		repo = Repository(args.repo)
+		fhandle,fname = mkstemp(suffix=".pot")
+		with os.fdopen(fhandle,"w") as fid:
+			repo.extract_messages(fid)
+		os.system("pybabel update -D parts -d translations -i %s" % fname)
+		os.remove(fname)
+
+	if args.compile_translation:
+		os.system("pybabel compile -D messages -d translations/")
+		os.system("pybabel compile -D parts -d translations/")
 
 def release(args):
 	#check that there are no uncommited changes
@@ -274,6 +296,13 @@ parser_release.add_argument("target",
 	choices=["all","openscad","freecad","iges"],
 	default="all")
 parser_release.add_argument("-v","--version",type=str)
+
+parser_translate = subparsers.add_parser("translate")
+parser_translate.add_argument("-u",dest='update_translation', action="store_true",
+	help="update the po message catalogs from sources and parts data")
+parser_translate.add_argument("-c",dest='compile_translation', action="store_true",
+	help="compile the po message catalogs into mo catalogs")
+parser_translate.set_defaults(func=translate)
 
 
 args = parser.parse_args()
