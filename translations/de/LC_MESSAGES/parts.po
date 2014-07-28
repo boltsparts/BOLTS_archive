@@ -8,16 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-28 14:06+0200\n"
+"POT-Creation-Date: 2014-07-28 18:33+0200\n"
 "PO-Revision-Date: 2014-07-28 14:12+0200\n"
 "Last-Translator: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
-"X-Generator: Gtranslator 2.91.6\n"
 
 #. collection name
 msgid "C-Beam profiles (rolled)"
@@ -384,8 +383,8 @@ msgstr ""
 
 #. Parameter description L
 msgid ""
-"threshold threading length, shaft is completely threaded for screws shorter "
-"than L"
+"threshold threading length, shaft is completely threaded for screws "
+"shorter than L"
 msgstr ""
 
 #. Parameter description d1
@@ -469,8 +468,8 @@ msgstr ""
 
 #. ClassName description
 msgid ""
-"V-Slot is a high quality extruded aluminum profile building block that has "
-"an extremely smooth linear v groove rail on all 4 sides."
+"V-Slot is a high quality extruded aluminum profile building block that "
+"has an extremely smooth linear v groove rail on all 4 sides."
 msgstr ""
 
 #. ClassName name nice
@@ -827,8 +826,8 @@ msgstr ""
 #. ClassName labeling nice
 #, python-format
 msgid ""
-"Tube Bar Crimped Ends OD %(od)s ID %(id)s CG %(cg)s CL %(cl)s HD %(hd)s RL "
-"%(rl)s TL %(tl)s SD %(sd)s"
+"Tube Bar Crimped Ends OD %(od)s ID %(id)s CG %(cg)s CL %(cl)s HD %(hd)s "
+"RL %(rl)s TL %(tl)s SD %(sd)s"
 msgstr ""
 
 #. ClassName description
@@ -842,8 +841,8 @@ msgstr ""
 
 #. ClassName description
 msgid ""
-"The OpenBuilds Delrin Solid Mini V Wheels are great for small form factor "
-"linear actuator guides. They can be used with V-Slot Extrusion."
+"The OpenBuilds Delrin Solid Mini V Wheels are great for small form factor"
+" linear actuator guides. They can be used with V-Slot Extrusion."
 msgstr ""
 
 #. ClassName name nice
@@ -1479,3 +1478,4 @@ msgstr ""
 #, python-format
 msgid "Plain washer DINEN 27089 %(key)s"
 msgstr ""
+

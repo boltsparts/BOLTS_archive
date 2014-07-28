@@ -8,69 +8,187 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-28 14:06+0200\n"
-"PO-Revision-Date: 2014-07-28 14:06+0200\n"
+"POT-Creation-Date: 2014-07-28 18:33+0200\n"
+"PO-Revision-Date: 2014-07-28 18:33+0200\n"
 "Last-Translator: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
-"X-Generator: Gtranslator 2.91.6\n"
 
-#: website/parts/__init__.py:39
+#: website/main/__init__.py:24
+msgid "Home"
+msgstr ""
+
+#: website/main/templates/home.html:8
+msgid "BOLTS is an Open Library of Technical Specifications."
+msgstr "BOLTS ist eine offene Bibliothek für technische Spezifikationen."
+
+#: website/main/templates/home.html:19
+msgid "What is BOLTS?"
+msgstr "Was ist BOLTS?"
+
+#: website/main/templates/home.html:20
+msgid ""
+"The aim of BOLTS is to build a free and open-source standard parts "
+"library for CAD applications. It does so by providing a common database "
+"that can be utilized by many different CAD applications."
+msgstr ""
+"Das Ziel von BOLTS ist es, eine freie und quelloffene "
+"Standardteilebibliothek für CAD Applikationen aufzubauen. BOLTS tut dies,"
+" indem es eine gemeinsame Datenbasis bereitstellt, die von verschiedenen "
+"CAD Programmen aus genutzt werden kann."
+
+#: website/main/templates/home.html:27
+msgid "What is a standard parts library?"
+msgstr "Was ist eine Standardteilebibliothek?"
+
+#: website/main/templates/home.html:28
+msgid ""
+"When you use a CAD software to create a design, this design consists "
+"usually of two different types of components: Custom parts that are "
+"specific to your purposes and have to be custom made (e.g. by 3D "
+"printing), and standard parts like nuts and bolts that you can buy in a "
+"hardware store."
+msgstr ""
+"Wenn man eine CAD Software verwendet um ein Objekt zu konstruieren, dann "
+"besteht dieses normalerweise aus zwei Sorten von Komponenten: "
+"Spezialteile, die spezifisch für diese Anwendung sind, und die selbst "
+"hergestellt werden müssen (z.B. mit einem 3D Drucker), und Standardteile,"
+" wie Schrauben und Muttern, die man im Laden kaufen kann."
+
+#: website/main/templates/home.html:29
+msgid ""
+"A standard parts library relieves you from the tedious task of modeling "
+"standard parts by providing them readily usable, so that you can focus on"
+" the interesting aspects of your design."
+msgstr ""
+"Eine Standardteilebibliothek nimmt einem das langwierige Modellieren von "
+"Standardteilen ab, indem es diese sofort nutzbar bereitstellt. Dadurch "
+"kann man sich auf die interessanten Aspekte eines Designs konzentrieren."
+
+#: website/main/templates/home.html:30
+msgid ""
+"While many commercial vendors offer standard parts libraries with their "
+"tools or for a fee, there is no free (as in freedom) standard parts "
+"library, yet. BOLTS tries to fill this gap."
+msgstr ""
+"Während viele Firmen Standardteilebibliotheken für kommerzielle Software "
+"anbieten, gibt es bisher keine, die frei ist (wie in Freiheit)."
+
+#: website/main/templates/home.html:38
+msgid "How does BOLTS work?"
+msgstr "Wie funktioniert BOLTS?"
+
+#: website/main/templates/home.html:39
+msgid ""
+"BOLTS leverages the parametric abilities that most CAD applications "
+"provide. This allows to obtain a huge number of different sizes and "
+"variants of a part from a single model."
+msgstr ""
+"BOLTS nutzt die parametrischen Funktionen, die die meisten CAD Programme "
+"bereitstellen. Das erlaubt es, eine große Zahl von verschiedenen Größen "
+"und Varianten von einem einzelnen Modell abzuleiten."
+
+#: website/main/templates/home.html:40
+msgid ""
+"Dimensions and metadata of all the sizes and versions of the part are "
+"kept in special files. BOLTS can then use this data and the parametric "
+"models of the parts to automatically build standard parts libraries "
+"(\"BOLTS for ...\") for different CAD tools, that the user just can "
+"simply download and use"
+msgstr ""
+"Abmessungen und Metadaten für alle Größen und Versionen eines Teils sind "
+"in speziellen Dateien verfügbar. BOLTS can diese Daten zusammen mit den "
+"parametrischen Modellen dazu nutzen, automatisch "
+"Standardteilebibliotheken (\"BOLTS für ...\") verschiedene CAD programme "
+"zu erstellen, die der Benutzer einfach herunterladen und verwenden kann."
+
+#: website/main/templates/home.html:41
+msgid "So in a sense BOLTS is a tool to create standard parts libraries."
+msgstr ""
+"BOLTS ist also in einem gewissen Sinne ein Werkzeug zur Erstellung von "
+"Standardteilebibliotheken."
+
+#: website/main/templates/home.html:49
+msgid "How can I help?"
+msgstr "Wie kann ich mithelfen?"
+
+#: website/main/templates/home.html:50
+#, python-format
+msgid ""
+"You can help BOLTS by modeling parts in one of the supported CAD tools, "
+"by adding dimensions and metadata for new parts, or by creating drawings "
+"for the <a href=\"%(url)s\">online part directory</a>."
+msgstr ""
+
+#: website/main/templates/home.html:51
+#, python-format
+msgid ""
+"These tasks are relatively easy, and most of them do not require "
+"programming skills. To learn more, check out <a href=\"%(url)s\">this "
+"page</a>, it has more information and links to detailed descriptions of "
+"the different tasks."
+msgstr ""
+
+#: website/main/templates/home.html:54
+msgid "Statistics"
+msgstr "Statistiken"
+
+#: website/parts/__init__.py:47
 msgid "Author"
 msgid_plural "Authors"
 msgstr[0] "Autor"
 msgstr[1] "Autoren"
 
-#: website/parts/__init__.py:102 website/parts/__init__.py:150
-#: website/parts/__init__.py:160
+#: website/parts/__init__.py:110 website/parts/__init__.py:158
+#: website/parts/__init__.py:168
 msgid "License"
 msgstr "Lizenz"
 
-#: website/parts/__init__.py:103
+#: website/parts/__init__.py:111
 msgid "Collection"
 msgstr ""
 
-#: website/parts/__init__.py:107
+#: website/parts/__init__.py:115
 msgid "Identical to"
 msgstr "Identisch mit"
 
-#: website/parts/__init__.py:109
+#: website/parts/__init__.py:117
 msgid "Status"
 msgstr "Status"
 
-#: website/parts/__init__.py:110
+#: website/parts/__init__.py:118
 msgid "Standard body"
 msgstr "Standardisierungsbehörde"
 
-#: website/parts/__init__.py:112
+#: website/parts/__init__.py:120
 msgid "Replaces"
 msgstr "Ersetzt"
 
-#: website/parts/__init__.py:114
+#: website/parts/__init__.py:122
 msgid "Replaced by"
 msgstr "Ersetzt durch"
 
-#: website/parts/__init__.py:118
+#: website/parts/__init__.py:126
 msgid "Source"
 msgstr "Quellen"
 
-#: website/parts/__init__.py:138
+#: website/parts/__init__.py:146
 msgid "Parameter Name"
 msgstr "Parametername"
 
-#: website/parts/__init__.py:138 website/parts/templates/name.html:17
+#: website/parts/__init__.py:146 website/parts/templates/name.html:17
 msgid "Description"
 msgstr "Beschreibung"
 
-#: website/parts/__init__.py:181
+#: website/parts/__init__.py:189
 msgid "Location"
 msgstr ""
 
-#: website/parts/__init__.py:181
+#: website/parts/__init__.py:189
 msgid "Drawing"
 msgstr ""
 
@@ -98,89 +216,22 @@ msgstr "Dieses Teil ist für OpenSCAD nicht verfügbar"
 msgid "Tables"
 msgstr "Tabellen"
 
-#: website/templates/home.html:8
-msgid "BOLTS is an Open Library of Technical Specifications."
-msgstr "BOLTS ist eine offene Bibliothek für technische Spezifikationen."
+#~ msgid ""
+#~ "You can help BOLTS by modeling "
+#~ "parts in one of the supported CAD"
+#~ " tools, by adding dimensions and "
+#~ "metadata for new parts, or by "
+#~ "creating drawings for the <a "
+#~ "href=\"/html/index.html\">online part directory</a>."
+#~ msgstr ""
 
-#: website/templates/home.html:19
-msgid "What is BOLTS?"
-msgstr "Was ist BOLTS?"
+#~ msgid ""
+#~ "These tasks are relatively easy, and "
+#~ "most of them do not require "
+#~ "programming skills. To learn more, check"
+#~ " out <a href=\"/contribute.html\">this page</a>,"
+#~ " it has more information and links"
+#~ " to detailed descriptions of the "
+#~ "different tasks."
+#~ msgstr ""
 
-#: website/templates/home.html:20
-msgid ""
-"The aim of BOLTS is to build a free and open-source standard parts library "
-"for CAD applications. It does so by providing a common database that can be "
-"utilized by many different CAD applications."
-msgstr ""
-
-#: website/templates/home.html:27
-msgid "What is a standard parts library?"
-msgstr "Was ist eine Standardteilebibliothek?"
-
-#: website/templates/home.html:28
-msgid ""
-"When you use a CAD software to create a design, this design consists usually "
-"of two different types of components: Custom parts that are specific to your "
-"purposes and have to be custom made (e.g. by 3D printing), and standard "
-"parts like nuts and bolts that you can buy in a hardware store."
-msgstr ""
-
-#: website/templates/home.html:29
-msgid ""
-"A standard parts library relieves you from the tedious task of modeling "
-"standard parts by providing them readily usable, so that you can focus on "
-"the interesting aspects of your design."
-msgstr ""
-
-#: website/templates/home.html:30
-msgid ""
-"While many commercial vendors offer standard parts libraries with their "
-"tools or for a fee, there is no free (as in freedom) standard parts library, "
-"yet. BOLTS tries to fill this gap."
-msgstr ""
-
-#: website/templates/home.html:38
-msgid "How does BOLTS work?"
-msgstr ""
-
-#: website/templates/home.html:39
-msgid ""
-"BOLTS leverages the parametric abilities that most CAD applications provide. "
-"This allows to obtain a huge number of different sizes and variants of a "
-"part from a single model."
-msgstr ""
-
-#: website/templates/home.html:40
-msgid ""
-"Dimensions and metadata of all the sizes and versions of the part are kept "
-"in special files. BOLTS can then use this data and the parametric models of "
-"the parts to automatically build standard parts libraries (\"BOLTS for ..."
-"\") for different CAD tools, that the user just can simply download and use"
-msgstr ""
-
-#: website/templates/home.html:41
-msgid "So in a sense BOLTS is a tool to create standard parts libraries."
-msgstr ""
-
-#: website/templates/home.html:49
-msgid "How can I help?"
-msgstr "Wie kann ich mithelfen?"
-
-#: website/templates/home.html:50
-msgid ""
-"You can help BOLTS by modeling parts in one of the supported CAD tools, by "
-"adding dimensions and metadata for new parts, or by creating drawings for "
-"the <a href=\"/html/index.html\">online part directory</a>."
-msgstr ""
-
-#: website/templates/home.html:51
-msgid ""
-"These tasks are relatively easy, and most of them do not require programming "
-"skills. To learn more, check out <a href=\"/contribute.html\">this page</a>, "
-"it has more information and links to detailed descriptions of the different "
-"tasks."
-msgstr ""
-
-#: website/templates/home.html:54
-msgid "Statistics"
-msgstr "Statistiken"
