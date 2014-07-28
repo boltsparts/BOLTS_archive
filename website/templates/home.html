@@ -5,7 +5,7 @@
   <div class="inner-content">
     <div class="copy">
       <h1>BOLTS</h1>
-      <p class="intro">BOLTS is an Open Library of Technical Specifications.</p>
+      <p class="intro">{% trans %}BOLTS is an Open Library of Technical Specifications.{% endtrans %}</p>
     </div>
   </div>
 </div>
@@ -16,18 +16,18 @@
   <div class="inner-content">
     <div class="cols">
       <div class="col">
-        <h3> What is BOLTS?</h3>
-        <p>The aim of BOLTS is to build a free and open-source standard parts library for CAD applications. It does so by providing a common database that can be utilized by many different CAD applications.</p>
+        <h3>{% trans %}What is BOLTS?{% endtrans %}</h3>
+        <p>{% trans %}The aim of BOLTS is to build a free and open-source standard parts library for CAD applications. It does so by providing a common database that can be utilized by many different CAD applications.{% endtrans %}</p>
       </div>
       <div class="col">
       </div>
     </div>
     <div class="cols">
       <div class="col">
-        <h3>What is a standard parts library?</h3>
-        <p>When you use a CAD software to create a design, this design consists usually of two different types of components: Custom parts that are specific to your purposes and have to be custom made (e.g. by 3D printing), and standard parts like nuts and bolts that you can buy in a hardware store.</p>
-        <p>A standard parts library relieves you from the tedious task of modeling standard parts by providing them readily usable, so that you can focus on the interesting aspects of your design.</p>
-        <p>While many commercial vendors offer standard parts libraries with their tools or for a fee, there is no free (as in freedom) standard parts library, yet. BOLTS tries to fill this gap.</p>
+        <h3>{% trans %}What is a standard parts library?{% endtrans %}</h3>
+        <p>{% trans %}When you use a CAD software to create a design, this design consists usually of two different types of components: Custom parts that are specific to your purposes and have to be custom made (e.g. by 3D printing), and standard parts like nuts and bolts that you can buy in a hardware store.{% endtrans %}</p>
+        <p>{% trans %}A standard parts library relieves you from the tedious task of modeling standard parts by providing them readily usable, so that you can focus on the interesting aspects of your design.{% endtrans %}</p>
+        <p>{% trans %}While many commercial vendors offer standard parts libraries with their tools or for a fee, there is no free (as in freedom) standard parts library, yet. BOLTS tries to fill this gap.{% endtrans %}</p>
       </div>
       <div class="col">
         <img width="80%" src="/static/images/parts_library.png"/>
@@ -35,10 +35,10 @@
     </div>
     <div class="cols">
       <div class="col">
-        <h3>How does BOLTS work?</h3>
-        <p>BOLTS leverages the parametric abilities that most CAD applications provide. This allows to obtain a huge number of different sizes and variants of a part from a single model.</p>
-        <p>Dimensions and metadata of all the sizes and versions of the part are kept in special files. BOLTS can then use this data and the parametric models of the parts to automatically build standard parts libraries ("BOLTS for ...") for different CAD tools, that the user just can simply download and use.</p>
-        <p> So in a sense BOLTS is a tool to create standard parts libraries.</p>
+        <h3>{% trans %}How does BOLTS work?{% endtrans %}</h3>
+        <p>{% trans %}BOLTS leverages the parametric abilities that most CAD applications provide. This allows to obtain a huge number of different sizes and variants of a part from a single model.{% endtrans %}</p>
+        <p>{% trans %}Dimensions and metadata of all the sizes and versions of the part are kept in special files. BOLTS can then use this data and the parametric models of the parts to automatically build standard parts libraries ("BOLTS for ...") for different CAD tools, that the user just can simply download and use{% endtrans %}.</p>
+        <p>{% trans %}So in a sense BOLTS is a tool to create standard parts libraries.{% endtrans %}</p>
       </div>
       <div class="col">
         <a href="/static/images/bolts_process.png"><img width="80%" src="/static/images/bolts_process.png"/></a>
@@ -46,12 +46,12 @@
     </div>
     <div class="cols">
       <div class="col">
-        <h3>How can I help?</h3>
-        <p>You can help BOLTS by modeling parts in one of the supported CAD tools, by adding dimensions and metadata for new parts, or by creating drawings for the <a href="/html/index.html">online part directory</a>.</p>
-        <p>These tasks are relatively easy, and most of them do not require programming skills. To learn more, check out <a href="/contribute.html">this page</a>, it has more information and links to detailed descriptions of the different tasks.</p>
+        <h3>{% trans %}How can I help?{% endtrans %}</h3>
+        <p>{% trans %}You can help BOLTS by modeling parts in one of the supported CAD tools, by adding dimensions and metadata for new parts, or by creating drawings for the <a href="/html/index.html">online part directory</a>.{% endtrans %}</p>
+        <p>{% trans %}These tasks are relatively easy, and most of them do not require programming skills. To learn more, check out <a href="/contribute.html">this page</a>, it has more information and links to detailed descriptions of the different tasks.{% endtrans %}</p>
       </div>
       <div class="col">
-        <h3>Statistics</h3>
+        <h3>{% trans %}Statistics{% endtrans %}</h3>
         <ul>
           <li> <a href="/contributors.html">{{ stats.contributors }} people</a> contributed</li>
           <li> {{ stats.classes }} classes in</li>

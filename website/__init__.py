@@ -1,5 +1,5 @@
-from flask import Flask, render_template, abort, redirect, url_for
-from flask.ext.babel import Babel,format_datetime
+from flask import Flask, render_template, abort, redirect, url_for, request
+from flask.ext.babelex import Babel,format_datetime, gettext, lazy_gettext, Domain
 from bolttools.blt import Repository
 from bolttools.freecad import FreeCADData
 from bolttools.openscad import OpenSCADData
@@ -38,18 +38,25 @@ app.register_blueprint(parts,url_prefix='/html')
 app.register_blueprint(parts,url_prefix='/parts')
 app.debug = True
 
-babel = Babel(app)
+trans_dir = join(environ["OPENSHIFT_REPO_DIR"],"translations")
+domain = Domain(trans_dir)
+babel = Babel(app,default_domain=domain)
 
 stats = Statistics(repo,dbs)
 
 app.jinja_env.filters['markdown_docs'] = cms.markdown_docs
 app.jinja_env.filters['markdown_blog'] = cms.markdown_blog
 
+@babel.localeselector
+def get_locale():
+	#the four most popular languages from the website
+	return request.accept_languages.best_match(['en','es','de','fr'])
+
 @app.route("/")
 @app.route("/index.html")
 @cache.cached()
 def index():
-	page = {"title" : "Home"}
+	page = {"title" : lazy_gettext("Home")}
 
 	return render_template("home.html",page=page, stats = stats.get_statistics())
 

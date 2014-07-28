@@ -1,0 +1,112 @@
+# French translations for PROJECT.
+# Copyright (C) 2014 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2014-07-28 11:01+0200\n"
+"PO-Revision-Date: 2014-07-28 10:46+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: website/templates/home.html:8
+msgid "BOLTS is an Open Library of Technical Specifications."
+msgstr ""
+
+#: website/templates/home.html:19
+msgid "What is BOLTS?"
+msgstr ""
+
+#: website/templates/home.html:20
+msgid ""
+"The aim of BOLTS is to build a free and open-source standard parts "
+"library for CAD applications. It does so by providing a common database "
+"that can be utilized by many different CAD applications."
+msgstr ""
+
+#: website/templates/home.html:27
+msgid "What is a standard parts library?"
+msgstr ""
+
+#: website/templates/home.html:28
+msgid ""
+"When you use a CAD software to create a design, this design consists "
+"usually of two different types of components: Custom parts that are "
+"specific to your purposes and have to be custom made (e.g. by 3D "
+"printing), and standard parts like nuts and bolts that you can buy in a "
+"hardware store."
+msgstr ""
+
+#: website/templates/home.html:29
+msgid ""
+"A standard parts library relieves you from the tedious task of modeling "
+"standard parts by providing them readily usable, so that you can focus on"
+" the interesting aspects of your design."
+msgstr ""
+
+#: website/templates/home.html:30
+msgid ""
+"While many commercial vendors offer standard parts libraries with their "
+"tools or for a fee, there is no free (as in freedom) standard parts "
+"library, yet. BOLTS tries to fill this gap."
+msgstr ""
+
+#: website/templates/home.html:38
+msgid "How does BOLTS work?"
+msgstr ""
+
+#: website/templates/home.html:39
+msgid ""
+"BOLTS leverages the parametric abilities that most CAD applications "
+"provide. This allows to obtain a huge number of different sizes and "
+"variants of a part from a single model."
+msgstr ""
+
+#: website/templates/home.html:40
+msgid ""
+"Dimensions and metadata of all the sizes and versions of the part are "
+"kept in special files. BOLTS can then use this data and the parametric "
+"models of the parts to automatically build standard parts libraries "
+"(\"BOLTS for ...\") for different CAD tools, that the user just can "
+"simply download and use"
+msgstr ""
+
+#: website/templates/home.html:41
+msgid "So in a sense BOLTS is a tool to create standard parts libraries."
+msgstr ""
+
+#: website/templates/home.html:49
+msgid "How can I help?"
+msgstr ""
+
+#: website/templates/home.html:50
+msgid ""
+"You can help BOLTS by modeling parts in one of the supported CAD tools, "
+"by adding dimensions and metadata for new parts, or by creating drawings "
+"for the <a href=\"/html/index.html\">online part directory</a>."
+msgstr ""
+
+#: website/templates/home.html:51
+msgid ""
+"These tasks are relatively easy, and most of them do not require "
+"programming skills. To learn more, check out <a "
+"href=\"/contribute.html\">this page</a>, it has more information and "
+"links to detailed descriptions of the different tasks."
+msgstr ""
+
+#: website/templates/home.html:54
+msgid "Statistics"
+msgstr ""
+
+#~ msgid ""
+#~ msgstr ""
+

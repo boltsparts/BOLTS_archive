@@ -89,6 +89,12 @@ def test(args):
 					continue
 				extra_files.append(os.path.join(dirpath,filename))
 
+		trans_path = os.path.join(args.repo,"translations")
+		for dirpath,_,filenames in walk(trans_path):
+			for filename in filenames:
+				if filename.endswith('.mo'):
+					extra_files.append(os.path.join(dirpath,filename))
+
 		app.run(debug=True,extra_files=extra_files)
 
 def check(args):
