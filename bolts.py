@@ -95,6 +95,14 @@ def test(args):
 				if filename.endswith('.mo'):
 					extra_files.append(os.path.join(dirpath,filename))
 
+		#templates
+		for dirpath,_,filenames in walk(args.repo):
+			if os.path.basename(dirpath) == "templates":
+				for filename in filenames:
+					extra_files.append(os.path.join(dirpath,filename))
+
+
+
 		app.run(debug=True,extra_files=extra_files)
 
 def check(args):
