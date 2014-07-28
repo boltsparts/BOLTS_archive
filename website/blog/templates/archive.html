@@ -14,7 +14,7 @@
     <ul class="bordered-list">
       {% for post in posts %}
       <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ url_for('blog.post',**post.url_values ) }}">{{ post.title }}</a>
         <span class="date">{{ post.date | datetimeformat }}</span>
       </li>
       {% endfor %}
