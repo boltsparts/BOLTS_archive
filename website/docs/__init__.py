@@ -7,8 +7,9 @@ from os import walk, listdir
 from ..cache import cache
 import re
 from docutils import core
+from ..translation import languages
 
-docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static",url_prefix='/<lang_code>/doc')
+docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/docs' % ",".join(languages))
 
 @docs.url_defaults
 def add_language_code(endpoint, values):

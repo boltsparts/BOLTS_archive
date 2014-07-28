@@ -45,7 +45,7 @@ def get_locale():
 	lang_code = getattr(g,'lang_code',None)
 	if lang_code is None:
 		#the four most popular languages from the website
-		lang_code = request.accept_languages.best_match(['en','es','de','fr'])
+		lang_code = request.accept_languages.best_match(translation.languages)
 	return lang_code
 
 @app.route('/')

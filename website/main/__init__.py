@@ -3,8 +3,9 @@ from flask.ext.babelex import gettext
 from bolttools.statistics import Statistics
 from ..cache import cache
 from ..parts import repo, dbs
+from ..translation import languages
 
-main = Blueprint("main",__name__,template_folder="templates",static_folder="static",url_prefix='/<lang_code>')
+main = Blueprint("main",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>' % ",".join(languages))
 
 stats = Statistics(repo,dbs)
 

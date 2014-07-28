@@ -8,8 +8,9 @@ import re
 from urlparse import urljoin
 from werkzeug.contrib.atom import AtomFeed
 from ..cache import cache
+from ..translation import languages
 
-blog = Blueprint("blog",__name__,template_folder="templates",static_folder="static",url_prefix='/<lang_code>/blog')
+blog = Blueprint("blog",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/blog' % ",".join(languages))
 
 @blog.url_defaults
 def add_language_code(endpoint, values):

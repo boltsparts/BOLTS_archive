@@ -10,9 +10,9 @@ from bolttools.drawings import DrawingsData
 from backends.openscad import get_signature
 from .. import html,utils
 from ..cache import cache
-from ..translation import parts_domain, gettext_parts
+from ..translation import parts_domain, gettext_parts, languages
 
-parts = Blueprint("parts",__name__,template_folder="templates",url_prefix='/<lang_code>/parts')
+parts = Blueprint("parts",__name__,template_folder="templates",url_prefix='/<any(%s):lang_code>/parts' % ",".join(languages))
 
 @parts.url_defaults
 def add_language_code(endpoint, values):
