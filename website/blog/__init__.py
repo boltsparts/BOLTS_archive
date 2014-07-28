@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort, redirect, request, g
+from flask import Blueprint, render_template, abort, redirect, request, g, url_for
 from os.path import exists,join
 from os import listdir
 from yaml import load
@@ -120,7 +120,7 @@ def feed():
 			markdown.markdown(post["content"]),
 			content_type="html",
 			author=post["author"],
-			url=urljoin(request.url,post["url"]),
+			url=urljoin(request.url,url_for('blog.post',**post["url_values"])),
 			updated=post["updated"] or post["date"],
 			published=post["date"],
 			summary=markdown.markdown(post["teaser"]),
