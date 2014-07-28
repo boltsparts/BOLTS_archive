@@ -30,7 +30,7 @@
         <p>{% trans %}While many commercial vendors offer standard parts libraries with their tools or for a fee, there is no free (as in freedom) standard parts library, yet. BOLTS tries to fill this gap.{% endtrans %}</p>
       </div>
       <div class="col">
-        <img width="80%" src="/static/images/parts_library.png"/>
+        <img width="80%" src="{{ url_for('main.static',filename='images/parts_library.png') }}"/>
       </div>
     </div>
     <div class="cols">
@@ -41,23 +41,23 @@
         <p>{% trans %}So in a sense BOLTS is a tool to create standard parts libraries.{% endtrans %}</p>
       </div>
       <div class="col">
-        <a href="/static/images/bolts_process.png"><img width="80%" src="/static/images/bolts_process.png"/></a>
+        <a href="{{ url_for('main.static',filename='images/bolts_process.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/bolts_process.png') }}"/></a>
       </div>
     </div>
     <div class="cols">
       <div class="col">
         <h3>{% trans %}How can I help?{% endtrans %}</h3>
-        <p>{% trans %}You can help BOLTS by modeling parts in one of the supported CAD tools, by adding dimensions and metadata for new parts, or by creating drawings for the <a href="/html/index.html">online part directory</a>.{% endtrans %}</p>
-        <p>{% trans %}These tasks are relatively easy, and most of them do not require programming skills. To learn more, check out <a href="/contribute.html">this page</a>, it has more information and links to detailed descriptions of the different tasks.{% endtrans %}</p>
+        <p>{% trans url = url_for('parts.index') %}You can help BOLTS by modeling parts in one of the supported CAD tools, by adding dimensions and metadata for new parts, or by creating drawings for the <a href="{{ url }}">online part directory</a>.{% endtrans %}</p>
+        <p>{% trans url = url_for('main.contribute') %}These tasks are relatively easy, and most of them do not require programming skills. To learn more, check out <a href="{{ url }}">this page</a>, it has more information and links to detailed descriptions of the different tasks.{% endtrans %}</p>
       </div>
       <div class="col">
         <h3>{% trans %}Statistics{% endtrans %}</h3>
         <ul>
           <li> <a href="/contributors.html">{{ stats.contributors }} people</a> contributed</li>
           <li> {{ stats.classes }} classes in</li>
-          <li> {{ stats.collections }} <a href="/html/index.html">collections</a> following</li>
+          <li> {{ stats.collections }} <a href="{{ url_for('parts.index') }}">collections</a> following</li>
           <li> {{ stats.standards }} different standards issued by</li>
-          <li> {{ stats.bodies }} <a href="/html/index.html">standardization organisations</a></li>
+          <li> {{ stats.bodies }} <a href="{{ url_for('parts.index') }}">standardization organisations</a></li>
         </ul>
       </div>
     </div>
@@ -68,14 +68,14 @@
         <pre><code>
 include <bolts.scad>
         </code></pre>
-        <p> You can now use BOLTS to add standard parts like a <a href="{{ url_for('parts.standard',id="ISO7089") }}">washer</a>:</p>
+        <p> You can now use BOLTS to add standard parts like a <a href="{{ url_for('parts.standard',id='ISO7089') }}">washer</a>:</p>
         <pre><code>
 ISO7089("M4");
         </code></pre>
-        <p>For more information see the <a href="/doc/index.html">Documentation</a>
+        <p>For more information see the <a href="{{ url_for('docs.index') }}">Documentation</a>
       </div>
       <div class="col">
-        <a href="/static/images/openscad-bolt.png"><img width="80%" src="/static/images/openscad-bolt.png"/></a>
+        <a href="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"/></a>
       </div>
     </div>
     <div class="cols">
@@ -87,7 +87,7 @@ ISO7089("M4");
         <p>For more information see the <a href="/doc/index.html">Documentation</a>
       </div>
       <div class="col">
-        <a href="/static/images/freecad-bearing.png"><img width="80%" src="/static/images/freecad-bearing.png"/></a>
+        <a href="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"/></a>
       </div>
     </div>
     <div class="cols">
@@ -98,7 +98,7 @@ ISO7089("M4");
         <p>The files are structured in subdirectories, which correspond to the collections shown <a href="/html/index.html">in the Specifications</a>. Not all sizes or variants of all parts are available in BOLTS for IGES, if you miss something <a href="/contribute.html">get in touch</a>.
       </div>
       <div class="col">
-        <a href="/static/images/iges-quickstart.png"><img width="80%" src="/static/images/iges-quickstart.png"/></a>
+        <a href="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"/></a>
       </div>
     </div>
   </div>

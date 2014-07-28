@@ -22,7 +22,7 @@ combinations, I have [blogged about this]({{ blog(2013/11/29/BLT-file-progress) 
 a while ago. I have not yet specified common parameters for all classes of
 parts, and BOLTS can not guess them in some cases. These parts are then ignored
 and not exported to IGES. A list of parts that miss common parameter
-information can be found on the [tasks page]({{ url(tasks) }}). One
+information can be found on the [tasks page]({{ url(main.tasks) }}). One
 only has to lookup a few vendor sites on the internet and find the most common
 sizes and variations of parameters for the part and enter them into the blt
 file.
@@ -44,7 +44,7 @@ without problems.
 As mentioned earlier, the IGES distribution consists of a lot of files, many of
 which are very similar. It currently has around 1600 files with a total size of
 around 120 MByte. These files are compressed into a single file which can then
-be downloaded from the [download section]({{ url(downloads) }}).
+be downloaded from the [download section]({{ url(main.downloads) }}).
 
 In contrast to the FreeCAD and OpenSCAD distributions of BOLTS, which are
 available both as zip and tar.gz, the IGES distribution is only available as

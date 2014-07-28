@@ -21,7 +21,7 @@ For BOLTS this was a bit difficult, because I want it to be compatible with all
 Versions of FreeCAD on all systems, but in the end it worked out. At least I
 hope. I do not have access to a Windows Computer, so I could not test that. If
 you do and run FreeCAD 0.13 or 0.14, it would be great if you could test
-whether the latest [development snapshot]({{ url(downloads) }}) works for you.
+whether the latest [development snapshot]({{ url(main.downloads) }}) works for you.
 
 ### 2D Tables
 

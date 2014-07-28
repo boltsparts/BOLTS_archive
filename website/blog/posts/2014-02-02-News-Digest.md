@@ -29,4 +29,4 @@ them with short explanations:
 * In FreeCAD, parts now set the label instead of the object name. This makes BOLTS parts in the treeview nicer, as spapces are not converted to underscores.
 * The Python functions that create the parts for FreeCAD can now throw ValueErrors to indicate invalid parameter combinations. The user is presented with a ErrorDialog with details about the problem.
 
-All these improvements are available in the most current [development snapshot]({{ url(downloads) }}).
+All these improvements are available in the most current [development snapshot]({{ url(main.downloads) }}).

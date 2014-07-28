@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort, redirect, request
+from flask import Blueprint, render_template, abort, redirect, request, g
 from os.path import exists,join
 from os import listdir
 from yaml import load
@@ -9,7 +9,15 @@ from urlparse import urljoin
 from werkzeug.contrib.atom import AtomFeed
 from ..cache import cache
 
-blog = Blueprint("blog",__name__,template_folder="templates",static_folder="static")
+blog = Blueprint("blog",__name__,template_folder="templates",static_folder="static",url_prefix='/<lang_code>/blog')
+
+@blog.url_defaults
+def add_language_code(endpoint, values):
+	values.setdefault('lang_code',g.lang_code)
+
+@blog.url_value_preprocessor
+def pull_language_code(endpoint, values):
+	g.lang_code = values.pop('lang_code')
 
 class Posts:
 	def __init__(self,path):

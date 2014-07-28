@@ -61,4 +61,4 @@ widget for the free parameters:
 [<img alt="Descriptive Tooltips" src="{{ static(freecad_tooltip.png) }}" style="width: 100%;"/>]({{ static(freecad_tooltip.png) }})
 
 This feature (along with a few more improvements and fixes) is available in the
-latest development snapshot from the [download section]({{ url(downloads) }}).
+latest development snapshot from the [download section]({{ url(main.downloads) }}).

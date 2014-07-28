@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort, redirect, request, url_for
+from flask import Blueprint, render_template, abort, redirect, request, url_for, g
 from flask.ext.babelex import gettext, ngettext
 from flask.helpers import safe_join, send_from_directory
 from os.path import join
@@ -12,7 +12,15 @@ from .. import html,utils
 from ..cache import cache
 from ..translation import parts_domain, gettext_parts
 
-parts = Blueprint("parts",__name__,template_folder="templates")
+parts = Blueprint("parts",__name__,template_folder="templates",url_prefix='/<lang_code>/parts')
+
+@parts.url_defaults
+def add_language_code(endpoint, values):
+	values.setdefault('lang_code',g.lang_code)
+
+@parts.url_value_preprocessor
+def pull_language_code(endpoint, values):
+	g.lang_code = values.pop('lang_code')
 
 repo = Repository(environ['OPENSHIFT_REPO_DIR'])
 dbs = {

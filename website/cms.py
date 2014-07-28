@@ -10,12 +10,15 @@ def get_subs(version):
 	return {
 		'doc' : lambda m: url_for('docs.document',
 			version=version,
+			lang_code="en",
 			**dict(zip(['cat','filename'],(a.strip() for a in m.group(2).split(','))))
 		),
 		'doc_version' : lambda m: url_for('docs.document',
+			lang_code="en",
 			**dict(zip(['version','cat','filename'],(a.strip() for a in m.group(2).split(','))))
 		),
 		'blog' : lambda m: url_for('blog.post',
+			lang_code="en",
 			**dict(zip(['year','month','day','slug'],(a.strip() for a in m.group(2).split('/'))))
 		),
 		'url' : lambda m: url_for(m.group(2)),

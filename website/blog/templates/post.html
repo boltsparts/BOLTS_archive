@@ -5,7 +5,7 @@
   <div id="blog-single">
     <article>
       <header>
-        <h1><a href="/blog/{{ post.url }}">{{ post.title }}</a></h1>
+        <h1><a href="{{ url_for('blog.post',year=post.date.year,month=post.date.month,day=post.date.day,slug=post.slug) }}">{{ post.title }}</a></h1>
         <p>Posted on {{ post.date | datetimeformat }} by {{ post.author }}
         {%- if not post.updated is none -%}
         , last update {{ post.updated | datetimeformat }}

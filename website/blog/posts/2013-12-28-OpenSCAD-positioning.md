@@ -5,7 +5,7 @@
 ---
 
 I am looking for ways to make it easier to use parts from
-[BOLTS]({{ url(index) }})) in OpenSCAD. At the moment it is a bit awkward
+[BOLTS]({{ url(main.index) }})) in OpenSCAD. At the moment it is a bit awkward
 because one has to know precisely how the BOLTS part is positioned and oriented
 and then has to translate and rotate it around. This often requires the
 knowledge of some dimensions of the part, so one has to query BOLTS about it,
@@ -103,7 +103,7 @@ Changing the size of the bolts and washers change M4 is also easy.
 ### Try it
 
 You can try this functionality with the most recent development snapshot from
-the [BOLTS page]({{ url(downloads) }}). Either place the contents of the
+the [BOLTS page]({{ url(main.downloads) }}). Either place the contents of the
 archive in the same directory as the .scad files that use BOLTS, or follow the
 instructions on 
 [how to install BOLTS for OpenSCAD]({{ doc(openscad,installation) }}).

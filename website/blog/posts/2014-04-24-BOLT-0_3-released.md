@@ -4,11 +4,11 @@
   author: Johannes <jreinhardt@ist-dein-freund.de>
 ---
 
-I am happy to announce a new release for [BOLTS]({{ url(index) }}),
+I am happy to announce a new release for [BOLTS]({{ url(main.index) }}),
 the Open Library of Technical Specifications. The distributions for
 [OpenSCAD](http://www.openscad.org/), [FreeCAD](http://freecadweb.org/) and as
 a collection of IGES files can be found on the [Download
-page]({{ url(downloads) }}).
+page]({{ url(main.downloads) }}).
 
 <!-- more -->
 
@@ -23,7 +23,7 @@ came up with. It turns out I even managed to blog about most of it.
 * [Python 2.6 compatibility]({{ blog(2013/11/11/Python-2.6) }}) for the FreeCAD backend
 * [Common Parameters]({{ blog(2013/11/29/BLT-file-progress) }})
 * More and better automatic checks
-* Many small and bigger improvements to the [webpage]({{ url(index) }}).
+* Many small and bigger improvements to the [webpage]({{ url(main.index) }}).
 * Improved structure of code, resulting in smaller distribution files
 * Improvements for the [utility script]({{ doc_version(0.3,general,utility-script) }}).
 * [Connectors for OpenSCAD]({{ blog(2013/12/28/OpenSCAD-positioning) }})
