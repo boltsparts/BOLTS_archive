@@ -39,6 +39,7 @@ babel = Babel(app,default_domain=translation.messages_domain)
 app.jinja_env.filters['markdown_docs'] = cms.markdown_docs
 app.jinja_env.filters['markdown_blog'] = cms.markdown_blog
 app.jinja_env.globals['gettext_parts'] = translation.gettext_parts
+app.jinja_env.globals['gettext_docs'] = translation.gettext_docs
 
 @babel.localeselector
 def get_locale():

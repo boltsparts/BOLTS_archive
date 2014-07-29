@@ -63,7 +63,7 @@ class Documentation:
 
 					self.audiences.add(header["audience"])
 
-					doc["content"] = content.split('\n\n')
+					doc["content"] = [ p.strip().replace("%","%%") for p in content.split('\n\n')]
 					self.documents.append(doc)
 
 		self.categories = list(self.categories)
@@ -71,11 +71,11 @@ class Documentation:
 		self.versions = list(self.versions)
 		self.versions.sort(key=lambda x: float(x))
 
-	def extract_messages(fid):
+	def extract_messages(self,fid):
 		for doc in self.documents:
 			for paragraph in doc["content"]:
-				fid.write('#: docs/%s.blt, class: %s\n' % (collid,classid))
-				fid.write('msgid "%s"\nmsgstr ""\n' % self.name.get_nice())
+				fid.write('\n#: docs/%s/%s/%s\n' % (doc["version"],doc["category"],doc["filename"]))
+				fid.write('msgid "%s"\nmsgstr ""\n' % '\\n"\n"'.join(paragraph.split("\n")))
 
 	def get_versions(self):
 		return self.versions

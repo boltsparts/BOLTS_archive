@@ -4,7 +4,7 @@ from os import listdir
 from flask.helpers import safe_join, send_from_directory
 from urlparse import urljoin
 from ..cache import cache
-from ..translation import languages
+from ..translation import languages, gettext_docs
 from ..utils import Specification, Documentation
 
 docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/docs/<version>' % ",".join(languages))
@@ -53,8 +53,10 @@ def document(cat,filename):
 	doc = list(SOURCES.get_documents(version=g.version,category=cat,filename=filename))
 	if len(doc) != 1:
 		return abort(404)
+	doc = doc[0].copy()
+	doc["content"] = "\n\n".join(gettext_docs(p) for p in doc["content"])
 	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
-	return render_template("page.html",page=page,doc=doc[0])
+	return render_template("page.html",page=page,doc=doc)
 
 @docs.route("/specification")
 @docs.route("/specification.html")

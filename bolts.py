@@ -148,13 +148,19 @@ def connectors(args):
 def translate(args):
 	if args.update_translation:
 		#from website
-		#with NamedTemporaryFile() as fid:
 		_,fname = mkstemp(suffix=".pot")
 		os.system("pybabel extract -F website/babel.cfg -o %s website/" % fname)
 		os.system("pybabel update -D messages -i %s -d translations/" % fname)
 		os.remove(fname)
 
-		#TODO: from website content
+		#from documentation
+		from website.utils import Documentation
+		fhandle,fname = mkstemp(suffix=".pot")
+		with os.fdopen(fhandle,"w") as fid:
+			docs = Documentation(os.path.join(args.repo,'website','docs','sources'))
+			docs.extract_messages(fid)
+		os.system("pybabel update -D docs -d translations -i %s" % fname)
+		os.remove(fname)
 
 		#from parts data
 		repo = Repository(args.repo)
@@ -167,6 +173,7 @@ def translate(args):
 	if args.compile_translation:
 		os.system("pybabel compile -D messages -d translations/")
 		os.system("pybabel compile -D parts -d translations/")
+		os.system("pybabel compile -D docs -d translations/")
 
 def release(args):
 	#check that there are no uncommited changes

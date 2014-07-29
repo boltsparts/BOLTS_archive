@@ -8,9 +8,7 @@
         <h1>{{ doc.title }}</h1>
       </header>
       <div class="entry-content">
-        {% for paragraph in doc.content %}
-        {{ paragraph | markdown_docs }}
-        {% endfor %}
+        {{ doc.content | markdown_docs }}
       </div>
     </article>
 
