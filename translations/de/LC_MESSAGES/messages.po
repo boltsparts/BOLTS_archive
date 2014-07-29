@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-29 10:57+0200\n"
-"PO-Revision-Date: 2014-07-28 21:47+0200\n"
+"POT-Creation-Date: 2014-07-29 16:35+0200\n"
+"PO-Revision-Date: 2014-07-29 12:52+0200\n"
 "Last-Translator: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -20,11 +20,11 @@ msgstr ""
 
 #: website/docs/templates/doc.html:66
 msgid "blt file format specification"
-msgstr ""
+msgstr "blt Dateiformat Spezifikation"
 
 #: website/docs/templates/doc.html:67
 msgid "Changelog"
-msgstr ""
+msgstr "Änderungen"
 
 #: website/main/__init__.py:25
 msgid "Home"
