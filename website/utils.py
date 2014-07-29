@@ -39,30 +39,52 @@ class Specification:
 class Documentation:
 	def __init__(self,path):
 		self.documents = []
-		self.categories = []
-		self.audiences = []
+		self.categories = set([])
+		self.audiences = set([])
+		self.versions = set([])
 
-		for dirpath,_,filenames in walk(path):
-			cat = relpath(dirpath,path)
-			if cat == '.':
-				continue
-			self.categories.append(cat)
+		for version in listdir(path):
+			self.versions.add(version)
+			for cat in listdir(join(path,version)):
+				self.categories.add(cat)
+				for filename in listdir(join(path,version,cat)):
+					if filename.startswith('.'):
+						continue
+					doc = {}
+					doc["category"] = cat
+					doc["version"] = version
 
-			for filename in filenames:
-				if filename.startswith('.'):
-					continue
-				doc = {}
-				doc["category"] = cat
-				with open(join(dirpath,filename)) as fid:
-					header, content = split_yaml_header(fid)
-				doc["title"] = header["title"]
-				doc["filename"] = splitext(filename)[0]
-				doc["audience"] = header["audience"]
-				self.audiences.append(header["audience"])
-				doc["content"] = content
-				self.documents.append(doc)
-		self.categories = list(set(self.categories))
-		self.audiences = list(set(self.audiences))
+					with open(join(path,version,cat,filename)) as fid:
+						header, content = split_yaml_header(fid)
+
+					doc["title"] = header["title"]
+					doc["filename"] = splitext(filename)[0]
+					doc["audience"] = header["audience"]
+
+					self.audiences.add(header["audience"])
+
+					doc["content"] = content.split('\n\n')
+					self.documents.append(doc)
+
+		self.categories = list(self.categories)
+		self.audiences = list(self.audiences)
+		self.versions = list(self.versions)
+		self.versions.sort(key=lambda x: float(x))
+
+	def extract_messages(fid):
+		for doc in self.documents:
+			for paragraph in doc["content"]:
+				fid.write('#: docs/%s.blt, class: %s\n' % (collid,classid))
+				fid.write('msgid "%s"\nmsgstr ""\n' % self.name.get_nice())
+
+	def get_versions(self):
+		return self.versions
+
+	def get_stable(self):
+		return self.versions[-2]
+
+	def get_dev(self):
+		return self.versions[-1]
 
 	def get_categories(self):
 		return self.categories
@@ -70,9 +92,11 @@ class Documentation:
 	def get_audiences(self):
 		return self.audiences
 
-	def get_documents(self,category=None,audience=None,filename=None):
+	def get_documents(self,version=None,category=None,audience=None,filename=None):
 		res = []
 		for doc in self.documents:
+			if (not version is None) and doc["version"] != version:
+				continue
 			if (not category is None) and doc["category"] != category:
 				continue
 			if (not audience is None) and doc["audience"] != audience:

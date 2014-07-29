@@ -19,18 +19,10 @@ def pull_language_code(endpoint, values):
 	g.lang_code = values.pop('lang_code')
 	g.version = values.pop('version')
 
-SOURCES = {}
-versions = []
-for version in listdir(join(docs.root_path,"sources")):
-	try:
-		versions.append(float(version))
-	except:
-		pass
-	SOURCES[version] = Documentation(join(docs.root_path,"sources",version))
-versions.sort()
+SOURCES = Documentation(join(docs.root_path,"sources"))
 
-STABLE = versions[-2]
-DEV = versions[-1]
+STABLE = SOURCES.get_stable()
+DEV = SOURCES.get_dev()
 
 SPECS = Specification(join(docs.root_path,"specs"))
 
@@ -42,14 +34,13 @@ def static_version(filename):
 @docs.route("/index.html")
 @cache.cached()
 def version_index():
-	if not g.version in SOURCES:
+	if not g.version in SOURCES.get_versions():
 		return abort(404)
-	src = SOURCES[g.version]
 	doc_structure = {}
-	for aud in src.get_audiences():
+	for aud in SOURCES.get_audiences():
 		doc_structure[aud] = {}
-		for cat in src.get_categories():
-			doc_structure[aud][cat] = list(src.get_documents(category=cat,audience=aud))
+		for cat in SOURCES.get_categories():
+			doc_structure[aud][cat] = list(SOURCES.get_documents(version=g.version,category=cat,audience=aud))
 	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
 	return render_template("doc.html",page=page,auds=doc_structure)
 
@@ -57,10 +48,9 @@ def version_index():
 @docs.route("/<cat>/<filename>.html")
 @cache.cached()
 def document(cat,filename):
-	if not g.version in SOURCES:
+	if not g.version in SOURCES.get_versions():
 		return abort(404)
-	src = SOURCES[version]
-	doc = list(src.get_documents(category=cat,filename=filename))
+	doc = list(SOURCES.get_documents(version=g.version,category=cat,filename=filename))
 	if len(doc) != 1:
 		return abort(404)
 	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
