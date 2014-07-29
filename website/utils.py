@@ -73,6 +73,9 @@ class Documentation:
 
 	def extract_messages(self,fid):
 		for doc in self.documents:
+			fid.write('\n#. document title\n')
+			fid.write('#: docs/%s/%s/%s\n' % (doc["version"],doc["category"],doc["filename"]))
+			fid.write('msgid "%s"\nmsgstr ""\n' % doc["title"])
 			for paragraph in doc["content"]:
 				fid.write('\n#: docs/%s/%s/%s\n' % (doc["version"],doc["category"],doc["filename"]))
 				fid.write('msgid "%s"\nmsgstr ""\n' % '\\n"\n"'.join(paragraph.split("\n")))

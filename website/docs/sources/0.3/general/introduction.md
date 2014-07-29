@@ -53,6 +53,7 @@ geometries for each applications:
 ### Summary
 
 To summarize again:
+
  - The data in BOLTS is either backend independent or backend specific.
  - A class covers zero or more standards, a collection contains one or more classes
  - For a class to be usable in an application, BOLTS must have a suitable base geometry for that class.
