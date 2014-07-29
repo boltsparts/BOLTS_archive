@@ -7,15 +7,17 @@ from ..cache import cache
 from ..translation import languages
 from ..utils import Specification, Documentation
 
-docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/docs' % ",".join(languages))
+docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/docs/<version>' % ",".join(languages))
 
 @docs.url_defaults
 def add_language_code(endpoint, values):
 	values.setdefault('lang_code',g.lang_code)
+	values.setdefault('version',g.version)
 
 @docs.url_value_preprocessor
 def pull_language_code(endpoint, values):
 	g.lang_code = values.pop('lang_code')
+	g.version = values.pop('version')
 
 SOURCES = {}
 versions = []
@@ -32,47 +34,42 @@ DEV = versions[-1]
 
 SPECS = Specification(join(docs.root_path,"specs"))
 
-@docs.route("/static/<version>/<filename>")
-def static_version(version,filename):
-	return send_from_directory(docs.static_folder,safe_join(version,filename))
+@docs.route("/static/<filename>")
+def static_version(filename):
+	return send_from_directory(docs.static_folder,safe_join(g.version,filename))
 
 @docs.route("/")
 @docs.route("/index.html")
-def index():
-	return redirect(url_for(".version_index",version=STABLE))
-
-@docs.route("/<version>")
-@docs.route("/<version>/index.html")
 @cache.cached()
-def version_index(version):
-	if not version in SOURCES:
+def version_index():
+	if not g.version in SOURCES:
 		return abort(404)
-	src = SOURCES[version]
+	src = SOURCES[g.version]
 	doc_structure = {}
 	for aud in src.get_audiences():
 		doc_structure[aud] = {}
 		for cat in src.get_categories():
 			doc_structure[aud][cat] = list(src.get_documents(category=cat,audience=aud))
-	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : version}
+	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
 	return render_template("doc.html",page=page,auds=doc_structure)
 
-@docs.route("/<version>/<cat>/<filename>")
-@docs.route("/<version>/<cat>/<filename>.html")
+@docs.route("/<cat>/<filename>")
+@docs.route("/<cat>/<filename>.html")
 @cache.cached()
-def document(version,cat,filename):
-	if not version in SOURCES:
+def document(cat,filename):
+	if not g.version in SOURCES:
 		return abort(404)
 	src = SOURCES[version]
 	doc = list(src.get_documents(category=cat,filename=filename))
 	if len(doc) != 1:
 		return abort(404)
-	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : version}
+	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
 	return render_template("page.html",page=page,doc=doc[0])
 
-@docs.route("/<version>/specification")
-@docs.route("/<version>/specification.html")
+@docs.route("/specification")
+@docs.route("/specification.html")
 @cache.cached()
-def specification(version):
+def specification():
 	parts = core.publish_parts(
 		source=SPECS.get_version(version),
 		writer_name="html"

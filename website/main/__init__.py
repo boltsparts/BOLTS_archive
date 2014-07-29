@@ -4,6 +4,7 @@ from bolttools.statistics import Statistics
 from ..cache import cache
 from ..parts import repo, dbs
 from ..translation import languages
+from ..docs import STABLE
 
 main = Blueprint("main",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>' % ",".join(languages))
 
@@ -24,6 +25,12 @@ def index():
 	page = {"title" : gettext("Home")}
 
 	return render_template("home.html",page=page, stats = stats.get_statistics())
+
+@main.route("/docs")
+@main.route("/docs/index.html")
+def docindex():
+	g.version = STABLE
+	return redirect(url_for("docs.version_index"))
 
 @main.route("/downloads")
 @main.route("/downloads.html")
