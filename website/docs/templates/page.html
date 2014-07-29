@@ -5,7 +5,7 @@
   <div id="blog-single">
     <article>
       <header>
-        <h1>{{ doc.title }}</h1>
+        <h1>{{ gettext_docs(doc.title) }}</h1>
       </header>
       <div class="entry-content">
         {{ doc.content | markdown_docs }}
