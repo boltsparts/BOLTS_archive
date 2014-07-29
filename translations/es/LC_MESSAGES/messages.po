@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-28 21:46+0200\n"
+"POT-Creation-Date: 2014-07-29 10:29+0200\n"
 "PO-Revision-Date: 2014-07-28 13:12+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: website/main/__init__.py:24
+#: website/main/__init__.py:25
 msgid "Home"
 msgstr ""
 
