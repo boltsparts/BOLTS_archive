@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block titlebar %}
+  <div class="page-title-bar">
+    <div class="inner-content">
+      <h2>Downloads</h2>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+  <div class="inner-content">
+    <div class="cols">
+      <div class="col">
+        <h1>{% trans %}Current stable release{% endtrans %}</h1>
+        <h3>FreeCAD</h3>
+
+        <a href="{{ url_for('main.files',filename=release.freecad.stable.targz.path) }}">.tar.gz</a>,
+        <a href="{{ url_for('main.files',filename=release.freecad.stable.zip.path) }}">.zip</a>
+
+        <h3>OpenSCAD</h3>
+
+        <a href="{{ url_for('main.files',filename=release.openscad.stable.targz.path) }}">.tar.gz</a>,
+        <a href="{{ url_for('main.files',filename=release.openscad.stable.zip.path) }}">.zip</a>
+
+        <h3>IGES</h3>
+
+        <a href="{{ url_for('main.files',filename=release.iges.stable.tarxz.path) }}">.tar.xz</a>
+
+      </div>
+      <div class="col">
+        <h1>{% trans %}Development Snapshots{% endtrans %}</h1>
+        <h3>FreeCAD</h3>
+
+        <a href="{{ url_for('main.files',filename=release.freecad.devel.targz.path) }}">.tar.gz</a>,
+        <a href="{{ url_for('main.files',filename=release.freecad.devel.zip.path) }}">.zip</a>
+
+        <h3>OpenSCAD</h3>
+
+        <a href="{{ url_for('main.files',filename=release.openscad.devel.targz.path) }}">.tar.gz</a>,
+        <a href="{{ url_for('main.files',filename=release.openscad.devel.zip.path) }}">.zip</a>
+
+        <h3>IGES</h3>
+
+        <a href="{{ url_for('main.files',filename=release.iges.devel.tarxz.path) }}">.tar.xz</a>
+      </div>
+    </div>
+    <p>{% trans %}If in doubt, take the zip archive. <a href="http://www.7-zip.org/">7 Zip</a> can be used to open xz archives on Windows.{% endtrans %}</p>
+  </div>
+</div>
+{% endblock %}

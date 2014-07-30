@@ -20,6 +20,68 @@ def split_yaml_header(fid):
 	content = ''.join(line for line in fid)
 	return load('\n'.join(header)),content
 
+class Downloads:
+	def __init__(self,path):
+		backends = ["freecad","openscad","iges"]
+
+		#find most current release
+		self.files = []
+
+		for backend in backends:
+			for filename in listdir(join(path,backend)):
+				doc = {}
+				doc["backend"] = backend
+				doc["filename"] = filename
+				basename,ext = splitext(filename)
+				if ext == ".gz":
+					ext = ".tar.gz"
+					basename = splitext(basename)[0]
+				elif ext == ".xz":
+					ext = ".tar.xz"
+					basename = splitext(basename)[0]
+				doc["ext"] = ext
+				parts = basename.split("_")
+				version_string = parts[2]
+
+				#some old development snapshots have no license in filename
+				license = "none"
+				if len(parts) > 3:
+					license = parts[3]
+				doc["license"] = license
+
+				try:
+					doc["version"] = int(version_string)
+					doc["kind"] = "devel"
+				except ValueError:
+					doc["version"] = float(version_string)
+					doc["kind"] = "stable"
+
+				doc["path"] = join(backend,filename)
+
+				self.files.append(doc)
+
+	def get_documents(self,version=None,backend=None,ext=None,kind=None,license=None):
+		res = []
+		for doc in self.files:
+			if (not version is None) and doc["version"] != version:
+				continue
+			if (not license is None) and doc["license"] != license:
+				continue
+			if (not backend is None) and doc["backend"] != backend:
+				continue
+			if (not ext is None) and doc["ext"] != ext:
+				continue
+			if (not kind is None) and doc["kind"] != kind:
+				continue
+			res.append(doc)
+		return res
+
+	def get_latest(self,backend,kind,ext,license):
+		cand = self.get_documents(backend=backend,ext=ext,kind=kind,license=license)
+		print backend, kind, ext, license
+		cand.sort(key=lambda x: x["version"])
+		return cand[-1]
+
 class Specification:
 	def __init__(self,path):
 		self.version = {}
