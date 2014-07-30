@@ -5,6 +5,7 @@ from werkzeug.contrib.atom import AtomFeed
 from ..cache import cache
 from ..translation import languages
 from ..utils import Posts
+from ..cms import markdown_blog
 
 blog = Blueprint("blog",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/blog' % ",".join(languages))
 
@@ -57,6 +58,6 @@ def feed():
 			url=urljoin(request.url,url_for('blog.post',**post["url_values"])),
 			updated=post["updated"] or post["date"],
 			published=post["date"],
-			summary=markdown.markdown(post["teaser"]),
+			summary=markdown_blog(post["teaser"]),
 			summary_type="html")
 	return feed.get_response()

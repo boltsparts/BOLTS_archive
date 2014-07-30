@@ -110,7 +110,7 @@ instructions on
 
 Not all parts have connectors yet, but nuts, washers, hex bolts and
 batteries do. The names of the connectors are listed in the OpenSCAD section of the
-[part page]({{ url(part.index) }}).
+[part page]({{ url(parts.index) }}).
 
 There is no documentation for this feature (apart from this blog post), because
 I might still change the way things work.

@@ -64,7 +64,7 @@
     <div class="cols">
       <div class="col">
         <h3>Quickstart: Using BOLTS for OpenSCAD</h3>
-        <p>Download the tarball with BOLTS for <a href="http://www.openscad.org/">OpenSCAD</a> from the <a href="/downloads.html">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the top of your scad file:</p>
+        <p>Download the tarball with BOLTS for <a href="http://www.openscad.org/">OpenSCAD</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the top of your scad file:</p>
         <pre><code>
 include <bolts.scad>
         </code></pre>
@@ -81,10 +81,10 @@ ISO7089("M4");
     <div class="cols">
       <div class="col">
         <h3>Quickstart: Using BOLTS for FreeCAD</h3>
-        <p>Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="/downloads.html">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab. You also have to make sure to have <a href="https://bitbucket.org/xi/pyyaml">pyyaml</a> installed.</p>
+        <p>Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab. You also have to make sure to have <a href="https://bitbucket.org/xi/pyyaml">pyyaml</a> installed.</p>
         <p> After starting FreeCAD, choose <code>Macros</code> from the <code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code></p>
         <p>A widget should appear. There you can select a part from the tree, give values for the parameters and add it to the current document.</p>
-        <p>For more information see the <a href="/doc/index.html">Documentation</a>
+        <p>For more information see the <a href="{{ url_for('main.docindex') }}">Documentation</a>
       </div>
       <div class="col">
         <a href="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"/></a>
@@ -93,7 +93,7 @@ ISO7089("M4");
     <div class="cols">
       <div class="col">
         <h3>Quickstart: Using BOLTS for IGES</h3>
-        <p>Download the tarball with BOLTS for <a href="http://en.wikipedia.org/wiki/IGES">IGES</a> from the <a href="/downloads.html">Downloads page</a> and extract it into a folder. This can require several hundred MByte of space.</p>
+        <p>Download the tarball with BOLTS for <a href="http://en.wikipedia.org/wiki/IGES">IGES</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into a folder. This can require several hundred MByte of space.</p>
         <p>IES is a widely supported format, so almost every CAD tool can use it. The details depend on the specific application, but usually one has to open or import a IGES file to be able to use the part.
         <p>The files are structured in subdirectories, which correspond to the collections shown <a href="{{ url_for('parts.index') }}">in the Parts list</a>. Not all sizes or variants of all parts are available in BOLTS for IGES, if you miss something <a href="/contribute.html">get in touch</a>.
       </div>

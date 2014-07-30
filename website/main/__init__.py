@@ -36,7 +36,7 @@ def index():
 @main.route("/docs/index.html")
 def docindex():
 	g.version = STABLE
-	return redirect(url_for("docs.version_index"))
+	return redirect(url_for("docs.index"))
 
 @main.route("/downloads")
 @main.route("/downloads.html")

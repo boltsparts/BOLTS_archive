@@ -4,7 +4,6 @@ from os import walk, listdir
 from os.path import exists, join, relpath, splitext
 import markdown
 from yaml import safe_load as load
-from docutils import core
 
 from bolttools.common import UNITS
 

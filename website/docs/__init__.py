@@ -6,18 +6,9 @@ from urlparse import urljoin
 from ..cache import cache
 from ..translation import languages, gettext_docs
 from ..utils import Specification, Documentation
+from docutils import core
 
 docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/docs/<version>' % ",".join(languages))
-
-@docs.url_defaults
-def add_language_code(endpoint, values):
-	values.setdefault('lang_code',g.lang_code)
-	values.setdefault('version',g.version)
-
-@docs.url_value_preprocessor
-def pull_language_code(endpoint, values):
-	g.lang_code = values.pop('lang_code')
-	g.version = values.pop('version')
 
 SOURCES = Documentation(join(docs.root_path,"sources"))
 
@@ -26,6 +17,20 @@ DEV = SOURCES.get_dev()
 
 SPECS = Specification(join(docs.root_path,"specs"))
 
+@docs.url_defaults
+def add_language_code(endpoint, values):
+	values.setdefault('lang_code',g.lang_code)
+	if not getattr(g,'version',None) is None:
+		values.setdefault('version',g.version)
+	else:
+		values.setdefault('version',STABLE)
+
+@docs.url_value_preprocessor
+def pull_language_code(endpoint, values):
+	g.lang_code = values.pop('lang_code')
+	g.version = values.pop('version')
+
+
 @docs.route("/static/<filename>")
 def static_version(filename):
 	return send_from_directory(docs.static_folder,safe_join(g.version,filename))
@@ -33,7 +38,7 @@ def static_version(filename):
 @docs.route("/")
 @docs.route("/index.html")
 @cache.cached()
-def version_index():
+def index():
 	if not g.version in SOURCES.get_versions():
 		return abort(404)
 	doc_structure = {}
@@ -63,11 +68,11 @@ def document(cat,filename):
 @cache.cached()
 def specification():
 	parts = core.publish_parts(
-		source=SPECS.get_version(version),
+		source=SPECS.get_version(g.version),
 		writer_name="html"
 	)
 	content = parts["body_pre_docinfo"]+parts["fragment"]
-	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : version}
+	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
 	return render_template("spec.html",page=page,content = content)
 
 @docs.route("/changes")
@@ -79,6 +84,6 @@ def changes():
 		writer_name="html"
 	)
 	content = parts["body_pre_docinfo"]+parts["fragment"]
-	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : version}
+	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
 	return render_template("spec.html",page=page,content = content)
 

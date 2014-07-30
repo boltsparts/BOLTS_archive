@@ -32,7 +32,7 @@ def get_subs(version):
 		'body_url' : lambda m: url_for('parts.body',id=m.group(2),lang_code = lang_code)
 	}
 
-def markdownsub(ctx,value,subs):
+def markdownsub(value,subs):
 	mkd = markdown.markdown(value)
 	subs = re.sub('{{\s*([^(]*)\(([^\)]*)\)\s*}}',lambda m: subs[m.group(1)](m),mkd)
 	return Markup(subs)
@@ -45,14 +45,9 @@ def markdown_docs(ctx,value):
 		version = STABLE
 	subs = get_subs(version)
 	subs['static'] = lambda m: url_for('docs.static',filename=join(version,m.group(2)))
-	return markdownsub(ctx,value,subs)
+	return markdownsub(value,subs)
 
-@contextfilter
-def markdown_blog(ctx,value):
-	if 'page' in ctx.parent and 'version' in ctx.parent['page']:
-		version = ctx.parent['page']['version']
-	else:
-		version = str(STABLE)
-	subs = get_subs(version)
+def markdown_blog(value):
+	subs = get_subs(str(STABLE))
 	subs['static'] = lambda m: url_for('blog.static',filename=join(m.group(2)))
-	return markdownsub(ctx,value,subs)
+	return markdownsub(value,subs)
