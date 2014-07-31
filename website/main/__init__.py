@@ -78,6 +78,13 @@ def contribute():
 
 	return render_template("contribute.html",page=page)
 
+@main.route("/public_domain.html")
+@cache.cached()
+def public_domain():
+	page = {"title" : "Public Domain"}
+
+	return render_template("public_domain.html",page=page)
+
 @main.route("/contributors")
 @main.route("/contributors.html")
 @cache.cached()

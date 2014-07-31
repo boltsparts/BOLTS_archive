@@ -45,6 +45,7 @@ def markdown_docs(ctx,value):
 		version = STABLE
 	subs = get_subs(version)
 	subs['static'] = lambda m: url_for('docs.static',filename=join(version,m.group(2)))
+	subs['spec'] = lambda m: url_for('docs.specification') + ("#%s" % m.group(2))
 	return markdownsub(value,subs)
 
 def markdown_blog(value):

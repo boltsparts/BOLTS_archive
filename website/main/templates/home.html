@@ -53,7 +53,7 @@
       <div class="col">
         <h3>{% trans %}Statistics{% endtrans %}</h3>
         <ul>
-          <li> <a href="{{ url_for('main.contributors') }}">{{ stats.contributors }} people</a> contributed</li>
+          <li>{% trans url=url_for('main.contributors'), n=stats.contributors %}<a href="{{ url }}">{{ n }} people</a> contributed{% endtrans %}</li>
           <li> {{ stats.classes }} classes in</li>
           <li> {{ stats.collections }} <a href="{{ url_for('parts.index') }}">collections</a> following</li>
           <li> {{ stats.standards }} different standards issued by</li>

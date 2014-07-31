@@ -93,7 +93,7 @@ This results in the following license policy for contributions:
 A contribution in form of a blt file or backend specific data in form of code can have one of the following licenses:
 
 * [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/)
-* [Public Domain]({{site.baseurl}}/public_domain.html)
+* [Public Domain]({{ url(main.public_domain) }})
 * [MIT](http://opensource.org/licenses/MIT)
 * [BSD 3-clause](http://opensource.org/licenses/BSD-3-Clause)
 * [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)

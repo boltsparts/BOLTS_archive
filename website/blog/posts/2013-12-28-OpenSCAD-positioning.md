@@ -98,7 +98,7 @@ which is readable, compact and flexible. To change the position or
 orientation of the bolted connection, one just has to change cube_cs.
 Changing the size of the bolts and washers change M4 is also easy.
 
-[<img alt="Bolted connection example" src="{{ static(images/openscad-positioningexample.png) }}" style="width: 100%;"/>]({{ static(images/openscad-positioningexample.png) }})
+[<img alt="Bolted connection example" src="{{ static(openscad-positioningexample.png) }}" style="width: 100%;"/>]({{ static(openscad-positioningexample.png) }})
 
 ### Try it
 
