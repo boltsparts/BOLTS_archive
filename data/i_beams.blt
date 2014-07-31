@@ -533,10 +533,10 @@ classes:
     names:
       - name: INP Profile
         labeling: "%(type)s, l=%(l)s"
-        description: INP profile
+        description: INP Profile
       - name: IPN Profile
         labeling: "%(type)s, l=%(l)s"
-        description: IPN profile
+        description: IPN Profile
     standards:
       body: DIN
       standard: DIN 1025-1
