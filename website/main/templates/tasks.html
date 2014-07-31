@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block titlebar %}
+  <div class="page-title-bar">
+    <div class="inner-content">
+      <h2>List of open tasks</h2>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+  {% for table in tables %}
+  {% if table.length > 0 %}
+  <div class="inner-content">
+    <h1>{{ table.title }}</h1>
+    <p>{{ table.description }}</p>
+
+    {% if table.title == "Missing base geometries" %}
+    <p>Detailed information how to add a geometry can be found <a href="{{ url_for('main.docindex') }}">here</a>.</p>
+    {% elif table.title == "Missing common parameters" %}
+    <p>This either happens if a class has no common parameters given in the blt file and BOLTS can not guess them.</p>
+    {% elif table.title == "Missing connectors" %}
+    <p>If a class has no connectors specified, parts of this class can not be so easily positioned in OpenSCAD.</p>
+    {% elif table.title == "Missing drawings" %}
+    <p>Detailed information how to add a drawing can be found <a href="{{ url_for('main.docindex') }}">here</a>.</p>
+    {% endif %}
+
+    {{ table.table }}
+
+  </div>
+  {% endif %}
+  {% endfor %}
+
+</div>
+{% endblock %}

@@ -2,8 +2,10 @@ from flask import Flask, render_template, abort, redirect, url_for, request, g, 
 from flask.ext.babelex import gettext
 from flask.helpers import send_from_directory
 from bolttools.statistics import Statistics
+from backends.checker import CheckerBackend
 from ..cache import cache
 from ..parts import repo, dbs
+from .. import html
 from ..translation import languages
 from ..docs import STABLE
 from ..utils import Downloads
@@ -68,7 +70,22 @@ def files(filename):
 def tasks():
 	page = {"title" : "Contribute"}
 
-	return render_template("tasks.html",page=page)
+	checker = CheckerBackend(repo,dbs)
+
+	tables = []
+	for name,task in checker.tasks.iteritems():
+		tables.append({
+			"title" : task.get_title(),
+			"description" : task.get_description(),
+			"length" : len(task.get_table()),
+			"table" : html.table({
+				"class" : "table",
+				"data" : task.get_table(),
+				"header" : task.get_headers()
+			}),
+		})
+
+	return render_template("tasks.html",page=page,tables=tables)
 
 @main.route("/contribute")
 @main.route("/contribute.html")
