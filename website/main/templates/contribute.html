@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block titlebar %}
+  <div class="page-title-bar">
+    <div class="inner-content">
+      <h2>Contribute</h2>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+  <div class="inner-content">
+    <h3>{% trans %}Try and tell{% endtrans %}</h3>
+    <p>{% trans url = url_for('main.docindex') %}You can help BOLTS by just trying it and giving feedback. Whether you are using <a href="http://freecadweb.org/">FreeCAD</a> or <a href="http://www.openscad.org/">OpenSCAD</a>, just <a href="{{ url }}">install and use it</a> and tell us{% endtrans %}</p>
+    <ul>
+      <li>{% trans %}what didn't work as expected for you{% endtrans %}</li>
+      <li>{% trans %}what you think could be done in a better way{% endtrans %}</li>
+      <li>{% trans %}how BOLTS could be made more useful for you{% endtrans %}</li>
+    </ul>
+
+    <p>{% trans %}There are many ways to reach us:{% endtrans %}</p>
+    <ul>
+      <li>{% trans %}Problems with the documentation can be reported via the comments section embedded into each page.{% endtrans %}</li>
+      <li>{% trans %}For FreeCAD related things, there is a <a href="http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=8&t=4549">development thread</a> on the FreeCAD forums.{% endtrans %}</li>
+      <li>{% trans %}The <a href="https://github.com/jreinhardt/BOLTS/issues">BOLTS issue tracker</a> on GitHub is also a good place to report problems and discuss improvements.{% endtrans %}</li>
+    </ul>
+
+    <p>{% trans %}Also don't forget to tell all your friends, colleagues and fellow makers about BOLTS. Or blog about it, mention it on social networks and spread the word.{% endtrans %}</p>
+
+    <h3>{% trans %}Add more parts and drawings{% endtrans %}</h3>
+    <p>{% trans %}You can also help with adding more parts to BOLTS or improving those that are already there. To do so, you should first read about a few basic things, that will be useful to know{% endtrans %}</p>
+
+    <ul>
+      <li><a href="{{ url_for('docs.document',cat='general',filename='introduction') }}">{% trans %}A short introduction to BOLTS{% endtrans %}</a></li>
+      <li><a href="{{ url_for('docs.document',cat='general',filename='development') }}">{% trans %}BOLTS development with git{% endtrans %}</a></li>
+    </ul>
+
+    <p>{% trans url = url_for('main.docindex') %}After that you are well prepared to contribute parts, data or drawings. For details on how to do that see the <a href="{{ url }}">contributor documentation</a>.{% endtrans %}</p>
+
+    <h3>{% trans %}Improve data{% endtrans %}</h3>
+
+    <p>{% trans url = url_for('main.tasks') %}BOLTS scans its database for inconsistencies, common problems, missing or unclear informations and automatically generates <a href="{{ url }}">a list of things that could be fixed or improved</a>. This is a great starting point for contributing to BOLTS{% endtrans %}</p>
+  </div>
+</div>
+{% endblock %}

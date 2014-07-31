@@ -15,7 +15,6 @@ main = Blueprint("main",__name__,template_folder="templates",static_folder="stat
 stats = Statistics(repo,dbs)
 downs = Downloads(join(environ["OPENSHIFT_REPO_DIR"],"downloads"))
 
-
 @main.url_defaults
 def add_language_code(endpoint, values):
 	values.setdefault('lang_code',g.lang_code)
@@ -64,7 +63,7 @@ def files(filename):
 	return send_from_directory(join(environ['OPENSHIFT_REPO_DIR'],'downloads'),filename)
 
 @main.route("/tasks")
-@main.route("tasks.html")
+@main.route("/tasks.html")
 @cache.cached()
 def tasks():
 	page = {"title" : "Contribute"}
@@ -85,4 +84,4 @@ def contribute():
 def contributors():
 	page = {"title" : "Contributors"}
 
-	return render_template("contributors.html",page=page)
+	return render_template("contributors.html",page=page,contributors = stats.get_contributors())
