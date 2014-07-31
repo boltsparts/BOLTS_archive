@@ -73,7 +73,7 @@ This collection directory must also contain the base file for this directory.
 The base file provides BOLTS with all the informations it needs to know about
 the files in a collection directory, it is a kind of manifest file. It
 contains a list of sections 
-(more precisely [base file elements]({{ doc(general,specification) }})),
+(more precisely [base file elements]({{ spec(base-file-element) }})),
 each describing one file.
 
 For the pipes collection the base file is `openscad/pipes/pipes.base` and has

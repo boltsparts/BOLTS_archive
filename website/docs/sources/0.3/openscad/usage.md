@@ -31,7 +31,7 @@ Each part has a dedicated page, where one can find more detailed informations
 about this part, a drawing and tables with dimensions. The information that is
 most interesting for our purposes can be found in the section OpenSCAD. There
 it says either that the part is not available for OpenSCAD (in which case you
-might consider [to help making it available]({{ doc(general,contribute) }})),
+might consider [to help making it available]({{ url(main.contribute) }})),
 or gives details how to use it.
 
 The hexagon bolt {{ standard(ISO4014) }} is available, and in the subsection

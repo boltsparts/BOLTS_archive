@@ -57,7 +57,7 @@ this collection (in this case `washer.base`).
 The base file provides BOLTS with all the informations it needs to know about
 the files in a collection directory, it is a kind of manifest file. It contains
 a list of sections (more precisely 
-[base file elements]({{ doc(general, specification) }}))
+[base file elements]({{ spec(base-file-element) }}))
 , each describing one file:
 
     ---
