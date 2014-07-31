@@ -6,12 +6,14 @@
     <h1>{{ gettext_parts(name.name.get_nice()) }}</h1>
     {{ props }}
 
-    {% if not parameters.drawing is none %}
     <h2>{% trans %}Drawings{% endtrans %}</h2>
+    {% if not parameters.drawing is none %}
     <a href="{{ parameters.drawing }}"><img width=600 src="{{ parameters.drawing }}"></a>
     {% else %}
-    <h2>{% trans %}Parameters{% endtrans %}</h2>
+    <p>{% trans %}No drawing found{% endtrans %}
     {% endif %}
+
+    <h2>{% trans %}Parameters{% endtrans %}</h2>
     {{ parameters.description }}
 
     <h2>{% trans %}Description{% endtrans %}</h2>
