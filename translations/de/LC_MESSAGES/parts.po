@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-29 16:35+0200\n"
-"PO-Revision-Date: 2014-07-28 21:24+0200\n"
+"POT-Creation-Date: 2014-07-31 13:42+0200\n"
+"PO-Revision-Date: 2014-07-30 16:59+0200\n"
 "Last-Translator: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -64,7 +64,7 @@ msgstr "Batterien"
 
 #. collection description
 msgid "This collection contains different sorts of batteries"
-msgstr ""
+msgstr "Diese Kollektion enthält verschiedene Arten von Batterien"
 
 #. collection name
 msgid "Hollow sections"
@@ -474,7 +474,7 @@ msgstr ""
 
 #. ClassName name nice
 msgid "UAE Profile"
-msgstr ""
+msgstr "UAE Profil"
 
 #. ClassName labeling nice
 #, python-format
@@ -526,12 +526,9 @@ msgid "Generic square hollow profile"
 msgstr ""
 
 #. ClassName name nice
-msgid "IPN Profile"
-msgstr ""
-
 #. ClassName description
-msgid "IPN profile"
-msgstr ""
+msgid "IPN Profile"
+msgstr "IPN Profil"
 
 #. ClassName name nice
 #. ClassName description
@@ -778,11 +775,8 @@ msgid "Thin hexagon nut, metric sizes"
 msgstr ""
 
 #. ClassName name nice
-msgid "INP Profile"
-msgstr ""
-
 #. ClassName description
-msgid "INP profile"
+msgid "INP Profile"
 msgstr ""
 
 #. ClassName name nice
@@ -1478,4 +1472,10 @@ msgstr ""
 #, python-format
 msgid "Plain washer DINEN 27089 %(key)s"
 msgstr ""
+
+#~ msgid "IPN profile"
+#~ msgstr ""
+
+#~ msgid "INP profile"
+#~ msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-29 16:35+0200\n"
+"POT-Creation-Date: 2014-07-31 13:42+0200\n"
 "PO-Revision-Date: 2014-07-28 13:14+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -526,11 +526,8 @@ msgid "Generic square hollow profile"
 msgstr ""
 
 #. ClassName name nice
-msgid "IPN Profile"
-msgstr ""
-
 #. ClassName description
-msgid "IPN profile"
+msgid "IPN Profile"
 msgstr ""
 
 #. ClassName name nice
@@ -778,11 +775,8 @@ msgid "Thin hexagon nut, metric sizes"
 msgstr ""
 
 #. ClassName name nice
-msgid "INP Profile"
-msgstr ""
-
 #. ClassName description
-msgid "INP profile"
+msgid "INP Profile"
 msgstr ""
 
 #. ClassName name nice
@@ -1478,4 +1472,10 @@ msgstr ""
 #, python-format
 msgid "Plain washer DINEN 27089 %(key)s"
 msgstr ""
+
+#~ msgid "IPN profile"
+#~ msgstr ""
+
+#~ msgid "INP profile"
+#~ msgstr ""
 

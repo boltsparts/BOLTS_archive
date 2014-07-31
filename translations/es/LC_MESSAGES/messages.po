@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-29 16:35+0200\n"
+"POT-Creation-Date: 2014-07-31 13:42+0200\n"
 "PO-Revision-Date: 2014-07-28 13:12+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -26,8 +26,173 @@ msgstr ""
 msgid "Changelog"
 msgstr ""
 
-#: website/main/__init__.py:25
+#: website/main/__init__.py:32
 msgid "Home"
+msgstr ""
+
+#: website/main/templates/contribute.html:14
+msgid "Try and tell"
+msgstr ""
+
+#: website/main/templates/contribute.html:15
+#, python-format
+msgid ""
+"You can help BOLTS by just trying it and giving feedback. Whether you are"
+" using <a href=\"http://freecadweb.org/\">FreeCAD</a> or <a "
+"href=\"http://www.openscad.org/\">OpenSCAD</a>, just <a "
+"href=\"%(url)s\">install and use it</a> and tell us"
+msgstr ""
+
+#: website/main/templates/contribute.html:17
+msgid "what didn't work as expected for you"
+msgstr ""
+
+#: website/main/templates/contribute.html:18
+msgid "what you think could be done in a better way"
+msgstr ""
+
+#: website/main/templates/contribute.html:19
+msgid "how BOLTS could be made more useful for you"
+msgstr ""
+
+#: website/main/templates/contribute.html:22
+msgid "There are many ways to reach us:"
+msgstr ""
+
+#: website/main/templates/contribute.html:24
+msgid ""
+"Problems with the documentation can be reported via the comments section "
+"embedded into each page."
+msgstr ""
+
+#: website/main/templates/contribute.html:25
+msgid ""
+"For FreeCAD related things, there is a <a "
+"href=\"http://sourceforge.net/apps/phpbb/free-"
+"cad/viewtopic.php?f=8&t=4549\">development thread</a> on the FreeCAD "
+"forums."
+msgstr ""
+
+#: website/main/templates/contribute.html:26
+msgid ""
+"The <a href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue "
+"tracker</a> on GitHub is also a good place to report problems and discuss"
+" improvements."
+msgstr ""
+
+#: website/main/templates/contribute.html:29
+msgid ""
+"Also don't forget to tell all your friends, colleagues and fellow makers "
+"about BOLTS. Or blog about it, mention it on social networks and spread "
+"the word."
+msgstr ""
+
+#: website/main/templates/contribute.html:31
+msgid "Add more parts and drawings"
+msgstr ""
+
+#: website/main/templates/contribute.html:32
+msgid ""
+"You can also help with adding more parts to BOLTS or improving those that"
+" are already there. To do so, you should first read about a few basic "
+"things, that will be useful to know"
+msgstr ""
+
+#: website/main/templates/contribute.html:35
+msgid "A short introduction to BOLTS"
+msgstr ""
+
+#: website/main/templates/contribute.html:36
+msgid "BOLTS development with git"
+msgstr ""
+
+#: website/main/templates/contribute.html:39
+#, python-format
+msgid ""
+"After that you are well prepared to contribute parts, data or drawings. "
+"For details on how to do that see the <a href=\"%(url)s\">contributor "
+"documentation</a>."
+msgstr ""
+
+#: website/main/templates/contribute.html:41
+msgid "Improve data"
+msgstr ""
+
+#: website/main/templates/contribute.html:43
+#, python-format
+msgid ""
+"BOLTS scans its database for inconsistencies, common problems, missing or"
+" unclear informations and automatically generates <a href=\"%(url)s\">a "
+"list of things that could be fixed or improved</a>. This is a great "
+"starting point for contributing to BOLTS"
+msgstr ""
+
+#: website/main/templates/contributors.html:14
+msgid "Part contributions"
+msgstr ""
+
+#: website/main/templates/contributors.html:15
+msgid "Work by the following is contained in BOLTS:"
+msgstr ""
+
+#: website/main/templates/contributors.html:23
+msgid "Help and inspiration"
+msgstr ""
+
+#: website/main/templates/contributors.html:24
+msgid "These people have helped in other ways or provided inspiration:"
+msgstr ""
+
+#: website/main/templates/contributors.html:26
+msgid ""
+"provided inspiration for BOLTS with his Mendel90 and his work sparked my "
+"fascination for 3D printers."
+msgstr ""
+
+#: website/main/templates/contributors.html:27
+msgid "served as another source of inspiration."
+msgstr ""
+
+#: website/main/templates/contributors.html:28
+msgid "answered many questions about FreeCAD."
+msgstr ""
+
+#: website/main/templates/contributors.html:29
+msgid "had some good ideas for BOLTS for OpenSCAD and created OpenSCAD."
+msgstr ""
+
+#: website/main/templates/contributors.html:30
+msgid "helped with some difficult questions about the inner workings of FreeCAD."
+msgstr ""
+
+#: website/main/templates/contributors.html:31
+msgid "helped with making BOLTS for FreeCAD work with python 2.6."
+msgstr ""
+
+#: website/main/templates/contributors.html:32
+msgid "found the fix for a tricky bug and provided a lot of feedback."
+msgstr ""
+
+#: website/main/templates/contributors.html:33
+msgid "helped with the development of the SolidWorks flavour of BOLTS."
+msgstr ""
+
+#: website/main/templates/contributors.html:34
+msgid "for his help with hosting and his general expertise."
+msgstr ""
+
+#: website/main/templates/downloads.html:16
+msgid "Current stable release"
+msgstr ""
+
+#: website/main/templates/downloads.html:33
+msgid "Development Snapshots"
+msgstr ""
+
+#: website/main/templates/downloads.html:49
+msgid ""
+"If in doubt, take the zip archive. <a href=\"http://www.7-zip.org/\">7 "
+"Zip</a> can be used to open xz archives on Windows."
 msgstr ""
 
 #: website/main/templates/home.html:8
@@ -119,6 +284,11 @@ msgstr ""
 
 #: website/main/templates/home.html:54
 msgid "Statistics"
+msgstr ""
+
+#: website/main/templates/home.html:56
+#, python-format
+msgid "<a href=\"%(url)s\">%(n)s people</a> contributed"
 msgstr ""
 
 #: website/parts/__init__.py:47
@@ -232,5 +402,26 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Dimensions"
+#~ msgstr ""
+
+#~ msgid "BOLTS is an Open Library of Technical Specifications."
+#~ msgstr ""
+
+#~ msgid "What is BOLTS?"
+#~ msgstr ""
+
+#~ msgid "What is a standard parts library?"
+#~ msgstr ""
+
+#~ msgid "How does BOLTS work?"
+#~ msgstr ""
+
+#~ msgid "So in a sense BOLTS is a tool to create standard parts libraries."
+#~ msgstr ""
+
+#~ msgid "How can I help?"
+#~ msgstr ""
+
+#~ msgid "Statistics"
 #~ msgstr ""
 
