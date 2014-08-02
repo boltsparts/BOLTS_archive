@@ -40,7 +40,7 @@ def static_version(filename):
 @cache.cached()
 def index():
 	if not g.version in SOURCES.get_versions():
-		return abort(404)
+		abort(404)
 	doc_structure = {}
 	for aud in SOURCES.get_audiences():
 		doc_structure[aud] = {}
@@ -54,10 +54,10 @@ def index():
 @cache.cached()
 def document(cat,filename):
 	if not g.version in SOURCES.get_versions():
-		return abort(404)
+		abort(404)
 	doc = list(SOURCES.get_documents(version=g.version,category=cat,filename=filename))
 	if len(doc) != 1:
-		return abort(404)
+		abort(404)
 	doc = doc[0].copy()
 	doc["content"] = "\n\n".join(gettext_docs(p) for p in doc["content"])
 	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}

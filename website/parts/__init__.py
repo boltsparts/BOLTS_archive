@@ -314,4 +314,4 @@ def name(id):
 @parts.route('/thingtracker.json')
 @cache.cached()
 def thingtracker():
-	return abort(404)
+	abort(404)
