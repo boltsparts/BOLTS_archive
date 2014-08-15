@@ -90,3 +90,8 @@ To run the  bolts.py utility script (for development)
 
 * python 2.7 (because of argparse)
 * pyyaml (http://pyyaml.org/)
+
+Dependencies for website
+------------------------
+
+see requirements.txt
