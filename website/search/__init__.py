@@ -24,7 +24,8 @@ from whoosh.writing import AsyncWriter
 search = Blueprint("search",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/search' % ",".join(languages))
 
 whoosh_dir = join(environ["OPENSHIFT_DATA_DIR"],'index')
-rmtree(whoosh_dir)
+if exists(whoosh_dir):
+    rmtree(whoosh_dir)
 makedirs(whoosh_dir)
 
 fields = {
