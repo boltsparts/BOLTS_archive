@@ -18,6 +18,7 @@
       <a {% if page.title == "Documentation" %}class="active"{% endif %} href="{{ url_for('main.docindex') }}">Documentation</a>
       <a {% if page.title == "Contribute" %}class="active"{% endif %} href="{{ url_for('main.contribute') }}">Contribute</a>
       <a {% if page.title == "Downloads" %}class="active"{% endif %} href="{{ url_for('main.downloads') }}">Downloads</a>
+      <a {% if page.title == "Search" %}class="active"{% endif %} href="{{ url_for('search.search_page') }}">Search</a>
     </nav>
     <div id="social">
       <span>Follow us on:</span>
