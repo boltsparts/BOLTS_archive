@@ -9,6 +9,7 @@ from os import makedirs, environ
 from os.path import exists, join
 from shutil import rmtree
 from ..translation import languages, trans_dir
+from ..docs import SOURCES
 
 from flask_wtf import Form
 from wtforms import TextField
@@ -33,6 +34,7 @@ fields = {
 	"facet" : whoosh.fields.ID(stored=True),
 	"category" : whoosh.fields.ID(stored=True),
 	"id" : whoosh.fields.ID(stored=True),
+	"version" : whoosh.fields.ID(stored=True),
 	"url_endpoint" : whoosh.fields.ID(stored=True),
 	"url_args" : whoosh.fields.ID(stored=True)
 }
@@ -112,11 +114,24 @@ def rebuild_index(app):
 			writer.add_document(**doc)
 
 		#docs
-		#TODO
-
-		#blog
-		#TODO
-
+		trans = {}
+		for lang in languages:
+			trans[lang] = gettext.translation('docs',trans_dir,languages=[lang], fallback=True)
+		for doc_page in SOURCES.get_documents():
+			doc = {
+				"facet" : u"docs",
+				"category" : unicode(doc_page["category"]),
+				"version" : unicode(doc_page["version"]),
+				"url_endpoint" : u"docs.document",
+				"url_args" : unicode({"cat" : doc_page["category"], "filename" : doc_page["filename"]})
+			}
+			for lang in languages:
+				with lang_set(app,lang):
+					with app.app_context() as c:
+						doc["title_%s" % lang] = trans[lang].ugettext(doc_page["title"]),
+						doc["content_%s" % lang] = "\n\n".join(
+							trans[lang].ugettext(p) for p in doc_page["content"])
+			writer.add_document(**doc)
 
 class SearchForm(Form):
     query = TextField("query",validators=[DataRequired()])
