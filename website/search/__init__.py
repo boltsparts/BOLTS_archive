@@ -81,7 +81,7 @@ def rebuild_index(app):
 			for lang in languages:
 				with lang_set(app,lang):
 					with app.app_context() as c:
-						doc["title_%s" % lang] = trans[lang].ugettext(coll.name),
+						doc["title_%s" % lang] = trans[lang].ugettext(coll.name)
 						doc["content_%s" % lang] = trans[lang].ugettext(coll.description)
 			writer.add_document(**doc)
 		for std, in repo.iterstandards():
@@ -95,7 +95,7 @@ def rebuild_index(app):
 			for lang in languages:
 				with lang_set(app,lang):
 					with app.app_context() as c:
-						doc["title_%s" % lang] = trans[lang].ugettext(std.standard.get_nice()),
+						doc["title_%s" % lang] = trans[lang].ugettext(std.standard.get_nice())
 						doc["content_%s" % lang] = trans[lang].ugettext(std.description)
 			writer.add_document(**doc)
 		for name, in repo.iternames():
@@ -109,7 +109,7 @@ def rebuild_index(app):
 			for lang in languages:
 				with lang_set(app,lang):
 					with app.app_context() as c:
-						doc["title_%s" % lang] = trans[lang].ugettext(name.name.get_nice()),
+						doc["title_%s" % lang] = trans[lang].ugettext(name.name.get_nice())
 						doc["content_%s" % lang] = trans[lang].ugettext(name.description)
 			writer.add_document(**doc)
 
@@ -123,12 +123,16 @@ def rebuild_index(app):
 				"category" : unicode(doc_page["category"]),
 				"version" : unicode(doc_page["version"]),
 				"url_endpoint" : u"docs.document",
-				"url_args" : unicode({"cat" : doc_page["category"], "filename" : doc_page["filename"]})
+				"url_args" : unicode({
+					"cat" : doc_page["category"],
+					"filename" : doc_page["filename"],
+					"version" : doc_page["version"]
+				})
 			}
 			for lang in languages:
 				with lang_set(app,lang):
 					with app.app_context() as c:
-						doc["title_%s" % lang] = trans[lang].ugettext(doc_page["title"]),
+						doc["title_%s" % lang] = trans[lang].ugettext(doc_page["title"])
 						doc["content_%s" % lang] = "\n\n".join(
 							trans[lang].ugettext(p) for p in doc_page["content"])
 			writer.add_document(**doc)
@@ -146,17 +150,23 @@ def search_page():
         if form.validate_on_submit():
             return redirect(url_for('search.search_page',q=form.query.data))
     else:
-	results = []
+	results = {}
 	with index.searcher() as searcher:
-		hits = searcher.search(parsers[g.lang_code].parse(query))
-		for i in range(hits.scored_length()):
-		    results.append({
-			'title' : hits[i]['title_%s' % g.lang_code][0],
-			'content' : hits[i]['content_%s' % g.lang_code][0],
-			'url' : url_for(hits[i]['url_endpoint'],**literal_eval(hits[i]['url_args'])),
-			'facet' : hits[i]['facet'],
-			'category' : hits[i]['category']
-		    })
+		hits = searcher.search(parsers[g.lang_code].parse(query),groupedby="facet")
+		for facet,docids in hits.groups().iteritems():
+		    results[facet] = []
+		    for i in docids:
+			hit = searcher.stored_fields(i)
+			res = {
+				'title' : hit['title_%s' % g.lang_code],
+				'content' : hit['content_%s' % g.lang_code],
+				'url' : url_for(hit['url_endpoint'],**literal_eval(hit['url_args'])),
+				'facet' : hit['facet'],
+				'category' : hit['category']
+			}
+			if "version" in hit:
+				res['version'] = hit['version']
+			results[facet].append(res)
     page = {'title' : 'Search'}
     return render_template('search.html', page=page,form=form,query=query,results=results)
 
