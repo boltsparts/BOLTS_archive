@@ -23,7 +23,7 @@ from whoosh.qparser import QueryParser, MultifieldParser
 from whoosh.writing import AsyncWriter
 from ast import literal_eval
 
-search = Blueprint("search",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/search' % ",".join(languages))
+search = Blueprint("search",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>' % ",".join(languages))
 
 whoosh_dir = join(environ["OPENSHIFT_DATA_DIR"],'index')
 if exists(whoosh_dir):
@@ -140,7 +140,7 @@ def rebuild_index(app):
 class SearchForm(Form):
     query = TextField("query",validators=[DataRequired()])
 
-@search.route("/",methods=('GET','POST'))
+@search.route("/search",methods=('GET','POST'))
 def search_page():
     results = None
     query = request.args.get('q','')
