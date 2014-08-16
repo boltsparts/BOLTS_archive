@@ -30,7 +30,8 @@ makedirs(whoosh_dir)
 
 fields = {
 	"facet" : whoosh.fields.ID(stored=True),
-	"category" : whoosh.fields.ID(stored=True)
+	"category" : whoosh.fields.ID(stored=True),
+	"id" : whoosh.fields.ID(stored=True)
 }
 
 for lang in languages:
@@ -42,7 +43,7 @@ schema = whoosh.fields.Schema(**fields)
 index = whoosh.index.create_in(whoosh_dir, schema)
 parsers = {}
 for lang in languages:
-    parsers[lang] = MultifieldParser(['title_%s' % lang,'content_%s' % lang],schema = index.schema)
+    parsers[lang] = MultifieldParser(['title_%s' % lang,'content_%s' % lang,'id'],schema = index.schema)
 
 @search.url_defaults
 def add_language_code(endpoint, values):
@@ -64,10 +65,12 @@ def rebuild_index(app):
 	for lang in languages:
 		trans[lang] = gettext.translation('parts',trans_dir,languages=[lang], fallback=True)
 	with index.writer() as writer:
+		#parts
 		for coll, in repo.itercollections():
 			doc = {
 				"facet" : u"parts",
-				"category" : u"collection"
+				"category" : u"collection",
+				"id" : unicode(coll.id)
 			}
 			for lang in languages:
 				with lang_set(app,lang):
@@ -76,6 +79,39 @@ def rebuild_index(app):
 						doc["content_%s" % lang] = trans[lang].ugettext(coll.description)
 						doc["url_%s" % lang] = unicode(url_for('parts.collection',id=coll.id))
 			writer.add_document(**doc)
+		for std, in repo.iterstandards():
+			doc = {
+				"facet" : u"parts",
+				"category" : u"standard",
+				"id" : unicode(std.get_id())
+			}
+			for lang in languages:
+				with lang_set(app,lang):
+					with app.app_context() as c:
+						doc["title_%s" % lang] = trans[lang].ugettext(std.standard.get_nice()),
+						doc["content_%s" % lang] = trans[lang].ugettext(std.description)
+						doc["url_%s" % lang] = unicode(url_for('parts.standard',id=std.get_id()))
+			writer.add_document(**doc)
+		for name, in repo.iternames():
+			doc = {
+				"facet" : u"parts",
+				"category" : u"name",
+				"id" : unicode(name.get_id())
+			}
+			for lang in languages:
+				with lang_set(app,lang):
+					with app.app_context() as c:
+						doc["title_%s" % lang] = trans[lang].ugettext(name.name.get_nice()),
+						doc["content_%s" % lang] = trans[lang].ugettext(name.description)
+						doc["url_%s" % lang] = unicode(url_for('parts.name',id=name.get_id()))
+			writer.add_document(**doc)
+
+		#docs
+		#TODO
+
+		#blog
+		#TODO
+
 
 class SearchForm(Form):
     query = TextField("query",validators=[DataRequired()])
