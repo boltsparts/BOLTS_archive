@@ -20,6 +20,7 @@ from whoosh.analysis import LanguageAnalyzer
 from whoosh.query import *
 from whoosh.qparser import QueryParser, MultifieldParser
 from whoosh.writing import AsyncWriter
+from ast import literal_eval
 
 search = Blueprint("search",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/search' % ",".join(languages))
 
@@ -31,13 +32,14 @@ makedirs(whoosh_dir)
 fields = {
 	"facet" : whoosh.fields.ID(stored=True),
 	"category" : whoosh.fields.ID(stored=True),
-	"id" : whoosh.fields.ID(stored=True)
+	"id" : whoosh.fields.ID(stored=True),
+	"url_endpoint" : whoosh.fields.ID(stored=True),
+	"url_args" : whoosh.fields.ID(stored=True)
 }
 
 for lang in languages:
 	fields["title_%s" % lang] = whoosh.fields.TEXT(stored=True,analyzer=LanguageAnalyzer(lang))
 	fields["content_%s" % lang] = whoosh.fields.TEXT(stored=True,analyzer=LanguageAnalyzer(lang))
-	fields["url_%s" % lang] = whoosh.fields.ID(stored=True)
 
 schema = whoosh.fields.Schema(**fields)
 index = whoosh.index.create_in(whoosh_dir, schema)
@@ -70,40 +72,43 @@ def rebuild_index(app):
 			doc = {
 				"facet" : u"parts",
 				"category" : u"collection",
-				"id" : unicode(coll.id)
+				"id" : unicode(coll.id),
+				"url_endpoint" : u'parts.collection',
+				"url_args" : unicode({"id" : coll.id})
 			}
 			for lang in languages:
 				with lang_set(app,lang):
 					with app.app_context() as c:
 						doc["title_%s" % lang] = trans[lang].ugettext(coll.name),
 						doc["content_%s" % lang] = trans[lang].ugettext(coll.description)
-						doc["url_%s" % lang] = unicode(url_for('parts.collection',id=coll.id))
 			writer.add_document(**doc)
 		for std, in repo.iterstandards():
 			doc = {
 				"facet" : u"parts",
 				"category" : u"standard",
-				"id" : unicode(std.get_id())
+				"id" : unicode(std.get_id()),
+				"url_endpoint" : u'parts.standard',
+				"url_args" : unicode({"id" : std.get_id()})
 			}
 			for lang in languages:
 				with lang_set(app,lang):
 					with app.app_context() as c:
 						doc["title_%s" % lang] = trans[lang].ugettext(std.standard.get_nice()),
 						doc["content_%s" % lang] = trans[lang].ugettext(std.description)
-						doc["url_%s" % lang] = unicode(url_for('parts.standard',id=std.get_id()))
 			writer.add_document(**doc)
 		for name, in repo.iternames():
 			doc = {
 				"facet" : u"parts",
 				"category" : u"name",
-				"id" : unicode(name.get_id())
+				"id" : unicode(name.get_id()),
+				"url_endpoint" : u'parts.name',
+				"url_args" : unicode({"id" : name.get_id()})
 			}
 			for lang in languages:
 				with lang_set(app,lang):
 					with app.app_context() as c:
 						doc["title_%s" % lang] = trans[lang].ugettext(name.name.get_nice()),
 						doc["content_%s" % lang] = trans[lang].ugettext(name.description)
-						doc["url_%s" % lang] = unicode(url_for('parts.name',id=name.get_id()))
 			writer.add_document(**doc)
 
 		#docs
@@ -133,7 +138,7 @@ def search_page():
 		    results.append({
 			'title' : hits[i]['title_%s' % g.lang_code][0],
 			'content' : hits[i]['content_%s' % g.lang_code][0],
-			'url' : hits[i]['url_%s' % g.lang_code],
+			'url' : url_for(hits[i]['url_endpoint'],**literal_eval(hits[i]['url_args'])),
 			'facet' : hits[i]['facet'],
 			'category' : hits[i]['category']
 		    })
