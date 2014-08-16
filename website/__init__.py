@@ -27,7 +27,7 @@ app.config['CACHE_DIR'] = cachedir
 app.config['CACHE_TYPE'] = 'filesystem'
 app.config['CACHE_DEFAULT_TIMEOUT'] = 3000000
 app.config['SECRET_KEY'] = getenv('OPENSHIFT_SECRET_TOKEN','development_token')
-app.config['SERVER_NAME'] = getenv('SERVER_NAME','bolts-library.com:80')
+app.config['SERVER_NAME'] = getenv('SERVER_NAME','bolts-library.org:80')
 
 cache.init_app(app)
 
