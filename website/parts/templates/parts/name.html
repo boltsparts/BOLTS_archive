@@ -1,21 +1,23 @@
-{% extends "index.html" %}
+{% extends "parts.html" %}
 
 {% block content %}
 <div id="content">
   <div class="inner-content">
-    <h1>{{ std.standard.get_nice() }}</h1>
+    <h1>{{ gettext_parts(name.name.get_nice()) }}</h1>
     {{ props }}
 
-    {% if not parameters.drawing is none %}
     <h2>{% trans %}Drawings{% endtrans %}</h2>
+    {% if not parameters.drawing is none %}
     <a href="{{ parameters.drawing }}"><img width=600 src="{{ parameters.drawing }}"></a>
     {% else %}
-    <h2>{% trans %}Parameters{% endtrans %}</h2>
+    <p>{% trans %}No drawing found{% endtrans %}
     {% endif %}
+
+    <h2>{% trans %}Parameters{% endtrans %}</h2>
     {{ parameters.description }}
 
     <h2>{% trans %}Description{% endtrans %}</h2>
-    <p>{{ std.description }}</p>
+    <p>{{ gettext_parts(name.description) }}</p>
 
     <h2>FreeCAD</h2>
     {% if not freecad is none %}
@@ -31,7 +33,7 @@
       <pre><code>{{ openscad.incantation_module }}
 {{ openscad.incantation_dims }}
 {{ openscad.incantation_conn }}</code></pre>
-      <h3>{% trans %}Connectors{% endtrans %}</h3>
+    <h3>{% trans %}Connectors{% endtrans %}</h3>
       {{ openscad.connectors }}
     {% else %}
     <p>{% trans %}This part is not availaible for OpenSCAD{% endtrans %}</p>

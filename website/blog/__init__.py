@@ -28,20 +28,20 @@ def post(year,month,day,slug):
 		abort(404)
 	else:
 		page = {"title" : "Blog"}
-		return render_template("post.html",page=page,post=post)
+		return render_template("blog/post.html",page=page,post=post)
 
 @blog.route("/")
 @blog.route("/index.html")
 @cache.cached()
 def index():
 	page = {"title" : "Blog"}
-	return render_template("blog.html",page=page,posts=posts.get_posts()[:-6:-1])
+	return render_template("blog/index.html",page=page,posts=posts.get_posts()[:-6:-1])
 
 @blog.route("/all")
 @cache.cached()
 def archive():
 	page = {"title" : "Blog"}
-	return render_template("archive.html",page=page,posts=posts.get_posts()[::-1])
+	return render_template("blog/archive.html",page=page,posts=posts.get_posts()[::-1])
 
 @blog.route("/atom")
 @blog.route("/atom.xml")

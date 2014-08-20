@@ -53,7 +53,7 @@ def index():
 	collections = [{'id' : coll.id, 'name' : coll.name} for coll, in repo.itercollections()]
 	bodies = [ body.body for body, in repo.iterbodies()]
 	page = {"title" : "Part list"}
-	return render_template("index.html",page=page,collections=collections,bodies=bodies)
+	return render_template("parts/index.html",page=page,collections=collections,bodies=bodies)
 
 @parts.route('/drawings/<coll>/<filename>')
 def drawing(filename,coll):
@@ -79,7 +79,7 @@ def collection(id):
 			'description' : std.description
 		})
 	page = {"title" : "Part list"}
-	return render_template("collection.html",page=page,coll=coll,standards=standards,names=names)
+	return render_template("parts/collection.html",page=page,coll=coll,standards=standards,names=names)
 
 @parts.route('/bodies/<id>')
 @parts.route('/bodies/<id>.html')
@@ -94,7 +94,7 @@ def body(id):
 			'description' : std.description
 		})
 	page = {"title" : "Part list"}
-	return render_template("body.html",page=page,body=body,standards=standards)
+	return render_template("parts/body.html",page=page,body=body,standards=standards)
 
 @parts.route('/standards/<id>')
 @parts.route('/standards/<id>.html')
@@ -195,7 +195,7 @@ def standard(id):
 
 
 	page = {"title" : "Part list"}
-	return render_template("standard.html",
+	return render_template("parts/standard.html",
 		page = page,
 		std = std,
 		props = html.properties(props),
@@ -301,7 +301,7 @@ def name(id):
 
 
 	page = {"title" : "Part list"}
-	return render_template("name.html",
+	return render_template("parts/name.html",
 		page = page,
 		name = name,
 		props = html.properties(props),

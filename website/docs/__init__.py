@@ -47,7 +47,7 @@ def index():
 		for cat in SOURCES.get_categories():
 			doc_structure[aud][cat] = list(SOURCES.get_documents(version=g.version,category=cat,audience=aud))
 	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
-	return render_template("doc.html",page=page,auds=doc_structure)
+	return render_template("docs/index.html",page=page,auds=doc_structure)
 
 @docs.route("/<cat>/<filename>")
 @docs.route("/<cat>/<filename>.html")
@@ -61,7 +61,7 @@ def document(cat,filename):
 	doc = doc[0].copy()
 	doc["content"] = "\n\n".join(gettext_docs(p) for p in doc["content"])
 	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
-	return render_template("page.html",page=page,doc=doc)
+	return render_template("docs/page.html",page=page,doc=doc)
 
 @docs.route("/specification")
 @docs.route("/specification.html")
@@ -73,7 +73,7 @@ def specification():
 	)
 	content = parts["body_pre_docinfo"]+parts["fragment"]
 	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
-	return render_template("spec.html",page=page,content = content)
+	return render_template("docs/spec.html",page=page,content = content)
 
 @docs.route("/changes")
 @docs.route("/changes.html")
@@ -85,5 +85,5 @@ def changes():
 	)
 	content = parts["body_pre_docinfo"]+parts["fragment"]
 	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : g.version}
-	return render_template("spec.html",page=page,content = content)
+	return render_template("docs/spec.html",page=page,content = content)
 

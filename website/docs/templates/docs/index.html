@@ -1,24 +1,4 @@
-{% extends "base.html" %}
-
-{% block titlebar %}
-  <div class="page-title-bar">
-    <div class="inner-content">
-      {% if page.version == page.stable %}
-      <h2>Documentation for BOLTS {{ page.version }} (current stable version)</h2>
-      <a class="active" href="{{ url_for('.index',version=page.stable) }}">stable</a>
-      <a href="{{ url_for('.index',version=page.dev) }}">dev</a>
-      {% elif page.version == page.dev %}
-      <h2>Documentation for BOLTS {{ page.version }} (development version)</h2>
-      <a href="{{ url_for('.index',version=page.stable) }}">stable</a>
-      <a class="active" href="{{ url_for('.index',version=page.dev) }}">dev</a>
-      {% else %}
-      <h2>Documentation for BOLTS {{ page.version }} (outdated)</h2>
-      <a href="{{ url_for('.index',version=page.stable) }}">stable</a>
-      <a class="active" href="{{ url_for('.index',version=page.dev) }}">dev</a>
-      {% endif %}
-    </div>
-  </div>
-{% endblock %}
+{% extends "docs.html" %}
 
 {% block content %}
 <div id="content">
@@ -67,6 +47,9 @@
           <li><a href="{{ url_for('.changes') }}">{% trans %}Changelog{% endtrans %}</a></li>
         </ul>
       </div>
+    </div>
+    <h1>{% trans %}Comments{% endtrans %}</h1>
+    <div id="comments"></div>
   </div>
 </div>
 {% endblock %}
