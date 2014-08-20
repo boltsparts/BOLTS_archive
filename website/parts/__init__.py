@@ -79,7 +79,19 @@ def collection(id):
 			'description' : std.description
 		})
 	page = {"title" : "Part list"}
-	return render_template("parts/collection.html",page=page,coll=coll,standards=standards,names=names)
+
+	#Properties
+	props = []
+	props.append(format_author_prop(coll.author_names))
+	props.append((gettext('License'),html.a(coll.license_name,href=coll.license_url)))
+	props.append(('ID',coll.id))
+	return render_template("parts/collection.html",
+		page=page,
+		coll=coll,
+		standards=standards,
+		names=names,
+		props=html.properties(props)
+	)
 
 @parts.route('/bodies/<id>')
 @parts.route('/bodies/<id>.html')
