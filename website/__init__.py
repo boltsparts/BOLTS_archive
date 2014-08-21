@@ -45,7 +45,7 @@ cache.init_app(app)
 
 assets = Environment(app)
 
-assets.register('css',Bundle('source/style.less',filters=['less','cleancss']),output='css/style.css')
+assets.register('css',Bundle('source/style.less',depends='source/*.less',filters=['less','cleancss']),output='css/style.css')
 assets.register('js',Bundle('js/jquery-2.1.1.min.js','js/bootstrap.min.js'),output='js/all.js')
 
 app.register_blueprint(main)
