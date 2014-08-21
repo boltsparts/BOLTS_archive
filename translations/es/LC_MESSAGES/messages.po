@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-31 13:42+0200\n"
+"POT-Creation-Date: 2014-08-21 22:01+0200\n"
 "PO-Revision-Date: 2014-07-28 13:12+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -18,12 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: website/docs/templates/doc.html:66
+#: website/docs/templates/docs/index.html:44
 msgid "blt file format specification"
 msgstr ""
 
-#: website/docs/templates/doc.html:67
+#: website/docs/templates/docs/index.html:45
 msgid "Changelog"
+msgstr ""
+
+#: website/docs/templates/docs/index.html:49
+#: website/docs/templates/docs/page.html:9
+#: website/docs/templates/docs/spec.html:8
+msgid "Comments"
 msgstr ""
 
 #: website/main/__init__.py:32
@@ -87,26 +93,26 @@ msgid ""
 "the word."
 msgstr ""
 
-#: website/main/templates/contribute.html:31
+#: website/main/templates/contribute.html:32
 msgid "Add more parts and drawings"
 msgstr ""
 
-#: website/main/templates/contribute.html:32
+#: website/main/templates/contribute.html:33
 msgid ""
 "You can also help with adding more parts to BOLTS or improving those that"
 " are already there. To do so, you should first read about a few basic "
 "things, that will be useful to know"
 msgstr ""
 
-#: website/main/templates/contribute.html:35
+#: website/main/templates/contribute.html:36
 msgid "A short introduction to BOLTS"
 msgstr ""
 
-#: website/main/templates/contribute.html:36
+#: website/main/templates/contribute.html:37
 msgid "BOLTS development with git"
 msgstr ""
 
-#: website/main/templates/contribute.html:39
+#: website/main/templates/contribute.html:40
 #, python-format
 msgid ""
 "After that you are well prepared to contribute parts, data or drawings. "
@@ -114,17 +120,17 @@ msgid ""
 "documentation</a>."
 msgstr ""
 
-#: website/main/templates/contribute.html:41
+#: website/main/templates/contribute.html:43
 msgid "Improve data"
 msgstr ""
 
-#: website/main/templates/contribute.html:43
+#: website/main/templates/contribute.html:45
 #, python-format
 msgid ""
 "BOLTS scans its database for inconsistencies, common problems, missing or"
 " unclear informations and automatically generates <a href=\"%(url)s\">a "
 "list of things that could be fixed or improved</a>. This is a great "
-"starting point for contributing to BOLTS"
+"starting point for contributing to BOLTS."
 msgstr ""
 
 #: website/main/templates/contributors.html:14
@@ -181,15 +187,15 @@ msgstr ""
 msgid "for his help with hosting and his general expertise."
 msgstr ""
 
-#: website/main/templates/downloads.html:16
+#: website/main/templates/downloads.html:12
 msgid "Current stable release"
 msgstr ""
 
-#: website/main/templates/downloads.html:33
+#: website/main/templates/downloads.html:32
 msgid "Development Snapshots"
 msgstr ""
 
-#: website/main/templates/downloads.html:49
+#: website/main/templates/downloads.html:52
 msgid ""
 "If in doubt, take the zip archive. <a href=\"http://www.7-zip.org/\">7 "
 "Zip</a> can be used to open xz archives on Windows."
@@ -199,22 +205,22 @@ msgstr ""
 msgid "BOLTS is an Open Library of Technical Specifications."
 msgstr ""
 
-#: website/main/templates/home.html:19
+#: website/main/templates/home.html:17
 msgid "What is BOLTS?"
 msgstr ""
 
-#: website/main/templates/home.html:20
+#: website/main/templates/home.html:18
 msgid ""
 "The aim of BOLTS is to build a free and open-source standard parts "
 "library for CAD applications. It does so by providing a common database "
 "that can be utilized by many different CAD applications."
 msgstr ""
 
-#: website/main/templates/home.html:27
+#: website/main/templates/home.html:23
 msgid "What is a standard parts library?"
 msgstr ""
 
-#: website/main/templates/home.html:28
+#: website/main/templates/home.html:24
 msgid ""
 "When you use a CAD software to create a design, this design consists "
 "usually of two different types of components: Custom parts that are "
@@ -223,49 +229,49 @@ msgid ""
 "hardware store."
 msgstr ""
 
-#: website/main/templates/home.html:29
+#: website/main/templates/home.html:25
 msgid ""
 "A standard parts library relieves you from the tedious task of modeling "
 "standard parts by providing them readily usable, so that you can focus on"
 " the interesting aspects of your design."
 msgstr ""
 
-#: website/main/templates/home.html:30
+#: website/main/templates/home.html:26
 msgid ""
 "While many commercial vendors offer standard parts libraries with their "
 "tools or for a fee, there is no free (as in freedom) standard parts "
 "library, yet. BOLTS tries to fill this gap."
 msgstr ""
 
-#: website/main/templates/home.html:38
+#: website/main/templates/home.html:34
 msgid "How does BOLTS work?"
 msgstr ""
 
-#: website/main/templates/home.html:39
+#: website/main/templates/home.html:35
 msgid ""
 "BOLTS leverages the parametric abilities that most CAD applications "
 "provide. This allows to obtain a huge number of different sizes and "
 "variants of a part from a single model."
 msgstr ""
 
-#: website/main/templates/home.html:40
+#: website/main/templates/home.html:36
 msgid ""
 "Dimensions and metadata of all the sizes and versions of the part are "
 "kept in special files. BOLTS can then use this data and the parametric "
 "models of the parts to automatically build standard parts libraries "
 "(\"BOLTS for ...\") for different CAD tools, that the user just can "
-"simply download and use"
+"simply download and use."
 msgstr ""
 
-#: website/main/templates/home.html:41
+#: website/main/templates/home.html:37
 msgid "So in a sense BOLTS is a tool to create standard parts libraries."
 msgstr ""
 
-#: website/main/templates/home.html:49
+#: website/main/templates/home.html:45
 msgid "How can I help?"
 msgstr ""
 
-#: website/main/templates/home.html:50
+#: website/main/templates/home.html:46
 #, python-format
 msgid ""
 "You can help BOLTS by modeling parts in one of the supported CAD tools, "
@@ -273,7 +279,7 @@ msgid ""
 "for the <a href=\"%(url)s\">online part directory</a>."
 msgstr ""
 
-#: website/main/templates/home.html:51
+#: website/main/templates/home.html:47
 #, python-format
 msgid ""
 "These tasks are relatively easy, and most of them do not require "
@@ -282,11 +288,11 @@ msgid ""
 "the different tasks."
 msgstr ""
 
-#: website/main/templates/home.html:54
+#: website/main/templates/home.html:50
 msgid "Statistics"
 msgstr ""
 
-#: website/main/templates/home.html:56
+#: website/main/templates/home.html:52
 #, python-format
 msgid "<a href=\"%(url)s\">%(n)s people</a> contributed"
 msgstr ""
@@ -297,102 +303,139 @@ msgid_plural "Authors"
 msgstr[0] ""
 msgstr[1] ""
 
-#: website/parts/__init__.py:110 website/parts/__init__.py:158
-#: website/parts/__init__.py:168
+#: website/parts/__init__.py:86 website/parts/__init__.py:122
+#: website/parts/__init__.py:170 website/parts/__init__.py:180
 msgid "License"
 msgstr ""
 
-#: website/parts/__init__.py:111
+#: website/parts/__init__.py:123
 msgid "Collection"
 msgstr ""
 
-#: website/parts/__init__.py:115
+#: website/parts/__init__.py:127
 msgid "Identical to"
 msgstr ""
 
-#: website/parts/__init__.py:117
+#: website/parts/__init__.py:129
 msgid "Status"
 msgstr ""
 
-#: website/parts/__init__.py:118
+#: website/parts/__init__.py:130
 msgid "Standard body"
 msgstr ""
 
-#: website/parts/__init__.py:120
+#: website/parts/__init__.py:132
 msgid "Replaces"
 msgstr ""
 
-#: website/parts/__init__.py:122
+#: website/parts/__init__.py:134
 msgid "Replaced by"
 msgstr ""
 
-#: website/parts/__init__.py:126
+#: website/parts/__init__.py:138
 msgid "Source"
 msgstr ""
 
-#: website/parts/__init__.py:146
+#: website/parts/__init__.py:158
 msgid "Parameter Name"
 msgstr ""
 
-#: website/parts/__init__.py:146 website/parts/templates/name.html:17
-#: website/parts/templates/standard.html:17
+#: website/parts/__init__.py:158 website/parts/templates/parts/name.html:17
+#: website/parts/templates/parts/standard.html:15
 msgid "Description"
 msgstr ""
 
-#: website/parts/__init__.py:189
+#: website/parts/__init__.py:201
 msgid "Location"
 msgstr ""
 
-#: website/parts/__init__.py:189
+#: website/parts/__init__.py:201
 msgid "Drawing"
 msgstr ""
 
-#: website/parts/templates/body.html:6
+#: website/parts/templates/parts/body.html:4
 #, python-format
 msgid "Specifications by %(body)s"
 msgstr ""
 
-#: website/parts/templates/index.html:16
+#: website/parts/templates/parts/index.html:6
 msgid "Collections"
 msgstr ""
 
-#: website/parts/templates/index.html:25
+#: website/parts/templates/parts/index.html:14
 msgid "Standardisation bodies"
 msgstr ""
 
-#: website/parts/templates/name.html:10
-#: website/parts/templates/standard.html:10
+#: website/parts/templates/parts/name.html:7
+#: website/parts/templates/parts/standard.html:8
 msgid "Drawings"
 msgstr ""
 
-#: website/parts/templates/name.html:13
-#: website/parts/templates/standard.html:13
+#: website/parts/templates/parts/name.html:11
+msgid "No drawing found"
+msgstr ""
+
+#: website/parts/templates/parts/name.html:14
+#: website/parts/templates/parts/standard.html:11
 msgid "Parameters"
 msgstr ""
 
-#: website/parts/templates/name.html:24
-#: website/parts/templates/standard.html:24
+#: website/parts/templates/parts/name.html:24
+#: website/parts/templates/parts/standard.html:22
 msgid "This part is not availaible for FreeCAD"
 msgstr ""
 
-#: website/parts/templates/name.html:30
-#: website/parts/templates/standard.html:30
+#: website/parts/templates/parts/name.html:30
+#: website/parts/templates/parts/standard.html:28
 msgid "Incantations"
 msgstr ""
 
-#: website/parts/templates/name.html:34
-#: website/parts/templates/standard.html:34
+#: website/parts/templates/parts/name.html:34
+#: website/parts/templates/parts/standard.html:32
 msgid "Connectors"
 msgstr ""
 
-#: website/parts/templates/name.html:37
-#: website/parts/templates/standard.html:37
+#: website/parts/templates/parts/name.html:37
+#: website/parts/templates/parts/standard.html:35
 msgid "This part is not availaible for OpenSCAD"
 msgstr ""
 
-#: website/parts/templates/name.html:40
-#: website/parts/templates/standard.html:40
+#: website/parts/templates/parts/name.html:40
+#: website/parts/templates/parts/standard.html:38
 msgid "Tables"
+msgstr ""
+
+#: website/search/__init__.py:149
+msgid "title"
+msgstr ""
+
+#: website/search/templates/search.html:5
+msgid "Search"
+msgstr ""
+
+#: website/search/templates/search.html:11
+msgid "Search the BOLTS website"
+msgstr ""
+
+#: website/search/templates/search.html:22
+msgid "Part results"
+msgstr ""
+
+#: website/search/templates/search.html:26
+#: website/search/templates/search.html:41
+msgid "Page"
+msgstr ""
+
+#: website/search/templates/search.html:26
+msgid "Category"
+msgstr ""
+
+#: website/search/templates/search.html:37
+msgid "Documentation results"
+msgstr ""
+
+#: website/search/templates/search.html:41
+msgid "Version"
 msgstr ""
 
 #~ msgid ""
@@ -423,5 +466,27 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Statistics"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "BOLTS scans its database for "
+#~ "inconsistencies, common problems, missing or"
+#~ " unclear informations and automatically "
+#~ "generates <a href=\"%(url)s\">a list of "
+#~ "things that could be fixed or "
+#~ "improved</a>. This is a great starting"
+#~ " point for contributing to BOLTS"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Dimensions and metadata of all the "
+#~ "sizes and versions of the part are"
+#~ " kept in special files. BOLTS can "
+#~ "then use this data and the "
+#~ "parametric models of the parts to "
+#~ "automatically build standard parts libraries"
+#~ " (\"BOLTS for ...\") for different "
+#~ "CAD tools, that the user just can"
+#~ " simply download and use"
 #~ msgstr ""
 
