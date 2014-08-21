@@ -12,8 +12,20 @@ from main import main
 from parts import parts
 from search import search, rebuild_index
 from . import utils, html, cms
+import logging
+from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
+
+log_handler = RotatingFileHandler(join(environ['OPENSHIFT_LOG_DIR'],'website.log'),maxBytes=2**20,backupCount=3)
+log_handler.setLevel(logging.INFO)
+log_handler.setFormatter(logging.Formatter(
+    '%(asctime)s %(levelname)s: %(message)s '
+    '[in %(pathname)s:%(lineno)d]'
+))
+
+app.logger.addHandler(log_handler)
+logging.getLogger().addHandler(log_handler)
 
 cachedir = join(environ["OPENSHIFT_DATA_DIR"],"cache")
 #clear cache
