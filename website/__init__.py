@@ -66,7 +66,7 @@ def get_locale():
 	lang_code = getattr(g,'lang_code',None)
 	if lang_code is None:
 		#the four most popular languages from the website
-		lang_code = request.accept_languages.best_match(translation.languages)
+		lang_code = request.accept_languages.best_match(translation.languages,'en')
 	return lang_code
 
 rebuild_index(app)
@@ -74,7 +74,7 @@ rebuild_index(app)
 @app.route('/')
 def index():
 	g.lang_code = get_locale()
-	return redirect(url_for('main.index',))
+	return redirect(url_for('main.index'))
 
 
 if __name__ == "__main__":
