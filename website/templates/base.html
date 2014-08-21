@@ -2,42 +2,54 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}" />
+  {% assets 'css' %}
+  <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" media="screen">
+  {% endassets %}
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="{{ url_for('main.static',filename='css/screen.css') }}" type="text/css" media="screen">
-  <link rel="shortcut icon" href="{{ url_for('main.static',filename='favicon.ico') }}" />
 </head>
 <body>
 {% block header %}
-<div id="header">
-  <div class="inner-content">
-    <nav id="nav">
-      <a {% if page.title == "Home" %}class="active"{% endif %} href="{{ url_for('main.index') }}">Home</a>
-      <a {% if page.title == "Blog" %}class="active"{% endif %} href="{{ url_for('blog.index') }}">Blog</a>
-      <a {% if page.title == "Parts list" %}class="active"{% endif %} href="{{ url_for('parts.index') }}">Parts list</a>
-      <a {% if page.title == "Documentation" %}class="active"{% endif %} href="{{ url_for('main.docindex') }}">Documentation</a>
-      <a {% if page.title == "Contribute" %}class="active"{% endif %} href="{{ url_for('main.contribute') }}">Contribute</a>
-      <a {% if page.title == "Downloads" %}class="active"{% endif %} href="{{ url_for('main.downloads') }}">Downloads</a>
-      <a {% if page.title == "Search" %}class="active"{% endif %} href="{{ url_for('search.search_page') }}">Search</a>
-    </nav>
-    <div id="social">
-      <span>Follow us on:</span>
-      <a class="github" href="https://github.com/jreinhardt/BOLTS">Github</a>
+   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="{{ url_for('main.index') }}">Home</a></li>
+          <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
+          <li><a href="{{ url_for('parts.index') }}">Parts</a></li>
+          <li><a href="{{ url_for('main.docindex') }}">Documentation</a></li>
+          <li><a href="{{ url_for('main.contribute') }}">Contribute</a></li>
+          <li><a href="{{ url_for('main.downloads') }}">Downloads</a></li>
+          <li><a href="{{ url_for('search.search_page') }}">Search</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="github" href="https://github.com/jreinhardt/BOLTS">Github</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
   </div>
-</div>
 {% endblock %}
 {% block banner %}{% endblock %}
 {% block titlebar %}{% endblock %}
-{% block content %}{% endblock %}
-{% block footer %}
-<footer id="footer">
-  <div class="inner-content">
-    <p class="first-child">© Johannes Reinhardt</p>
-    <p class="last-child">Title Image by <a href="https://www.flickr.com/photos/dkpphotography/9468970843">Dhruv Patel</a>, Theme based on a <a href="https://github.com/Wolfr/cactus-jekyll-theme">design</a> by <a href="http://wolfslittlestore.be">Wolf's Little Store</a></p>
-  </div>
-</footer>
-{% endblock %}
+<div class="container">
+  {% block content %}{% endblock %}
+  {% block footer %}
+  <hr>
+  <footer id="footer">
+      <p>© Johannes Reinhardt, title image by <a href="https://www.flickr.com/photos/dkpphotography/9468970843">Dhruv Patel</a>, theme based on a <a href="https://github.com/Wolfr/cactus-jekyll-theme">design</a> by <a href="http://wolfslittlestore.be">Wolf's Little Store</a></p>
+  </footer>
+  {% endblock %}
+</div>
 {% block tracking %}
 <script type="text/javascript">
   var _paq = _paq || [];
@@ -101,5 +113,8 @@
 })();
 </script>
 {% endblock %}
+{% assets 'js' %}
+<script src="{{ ASSET_URL }}"></script>
+{% endassets %}
 </body>
 </html>

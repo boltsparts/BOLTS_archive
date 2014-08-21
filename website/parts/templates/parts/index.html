@@ -1,27 +1,22 @@
 {% extends "parts.html" %}
 
 {% block content %}
-<div id="content">
-  <div class="inner-content">
-    <div class="cols">
-      <div class="col">
-        <h1>{% trans %}Collections{% endtrans %}</h1>
-          <table class="table">
-            {% for coll in collections %}
-            <tr><td><a href="{{ url_for('.collection',id=coll.id) }}">{{ gettext(coll.name) }}</a></td></tr>
-            {% endfor %}
-          </table>
-      </div>
-
-      <div class="col">
-        <h1>{% trans %}Standardisation bodies{% endtrans %}</h1>
-          <table class="table">
-            {% for body in bodies %}
-            <tr><td><a href="{{ url_for('.body',id=body) }}">{{ body }}</a></td></tr>
-            {% endfor %}
-          </table>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h1>{% trans %}Collections{% endtrans %}</h1>
+    <table class="table">
+      {% for coll in collections %}
+      <tr><td><a href="{{ url_for('.collection',id=coll.id) }}">{{ gettext(coll.name) }}</a></td></tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <h1>{% trans %}Standardisation bodies{% endtrans %}</h1>
+    <table class="table">
+      {% for body in bodies %}
+      <tr><td><a href="{{ url_for('.body',id=body) }}">{{ body }}</a></td></tr>
+      {% endfor %}
+    </table>
   </div>
 </div>
 {% endblock %}

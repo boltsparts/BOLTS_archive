@@ -2,15 +2,15 @@
 
 {% block titlebar %}
   <div class="page-title-bar">
-    <div class="inner-content">
+    <div class="container">
       <h2>Contribute</h2>
     </div>
   </div>
 {% endblock %}
 
 {% block content %}
-<div id="content">
-  <div class="inner-content">
+<div class="row">
+  <div class="col-md-4 col-xs-12">
     <h3>{% trans %}Try and tell{% endtrans %}</h3>
     <p>{% trans url = url_for('main.docindex') %}You can help BOLTS by just trying it and giving feedback. Whether you are using <a href="http://freecadweb.org/">FreeCAD</a> or <a href="http://www.openscad.org/">OpenSCAD</a>, just <a href="{{ url }}">install and use it</a> and tell us{% endtrans %}</p>
     <ul>
@@ -27,7 +27,8 @@
     </ul>
 
     <p>{% trans %}Also don't forget to tell all your friends, colleagues and fellow makers about BOLTS. Or blog about it, mention it on social networks and spread the word.{% endtrans %}</p>
-
+  </div>
+  <div class="col-md-4 col-xs-12">
     <h3>{% trans %}Add more parts and drawings{% endtrans %}</h3>
     <p>{% trans %}You can also help with adding more parts to BOLTS or improving those that are already there. To do so, you should first read about a few basic things, that will be useful to know{% endtrans %}</p>
 
@@ -37,7 +38,8 @@
     </ul>
 
     <p>{% trans url = url_for('main.docindex') %}After that you are well prepared to contribute parts, data or drawings. For details on how to do that see the <a href="{{ url }}">contributor documentation</a>.{% endtrans %}</p>
-
+  </div>
+  <div class="col-md-4 col-xs-12">
     <h3>{% trans %}Improve data{% endtrans %}</h3>
 
     <p>{% trans url = url_for('main.tasks') %}BOLTS scans its database for inconsistencies, common problems, missing or unclear informations and automatically generates <a href="{{ url }}">a list of things that could be fixed or improved</a>. This is a great starting point for contributing to BOLTS.{% endtrans %}</p>

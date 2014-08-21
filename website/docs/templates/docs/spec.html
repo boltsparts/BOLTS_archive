@@ -1,17 +1,13 @@
 {% extends "docs.html" %}
 
 {% block content %}
-<div id="blog">
-  <div id="blog-single">
-    <article>
-      <div class="entry-content">
-        {{ content | safe }}
-      </div>
-    </article>
-
-    <h2>{% trans %}Comments{% endtrans %}</h2>
-    <div id="comments"></div>
+<div class="row">
+  <div class="col-sm-8 blog-main">
+    <div id="blog-post">
+      {{ content | safe }}
+      <h2>{% trans %}Comments{% endtrans %}</h2>
+      <div id="comments"></div>
+    </div>
   </div>
 </div>
-
 {% endblock %}

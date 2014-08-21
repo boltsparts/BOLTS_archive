@@ -1,20 +1,14 @@
 {% extends "docs.html" %}
 
 {% block content %}
-<div id="blog">
-  <div id="blog-single">
-    <article>
-      <header>
-        <h1>{{ gettext_docs(doc.title) }}</h1>
-      </header>
-      <div class="entry-content">
-        {{ doc.content | markdown_docs }}
-      </div>
-    </article>
-
-    <h2>{% trans %}Comments{% endtrans %}</h2>
-    <div id="comments"></div>
+<div class="row">
+  <div class="col-sm-8 blog-main">
+    <div id="blog-post">
+      <h2 class="blog-post-title">{{ gettext_docs(doc.title) }}</a></h2>
+      {{ doc.content | markdown_blog }}
+      <h2>{% trans %}Comments{% endtrans %}</h2>
+      <div id="comments"></div>
+    </div>
   </div>
 </div>
-
 {% endblock %}

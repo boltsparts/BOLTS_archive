@@ -1,5 +1,6 @@
 from flask import Flask, render_template, abort, redirect, url_for, request, g
 from flask.ext.babelex import Babel,format_datetime, gettext, lazy_gettext, Domain
+from flask.ext.assets import Bundle, Environment
 from os.path import join, exists
 from os import environ, makedirs, getenv
 from shutil import rmtree
@@ -29,6 +30,11 @@ app.config['CACHE_DEFAULT_TIMEOUT'] = 3000000
 app.config['SECRET_KEY'] = getenv('OPENSHIFT_SECRET_TOKEN','development_token')
 
 cache.init_app(app)
+
+assets = Environment(app)
+
+assets.register('css',Bundle('source/style.less',filters=['less','cleancss']),output='css/style.css')
+assets.register('js',Bundle('js/jquery-2.1.1.min.js','js/bootstrap.min.js'),output='js/all.js')
 
 app.register_blueprint(main)
 app.register_blueprint(blog)

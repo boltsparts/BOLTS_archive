@@ -2,17 +2,16 @@
 
 {% block titlebar %}
   <div class="page-title-bar">
-    <div class="inner-content">
+    <div class="container">
       <h2>List of open tasks</h2>
     </div>
   </div>
 {% endblock %}
 
 {% block content %}
-<div id="content">
   {% for table in tables %}
   {% if table.length > 0 %}
-  <div class="inner-content">
+  <div>
     <h1>{{ table.title }}</h1>
     <p>{{ table.description }}</p>
 
@@ -31,6 +30,4 @@
   </div>
   {% endif %}
   {% endfor %}
-
-</div>
 {% endblock %}

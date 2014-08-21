@@ -94,4 +94,11 @@ To run the  bolts.py utility script (for development)
 Dependencies for website
 ------------------------
 
-see requirements.txt
+The website is based on Flask with many extensions and bootstrap on the
+frontend. The python requirements are listed in `requirements.txt`.
+
+The css and js resources are compiled and minified by Flask-Assets. For this
+one needs to have installed
+
+* node-less
+* cleancss

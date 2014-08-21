@@ -2,7 +2,7 @@
 
 {% block titlebar %}
   <div class="page-title-bar">
-    <div class="inner-content">
+    <div class="container">
       {% if page.version == page.stable %}
       <h2>Documentation for BOLTS {{ page.version }} (current stable version)</h2>
       <a class="active" href="{{ url_for('.index',version=page.stable) }}">stable</a>

@@ -1,52 +1,48 @@
 {% extends "parts.html" %}
 
 {% block content %}
-<div id="content">
-  <div class="inner-content">
-    <h1>{{ std.standard.get_nice() }}</h1>
-    {{ props }}
+<h1>{{ std.standard.get_nice() }}</h1>
+{{ props }}
 
-    {% if not parameters.drawing is none %}
-    <h2>{% trans %}Drawings{% endtrans %}</h2>
-    <a href="{{ parameters.drawing }}"><img width=600 src="{{ parameters.drawing }}"></a>
-    {% else %}
-    <h2>{% trans %}Parameters{% endtrans %}</h2>
-    {% endif %}
-    {{ parameters.description }}
+{% if not parameters.drawing is none %}
+<h2>{% trans %}Drawings{% endtrans %}</h2>
+<a href="{{ parameters.drawing }}"><img width=600 src="{{ parameters.drawing }}"></a>
+{% else %}
+<h2>{% trans %}Parameters{% endtrans %}</h2>
+{% endif %}
+{{ parameters.description }}
 
-    <h2>{% trans %}Description{% endtrans %}</h2>
-    <p>{{ std.description }}</p>
+<h2>{% trans %}Description{% endtrans %}</h2>
+<p>{{ std.description }}</p>
 
-    <h2>FreeCAD</h2>
-    {% if not freecad is none %}
-    {{ freecad.props }}
-    {% else %}
-    <p>{% trans %}This part is not availaible for FreeCAD{% endtrans %}</p>
-    {% endif %}
+<h2>FreeCAD</h2>
+{% if not freecad is none %}
+{{ freecad.props }}
+{% else %}
+<p>{% trans %}This part is not availaible for FreeCAD{% endtrans %}</p>
+{% endif %}
 
-    <h2>OpenSCAD</h2>
-    {% if not openscad is none %}
-    {{ openscad.props }}
-    <h3>{% trans %}Incantations{% endtrans %}</h3>
-      <pre><code>{{ openscad.incantation_module }}
+<h2>OpenSCAD</h2>
+{% if not openscad is none %}
+{{ openscad.props }}
+<h3>{% trans %}Incantations{% endtrans %}</h3>
+  <pre><code>{{ openscad.incantation_module }}
 {{ openscad.incantation_dims }}
 {{ openscad.incantation_conn }}</code></pre>
-      <h3>{% trans %}Connectors{% endtrans %}</h3>
-      {{ openscad.connectors }}
-    {% else %}
-    <p>{% trans %}This part is not availaible for OpenSCAD{% endtrans %}</p>
-    {% endif %}
+  <h3>{% trans %}Connectors{% endtrans %}</h3>
+  {{ openscad.connectors }}
+{% else %}
+<p>{% trans %}This part is not availaible for OpenSCAD{% endtrans %}</p>
+{% endif %}
 
-    <h2>{% trans %}Tables{% endtrans %}</h2>
-      {% for table in parameters.tables %}
-      {{ table }}
-      {% endfor %}
-      {% for table in parameters.tables2d %}
-      {{ table }}
-      {% endfor %}
+<h2>{% trans %}Tables{% endtrans %}</h2>
+  {% for table in parameters.tables %}
+  {{ table }}
+  {% endfor %}
+  {% for table in parameters.tables2d %}
+  {{ table }}
+  {% endfor %}
 
-    <h2>Comments</h2>
-    <div id="comments"></div>
-  </div>
-</div>
+<h2>Comments</h2>
+<div id="comments"></div>
 {% endblock %}

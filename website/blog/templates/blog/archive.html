@@ -2,7 +2,7 @@
 
 {% block titlebar %}
   <div class="page-title-bar">
-    <div class="inner-content">
+    <div class="container">
       <h2>Blog Archive</h2>
     </div>
   </div>
@@ -11,14 +11,15 @@
 {% block content %}
 <div id="blog">
   <div id="blog-content">
-    <ul class="bordered-list">
+    <table class="table">
       {% for post in posts %}
-      <li>
+      <tr><td>
         <a href="{{ url_for('blog.post',**post.url_values ) }}">{{ post.title }}</a>
+      </td><td>
         <span class="date">{{ post.date | datetimeformat }}</span>
-      </li>
+      </td></tr>
       {% endfor %}
-    </ul>
+    </table>
   </div>
 </div>
 {% endblock %}

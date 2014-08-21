@@ -2,15 +2,15 @@
 
 {% block titlebar %}
   <div class="page-title-bar">
-    <div class="inner-content">
+    <div class="container">
       <h2>Contributors</h2>
     </div>
   </div>
 {% endblock %}
 
 {% block content %}
-<div id="content">
-  <div class="inner-content">
+<div class="row">
+  <div class="col-xs-12 col-md-6">
     <h1>{% trans %}Part contributions{% endtrans %}</h1>
     <p>{% trans %}Work by the following is contained in BOLTS:{% endtrans %}</p>
     <table class="table">
@@ -19,7 +19,7 @@
       {% endfor %}
     </table>
   </div>
-  <div class="inner-content">
+  <div class="col-xs-12 col-md-6">
     <h1>{% trans %}Help and inspiration{% endtrans %}</h1>
     <p>{% trans %}These people have helped in other ways or provided inspiration:{% endtrans %}</p>
     <table class="table">

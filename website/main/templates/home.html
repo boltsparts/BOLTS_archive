@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block banner %}
-<div id="banner">
-  <div class="inner-content">
+<div class="jumbotron">
+  <div class="container">
     <div class="copy">
       <h1>BOLTS</h1>
       <p class="intro">{% trans %}BOLTS is an Open Library of Technical Specifications.{% endtrans %}</p>
@@ -12,95 +12,89 @@
 {% endblock %}
 
 {% block content %}
-<div id="content">
-  <div class="inner-content">
-    <div class="cols">
-      <div class="col">
-        <h3>{% trans %}What is BOLTS?{% endtrans %}</h3>
-        <p>{% trans %}The aim of BOLTS is to build a free and open-source standard parts library for CAD applications. It does so by providing a common database that can be utilized by many different CAD applications.{% endtrans %}</p>
-      </div>
-      <div class="col">
-      </div>
-    </div>
-    <div class="cols">
-      <div class="col">
-        <h3>{% trans %}What is a standard parts library?{% endtrans %}</h3>
-        <p>{% trans %}When you use a CAD software to create a design, this design consists usually of two different types of components: Custom parts that are specific to your purposes and have to be custom made (e.g. by 3D printing), and standard parts like nuts and bolts that you can buy in a hardware store.{% endtrans %}</p>
-        <p>{% trans %}A standard parts library relieves you from the tedious task of modeling standard parts by providing them readily usable, so that you can focus on the interesting aspects of your design.{% endtrans %}</p>
-        <p>{% trans %}While many commercial vendors offer standard parts libraries with their tools or for a fee, there is no free (as in freedom) standard parts library, yet. BOLTS tries to fill this gap.{% endtrans %}</p>
-      </div>
-      <div class="col">
-        <img width="80%" src="{{ url_for('main.static',filename='images/parts_library.png') }}"/>
-      </div>
-    </div>
-    <div class="cols">
-      <div class="col">
-        <h3>{% trans %}How does BOLTS work?{% endtrans %}</h3>
-        <p>{% trans %}BOLTS leverages the parametric abilities that most CAD applications provide. This allows to obtain a huge number of different sizes and variants of a part from a single model.{% endtrans %}</p>
-        <p>{% trans %}Dimensions and metadata of all the sizes and versions of the part are kept in special files. BOLTS can then use this data and the parametric models of the parts to automatically build standard parts libraries ("BOLTS for ...") for different CAD tools, that the user just can simply download and use.{% endtrans %}</p>
-        <p>{% trans %}So in a sense BOLTS is a tool to create standard parts libraries.{% endtrans %}</p>
-      </div>
-      <div class="col">
-        <a href="{{ url_for('main.static',filename='images/bolts_process.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/bolts_process.png') }}"/></a>
-      </div>
-    </div>
-    <div class="cols">
-      <div class="col">
-        <h3>{% trans %}How can I help?{% endtrans %}</h3>
-        <p>{% trans url = url_for('parts.index') %}You can help BOLTS by modeling parts in one of the supported CAD tools, by adding dimensions and metadata for new parts, or by creating drawings for the <a href="{{ url }}">online part directory</a>.{% endtrans %}</p>
-        <p>{% trans url = url_for('main.contribute') %}These tasks are relatively easy, and most of them do not require programming skills. To learn more, check out <a href="{{ url }}">this page</a>, it has more information and links to detailed descriptions of the different tasks.{% endtrans %}</p>
-      </div>
-      <div class="col">
-        <h3>{% trans %}Statistics{% endtrans %}</h3>
-        <ul>
-          <li>{% trans url=url_for('main.contributors'), n=stats.contributors %}<a href="{{ url }}">{{ n }} people</a> contributed{% endtrans %}</li>
-          <li> {{ stats.classes }} classes in</li>
-          <li> {{ stats.collections }} <a href="{{ url_for('parts.index') }}">collections</a> following</li>
-          <li> {{ stats.standards }} different standards issued by</li>
-          <li> {{ stats.bodies }} <a href="{{ url_for('parts.index') }}">standardization organisations</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="cols">
-      <div class="col">
-        <h3>Quickstart: Using BOLTS for OpenSCAD</h3>
-        <p>Download the tarball with BOLTS for <a href="http://www.openscad.org/">OpenSCAD</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the top of your scad file:</p>
-        <pre><code>
-include <bolts.scad>
-        </code></pre>
-        <p> You can now use BOLTS to add standard parts like a <a href="{{ url_for('parts.standard',id='ISO7089') }}">washer</a>:</p>
-        <pre><code>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>{% trans %}What is BOLTS?{% endtrans %}</h3>
+    <p>{% trans %}The aim of BOLTS is to build a free and open-source standard parts library for CAD applications. It does so by providing a common database that can be utilized by many different CAD applications.{% endtrans %}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>{% trans %}What is a standard parts library?{% endtrans %}</h3>
+    <p>{% trans %}When you use a CAD software to create a design, this design consists usually of two different types of components: Custom parts that are specific to your purposes and have to be custom made (e.g. by 3D printing), and standard parts like nuts and bolts that you can buy in a hardware store.{% endtrans %}</p>
+    <p>{% trans %}A standard parts library relieves you from the tedious task of modeling standard parts by providing them readily usable, so that you can focus on the interesting aspects of your design.{% endtrans %}</p>
+    <p>{% trans %}While many commercial vendors offer standard parts libraries with their tools or for a fee, there is no free (as in freedom) standard parts library, yet. BOLTS tries to fill this gap.{% endtrans %}</p>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <img width="80%" src="{{ url_for('main.static',filename='images/parts_library.png') }}"/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>{% trans %}How does BOLTS work?{% endtrans %}</h3>
+    <p>{% trans %}BOLTS leverages the parametric abilities that most CAD applications provide. This allows to obtain a huge number of different sizes and variants of a part from a single model.{% endtrans %}</p>
+    <p>{% trans %}Dimensions and metadata of all the sizes and versions of the part are kept in special files. BOLTS can then use this data and the parametric models of the parts to automatically build standard parts libraries ("BOLTS for ...") for different CAD tools, that the user just can simply download and use.{% endtrans %}</p>
+    <p>{% trans %}So in a sense BOLTS is a tool to create standard parts libraries.{% endtrans %}</p>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <a href="{{ url_for('main.static',filename='images/bolts_process.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/bolts_process.png') }}"/></a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>{% trans %}How can I help?{% endtrans %}</h3>
+    <p>{% trans url = url_for('parts.index') %}You can help BOLTS by modeling parts in one of the supported CAD tools, by adding dimensions and metadata for new parts, or by creating drawings for the <a href="{{ url }}">online part directory</a>.{% endtrans %}</p>
+    <p>{% trans url = url_for('main.contribute') %}These tasks are relatively easy, and most of them do not require programming skills. To learn more, check out <a href="{{ url }}">this page</a>, it has more information and links to detailed descriptions of the different tasks.{% endtrans %}</p>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <h3>{% trans %}Statistics{% endtrans %}</h3>
+    <ul>
+      <li>{% trans url=url_for('main.contributors'), n=stats.contributors %}<a href="{{ url }}">{{ n }} people</a> contributed{% endtrans %}</li>
+      <li> {{ stats.classes }} classes in</li>
+      <li> {{ stats.collections }} <a href="{{ url_for('parts.index') }}">collections</a> following</li>
+      <li> {{ stats.standards }} different standards issued by</li>
+      <li> {{ stats.bodies }} <a href="{{ url_for('parts.index') }}">standardization organisations</a></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>Quickstart: Using BOLTS for OpenSCAD</h3>
+    <p>Download the tarball with BOLTS for <a href="http://www.openscad.org/">OpenSCAD</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the top of your scad file:</p>
+    <pre><code>
+include &lt;bolts.scad&gt;
+    </code></pre>
+    <p> You can now use BOLTS to add standard parts like a <a href="{{ url_for('parts.standard',id='ISO7089') }}">washer</a>:</p>
+    <pre><code>
 ISO7089("M4");
-        </code></pre>
-        <p>For more information see the <a href="{{ url_for('main.docindex') }}">Documentation</a>
-      </div>
-      <div class="col">
-        <a href="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"/></a>
-      </div>
-    </div>
-    <div class="cols">
-      <div class="col">
-        <h3>Quickstart: Using BOLTS for FreeCAD</h3>
-        <p>Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab. You also have to make sure to have <a href="https://bitbucket.org/xi/pyyaml">pyyaml</a> installed.</p>
-        <p> After starting FreeCAD, choose <code>Macros</code> from the <code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code></p>
-        <p>A widget should appear. There you can select a part from the tree, give values for the parameters and add it to the current document.</p>
-        <p>For more information see the <a href="{{ url_for('main.docindex') }}">Documentation</a>
-      </div>
-      <div class="col">
-        <a href="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"/></a>
-      </div>
-    </div>
-    <div class="cols">
-      <div class="col">
-        <h3>Quickstart: Using BOLTS for IGES</h3>
-        <p>Download the tarball with BOLTS for <a href="http://en.wikipedia.org/wiki/IGES">IGES</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into a folder. This can require several hundred MByte of space.</p>
-        <p>IGES is a widely supported format, so almost every CAD tool can use it. The details depend on the specific application, but usually one has to open or import a IGES file to be able to use the part.
-        <p>The files are structured in subdirectories, which correspond to the collections shown <a href="{{ url_for('parts.index') }}">in the Parts list</a>. Not all sizes or variants of all parts are available in BOLTS for IGES, if you miss something <a href="{{ url_for('main.contribute') }}">get in touch</a>.
-      </div>
-      <div class="col">
-        <a href="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"/></a>
-      </div>
-    </div>
+    </code></pre>
+    <p>For more information see the <a href="{{ url_for('main.docindex') }}">Documentation</a>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <a href="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"/></a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>Quickstart: Using BOLTS for FreeCAD</h3>
+    <p>Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab. You also have to make sure to have <a href="https://bitbucket.org/xi/pyyaml">pyyaml</a> installed.</p>
+    <p> After starting FreeCAD, choose <code>Macros</code> from the <code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code></p>
+    <p>A widget should appear. There you can select a part from the tree, give values for the parameters and add it to the current document.</p>
+    <p>For more information see the <a href="{{ url_for('main.docindex') }}">Documentation</a>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <a href="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"/></a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>Quickstart: Using BOLTS for IGES</h3>
+    <p>Download the tarball with BOLTS for <a href="http://en.wikipedia.org/wiki/IGES">IGES</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into a folder. This can require several hundred MByte of space.</p>
+    <p>IGES is a widely supported format, so almost every CAD tool can use it. The details depend on the specific application, but usually one has to open or import a IGES file to be able to use the part.
+    <p>The files are structured in subdirectories, which correspond to the collections shown <a href="{{ url_for('parts.index') }}">in the Parts list</a>. Not all sizes or variants of all parts are available in BOLTS for IGES, if you miss something <a href="{{ url_for('main.contribute') }}">get in touch</a>.
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <a href="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"/></a>
   </div>
 </div>
 {% endblock %}

@@ -1,22 +1,18 @@
 {% extends "blog.html" %}
 
 {% block content %}
-<div id="blog">
-  <div id="blog-single">
-    <article>
-      <header>
-        <h1><a href="{{ url_for('blog.post',**post.url_values) }}">{{ post.title }}</a></h1>
-        <p>Posted on {{ post.date | datetimeformat }} by {{ post.author }}
-        {%- if not post.updated is none -%}
-        , last update {{ post.updated | datetimeformat }}
-        {%- endif %}</p>
-      </header>
-      <div class="entry-content">
-        {{ post.content | markdown_blog }}
-      </div>
-    </article>
-
-    <div id="comments"></div>
+<div class="row">
+  <div class="col-sm-8 blog-main">
+    <div id="blog-post">
+      <h2 class="blog-post-title"><a href="{{ url_for('blog.post',**post.url_values) }}">{{ post.title }}</a></h2>
+      <p class="blog-post-meta">Posted on {{ post.date | datetimeformat }} by {{ post.author }}
+      {%- if not post.updated is none -%}
+      , last update {{ post.updated | datetimeformat }}
+      {%- endif %}</p>
+      {{ post.content | markdown_blog }}
+      <h2>Comments</h2>
+      <div id="comments"></div>
+    </div>
   </div>
 </div>
 {% endblock %}

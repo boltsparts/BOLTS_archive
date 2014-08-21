@@ -10,3 +10,5 @@ output/connectordrawings/*
 bolttools/.coverage
 .sass-cache
 _site
+website/static/.webassets-cache
+website/static/css/style.css
