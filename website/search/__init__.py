@@ -30,24 +30,40 @@ if exists(whoosh_dir):
     rmtree(whoosh_dir)
 makedirs(whoosh_dir)
 
-fields = {
-	"facet" : whoosh.fields.ID(stored=True),
+doc_fields = {
 	"category" : whoosh.fields.ID(stored=True),
-	"id" : whoosh.fields.ID(stored=True),
 	"version" : whoosh.fields.ID(stored=True),
 	"url_endpoint" : whoosh.fields.ID(stored=True),
 	"url_args" : whoosh.fields.ID(stored=True)
 }
 
-for lang in languages:
-	fields["title_%s" % lang] = whoosh.fields.TEXT(stored=True,analyzer=LanguageAnalyzer(lang))
-	fields["content_%s" % lang] = whoosh.fields.TEXT(stored=True,analyzer=LanguageAnalyzer(lang))
+part_fields = {
+	"category" : whoosh.fields.ID(stored=True),
+	"id" : whoosh.fields.ID(field_boost=3.0,stored=True),
+	"table_indices" : whoosh.fields.TEXT(),
+	"url_endpoint" : whoosh.fields.ID(stored=True),
+	"url_args" : whoosh.fields.ID(stored=True)
+}
 
-schema = whoosh.fields.Schema(**fields)
-index = whoosh.index.create_in(whoosh_dir, schema)
-parsers = {}
 for lang in languages:
-    parsers[lang] = MultifieldParser(['title_%s' % lang,'content_%s' % lang,'id'],schema = index.schema)
+	doc_fields["title_%s" % lang] = whoosh.fields.TEXT(stored=True,field_boost=2.0,analyzer=LanguageAnalyzer(lang))
+	doc_fields["content_%s" % lang] = whoosh.fields.TEXT(analyzer=LanguageAnalyzer(lang))
+
+	part_fields["title_%s" % lang] = whoosh.fields.TEXT(stored=True,field_boost=2.0,analyzer=LanguageAnalyzer(lang))
+	part_fields["content_%s" % lang] = whoosh.fields.TEXT(analyzer=LanguageAnalyzer(lang))
+
+
+doc_schema = whoosh.fields.Schema(**doc_fields)
+part_schema = whoosh.fields.Schema(**part_fields)
+
+doc_index = whoosh.index.create_in(whoosh_dir, doc_schema, indexname="docs")
+part_index = whoosh.index.create_in(whoosh_dir, part_schema, indexname="parts")
+
+doc_parsers = {}
+part_parsers = {}
+for lang in languages:
+    doc_parsers[lang] = MultifieldParser(['title_%s' % lang,'content_%s' % lang,'id'],schema = doc_index.schema)
+    part_parsers[lang] = MultifieldParser(['title_%s' % lang,'content_%s' % lang,'id','table_indices'],schema = part_index.schema)
 
 @search.url_defaults
 def add_language_code(endpoint, values):
@@ -68,11 +84,10 @@ def rebuild_index(app):
 	trans = {}
 	for lang in languages:
 		trans[lang] = gettext.translation('parts',trans_dir,languages=[lang], fallback=True)
-	with index.writer() as writer:
-		#parts
+	#parts
+	with part_index.writer() as writer:
 		for coll, in repo.itercollections():
 			doc = {
-				"facet" : u"parts",
 				"category" : u"collection",
 				"id" : unicode(coll.id),
 				"url_endpoint" : u'parts.collection',
@@ -84,11 +99,11 @@ def rebuild_index(app):
 						doc["title_%s" % lang] = trans[lang].ugettext(coll.name)
 						doc["content_%s" % lang] = trans[lang].ugettext(coll.description)
 			writer.add_document(**doc)
-		for std, in repo.iterstandards():
+		for std,cl in repo.iterstandards(["standard","class"]):
 			doc = {
-				"facet" : u"parts",
 				"category" : u"standard",
 				"id" : unicode(std.get_id()),
+				"table_indices" : u" ".join(sum(cl.parameters.choices.values(),[])),
 				"url_endpoint" : u'parts.standard',
 				"url_args" : unicode({"id" : std.get_id()})
 			}
@@ -100,7 +115,6 @@ def rebuild_index(app):
 			writer.add_document(**doc)
 		for name, in repo.iternames():
 			doc = {
-				"facet" : u"parts",
 				"category" : u"name",
 				"id" : unicode(name.get_id()),
 				"url_endpoint" : u'parts.name',
@@ -113,13 +127,13 @@ def rebuild_index(app):
 						doc["content_%s" % lang] = trans[lang].ugettext(name.description)
 			writer.add_document(**doc)
 
-		#docs
+	#docs
+	with doc_index.writer() as writer:
 		trans = {}
 		for lang in languages:
 			trans[lang] = gettext.translation('docs',trans_dir,languages=[lang], fallback=True)
 		for doc_page in SOURCES.get_documents():
 			doc = {
-				"facet" : u"docs",
 				"category" : unicode(doc_page["category"]),
 				"version" : unicode(doc_page["version"]),
 				"url_endpoint" : u"docs.document",
@@ -150,23 +164,27 @@ def search_page():
         if form.validate_on_submit():
             return redirect(url_for('search.search_page',q=form.query.data))
     else:
-	results = {}
-	with index.searcher() as searcher:
-		hits = searcher.search(parsers[g.lang_code].parse(query),groupedby="facet")
-		for facet,docids in hits.groups().iteritems():
-		    results[facet] = []
-		    for i in docids:
-			hit = searcher.stored_fields(i)
+	results = {"parts" : [], "docs" : []}
+	with part_index.searcher() as searcher:
+		hits = searcher.search(part_parsers[g.lang_code].parse(query))
+		for hit in hits:
 			res = {
 				'title' : hit['title_%s' % g.lang_code],
-				'content' : hit['content_%s' % g.lang_code],
 				'url' : url_for(hit['url_endpoint'],**literal_eval(hit['url_args'])),
-				'facet' : hit['facet'],
 				'category' : hit['category']
 			}
-			if "version" in hit:
-				res['version'] = hit['version']
-			results[facet].append(res)
+			results["parts"].append(res)
+	with doc_index.searcher() as searcher:
+		hits = searcher.search(doc_parsers[g.lang_code].parse(query))
+		for hit in hits:
+			res = {
+				'title' : hit['title_%s' % g.lang_code],
+				'url' : url_for(hit['url_endpoint'],**literal_eval(hit['url_args'])),
+				'version' : hit['version'],
+				'category' : hit['category']
+			}
+			results["docs"].append(res)
+	
     page = {'title' : 'Search'}
     return render_template('search.html', page=page,form=form,query=query,results=results)
 
