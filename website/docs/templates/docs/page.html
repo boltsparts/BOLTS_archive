@@ -5,7 +5,7 @@
   <div class="col-sm-8 blog-main">
     <div id="blog-post">
       <h2 class="blog-post-title">{{ gettext_docs(doc.title) }}</a></h2>
-      {{ doc.content | markdown_blog }}
+      {{ doc.content | markdown_docs }}
       <h2>{% trans %}Comments{% endtrans %}</h2>
       <div id="comments"></div>
     </div>
