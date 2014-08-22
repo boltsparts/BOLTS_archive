@@ -26,7 +26,7 @@
     <p>{% trans %}While many commercial vendors offer standard parts libraries with their tools or for a fee, there is no free (as in freedom) standard parts library, yet. BOLTS tries to fill this gap.{% endtrans %}</p>
   </div>
   <div class="col-xs-12 col-md-6">
-    <img width="80%" src="{{ url_for('main.static',filename='images/parts_library.png') }}"/>
+    <a href="{{ url_for('main.static',filename='images/parts_library.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/parts_library_opt.png') }}"/></a>
   </div>
 </div>
 <div class="row">
@@ -37,7 +37,7 @@
     <p>{% trans %}So in a sense BOLTS is a tool to create standard parts libraries.{% endtrans %}</p>
   </div>
   <div class="col-xs-12 col-md-6">
-    <a href="{{ url_for('main.static',filename='images/bolts_process.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/bolts_process.png') }}"/></a>
+    <a href="{{ url_for('main.static',filename='images/bolts_process.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/bolts_process_opt.png') }}"/></a>
   </div>
 </div>
 <div class="row">
@@ -71,7 +71,7 @@ ISO7089("M4");
     <p>For more information see the <a href="{{ url_for('main.docindex') }}">Documentation</a>
   </div>
   <div class="col-xs-12 col-md-6">
-    <a href="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"/></a>
+    <a href="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/openscad-bolt_opt.png') }}"/></a>
   </div>
 </div>
 <div class="row">
@@ -83,7 +83,7 @@ ISO7089("M4");
     <p>For more information see the <a href="{{ url_for('main.docindex') }}">Documentation</a>
   </div>
   <div class="col-xs-12 col-md-6">
-    <a href="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"/></a>
+    <a href="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/freecad-bearing_opt.png') }}"/></a>
   </div>
 </div>
 <div class="row">
@@ -94,7 +94,7 @@ ISO7089("M4");
     <p>The files are structured in subdirectories, which correspond to the collections shown <a href="{{ url_for('parts.index') }}">in the Parts list</a>. Not all sizes or variants of all parts are available in BOLTS for IGES, if you miss something <a href="{{ url_for('main.contribute') }}">get in touch</a>.
   </div>
   <div class="col-xs-12 col-md-6">
-    <a href="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"/></a>
+    <a href="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/iges-quickstart_opt.png') }}"/></a>
   </div>
 </div>
 {% endblock %}
