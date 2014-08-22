@@ -26,7 +26,7 @@
     <p>{% trans %}While many commercial vendors offer standard parts libraries with their tools or for a fee, there is no free (as in freedom) standard parts library, yet. BOLTS tries to fill this gap.{% endtrans %}</p>
   </div>
   <div class="col-xs-12 col-md-6">
-    <a href="{{ url_for('main.static',filename='images/parts_library.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/parts_library_opt.png') }}"/></a>
+    <a href="{{ url_for('main.static',filename='images/parts_library.png') }}"><img alt="{% trans %}Illustration of different part sizes in a part library{% endtrans %}" width="80%" src="{{ url_for('main.static',filename='images/parts_library_opt.png') }}"/></a>
   </div>
 </div>
 <div class="row">
@@ -37,7 +37,7 @@
     <p>{% trans %}So in a sense BOLTS is a tool to create standard parts libraries.{% endtrans %}</p>
   </div>
   <div class="col-xs-12 col-md-6">
-    <a href="{{ url_for('main.static',filename='images/bolts_process.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/bolts_process_opt.png') }}"/></a>
+    <a href="{{ url_for('main.static',filename='images/bolts_process.png') }}"><img alt="{% trans %}Schematic image of how the backend independent data and the backend specific data for a CAD system are used to create a standard library for this system{% endtrans %}" width="80%" src="{{ url_for('main.static',filename='images/bolts_process_opt.png') }}"/></a>
   </div>
 </div>
 <div class="row">
@@ -59,19 +59,19 @@
 </div>
 <div class="row">
   <div class="col-xs-12 col-md-6">
-    <h3>Quickstart: Using BOLTS for OpenSCAD</h3>
-    <p>Download the tarball with BOLTS for <a href="http://www.openscad.org/">OpenSCAD</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the top of your scad file:</p>
+    <h3>{% trans %}Quickstart: Using BOLTS for OpenSCAD{% endtrans %}</h3>
+    <p>{% trans url=url_for('main.downloads') %}Download the tarball with BOLTS for <a href="http://www.openscad.org/">OpenSCAD</a> from the <a href="{{ url }}">Downloads page</a> and extract it into a folder. Start OpenSCAD from this folder or <a href="http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries">Adjust your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the top of your scad file:{% endtrans %}</p>
     <pre><code>
 include &lt;bolts.scad&gt;
     </code></pre>
-    <p> You can now use BOLTS to add standard parts like a <a href="{{ url_for('parts.standard',id='ISO7089') }}">washer</a>:</p>
+    <p>{% trans url=url_for('parts.standard',id='ISO7089') %}You can now use BOLTS to add standard parts like a <a href="{{ url }}">washer</a>:{% endtrans %}</p>
     <pre><code>
 ISO7089("M4");
     </code></pre>
-    <p>For more information see the <a href="{{ url_for('main.docindex') }}">Documentation</a>
+    <p>{% trans url=url_for('main.docindex') %}For more information see the <a href="{{ url }}">Documentation</a>{% endtrans %}</p>
   </div>
   <div class="col-xs-12 col-md-6">
-    <a href="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/openscad-bolt_opt.png') }}"/></a>
+    <a href="{{ url_for('main.static',filename='images/openscad-bolt.png') }}"><img alt="{% trans %}Screenshot of a bolt from BOLTS in OpenSCAD{% endtrans %}" width="80%" src="{{ url_for('main.static',filename='images/openscad-bolt_opt.png') }}"/></a>
   </div>
 </div>
 <div class="row">
@@ -83,18 +83,18 @@ ISO7089("M4");
     <p>For more information see the <a href="{{ url_for('main.docindex') }}">Documentation</a>
   </div>
   <div class="col-xs-12 col-md-6">
-    <a href="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/freecad-bearing_opt.png') }}"/></a>
+    <a href="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"><img alt="{% trans %}Screenshot of a ball bearing from BOLTS in FreeCAD{% endtrans %}" width="80%" src="{{ url_for('main.static',filename='images/freecad-bearing_opt.png') }}"/></a>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12 col-md-6">
-    <h3>Quickstart: Using BOLTS for IGES</h3>
-    <p>Download the tarball with BOLTS for <a href="http://en.wikipedia.org/wiki/IGES">IGES</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into a folder. This can require several hundred MByte of space.</p>
-    <p>IGES is a widely supported format, so almost every CAD tool can use it. The details depend on the specific application, but usually one has to open or import a IGES file to be able to use the part.
-    <p>The files are structured in subdirectories, which correspond to the collections shown <a href="{{ url_for('parts.index') }}">in the Parts list</a>. Not all sizes or variants of all parts are available in BOLTS for IGES, if you miss something <a href="{{ url_for('main.contribute') }}">get in touch</a>.
+    <h3>{% trans %}Quickstart: Using BOLTS for IGES{% endtrans %}</h3>
+    <p>{% trans url=url_for('main.downloads') %}Download the tarball with BOLTS for <a href="http://en.wikipedia.org/wiki/IGES">IGES</a> from the <a href="{{ url }}">Downloads page</a> and extract it into a folder. This can require several hundred MByte of space.{% endtrans %}</p>
+    <p>{% trans %}IGES is a widely supported format, so almost every CAD tool can use it. The details depend on the specific application, but usually one has to open or import a IGES file to be able to use the part.{% endtrans %}</p>
+    <p>{% trans url1=url_for('parts.index'), url2=url_for('main.contribute') %}The files are structured in subdirectories, which correspond to the collections shown <a href="{{ url1 }}">in the Parts list</a>. Not all sizes or variants of all parts are available in BOLTS for IGES, if you miss something <a href="{{ url2 }}">get in touch</a>.{% endtrans %}</p>
   </div>
   <div class="col-xs-12 col-md-6">
-    <a href="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"><img width="80%" src="{{ url_for('main.static',filename='images/iges-quickstart_opt.png') }}"/></a>
+    <a href="{{ url_for('main.static',filename='images/iges-quickstart.png') }}"><img alt="{% trans %}Illustrative screenshot of the many individual files in the IGES distribution of BOLTS{% endtrans %}" width="80%" src="{{ url_for('main.static',filename='images/iges-quickstart_opt.png') }}"/></a>
   </div>
 </div>
 {% endblock %}
