@@ -76,6 +76,23 @@ def index():
 	g.lang_code = get_locale()
 	return redirect(url_for('main.index'))
 
+@app.errorhandler(404)
+def error_404(e):
+	g.lang_code = get_locale()
+	return render_template('error.html',
+		page={'title' : 'Page not found'},
+		title=gettext('Page not found (404)'),
+		message=gettext('The page you are looking for does not exist. Maybe you made a mistake while typing the URL')
+	), 404
+
+@app.errorhandler(500)
+def error_500(e):
+	g.lang_code = get_locale()
+	return render_template('error.html',
+		page={'title' : 'Server Error'},
+		title=gettext('Something went wrong (500)'),
+		message=gettext('An error happened while processing your request. This should not happen, we are very sorry. Please tell us about the this problem by sending a mail to BOLTS@ist-dein-freund.de and include the URL you were trying to access.')
+	), 500
 
 if __name__ == "__main__":
 		app.run()

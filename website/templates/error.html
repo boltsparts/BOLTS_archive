@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titlebar %}
+  <div class="page-title-bar">
+    <div class="container">
+      <h2>{{ title }}</h2>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<p>{{ message }}</p>
+<img width=100% alt="{% trans %}Rusty nuts and bolts{% endtrans %}" src="{{ url_for('static',filename='images/404.jpg') }}"/>
+{% endblock %}
