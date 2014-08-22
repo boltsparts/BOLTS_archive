@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-08-21 22:01+0200\n"
+"POT-Creation-Date: 2014-08-22 12:04+0200\n"
 "PO-Revision-Date: 2014-07-28 13:12+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
-#: website/main/__init__.py:32
+#: website/main/__init__.py:32 website/templates/base.html:27
 msgid "Home"
 msgstr ""
 
@@ -243,6 +243,10 @@ msgid ""
 "library, yet. BOLTS tries to fill this gap."
 msgstr ""
 
+#: website/main/templates/home.html:29
+msgid "Illustration of different part sizes in a part library"
+msgstr ""
+
 #: website/main/templates/home.html:34
 msgid "How does BOLTS work?"
 msgstr ""
@@ -265,6 +269,13 @@ msgstr ""
 
 #: website/main/templates/home.html:37
 msgid "So in a sense BOLTS is a tool to create standard parts libraries."
+msgstr ""
+
+#: website/main/templates/home.html:40
+msgid ""
+"Schematic image of how the backend independent data and the backend "
+"specific data for a CAD system are used to create a standard library for "
+"this system"
 msgstr ""
 
 #: website/main/templates/home.html:45
@@ -295,6 +306,77 @@ msgstr ""
 #: website/main/templates/home.html:52
 #, python-format
 msgid "<a href=\"%(url)s\">%(n)s people</a> contributed"
+msgstr ""
+
+#: website/main/templates/home.html:62
+msgid "Quickstart: Using BOLTS for OpenSCAD"
+msgstr ""
+
+#: website/main/templates/home.html:63
+#, python-format
+msgid ""
+"Download the tarball with BOLTS for <a "
+"href=\"http://www.openscad.org/\">OpenSCAD</a> from the <a "
+"href=\"%(url)s\">Downloads page</a> and extract it into a folder. Start "
+"OpenSCAD from this folder or <a "
+"href=\"http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries\">Adjust"
+" your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  "
+"Then add this at the top of your scad file:"
+msgstr ""
+
+#: website/main/templates/home.html:67
+#, python-format
+msgid ""
+"You can now use BOLTS to add standard parts like a <a "
+"href=\"%(url)s\">washer</a>:"
+msgstr ""
+
+#: website/main/templates/home.html:71
+#, python-format
+msgid "For more information see the <a href=\"%(url)s\">Documentation</a>"
+msgstr ""
+
+#: website/main/templates/home.html:74
+msgid "Screenshot of a bolt from BOLTS in OpenSCAD"
+msgstr ""
+
+#: website/main/templates/home.html:86
+msgid "Screenshot of a ball bearing from BOLTS in FreeCAD"
+msgstr ""
+
+#: website/main/templates/home.html:91
+msgid "Quickstart: Using BOLTS for IGES"
+msgstr ""
+
+#: website/main/templates/home.html:92
+#, python-format
+msgid ""
+"Download the tarball with BOLTS for <a "
+"href=\"http://en.wikipedia.org/wiki/IGES\">IGES</a> from the <a "
+"href=\"%(url)s\">Downloads page</a> and extract it into a folder. This "
+"can require several hundred MByte of space."
+msgstr ""
+
+#: website/main/templates/home.html:93
+msgid ""
+"IGES is a widely supported format, so almost every CAD tool can use it. "
+"The details depend on the specific application, but usually one has to "
+"open or import a IGES file to be able to use the part."
+msgstr ""
+
+#: website/main/templates/home.html:94
+#, python-format
+msgid ""
+"The files are structured in subdirectories, which correspond to the "
+"collections shown <a href=\"%(url1)s\">in the Parts list</a>. Not all "
+"sizes or variants of all parts are available in BOLTS for IGES, if you "
+"miss something <a href=\"%(url2)s\">get in touch</a>."
+msgstr ""
+
+#: website/main/templates/home.html:97
+msgid ""
+"Illustrative screenshot of the many individual files in the IGES "
+"distribution of BOLTS"
 msgstr ""
 
 #: website/parts/__init__.py:47
@@ -409,7 +491,7 @@ msgstr ""
 msgid "title"
 msgstr ""
 
-#: website/search/templates/search.html:5
+#: website/search/templates/search.html:5 website/templates/base.html:33
 msgid "Search"
 msgstr ""
 
@@ -436,6 +518,39 @@ msgstr ""
 
 #: website/search/templates/search.html:41
 msgid "Version"
+msgstr ""
+
+#: website/templates/base.html:19
+msgid "Toggle navigation"
+msgstr ""
+
+#: website/templates/base.html:28
+msgid "Blog"
+msgstr ""
+
+#: website/templates/base.html:29
+msgid "Parts"
+msgstr ""
+
+#: website/templates/base.html:30
+msgid "Documentation"
+msgstr ""
+
+#: website/templates/base.html:31
+msgid "Contribute"
+msgstr ""
+
+#: website/templates/base.html:32
+msgid "Downloads"
+msgstr ""
+
+#: website/templates/base.html:49
+msgid ""
+"title image by <a "
+"href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv "
+"Patel</a>, theme based on a <a href=\"https://github.com/Wolfr/cactus-"
+"jekyll-theme\">design</a> by <a "
+"href=\"http://wolfslittlestore.be\">Wolf's Little Store</a>"
 msgstr ""
 
 #~ msgid ""
@@ -466,27 +581,5 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Statistics"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "BOLTS scans its database for "
-#~ "inconsistencies, common problems, missing or"
-#~ " unclear informations and automatically "
-#~ "generates <a href=\"%(url)s\">a list of "
-#~ "things that could be fixed or "
-#~ "improved</a>. This is a great starting"
-#~ " point for contributing to BOLTS"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Dimensions and metadata of all the "
-#~ "sizes and versions of the part are"
-#~ " kept in special files. BOLTS can "
-#~ "then use this data and the "
-#~ "parametric models of the parts to "
-#~ "automatically build standard parts libraries"
-#~ " (\"BOLTS for ...\") for different "
-#~ "CAD tools, that the user just can"
-#~ " simply download and use"
 #~ msgstr ""
 

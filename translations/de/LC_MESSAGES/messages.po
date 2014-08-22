@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-08-21 22:01+0200\n"
-"PO-Revision-Date: 2014-08-21 22:09+0200\n"
+"POT-Creation-Date: 2014-08-22 12:04+0200\n"
+"PO-Revision-Date: 2014-08-22 12:14+0200\n"
 "Last-Translator: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -33,7 +33,7 @@ msgstr "Änderungen"
 msgid "Comments"
 msgstr "Kommentare"
 
-#: website/main/__init__.py:32
+#: website/main/__init__.py:32 website/templates/base.html:27
 msgid "Home"
 msgstr "Home"
 
@@ -75,6 +75,8 @@ msgid ""
 "Problems with the documentation can be reported via the comments section "
 "embedded into each page."
 msgstr ""
+"Probleme mit der Dokumenatation können über die Kommentarsektion gemeldet "
+"werden, die auf jede Seite eingefügt ist."
 
 #: website/main/templates/contribute.html:25
 msgid ""
@@ -82,6 +84,9 @@ msgid ""
 "phpbb/free-cad/viewtopic.php?f=8&t=4549\">development thread</a> on the "
 "FreeCAD forums."
 msgstr ""
+"Für Fragen und Anmerkungen bezüglich FreeCAD gibt es einen <a href=\"http://"
+"sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=8&t=4549\">passenden "
+"Diskussionsfaden</a> in den FreeCAD Foren."
 
 #: website/main/templates/contribute.html:26
 msgid ""
@@ -89,6 +94,9 @@ msgid ""
 "tracker</a> on GitHub is also a good place to report problems and discuss "
 "improvements."
 msgstr ""
+"Der <a href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue "
+"tracker</a> auf GitHub ist ebenfalls ein guter Ort um Probleme zu melden und "
+"Verbesserungen zu diskutieren."
 
 #: website/main/templates/contribute.html:29
 msgid ""
@@ -99,7 +107,7 @@ msgstr ""
 
 #: website/main/templates/contribute.html:32
 msgid "Add more parts and drawings"
-msgstr ""
+msgstr "Füge weitere Teile und Zeichnungen hinzu"
 
 #: website/main/templates/contribute.html:33
 msgid ""
@@ -114,7 +122,7 @@ msgstr "Eine kurze Einführung in BOLTS"
 
 #: website/main/templates/contribute.html:37
 msgid "BOLTS development with git"
-msgstr ""
+msgstr "BOLTS Entwicklung mit git"
 
 #: website/main/templates/contribute.html:40
 #, python-format
@@ -264,6 +272,11 @@ msgstr ""
 "Während viele Firmen Standardteilebibliotheken für kommerzielle Software "
 "anbieten, gibt es bisher keine, die frei ist (wie in Freiheit)."
 
+#: website/main/templates/home.html:29
+msgid "Illustration of different part sizes in a part library"
+msgstr ""
+"Illustration von Teilen unterschiedlicher Größe in einer Teilebibliothek"
+
 #: website/main/templates/home.html:34
 msgid "How does BOLTS work?"
 msgstr "Wie funktioniert BOLTS?"
@@ -296,6 +309,15 @@ msgid "So in a sense BOLTS is a tool to create standard parts libraries."
 msgstr ""
 "BOLTS ist also in einem gewissen Sinne ein Werkzeug zur Erstellung von "
 "Standardteilebibliotheken."
+
+#: website/main/templates/home.html:40
+msgid ""
+"Schematic image of how the backend independent data and the backend specific "
+"data for a CAD system are used to create a standard library for this system"
+msgstr ""
+"Schematische Darstellung wie die backendunabhängigen Daten und die "
+"backendspezifischen Daten für ein CAD System zusammen zur Erstellung einer "
+"Standardbibliothek für dieses System verwendet werden."
 
 #: website/main/templates/home.html:45
 msgid "How can I help?"
@@ -333,6 +355,75 @@ msgstr "Statistik"
 #, python-format
 msgid "<a href=\"%(url)s\">%(n)s people</a> contributed"
 msgstr "<a href=\"%(url)s\">%(n)s Personen</a> haben beigetragen"
+
+#: website/main/templates/home.html:62
+msgid "Quickstart: Using BOLTS for OpenSCAD"
+msgstr ""
+
+#: website/main/templates/home.html:63
+#, python-format
+msgid ""
+"Download the tarball with BOLTS for <a href=\"http://www.openscad.org/"
+"\">OpenSCAD</a> from the <a href=\"%(url)s\">Downloads page</a> and extract "
+"it into a folder. Start OpenSCAD from this folder or <a href=\"http://en."
+"wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries\">Adjust your OpenSCAD "
+"library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the "
+"top of your scad file:"
+msgstr ""
+
+#: website/main/templates/home.html:67
+#, python-format
+msgid ""
+"You can now use BOLTS to add standard parts like a <a href=\"%(url)s"
+"\">washer</a>:"
+msgstr ""
+
+#: website/main/templates/home.html:71
+#, python-format
+msgid "For more information see the <a href=\"%(url)s\">Documentation</a>"
+msgstr ""
+
+#: website/main/templates/home.html:74
+msgid "Screenshot of a bolt from BOLTS in OpenSCAD"
+msgstr ""
+
+#: website/main/templates/home.html:86
+msgid "Screenshot of a ball bearing from BOLTS in FreeCAD"
+msgstr ""
+
+#: website/main/templates/home.html:91
+msgid "Quickstart: Using BOLTS for IGES"
+msgstr ""
+
+#: website/main/templates/home.html:92
+#, python-format
+msgid ""
+"Download the tarball with BOLTS for <a href=\"http://en.wikipedia.org/wiki/"
+"IGES\">IGES</a> from the <a href=\"%(url)s\">Downloads page</a> and extract "
+"it into a folder. This can require several hundred MByte of space."
+msgstr ""
+
+#: website/main/templates/home.html:93
+msgid ""
+"IGES is a widely supported format, so almost every CAD tool can use it. The "
+"details depend on the specific application, but usually one has to open or "
+"import a IGES file to be able to use the part."
+msgstr ""
+
+#: website/main/templates/home.html:94
+#, python-format
+msgid ""
+"The files are structured in subdirectories, which correspond to the "
+"collections shown <a href=\"%(url1)s\">in the Parts list</a>. Not all sizes "
+"or variants of all parts are available in BOLTS for IGES, if you miss "
+"something <a href=\"%(url2)s\">get in touch</a>."
+msgstr ""
+
+#: website/main/templates/home.html:97
+msgid ""
+"Illustrative screenshot of the many individual files in the IGES "
+"distribution of BOLTS"
+msgstr ""
 
 #: website/parts/__init__.py:47
 msgid "Author"
@@ -446,7 +537,7 @@ msgstr "Tabellen"
 msgid "title"
 msgstr ""
 
-#: website/search/templates/search.html:5
+#: website/search/templates/search.html:5 website/templates/base.html:33
 msgid "Search"
 msgstr "Suche"
 
@@ -474,3 +565,39 @@ msgstr "Ergebnisse Dokumenatation"
 #: website/search/templates/search.html:41
 msgid "Version"
 msgstr "Version"
+
+#: website/templates/base.html:19
+msgid "Toggle navigation"
+msgstr "Navigationsmenü ausklappen"
+
+#: website/templates/base.html:28
+msgid "Blog"
+msgstr "Blog"
+
+#: website/templates/base.html:29
+msgid "Parts"
+msgstr "Teile"
+
+#: website/templates/base.html:30
+msgid "Documentation"
+msgstr "Dokumenatation"
+
+#: website/templates/base.html:31
+msgid "Contribute"
+msgstr "Mitmachen"
+
+#: website/templates/base.html:32
+msgid "Downloads"
+msgstr "Downloads"
+
+#: website/templates/base.html:49
+msgid ""
+"title image by <a href=\"https://www.flickr.com/photos/"
+"dkpphotography/9468970843\">Dhruv Patel</a>, theme based on a <a href="
+"\"https://github.com/Wolfr/cactus-jekyll-theme\">design</a> by <a href="
+"\"http://wolfslittlestore.be\">Wolf's Little Store</a>"
+msgstr ""
+"Titelbild von <a href=\"https://www.flickr.com/photos/"
+"dkpphotography/9468970843\">Dhruv Patel</a>, Design basierend auf einem <a "
+"href=\"https://github.com/Wolfr/cactus-jekyll-theme\">Entwurf</a> von <a "
+"href=\"http://wolfslittlestore.be\">Wolf's Little Store</a>"
