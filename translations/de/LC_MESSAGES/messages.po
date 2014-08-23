@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-08-23 20:17+0200\n"
-"PO-Revision-Date: 2014-08-23 12:42+0000\n"
+"PO-Revision-Date: 2014-08-23 18:24+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/de/>\n"
@@ -176,10 +176,13 @@ msgid ""
 "about BOLTS. Or blog about it, mention it on social networks and spread "
 "the word."
 msgstr ""
+"Vergiss auch nicht, allen deinen Freunden, Bekannten und Bastelkollegen von "
+"BOLTS zu erzählen. Oder darüber zu bloggen, es in Sozialen Netzwerken zu "
+"erwähnen und überall zu verbreiten."
 
 #: website/main/templates/contribute.html:32
 msgid "Add more parts and drawings"
-msgstr "Füge weitere Teile und Zeichnungen hinzu"
+msgstr "Weitere Teile und Zeichnungen hinzufügen"
 
 #: website/main/templates/contribute.html:33
 msgid ""
