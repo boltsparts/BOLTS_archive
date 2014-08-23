@@ -6,26 +6,26 @@
     {% for post in posts %}
     <div id="blog-post">
       <h2 class="blog-post-title"><a href="{{ url_for('blog.post',**post.url_values) }}">{{ post.title }}</a></h2>
-      <p class="blog-post-meta">Posted on {{ post.date | datetimeformat }} by {{ post.author }}</p>
+      <p class="blog-post-meta">{% trans date=post.date | datetimeformat, author = post.author %}Posted on {{ date }} by {{ author }}{% endtrans %}</p>
 
       {{ post.teaser | markdown_blog }}
 
-      <p><a href="{{ url_for('blog.post',**post.url_values) }}">Read more</a></p>
+      <p><a href="{{ url_for('blog.post',**post.url_values) }}">{% trans %}Read more{% endtrans %}</a></p>
     </div>
     {% endfor %}
     <hr>
-    <p>Older posts can be found in the <a href="{{ url_for('blog.archive') }}">Blog archive</a>.</p>
+    <p>{% trans url=url_for('blog.archive') %}Older posts can be found in the <a href="{{ url }}">Blog archive</a>.{% endtrans %}</p>
   </div>
 
   <div class="col-sm-3 col-sm-offset-1">
     <div class="sidebar-module">
-      <h4>Welcome to the BOLTS blog</h4>
-      <p>The latest and greatest on BOLTS. <a href="{{ url_for('blog.feed') }}">Subscribe the RSS feed</a> for updates.</p>
+      <h4>{% trans %}Welcome to the BOLTS blog{% endtrans %}</h4>
+      <p>{% trans url=url_for('blog.feed') %}The latest and greatest on BOLTS. <a href="{{ url }}">Subscribe the RSS feed</a> for updates.{% endtrans %}</p>
     </div>
 
     <div class="sidebar-module">
-      <h4>Post archive</h4>
-      <p>View all posts in the <a href="{{ url_for('blog.archive') }}">Blog archive</a>.</p>
+      <h4>{% trans %}Post archive{% endtrans %}</h4>
+      <p>{% trans url=url_for('blog.archive') %}View all posts in the <a href="{{ url }}">Blog archive</a>.{% endtrans %}</p>
     </div>
   </div>
 </div>
