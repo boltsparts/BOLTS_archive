@@ -6,7 +6,7 @@
     <h1>{% trans %}Collections{% endtrans %}</h1>
     <table class="table">
       {% for coll in collections %}
-      <tr><td><a href="{{ url_for('.collection',id=coll.id) }}">{{ gettext(coll.name) }}</a></td></tr>
+      <tr><td><a href="{{ url_for('.collection',id=coll.id) }}">{{ gettext_parts(coll.name) }}</a></td></tr>
       {% endfor %}
     </table>
   </div>
