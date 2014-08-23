@@ -8,18 +8,93 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-08-22 12:04+0200\n"
+"POT-Creation-Date: 2014-08-23 20:17+0200\n"
 "PO-Revision-Date: 2014-08-23 12:42+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/de/>\n"
-"Language: de\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
 "Generated-By: Babel 1.3\n"
+
+#: website/__init__.py:84
+msgid "Page not found (404)"
+msgstr ""
+
+#: website/__init__.py:85
+msgid ""
+"The page you are looking for does not exist. Maybe you made a mistake "
+"while typing the URL"
+msgstr ""
+
+#: website/__init__.py:93
+msgid "Something went wrong (500)"
+msgstr ""
+
+#: website/__init__.py:94
+msgid ""
+"An error happened while processing your request. This should not happen, "
+"we are very sorry. Please tell us about the this problem by sending a "
+"mail to BOLTS@ist-dein-freund.de and include the URL you were trying to "
+"access."
+msgstr ""
+
+#: website/blog/templates/blog.html:6 website/templates/base.html:28
+msgid "Blog"
+msgstr "Blog"
+
+#: website/blog/templates/blog/archive.html:6
+msgid "Blog Archive"
+msgstr ""
+
+#: website/blog/templates/blog/index.html:9
+#: website/blog/templates/blog/post.html:8
+#, python-format
+msgid "Posted on %(date)s by %(author)s"
+msgstr ""
+
+#: website/blog/templates/blog/index.html:13
+msgid "Read more"
+msgstr ""
+
+#: website/blog/templates/blog/index.html:17
+#, python-format
+msgid "Older posts can be found in the <a href=\"%(url)s\">Blog archive</a>."
+msgstr ""
+
+#: website/blog/templates/blog/index.html:22
+msgid "Welcome to the BOLTS blog"
+msgstr ""
+
+#: website/blog/templates/blog/index.html:23
+#, python-format
+msgid ""
+"The latest and greatest on BOLTS. <a href=\"%(url)s\">Subscribe the RSS "
+"feed</a> for updates."
+msgstr ""
+
+#: website/blog/templates/blog/index.html:27
+msgid "Post archive"
+msgstr ""
+
+#: website/blog/templates/blog/index.html:28
+#, python-format
+msgid "View all posts in the <a href=\"%(url)s\">Blog archive</a>."
+msgstr ""
+
+#: website/blog/templates/blog/post.html:10
+#, python-format
+msgid ", last update %(date)s"
+msgstr ""
+
+#: website/blog/templates/blog/post.html:13
+#: website/docs/templates/docs/index.html:49
+#: website/docs/templates/docs/page.html:9
+#: website/docs/templates/docs/spec.html:8
+msgid "Comments"
+msgstr "Kommentare"
 
 #: website/docs/templates/docs/index.html:44
 msgid "blt file format specification"
@@ -28,12 +103,6 @@ msgstr "blt Dateiformat Spezifikation"
 #: website/docs/templates/docs/index.html:45
 msgid "Changelog"
 msgstr "Änderungen"
-
-#: website/docs/templates/docs/index.html:49
-#: website/docs/templates/docs/page.html:9
-#: website/docs/templates/docs/spec.html:8
-msgid "Comments"
-msgstr "Kommentare"
 
 #: website/main/__init__.py:32 website/templates/base.html:27
 msgid "Home"
@@ -46,15 +115,15 @@ msgstr "Probier es aus und erzähl davon"
 #: website/main/templates/contribute.html:15
 #, python-format
 msgid ""
-"You can help BOLTS by just trying it and giving feedback. Whether you are "
-"using <a href=\"http://freecadweb.org/\">FreeCAD</a> or <a href=\"http://www."
-"openscad.org/\">OpenSCAD</a>, just <a href=\"%(url)s\">install and use it</"
-"a> and tell us"
+"You can help BOLTS by just trying it and giving feedback. Whether you are"
+" using <a href=\"http://freecadweb.org/\">FreeCAD</a> or <a "
+"href=\"http://www.openscad.org/\">OpenSCAD</a>, just <a "
+"href=\"%(url)s\">install and use it</a> and tell us"
 msgstr ""
 "Du kannst BOLTS helfen indem du es einfach ausprobierst und Rückmeldung "
 "gibst. Egal ob du <a href=\"http://freecadweb.org/\">FreeCAD</a> oder <a "
-"href=\"http://www.openscad.org/\">OpenSCAD</a> nutzt, <a href=\"%(url)s"
-"\">installiere und verwende es</a> und sage uns"
+"href=\"http://www.openscad.org/\">OpenSCAD</a> nutzt, <a "
+"href=\"%(url)s\">installiere und verwende es</a> und sage uns"
 
 #: website/main/templates/contribute.html:17
 msgid "what didn't work as expected for you"
@@ -77,34 +146,35 @@ msgid ""
 "Problems with the documentation can be reported via the comments section "
 "embedded into each page."
 msgstr ""
-"Probleme mit der Dokumentation können über die Kommentarfunktion gemeldet "
-"werden, die in jede Seite eingebaut ist."
+"Probleme mit der Dokumentation können über die Kommentarfunktion gemeldet"
+" werden, die in jede Seite eingebaut ist."
 
 #: website/main/templates/contribute.html:25
 msgid ""
-"For FreeCAD related things, there is a <a href=\"http://sourceforge.net/apps/"
-"phpbb/free-cad/viewtopic.php?f=8&t=4549\">development thread</a> on the "
-"FreeCAD forums."
+"For FreeCAD related things, there is a <a "
+"href=\"http://sourceforge.net/apps/phpbb/free-"
+"cad/viewtopic.php?f=8&t=4549\">development thread</a> on the FreeCAD "
+"forums."
 msgstr ""
-"Für FreeCAD Fragen gibt es einen <a href=\"http://sourceforge.net/apps/phpbb"
-"/free-cad/viewtopic.php?f=8&t=4549\">Diskussionsfaden</a> in den FreeCAD "
-"Foren."
+"Für FreeCAD Fragen gibt es einen <a "
+"href=\"http://sourceforge.net/apps/phpbb/free-"
+"cad/viewtopic.php?f=8&t=4549\">Diskussionsfaden</a> in den FreeCAD Foren."
 
 #: website/main/templates/contribute.html:26
 msgid ""
 "The <a href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue "
-"tracker</a> on GitHub is also a good place to report problems and discuss "
-"improvements."
+"tracker</a> on GitHub is also a good place to report problems and discuss"
+" improvements."
 msgstr ""
 "Der <a href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS Issue "
-"Tracker</a> auf GitHub ist ebenfalls ein guter Ort um Probleme zu melden und "
-"Verbesserungen zu diskutieren."
+"Tracker</a> auf GitHub ist ebenfalls ein guter Ort um Probleme zu melden "
+"und Verbesserungen zu diskutieren."
 
 #: website/main/templates/contribute.html:29
 msgid ""
 "Also don't forget to tell all your friends, colleagues and fellow makers "
-"about BOLTS. Or blog about it, mention it on social networks and spread the "
-"word."
+"about BOLTS. Or blog about it, mention it on social networks and spread "
+"the word."
 msgstr ""
 
 #: website/main/templates/contribute.html:32
@@ -113,9 +183,9 @@ msgstr "Füge weitere Teile und Zeichnungen hinzu"
 
 #: website/main/templates/contribute.html:33
 msgid ""
-"You can also help with adding more parts to BOLTS or improving those that "
-"are already there. To do so, you should first read about a few basic things, "
-"that will be useful to know"
+"You can also help with adding more parts to BOLTS or improving those that"
+" are already there. To do so, you should first read about a few basic "
+"things, that will be useful to know"
 msgstr ""
 
 #: website/main/templates/contribute.html:36
@@ -129,8 +199,8 @@ msgstr "BOLTS Entwicklung mit git"
 #: website/main/templates/contribute.html:40
 #, python-format
 msgid ""
-"After that you are well prepared to contribute parts, data or drawings. For "
-"details on how to do that see the <a href=\"%(url)s\">contributor "
+"After that you are well prepared to contribute parts, data or drawings. "
+"For details on how to do that see the <a href=\"%(url)s\">contributor "
 "documentation</a>."
 msgstr ""
 
@@ -141,10 +211,10 @@ msgstr ""
 #: website/main/templates/contribute.html:45
 #, python-format
 msgid ""
-"BOLTS scans its database for inconsistencies, common problems, missing or "
-"unclear informations and automatically generates <a href=\"%(url)s\">a list "
-"of things that could be fixed or improved</a>. This is a great starting "
-"point for contributing to BOLTS."
+"BOLTS scans its database for inconsistencies, common problems, missing or"
+" unclear informations and automatically generates <a href=\"%(url)s\">a "
+"list of things that could be fixed or improved</a>. This is a great "
+"starting point for contributing to BOLTS."
 msgstr ""
 
 #: website/main/templates/contributors.html:14
@@ -182,8 +252,7 @@ msgid "had some good ideas for BOLTS for OpenSCAD and created OpenSCAD."
 msgstr ""
 
 #: website/main/templates/contributors.html:30
-msgid ""
-"helped with some difficult questions about the inner workings of FreeCAD."
+msgid "helped with some difficult questions about the inner workings of FreeCAD."
 msgstr ""
 
 #: website/main/templates/contributors.html:31
@@ -212,8 +281,8 @@ msgstr "Entwicklungsschnappschuss"
 
 #: website/main/templates/downloads.html:52
 msgid ""
-"If in doubt, take the zip archive. <a href=\"http://www.7-zip.org/\">7 Zip</"
-"a> can be used to open xz archives on Windows."
+"If in doubt, take the zip archive. <a href=\"http://www.7-zip.org/\">7 "
+"Zip</a> can be used to open xz archives on Windows."
 msgstr ""
 "Falls du nicht weißt, welches Archiv für dich das richtige ist, nimm das "
 "zip. <a href=\"http://www.7-zip.org/\">7 Zip</a> kann xz Archive unter "
@@ -229,14 +298,14 @@ msgstr "Was ist BOLTS?"
 
 #: website/main/templates/home.html:18
 msgid ""
-"The aim of BOLTS is to build a free and open-source standard parts library "
-"for CAD applications. It does so by providing a common database that can be "
-"utilized by many different CAD applications."
+"The aim of BOLTS is to build a free and open-source standard parts "
+"library for CAD applications. It does so by providing a common database "
+"that can be utilized by many different CAD applications."
 msgstr ""
 "Das Ziel von BOLTS ist es, eine freie und quelloffene "
-"Standardteilebibliothek für CAD Applikationen aufzubauen. BOLTS tut dies, "
-"indem es eine gemeinsame Datenbasis bereitstellt, die von verschiedenen CAD "
-"Programmen aus genutzt werden kann."
+"Standardteilebibliothek für CAD Applikationen aufzubauen. BOLTS tut dies,"
+" indem es eine gemeinsame Datenbasis bereitstellt, die von verschiedenen "
+"CAD Programmen aus genutzt werden kann."
 
 #: website/main/templates/home.html:23
 msgid "What is a standard parts library?"
@@ -244,40 +313,40 @@ msgstr "Was ist eine Standardteilebibliothek?"
 
 #: website/main/templates/home.html:24
 msgid ""
-"When you use a CAD software to create a design, this design consists usually "
-"of two different types of components: Custom parts that are specific to your "
-"purposes and have to be custom made (e.g. by 3D printing), and standard "
-"parts like nuts and bolts that you can buy in a hardware store."
+"When you use a CAD software to create a design, this design consists "
+"usually of two different types of components: Custom parts that are "
+"specific to your purposes and have to be custom made (e.g. by 3D "
+"printing), and standard parts like nuts and bolts that you can buy in a "
+"hardware store."
 msgstr ""
 "Wenn man eine CAD Software verwendet um ein Objekt zu konstruieren, dann "
-"besteht dieses normalerweise aus zwei Sorten von Komponenten: Spezialteile, "
-"die spezifisch für diese Anwendung sind, und die selbst hergestellt werden "
-"müssen (z.B. mit einem 3D Drucker), und Standardteile, wie Schrauben und "
-"Muttern, die man im Laden kaufen kann."
+"besteht dieses normalerweise aus zwei Sorten von Komponenten: "
+"Spezialteile, die spezifisch für diese Anwendung sind, und die selbst "
+"hergestellt werden müssen (z.B. mit einem 3D Drucker), und Standardteile,"
+" wie Schrauben und Muttern, die man im Laden kaufen kann."
 
 #: website/main/templates/home.html:25
 msgid ""
 "A standard parts library relieves you from the tedious task of modeling "
-"standard parts by providing them readily usable, so that you can focus on "
-"the interesting aspects of your design."
+"standard parts by providing them readily usable, so that you can focus on"
+" the interesting aspects of your design."
 msgstr ""
 "Eine Standardteilebibliothek nimmt einem das langwierige Modellieren von "
-"Standardteilen ab, indem es diese fertig nutzbar bereitstellt. Dadurch kann "
-"man sich auf die interessanten Aspekte eines Designs konzentrieren."
+"Standardteilen ab, indem es diese fertig nutzbar bereitstellt. Dadurch "
+"kann man sich auf die interessanten Aspekte eines Designs konzentrieren."
 
 #: website/main/templates/home.html:26
 msgid ""
 "While many commercial vendors offer standard parts libraries with their "
-"tools or for a fee, there is no free (as in freedom) standard parts library, "
-"yet. BOLTS tries to fill this gap."
+"tools or for a fee, there is no free (as in freedom) standard parts "
+"library, yet. BOLTS tries to fill this gap."
 msgstr ""
 "Während viele Firmen Standardteilebibliotheken für kommerzielle Software "
 "anbieten, gibt es bisher keine, die frei ist (wie in Freiheit)."
 
 #: website/main/templates/home.html:29
 msgid "Illustration of different part sizes in a part library"
-msgstr ""
-"Illustration von Teilen unterschiedlicher Größe in einer Teilebibliothek"
+msgstr "Illustration von Teilen unterschiedlicher Größe in einer Teilebibliothek"
 
 #: website/main/templates/home.html:34
 msgid "How does BOLTS work?"
@@ -285,26 +354,28 @@ msgstr "Wie funktioniert BOLTS?"
 
 #: website/main/templates/home.html:35
 msgid ""
-"BOLTS leverages the parametric abilities that most CAD applications provide. "
-"This allows to obtain a huge number of different sizes and variants of a "
-"part from a single model."
+"BOLTS leverages the parametric abilities that most CAD applications "
+"provide. This allows to obtain a huge number of different sizes and "
+"variants of a part from a single model."
 msgstr ""
 "BOLTS nutzt die parametrischen Funktionen, die die meisten CAD Programme "
-"bereitstellen. Das erlaubt es, eine große Zahl von verschiedenen Größen und "
-"Varianten von einem einzelnen Modell abzuleiten."
+"bereitstellen. Das erlaubt es, eine große Zahl von verschiedenen Größen "
+"und Varianten von einem einzelnen Modell abzuleiten."
 
 #: website/main/templates/home.html:36
 msgid ""
-"Dimensions and metadata of all the sizes and versions of the part are kept "
-"in special files. BOLTS can then use this data and the parametric models of "
-"the parts to automatically build standard parts libraries (\"BOLTS for ..."
-"\") for different CAD tools, that the user just can simply download and use."
+"Dimensions and metadata of all the sizes and versions of the part are "
+"kept in special files. BOLTS can then use this data and the parametric "
+"models of the parts to automatically build standard parts libraries "
+"(\"BOLTS for ...\") for different CAD tools, that the user just can "
+"simply download and use."
 msgstr ""
-"Abmessungen und Metadaten für alle Größen und Versionen eines Teils sind in "
-"speziellen Dateien verfügbar. BOLTS can diese Daten zusammen mit den "
-"parametrischen Modellen dazu nutzen, automatisch Standardteilebibliotheken "
-"(\\\"BOLTS für ...\\\") verschiedene CAD programme zu erstellen, die der "
-"Benutzer einfach herunterladen und verwenden kann."
+"Abmessungen und Metadaten für alle Größen und Versionen eines Teils sind "
+"in speziellen Dateien verfügbar. BOLTS can diese Daten zusammen mit den "
+"parametrischen Modellen dazu nutzen, automatisch "
+"Standardteilebibliotheken (\\\"BOLTS für ...\\\") verschiedene CAD "
+"programme zu erstellen, die der Benutzer einfach herunterladen und "
+"verwenden kann."
 
 #: website/main/templates/home.html:37
 msgid "So in a sense BOLTS is a tool to create standard parts libraries."
@@ -314,12 +385,13 @@ msgstr ""
 
 #: website/main/templates/home.html:40
 msgid ""
-"Schematic image of how the backend independent data and the backend specific "
-"data for a CAD system are used to create a standard library for this system"
+"Schematic image of how the backend independent data and the backend "
+"specific data for a CAD system are used to create a standard library for "
+"this system"
 msgstr ""
 "Schematische Darstellung wie die backendunabhängigen Daten und die "
-"backendspezifischen Daten für ein CAD System zusammen zur Erstellung einer "
-"Standardbibliothek für dieses System verwendet werden."
+"backendspezifischen Daten für ein CAD System zusammen zur Erstellung "
+"einer Standardbibliothek für dieses System verwendet werden."
 
 #: website/main/templates/home.html:45
 msgid "How can I help?"
@@ -328,26 +400,27 @@ msgstr "Wie kann ich mithelfen?"
 #: website/main/templates/home.html:46
 #, python-format
 msgid ""
-"You can help BOLTS by modeling parts in one of the supported CAD tools, by "
-"adding dimensions and metadata for new parts, or by creating drawings for "
-"the <a href=\"%(url)s\">online part directory</a>."
+"You can help BOLTS by modeling parts in one of the supported CAD tools, "
+"by adding dimensions and metadata for new parts, or by creating drawings "
+"for the <a href=\"%(url)s\">online part directory</a>."
 msgstr ""
-"Du kannst bei BOLTS mithelfen, indem du Teile in einem der unterstützten CAD "
-"Programmen modellierst, Abmessungen und Metadaten für neue Teile hinzufügst "
-"oder Zeichnungen für das <a href=\\\"%(url)s\\\">Teileverzeichnis</a> "
-"erstellst."
+"Du kannst bei BOLTS mithelfen, indem du Teile in einem der unterstützten "
+"CAD Programmen modellierst, Abmessungen und Metadaten für neue Teile "
+"hinzufügst oder Zeichnungen für das <a "
+"href=\\\"%(url)s\\\">Teileverzeichnis</a> erstellst."
 
 #: website/main/templates/home.html:47
 #, python-format
 msgid ""
-"These tasks are relatively easy, and most of them do not require programming "
-"skills. To learn more, check out <a href=\"%(url)s\">this page</a>, it has "
-"more information and links to detailed descriptions of the different tasks."
+"These tasks are relatively easy, and most of them do not require "
+"programming skills. To learn more, check out <a href=\"%(url)s\">this "
+"page</a>, it has more information and links to detailed descriptions of "
+"the different tasks."
 msgstr ""
 "Diese Aufgaben sind relativ einfach, und die meisten erfordern keine "
-"Programmierkenntnisse. Um mehr zu erfahren, besuche <a href=\\\"%(url)s\\"
-"\">diese Seite</a> mit weiteren Informationen und Links zu detaillierten "
-"Beschreibungen der verschiedenen Aufgaben."
+"Programmierkenntnisse. Um mehr zu erfahren, besuche <a "
+"href=\\\"%(url)s\\\">diese Seite</a> mit weiteren Informationen und Links"
+" zu detaillierten Beschreibungen der verschiedenen Aufgaben."
 
 #: website/main/templates/home.html:50
 msgid "Statistics"
@@ -365,19 +438,20 @@ msgstr ""
 #: website/main/templates/home.html:63
 #, python-format
 msgid ""
-"Download the tarball with BOLTS for <a href=\"http://www.openscad.org/"
-"\">OpenSCAD</a> from the <a href=\"%(url)s\">Downloads page</a> and extract "
-"it into a folder. Start OpenSCAD from this folder or <a href=\"http://en."
-"wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries\">Adjust your OpenSCAD "
-"library path</a> to make sure OpenSCAD can find BOLTS.  Then add this at the "
-"top of your scad file:"
+"Download the tarball with BOLTS for <a "
+"href=\"http://www.openscad.org/\">OpenSCAD</a> from the <a "
+"href=\"%(url)s\">Downloads page</a> and extract it into a folder. Start "
+"OpenSCAD from this folder or <a "
+"href=\"http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries\">Adjust"
+" your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  "
+"Then add this at the top of your scad file:"
 msgstr ""
 
 #: website/main/templates/home.html:67
 #, python-format
 msgid ""
-"You can now use BOLTS to add standard parts like a <a href=\"%(url)s"
-"\">washer</a>:"
+"You can now use BOLTS to add standard parts like a <a "
+"href=\"%(url)s\">washer</a>:"
 msgstr ""
 
 #: website/main/templates/home.html:71
@@ -400,25 +474,26 @@ msgstr ""
 #: website/main/templates/home.html:92
 #, python-format
 msgid ""
-"Download the tarball with BOLTS for <a href=\"http://en.wikipedia.org/wiki/"
-"IGES\">IGES</a> from the <a href=\"%(url)s\">Downloads page</a> and extract "
-"it into a folder. This can require several hundred MByte of space."
+"Download the tarball with BOLTS for <a "
+"href=\"http://en.wikipedia.org/wiki/IGES\">IGES</a> from the <a "
+"href=\"%(url)s\">Downloads page</a> and extract it into a folder. This "
+"can require several hundred MByte of space."
 msgstr ""
 
 #: website/main/templates/home.html:93
 msgid ""
-"IGES is a widely supported format, so almost every CAD tool can use it. The "
-"details depend on the specific application, but usually one has to open or "
-"import a IGES file to be able to use the part."
+"IGES is a widely supported format, so almost every CAD tool can use it. "
+"The details depend on the specific application, but usually one has to "
+"open or import a IGES file to be able to use the part."
 msgstr ""
 
 #: website/main/templates/home.html:94
 #, python-format
 msgid ""
 "The files are structured in subdirectories, which correspond to the "
-"collections shown <a href=\"%(url1)s\">in the Parts list</a>. Not all sizes "
-"or variants of all parts are available in BOLTS for IGES, if you miss "
-"something <a href=\"%(url2)s\">get in touch</a>."
+"collections shown <a href=\"%(url1)s\">in the Parts list</a>. Not all "
+"sizes or variants of all parts are available in BOLTS for IGES, if you "
+"miss something <a href=\"%(url2)s\">get in touch</a>."
 msgstr ""
 
 #: website/main/templates/home.html:97
@@ -572,10 +647,6 @@ msgstr "Version"
 msgid "Toggle navigation"
 msgstr "Navigationsmenü ausklappen"
 
-#: website/templates/base.html:28
-msgid "Blog"
-msgstr "Blog"
-
 #: website/templates/base.html:29
 msgid "Parts"
 msgstr "Teile"
@@ -594,12 +665,19 @@ msgstr "Downloads"
 
 #: website/templates/base.html:49
 msgid ""
-"title image by <a href=\"https://www.flickr.com/photos/"
-"dkpphotography/9468970843\">Dhruv Patel</a>, theme based on a <a href="
-"\"https://github.com/Wolfr/cactus-jekyll-theme\">design</a> by <a href="
-"\"http://wolfslittlestore.be\">Wolf's Little Store</a>"
-msgstr ""
-"Titelbild von <a href=\"https://www.flickr.com/photos/"
-"dkpphotography/9468970843\">Dhruv Patel</a>, Design basierend auf einem <a "
-"href=\"https://github.com/Wolfr/cactus-jekyll-theme\">Entwurf</a> von <a "
+"title image by <a "
+"href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv "
+"Patel</a>, theme based on a <a href=\"https://github.com/Wolfr/cactus-"
+"jekyll-theme\">design</a> by <a "
 "href=\"http://wolfslittlestore.be\">Wolf's Little Store</a>"
+msgstr ""
+"Titelbild von <a "
+"href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv "
+"Patel</a>, Design basierend auf einem <a href=\"https://github.com/Wolfr"
+"/cactus-jekyll-theme\">Entwurf</a> von <a "
+"href=\"http://wolfslittlestore.be\">Wolf's Little Store</a>"
+
+#: website/templates/error.html:13
+msgid "Rusty nuts and bolts"
+msgstr ""
+
