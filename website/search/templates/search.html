@@ -30,7 +30,7 @@
       </tbody>
     </table>
     {% else %}
-    <h2>No results found</h2>
+    <h2>{% trans %}No results found{% endtrans %}</h2>
     {% endif %}
   </div>
   <div class="col-xs-12 col-md-6">
@@ -45,11 +45,11 @@
       </tbody>
     </table>
     {% else %}
-    <h2>No results found</h2>
+    <h2>{% trans %}No results found{% endtrans %}</h2>
     {% endif %}
   </div>
 </div>
 {% else %}
-<h2>No results found</h2>
+<h2>{% trans %}No results found{% endtrans %}</h2>
 {% endif %}
 {% endblock %}

@@ -50,10 +50,10 @@
     <h3>{% trans %}Statistics{% endtrans %}</h3>
     <ul>
       <li>{% trans url=url_for('main.contributors'), n=stats.contributors %}<a href="{{ url }}">{{ n }} people</a> contributed{% endtrans %}</li>
-      <li> {{ stats.classes }} classes in</li>
-      <li> {{ stats.collections }} <a href="{{ url_for('parts.index') }}">collections</a> following</li>
-      <li> {{ stats.standards }} different standards issued by</li>
-      <li> {{ stats.bodies }} <a href="{{ url_for('parts.index') }}">standardization organisations</a></li>
+      <li>{% trans n=stats.classes %}{{ n }} classes in{% endtrans %}</li>
+      <li>{% trans n=stats.collections,url=url_for('parts.index') %} {{ n }} <a href="{{ url }}">collections</a> following{% endtrans %}</li>
+      <li>{% trans n=stats.standards %}{{ n }} different standards issued by{% endtrans %}</li>
+      <li>{% trans n=stats.bodies, url=url_for('parts.index') %} {{ n }} <a href="{{ url }}">standardization organisations</a>{% endtrans %}</li>
     </ul>
   </div>
 </div>
@@ -76,11 +76,11 @@ ISO7089("M4");
 </div>
 <div class="row">
   <div class="col-xs-12 col-md-6">
-    <h3>Quickstart: Using BOLTS for FreeCAD</h3>
-    <p>Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="{{ url_for('main.downloads') }}">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab. You also have to make sure to have <a href="https://bitbucket.org/xi/pyyaml">pyyaml</a> installed.</p>
-    <p> After starting FreeCAD, choose <code>Macros</code> from the <code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code></p>
-    <p>A widget should appear. There you can select a part from the tree, give values for the parameters and add it to the current document.</p>
-    <p>For more information see the <a href="{{ url_for('main.docindex') }}">Documentation</a>
+    <h3>{% trans %}Quickstart: Using BOLTS for FreeCAD{% endtrans %}</h3>
+    <p>{% trans url=url_for('main.downloads') %}Download the tarball with BOLTS for <a href="http://freecadweb.org/">FreeCAD</a> from the <a href="{{ url }}">Downloads page</a> and extract it into the FreeCAD macro directory. If you don't know where this is, you can look it up in the preferences dialog on the macro tab. You also have to make sure to have <a href="https://bitbucket.org/xi/pyyaml">pyyaml</a> installed.{% endtrans %}</p>
+    <p>{% trans %}After starting FreeCAD, choose <code>Macros</code> from the <code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code>{% endtrans %}</p>
+    <p>{% trans %}A widget should appear. There you can select a part from the tree, give values for the parameters and add it to the current document.{% endtrans %}</p>
+    <p>{% trans url=url_for('main.docindex')%}For more information see the <a href="{{ url }}">Documentation</a>{% endtrans %}</p>
   </div>
   <div class="col-xs-12 col-md-6">
     <a href="{{ url_for('main.static',filename='images/freecad-bearing.png') }}"><img alt="{% trans %}Screenshot of a ball bearing from BOLTS in FreeCAD{% endtrans %}" width="80%" src="{{ url_for('main.static',filename='images/freecad-bearing_opt.png') }}"/></a>
