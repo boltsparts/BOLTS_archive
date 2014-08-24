@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-08-23 20:17+0200\n"
+"POT-Creation-Date: 2014-08-24 19:21+0200\n"
 "PO-Revision-Date: 2014-07-28 21:55+0200\n"
 "Last-Translator: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <>\n"
@@ -379,6 +379,26 @@ msgstr ""
 msgid "<a href=\"%(url)s\">%(n)s people</a> contributed"
 msgstr ""
 
+#: website/main/templates/home.html:53
+#, python-format
+msgid "%(n)s classes in"
+msgstr ""
+
+#: website/main/templates/home.html:54
+#, python-format
+msgid " %(n)s <a href=\"%(url)s\">collections</a> following"
+msgstr ""
+
+#: website/main/templates/home.html:55
+#, python-format
+msgid "%(n)s different standards issued by"
+msgstr ""
+
+#: website/main/templates/home.html:56
+#, python-format
+msgid " %(n)s <a href=\"%(url)s\">standardization organisations</a>"
+msgstr ""
+
 #: website/main/templates/home.html:62
 msgid "Quickstart: Using BOLTS for OpenSCAD"
 msgstr ""
@@ -402,13 +422,40 @@ msgid ""
 "href=\"%(url)s\">washer</a>:"
 msgstr ""
 
-#: website/main/templates/home.html:71
+#: website/main/templates/home.html:71 website/main/templates/home.html:83
 #, python-format
 msgid "For more information see the <a href=\"%(url)s\">Documentation</a>"
 msgstr ""
 
 #: website/main/templates/home.html:74
 msgid "Screenshot of a bolt from BOLTS in OpenSCAD"
+msgstr ""
+
+#: website/main/templates/home.html:79
+msgid "Quickstart: Using BOLTS for FreeCAD"
+msgstr ""
+
+#: website/main/templates/home.html:80
+#, python-format
+msgid ""
+"Download the tarball with BOLTS for <a "
+"href=\"http://freecadweb.org/\">FreeCAD</a> from the <a "
+"href=\"%(url)s\">Downloads page</a> and extract it into the FreeCAD macro"
+" directory. If you don't know where this is, you can look it up in the "
+"preferences dialog on the macro tab. You also have to make sure to have "
+"<a href=\"https://bitbucket.org/xi/pyyaml\">pyyaml</a> installed."
+msgstr ""
+
+#: website/main/templates/home.html:81
+msgid ""
+"After starting FreeCAD, choose <code>Macros</code> from the "
+"<code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code>"
+msgstr ""
+
+#: website/main/templates/home.html:82
+msgid ""
+"A widget should appear. There you can select a part from the tree, give "
+"values for the parameters and add it to the current document."
 msgstr ""
 
 #: website/main/templates/home.html:86
@@ -581,6 +628,12 @@ msgstr ""
 
 #: website/search/templates/search.html:26
 msgid "Category"
+msgstr ""
+
+#: website/search/templates/search.html:33
+#: website/search/templates/search.html:48
+#: website/search/templates/search.html:53
+msgid "No results found"
 msgstr ""
 
 #: website/search/templates/search.html:37

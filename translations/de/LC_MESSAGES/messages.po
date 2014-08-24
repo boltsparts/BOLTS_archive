@@ -8,17 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-08-23 20:17+0200\n"
+"POT-Creation-Date: 2014-08-24 19:21+0200\n"
 "PO-Revision-Date: 2014-08-24 16:22+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/de/>\n"
-"Language: de\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
 "Generated-By: Babel 1.3\n"
 
 #: website/__init__.py:84
@@ -44,10 +42,10 @@ msgid ""
 "mail to BOLTS@ist-dein-freund.de and include the URL you were trying to "
 "access."
 msgstr ""
-"Ein Fehler ist aufgetreten während ihre Anfrage bearbeitet wurde. Das tut "
-"uns leid, das sollte nicht passieren. Bitte melden sie uns dieses Problem, "
-"indem sie eine email an BOLTS@ist-dein-freund.de schicken und die URL "
-"mitschicken, auf die sie zugreifen wollten."
+"Ein Fehler ist aufgetreten während ihre Anfrage bearbeitet wurde. Das tut"
+" uns leid, das sollte nicht passieren. Bitte melden sie uns dieses "
+"Problem, indem sie eine email an BOLTS@ist-dein-freund.de schicken und "
+"die URL mitschicken, auf die sie zugreifen wollten."
 
 #: website/blog/templates/blog.html:6 website/templates/base.html:28
 msgid "Blog"
@@ -82,8 +80,8 @@ msgid ""
 "The latest and greatest on BOLTS. <a href=\"%(url)s\">Subscribe the RSS "
 "feed</a> for updates."
 msgstr ""
-"Die neuesten Neuigkeiten über BOLTS. <a href=\"%(url)s\">Abonniere den RSS "
-"feed</a>, um immer auf dem neuesten Stand zu bleiben."
+"Die neuesten Neuigkeiten über BOLTS. <a href=\"%(url)s\">Abonniere den "
+"RSS feed</a>, um immer auf dem neuesten Stand zu bleiben."
 
 #: website/blog/templates/blog/index.html:27
 msgid "Post archive"
@@ -186,9 +184,9 @@ msgid ""
 "about BOLTS. Or blog about it, mention it on social networks and spread "
 "the word."
 msgstr ""
-"Vergiss auch nicht, allen deinen Freunden, Bekannten und Bastelkollegen von "
-"BOLTS zu erzählen. Oder darüber zu bloggen, es in Sozialen Netzwerken zu "
-"erwähnen und überall zu verbreiten."
+"Vergiss auch nicht, allen deinen Freunden, Bekannten und Bastelkollegen "
+"von BOLTS zu erzählen. Oder darüber zu bloggen, es in Sozialen Netzwerken"
+" zu erwähnen und überall zu verbreiten."
 
 #: website/main/templates/contribute.html:32
 msgid "Add more parts and drawings"
@@ -219,9 +217,9 @@ msgid ""
 "For details on how to do that see the <a href=\"%(url)s\">contributor "
 "documentation</a>."
 msgstr ""
-"Danach bist du gut vorbereitet um Teile, Daten oder Zeichnungen beizutragen. "
-"Wie man das im Detail macht ist in der <a href=\"%(url)s\">Helfer "
-"Dokumentation</a> beschrieben."
+"Danach bist du gut vorbereitet um Teile, Daten oder Zeichnungen "
+"beizutragen. Wie man das im Detail macht ist in der <a "
+"href=\"%(url)s\">Helfer Dokumentation</a> beschrieben."
 
 #: website/main/templates/contribute.html:43
 msgid "Improve data"
@@ -235,10 +233,10 @@ msgid ""
 "list of things that could be fixed or improved</a>. This is a great "
 "starting point for contributing to BOLTS."
 msgstr ""
-"BOLTS untersucht seine Datenbank auf Inkonsistenzen, häufige Probleme und "
-"fehlende oder unklare Informationen und erstellt daraus automatisch eine <a "
-"href=\"%(url)s\">Liste von Dingen, die behoben oder verbessert werden "
-"können</a>. Das ist ein guter Anfangspunkt, um bei BOLTS mitzuhelfen."
+"BOLTS untersucht seine Datenbank auf Inkonsistenzen, häufige Probleme und"
+" fehlende oder unklare Informationen und erstellt daraus automatisch eine"
+" <a href=\"%(url)s\">Liste von Dingen, die behoben oder verbessert werden"
+" können</a>. Das ist ein guter Anfangspunkt, um bei BOLTS mitzuhelfen."
 
 #: website/main/templates/contributors.html:14
 msgid "Part contributions"
@@ -275,18 +273,16 @@ msgstr "hat viele Fragen über FreeCAD beantwortet."
 #: website/main/templates/contributors.html:29
 msgid "had some good ideas for BOLTS for OpenSCAD and created OpenSCAD."
 msgstr ""
-"hatte einige gute Ideen für BOLTS für OpenSCAD und ist Hauptentwickler von "
-"OpenSCAD."
+"hatte einige gute Ideen für BOLTS für OpenSCAD und ist Hauptentwickler "
+"von OpenSCAD."
 
 #: website/main/templates/contributors.html:30
 msgid "helped with some difficult questions about the inner workings of FreeCAD."
-msgstr ""
-"hat bei schwierigen Fragen über die inneren Abläufe von FreeCAD geholfen."
+msgstr "hat bei schwierigen Fragen über die inneren Abläufe von FreeCAD geholfen."
 
 #: website/main/templates/contributors.html:31
 msgid "helped with making BOLTS for FreeCAD work with python 2.6."
-msgstr ""
-"hat dabei geholfen, BOLTS für FreeCAD mit Python 2.6 kompatibel zu machen."
+msgstr "hat dabei geholfen, BOLTS für FreeCAD mit Python 2.6 kompatibel zu machen."
 
 #: website/main/templates/contributors.html:32
 msgid "found the fix for a tricky bug and provided a lot of feedback."
@@ -421,8 +417,8 @@ msgid ""
 "this system"
 msgstr ""
 "Schematische Darstellung wie die backendunabhängigen Daten und die "
-"backendspezifischen Daten für ein CAD System zusammen zur Erstellung einer "
-"Standardbibliothek für dieses System verwendet werden"
+"backendspezifischen Daten für ein CAD System zusammen zur Erstellung "
+"einer Standardbibliothek für dieses System verwendet werden"
 
 #: website/main/templates/home.html:45
 msgid "How can I help?"
@@ -435,9 +431,10 @@ msgid ""
 "by adding dimensions and metadata for new parts, or by creating drawings "
 "for the <a href=\"%(url)s\">online part directory</a>."
 msgstr ""
-"Du kannst bei BOLTS mithelfen, indem du Teile in einem der unterstützten CAD "
-"Programmen modellierst, Abmessungen und Metadaten für neue Teile hinzufügst "
-"oder Zeichnungen für das <a href=\"%(url)s\">Teileverzeichnis</a> erstellst."
+"Du kannst bei BOLTS mithelfen, indem du Teile in einem der unterstützten "
+"CAD Programmen modellierst, Abmessungen und Metadaten für neue Teile "
+"hinzufügst oder Zeichnungen für das <a "
+"href=\"%(url)s\">Teileverzeichnis</a> erstellst."
 
 #: website/main/templates/home.html:47
 #, python-format
@@ -448,9 +445,9 @@ msgid ""
 "the different tasks."
 msgstr ""
 "Diese Aufgaben sind relativ einfach, und die meisten erfordern keine "
-"Programmierkenntnisse. Um mehr zu erfahren, besuche <a href=\"%(url)s\">"
-"diese Seite</a> mit weiteren Informationen und Links zu detaillierten "
-"Beschreibungen der verschiedenen Aufgaben."
+"Programmierkenntnisse. Um mehr zu erfahren, besuche <a "
+"href=\"%(url)s\">diese Seite</a> mit weiteren Informationen und Links zu "
+"detaillierten Beschreibungen der verschiedenen Aufgaben."
 
 #: website/main/templates/home.html:50
 msgid "Statistics"
@@ -460,6 +457,26 @@ msgstr "Statistik"
 #, python-format
 msgid "<a href=\"%(url)s\">%(n)s people</a> contributed"
 msgstr "<a href=\"%(url)s\">%(n)s Personen</a> haben beigetragen"
+
+#: website/main/templates/home.html:53
+#, python-format
+msgid "%(n)s classes in"
+msgstr ""
+
+#: website/main/templates/home.html:54
+#, python-format
+msgid " %(n)s <a href=\"%(url)s\">collections</a> following"
+msgstr ""
+
+#: website/main/templates/home.html:55
+#, python-format
+msgid "%(n)s different standards issued by"
+msgstr ""
+
+#: website/main/templates/home.html:56
+#, python-format
+msgid " %(n)s <a href=\"%(url)s\">standardization organisations</a>"
+msgstr ""
 
 #: website/main/templates/home.html:62
 msgid "Quickstart: Using BOLTS for OpenSCAD"
@@ -476,14 +493,14 @@ msgid ""
 " your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  "
 "Then add this at the top of your scad file:"
 msgstr ""
-"Laden Sie die komprimierte Datei mit BOLTS für <a href=\""
-"http://www.openscad.org/\">OpenSCAD</a> von der <a href=\"%(url)s\""
-">Downloadseite</a> herunter und entpacken Sie es in einen Ordner. Starten "
-"Sie OpenSCAD von diesem Ordner aus oder <a href=\""
-"http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries\">passen Sie "
-"ihren OpenSCAD Bibliothekspfad an</a> um sicherzustellen, dass OpenSCAD "
-"BOLTS auch finden kann. Dann fügen sie diese Zeile am Anfang Ihrer scad "
-"Datei ein:"
+"Laden Sie die komprimierte Datei mit BOLTS für <a "
+"href=\"http://www.openscad.org/\">OpenSCAD</a> von der <a "
+"href=\"%(url)s\">Downloadseite</a> herunter und entpacken Sie es in einen"
+" Ordner. Starten Sie OpenSCAD von diesem Ordner aus oder <a "
+"href=\"http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries\">passen"
+" Sie ihren OpenSCAD Bibliothekspfad an</a> um sicherzustellen, dass "
+"OpenSCAD BOLTS auch finden kann. Dann fügen sie diese Zeile am Anfang "
+"Ihrer scad Datei ein:"
 
 #: website/main/templates/home.html:67
 #, python-format
@@ -491,19 +508,47 @@ msgid ""
 "You can now use BOLTS to add standard parts like a <a "
 "href=\"%(url)s\">washer</a>:"
 msgstr ""
-"Jetzt können Die BOLTS verwenden um Standardteile wie eine <a href=\"%(url)"
-"s\">Unterlagsscheibe</a> einzufügen:"
+"Jetzt können Die BOLTS verwenden um Standardteile wie eine <a "
+"href=\"%(url)s\">Unterlagsscheibe</a> einzufügen:"
 
-#: website/main/templates/home.html:71
+#: website/main/templates/home.html:71 website/main/templates/home.html:83
 #, python-format
 msgid "For more information see the <a href=\"%(url)s\">Documentation</a>"
 msgstr ""
-"Für weitere Informationen konsultieren Sie bitte die <a href=\"%(url)s\""
-">Dokumentation</a>"
+"Für weitere Informationen konsultieren Sie bitte die <a "
+"href=\"%(url)s\">Dokumentation</a>"
 
 #: website/main/templates/home.html:74
 msgid "Screenshot of a bolt from BOLTS in OpenSCAD"
 msgstr "Screenshot eines Bolzens aus BOLTS für OpenSCAD"
+
+#: website/main/templates/home.html:79
+#, fuzzy
+msgid "Quickstart: Using BOLTS for FreeCAD"
+msgstr "Schnelleinstieg: BOLTS für IGES verwenden"
+
+#: website/main/templates/home.html:80
+#, python-format
+msgid ""
+"Download the tarball with BOLTS for <a "
+"href=\"http://freecadweb.org/\">FreeCAD</a> from the <a "
+"href=\"%(url)s\">Downloads page</a> and extract it into the FreeCAD macro"
+" directory. If you don't know where this is, you can look it up in the "
+"preferences dialog on the macro tab. You also have to make sure to have "
+"<a href=\"https://bitbucket.org/xi/pyyaml\">pyyaml</a> installed."
+msgstr ""
+
+#: website/main/templates/home.html:81
+msgid ""
+"After starting FreeCAD, choose <code>Macros</code> from the "
+"<code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code>"
+msgstr ""
+
+#: website/main/templates/home.html:82
+msgid ""
+"A widget should appear. There you can select a part from the tree, give "
+"values for the parameters and add it to the current document."
+msgstr ""
 
 #: website/main/templates/home.html:86
 msgid "Screenshot of a ball bearing from BOLTS in FreeCAD"
@@ -521,10 +566,10 @@ msgid ""
 "href=\"%(url)s\">Downloads page</a> and extract it into a folder. This "
 "can require several hundred MByte of space."
 msgstr ""
-"Laden Sie die komprimierte Datei mit BOLTS für  <a href=\""
-"http://de.wikipedia.org/wiki/IGES\">IGES</a> von der <a href=\"%(url)s\""
-">Downloadseite</a> herunter und entpacken Sie sie in einen Ordner. Das kann "
-"mehrere hundert MByte an Platz erfordern."
+"Laden Sie die komprimierte Datei mit BOLTS für  <a "
+"href=\"http://de.wikipedia.org/wiki/IGES\">IGES</a> von der <a "
+"href=\"%(url)s\">Downloadseite</a> herunter und entpacken Sie sie in "
+"einen Ordner. Das kann mehrere hundert MByte an Platz erfordern."
 
 #: website/main/templates/home.html:93
 msgid ""
@@ -532,10 +577,10 @@ msgid ""
 "The details depend on the specific application, but usually one has to "
 "open or import a IGES file to be able to use the part."
 msgstr ""
-"IGES ist ein weitverbreitetes  Format, so dass fast jedes CAD Programm es "
-"unterstützt. Die Details hängen vom jeweiligen Programm ab, aber "
-"üblicherweise muss man eine IGES Datei öffnen oder importieren um das darin "
-"enthaltene Teil nutzen zu können."
+"IGES ist ein weitverbreitetes  Format, so dass fast jedes CAD Programm es"
+" unterstützt. Die Details hängen vom jeweiligen Programm ab, aber "
+"üblicherweise muss man eine IGES Datei öffnen oder importieren um das "
+"darin enthaltene Teil nutzen zu können."
 
 #: website/main/templates/home.html:94
 #, python-format
@@ -545,18 +590,19 @@ msgid ""
 "sizes or variants of all parts are available in BOLTS for IGES, if you "
 "miss something <a href=\"%(url2)s\">get in touch</a>."
 msgstr ""
-"Die Dateien sind in Unterverzeichnissen organissiert, die den Kollektionen "
-"entsprechen, die in der <a href=\"%(url1)s\">Teileliste</a> aufgeführt sind. "
-"Nicht alle Größen und Varianten aller Teile sind in BOLTS für IGES "
-"verfügbar, wenn Ihnen etwas fehlt, <a href=\"%(url2)s\">machen Sie mit</a>."
+"Die Dateien sind in Unterverzeichnissen organissiert, die den "
+"Kollektionen entsprechen, die in der <a href=\"%(url1)s\">Teileliste</a> "
+"aufgeführt sind. Nicht alle Größen und Varianten aller Teile sind in "
+"BOLTS für IGES verfügbar, wenn Ihnen etwas fehlt, <a "
+"href=\"%(url2)s\">machen Sie mit</a>."
 
 #: website/main/templates/home.html:97
 msgid ""
 "Illustrative screenshot of the many individual files in the IGES "
 "distribution of BOLTS"
 msgstr ""
-"Illustrativer Screenshot der vielen Einzeldateien in der IGES Distribution "
-"von BOLTS"
+"Illustrativer Screenshot der vielen Einzeldateien in der IGES "
+"Distribution von BOLTS"
 
 #: website/parts/__init__.py:47
 msgid "Author"
@@ -691,6 +737,12 @@ msgstr "Seite"
 msgid "Category"
 msgstr "Kategorie"
 
+#: website/search/templates/search.html:33
+#: website/search/templates/search.html:48
+#: website/search/templates/search.html:53
+msgid "No results found"
+msgstr ""
+
 #: website/search/templates/search.html:37
 msgid "Documentation results"
 msgstr "Ergebnisse Dokumenatation"
@@ -736,3 +788,4 @@ msgstr ""
 #: website/templates/error.html:13
 msgid "Rusty nuts and bolts"
 msgstr "Rostige Schrauben und Muttern"
+
