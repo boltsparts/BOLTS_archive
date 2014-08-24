@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-08-23 20:17+0200\n"
-"PO-Revision-Date: 2014-08-24 16:22+0000\n"
+"PO-Revision-Date: 2014-08-24 16:32+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/de/>\n"
@@ -693,7 +693,7 @@ msgstr "Kategorie"
 
 #: website/search/templates/search.html:37
 msgid "Documentation results"
-msgstr "Ergebnisse Dokumenatation"
+msgstr "Ergebnisse Dokumentation"
 
 #: website/search/templates/search.html:41
 msgid "Version"
@@ -709,7 +709,7 @@ msgstr "Teile"
 
 #: website/templates/base.html:30
 msgid "Documentation"
-msgstr "Dokumenatation"
+msgstr "Dokumentation"
 
 #: website/templates/base.html:31
 msgid "Contribute"
