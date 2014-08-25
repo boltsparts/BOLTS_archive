@@ -47,8 +47,7 @@ class FreeCADBackend(Backend):
 				"bolttools is LGPL 2.1+, which is not compatible with %s" % args["target_license"])
 		copytree(join(self.repo.path,"bolttools"),join(bolts_path,"bolttools"))
 		#remove the test suite and documentation, to save space
-		rmtree(join(bolts_path,"bolttools","test"))
-		rmtree(join(bolts_path,"bolttools","doc"))
+		rmtree(join(bolts_path,"bolttools","test_blt"))
 
 		#generate version file
 		date = datetime.now()

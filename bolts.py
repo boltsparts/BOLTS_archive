@@ -198,8 +198,8 @@ def release(args):
 	if targets[0] == "all":
 		targets = ["freecad","openscad","iges"]
 
-	from backends.openscad import OpenSCADExporter
-	from backends.freecad import FreeCADExporter
+	from backends.openscad import OpenSCADBackend
+	from backends.freecad import FreeCADBackend
 
 	dbs = {}
 	dbs["openscad"] = OpenSCADData(repo)
@@ -210,10 +210,10 @@ def release(args):
 	#OpenSCAD, FreeCAD export
 	for li_short in ["lgpl2.1+","gpl3"]:
 		license = LICENSES_SHORT[li_short]
-		OpenSCADExporter(repo,dbs).write_output(os.path.join(repo.path,"output","openscad"),license,version,stable)
+		OpenSCADBackend(repo,dbs).write_output(os.path.join(repo.path,"output","openscad"),target_license=license,version=version,expand=not stable)
 		copyfile(os.path.join(repo.path,"backends","licenses",li_short.strip("+")),
 			os.path.join(repo.path,"output","openscad","LICENSE"))
-		FreeCADExporter(repo,dbs).write_output(os.path.join(repo.path,"output","freecad"),license,version,stable)
+		FreeCADBackend(repo,dbs).write_output(os.path.join(repo.path,"output","freecad"),target_license=license,version=version)
 		copyfile(os.path.join(repo.path,"backends","licenses",li_short.strip("+")),
 			os.path.join(repo.path,"output","freecad","BOLTS","LICENSE"))
 
@@ -231,14 +231,14 @@ def release(args):
 			make_archive(base_name,"zip",root_dir)
 
 	#iges export
-	from backends.exchange import IGESExporter
+	from backends.exchange import IGESBackend
 	if "iges" in targets:
 		try:
 			import tarfile, lzma
 		except ImportError:
 			print "Could not find python-lzma, which is required for IGES export"
 			return
-		IGESExporter(repo,dbs).write_output(os.path.join(repo.path,"output","iges"),version,stable)
+		IGESBackend(repo,dbs).write_output(os.path.join(repo.path,"output","iges"),version=version)
 
 		#write xz file, see http://stackoverflow.com/a/13131500
 		backend_name = backend_names["iges"]
