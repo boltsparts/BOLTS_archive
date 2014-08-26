@@ -156,7 +156,7 @@ This structure is illustrated again by the following example:
 
 This results in
 
-[<img alt="Bolted connection example" src="{{ static(openscad-positioningexample.png) }}" style="width: 100%;"/>]({{ static(openscad-positioningexample.png) }})
+[<img alt="Bolted connection example" src="{{ static(openscad-positioningexample.png) }}" />]({{ static(openscad-positioningexample.png) }})
 
 
 ### Check for errors

@@ -198,7 +198,7 @@ png using `Design->export as image...`. Make sure that it is easy to understand
 from the picture where the connector is located on the part, and how it is
 oriented.The images go into the `pipes` subdirectory of the `drawings` folder.
 
-[<img alt="Finding a good angle" src="{{ static(openscad-connectordrawings.png) }}" style="width: 100%;"/>]({{ static(openscad-connectordrawings.png) }})
+[<img alt="Finding a good angle" src="{{ static(openscad-connectordrawings.png) }}" />]({{ static(openscad-connectordrawings.png) }})
 
 The final step is to add entries to the base file in this folder to tell BOLTS
 about all the drawings. Here is an example how it looks for the `front-in`

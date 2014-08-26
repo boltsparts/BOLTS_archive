@@ -21,7 +21,7 @@ the box in the combo view, select the data tab and change the value for the
 height. The part should now change its length, but still look like expected. Do
 this for all parameters, also check combinations.
 
-[<img alt="Visually checking the part" src="{{ static(fcstd-base1.png) }}" style="width: 100%;"/>]({{ static(fcstd-base1.png) }})
+[<img alt="Visually checking the part" src="{{ static(fcstd-base1.png) }}" />]({{ static(fcstd-base1.png) }})
 
 ### Find out feature and property names
 
@@ -41,7 +41,7 @@ The first line imports and starts BOLTS, the second line calls a function from
 BOLTS that gives out a list of all features with their label and the
 corresponding object names.
 
-[<img alt="Finding feature names" src="{{ static(fcstd-base2.png) }}" style="width: 100%;"/>]({{ static(fcstd-base2.png) }})
+[<img alt="Finding feature names" src="{{ static(fcstd-base2.png) }}" />]({{ static(fcstd-base2.png) }})
 
 We need to remember the name of the root feature, that BOLTS is supposed to
 insert, and the names of all features that provide parametric behaviour and the
@@ -141,7 +141,7 @@ on the FreeCAD python console should do the trick.
 If BOLTS is started successfully, try adding the newly added part to the
 current document with different combinations of parameters.
 
-[<img alt="Testing the result" src="{{ static(fcstd-base3.png) }}" style="width: 100%;"/>]({{ static(fcstd-base3.png) }})
+[<img alt="Testing the result" src="{{ static(fcstd-base3.png) }}" />]({{ static(fcstd-base3.png) }})
 
 ### Next steps
 

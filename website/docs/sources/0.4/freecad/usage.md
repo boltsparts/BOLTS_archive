@@ -26,7 +26,7 @@ By expanding the tree one can browse through the available parts. In the area
 between the treeview and the button informations about the current selection
 are displayed.
 
-[<img alt="Expanded treeview" src="{{ static(partsselector2.png) }}" style="width: 100%;"/>]({{ static(partsselector2.png) }})
+[<img alt="Expanded treeview" src="{{ static(partsselector2.png) }}" />]({{ static(partsselector2.png) }})
 
 You can see that some parts (like {{ standard(DIN931) }}, {{ standard(DIN933) }})
 are visible twice in this screenshot, once in the hexagon fastener collection,
@@ -53,4 +53,4 @@ document by clicking the `Add part` button. In the combo view on the right side
 you can see that the label of the object gives the standard and the value of
 all the parameters we have specified.
 
-[<img alt="Expanded treeview" src="{{ static(partsselector3.png) }}" style="width: 100%;"/>]({{ static(partsselector3.png) }})
+[<img alt="Expanded treeview" src="{{ static(partsselector3.png) }}" />]({{ static(partsselector3.png) }})

@@ -48,7 +48,7 @@ and Classes) are backend independent. The backend specific part is just 2 base
 geometries for each applications:
 
 
-[<img alt="Washer collection" src="{{ static(washer.png) }}" style="width: 100%;"/>]({{ static(washer.png) }})
+[<img alt="Washer collection" src="{{ static(washer.png) }}" />]({{ static(washer.png) }})
 
 ### Summary
 

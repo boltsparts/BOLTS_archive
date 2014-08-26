@@ -39,5 +39,5 @@ directory, or you can save the two lines into a scad file in the directory.
 
 The preview window should now show a hexagon bolt.
 
-[<img alt="Successful installation" src="{{ static(openscad-installation.png) }}" style="width: 100%;"/>]({{ static(openscad-installation.png) }})
+[<img alt="Successful installation" src="{{ static(openscad-installation.png) }}" />]({{ static(openscad-installation.png) }})
 

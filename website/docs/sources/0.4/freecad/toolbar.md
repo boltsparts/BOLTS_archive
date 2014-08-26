@@ -24,7 +24,7 @@ golden bolt icon with filename `bolts32.png`.
 
 When you are done, it should look like this:
 
-[<img alt="Filled in Customize dialog" src="{{ static(toolbarbutton1.png) }}" style="width: 100%;"/>]({{ static(toolbarbutton1.png) }})
+[<img alt="Filled in Customize dialog" src="{{ static(toolbarbutton1.png) }}" />]({{ static(toolbarbutton1.png) }})
 
 ### Confirm the custom macro
 
@@ -46,7 +46,7 @@ right-facing arrow.
 
 When you are done, it should look like this:
 
-[<img alt="New toolbar created and macro added" src="{{ static(toolbarbutton2.png) }}" style="width: 100%;"/>]({{ static(toolbarbutton2.png) }})
+[<img alt="New toolbar created and macro added" src="{{ static(toolbarbutton2.png) }}" />]({{ static(toolbarbutton2.png) }})
 
 Then close the Customize dialog.
 

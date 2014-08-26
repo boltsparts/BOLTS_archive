@@ -69,7 +69,7 @@ If you hit F5, or select Design->Compile, the part should appear in the preview
 window. You can now export the part to a CSG file by choosing Design->Export as
 CSG....
 
-[<img alt="Part from BOLTS in OpenSCAD" src="{{ static(openscad_drawing2.png) }}" style="width: 100%;"/>]({{ static(openscad_drawing2.png) }})
+[<img alt="Part from BOLTS in OpenSCAD" src="{{ static(openscad_drawing2.png) }}" />]({{ static(openscad_drawing2.png) }})
 
 Save the file to some place where you can find it again, it is only temporary
 and you can remove it afterwards.
@@ -80,7 +80,7 @@ You can close OpenSCAD now.
 
 Start FreeCAD. Then select File->Open and select the CSG file that you created in the previous step.
 
-[<img alt="Loading a CSG file into FreeCAD" src="{{ static(openscad_drawing3.png) }}" style="width: 100%;"/>]({{ static(openscad_drawing3.png) }})
+[<img alt="Loading a CSG file into FreeCAD" src="{{ static(openscad_drawing3.png) }}" />]({{ static(openscad_drawing3.png) }})
 
 The part should now be visible in the preview window.
 
@@ -106,7 +106,7 @@ the object.
 
 Now an additional object should have vanished in the combo view, a page. 
 
-[<img alt="Finished drawing of washer" src="{{ static(drawing1.png) }}" style="width: 100%;"/>]({{ static(drawing1.png) }})
+[<img alt="Finished drawing of washer" src="{{ static(drawing1.png) }}" />]({{ static(drawing1.png) }})
 
 You can open it in a new drawing viewer by double clicking on it. There will be
 nothing visible, because the drawing needs to be recomputed, which you can do
@@ -121,7 +121,7 @@ If the scaling factor was not good, you can close the Drawing Viewer, delete
 the Page Object from the Combo View and type the last line again, with an
 adjusted scaling factor.
 
-[<img alt="Finished drawing of washer" src="{{ static(drawing2.png) }}" style="width: 100%;"/>]({{ static(drawing2.png) }})
+[<img alt="Finished drawing of washer" src="{{ static(drawing2.png) }}" />]({{ static(drawing2.png) }})
 
 When you are happy with the drawing, change to the Drawing Workbench, make sure
 the page object is selected in the Combo View and then choose Drawing->Export
@@ -146,14 +146,14 @@ dimensions. The image below shows a possible choice: The inner diameter will be
 indicated on the left side of the front view, the outer below. The thickness
 will be indicated on the left side view.
 
-[<img alt="Guidelines" src="{{ static(drawing3.png) }}" style="width: 100%;"/>]({{ static(drawing3.png) }})
+[<img alt="Guidelines" src="{{ static(drawing3.png) }}" />]({{ static(drawing3.png) }})
 
 Select the bezier line tool (Shift-F6 or the corresponding icon). Then click on
 one of the guidelines, press Ctrl to lock in the angle to vertical or
 horizontal and then click on the other guideline. The cursor should snap to the
 guideline. Now finish the path by pressing Enter. Repeat for all dimensions.
 
-[<img alt="Raw dimension lines" src="{{ static(drawing4.png) }}" style="width: 100%;"/>]({{ static(drawing4.png) }})
+[<img alt="Raw dimension lines" src="{{ static(drawing4.png) }}" />]({{ static(drawing4.png) }})
 
 To convert these lines into nice dimensions open the fill and stroke dialog
 using Object->Fill and Stroke and select the Stroke Style tab. Change to the
@@ -173,7 +173,7 @@ DistanceEnd as Start Marker and DistanceStart as End Marker.
 
 Repeat for all lines.
 
-[<img alt="Dimension lines" src="{{ static(drawing5.png) }}" style="width: 100%;"/>]({{ static(drawing5.png) }})
+[<img alt="Dimension lines" src="{{ static(drawing5.png) }}" />]({{ static(drawing5.png) }})
 
 Then choose the text tool in the toolbar on the left and add the dimension
 names. You can look them up on the
@@ -183,7 +183,7 @@ the source url or by checking the blt file.
 In the case of the washer we have inner diameter d1, outer diameter d2 and
 thickness s.
 
-[<img alt="Dimension lines with labels" src="{{ static(drawing6.png) }}" style="width: 100%;"/>]({{ static(drawing6.png) }})
+[<img alt="Dimension lines with labels" src="{{ static(drawing6.png) }}" />]({{ static(drawing6.png) }})
 
 Now remove the guidelines by hovering over them until they change color and
 then pressing delete.
