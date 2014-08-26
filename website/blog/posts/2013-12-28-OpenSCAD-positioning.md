@@ -65,7 +65,7 @@ operation can be used to position and orient the part. This way things like
 "put that bolt the so that its tip is here" or "the head of that bolt should
 be at this point" can be expressed in a compact and readable way.
 
-[<img alt="Connector positions" src="{{ static(openscad-connectors.png) }}" style="width: 100%;"/>]({{ static(openscad-connectors.png) }})
+[<img alt="Connector positions" src="{{ static(openscad-connectors.png) }}" />]({{ static(openscad-connectors.png) }})
 
 ### Example: Bolted connection
 
@@ -98,7 +98,7 @@ which is readable, compact and flexible. To change the position or
 orientation of the bolted connection, one just has to change cube_cs.
 Changing the size of the bolts and washers change M4 is also easy.
 
-[<img alt="Bolted connection example" src="{{ static(openscad-positioningexample.png) }}" style="width: 100%;"/>]({{ static(openscad-positioningexample.png) }})
+[<img alt="Bolted connection example" src="{{ static(openscad-positioningexample.png) }}" />]({{ static(openscad-positioningexample.png) }})
 
 ### Try it
 

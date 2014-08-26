@@ -58,7 +58,7 @@ for each part, just below the drawing, to give it more context.
 It is also shown as a tooltip in the FreeCAD widget, when hovering above the
 widget for the free parameters:
 
-[<img alt="Descriptive Tooltips" src="{{ static(freecad_tooltip.png) }}" style="width: 100%;"/>]({{ static(freecad_tooltip.png) }})
+[<img alt="Descriptive Tooltips" src="{{ static(freecad_tooltip.png) }}" />]({{ static(freecad_tooltip.png) }})
 
 This feature (along with a few more improvements and fixes) is available in the
 latest development snapshot from the [download section]({{ url(main.downloads) }}).

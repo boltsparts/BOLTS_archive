@@ -20,9 +20,9 @@ The main features provided by this release are:
 - Includes a integrated [license management system]({{ doc_version(0.3,general,licensing) }}) that allows to reuse existing code while ensuring license compliance.
 - Provides standard parts for 135 different standards by 8 different standardisation organisations and also some parts that are not standardized.
 
-[<img alt="FreeCAD Widget and bearing" src="{{ static(freecad-bearing.png) }}" style="width: 100%;"/>]({{ static(freecad-bearing.png) }})
+[<img alt="FreeCAD Widget and bearing" src="{{ static(freecad-bearing.png) }}" />]({{ static(freecad-bearing.png) }})
 
-[<img alt="OpenSCAD and bolt" src="{{ static(openscad-bolt.png) }}" style="width: 100%;"/>]({{ static(openscad-bolt.png) }})
+[<img alt="OpenSCAD and bolt" src="{{ static(openscad-bolt.png) }}" />]({{ static(openscad-bolt.png) }})
 
 However BOLTS is still at the very beginning of its development and should be
 considered beta software. I invite people to
