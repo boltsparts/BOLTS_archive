@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
   <div class="col-sm-8 blog-main">
-    <div id="blog-post">
+    <div class="blog-post">
       <h2 class="blog-post-title"><a href="{{ url_for('blog.post',**post.url_values) }}">{{ post.title }}</a></h2>
       <p class="blog-post-meta">{% trans date=post.date | datetimeformat, author = post.author %}Posted on {{ date }} by {{ author }}{% endtrans %}
       {%- if not post.updated is none -%}
