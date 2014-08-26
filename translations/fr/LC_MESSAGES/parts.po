@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-08-26 17:50+0200\n"
+"POT-Creation-Date: 2014-08-26 18:12+0200\n"
 "PO-Revision-Date: 2014-07-28 13:14+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -19,772 +19,1238 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 
 #. collection name
+#. data/c_beams.blt
 msgid "C-Beam profiles (rolled)"
 msgstr ""
 
 #. collection description
+#. data/c_beams.blt
 msgid "Various rolled c-beam profiles"
 msgstr ""
 
 #. collection name
+#. data/bearings.blt
 msgid "Bearings"
 msgstr ""
 
 #. collection description
+#. data/bearings.blt
 msgid "Various ball and roller bearings"
 msgstr ""
 
 #. collection name
+#. data/pipes.blt
 msgid "Pipes"
 msgstr ""
 
 #. collection description
+#. data/pipes.blt
 msgid "Metric and imperial pipes"
 msgstr ""
 
 #. collection name
+#. data/hex.blt
 msgid "Hexagon fasteners"
 msgstr ""
 
 #. collection description
+#. data/hex.blt
 msgid "Various standard hex bolts and screws"
 msgstr ""
 
 #. collection name
+#. data/i_beams.blt
 msgid "I-Beam profiles (rolled)"
 msgstr ""
 
 #. collection description
+#. data/i_beams.blt
 msgid "Various rolled i-beam profiles"
 msgstr ""
 
 #. collection name
+#. data/batteries.blt
 msgid "Batteries"
 msgstr ""
 
 #. collection description
+#. data/batteries.blt
 msgid "This collection contains different sorts of batteries"
 msgstr ""
 
 #. collection name
+#. data/profiles_hollow.blt
 msgid "Hollow sections"
 msgstr ""
 
 #. collection description
+#. data/profiles_hollow.blt
 msgid "Hot finished structural hollow sections"
 msgstr ""
 
 #. collection name
+#. data/flanges.blt
 msgid "Flanges"
 msgstr ""
 
 #. collection description
+#. data/flanges.blt
 msgid "Various standard flanges"
 msgstr ""
 
 #. collection name
+#. data/hex_socket.blt
 msgid "Hexagon socket fasteners"
 msgstr ""
 
 #. collection description
+#. data/hex_socket.blt
 msgid "Various standard hex socket bolts and screws"
 msgstr ""
 
 #. collection name
+#. data/washer.blt
 msgid "Washers"
 msgstr ""
 
 #. collection description
+#. data/washer.blt
 msgid "Various standard washers"
 msgstr ""
 
 #. collection name
+#. data/connecting_bars.blt
 msgid "Connecting Bars"
 msgstr ""
 
 #. collection description
+#. data/connecting_bars.blt
 msgid "Bars connecting together mechanical parts"
 msgstr ""
 
 #. collection name
+#. data/nut.blt
 msgid "Nuts"
 msgstr ""
 
 #. collection description
+#. data/nut.blt
 msgid "Various standard nuts"
 msgstr ""
 
 #. collection name
+#. data/extrusions.blt
 msgid "Extrusions and small profiles"
 msgstr ""
 
 #. collection description
+#. data/extrusions.blt
 msgid "Various small profiles and extrusions"
 msgstr ""
 
 #. Parameter description e
+#. data/hex.blt, class hexbolt2
+#. data/hex.blt, class hexbolt1
 #. Parameter description e_min
+#. data/nut.blt, class hexagonthinnut1
+#. data/nut.blt, class hexagonthinnut2
 #. Parameter description d2
+#. data/hex_socket.blt, class hexsocketcountersunk
+#. data/hex_socket.blt, class hexsocketheadcap
+#. data/hex.blt, class hexscrew2
+#. data/hex.blt, class hexscrew1
+#. data/nut.blt, class hexagonnut1
+#. data/nut.blt, class hexagonnut2
 msgid "head diameter"
 msgstr ""
 
 #. Parameter description b2
+#. data/hex.blt, class hexbolt2
+#. data/hex.blt, class hexbolt1
+#. data/hex_socket.blt, class hexsocketcountersunk
 msgid "threaded length of shaft for 125 mm < l < 200 mm"
 msgstr ""
 
 #. Parameter description k
+#. data/hex.blt, class hexbolt2
+#. data/hex.blt, class hexbolt1
 #. Parameter description k_max
+#. data/hex_socket.blt, class hexsocketcountersunk
+#. data/hex_socket.blt, class hexsocketheadcap
+#. data/hex.blt, class hexscrew2
+#. data/hex.blt, class hexscrew1
 msgid "head length"
 msgstr ""
 
 #. Parameter description l
+#. data/hex.blt, class hexbolt2
+#. data/hex.blt, class hexbolt1
+#. data/hex.blt, class hexscrew2
+#. data/hex.blt, class hexscrew1
 msgid "length excluding head"
 msgstr ""
 
 #. Parameter description s
+#. data/hex.blt, class hexbolt2
+#. data/hex.blt, class hexbolt1
+#. data/hex_socket.blt, class hexsocketsetscrewall
+#. data/hex_socket.blt, class hexsocketsetscrewcone
+#. data/hex_socket.blt, class hexsocketsetscrewcup
+#. data/nut.blt, class hexagonthinnut1
+#. data/nut.blt, class hexagonthinnut2
+#. data/hex_socket.blt, class hexsocketcountersunk
+#. data/hex_socket.blt, class hexsocketheadcap
+#. data/hex_socket.blt, class hexsocketsetscrewdog
+#. data/hex.blt, class hexscrew2
+#. data/hex.blt, class hexscrew1
+#. data/nut.blt, class hexagonnut1
+#. data/nut.blt, class hexagonnut2
+#. data/nut.blt, class hexagonnut3
+#. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "width across flats"
 msgstr ""
 
 #. Parameter description b1
+#. data/hex.blt, class hexbolt2
+#. data/hex.blt, class hexbolt1
+#. data/hex_socket.blt, class hexsocketcountersunk
 msgid "threaded length of shaft for l < 125 mm"
 msgstr ""
 
 #. Parameter description key
+#. data/hex.blt, class hexbolt2
+#. data/hex.blt, class hexbolt1
+#. data/hex_socket.blt, class hexsocketsetscrewall
+#. data/hex_socket.blt, class hexsocketsetscrewcone
+#. data/hex_socket.blt, class hexsocketsetscrewcup
+#. data/washer.blt, class heavydutyplainwasher
+#. data/nut.blt, class hexagonthinnut1
+#. data/washer.blt, class plainwasher1
+#. data/nut.blt, class hexagonthinnut2
+#. data/washer.blt, class plainwasherforcheesehead
+#. data/washer.blt, class plainwasher2
+#. data/hex_socket.blt, class hexsocketcountersunk
+#. data/hex_socket.blt, class hexsocketheadcap
+#. data/hex_socket.blt, class hexsocketsetscrewdog
+#. data/washer.blt, class plainwasherchamfered
+#. data/hex.blt, class hexscrew2
+#. data/hex.blt, class hexscrew1
+#. data/nut.blt, class hexagonnut1
+#. data/nut.blt, class hexagonnut2
+#. data/nut.blt, class hexagonnut3
+#. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "Thread designation"
 msgstr ""
 
 #. Parameter description b3
+#. data/hex.blt, class hexbolt2
+#. data/hex.blt, class hexbolt1
+#. data/hex_socket.blt, class hexsocketcountersunk
 msgid "threaded length of shaft for l > 200 mm"
 msgstr ""
 
 #. Parameter description d1
+#. data/hex.blt, class hexbolt2
+#. data/hex.blt, class hexbolt1
+#. data/hex.blt, class hexscrew2
+#. data/hex.blt, class hexscrew1
 msgid "threaded shaft diamater"
 msgstr ""
 
 #. Parameter description finish_name
+#. data/extrusions.blt, class vslot20x20
+#. data/extrusions.blt, class vslot20x40
+#. data/extrusions.blt, class vslot20x60
+#. data/extrusions.blt, class vslot20x80
 msgid "Material finish used in labeling"
 msgstr ""
 
 #. Parameter description finish
+#. data/extrusions.blt, class vslot20x20
+#. data/extrusions.blt, class vslot20x40
+#. data/extrusions.blt, class vslot20x60
+#. data/extrusions.blt, class vslot20x80
 msgid "Material finish"
 msgstr ""
 
 #. Parameter description l
+#. data/extrusions.blt, class vslot20x20
+#. data/extrusions.blt, class tslot20x20
+#. data/extrusions.blt, class tslot20x20_2sa
+#. data/extrusions.blt, class vslot20x40
+#. data/extrusions.blt, class vslot20x60
+#. data/extrusions.blt, class tslot20x20_2s
+#. data/extrusions.blt, class tslot20x20_3s
+#. data/extrusions.blt, class tslot20x20_1s
+#. data/extrusions.blt, class vslot20x80
 msgid "Length"
 msgstr ""
 
 #. Parameter description b
+#. data/i_beams.blt, class ibeam_ipea
+#. data/i_beams.blt, class inp
+#. data/i_beams.blt, class ibeam_heb
+#. data/i_beams.blt, class ibeam_hea
+#. data/i_beams.blt, class ibeam_heaa
+#. data/i_beams.blt, class ibeam_hem
+#. data/c_beams.blt, class cbeam_uap
+#. data/i_beams.blt, class ibeam_ipeo
+#. data/i_beams.blt, class ibeam_ipev
+#. data/i_beams.blt, class ibeam_ipe
+#. data/i_beams.blt, class ibeam_ipe750
+#. data/c_beams.blt, class cbeam_upe
+#. data/i_beams.blt, class ibeam_iper
 msgid "flange width"
 msgstr ""
 
 #. Parameter description h
+#. data/i_beams.blt, class ibeam_ipea
+#. data/i_beams.blt, class inp
+#. data/i_beams.blt, class ibeam_heb
+#. data/i_beams.blt, class ibeam_hea
+#. data/i_beams.blt, class ibeam_heaa
+#. data/i_beams.blt, class ibeam_hem
+#. data/c_beams.blt, class cbeam_uap
+#. data/i_beams.blt, class ibeam_ipeo
+#. data/i_beams.blt, class ibeam_ipev
+#. data/i_beams.blt, class ibeam_ipe
+#. data/i_beams.blt, class ibeam_ipe750
+#. data/c_beams.blt, class cbeam_upe
+#. data/i_beams.blt, class ibeam_iper
 msgid "beam height"
 msgstr ""
 
 #. Parameter description l
+#. data/i_beams.blt, class ibeam_ipea
+#. data/i_beams.blt, class inp
+#. data/i_beams.blt, class ibeam_heb
+#. data/i_beams.blt, class ibeam_hea
+#. data/i_beams.blt, class ibeam_heaa
+#. data/i_beams.blt, class ibeam_hem
+#. data/c_beams.blt, class cbeam_uap
+#. data/i_beams.blt, class ibeam_ipeo
+#. data/i_beams.blt, class ibeam_ipev
+#. data/i_beams.blt, class ibeam_ipe
+#. data/i_beams.blt, class ibeam_ipe750
+#. data/c_beams.blt, class cbeam_upe
+#. data/i_beams.blt, class ibeam_iper
 msgid "beam length"
 msgstr ""
 
 #. Parameter description r
+#. data/i_beams.blt, class ibeam_ipea
+#. data/i_beams.blt, class ibeam_heb
+#. data/i_beams.blt, class ibeam_hea
 #. Parameter description r_fillet
+#. data/bearings.blt, class singlerowradialbearing
+#. data/i_beams.blt, class ibeam_heaa
+#. data/bearings.blt, class axialthrustbearing
+#. data/i_beams.blt, class ibeam_hem
+#. data/c_beams.blt, class cbeam_uap
+#. data/i_beams.blt, class ibeam_ipeo
+#. data/i_beams.blt, class ibeam_ipev
+#. data/i_beams.blt, class ibeam_ipe
+#. data/bearings.blt, class singlerowradialbearingimperial
+#. data/i_beams.blt, class ibeam_ipe750
+#. data/c_beams.blt, class cbeam_upe
+#. data/i_beams.blt, class ibeam_iper
 msgid "fillet radius"
 msgstr ""
 
 #. Parameter description tw
+#. data/i_beams.blt, class ibeam_ipea
+#. data/i_beams.blt, class inp
 #. Parameter description t
+#. data/profiles_hollow.blt, class generic_square_hollow
+#. data/profiles_hollow.blt, class generic_rectangular_hollow
+#. data/profiles_hollow.blt, class rectangular_hollow
+#. data/profiles_hollow.blt, class square_hollow
+#. data/i_beams.blt, class ibeam_heb
+#. data/i_beams.blt, class ibeam_hea
+#. data/i_beams.blt, class ibeam_heaa
+#. data/i_beams.blt, class ibeam_hem
+#. data/c_beams.blt, class cbeam_uap
+#. data/i_beams.blt, class ibeam_ipeo
+#. data/i_beams.blt, class ibeam_ipev
+#. data/i_beams.blt, class ibeam_ipe
+#. data/i_beams.blt, class ibeam_ipe750
+#. data/c_beams.blt, class cbeam_upe
+#. data/i_beams.blt, class ibeam_iper
 msgid "web thickness"
 msgstr ""
 
 #. Parameter description tf
+#. data/i_beams.blt, class ibeam_ipea
+#. data/i_beams.blt, class inp
+#. data/i_beams.blt, class ibeam_heb
+#. data/i_beams.blt, class ibeam_hea
+#. data/i_beams.blt, class ibeam_heaa
+#. data/i_beams.blt, class ibeam_hem
+#. data/c_beams.blt, class cbeam_uap
+#. data/i_beams.blt, class ibeam_ipeo
+#. data/i_beams.blt, class ibeam_ipev
+#. data/i_beams.blt, class ibeam_ipe
+#. data/i_beams.blt, class ibeam_ipe750
+#. data/c_beams.blt, class cbeam_upe
+#. data/i_beams.blt, class ibeam_iper
 msgid "flange thickness"
 msgstr ""
 
 #. Parameter description type
+#. data/i_beams.blt, class ibeam_ipea
+#. data/i_beams.blt, class inp
+#. data/i_beams.blt, class ibeam_heb
+#. data/i_beams.blt, class ibeam_hea
+#. data/i_beams.blt, class ibeam_heaa
+#. data/i_beams.blt, class ibeam_hem
+#. data/c_beams.blt, class cbeam_uap
+#. data/i_beams.blt, class ibeam_ipeo
+#. data/i_beams.blt, class ibeam_ipev
+#. data/i_beams.blt, class ibeam_ipe
+#. data/i_beams.blt, class ibeam_ipe750
+#. data/c_beams.blt, class cbeam_upe
+#. data/i_beams.blt, class ibeam_iper
 msgid "beam type"
 msgstr ""
 
 #. Parameter description t
+#. data/profiles_hollow.blt, class circle_hollow
 #. Parameter description b
+#. data/flanges.blt, class blindflange
+#. data/flanges.blt, class plateflange
 #. Parameter description s
+#. data/washer.blt, class heavydutyplainwasher
 #. Parameter description m_max
+#. data/nut.blt, class hexagonthinnut1
+#. data/washer.blt, class plainwasher1
+#. data/nut.blt, class hexagonthinnut2
 #. Parameter description B
+#. data/bearings.blt, class cylindricalrollerbearing
+#. data/bearings.blt, class singlerowradialbearing
+#. data/washer.blt, class plainwasherforcheesehead
+#. data/washer.blt, class plainwasher2
 #. Parameter description T
+#. data/bearings.blt, class axialthrustbearing
+#. data/bearings.blt, class doublerowradialbearing
+#. data/washer.blt, class plainwasherchamfered
+#. data/profiles_hollow.blt, class generic_circle_hollow
+#. data/bearings.blt, class singlerowradialbearingimperial
+#. data/nut.blt, class hexagonnut1
+#. data/nut.blt, class hexagonnut2
+#. data/nut.blt, class hexagonnut3
 msgid "thickness"
 msgstr ""
 
 #. Parameter description type
+#. data/profiles_hollow.blt, class circle_hollow
+#. data/profiles_hollow.blt, class rectangular_hollow
+#. data/profiles_hollow.blt, class square_hollow
 msgid "profile type"
 msgstr ""
 
 #. Parameter description l
+#. data/profiles_hollow.blt, class circle_hollow
+#. data/profiles_hollow.blt, class generic_square_hollow
+#. data/profiles_hollow.blt, class generic_rectangular_hollow
+#. data/profiles_hollow.blt, class rectangular_hollow
+#. data/profiles_hollow.blt, class square_hollow
+#. data/profiles_hollow.blt, class generic_circle_hollow
 msgid "profile length"
 msgstr ""
 
 #. Parameter description D
+#. data/profiles_hollow.blt, class circle_hollow
+#. data/flanges.blt, class blindflange
+#. data/flanges.blt, class plateflange
+#. data/profiles_hollow.blt, class generic_circle_hollow
 msgid "outside diameter"
 msgstr ""
 
 #. Parameter description r1
+#. data/i_beams.blt, class inp
 msgid "outer fillet radius"
 msgstr ""
 
 #. Parameter description r2
+#. data/i_beams.blt, class inp
 msgid "inner fillet radius"
 msgstr ""
 
 #. Parameter description f
+#. data/i_beams.blt, class inp
 msgid "inner flange unfilleted length"
 msgstr ""
 
 #. Parameter description hw
+#. data/i_beams.blt, class inp
 msgid "straight web height"
 msgstr ""
 
 #. Parameter description g
+#. data/i_beams.blt, class inp
 msgid "outer flange unfilleted length"
 msgstr ""
 
 #. Parameter description dn
+#. data/flanges.blt, class blindflange
+#. data/pipes.blt, class din11850range2
+#. data/flanges.blt, class plateflange
 msgid "nominal diameter"
 msgstr ""
 
 #. Parameter description k
+#. data/flanges.blt, class blindflange
+#. data/flanges.blt, class plateflange
 msgid "bolt circle diameter"
 msgstr ""
 
 #. Parameter description d2
+#. data/flanges.blt, class blindflange
+#. data/flanges.blt, class plateflange
 msgid "bolt hole diameter"
 msgstr ""
 
 #. Parameter description bn
+#. data/flanges.blt, class blindflange
+#. data/flanges.blt, class plateflange
 msgid "bolts number"
 msgstr ""
 
 #. Parameter description d1
+#. data/flanges.blt, class blindflange
+#. data/flanges.blt, class plateflange
+#. data/nut.blt, class hexagonthinnut1
+#. data/nut.blt, class hexagonthinnut2
+#. data/nut.blt, class hexagonnut1
+#. data/nut.blt, class hexagonnut2
+#. data/nut.blt, class hexagonnut3
 #. Parameter description hd
+#. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "hole diameter"
 msgstr ""
 
 #. Parameter description od
+#. data/pipes.blt, class genericpipe
+#. data/pipes.blt, class din11850range2
+#. data/pipes.blt, class nominalpipesize
 #. Parameter description d2
+#. data/washer.blt, class heavydutyplainwasher
+#. data/washer.blt, class plainwasher1
+#. data/bearings.blt, class cylindricalrollerbearing
+#. data/bearings.blt, class singlerowradialbearing
+#. data/washer.blt, class plainwasherforcheesehead
+#. data/washer.blt, class plainwasher2
 #. Parameter description D_g
+#. data/bearings.blt, class axialthrustbearing
+#. data/bearings.blt, class doublerowradialbearing
 #. Parameter description Ew
+#. data/bearings.blt, class needleroller
+#. data/washer.blt, class plainwasherchamfered
+#. data/bearings.blt, class singlerowradialbearingimperial
+#. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "outer diameter"
 msgstr ""
 
 #. Parameter description id
+#. data/pipes.blt, class genericpipe
+#. data/pipes.blt, class din11850range2
 #. Parameter description d1
+#. data/washer.blt, class heavydutyplainwasher
+#. data/washer.blt, class plainwasher1
+#. data/bearings.blt, class cylindricalrollerbearing
+#. data/bearings.blt, class singlerowradialbearing
+#. data/washer.blt, class plainwasherforcheesehead
+#. data/washer.blt, class plainwasher2
 #. Parameter description d_g
+#. data/bearings.blt, class axialthrustbearing
+#. data/bearings.blt, class doublerowradialbearing
 #. Parameter description Fw
+#. data/bearings.blt, class needleroller
+#. data/washer.blt, class plainwasherchamfered
+#. data/bearings.blt, class singlerowradialbearingimperial
+#. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "inner diameter"
 msgstr ""
 
 #. Parameter description l
+#. data/pipes.blt, class genericpipe
+#. data/pipes.blt, class din11850range2
+#. data/pipes.blt, class nominalpipesize
 #. Parameter description Bc
+#. data/bearings.blt, class needleroller
 msgid "length"
 msgstr ""
 
 #. Parameter description wall
+#. data/pipes.blt, class nominalpipesize
 msgid "wall thickness"
 msgstr ""
 
 #. Parameter description sched
+#. data/pipes.blt, class nominalpipesize
 msgid "Pipe schedule"
 msgstr ""
 
 #. Parameter description nps
+#. data/pipes.blt, class nominalpipesize
 msgid "Nominal pipe size"
 msgstr ""
 
 #. Parameter description e
+#. data/hex_socket.blt, class hexsocketsetscrewall
+#. data/hex_socket.blt, class hexsocketsetscrewcone
+#. data/hex_socket.blt, class hexsocketsetscrewcup
+#. data/hex_socket.blt, class hexsocketsetscrewdog
+#. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "width across edges"
 msgstr ""
 
 #. Parameter description d
+#. data/hex_socket.blt, class hexsocketsetscrewall
+#. data/hex_socket.blt, class hexsocketsetscrewcone
+#. data/batteries.blt, class round_battery
+#. data/hex_socket.blt, class hexsocketsetscrewcup
+#. data/hex_socket.blt, class hexsocketsetscrewdog
+#. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "diameter"
 msgstr ""
 
 #. Parameter description point
+#. data/hex_socket.blt, class hexsocketsetscrewall
+#. data/hex_socket.blt, class hexsocketsetscrewcone
+#. data/hex_socket.blt, class hexsocketsetscrewcup
+#. data/hex_socket.blt, class hexsocketsetscrewdog
+#. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "point type"
 msgstr ""
 
 #. Parameter description l
+#. data/hex_socket.blt, class hexsocketsetscrewall
+#. data/hex_socket.blt, class hexsocketsetscrewcone
+#. data/hex_socket.blt, class hexsocketsetscrewcup
+#. data/hex_socket.blt, class hexsocketsetscrewdog
+#. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "total length"
 msgstr ""
 
 #. Parameter description t
+#. data/hex_socket.blt, class hexsocketsetscrewall
+#. data/hex_socket.blt, class hexsocketsetscrewcone
+#. data/hex_socket.blt, class hexsocketsetscrewcup
+#. data/hex_socket.blt, class hexsocketcountersunk
 #. Parameter description t_min
+#. data/hex_socket.blt, class hexsocketheadcap
+#. data/hex_socket.blt, class hexsocketsetscrewdog
+#. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "socket depth"
 msgstr ""
 
 #. Parameter description d1
+#. data/hex_socket.blt, class hexsocketsetscrewall
+#. data/hex_socket.blt, class hexsocketsetscrewcone
+#. data/hex_socket.blt, class hexsocketsetscrewcup
+#. data/hex_socket.blt, class hexsocketsetscrewdog
+#. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "maximum point diameter"
 msgstr ""
 
 #. Parameter description b
+#. data/profiles_hollow.blt, class generic_square_hollow
+#. data/profiles_hollow.blt, class square_hollow
 msgid "outside dimension"
 msgstr ""
 
 #. Parameter description h
+#. data/profiles_hollow.blt, class generic_rectangular_hollow
 msgid "section height"
 msgstr ""
 
 #. Parameter description b
+#. data/profiles_hollow.blt, class generic_rectangular_hollow
 msgid "section width"
 msgstr ""
 
 #. Parameter description h
+#. data/batteries.blt, class round_battery
 msgid "height"
 msgstr ""
 
 #. Parameter description T
+#. data/batteries.blt, class round_battery
 msgid "Type Code"
 msgstr ""
 
 #. Parameter description h
+#. data/profiles_hollow.blt, class rectangular_hollow
 msgid "outside dimension height"
 msgstr ""
 
 #. Parameter description b
+#. data/profiles_hollow.blt, class rectangular_hollow
 msgid "outside dimension width"
 msgstr ""
 
 #. Parameter description key
+#. data/bearings.blt, class cylindricalrollerbearing
+#. data/bearings.blt, class singlerowradialbearing
+#. data/bearings.blt, class axialthrustbearing
+#. data/bearings.blt, class doublerowradialbearing
+#. data/bearings.blt, class needleroller
+#. data/bearings.blt, class singlerowradialbearingimperial
 msgid "Model designation"
 msgstr ""
 
 #. Parameter description postfix
+#. data/bearings.blt, class singlerowradialbearing
 msgid "Postfix to the model designation for the protection type"
 msgstr ""
 
 #. Parameter description type
+#. data/bearings.blt, class singlerowradialbearing
+#. data/bearings.blt, class singlerowradialbearingimperial
 msgid "Type of bearing protection"
 msgstr ""
 
 #. Parameter description D_w
+#. data/bearings.blt, class axialthrustbearing
 msgid "outer diameter, shaft side"
 msgstr ""
 
 #. Parameter description d_w
+#. data/bearings.blt, class axialthrustbearing
 msgid "inner diameter, shaft side"
 msgstr ""
 
 #. Parameter description h_max
+#. data/hex_socket.blt, class hexsocketcountersunk
 msgid "maximum unthreaded length of shaft"
 msgstr ""
 
 #. Parameter description l
+#. data/hex_socket.blt, class hexsocketcountersunk
+#. data/hex_socket.blt, class hexsocketheadcap
 msgid "shaft length"
 msgstr ""
 
 #. Parameter description alpha
+#. data/hex_socket.blt, class hexsocketcountersunk
 msgid "head angle"
 msgstr ""
 
 #. Parameter description L
+#. data/hex_socket.blt, class hexsocketcountersunk
+#. data/hex_socket.blt, class hexsocketheadcap
 msgid ""
 "threshold threading length, shaft is completely threaded for screws "
 "shorter than L"
 msgstr ""
 
 #. Parameter description d1
+#. data/hex_socket.blt, class hexsocketcountersunk
+#. data/hex_socket.blt, class hexsocketheadcap
 msgid "shaft diameter"
 msgstr ""
 
 #. Parameter description b
+#. data/hex_socket.blt, class hexsocketheadcap
 msgid "threaded length of shaft"
 msgstr ""
 
 #. Parameter description h
+#. data/hex.blt, class hexscrew2
+#. data/hex.blt, class hexscrew1
 msgid "unthreaded length of shaft"
 msgstr ""
 
 #. Parameter description thread_type
+#. data/hex.blt, class hexscrew1
 msgid "type of thread"
 msgstr ""
 
 #. Parameter description pitch
+#. data/hex.blt, class hexscrew1
 msgid "thread pitch"
 msgstr ""
 
 #. Parameter description pitch_name
+#. data/hex.blt, class hexscrew1
 msgid "pitch indication for the part name"
 msgstr ""
 
 #. Parameter description cl
+#. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "crimp length"
 msgstr ""
 
 #. Parameter description cg
+#. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "crimp gap"
 msgstr ""
 
 #. Parameter description tl
+#. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "transition length"
 msgstr ""
 
 #. Parameter description rl
+#. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "round length"
 msgstr ""
 
 #. Parameter description sd
+#. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "true = side crimped, false = symmetrically crimped"
 msgstr ""
 
 #. ClassName name nice
+#. data/bearings.blt, class: singlerowradialbearingimperial
 msgid "Radial Ball Bearing imperial"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/bearings.blt, class: singlerowradialbearingimperial
 #, python-format
 msgid "imperial Radial Ball Bearing %(key)s"
 msgstr ""
 
 #. ClassName description
+#. data/bearings.blt, class: singlerowradialbearingimperial
 msgid "Single row radial contact ball bearing, imperial sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: tslot20x20_1s
 msgid "T slot extrusion one slot 20x20"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/extrusions.blt, class: tslot20x20_1s
 #, python-format
 msgid "T slot extrusion one slot 20x20x%(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/extrusions.blt, class: tslot20x20_1s
 msgid "Generic T slot aluminium extrusion one slot 20mmx20mm"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: vslot20x20
 msgid "V-Slot 20x20mm"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/extrusions.blt, class: vslot20x20
 #, python-format
 msgid "%(finish_name)s V-Slot 20x20mm Length: %(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/extrusions.blt, class: vslot20x20
+#. data/extrusions.blt, class: vslot20x40
+#. data/extrusions.blt, class: vslot20x80
+#. data/extrusions.blt, class: vslot20x60
 msgid ""
 "V-Slot is a high quality extruded aluminum profile building block that "
 "has an extremely smooth linear v groove rail on all 4 sides."
 msgstr ""
 
 #. ClassName name nice
+#. data/c_beams.blt, class: cbeam_uap
 msgid "UAE Profile"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/c_beams.blt, class: cbeam_uap
+#. data/i_beams.blt, class: inp
+#. data/c_beams.blt, class: cbeam_upe
+#. data/i_beams.blt, class: ibeam_ipea
+#. data/i_beams.blt, class: ibeam_iper
+#. data/i_beams.blt, class: ibeam_ipe
+#. data/i_beams.blt, class: ibeam_hea
+#. data/i_beams.blt, class: ibeam_heaa
+#. data/i_beams.blt, class: ibeam_heb
+#. data/i_beams.blt, class: ibeam_ipev
+#. data/i_beams.blt, class: ibeam_hem
+#. data/i_beams.blt, class: ibeam_ipe750
+#. data/i_beams.blt, class: ibeam_ipeo
 #, python-format
 msgid "%(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/c_beams.blt, class: cbeam_uap
 #. ClassStandard description
 msgid "UAP profile, metric european standard c-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: tslot20x20_2s
 msgid "T slot extrusion two slots (opp.) 20x20"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/extrusions.blt, class: tslot20x20_2s
 #, python-format
 msgid "T slot extrusion two slots (opp.) 20x20x%(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/extrusions.blt, class: tslot20x20_2s
 msgid "Generic T slot aluminium extrusion two oppositeslots 20mmx20mm"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: tslot20x20_3s
 msgid "T slot extrusion three slots 20x20"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/extrusions.blt, class: tslot20x20_3s
 #, python-format
 msgid "T slot extrusion three slots 20x20x%(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/extrusions.blt, class: tslot20x20_3s
 msgid "Generic T slot extrusion three slots 20mmx20mm"
 msgstr ""
 
 #. ClassName name nice
+#. data/profiles_hollow.blt, class: generic_square_hollow
 msgid "Square hollow profile"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/profiles_hollow.blt, class: generic_square_hollow
 #, python-format
 msgid "Square hollow profile %(b)s/%(t)s l=%(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/profiles_hollow.blt, class: generic_square_hollow
 msgid "Generic square hollow profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: inp
 #. ClassName description
 msgid "IPN Profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/hex.blt, class: hexscrew2
 #. ClassName description
 msgid "Hexagon head screw"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/hex.blt, class: hexscrew2
 #, python-format
 msgid "Hexagon head screw %(key)s - %(l)s"
 msgstr ""
 
 #. ClassName name nice
+#. data/bearings.blt, class: axialthrustbearing
 msgid "Axial thrust bearing"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/bearings.blt, class: axialthrustbearing
 #, python-format
 msgid "Axial thrust bearing %(key)s"
 msgstr ""
 
 #. ClassName description
+#. data/bearings.blt, class: axialthrustbearing
 #. ClassStandard description
 msgid "Axial thrust bearing, single direction"
 msgstr ""
 
 #. ClassName name nice
+#. data/profiles_hollow.blt, class: generic_rectangular_hollow
 msgid "Rectangular hollow profile"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/profiles_hollow.blt, class: generic_rectangular_hollow
 #, python-format
 msgid "Rectangular hollow profile %(h)s-%(b)s-%(t)s, l=%(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/profiles_hollow.blt, class: generic_rectangular_hollow
 msgid "A generic rectangular hollow profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/bearings.blt, class: singlerowradialbearing
 msgid "Radial Ball Bearing"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/bearings.blt, class: singlerowradialbearing
 #, python-format
 msgid "Radial Ball Bearing %(key)s%(postfix)s"
 msgstr ""
 
 #. ClassName description
+#. data/bearings.blt, class: singlerowradialbearing
 msgid ""
 "Single row radial contact ball bearing, with single or double shields, "
 "single or double seal or open, metric sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/hex.blt, class: hexbolt1
 #. ClassName description
 msgid "Hexagon head bolt"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/hex.blt, class: hexbolt1
 #, python-format
 msgid "Hexagon head bolt %(key)s - %(l)s"
 msgstr ""
 
 #. ClassName name nice
+#. data/c_beams.blt, class: cbeam_upe
 msgid "UPE Profile"
 msgstr ""
 
 #. ClassName description
+#. data/c_beams.blt, class: cbeam_upe
 #. ClassStandard description
 msgid "UPE profile, metric european standard c-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: vslot20x40
 msgid "V-Slot 20x40mm"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/extrusions.blt, class: vslot20x40
 #, python-format
 msgid "%(finish)s V-Slot 20x40mm Length: %(l)s"
 msgstr ""
 
 #. ClassName name nice
+#. data/nut.blt, class: hexagonnut1
 msgid "Metric hexagon nut"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/nut.blt, class: hexagonnut1
 #, python-format
 msgid "Metric hexagon nut %(key)s"
 msgstr ""
 
 #. ClassName description
+#. data/nut.blt, class: hexagonnut1
 #. ClassStandard description
+#. data/nut.blt, class: hexagonnut2
 msgid "Hexagon nut, metric sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/washer.blt, class: plainwasherforcheesehead
 msgid "Metric plain washer for cheese head screws"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/washer.blt, class: plainwasherforcheesehead
 #, python-format
 msgid "Plain washer for cheese head screws %(key)s"
 msgstr ""
 
 #. ClassName description
+#. data/washer.blt, class: plainwasherforcheesehead
 msgid "Plain washer for cheese head screws, metric sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/batteries.blt, class: round_battery
 msgid "Round Batteries"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/batteries.blt, class: round_battery
 #, python-format
 msgid "%(T)s Battery"
 msgstr ""
 
 #. ClassName description
+#. data/batteries.blt, class: round_battery
 msgid "Most common round single cell battery sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/profiles_hollow.blt, class: generic_circle_hollow
 msgid "Circular hollow profile"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/profiles_hollow.blt, class: generic_circle_hollow
 #, python-format
 msgid "Circular hollow profile %(D)s/%(t)s l=%(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/profiles_hollow.blt, class: generic_circle_hollow
 msgid "Generic circular hollow profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: ibeam_ipea
 msgid "IPEa Profile"
 msgstr ""
 
 #. ClassName description
+#. data/i_beams.blt, class: ibeam_ipea
 msgid "IPEa profile, metric european i-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/hex_socket.blt, class: hexsocketheadcap
 msgid "Metric hex socket head cap screw"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/hex_socket.blt, class: hexsocketheadcap
 #, python-format
 msgid "Hex socket head cap screw %(key)s %(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/hex_socket.blt, class: hexsocketheadcap
 msgid "Hexagon socket head cap screw, metric sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: ibeam_iper
 msgid "IPEr Profile"
 msgstr ""
 
 #. ClassName description
+#. data/i_beams.blt, class: ibeam_iper
 msgid "IPEr profile, metric european i-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: ibeam_ipe
 msgid "IPE Profile"
 msgstr ""
 
 #. ClassName description
+#. data/i_beams.blt, class: ibeam_ipe
 #. ClassStandard description
 msgid "IPE profile, metric european standard i-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/washer.blt, class: plainwasherchamfered
 msgid "Metric plain washer with chamfer"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/washer.blt, class: plainwasherchamfered
 #, python-format
 msgid "Plain washer chamfered %(key)s"
 msgstr ""
 
 #. ClassName description
+#. data/washer.blt, class: plainwasherchamfered
 #. ClassStandard description
 msgid "Plain washer with chamfer, metric sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/washer.blt, class: heavydutyplainwasher
 msgid "Metric heavy duty plain washer"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/washer.blt, class: heavydutyplainwasher
 #, python-format
 msgid "Heavy duty plain washer %(key)s"
 msgstr ""
 
 #. ClassName description
+#. data/washer.blt, class: heavydutyplainwasher
 #. ClassStandard description
 msgid "Heavy duty plain washer, metric sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: ibeam_hea
 msgid "HEA Profile"
 msgstr ""
 
 #. ClassName description
+#. data/i_beams.blt, class: ibeam_hea
 #. ClassStandard description
 msgid "HEA profile, metric european standard i-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/hex_socket.blt, class: hexsocketcountersunk
 msgid "Metric hex socket countersunk head screw"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/hex_socket.blt, class: hexsocketcountersunk
 #, python-format
 msgid "Hex socket countersunk head screw %(key)s %(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/hex_socket.blt, class: hexsocketcountersunk
 #. ClassStandard description
 msgid "Hexagon socket countersunk head screw, metric sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: ibeam_heaa
 msgid "HEAA Profile"
 msgstr ""
 
 #. ClassName description
+#. data/i_beams.blt, class: ibeam_heaa
 msgid "HEAA profile, metric european i-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/nut.blt, class: hexagonthinnut1
 msgid "Metric hexagon thin nut"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/nut.blt, class: hexagonthinnut1
 #, python-format
 msgid "Metric hexagon thin nut %(key)s"
 msgstr ""
 
 #. ClassName description
+#. data/nut.blt, class: hexagonthinnut1
 #. ClassStandard description
 msgid "Thin hexagon nut, metric sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: inp
 #. ClassName description
 msgid "INP Profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: openbuildssolidvwheel
 #. ClassName labeling nice
 msgid "OpenBuilds Solid V Wheel - Delrin"
 msgstr ""
 
 #. ClassName description
+#. data/extrusions.blt, class: openbuildssolidvwheel
 msgid ""
 "The OpenBuilds Delrin Solid V Wheels are great for use with any V Wheel "
 "Linear Guide System. They can be used with V-Slot Extrusion. For builds "
@@ -792,32 +1258,39 @@ msgid ""
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: ibeam_heb
 msgid "HEB Profile"
 msgstr ""
 
 #. ClassName description
+#. data/i_beams.blt, class: ibeam_heb
 #. ClassStandard description
 msgid "HEB profile, metric european standard i-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: tslot20x20_2sa
 msgid "T slot extrusion two slots 20x20"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/extrusions.blt, class: tslot20x20_2sa
 #, python-format
 msgid "T slot extrusion two slots 20x20x%(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/extrusions.blt, class: tslot20x20_2sa
 msgid "Generic T slot aluminium extrusion two neighboring slots 20mmx20mm"
 msgstr ""
 
 #. ClassName name nice
+#. data/connecting_bars.blt, class: tubebarcrimpedends
 msgid "Tube bar crimped ends"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/connecting_bars.blt, class: tubebarcrimpedends
 #, python-format
 msgid ""
 "Tube Bar Crimped Ends OD %(od)s ID %(id)s CG %(cg)s CL %(cl)s HD %(hd)s "
@@ -825,650 +1298,788 @@ msgid ""
 msgstr ""
 
 #. ClassName description
+#. data/connecting_bars.blt, class: tubebarcrimpedends
 msgid "A connecting bar made with a round tube crimped at both ends"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: openbuildssolidminivwheel
 #. ClassName labeling nice
 msgid "OpenBuilds Solid Mini V Wheel - Delrin"
 msgstr ""
 
 #. ClassName description
+#. data/extrusions.blt, class: openbuildssolidminivwheel
 msgid ""
 "The OpenBuilds Delrin Solid Mini V Wheels are great for small form factor"
 " linear actuator guides. They can be used with V-Slot Extrusion."
 msgstr ""
 
 #. ClassName name nice
+#. data/hex_socket.blt, class: hexsocketsetscrewall
 msgid "Hex socket set screw"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/hex_socket.blt, class: hexsocketsetscrewall
 #, python-format
 msgid "Hex socket set screw %(point)s point %(key)s %(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/hex_socket.blt, class: hexsocketsetscrewall
 #. ClassStandard description
 msgid "Hexagon socket set screws"
 msgstr ""
 
 #. ClassName name nice
+#. data/nut.blt, class: hexagonnut3
 #. ClassName labeling nice
 msgid "Imperial hexagon nut"
 msgstr ""
 
 #. ClassName description
+#. data/nut.blt, class: hexagonnut3
 #. ClassStandard description
 msgid "Hexagon nut, imperial sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: ibeam_ipev
 msgid "IPEv Profile"
 msgstr ""
 
 #. ClassName description
+#. data/i_beams.blt, class: ibeam_ipev
 msgid "IPEv profile, metric european i-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: ibeam_hem
 msgid "HEM Profile"
 msgstr ""
 
 #. ClassName description
+#. data/i_beams.blt, class: ibeam_hem
 #. ClassStandard description
 msgid "HEM profile, metric european standard i-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: openbuildsdualvwheel
 #. ClassName labeling nice
 msgid "OpenBuilds Dual V Wheel - Delrin"
 msgstr ""
 
 #. ClassName description
+#. data/extrusions.blt, class: openbuildsdualvwheel
 msgid ""
 "The OpenBuilds Delrin Dual V Wheels are great for use with any V Wheel "
 "Linear Guide System. They can be used with V-Slot Extrusion and OpenRail."
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: vslot20x80
 msgid "V-Slot 20x80mm"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/extrusions.blt, class: vslot20x80
 #, python-format
 msgid "%(finish)s V-Slot 20x80mm Length: %(l)s"
 msgstr ""
 
 #. ClassName name nice
+#. data/pipes.blt, class: genericpipe
 msgid "Generic pipe"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/pipes.blt, class: genericpipe
 #, python-format
 msgid "Pipe OD %(od)s ID %(id)s length %(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/pipes.blt, class: genericpipe
 msgid "A generic pipe"
 msgstr ""
 
 #. ClassName name nice
+#. data/bearings.blt, class: doublerowradialbearing
 msgid "Double row ball bearing"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/bearings.blt, class: doublerowradialbearing
 #, python-format
 msgid "Double row ball bearing %(key)s"
 msgstr ""
 
 #. ClassName description
+#. data/bearings.blt, class: doublerowradialbearing
 #. ClassStandard description
 msgid "Deep groove double row radial ball bearing, metric sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: tslot20x20
 msgid "T slot extrusion 20x20"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/extrusions.blt, class: tslot20x20
 #, python-format
 msgid "T slot extrusion 20x20x%(l)s"
 msgstr ""
 
 #. ClassName description
+#. data/extrusions.blt, class: tslot20x20
 msgid "Generic T slot aluminium extrusion 20mmx20mm"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: ibeam_ipe750
 msgid "IPE 750 Profile"
 msgstr ""
 
 #. ClassName description
+#. data/i_beams.blt, class: ibeam_ipe750
 msgid "IPE 750 profile, metric european i-beam profile"
 msgstr ""
 
 #. ClassName name nice
+#. data/washer.blt, class: plainwasher1
 msgid "Metric plain washer"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer %(key)s"
 msgstr ""
 
 #. ClassName description
+#. data/washer.blt, class: plainwasher1
 #. ClassStandard description
+#. data/washer.blt, class: plainwasher2
 msgid "Plain washer, metric sizes"
 msgstr ""
 
 #. ClassName name nice
+#. data/extrusions.blt, class: vslot20x60
 msgid "V-Slot 20x60mm"
 msgstr ""
 
 #. ClassName labeling nice
+#. data/extrusions.blt, class: vslot20x60
 #, python-format
 msgid "%(finish)s V-Slot 20x60mm Length: %(l)s"
 msgstr ""
 
 #. ClassName name nice
+#. data/i_beams.blt, class: ibeam_ipeo
 msgid "IPEo Profile"
 msgstr ""
 
 #. ClassName description
+#. data/i_beams.blt, class: ibeam_ipeo
 msgid "IPEo profile, metric european i-beam profile"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/c_beams.blt, class: cbeam_uap
 #, python-format
 msgid "NFA45-255 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/profiles_hollow.blt, class: circle_hollow
 #, python-format
 msgid "CHS DIN EN 10210-2 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/profiles_hollow.blt, class: circle_hollow
 msgid "Circular Hollow Section (CHS)"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/profiles_hollow.blt, class: circle_hollow
 #, python-format
 msgid "CHS EN 10210-2 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasher2
 #, python-format
 msgid "Plain washer DINENISO 7091 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasherchamfered
 #, python-format
 msgid "Plain washer chamfered DIN EN ISO 7090 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketcountersunk
 #, python-format
 msgid "Hex socket countersunk head screw DIN ISO 10642 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer EN 7089 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/c_beams.blt, class: cbeam_upe
 #, python-format
 msgid "DIN1026-2 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/pipes.blt, class: din11850range2
 #, python-format
 msgid "DIN 11850 Range 2 DN %(dn)s length %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/pipes.blt, class: din11850range2
 msgid "Pipe according to DIN11850 Range 2"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasherforcheesehead
 #, python-format
 msgid "Plain washer for cheese head screws ISO 7092 %(key)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/washer.blt, class: plainwasherforcheesehead
 msgid "Plain washer for cheese head screws"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketsetscrewdog
 #, python-format
 msgid "Hex socket set screw dog cone ISO 4028 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex_socket.blt, class: hexsocketsetscrewdog
 msgid "Hexagon socket set screw with dog point"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/batteries.blt, class: round_battery
 #, python-format
 msgid "IEC 60086 Category 1 Battery %(T)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/batteries.blt, class: round_battery
 msgid ""
 "Cylindrical cells with protruding positive and recessed or flat negative "
 "terminals."
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasher2
 #, python-format
 msgid "Plain washer ISO 7091 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketsetscrewcup
 #, python-format
 msgid "Hex socket set screw cup cone ISO 4029 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex_socket.blt, class: hexsocketsetscrewcup
 msgid "Hexagon socket set screw with cup point"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasher2
 #, python-format
 msgid "Plain washer DIN 126 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/nut.blt, class: hexagonnut3
 #, python-format
 msgid "Hexagon nut ANSI B18.2.2 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketheadcap
 #, python-format
 msgid "Hex socket head cap screw DINENISO 4762 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex_socket.blt, class: hexsocketheadcap
 msgid "Hexagon socket head cap screw"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/bearings.blt, class: cylindricalrollerbearing
 #, python-format
 msgid "Cylindrical roller bearing %(key)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/bearings.blt, class: cylindricalrollerbearing
 msgid "Cylindrical single row roller bearing"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer ISO 7089 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/pipes.blt, class: nominalpipesize
 #, python-format
 msgid "Wrought steel pipe API 5L %(nps)s %(sched)s Length %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/pipes.blt, class: nominalpipesize
 msgid ""
 "Welded and seamless wrought steel pipe for high or low temperatures and "
 "pressures"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/i_beams.blt, class: ibeam_heb
 #, python-format
 msgid "DIN1025-2 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer DINENISO 7089 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex.blt, class: hexscrew2
 #, python-format
 msgid "Hexagon head screw EN ISO 24017 %(key)s - %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex.blt, class: hexscrew2
 msgid "Hexagon head screw according to ENISO24017"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/bearings.blt, class: axialthrustbearing
 #, python-format
 msgid "Axial thrust bearing DIN 711 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/profiles_hollow.blt, class: rectangular_hollow
 #, python-format
 msgid "RHS EN 10210-2 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/profiles_hollow.blt, class: rectangular_hollow
 msgid "Rectangular Hollow Section (RHS)"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketcountersunk
 #, python-format
 msgid "Hex socket countersunk head screw DIN 7991 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketcountersunk
 #, python-format
 msgid "Hex socket countersunk head screw ISO 10642 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/bearings.blt, class: axialthrustbearing
 #, python-format
 msgid "Axial thrust bearing ISO 104 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/pipes.blt, class: nominalpipesize
 #, python-format
 msgid "Wrought steel pipe ASME B36.10M %(nps)s %(sched)s Length %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex.blt, class: hexscrew2
 #, python-format
 msgid "hexagon_head_screw_ISO4017_%(key)s_%(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex.blt, class: hexscrew2
 msgid "Hexagon head screw according to ISO4017"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketsetscrewall
 #, python-format
 msgid "Hex socket set screw ANSI B18.3.6M %(point)s point %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/i_beams.blt, class: ibeam_hea
 #, python-format
 msgid "DIN1025-3 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex.blt, class: hexbolt2
 #, python-format
 msgid "Hexagon head bolt DINEN 24014 %(key)s - %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex.blt, class: hexbolt2
 msgid "Hexagon head bolt according to DINEN 24014"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/nut.blt, class: hexagonthinnut1
 #, python-format
 msgid "Hexagon thin nut ISO 4035 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/i_beams.blt, class: ibeam_hem
 #, python-format
 msgid "DIN1025-4 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketheadcap
 #, python-format
 msgid "Hex socket head cap screw ISO 4762 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/pipes.blt, class: nominalpipesize
 #, python-format
 msgid "Wrought steel pipe ANSI B36.10M %(nps)s %(sched)s Length %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/bearings.blt, class: doublerowradialbearing
 #, python-format
 msgid "Double row radial ball bearing DIN 625-3 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/profiles_hollow.blt, class: rectangular_hollow
 #, python-format
 msgid "RHS DIN EN 10210-2 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasherforcheesehead
 #, python-format
 msgid "Plain washer for cheese head screws DIN EN ISO 7092 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/profiles_hollow.blt, class: square_hollow
 #, python-format
 msgid "SHS DIN EN 10210-2 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/profiles_hollow.blt, class: square_hollow
 msgid "Square Hollow Section (SHS)"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/i_beams.blt, class: ibeam_ipe
 #, python-format
 msgid "DIN1025-5 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/nut.blt, class: hexagonthinnut1
 #, python-format
 msgid "Hexagon thin nut DINENISO 4035 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/bearings.blt, class: singlerowradialbearing
 #, python-format
 msgid "Radial Ball Bearing DIN625-1 %(key)s%(postfix)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/bearings.blt, class: singlerowradialbearing
 msgid ""
 "Single row radial contact ball bearing, with single or double shields, "
 "single or double seal or open"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasherchamfered
 #, python-format
 msgid "Plain washer chamfered DIN 125B %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer DIN 125A %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/i_beams.blt, class: inp
 #, python-format
 msgid "DIN1025-1 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/i_beams.blt, class: inp
 msgid "IPN profile, metric european standard i-beam profile"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketheadcap
 #, python-format
 msgid "Hex socket head cap screw DIN 912 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex.blt, class: hexbolt2
 #, python-format
 msgid "Hexagon head bolt DINENISO 4014 %(key)s - %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex.blt, class: hexbolt2
 msgid "Hexagon head bolt according to DINENISO 4014"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: heavydutyplainwasher
 #, python-format
 msgid "Heavy duty plain washer DIN 7349 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex.blt, class: hexscrew2
 #, python-format
 msgid "Hexagon head screw DIN EN ISO 4017 %(key)s - %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex.blt, class: hexscrew2
 msgid "Hexagon head screw according to DINENISO4017"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/flanges.blt, class: plateflange
 #, python-format
 msgid "Plate flange EN1092-1 PN6 T01 %(dn)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/flanges.blt, class: plateflange
 msgid "Plate flange EN1092-1 type 01 pn6"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/bearings.blt, class: needleroller
 #, python-format
 msgid "Needle roller DIN 5405-1 %(key)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/bearings.blt, class: needleroller
 msgid "Needle roller without cage"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/flanges.blt, class: blindflange
 #, python-format
 msgid "Blind flange EN1092-1 PN6 T05 %(dn)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/flanges.blt, class: blindflange
 msgid "Blind flange EN1092-1 type 05 pn6"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/profiles_hollow.blt, class: square_hollow
 #, python-format
 msgid "SHS EN 10210-2 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex.blt, class: hexbolt1
 #, python-format
 msgid "Hexagon head bolt DIN 931 %(key)s - %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex.blt, class: hexbolt1
 msgid "Hexagon head bolt according to DIN931"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketsetscrewcone
 #, python-format
 msgid "Hex socket set screw flat cone ISO 4027 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex_socket.blt, class: hexsocketsetscrewcone
 msgid "Hexagon socket set screw with cone point"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex.blt, class: hexscrew1
 #, python-format
 msgid "Hexagon head screw DIN 933 %(key)s%(pitch_name)s - %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex.blt, class: hexscrew1
 msgid "Hexagon head screw according to DIN933"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/nut.blt, class: hexagonnut1
 #, python-format
 msgid "Hexagon nut ISO 4032 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/nut.blt, class: hexagonnut2
 #, python-format
 msgid "Hexagon nut DIN 934 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketsetscrewflat
 #, python-format
 msgid "Hex socket set screw flat point DIN 913 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex_socket.blt, class: hexsocketsetscrewflat
 msgid "Hexagon socket set screw with flat point"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex.blt, class: hexbolt2
 #, python-format
 msgid "Hexagon head bolt ISO 4014 %(key)s - %(l)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/hex.blt, class: hexbolt2
 msgid "Hexagon head bolt according to ISO 4014"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasherchamfered
 #, python-format
 msgid "Plain washer chamfered ISO 7090 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketsetscrewcup
 #, python-format
 msgid "Hex socket set screw cup point DIN 916 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketsetscrewdog
 #, python-format
 msgid "Hex socket set screw dog point DIN 915 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketsetscrewcone
 #, python-format
 msgid "Hex socket set screw cone point DIN 914 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasherchamfered
 #, python-format
 msgid "Plain washer chamfered DIN ISO 7090 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasher2
 #, python-format
 msgid "Plain washer DIN ISO 7091 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasherforcheesehead
 #, python-format
 msgid "Plain washer for cheese head screws DIN ISO 7092 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/nut.blt, class: hexagonthinnut2
 #, python-format
 msgid "Hexagon thin nut DIN 439 %(key)s"
 msgstr ""
 
 #. ClassStandard description
+#. data/nut.blt, class: hexagonthinnut2
 msgid "Thin hexagon nut, metrix size, old"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/hex_socket.blt, class: hexsocketsetscrewflat
 #, python-format
 msgid "Hex socket set screw flat point ISO 4026 %(key)s %(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/nut.blt, class: hexagonnut3
 #, python-format
 msgid "Hexagon nut ASME B18.2.2 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasherforcheesehead
 #, python-format
 msgid "Plain washer for cheese head screws DIN 433 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/bearings.blt, class: needleroller
 #, python-format
 msgid "Needle roller ISO 3030 %(key)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/i_beams.blt, class: ibeam_ipe
 #, python-format
 msgid "EN 19-57 %(type)s, l=%(l)s"
 msgstr ""
 
 #. ClassStandard labeling nice
+#. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer DINEN 27089 %(key)s"
 msgstr ""
