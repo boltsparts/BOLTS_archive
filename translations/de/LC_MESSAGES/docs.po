@@ -5,14 +5,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-08-26 18:12+0200\n"
-"PO-Revision-Date: 2014-08-24 15:46+0000\n"
+"PO-Revision-Date: 2014-08-26 21:38+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "docs/de/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.10-dev\n"
 "Generated-By: Babel 1.3\n"
 
 #. document title
@@ -23,12 +25,12 @@ msgstr "Wie man eine fcstd Basisgeometrie erstellt"
 
 #. docs/0.4/freecad/basefcstd
 #. docs/0.3/freecad/basefcstd
-#, fuzzy
 msgid ""
 "\n"
 "You need to have FreeCAD and [FreeCAD for BOLTS installed]({{ "
 "doc(freecad,installation) }})."
 msgstr ""
+"\n"
 "Sie müssen FreeCAD und [FreeCAD für BOLTS installiert haben]({{ "
 "doc(freecad,installation) }})."
 
@@ -76,13 +78,12 @@ msgstr ""
 
 #. docs/0.4/freecad/basefcstd
 #. docs/0.3/freecad/basefcstd
-#, fuzzy
 msgid ""
 "[<img alt=\"Visually checking the part\" src=\"{{ static(fcstd-base1.png)"
 " }}\" />]({{ static(fcstd-base1.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Visuelles überprüfen des Teils\" src=\"{{ static(fcstd-base1.png)"
+" }}\" />]({{ static(fcstd-base1.png) }})"
 
 #. docs/0.4/freecad/basefcstd
 #. docs/0.3/freecad/basefcstd
@@ -129,13 +130,12 @@ msgstr ""
 
 #. docs/0.4/freecad/basefcstd
 #. docs/0.3/freecad/basefcstd
-#, fuzzy
 msgid ""
 "[<img alt=\"Finding feature names\" src=\"{{ static(fcstd-base2.png) }}\""
 " />]({{ static(fcstd-base2.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Featurenamen finden\" src=\"{{ static(fcstd-base2.png) }}\" "
+"/>]({{ static(fcstd-base2.png) }})"
 
 #. docs/0.4/freecad/basefcstd
 #. docs/0.3/freecad/basefcstd
@@ -389,13 +389,12 @@ msgstr ""
 
 #. docs/0.4/freecad/basefcstd
 #. docs/0.3/freecad/basefcstd
-#, fuzzy
 msgid ""
 "[<img alt=\"Testing the result\" src=\"{{ static(fcstd-base3.png) }}\" "
 "/>]({{ static(fcstd-base3.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Testen des Ergebnisses\" src=\"{{ static(fcstd-base3.png) }}\" "
+"/>]({{ static(fcstd-base3.png) }})"
 
 #. docs/0.4/freecad/basefcstd
 #. docs/0.4/freecad/installation
@@ -424,11 +423,12 @@ msgstr ""
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
-#, fuzzy
 msgid ""
 "\n"
 "### Download a BOLTS for FreeCAD release"
-msgstr "### Laden Sie BOLTS für FreeCAD herunter"
+msgstr ""
+"\n"
+"### Laden Sie BOLTS für FreeCAD herunter"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -584,12 +584,12 @@ msgstr ""
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
-#, fuzzy
 msgid ""
 "\n"
 "You need to have [installed BOLTS for FreeCAD]({{ "
 "doc(freecad,installation) }})."
 msgstr ""
+"\n"
 "Sie müssen FreeCAD und [FreeCAD für BOLTS installiert haben]({{ "
 "doc(freecad,installation) }})."
 
@@ -647,13 +647,12 @@ msgstr ""
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
-#, fuzzy
 msgid ""
 "[<img alt=\"Expanded treeview\" src=\"{{ static(partsselector2.png) }}\" "
 "/>]({{ static(partsselector2.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Ausgeklappte Baumansicht\" src=\"{{ static(partsselector2.png) }}"
+"\" />]({{ static(partsselector2.png) }})"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -714,13 +713,12 @@ msgstr ""
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
-#, fuzzy
 msgid ""
 "[<img alt=\"Expanded treeview\" src=\"{{ static(partsselector3.png) }}\" "
 "/>]({{ static(partsselector3.png) }})\n"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Ausgeklappte Baumansicht\" src=\"{{ static(partsselector3.png) }}"
+"\" />]({{ static(partsselector3.png) }})\n"
 
 #. document title
 #. docs/0.4/freecad/basefunction
@@ -730,12 +728,12 @@ msgstr ""
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
-#, fuzzy
 msgid ""
 "\n"
 "You need to have FreeCAD and [FreeCAD for BOLTS installed]({{ "
 "doc(freecad, installation) }})."
 msgstr ""
+"\n"
 "Sie müssen FreeCAD und [FreeCAD für BOLTS installiert haben]({{ "
 "doc(freecad,installation) }})."
 
@@ -1050,13 +1048,12 @@ msgstr ""
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
-#, fuzzy
 msgid ""
 "[<img alt=\"Filled in Customize dialog\" src=\"{{ "
 "static(toolbarbutton1.png) }}\" />]({{ static(toolbarbutton1.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Ausgefüllter Customize Dialog\" src=\"{{ "
+"static(toolbarbutton1.png) }}\" />]({{ static(toolbarbutton1.png) }})"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -1104,13 +1101,12 @@ msgstr ""
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
-#, fuzzy
 msgid ""
 "[<img alt=\"New toolbar created and macro added\" src=\"{{ "
 "static(toolbarbutton2.png) }}\" />]({{ static(toolbarbutton2.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Neue Toolbar erstellt und Macro hinzugefügt\" src=\"{{ "
+"static(toolbarbutton2.png) }}\" />]({{ static(toolbarbutton2.png) }})"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -1233,13 +1229,12 @@ msgstr ""
 
 #. docs/0.4/openscad/installation
 #. docs/0.3/openscad/installation
-#, fuzzy
 msgid ""
 "[<img alt=\"Successful installation\" src=\"{{ static(openscad-"
 "installation.png) }}\" />]({{ static(openscad-installation.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Erfolgreiche Installation\" src=\"{{ static(openscad-"
+"installation.png) }}\" />]({{ static(openscad-installation.png) }})"
 
 #. document title
 #. docs/0.4/openscad/usage
@@ -1249,12 +1244,12 @@ msgstr ""
 
 #. docs/0.4/openscad/usage
 #. docs/0.3/openscad/usage
-#, fuzzy
 msgid ""
 "\n"
 "You need to have [installed BOLTS for OpenSCAD]({{ "
 "doc(openscad,installation) }})."
 msgstr ""
+"\n"
 "Sie müssen FreeCAD und [FreeCAD für BOLTS installiert haben]({{ "
 "doc(freecad,installation) }})."
 
@@ -1588,14 +1583,14 @@ msgstr ""
 
 #. docs/0.4/openscad/usage
 #. docs/0.3/openscad/usage
-#, fuzzy
 msgid ""
 "[<img alt=\"Bolted connection example\" src=\"{{ static(openscad-"
 "positioningexample.png) }}\" />]({{ static(openscad-"
 "positioningexample.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Beispiel geschraubte Verbindung\" src=\"{{ static(openscad-"
+"positioningexample.png) }}\" />]({{ static(openscad-positioningexample.png) "
+"}})"
 
 #. docs/0.4/openscad/usage
 #. docs/0.3/openscad/usage
@@ -2379,14 +2374,13 @@ msgstr ""
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
-#, fuzzy
 msgid ""
 "[<img alt=\"Part from BOLTS in OpenSCAD\" src=\"{{ "
 "static(openscad_drawing2.png) }}\" />]({{ static(openscad_drawing2.png) "
 "}})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Teil aus BOLTS in OpenSCAD\" src=\"{{ "
+"static(openscad_drawing2.png) }}\" />]({{ static(openscad_drawing2.png) }})"
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
@@ -2480,13 +2474,12 @@ msgstr ""
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
-#, fuzzy
 msgid ""
 "[<img alt=\"Finished drawing of washer\" src=\"{{ static(drawing1.png) "
 "}}\" />]({{ static(drawing1.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Fertige Zeichnung einer Unterlagsscheibe\" src=\"{{ "
+"static(drawing1.png) }}\" />]({{ static(drawing1.png) }})"
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
@@ -2522,13 +2515,12 @@ msgstr ""
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
-#, fuzzy
 msgid ""
 "[<img alt=\"Finished drawing of washer\" src=\"{{ static(drawing2.png) "
 "}}\" />]({{ static(drawing2.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Fertige Zeichnung einer Unterlagsscheibe\" src=\"{{ "
+"static(drawing2.png) }}\" />]({{ static(drawing2.png) }})"
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
@@ -2589,13 +2581,12 @@ msgstr ""
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
-#, fuzzy
 msgid ""
 "[<img alt=\"Guidelines\" src=\"{{ static(drawing3.png) }}\" />]({{ "
 "static(drawing3.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Führungslinien\" src=\"{{ static(drawing3.png) }}\" />]({{ "
+"static(drawing3.png) }})"
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
@@ -2611,13 +2602,12 @@ msgstr ""
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
-#, fuzzy
 msgid ""
 "[<img alt=\"Raw dimension lines\" src=\"{{ static(drawing4.png) }}\" "
 "/>]({{ static(drawing4.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Unfertige Bemaßungslinien\" src=\"{{ static(drawing4.png) }}\" "
+"/>]({{ static(drawing4.png) }})"
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
@@ -2662,13 +2652,12 @@ msgstr ""
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
-#, fuzzy
 msgid ""
 "[<img alt=\"Dimension lines\" src=\"{{ static(drawing5.png) }}\" />]({{ "
 "static(drawing5.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Bemaßungslinien\" src=\"{{ static(drawing5.png) }}\" />]({{ "
+"static(drawing5.png) }})"
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
@@ -2690,13 +2679,12 @@ msgstr ""
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
-#, fuzzy
 msgid ""
 "[<img alt=\"Dimension lines with labels\" src=\"{{ static(drawing6.png) "
 "}}\" />]({{ static(drawing6.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"[<img alt=\"Bemaßungen mit Bezeichnungen\" src=\"{{ static(drawing6.png) }}\""
+" />]({{ static(drawing6.png) }})"
 
 #. docs/0.4/general/drawing
 #. docs/0.3/general/drawing
@@ -4417,7 +4405,6 @@ msgstr "Eine kurze Einführung in BOLTS"
 
 #. docs/0.4/general/introduction
 #. docs/0.3/general/introduction
-#, fuzzy
 msgid ""
 "\n"
 "The aim of BOLTS is to build a free and open-source standard parts "
@@ -4435,20 +4422,21 @@ msgid ""
 "backend\n"
 "specific data."
 msgstr ""
+"\n"
 "Das Ziel von BOLTS ist es, eine freie und quelloffene "
 "Standardteilebibliothek aufzubauen,\n"
-"die nicht an eine spezifische CAD Applikation gebunden ist. Aus diesem "
-"Grund sind alle\n"
+"die nicht an eine spezifische CAD Applikation gebunden ist. Aus diesem Grund "
+"sind alle\n"
 "Daten, die nötig sind, um die Teile zur Verfügung zu stellen, auf eine "
 "bestimmte Weise\n"
-"strukturiert: Es gibt backendunabhängige und backendspezifische Daten, "
-"wobei Backend die\n"
-"verschiedenen CAD Applikationen bezeichnet (bisher FreeCAD und OpenSCAD)."
-" Weil man diese\n"
+"strukturiert: Es gibt backendunabhängige und backendspezifische Daten, wobei "
+"Backend die\n"
+"verschiedenen CAD Applikationen bezeichnet (bisher FreeCAD und OpenSCAD). "
+"Weil man diese\n"
 "Unterscheidung macht, muss man lediglich zusätzliche backendspezifische "
 "Daten hinzufügen,\n"
-"um ein Teil, das für ein Programm verfügbar ist, auch auf einem Anderen "
-"zur Verfügung zu\n"
+"um ein Teil, das für ein Programm verfügbar ist, auch auf einem Anderen zur "
+"Verfügung zu\n"
 "stellen."
 
 #. docs/0.4/general/introduction
@@ -4475,23 +4463,23 @@ msgid ""
 " CAD\n"
 "applications and therefore belongs to the backend specific data."
 msgstr ""
-"Sehr häufig gibt es mehrere ähnliche oder gar identische Standards für "
-"ein Teil,\n"
+"Sehr häufig gibt es mehrere ähnliche oder gar identische Standards für ein "
+"Teil,\n"
 "die von verschiedenen Standardisierungsorganen herausgegeben wurden. Aus "
 "diesem\n"
-"Grund bietet BOLTS das Konzept einer Klasse von Teilen, wobei eine Klasse"
-" mehrere\n"
-"identische Standards beschreiben kann. Um eine Klasse zu spezifizieren, "
-"muss man\n"
-"die Informationen über die verschiedenen Abmessungen der Teile, Tabllen "
-"mit deren\n"
+"Grund bietet BOLTS das Konzept einer Klasse von Teilen, wobei eine Klasse "
+"mehrere\n"
+"identische Standards beschreiben kann. Um eine Klasse zu spezifizieren, muss "
+"man\n"
+"die Informationen über die verschiedenen Abmessungen der Teile, Tabllen mit "
+"deren\n"
 "Werten, eine Beschreibung, die Standards, die diese Klasse abdeckt, "
 "Zeichnungen und\n"
-"ähnliches spezifizieren. Im Gegensatz dazu wird die Geometrie des Teils "
-"für verschiedene\n"
+"ähnliches spezifizieren. Im Gegensatz dazu wird die Geometrie des Teils für "
+"verschiedene\n"
 "CAD Programme auf unterschiedliche Art und Weise beschrieben und gehört "
 "daher zu den\n"
-"backendspezifischen Daten.\n"
+"backendspezifischen Daten."
 
 #. docs/0.4/general/introduction
 #. docs/0.3/general/introduction
@@ -4519,7 +4507,6 @@ msgstr "### Backendspezifische Daten"
 
 #. docs/0.4/general/introduction
 #. docs/0.3/general/introduction
-#, fuzzy
 msgid ""
 "There is also data required to create a 3D representation of a part in a "
 "CAD\n"
@@ -4533,17 +4520,17 @@ msgid ""
 "metadata\n"
 "this forms the backend specific data. "
 msgstr ""
-"Zusätzlich sind Daten über die 3D Representation eines Teils in einem CAD"
-" Programm\n"
-"nötig. Für OpenSCAD werden Moduldefinitionen in einer .scad Datei oder "
-"eine STL Datei\n"
-"verwendet, für FreeCAD eine Python Funktion oder eine .fcstd Datei mit "
-"dem Modell. Diese\n"
+"Zusätzlich sind Daten über die 3D Representation eines Teils in einem CAD "
+"Programm\n"
+"nötig. Für OpenSCAD werden Moduldefinitionen in einer .scad Datei oder eine "
+"STL Datei\n"
+"verwendet, für FreeCAD eine Python Funktion oder eine .fcstd Datei mit dem "
+"Modell. Diese\n"
 "werden als Basismodule, Basisfunktionen, Basis fcstd Dateien bezeichnet, "
 "oder allgemeiner\n"
-"als Basisgeometrien. Zusammen mit einer .base Datei, die Metadaten "
-"enthält, bilden diese\n"
-"die backendspezifischen Daten."
+"als Basisgeometrien. Zusammen mit einer .base Datei, die Metadaten enthält, "
+"bilden diese\n"
+"die backendspezifischen Daten. "
 
 #. docs/0.4/general/introduction
 #. docs/0.3/general/introduction
@@ -4582,14 +4569,14 @@ msgstr ""
 
 #. docs/0.4/general/introduction
 #. docs/0.3/general/introduction
-#, fuzzy
 msgid ""
 "\n"
 "[<img alt=\"Washer collection\" src=\"{{ static(washer.png) }}\" />]({{ "
 "static(washer.png) }})"
 msgstr ""
-"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) "
-"}}\" style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
+"\n"
+"[<img alt=\"Unterlagsscheibenkollektion\" src=\"{{ static(washer.png) }}\" "
+"style=\"width: 100%%;\"/>]({{ static(washer.png) }})"
 
 #. docs/0.4/general/introduction
 #. docs/0.3/general/introduction
@@ -4597,7 +4584,6 @@ msgid "### Summary"
 msgstr "### Zusammenfassung"
 
 #. docs/0.4/general/introduction
-#, fuzzy
 msgid ""
 "To summarize again:\n"
 " - The data in BOLTS is either backend independent or backend specific.\n"
@@ -4608,19 +4594,18 @@ msgid ""
 msgstr ""
 "Um nochmal zusammenzufassen:\n"
 "\n"
-" - Die Daten in BOLTS sind entweder backendunabhängig oder "
-"backendspezifisch.\n"
+" - Die Daten in BOLTS sind entweder backendunabhängig oder backendspezifisch."
+"\n"
 " - Eine Klasse beschreibt keinen, einen oder mehrere Standards, eine "
 "Kollektion enthält eine oder mehrere Klassen.\n"
-" - Damit eine Klasse in einer Applikation verwendbar ist, muss BOLTS eine"
-" geeignete Basisgeometrie für diese Klasse haben."
+" - Damit eine Klasse in einer Applikation verwendbar ist, muss BOLTS eine "
+"geeignete Basisgeometrie für diese Klasse haben.\n"
 
 #. docs/0.3/general/introduction
 msgid "To summarize again:"
 msgstr "Um nochmal zusammenzufassen:"
 
 #. docs/0.3/general/introduction
-#, fuzzy
 msgid ""
 " - The data in BOLTS is either backend independent or backend specific.\n"
 " - A class covers zero or more standards, a collection contains one or "
@@ -4628,12 +4613,12 @@ msgid ""
 " - For a class to be usable in an application, BOLTS must have a suitable"
 " base geometry for that class.\n"
 msgstr ""
-" - Die Daten in BOLTS sind entweder backendunabhängig oder "
-"backendspezifisch.\n"
+" - Die Daten in BOLTS sind entweder backendunabhängig oder backendspezifisch."
+"\n"
 " - Eine Klasse beschreibt keinen, einen oder mehrere Standards, eine "
 "Kollektion enthält eine oder mehrere Klassen.\n"
-" - Damit eine Klasse in einer Applikation verwendbar ist, muss BOLTS eine"
-" geeignete Basisgeometrie für diese Klasse haben."
+" - Damit eine Klasse in einer Applikation verwendbar ist, muss BOLTS eine "
+"geeignete Basisgeometrie für diese Klasse haben.\n"
 
 #~ msgid "Eimer, eimer, eimer"
 #~ msgstr "Bucket, bucket, bucket"
@@ -4772,4 +4757,3 @@ msgstr ""
 
 #~ msgid "include <BOLTS.scad>;"
 #~ msgstr ""
-
