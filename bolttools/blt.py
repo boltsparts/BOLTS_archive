@@ -78,19 +78,6 @@ class ClassName(Designation):
 	def get_id(self):
 		return self.name.get_safe()
 
-	def extract_messages(self,fid,collid, classid):
-		fid.write('\n#. ClassName name nice\n')
-		fid.write('#: data/%s.blt, class: %s\n' % (collid,classid))
-		fid.write('msgid "%s"\nmsgstr ""\n' % self.name.get_nice())
-
-		fid.write('\n#. ClassName labeling nice\n')
-		fid.write('#: data/%s.blt, class: %s\n' % (collid,classid))
-		fid.write('msgid "%s"\nmsgstr ""\n' % self.labeling.nice)
-
-		fid.write('\n#. ClassName description\n')
-		fid.write('#: data/%s.blt, class: %s\n' % (collid,classid))
-		fid.write('msgid "%s"\nmsgstr ""\n' % self.description)
-
 class ClassStandard(Designation):
 	"""
 	Python class to provide a standard name for a BOLTS class, corresponding to a
@@ -137,15 +124,6 @@ class ClassStandard(Designation):
 	def get_id(self):
 		return self.standard.get_safe()
 
-	def extract_messages(self,fid,collid, classid):
-		fid.write('\n#. ClassStandard labeling nice\n')
-		fid.write('#: data/%s.blt, class: %s\n' % (collid,classid))
-		fid.write('msgid "%s"\nmsgstr ""\n' % self.labeling.nice)
-
-		fid.write('\n#. ClassStandard description\n')
-		fid.write('#: data/%s.blt, class: %s\n' % (collid,classid))
-		fid.write('msgid "%s"\nmsgstr ""\n' % self.description)
-
 class Class:
 	"""
 	Python class representing a BOLTS class. There is no direct
@@ -178,12 +156,6 @@ class Class:
 			self.notes = cl["notes"]
 
 		self.source = cl["source"]
-
-	def extract_messages(self,fid,collid):
-		for pname in self.parameters.parameters:
-			fid.write('\n#. Parameter description %s\n' % pname)
-			fid.write('#: data/%s.blt, class %s\n' % (collid,self.id))
-			fid.write('msgid "%s"\nmsgstr ""\n' % self.parameters.description[pname])
 
 class Collection:
 	"""
@@ -224,15 +196,6 @@ class Collection:
 		match = parse_angled(self.license)
 		self.license_name = match[0]
 		self.license_url = match[1]
-
-	def extract_messages(self,fid):
-		fid.write('\n#. collection name\n')
-		fid.write('#: data/%s.blt\n' % self.id)
-		fid.write('msgid "%s"\nmsgstr ""\n' % self.name)
-
-		fid.write('\n#. collection description\n')
-		fid.write('#: data/%s.blt\n' % self.id)
-		fid.write('msgid "%s"\nmsgstr ""\n' % self.description)
 
 class StandardBody:
 	"""
@@ -438,19 +401,6 @@ class Repository:
 						"Unknown replace field %s in standard %s" %
 							(standard.replaces,standard.get_id()))
 				self.standard_replaced.add_link(standard,self.standards[standard.replaces])
-
-	def extract_messages(self,fid):
-		for coll, in self.itercollections():
-			coll.extract_messages(fid)
-
-		for cl,coll in self.iterclasses(["class","collection"]):
-			cl.extract_messages(fid,coll.id)
-
-		for name,cl,coll in self.iternames(["name","class","collection"]):
-			name.extract_messages(fid,cl.id,coll.id)
-
-		for std,cl,coll in self.iterstandards(["standard","class","collection"]):
-			std.extract_messages(fid,cl.id,coll.id)
 
 	def iternames(self,items=["name"],**kwargs):
 		"""

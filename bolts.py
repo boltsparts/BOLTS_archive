@@ -164,9 +164,10 @@ def translate(args):
 
 		#from parts data
 		repo = Repository(args.repo)
+		from backends.translations import TranslationBackend
 		fhandle,fname = mkstemp(suffix=".pot")
-		with os.fdopen(fhandle,"w") as fid:
-			repo.extract_messages(fid)
+		TranslationBackend(repo,[]).write_output(fname)
+
 		os.system("pybabel update -D parts -d translations -i %s" % fname)
 		os.remove(fname)
 
