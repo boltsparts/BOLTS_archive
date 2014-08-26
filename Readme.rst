@@ -102,3 +102,4 @@ one needs to have installed
 
 * node-less
 * cleancss
+* python-babel
