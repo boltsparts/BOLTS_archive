@@ -4,6 +4,8 @@ from os import walk, listdir
 from os.path import exists, join, relpath, splitext
 import markdown
 from yaml import safe_load as load
+from babel.messages.catalog import Catalog
+from babel.messages.pofile import write_po, read_po
 
 from bolttools.common import UNITS
 
@@ -133,13 +135,20 @@ class Documentation:
 		self.versions.sort(key=lambda x: float(x))
 
 	def extract_messages(self,fid):
+		cat = Catalog(domain='docs',project="BOLTS")
 		for doc in self.documents:
-			fid.write('\n#. document title\n')
-			fid.write('#: docs/%s/%s/%s\n' % (doc["version"],doc["category"],doc["filename"]))
-			fid.write('msgid "%s"\nmsgstr ""\n' % doc["title"])
+			cat.add(doc["title"],auto_comments=[
+				'document title',
+				'docs/%s/%s/%s' % (doc["version"],doc["category"],doc["filename"])
+			])
+
 			for paragraph in doc["content"]:
-				fid.write('\n#: docs/%s/%s/%s\n' % (doc["version"],doc["category"],doc["filename"]))
-				fid.write('msgid "%s"\nmsgstr ""\n' % '\\n"\n"'.join(paragraph.split("\n")))
+				if paragraph:
+					cat.add(paragraph,auto_comments=[
+						'docs/%s/%s/%s' % (doc["version"],doc["category"],doc["filename"])
+					])
+
+		write_po(fid,cat)
 
 	def get_versions(self):
 		return self.versions
