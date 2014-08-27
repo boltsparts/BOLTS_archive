@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-08-24 19:21+0200\n"
-"PO-Revision-Date: 2014-08-24 21:00+0000\n"
+"PO-Revision-Date: 2014-08-27 15:06+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "parts/de/>\n"
@@ -104,12 +104,12 @@ msgstr "Verschiedene Standardflansche"
 #. collection name
 #. data/hex_socket.blt
 msgid "Hexagon socket fasteners"
-msgstr ""
+msgstr "Sechskant Befestigungselemente"
 
 #. collection description
 #. data/hex_socket.blt
 msgid "Various standard hex socket bolts and screws"
-msgstr ""
+msgstr "Verschiedene Standard Sechskantbolzen und -schrauben"
 
 #. collection name
 #. data/washer.blt
@@ -129,7 +129,7 @@ msgstr "Verbindungsschienen"
 #. collection description
 #. data/connecting_bars.blt
 msgid "Bars connecting together mechanical parts"
-msgstr ""
+msgstr "Stangen zum Verbinden mechanischer Teile"
 
 #. collection name
 #. data/nut.blt
@@ -172,7 +172,7 @@ msgstr "Kopfdurchmesser"
 #. data/hex.blt, class hexbolt1
 #. data/hex_socket.blt, class hexsocketcountersunk
 msgid "threaded length of shaft for 125 mm < l < 200 mm"
-msgstr ""
+msgstr "Gewindelänge des Schaft für 125 mm < l < 200 mm"
 
 #. Parameter description k
 #. data/hex.blt, class hexbolt2
@@ -218,7 +218,7 @@ msgstr "Schlüsselweite"
 #. data/hex.blt, class hexbolt1
 #. data/hex_socket.blt, class hexsocketcountersunk
 msgid "threaded length of shaft for l < 125 mm"
-msgstr ""
+msgstr "Gewindelänge des Schaft für l < 125 mm"
 
 #. Parameter description key
 #. data/hex.blt, class hexbolt2
@@ -243,14 +243,14 @@ msgstr ""
 #. data/nut.blt, class hexagonnut3
 #. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "Thread designation"
-msgstr ""
+msgstr "Gewindebezeichnung"
 
 #. Parameter description b3
 #. data/hex.blt, class hexbolt2
 #. data/hex.blt, class hexbolt1
 #. data/hex_socket.blt, class hexsocketcountersunk
 msgid "threaded length of shaft for l > 200 mm"
-msgstr ""
+msgstr "Gewindelänge für l > 200 mm"
 
 #. Parameter description d1
 #. data/hex.blt, class hexbolt2
@@ -258,7 +258,7 @@ msgstr ""
 #. data/hex.blt, class hexscrew2
 #. data/hex.blt, class hexscrew1
 msgid "threaded shaft diamater"
-msgstr ""
+msgstr "Durchmesser des Gewindeschafts"
 
 #. Parameter description finish_name
 #. data/extrusions.blt, class vslot20x20
@@ -266,7 +266,7 @@ msgstr ""
 #. data/extrusions.blt, class vslot20x60
 #. data/extrusions.blt, class vslot20x80
 msgid "Material finish used in labeling"
-msgstr ""
+msgstr "Oberflächenausführung zur Verwendung in Teilenamen"
 
 #. Parameter description finish
 #. data/extrusions.blt, class vslot20x20
@@ -274,7 +274,7 @@ msgstr ""
 #. data/extrusions.blt, class vslot20x60
 #. data/extrusions.blt, class vslot20x80
 msgid "Material finish"
-msgstr ""
+msgstr "Oberflächenausführung"
 
 #. Parameter description l
 #. data/extrusions.blt, class vslot20x20
@@ -358,7 +358,7 @@ msgstr ""
 #. data/c_beams.blt, class cbeam_upe
 #. data/i_beams.blt, class ibeam_iper
 msgid "fillet radius"
-msgstr ""
+msgstr "Verrundungsradius"
 
 #. Parameter description tw
 #. data/i_beams.blt, class ibeam_ipea
@@ -449,7 +449,7 @@ msgstr "Dicke"
 #. data/profiles_hollow.blt, class rectangular_hollow
 #. data/profiles_hollow.blt, class square_hollow
 msgid "profile type"
-msgstr ""
+msgstr "Profilart"
 
 #. Parameter description l
 #. data/profiles_hollow.blt, class circle_hollow
@@ -459,7 +459,7 @@ msgstr ""
 #. data/profiles_hollow.blt, class square_hollow
 #. data/profiles_hollow.blt, class generic_circle_hollow
 msgid "profile length"
-msgstr ""
+msgstr "Profillänge"
 
 #. Parameter description D
 #. data/profiles_hollow.blt, class circle_hollow
@@ -472,12 +472,12 @@ msgstr "Aussendurchmesser"
 #. Parameter description r1
 #. data/i_beams.blt, class inp
 msgid "outer fillet radius"
-msgstr ""
+msgstr "Äusserer Verrundungsradius"
 
 #. Parameter description r2
 #. data/i_beams.blt, class inp
 msgid "inner fillet radius"
-msgstr ""
+msgstr "Innerer Verrundungsradius"
 
 #. Parameter description f
 #. data/i_beams.blt, class inp
@@ -499,7 +499,7 @@ msgstr ""
 #. data/pipes.blt, class din11850range2
 #. data/flanges.blt, class plateflange
 msgid "nominal diameter"
-msgstr ""
+msgstr "Nenndurchmesser"
 
 #. Parameter description k
 #. data/flanges.blt, class blindflange
@@ -530,7 +530,7 @@ msgstr ""
 #. Parameter description hd
 #. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "hole diameter"
-msgstr ""
+msgstr "Lochdurchmesser"
 
 #. Parameter description od
 #. data/pipes.blt, class genericpipe
@@ -552,7 +552,7 @@ msgstr ""
 #. data/bearings.blt, class singlerowradialbearingimperial
 #. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "outer diameter"
-msgstr ""
+msgstr "Aussendurchmesser"
 
 #. Parameter description id
 #. data/pipes.blt, class genericpipe
@@ -587,7 +587,7 @@ msgstr "Länge"
 #. Parameter description wall
 #. data/pipes.blt, class nominalpipesize
 msgid "wall thickness"
-msgstr ""
+msgstr "Wanddicke"
 
 #. Parameter description sched
 #. data/pipes.blt, class nominalpipesize
@@ -625,7 +625,7 @@ msgstr "Durchmesser"
 #. data/hex_socket.blt, class hexsocketsetscrewdog
 #. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "point type"
-msgstr ""
+msgstr "Art der Spitze"
 
 #. Parameter description l
 #. data/hex_socket.blt, class hexsocketsetscrewall
@@ -634,7 +634,7 @@ msgstr ""
 #. data/hex_socket.blt, class hexsocketsetscrewdog
 #. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "total length"
-msgstr ""
+msgstr "Gesamtlänge"
 
 #. Parameter description t
 #. data/hex_socket.blt, class hexsocketsetscrewall
@@ -676,12 +676,12 @@ msgstr ""
 #. Parameter description h
 #. data/batteries.blt, class round_battery
 msgid "height"
-msgstr ""
+msgstr "Höhe"
 
 #. Parameter description T
 #. data/batteries.blt, class round_battery
 msgid "Type Code"
-msgstr ""
+msgstr "Typencode"
 
 #. Parameter description h
 #. data/profiles_hollow.blt, class rectangular_hollow
@@ -717,12 +717,12 @@ msgstr ""
 #. Parameter description D_w
 #. data/bearings.blt, class axialthrustbearing
 msgid "outer diameter, shaft side"
-msgstr ""
+msgstr "Aussendurchmesser, achsseitig"
 
 #. Parameter description d_w
 #. data/bearings.blt, class axialthrustbearing
 msgid "inner diameter, shaft side"
-msgstr ""
+msgstr "Innendurchmesser, achsseitig"
 
 #. Parameter description h_max
 #. data/hex_socket.blt, class hexsocketcountersunk
