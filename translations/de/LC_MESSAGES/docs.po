@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-08-26 18:12+0200\n"
-"PO-Revision-Date: 2014-08-26 21:38+0000\n"
+"PO-Revision-Date: 2014-09-01 12:36+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "docs/de/>\n"
@@ -53,12 +53,12 @@ msgstr "Wir tun dies am Beispiel eines Strangpressprofils."
 #. docs/0.4/freecad/basefcstd
 #. docs/0.3/freecad/basefcstd
 msgid "### Check the fcstd file in FreeCAD"
-msgstr ""
+msgstr "### Überprüfe die fcstd-Datei in FreeCAD"
 
 #. docs/0.4/freecad/basefcstd
 #. docs/0.3/freecad/basefcstd
 msgid "Load the part in FreeCAD and check that it looks visually ok."
-msgstr ""
+msgstr "Lade das Teil in FreeCAD und prüfe, ob es visuell in Ordnung ist"
 
 #. docs/0.4/freecad/basefcstd
 #. docs/0.3/freecad/basefcstd
