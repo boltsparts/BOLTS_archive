@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-08-24 19:21+0200\n"
-"PO-Revision-Date: 2014-08-27 15:06+0000\n"
+"PO-Revision-Date: 2014-09-01 13:44+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "parts/de/>\n"
@@ -304,7 +304,7 @@ msgstr "Länge"
 #. data/c_beams.blt, class cbeam_upe
 #. data/i_beams.blt, class ibeam_iper
 msgid "flange width"
-msgstr ""
+msgstr "Flanschbreite"
 
 #. Parameter description h
 #. data/i_beams.blt, class ibeam_ipea
@@ -321,7 +321,7 @@ msgstr ""
 #. data/c_beams.blt, class cbeam_upe
 #. data/i_beams.blt, class ibeam_iper
 msgid "beam height"
-msgstr ""
+msgstr "Trägerhöhe"
 
 #. Parameter description l
 #. data/i_beams.blt, class ibeam_ipea
@@ -338,7 +338,7 @@ msgstr ""
 #. data/c_beams.blt, class cbeam_upe
 #. data/i_beams.blt, class ibeam_iper
 msgid "beam length"
-msgstr ""
+msgstr "Trägerlänge"
 
 #. Parameter description r
 #. data/i_beams.blt, class ibeam_ipea
@@ -380,7 +380,7 @@ msgstr "Verrundungsradius"
 #. data/c_beams.blt, class cbeam_upe
 #. data/i_beams.blt, class ibeam_iper
 msgid "web thickness"
-msgstr ""
+msgstr "Stegbreite"
 
 #. Parameter description tf
 #. data/i_beams.blt, class ibeam_ipea
@@ -397,7 +397,7 @@ msgstr ""
 #. data/c_beams.blt, class cbeam_upe
 #. data/i_beams.blt, class ibeam_iper
 msgid "flange thickness"
-msgstr ""
+msgstr "Flanschdicke"
 
 #. Parameter description type
 #. data/i_beams.blt, class ibeam_ipea
@@ -414,7 +414,7 @@ msgstr ""
 #. data/c_beams.blt, class cbeam_upe
 #. data/i_beams.blt, class ibeam_iper
 msgid "beam type"
-msgstr ""
+msgstr "Trägertyp"
 
 #. Parameter description t
 #. data/profiles_hollow.blt, class circle_hollow
@@ -482,17 +482,17 @@ msgstr "Innerer Verrundungsradius"
 #. Parameter description f
 #. data/i_beams.blt, class inp
 msgid "inner flange unfilleted length"
-msgstr ""
+msgstr "gerade innere Flanschlänge"
 
 #. Parameter description hw
 #. data/i_beams.blt, class inp
 msgid "straight web height"
-msgstr ""
+msgstr "gerade Steghöhe"
 
 #. Parameter description g
 #. data/i_beams.blt, class inp
 msgid "outer flange unfilleted length"
-msgstr ""
+msgstr "gerade äussere Flanschlänge"
 
 #. Parameter description dn
 #. data/flanges.blt, class blindflange
@@ -505,19 +505,19 @@ msgstr "Nenndurchmesser"
 #. data/flanges.blt, class blindflange
 #. data/flanges.blt, class plateflange
 msgid "bolt circle diameter"
-msgstr ""
+msgstr "Lochkreisdurchmesser"
 
 #. Parameter description d2
 #. data/flanges.blt, class blindflange
 #. data/flanges.blt, class plateflange
 msgid "bolt hole diameter"
-msgstr ""
+msgstr "Bohrungsdurchmesser"
 
 #. Parameter description bn
 #. data/flanges.blt, class blindflange
 #. data/flanges.blt, class plateflange
 msgid "bolts number"
-msgstr ""
+msgstr "Bohrbild"
 
 #. Parameter description d1
 #. data/flanges.blt, class blindflange
@@ -592,12 +592,12 @@ msgstr "Wanddicke"
 #. Parameter description sched
 #. data/pipes.blt, class nominalpipesize
 msgid "Pipe schedule"
-msgstr ""
+msgstr "Rohrnennweite"
 
 #. Parameter description nps
 #. data/pipes.blt, class nominalpipesize
 msgid "Nominal pipe size"
-msgstr ""
+msgstr "Nenndurchmesser"
 
 #. Parameter description e
 #. data/hex_socket.blt, class hexsocketsetscrewall
@@ -606,7 +606,7 @@ msgstr ""
 #. data/hex_socket.blt, class hexsocketsetscrewdog
 #. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "width across edges"
-msgstr ""
+msgstr "Eckmaß"
 
 #. Parameter description d
 #. data/hex_socket.blt, class hexsocketsetscrewall
@@ -646,7 +646,7 @@ msgstr "Gesamtlänge"
 #. data/hex_socket.blt, class hexsocketsetscrewdog
 #. data/hex_socket.blt, class hexsocketsetscrewflat
 msgid "socket depth"
-msgstr ""
+msgstr "Sechskanttiefe"
 
 #. Parameter description d1
 #. data/hex_socket.blt, class hexsocketsetscrewall
@@ -661,17 +661,17 @@ msgstr ""
 #. data/profiles_hollow.blt, class generic_square_hollow
 #. data/profiles_hollow.blt, class square_hollow
 msgid "outside dimension"
-msgstr ""
+msgstr "Aussenmaß"
 
 #. Parameter description h
 #. data/profiles_hollow.blt, class generic_rectangular_hollow
 msgid "section height"
-msgstr ""
+msgstr "Querschnittshöhe"
 
 #. Parameter description b
 #. data/profiles_hollow.blt, class generic_rectangular_hollow
 msgid "section width"
-msgstr ""
+msgstr "Querschnittsbreite"
 
 #. Parameter description h
 #. data/batteries.blt, class round_battery
@@ -686,12 +686,12 @@ msgstr "Typencode"
 #. Parameter description h
 #. data/profiles_hollow.blt, class rectangular_hollow
 msgid "outside dimension height"
-msgstr ""
+msgstr "Aussenhöhe"
 
 #. Parameter description b
 #. data/profiles_hollow.blt, class rectangular_hollow
 msgid "outside dimension width"
-msgstr ""
+msgstr "Aussenbreite"
 
 #. Parameter description key
 #. data/bearings.blt, class cylindricalrollerbearing
@@ -701,18 +701,18 @@ msgstr ""
 #. data/bearings.blt, class needleroller
 #. data/bearings.blt, class singlerowradialbearingimperial
 msgid "Model designation"
-msgstr ""
+msgstr "Bezeichnung"
 
 #. Parameter description postfix
 #. data/bearings.blt, class singlerowradialbearing
 msgid "Postfix to the model designation for the protection type"
-msgstr ""
+msgstr "Suffix der Modellbezeichnung für die Schutzart"
 
 #. Parameter description type
 #. data/bearings.blt, class singlerowradialbearing
 #. data/bearings.blt, class singlerowradialbearingimperial
 msgid "Type of bearing protection"
-msgstr ""
+msgstr "Art des Lagerschutz"
 
 #. Parameter description D_w
 #. data/bearings.blt, class axialthrustbearing
@@ -733,12 +733,12 @@ msgstr ""
 #. data/hex_socket.blt, class hexsocketcountersunk
 #. data/hex_socket.blt, class hexsocketheadcap
 msgid "shaft length"
-msgstr ""
+msgstr "Schaftlänge"
 
 #. Parameter description alpha
 #. data/hex_socket.blt, class hexsocketcountersunk
 msgid "head angle"
-msgstr ""
+msgstr "Kegelwinkel"
 
 #. Parameter description L
 #. data/hex_socket.blt, class hexsocketcountersunk
@@ -747,6 +747,8 @@ msgid ""
 "threshold threading length, shaft is completely threaded for screws "
 "shorter than L"
 msgstr ""
+"Grenzwert Gewindelänge, Schaft ist komplett mit Gewinde für Schrauben kürzer "
+"als L"
 
 #. Parameter description d1
 #. data/hex_socket.blt, class hexsocketcountersunk
@@ -757,7 +759,7 @@ msgstr ""
 #. Parameter description b
 #. data/hex_socket.blt, class hexsocketheadcap
 msgid "threaded length of shaft"
-msgstr ""
+msgstr "Gewindelänge des Schafts"
 
 #. Parameter description h
 #. data/hex.blt, class hexscrew2
@@ -768,12 +770,12 @@ msgstr ""
 #. Parameter description thread_type
 #. data/hex.blt, class hexscrew1
 msgid "type of thread"
-msgstr ""
+msgstr "Gewindeart"
 
 #. Parameter description pitch
 #. data/hex.blt, class hexscrew1
 msgid "thread pitch"
-msgstr ""
+msgstr "Gewindesteigung"
 
 #. Parameter description pitch_name
 #. data/hex.blt, class hexscrew1
@@ -793,12 +795,12 @@ msgstr ""
 #. Parameter description tl
 #. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "transition length"
-msgstr ""
+msgstr "Übergangslänge"
 
 #. Parameter description rl
 #. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "round length"
-msgstr ""
+msgstr "runde Länge"
 
 #. Parameter description sd
 #. data/connecting_bars.blt, class tubebarcrimpedends
@@ -808,34 +810,34 @@ msgstr ""
 #. ClassName name nice
 #. data/bearings.blt, class: singlerowradialbearingimperial
 msgid "Radial Ball Bearing imperial"
-msgstr ""
+msgstr "zöllisches Rillenkugellager"
 
 #. ClassName labeling nice
 #. data/bearings.blt, class: singlerowradialbearingimperial
 #, python-format
 msgid "imperial Radial Ball Bearing %(key)s"
-msgstr ""
+msgstr "zöllisches Rillenkugellager %(key)s"
 
 #. ClassName description
 #. data/bearings.blt, class: singlerowradialbearingimperial
 msgid "Single row radial contact ball bearing, imperial sizes"
-msgstr ""
+msgstr "Einreihiges Rillenkugellager, zöllische Größen"
 
 #. ClassName name nice
 #. data/extrusions.blt, class: tslot20x20_1s
 msgid "T slot extrusion one slot 20x20"
-msgstr ""
+msgstr "T-Nut Profil einfache Nut 20x20"
 
 #. ClassName labeling nice
 #. data/extrusions.blt, class: tslot20x20_1s
 #, python-format
 msgid "T slot extrusion one slot 20x20x%(l)s"
-msgstr ""
+msgstr "T-Nut Profil einfache Nut 20x20x%(l)s"
 
 #. ClassName description
 #. data/extrusions.blt, class: tslot20x20_1s
 msgid "Generic T slot aluminium extrusion one slot 20mmx20mm"
-msgstr ""
+msgstr "Generisches extrudiertes T-Nut Aluminiumprofil mit einer Nut 20mmx20mm"
 
 #. ClassName name nice
 #. data/extrusions.blt, class: vslot20x20
@@ -879,18 +881,18 @@ msgstr "UAE Profil"
 #. data/i_beams.blt, class: ibeam_ipeo
 #, python-format
 msgid "%(type)s, l=%(l)s"
-msgstr ""
+msgstr "%(type)s, l=%(l)s"
 
 #. ClassName description
 #. data/c_beams.blt, class: cbeam_uap
 #. ClassStandard description
 msgid "UAP profile, metric european standard c-beam profile"
-msgstr ""
+msgstr "UAP Profil, europaweit genormtes metrisches C-Profil"
 
 #. ClassName name nice
 #. data/extrusions.blt, class: tslot20x20_2s
 msgid "T slot extrusion two slots (opp.) 20x20"
-msgstr ""
+msgstr "T-Nut Profil, zwei (gegenüberliegende) Nuten 20x20"
 
 #. ClassName labeling nice
 #. data/extrusions.blt, class: tslot20x20_2s
