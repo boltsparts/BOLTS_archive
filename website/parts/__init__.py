@@ -227,17 +227,17 @@ def name(id):
 	#properties
 	props = []
 	props.append(format_author_prop(coll.author_names))
-	props.append(('License',html.a(coll.license_name,href=coll.license_url)))
-	props.append(('Collection',html.a(coll.name,href=url_for('.collection',id=coll.id))))
+	props.append((gettext('License'),html.a(coll.license_name,href=coll.license_url)))
+	props.append((gettext('Collection'),html.a(coll.name,href=url_for('.collection',id=coll.id))))
 
 	identical = get_identical_links(cl,name)
 	if len(identical) > 0:
-		props.append(('Identical to',', '.join(identical)))
+		props.append((gettext('Identical to'),', '.join(identical)))
 
 	if not cl.url == "":
 		props.append(('URL',cl.url))
 	props.append(('ID',name.get_id()))
-	props.append(('Source',cl.source))
+	props.append((gettext('Source'),cl.source))
 
 	#parameters
 	parameters = {}
@@ -257,8 +257,8 @@ def name(id):
 		parameters["drawing"] = url_for('.drawing',coll=coll.id,filename = "%s.png" % draw.filename)
 
 	parameters["description"] = html.table({
-		"header" : ["Parameter Name","Description"],
-		"data" : [[p,cl.parameters.description[p]] for p in cl.parameters.parameters],
+		"header" : [gettext("Parameter Name"),gettext("Description")],
+		"data" : [[p,gettext_parts(cl.parameters.description[p])] for p in cl.parameters.parameters],
 		"class" : "table"
 	})
 
@@ -269,7 +269,7 @@ def name(id):
 
 		freecad["props"] = []
 		freecad["props"].append(format_author_prop(base.author_names))
-		freecad["props"].append(('License',html.a(base.license_name,href=base.license_url)))
+		freecad["props"].append((gettext('License'),html.a(base.license_name,href=base.license_url)))
 		freecad["props"] = html.properties(freecad["props"])
 	else:
 		freecad = None
@@ -281,7 +281,7 @@ def name(id):
 
 		openscad["props"] = []
 		openscad["props"].append(format_author_prop(module.author_names))
-		openscad["props"].append(('License',html.a(module.license_name,href=module.license_url)))
+		openscad["props"].append((gettext('License'),html.a(module.license_name,href=module.license_url)))
 		openscad["props"] = html.properties(openscad["props"])
 
 		params = cl.parameters.union(module.parameters)
@@ -302,7 +302,7 @@ def name(id):
 						conns.append([loc,html.a(html.img(src=draw_url,width="200"),href=draw_url)])
 
 			openscad["connectors"] = html.table({
-					"header" : ["Location","Drawing"],
+					"header" : [gettext("Location"),gettext("Drawing")],
 					"class" : "table",
 					"data" : conns})
 		else:
