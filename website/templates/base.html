@@ -35,9 +35,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ g.lang_code }}<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="{{ url_for(request.endpoint,lang_code='en',**(request.view_args or {})) }}">{% trans %}English{% endtrans %}</a></li>
-              <li><a href="{{ url_for(request.endpoint,lang_code='de',**(request.view_args or {}) }}">{% trans %}German{% endtrans %}</a></li>
-              <li><a href="{{ url_for(request.endpoint,lang_code='fr',**(request.view_args or {}) }}">{% trans %}French{% endtrans %}</a></li>
-              <li><a href="{{ url_for(request.endpoint,lang_code='es',**(request.view_args or {}) }}">{% trans %}Spanish{% endtrans %}</a></li>
+              <li><a href="{{ url_for(request.endpoint,lang_code='de',**(request.view_args or {})) }}">{% trans %}German{% endtrans %}</a></li>
+              <li><a href="{{ url_for(request.endpoint,lang_code='fr',**(request.view_args or {})) }}">{% trans %}French{% endtrans %}</a></li>
+              <li><a href="{{ url_for(request.endpoint,lang_code='es',**(request.view_args or {})) }}">{% trans %}Spanish{% endtrans %}</a></li>
             </ul>
           </li>
           <li><a class="github" href="https://github.com/jreinhardt/BOLTS">Github</a></li>
