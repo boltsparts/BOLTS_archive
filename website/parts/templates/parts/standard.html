@@ -6,7 +6,7 @@
 
 {% if not parameters.drawing is none %}
 <h2>{% trans %}Drawings{% endtrans %}</h2>
-<a href="{{ parameters.drawing }}"><img width=600 src="{{ parameters.drawing }}"></a>
+<a href="{{ parameters.drawing }}"><img class="img-responsive" src="{{ parameters.drawing }}"></a>
 {% else %}
 <h2>{% trans %}Parameters{% endtrans %}</h2>
 {% endif %}
