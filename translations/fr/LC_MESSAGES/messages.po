@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-08-26 18:12+0200\n"
+"POT-Creation-Date: 2014-09-02 10:51+0200\n"
 "PO-Revision-Date: 2014-07-28 21:55+0200\n"
 "Last-Translator: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <>\n"
@@ -40,7 +40,7 @@ msgid ""
 "access."
 msgstr ""
 
-#: website/blog/templates/blog.html:6 website/templates/base.html:28
+#: website/blog/templates/blog.html:6 website/templates/base.html:26
 msgid "Blog"
 msgstr ""
 
@@ -103,7 +103,7 @@ msgstr ""
 msgid "Changelog"
 msgstr ""
 
-#: website/main/__init__.py:32 website/templates/base.html:27
+#: website/main/__init__.py:32 website/templates/base.html:25
 msgid "Home"
 msgstr ""
 
@@ -505,14 +505,16 @@ msgstr[1] ""
 
 #: website/parts/__init__.py:86 website/parts/__init__.py:122
 #: website/parts/__init__.py:170 website/parts/__init__.py:180
+#: website/parts/__init__.py:230 website/parts/__init__.py:272
+#: website/parts/__init__.py:284
 msgid "License"
 msgstr ""
 
-#: website/parts/__init__.py:123
+#: website/parts/__init__.py:123 website/parts/__init__.py:231
 msgid "Collection"
 msgstr ""
 
-#: website/parts/__init__.py:127
+#: website/parts/__init__.py:127 website/parts/__init__.py:235
 msgid "Identical to"
 msgstr ""
 
@@ -532,24 +534,25 @@ msgstr ""
 msgid "Replaced by"
 msgstr ""
 
-#: website/parts/__init__.py:138
+#: website/parts/__init__.py:138 website/parts/__init__.py:240
 msgid "Source"
 msgstr ""
 
-#: website/parts/__init__.py:158
+#: website/parts/__init__.py:158 website/parts/__init__.py:260
 msgid "Parameter Name"
 msgstr ""
 
-#: website/parts/__init__.py:158 website/parts/templates/parts/name.html:17
+#: website/parts/__init__.py:158 website/parts/__init__.py:260
+#: website/parts/templates/parts/name.html:17
 #: website/parts/templates/parts/standard.html:15
 msgid "Description"
 msgstr ""
 
-#: website/parts/__init__.py:201
+#: website/parts/__init__.py:201 website/parts/__init__.py:305
 msgid "Location"
 msgstr ""
 
-#: website/parts/__init__.py:201
+#: website/parts/__init__.py:201 website/parts/__init__.py:305
 msgid "Drawing"
 msgstr ""
 
@@ -609,7 +612,7 @@ msgstr ""
 msgid "title"
 msgstr ""
 
-#: website/search/templates/search.html:5 website/templates/base.html:33
+#: website/search/templates/search.html:5 website/templates/base.html:31
 msgid "Search"
 msgstr ""
 
@@ -648,23 +651,39 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr ""
 
-#: website/templates/base.html:29
+#: website/templates/base.html:27
 msgid "Parts"
 msgstr ""
 
-#: website/templates/base.html:30
+#: website/templates/base.html:28
 msgid "Documentation"
 msgstr ""
 
-#: website/templates/base.html:31
+#: website/templates/base.html:29
 msgid "Contribute"
 msgstr ""
 
-#: website/templates/base.html:32
+#: website/templates/base.html:30
 msgid "Downloads"
 msgstr ""
 
-#: website/templates/base.html:49
+#: website/templates/base.html:37
+msgid "English"
+msgstr ""
+
+#: website/templates/base.html:38
+msgid "German"
+msgstr ""
+
+#: website/templates/base.html:39
+msgid "French"
+msgstr ""
+
+#: website/templates/base.html:40
+msgid "Spanish"
+msgstr ""
+
+#: website/templates/base.html:56
 msgid ""
 "title image by <a "
 "href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv "
