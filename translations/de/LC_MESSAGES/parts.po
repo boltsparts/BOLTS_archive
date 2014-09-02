@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-02 14:01+0200\n"
-"PO-Revision-Date: 2014-09-01 14:43+0000\n"
+"PO-Revision-Date: 2014-09-02 12:14+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "parts/de/>\n"
@@ -727,7 +727,7 @@ msgstr "Innendurchmesser, achsseitig"
 #. Parameter description h_max
 #. data/hex_socket.blt, class hexsocketcountersunk
 msgid "maximum unthreaded length of shaft"
-msgstr ""
+msgstr "maximale Schaftlänge ohne Gewinde"
 
 #. Parameter description l
 #. data/hex_socket.blt, class hexsocketcountersunk
@@ -765,7 +765,7 @@ msgstr "Gewindelänge des Schafts"
 #. data/hex.blt, class hexscrew2
 #. data/hex.blt, class hexscrew1
 msgid "unthreaded length of shaft"
-msgstr ""
+msgstr "Schaftlänge ohne Gewinde"
 
 #. Parameter description thread_type
 #. data/hex.blt, class hexscrew1
@@ -842,13 +842,13 @@ msgstr "Generisches extrudiertes T-Nut Aluminiumprofil mit einer Nut 20mmx20mm"
 #. ClassName name nice
 #. data/extrusions.blt, class: vslot20x20
 msgid "V-Slot 20x20mm"
-msgstr ""
+msgstr "V-Slot 20x20mm"
 
 #. ClassName labeling nice
 #. data/extrusions.blt, class: vslot20x20
 #, python-format
 msgid "%(finish_name)s V-Slot 20x20mm Length: %(l)s"
-msgstr ""
+msgstr "%(finish_name)s V-Slot 20x20mm Länge: %(l)s"
 
 #. ClassName description
 #. data/extrusions.blt, class: vslot20x20
@@ -859,6 +859,8 @@ msgid ""
 "V-Slot is a high quality extruded aluminum profile building block that "
 "has an extremely smooth linear v groove rail on all 4 sides."
 msgstr ""
+"V-Slot ist ein hochqualtativ extrudiertes Aluminimum-Rasterprofil, das eine "
+"sehr glatte lineare Nut an allen vier Seiten besitzt."
 
 #. ClassName name nice
 #. data/c_beams.blt, class: cbeam_uap
