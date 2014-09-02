@@ -17,9 +17,7 @@
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">{% trans %}Toggle navigation{% endtrans %}</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
         </button>
       </div>
       <div class="collapse navbar-collapse">
@@ -33,6 +31,15 @@
           <li><a href="{{ url_for('search.search_page') }}">{% trans %}Search{% endtrans %}</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ g.lang_code }}<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{{ url_for(request.endpoint,lang_code='en',**request.view_args) }}">{% trans %}English{% endtrans %}</a></li>
+              <li><a href="{{ url_for(request.endpoint,lang_code='de',**request.view_args) }}">{% trans %}German{% endtrans %}</a></li>
+              <li><a href="{{ url_for(request.endpoint,lang_code='fr',**request.view_args) }}">{% trans %}French{% endtrans %}</a></li>
+              <li><a href="{{ url_for(request.endpoint,lang_code='es',**request.view_args) }}">{% trans %}Spanish{% endtrans %}</a></li>
+            </ul>
+          </li>
           <li><a class="github" href="https://github.com/jreinhardt/BOLTS">Github</a></li>
         </ul>
       </div><!--/.nav-collapse -->
