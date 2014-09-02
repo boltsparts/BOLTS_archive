@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-02 14:01+0200\n"
-"PO-Revision-Date: 2014-08-27 16:12+0000\n"
+"PO-Revision-Date: 2014-09-02 12:19+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/de/>\n"
@@ -120,10 +120,10 @@ msgstr "Home"
 
 #: website/main/templates/contribute.html:14
 msgid "Give us feedback"
-msgstr ""
+msgstr "Gib Rückmeldung"
 
 #: website/main/templates/contribute.html:15
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "You can help BOLTS by just trying it and giving feedback. Whether you are"
 " using <a href=\"http://freecadweb.org/\">FreeCAD</a> or <a "
@@ -134,8 +134,10 @@ msgid ""
 msgstr ""
 "Du kannst BOLTS helfen indem du es einfach ausprobierst und Rückmeldung "
 "gibst. Egal ob du <a href=\"http://freecadweb.org/\">FreeCAD</a> oder <a "
-"href=\"http://www.openscad.org/\">OpenSCAD</a> nutzt, <a "
-"href=\"%(url)s\">installiere und verwende es</a> und sage uns"
+"href=\"http://www.openscad.org/\">OpenSCAD</a> nutzt, <a href=\"%(url)s\">"
+"installiere und verwende es</a> und sage uns was nicht wie erwartet "
+"funktioniert hat, was deiner Meinung nach besser gemacht sein könnte und wie "
+"BOLTS für dich noch nützlicher werden kann."
 
 #: website/main/templates/contribute.html:17
 msgid ""
@@ -147,6 +149,12 @@ msgid ""
 "href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue "
 "tracker</a> on GitHub."
 msgstr ""
+"Sie können uns per <a href=\"mailto:BOLTS@ist-dein-freund.de\">email</a> "
+"kontaktieren, eine Nachricht im <a href=\"http://sourceforge.net/apps/phpbb"
+"/free-cad/viewtopic.php?f=8&t=4549\">BOLTS Diskussionsfaden</a> in den "
+"FreeCAD Foren schreiben oder den <a href=\""
+"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue tracker</a> auf "
+"GitHub verwenden."
 
 #: website/main/templates/contribute.html:21
 msgid "Add more parts and drawings"
@@ -204,10 +212,13 @@ msgid ""
 "website, you can directly report them using the comment field embedded in"
 " many pages."
 msgstr ""
+"Falls sie Fehler, schlechte oder fehlende Übersetzungen oder andere Probleme "
+"auf der Internetseite entdecken, können sie diese direkt mit Hilfe des "
+"Kommentarfelds melden, das in vielen Seiten vorhanden ist."
 
 #: website/main/templates/contribute.html:40
 msgid "Spread the word"
-msgstr ""
+msgstr "Mach BOLTS bekannt"
 
 #: website/main/templates/contribute.html:41
 msgid ""
@@ -221,7 +232,7 @@ msgstr ""
 
 #: website/main/templates/contribute.html:44
 msgid "Translate to other languages"
-msgstr ""
+msgstr "Übersetze in andere Sprachen"
 
 #: website/main/templates/contribute.html:45
 msgid ""
@@ -232,6 +243,12 @@ msgid ""
 "help of <a href=\"http://weblate.org/\">Weblate</a>. No registration is "
 "necessary to suggest translations."
 msgstr ""
+"Um BOLTS in mehreren Sprachen zur Verfügung stellen zu können müssen der "
+"Inhalt der Website, die Dokumentation und die Teilenamen und Beschreibungen "
+"übersetzt werden. Das kann <a href=\""
+"https://weblate.stbuehler.de/projects/BOLTS/\">hier</a> mit Hilfe von <a "
+"href=\"http://weblate.org/\">Weblate</a> getan werden. Es ist keine "
+"Registrierung erforderlich um Übersetzungen vorzuschlagen."
 
 #: website/main/templates/contributors.html:14
 msgid "Part contributions"
