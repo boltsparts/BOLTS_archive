@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-09-02 10:51+0200\n"
+"POT-Creation-Date: 2014-09-02 14:01+0200\n"
 "PO-Revision-Date: 2014-07-28 13:12+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgid ""
 "access."
 msgstr ""
 
-#: website/blog/templates/blog.html:6 website/templates/base.html:26
+#: website/blog/templates/blog.html:6
 msgid "Blog"
 msgstr ""
 
@@ -103,12 +103,12 @@ msgstr ""
 msgid "Changelog"
 msgstr ""
 
-#: website/main/__init__.py:32 website/templates/base.html:25
+#: website/main/__init__.py:32
 msgid "Home"
 msgstr ""
 
 #: website/main/templates/contribute.html:14
-msgid "Try and tell"
+msgid "Give us feedback"
 msgstr ""
 
 #: website/main/templates/contribute.html:15
@@ -117,73 +117,42 @@ msgid ""
 "You can help BOLTS by just trying it and giving feedback. Whether you are"
 " using <a href=\"http://freecadweb.org/\">FreeCAD</a> or <a "
 "href=\"http://www.openscad.org/\">OpenSCAD</a>, just <a "
-"href=\"%(url)s\">install and use it</a> and tell us"
+"href=\"%(url)s\">install and use it</a> and tell us what didn't work as "
+"expected, what you think could be done better or how BOLTS could be made "
+"more useful for you."
 msgstr ""
 
 #: website/main/templates/contribute.html:17
-msgid "what didn't work as expected for you"
-msgstr ""
-
-#: website/main/templates/contribute.html:18
-msgid "what you think could be done in a better way"
-msgstr ""
-
-#: website/main/templates/contribute.html:19
-msgid "how BOLTS could be made more useful for you"
-msgstr ""
-
-#: website/main/templates/contribute.html:22
-msgid "There are many ways to reach us:"
-msgstr ""
-
-#: website/main/templates/contribute.html:24
 msgid ""
-"Problems with the documentation can be reported via the comments section "
-"embedded into each page."
-msgstr ""
-
-#: website/main/templates/contribute.html:25
-msgid ""
-"For FreeCAD related things, there is a <a "
+"You can reach us by writing an <a href=\"mailto:BOLTS@ist-dein-"
+"freund.de\">email</a>, posting in the <a "
 "href=\"http://sourceforge.net/apps/phpbb/free-"
-"cad/viewtopic.php?f=8&t=4549\">development thread</a> on the FreeCAD "
-"forums."
+"cad/viewtopic.php?f=8&t=4549\">BOLTS development thread</a> on the "
+"FreeCAD forums or use the <a "
+"href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue "
+"tracker</a> on GitHub."
 msgstr ""
 
-#: website/main/templates/contribute.html:26
-msgid ""
-"The <a href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue "
-"tracker</a> on GitHub is also a good place to report problems and discuss"
-" improvements."
-msgstr ""
-
-#: website/main/templates/contribute.html:29
-msgid ""
-"Also don't forget to tell all your friends, colleagues and fellow makers "
-"about BOLTS. Or blog about it, mention it on social networks and spread "
-"the word."
-msgstr ""
-
-#: website/main/templates/contribute.html:32
+#: website/main/templates/contribute.html:21
 msgid "Add more parts and drawings"
 msgstr ""
 
-#: website/main/templates/contribute.html:33
+#: website/main/templates/contribute.html:22
 msgid ""
 "You can also help with adding more parts to BOLTS or improving those that"
 " are already there. To do so, you should first read about a few basic "
 "things, that will be useful to know"
 msgstr ""
 
-#: website/main/templates/contribute.html:36
+#: website/main/templates/contribute.html:25
 msgid "A short introduction to BOLTS"
 msgstr ""
 
-#: website/main/templates/contribute.html:37
+#: website/main/templates/contribute.html:26
 msgid "BOLTS development with git"
 msgstr ""
 
-#: website/main/templates/contribute.html:40
+#: website/main/templates/contribute.html:29
 #, python-format
 msgid ""
 "After that you are well prepared to contribute parts, data or drawings. "
@@ -191,17 +160,49 @@ msgid ""
 "documentation</a>."
 msgstr ""
 
-#: website/main/templates/contribute.html:43
+#: website/main/templates/contribute.html:32
 msgid "Improve data"
 msgstr ""
 
-#: website/main/templates/contribute.html:45
+#: website/main/templates/contribute.html:34
 #, python-format
 msgid ""
 "BOLTS scans its database for inconsistencies, common problems, missing or"
 " unclear informations and automatically generates <a href=\"%(url)s\">a "
 "list of things that could be fixed or improved</a>. This is a great "
 "starting point for contributing to BOLTS."
+msgstr ""
+
+#: website/main/templates/contribute.html:35
+msgid ""
+"If you notice errors, translation problems or other problems on the "
+"website, you can directly report them using the comment field embedded in"
+" many pages."
+msgstr ""
+
+#: website/main/templates/contribute.html:40
+msgid "Spread the word"
+msgstr ""
+
+#: website/main/templates/contribute.html:41
+msgid ""
+"Also don't forget to tell all your friends, colleagues and fellow makers "
+"about BOLTS. Or blog about it, mention it on social networks and spread "
+"the word."
+msgstr ""
+
+#: website/main/templates/contribute.html:44
+msgid "Translate to other languages"
+msgstr ""
+
+#: website/main/templates/contribute.html:45
+msgid ""
+"In order to provide BOLTS in multiple languages, the website contents, "
+"the documentation and the part names and descriptions need to be "
+"translated. This is done <a "
+"href=\"https://weblate.stbuehler.de/projects/BOLTS/\">here</a> with the "
+"help of <a href=\"http://weblate.org/\">Weblate</a>. No registration is "
+"necessary to suggest translations."
 msgstr ""
 
 #: website/main/templates/contributors.html:14
@@ -612,7 +613,7 @@ msgstr ""
 msgid "title"
 msgstr ""
 
-#: website/search/templates/search.html:5 website/templates/base.html:31
+#: website/search/templates/search.html:5
 msgid "Search"
 msgstr ""
 
@@ -647,51 +648,6 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
-#: website/templates/base.html:19
-msgid "Toggle navigation"
-msgstr ""
-
-#: website/templates/base.html:27
-msgid "Parts"
-msgstr ""
-
-#: website/templates/base.html:28
-msgid "Documentation"
-msgstr ""
-
-#: website/templates/base.html:29
-msgid "Contribute"
-msgstr ""
-
-#: website/templates/base.html:30
-msgid "Downloads"
-msgstr ""
-
-#: website/templates/base.html:37
-msgid "English"
-msgstr ""
-
-#: website/templates/base.html:38
-msgid "German"
-msgstr ""
-
-#: website/templates/base.html:39
-msgid "French"
-msgstr ""
-
-#: website/templates/base.html:40
-msgid "Spanish"
-msgstr ""
-
-#: website/templates/base.html:56
-msgid ""
-"title image by <a "
-"href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv "
-"Patel</a>, theme based on a <a href=\"https://github.com/Wolfr/cactus-"
-"jekyll-theme\">design</a> by <a "
-"href=\"http://wolfslittlestore.be\">Wolf's Little Store</a>"
-msgstr ""
-
 #: website/templates/error.html:13
 msgid "Rusty nuts and bolts"
 msgstr ""
@@ -724,5 +680,88 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Statistics"
+#~ msgstr ""
+
+#~ msgid "Try and tell"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can help BOLTS by just trying"
+#~ " it and giving feedback. Whether you"
+#~ " are using <a "
+#~ "href=\"http://freecadweb.org/\">FreeCAD</a> or <a "
+#~ "href=\"http://www.openscad.org/\">OpenSCAD</a>, just <a"
+#~ " href=\"%(url)s\">install and use it</a> "
+#~ "and tell us"
+#~ msgstr ""
+
+#~ msgid "what didn't work as expected for you"
+#~ msgstr ""
+
+#~ msgid "what you think could be done in a better way"
+#~ msgstr ""
+
+#~ msgid "how BOLTS could be made more useful for you"
+#~ msgstr ""
+
+#~ msgid "There are many ways to reach us:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Problems with the documentation can be"
+#~ " reported via the comments section "
+#~ "embedded into each page."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For FreeCAD related things, there is "
+#~ "a <a href=\"http://sourceforge.net/apps/phpbb/free-"
+#~ "cad/viewtopic.php?f=8&t=4549\">development thread</a> on"
+#~ " the FreeCAD forums."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The <a "
+#~ "href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue"
+#~ " tracker</a> on GitHub is also a "
+#~ "good place to report problems and "
+#~ "discuss improvements."
+#~ msgstr ""
+
+#~ msgid "Toggle navigation"
+#~ msgstr ""
+
+#~ msgid "Parts"
+#~ msgstr ""
+
+#~ msgid "Documentation"
+#~ msgstr ""
+
+#~ msgid "Contribute"
+#~ msgstr ""
+
+#~ msgid "Downloads"
+#~ msgstr ""
+
+#~ msgid "English"
+#~ msgstr ""
+
+#~ msgid "German"
+#~ msgstr ""
+
+#~ msgid "French"
+#~ msgstr ""
+
+#~ msgid "Spanish"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "title image by <a "
+#~ "href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv"
+#~ " Patel</a>, theme based on a <a "
+#~ "href=\"https://github.com/Wolfr/cactus-jekyll-"
+#~ "theme\">design</a> by <a "
+#~ "href=\"http://wolfslittlestore.be\">Wolf's Little "
+#~ "Store</a>"
 #~ msgstr ""
 
