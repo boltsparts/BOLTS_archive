@@ -2,7 +2,20 @@
 <body>
   
   {% include header.html %}
-  {{ content }}
+<div id="content">
+  <div class="inner-content">
+    <h1>Website migration</h1>
+    <p>BOLTS has a <a href="http://www.bolts-library.org">new website</a>. You will be redirected to the new site in 30 seconds. Please update your bookmarks and consider changing links you have might have published that attract a lot of traffic.</p>
+    <p>The new site offers many new features including</p>
+      <ul>
+        <li>Internationalisation (in progress): BOLTS will be available in different languages. <a href="https://weblate.stbuehler.de/projects/BOLTS/">Help with translating here</a>.
+        <li>Responsive design: The site is now usable also with tablets and mobile devices</li>
+        <li>Search: Quickly find what you are looking for with the new <a href="http://www.bolts-library.org/en/search">search feature</a>.</li>
+      </ul>
+   
+      <p>If the redirect doesn't work, please click on this link <a href="http://www.bolts-library.org{{ page.redirect }}">http://www.bolts-library.org{{ page.redirect }}</a></p>
+  </div>
+</div>
   {% include footer.html %}
 
   {% include piwik.html %}
