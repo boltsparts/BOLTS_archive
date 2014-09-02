@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-08-24 19:21+0200\n"
-"PO-Revision-Date: 2014-09-01 13:44+0000\n"
+"PO-Revision-Date: 2014-09-01 14:43+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "parts/de/>\n"
@@ -54,7 +54,7 @@ msgstr "Metrische und zöllische Rohre"
 #. collection name
 #. data/hex.blt
 msgid "Hexagon fasteners"
-msgstr "Befestigungselemente mit Innensechskant"
+msgstr "Sechskant Befestingungselemente"
 
 #. collection description
 #. data/hex.blt
@@ -104,7 +104,7 @@ msgstr "Verschiedene Standardflansche"
 #. collection name
 #. data/hex_socket.blt
 msgid "Hexagon socket fasteners"
-msgstr "Sechskant Befestigungselemente"
+msgstr "Befestigungselemente mit Innensechskant"
 
 #. collection description
 #. data/hex_socket.blt
@@ -754,7 +754,7 @@ msgstr ""
 #. data/hex_socket.blt, class hexsocketcountersunk
 #. data/hex_socket.blt, class hexsocketheadcap
 msgid "shaft diameter"
-msgstr ""
+msgstr "Schaftdurchmesser"
 
 #. Parameter description b
 #. data/hex_socket.blt, class hexsocketheadcap
@@ -898,44 +898,46 @@ msgstr "T-Nut Profil, zwei (gegenüberliegende) Nuten 20x20"
 #. data/extrusions.blt, class: tslot20x20_2s
 #, python-format
 msgid "T slot extrusion two slots (opp.) 20x20x%(l)s"
-msgstr ""
+msgstr "T-Nut Profil, zwei (gegenüberliegende) Nuten 20x20x%(l)s"
 
 #. ClassName description
 #. data/extrusions.blt, class: tslot20x20_2s
 msgid "Generic T slot aluminium extrusion two oppositeslots 20mmx20mm"
 msgstr ""
+"Generisches extrudiertes T-Nut Aluminiumprofil mit zwei gegenüberliegenden "
+"Nuten 20mmx20mm"
 
 #. ClassName name nice
 #. data/extrusions.blt, class: tslot20x20_3s
 msgid "T slot extrusion three slots 20x20"
-msgstr ""
+msgstr "T-Nut Profil, drei Nuten 20x20"
 
 #. ClassName labeling nice
 #. data/extrusions.blt, class: tslot20x20_3s
 #, python-format
 msgid "T slot extrusion three slots 20x20x%(l)s"
-msgstr ""
+msgstr "T-Nut Profil, drei Nuten 20x20x%(l)s"
 
 #. ClassName description
 #. data/extrusions.blt, class: tslot20x20_3s
 msgid "Generic T slot extrusion three slots 20mmx20mm"
-msgstr ""
+msgstr "Generisches T-Nut Profil, drei Nuten 20mmx20mm"
 
 #. ClassName name nice
 #. data/profiles_hollow.blt, class: generic_square_hollow
 msgid "Square hollow profile"
-msgstr ""
+msgstr "Quadratisches Hohlprofil"
 
 #. ClassName labeling nice
 #. data/profiles_hollow.blt, class: generic_square_hollow
 #, python-format
 msgid "Square hollow profile %(b)s/%(t)s l=%(l)s"
-msgstr ""
+msgstr "Quadratisches Hohlprofil %(b)s/%(t)s l=%(l)s"
 
 #. ClassName description
 #. data/profiles_hollow.blt, class: generic_square_hollow
 msgid "Generic square hollow profile"
-msgstr ""
+msgstr "Generisches quadratisches Hohlprofil"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: inp
@@ -947,57 +949,57 @@ msgstr "IPN Profil"
 #. data/hex.blt, class: hexscrew2
 #. ClassName description
 msgid "Hexagon head screw"
-msgstr ""
+msgstr "Sechskantschraube"
 
 #. ClassName labeling nice
 #. data/hex.blt, class: hexscrew2
 #, python-format
 msgid "Hexagon head screw %(key)s - %(l)s"
-msgstr ""
+msgstr "Sechskantschraube %(key)s - %(l)s"
 
 #. ClassName name nice
 #. data/bearings.blt, class: axialthrustbearing
 msgid "Axial thrust bearing"
-msgstr ""
+msgstr "Axiallager"
 
 #. ClassName labeling nice
 #. data/bearings.blt, class: axialthrustbearing
 #, python-format
 msgid "Axial thrust bearing %(key)s"
-msgstr ""
+msgstr "Axiallager %(key)s"
 
 #. ClassName description
 #. data/bearings.blt, class: axialthrustbearing
 #. ClassStandard description
 msgid "Axial thrust bearing, single direction"
-msgstr ""
+msgstr "einseitig wirkendes Axiallager"
 
 #. ClassName name nice
 #. data/profiles_hollow.blt, class: generic_rectangular_hollow
 msgid "Rectangular hollow profile"
-msgstr ""
+msgstr "Rechteckhohlprofil"
 
 #. ClassName labeling nice
 #. data/profiles_hollow.blt, class: generic_rectangular_hollow
 #, python-format
 msgid "Rectangular hollow profile %(h)s-%(b)s-%(t)s, l=%(l)s"
-msgstr ""
+msgstr "Rechteckhohlprofil %(h)s-%(b)s-%(t)s, l=%(l)s"
 
 #. ClassName description
 #. data/profiles_hollow.blt, class: generic_rectangular_hollow
 msgid "A generic rectangular hollow profile"
-msgstr ""
+msgstr "Ein generisches Rechteckhohlprofil"
 
 #. ClassName name nice
 #. data/bearings.blt, class: singlerowradialbearing
 msgid "Radial Ball Bearing"
-msgstr ""
+msgstr "Radialkugellager"
 
 #. ClassName labeling nice
 #. data/bearings.blt, class: singlerowradialbearing
 #, python-format
 msgid "Radial Ball Bearing %(key)s%(postfix)s"
-msgstr ""
+msgstr "Radialkugellager %(key)s%(postfix)s"
 
 #. ClassName description
 #. data/bearings.blt, class: singlerowradialbearing
@@ -1005,6 +1007,8 @@ msgid ""
 "Single row radial contact ball bearing, with single or double shields, "
 "single or double seal or open, metric sizes"
 msgstr ""
+"Einreihiges Radialkugellager mit ein- oder beidseitigem Schild, ein- oder "
+"beidseitiger Dichtung oder offen, metrische Größen"
 
 #. ClassName name nice
 #. data/hex.blt, class: hexbolt1
