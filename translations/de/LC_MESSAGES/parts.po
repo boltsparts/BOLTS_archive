@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-02 14:01+0200\n"
-"PO-Revision-Date: 2014-09-02 12:14+0000\n"
+"PO-Revision-Date: 2014-09-04 06:35+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "parts/de/>\n"
@@ -89,7 +89,7 @@ msgstr "Hohlprofile"
 #. collection description
 #. data/profiles_hollow.blt
 msgid "Hot finished structural hollow sections"
-msgstr ""
+msgstr "heissgewalzte Hohlprofile"
 
 #. collection name
 #. data/flanges.blt
@@ -859,7 +859,7 @@ msgid ""
 "V-Slot is a high quality extruded aluminum profile building block that "
 "has an extremely smooth linear v groove rail on all 4 sides."
 msgstr ""
-"V-Slot ist ein hochqualtativ extrudiertes Aluminimum-Rasterprofil, das eine "
+"V-Slot ist ein hochqualitativ extrudiertes Aluminimum-Rasterprofil, das eine "
 "sehr glatte lineare Nut an allen vier Seiten besitzt."
 
 #. ClassName name nice
@@ -1016,127 +1016,127 @@ msgstr ""
 #. data/hex.blt, class: hexbolt1
 #. ClassName description
 msgid "Hexagon head bolt"
-msgstr ""
+msgstr "Sechskantbolzen"
 
 #. ClassName labeling nice
 #. data/hex.blt, class: hexbolt1
 #, python-format
 msgid "Hexagon head bolt %(key)s - %(l)s"
-msgstr ""
+msgstr "Sechskantbolzen %(key)s - %(l)s"
 
 #. ClassName name nice
 #. data/c_beams.blt, class: cbeam_upe
 msgid "UPE Profile"
-msgstr ""
+msgstr "UPE Profil"
 
 #. ClassName description
 #. data/c_beams.blt, class: cbeam_upe
 #. ClassStandard description
 msgid "UPE profile, metric european standard c-beam profile"
-msgstr ""
+msgstr "UPE Profil, metrisches europäisch genormtes U-Stahl Profil"
 
 #. ClassName name nice
 #. data/extrusions.blt, class: vslot20x40
 msgid "V-Slot 20x40mm"
-msgstr ""
+msgstr "V-Slot 20x40mm"
 
 #. ClassName labeling nice
 #. data/extrusions.blt, class: vslot20x40
 #, python-format
 msgid "%(finish)s V-Slot 20x40mm Length: %(l)s"
-msgstr ""
+msgstr "%(finish)s V-Slot 20x40mm Länge: %(l)s"
 
 #. ClassName name nice
 #. data/nut.blt, class: hexagonnut1
 msgid "Metric hexagon nut"
-msgstr ""
+msgstr "Metrische Sechskantmutter"
 
 #. ClassName labeling nice
 #. data/nut.blt, class: hexagonnut1
 #, python-format
 msgid "Metric hexagon nut %(key)s"
-msgstr ""
+msgstr "Metrische Sechskantmutter %(key)s"
 
 #. ClassName description
 #. data/nut.blt, class: hexagonnut1
 #. ClassStandard description
 #. data/nut.blt, class: hexagonnut2
 msgid "Hexagon nut, metric sizes"
-msgstr ""
+msgstr "Sechskantmutter, metrische Größen"
 
 #. ClassName name nice
 #. data/washer.blt, class: plainwasherforcheesehead
 msgid "Metric plain washer for cheese head screws"
-msgstr ""
+msgstr "Metrische Unterlegscheibe für Zylinderkopfschrauben"
 
 #. ClassName labeling nice
 #. data/washer.blt, class: plainwasherforcheesehead
 #, python-format
 msgid "Plain washer for cheese head screws %(key)s"
-msgstr ""
+msgstr "Unterlegscheibe für Zylinderkopfschrauben %(key)s"
 
 #. ClassName description
 #. data/washer.blt, class: plainwasherforcheesehead
 msgid "Plain washer for cheese head screws, metric sizes"
-msgstr ""
+msgstr "Unterlegscheibe für Zylinderkopfschrauben, metrische Größen"
 
 #. ClassName name nice
 #. data/batteries.blt, class: round_battery
 msgid "Round Batteries"
-msgstr ""
+msgstr "Runde Batterien"
 
 #. ClassName labeling nice
 #. data/batteries.blt, class: round_battery
 #, python-format
 msgid "%(T)s Battery"
-msgstr ""
+msgstr "%(T)s Batterie"
 
 #. ClassName description
 #. data/batteries.blt, class: round_battery
 msgid "Most common round single cell battery sizes"
-msgstr ""
+msgstr "Gängiste runde Ein-Zellen-Batteriengrössen"
 
 #. ClassName name nice
 #. data/profiles_hollow.blt, class: generic_circle_hollow
 msgid "Circular hollow profile"
-msgstr ""
+msgstr "Rundes Hohlprofil"
 
 #. ClassName labeling nice
 #. data/profiles_hollow.blt, class: generic_circle_hollow
 #, python-format
 msgid "Circular hollow profile %(D)s/%(t)s l=%(l)s"
-msgstr ""
+msgstr "Rundes Hohlprofil %(D)s/%(t)s l=%(l)s"
 
 #. ClassName description
 #. data/profiles_hollow.blt, class: generic_circle_hollow
 msgid "Generic circular hollow profile"
-msgstr ""
+msgstr "Generisches rundes Hohlprofil"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_ipea
 msgid "IPEa Profile"
-msgstr ""
+msgstr "IPEa Profil"
 
 #. ClassName description
 #. data/i_beams.blt, class: ibeam_ipea
 msgid "IPEa profile, metric european i-beam profile"
-msgstr ""
+msgstr "IPEa Profil, metrisches europäisches I-Profil"
 
 #. ClassName name nice
 #. data/hex_socket.blt, class: hexsocketheadcap
 msgid "Metric hex socket head cap screw"
-msgstr ""
+msgstr "Metrische Zylinderschraube mit Innensechskant"
 
 #. ClassName labeling nice
 #. data/hex_socket.blt, class: hexsocketheadcap
 #, python-format
 msgid "Hex socket head cap screw %(key)s %(l)s"
-msgstr ""
+msgstr "Metrische Zylinderschraube mit Innensechskant %(key)s %(l)s"
 
 #. ClassName description
 #. data/hex_socket.blt, class: hexsocketheadcap
 msgid "Hexagon socket head cap screw, metric sizes"
-msgstr ""
+msgstr "Zylinderschraube mit Innensechskant, metrische Größen"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_iper
