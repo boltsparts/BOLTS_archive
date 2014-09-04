@@ -31,11 +31,10 @@ stored in a blt file.
 ### Backend specific data
 
 There is also data required to create a 3D representation of a part in a CAD
-tool. For OpenSCAD we use a module definition in a scad file or a stl file, for
-FreeCAD a python function or a fcstd file containing the model. These are also
-called base modules, base functions or base fcstd files, or base geometries
-when referring to any of them. Together with a base file containing metadata
-this forms the backend specific data. 
+tool. For OpenSCAD we use a module definition in a scad file, for FreeCAD a
+python function. These are also called base modules or base functions, or base
+geometries when referring to any of them. Together with a base file containing
+metadata this forms the backend specific data.
 
 ### Synergy
 

@@ -20,7 +20,7 @@ BOLTS consists of a number of different parts that work together in different wa
 
 * the blt files are YAML files that contain not backend specific data and metadata about the part (more precisely about classes of parts, because there is often a large amount of redundancy). These files contain among other informations the tables with dimensions, and form the foundation of BOLTS. Its license is chosen by the creator.
 
-* the backend specific data is specific to the CAD application (FreeCAD or OpenSCAD at the moment), and can come in two forms: as code (OpenSCAD modules or FreeCAD python functions) or as data (stl files for OpenSCAD or fcstd files for FreeCAD. Its license is chosen by the creator.
+* the backend specific data is specific to the CAD application (FreeCAD or OpenSCAD at the moment), and generally comes in form of code (OpenSCAD modules or FreeCAD python functions). Its license is chosen by the creator.
 
 ### Combined works and generated code
 
@@ -62,17 +62,9 @@ But the same considerations have to be applied to the case, when someone uses BO
 
 This would be rather drastic, as that would severely limit the choice of licenses the user could assign to its design. This would limit the audience and the usefulness of BOLTS massively, so this is something that should be avoided.
 
-I mentioned earlier, that there is application specific data in form of code and in form of data. These two cases have to be distinguished:
-
 #### Backend specific data in form of code
 
 In this case on can consider the part as the result of a program (BOLTS), which is not affected by the license of the programm. So parts created by code (FreeCAD python functions and OpenSCAD modules) cause no licensing related restrictions on the resulting design.
-
-#### Backend specific data in form of data
-
-In this case on has to consider the final design as a combined work between the part (in form of a FreeCAD fcstd file or a STL file) and the rest of the design that the user created. If the BOLTS part were licensed under a fairly restrictive license like GPL, the whole design would need to be licensed under the GPL.
-
-As this is undesireable, BOLTS must not contain backend specific data in form of data that causes such restrictions. This means, that such data must be placed in the public domain, or better yet, the author must waive all rights on this content using [CC0](http://creativecommons.org/about/cc0). The latter is a legally more sound procedure, as the public domain is a legal concept that does not exist in all legislations.
 
 ### Consequences for BOLTS itself
 
@@ -108,9 +100,4 @@ A contribution in form of a blt file or backend specific data in form of code ca
 A contribution in form of backend specific data in form of data must be in the public domain or [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/).
 
 From all available .blt files and backen specific data, distributions with specific licenses are created automatically.
-
-
-
-
-
 
