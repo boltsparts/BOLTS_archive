@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-02 14:01+0200\n"
-"PO-Revision-Date: 2014-09-08 19:17+0000\n"
+"PO-Revision-Date: 2014-09-08 19:31+0000\n"
 "Last-Translator: galou <galou_breizh@yahoo.fr>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/fr/>\n"
@@ -175,11 +175,11 @@ msgstr ""
 
 #: website/main/templates/contribute.html:25
 msgid "A short introduction to BOLTS"
-msgstr ""
+msgstr "Une introduction rapide à BOLTS"
 
 #: website/main/templates/contribute.html:26
 msgid "BOLTS development with git"
-msgstr ""
+msgstr "développement de BOLTS avec git"
 
 #: website/main/templates/contribute.html:29
 #, python-format
@@ -188,10 +188,13 @@ msgid ""
 "For details on how to do that see the <a href=\"%(url)s\">contributor "
 "documentation</a>."
 msgstr ""
+"Après cela, vous êtes prêt(e) à ajouter des pièces, des données ou des "
+"schémas. Les détails sur les contributions sont sur <a href=\"%(url)s\">la "
+"documentation du contributeur</a>."
 
 #: website/main/templates/contribute.html:32
 msgid "Improve data"
-msgstr ""
+msgstr "Améliorer les données"
 
 #: website/main/templates/contribute.html:34
 #, python-format
@@ -201,6 +204,11 @@ msgid ""
 "list of things that could be fixed or improved</a>. This is a great "
 "starting point for contributing to BOLTS."
 msgstr ""
+"BOLTS vérifie dans sa base de données qu'elle ne contient pas de paradoxes "
+"et de problèmes communs et que les informations soient claires et complètes "
+"et génère automatiquement <a href=\"%(url)s\">une liste de points qui "
+"peuvent être réparés ou améliorés</a>. C'est un très bon point de départ "
+"pour contribuer à BOLTS."
 
 #: website/main/templates/contribute.html:35
 msgid ""
@@ -208,10 +216,13 @@ msgid ""
 "website, you can directly report them using the comment field embedded in"
 " many pages."
 msgstr ""
+"Si vous repérez des erreurs de données, de traduction ou autres sur le site "
+"web, vous pouvez écrire un rapport en utilisant le champ commentaire inclu "
+"dans beaucoup de pages du site."
 
 #: website/main/templates/contribute.html:40
 msgid "Spread the word"
-msgstr ""
+msgstr "Diffusez"
 
 #: website/main/templates/contribute.html:41
 msgid ""
@@ -219,10 +230,13 @@ msgid ""
 "about BOLTS. Or blog about it, mention it on social networks and spread "
 "the word."
 msgstr ""
+"N'oubliez pas de parler de BOLTS à vos amis, collègues et co-bricoleurs. "
+"Pourquoi ne pas en parler dans votre blogue, en parler sur les réseaux "
+"sociaux et diffusez l'information."
 
 #: website/main/templates/contribute.html:44
 msgid "Translate to other languages"
-msgstr ""
+msgstr "Traduire en d'autres langues"
 
 #: website/main/templates/contribute.html:45
 msgid ""
