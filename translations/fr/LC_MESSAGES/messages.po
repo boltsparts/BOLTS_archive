@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-02 14:01+0200\n"
-"PO-Revision-Date: 2014-09-07 17:12+0000\n"
-"Last-Translator: Normand Chamberland <normand.chamberland@gmail.com>\n"
+"PO-Revision-Date: 2014-09-08 19:00+0000\n"
+"Last-Translator: galou <galou_breizh@yahoo.fr>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/fr/>\n"
 "Language: fr\n"
@@ -84,31 +84,34 @@ msgid ""
 "The latest and greatest on BOLTS. <a href=\"%(url)s\">Subscribe the RSS "
 "feed</a> for updates."
 msgstr ""
+"Les dernières nouvelles sur BOLTS. <a href=\"%(url)s\">Abonnez-vous au flux "
+"RSS</a>."
 
 #: website/blog/templates/blog/index.html:27
 msgid "Post archive"
-msgstr ""
+msgstr "Archive de messages"
 
 #: website/blog/templates/blog/index.html:28
 #, python-format
 msgid "View all posts in the <a href=\"%(url)s\">Blog archive</a>."
 msgstr ""
+"Voir tous les messages dans <a href=\"%(url)s\">l'archive du blogue</a>."
 
 #: website/blog/templates/blog/post.html:10
 #, python-format
 msgid ", last update %(date)s"
-msgstr ""
+msgstr ", dernière mise à jour %(date)s"
 
 #: website/blog/templates/blog/post.html:13
 #: website/docs/templates/docs/index.html:49
 #: website/docs/templates/docs/page.html:9
 #: website/docs/templates/docs/spec.html:8
 msgid "Comments"
-msgstr ""
+msgstr "Commentaires"
 
 #: website/docs/templates/docs/index.html:44
 msgid "blt file format specification"
-msgstr ""
+msgstr "spécification du format blt"
 
 #: website/docs/templates/docs/index.html:45
 msgid "Changelog"
@@ -116,11 +119,11 @@ msgstr ""
 
 #: website/main/__init__.py:32
 msgid "Home"
-msgstr ""
+msgstr "Page principale"
 
 #: website/main/templates/contribute.html:14
 msgid "Give us feedback"
-msgstr ""
+msgstr "Dites-nous ce que vous en pensez"
 
 #: website/main/templates/contribute.html:15
 #, python-format
