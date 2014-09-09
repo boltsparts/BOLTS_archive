@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-02 14:01+0200\n"
-"PO-Revision-Date: 2014-09-04 06:35+0000\n"
+"PO-Revision-Date: 2014-09-09 20:13+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "parts/de/>\n"
@@ -780,7 +780,7 @@ msgstr "Gewindesteigung"
 #. Parameter description pitch_name
 #. data/hex.blt, class hexscrew1
 msgid "pitch indication for the part name"
-msgstr ""
+msgstr "Gangzahl für den Teilenamen"
 
 #. Parameter description cl
 #. data/connecting_bars.blt, class tubebarcrimpedends
@@ -1141,124 +1141,124 @@ msgstr "Zylinderschraube mit Innensechskant, metrische Größen"
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_iper
 msgid "IPEr Profile"
-msgstr ""
+msgstr "IPEr Profil"
 
 #. ClassName description
 #. data/i_beams.blt, class: ibeam_iper
 msgid "IPEr profile, metric european i-beam profile"
-msgstr ""
+msgstr "IPEr Profil, metrisches europäisches I-Profil"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_ipe
 msgid "IPE Profile"
-msgstr ""
+msgstr "IPE Profil"
 
 #. ClassName description
 #. data/i_beams.blt, class: ibeam_ipe
 #. ClassStandard description
 msgid "IPE profile, metric european standard i-beam profile"
-msgstr ""
+msgstr "IPE Profil, metrisches europäisches Norm-I-Profil"
 
 #. ClassName name nice
 #. data/washer.blt, class: plainwasherchamfered
 msgid "Metric plain washer with chamfer"
-msgstr ""
+msgstr "Metrische Unterlegscheibe mit Fase"
 
 #. ClassName labeling nice
 #. data/washer.blt, class: plainwasherchamfered
 #, python-format
 msgid "Plain washer chamfered %(key)s"
-msgstr ""
+msgstr "angefaste Unterlegscheibe %(key)s"
 
 #. ClassName description
 #. data/washer.blt, class: plainwasherchamfered
 #. ClassStandard description
 msgid "Plain washer with chamfer, metric sizes"
-msgstr ""
+msgstr "Unterlegscheibe mit Fase, metrische Grössen"
 
 #. ClassName name nice
 #. data/washer.blt, class: heavydutyplainwasher
 msgid "Metric heavy duty plain washer"
-msgstr ""
+msgstr "Metrische Schwerlast- Unterlegscheibe"
 
 #. ClassName labeling nice
 #. data/washer.blt, class: heavydutyplainwasher
 #, python-format
 msgid "Heavy duty plain washer %(key)s"
-msgstr ""
+msgstr "Schwerlast-Unterlegscheibe %(key)s"
 
 #. ClassName description
 #. data/washer.blt, class: heavydutyplainwasher
 #. ClassStandard description
 msgid "Heavy duty plain washer, metric sizes"
-msgstr ""
+msgstr "Schwerlast-Unterlegscheibe, metrische Grössen"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_hea
 msgid "HEA Profile"
-msgstr ""
+msgstr "HEA Profil"
 
 #. ClassName description
 #. data/i_beams.blt, class: ibeam_hea
 #. ClassStandard description
 msgid "HEA profile, metric european standard i-beam profile"
-msgstr ""
+msgstr "HEA Profil, metrisches europäisches Norm-I-Profil"
 
 #. ClassName name nice
 #. data/hex_socket.blt, class: hexsocketcountersunk
 msgid "Metric hex socket countersunk head screw"
-msgstr ""
+msgstr "Metrische Innensechskant-Senkkopfschraube"
 
 #. ClassName labeling nice
 #. data/hex_socket.blt, class: hexsocketcountersunk
 #, python-format
 msgid "Hex socket countersunk head screw %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Senkkopfschraube %(key)s %(l)s"
 
 #. ClassName description
 #. data/hex_socket.blt, class: hexsocketcountersunk
 #. ClassStandard description
 msgid "Hexagon socket countersunk head screw, metric sizes"
-msgstr ""
+msgstr "Innensechskant-Senkkopfschraube, metrische Größen"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_heaa
 msgid "HEAA Profile"
-msgstr ""
+msgstr "HEAA Profil"
 
 #. ClassName description
 #. data/i_beams.blt, class: ibeam_heaa
 msgid "HEAA profile, metric european i-beam profile"
-msgstr ""
+msgstr "HEAA Profil, metrisches europäisches I-Profil"
 
 #. ClassName name nice
 #. data/nut.blt, class: hexagonthinnut1
 msgid "Metric hexagon thin nut"
-msgstr "Metrische, dünne Sechskantmutter"
+msgstr "Metrische Sechskant-Flachmutter"
 
 #. ClassName labeling nice
 #. data/nut.blt, class: hexagonthinnut1
 #, python-format
 msgid "Metric hexagon thin nut %(key)s"
-msgstr ""
+msgstr "Metrische Sechskant-Flachmutter %(key)s"
 
 #. ClassName description
 #. data/nut.blt, class: hexagonthinnut1
 #. ClassStandard description
 msgid "Thin hexagon nut, metric sizes"
-msgstr ""
+msgstr "Sechskant-Flachmutter, metrische Größen"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: inp
 #. ClassName description
 msgid "INP Profile"
-msgstr ""
+msgstr "INP Profil"
 
 #. ClassName name nice
 #. data/extrusions.blt, class: openbuildssolidvwheel
 #. ClassName labeling nice
 msgid "OpenBuilds Solid V Wheel - Delrin"
-msgstr ""
+msgstr "OpenBuilds V-Rolle - Delrin"
 
 #. ClassName description
 #. data/extrusions.blt, class: openbuildssolidvwheel
@@ -1267,33 +1267,38 @@ msgid ""
 "Linear Guide System. They can be used with V-Slot Extrusion. For builds "
 "where heavier loads are required."
 msgstr ""
+"Die OpenBuilds Delrin V-Massivrollen eignen sich ausgezeichnet für jedes V"
+"-Rollen-Linearführungssystem. Sie können mit jedem V-Slot-Strangprofil "
+"benutzt werden. Für Konstuktionen bei denen hohen Lasten benötigt werden."
 
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_heb
 msgid "HEB Profile"
-msgstr ""
+msgstr "HEB Profil"
 
 #. ClassName description
 #. data/i_beams.blt, class: ibeam_heb
 #. ClassStandard description
 msgid "HEB profile, metric european standard i-beam profile"
-msgstr ""
+msgstr "HEB Profil, metrisches europäisches Norm-I-Profil"
 
 #. ClassName name nice
 #. data/extrusions.blt, class: tslot20x20_2sa
 msgid "T slot extrusion two slots 20x20"
-msgstr ""
+msgstr "T-Nut-Strangprofil, zwei Nuten 20x20"
 
 #. ClassName labeling nice
 #. data/extrusions.blt, class: tslot20x20_2sa
 #, python-format
 msgid "T slot extrusion two slots 20x20x%(l)s"
-msgstr ""
+msgstr "T-Nut-Strangprofil, zwei Nuten 20x20x%(l)s"
 
 #. ClassName description
 #. data/extrusions.blt, class: tslot20x20_2sa
 msgid "Generic T slot aluminium extrusion two neighboring slots 20mmx20mm"
 msgstr ""
+"Generisches T-Nut Aluminiumstrangprofil mit zwei nebeneinanderliegenden "
+"Nuten 20mmx20mm"
 
 #. ClassName name nice
 #. data/connecting_bars.blt, class: tubebarcrimpedends
@@ -1317,7 +1322,7 @@ msgstr ""
 #. data/extrusions.blt, class: openbuildssolidminivwheel
 #. ClassName labeling nice
 msgid "OpenBuilds Solid Mini V Wheel - Delrin"
-msgstr ""
+msgstr "OpenBuilds Mini V-Rolle - Delrin"
 
 #. ClassName description
 #. data/extrusions.blt, class: openbuildssolidminivwheel
@@ -1325,62 +1330,64 @@ msgid ""
 "The OpenBuilds Delrin Solid Mini V Wheels are great for small form factor"
 " linear actuator guides. They can be used with V-Slot Extrusion."
 msgstr ""
+"Die OpenBuilds Delrin Mini V-Rollen eignen sich für kleine "
+"Linearführungseinheiten. Sie können mit V-Slot Strangprofilen benutzt werden."
 
 #. ClassName name nice
 #. data/hex_socket.blt, class: hexsocketsetscrewall
 msgid "Hex socket set screw"
-msgstr ""
+msgstr "Gewindestift mit Innen-Sechskant"
 
 #. ClassName labeling nice
 #. data/hex_socket.blt, class: hexsocketsetscrewall
 #, python-format
 msgid "Hex socket set screw %(point)s point %(key)s %(l)s"
-msgstr ""
+msgstr "Gewindestift mit Innen-Sechskant %(point)s Spitze %(key)s %(l)s"
 
 #. ClassName description
 #. data/hex_socket.blt, class: hexsocketsetscrewall
 #. ClassStandard description
 msgid "Hexagon socket set screws"
-msgstr ""
+msgstr "Gewindestifte mit Innen-Sechskant"
 
 #. ClassName name nice
 #. data/nut.blt, class: hexagonnut3
 #. ClassName labeling nice
 msgid "Imperial hexagon nut"
-msgstr ""
+msgstr "Zöllische Sechskantmutter"
 
 #. ClassName description
 #. data/nut.blt, class: hexagonnut3
 #. ClassStandard description
 msgid "Hexagon nut, imperial sizes"
-msgstr ""
+msgstr "Sechskantmutter, zöllige Größen"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_ipev
 msgid "IPEv Profile"
-msgstr ""
+msgstr "IPEv Profil"
 
 #. ClassName description
 #. data/i_beams.blt, class: ibeam_ipev
 msgid "IPEv profile, metric european i-beam profile"
-msgstr ""
+msgstr "IPEv Profil, metrisches europäisches I-Profil"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_hem
 msgid "HEM Profile"
-msgstr ""
+msgstr "HEM Profil"
 
 #. ClassName description
 #. data/i_beams.blt, class: ibeam_hem
 #. ClassStandard description
 msgid "HEM profile, metric european standard i-beam profile"
-msgstr ""
+msgstr "HEM profile, metrisches europäisches Norm-I-Profil"
 
 #. ClassName name nice
 #. data/extrusions.blt, class: openbuildsdualvwheel
 #. ClassName labeling nice
 msgid "OpenBuilds Dual V Wheel - Delrin"
-msgstr ""
+msgstr "OpenBuilds Doppel-V-Rolle - Delrin"
 
 #. ClassName description
 #. data/extrusions.blt, class: openbuildsdualvwheel
@@ -1388,17 +1395,20 @@ msgid ""
 "The OpenBuilds Delrin Dual V Wheels are great for use with any V Wheel "
 "Linear Guide System. They can be used with V-Slot Extrusion and OpenRail."
 msgstr ""
+"Die OpenBuilds Delrin Doppel-V-Rollen sind hervorragend für jedes  V-Rollen-"
+"Linearführungssystem geeignet. Sie können für V-Slot-Strangprofile und "
+"OpenRail benutzt werden."
 
 #. ClassName name nice
 #. data/extrusions.blt, class: vslot20x80
 msgid "V-Slot 20x80mm"
-msgstr ""
+msgstr "V-Slot 20x80mm"
 
 #. ClassName labeling nice
 #. data/extrusions.blt, class: vslot20x80
 #, python-format
 msgid "%(finish)s V-Slot 20x80mm Length: %(l)s"
-msgstr ""
+msgstr "%(finish)s V-Slot 20x80mm Länge: %(l)s"
 
 #. ClassName name nice
 #. data/pipes.blt, class: genericpipe
@@ -1409,169 +1419,169 @@ msgstr "Generisches Rohr"
 #. data/pipes.blt, class: genericpipe
 #, python-format
 msgid "Pipe OD %(od)s ID %(id)s length %(l)s"
-msgstr ""
+msgstr "Rohr AD %(od)s ID %(id)s Länge %(l)s"
 
 #. ClassName description
 #. data/pipes.blt, class: genericpipe
 msgid "A generic pipe"
-msgstr ""
+msgstr "Ein generisches Rohr"
 
 #. ClassName name nice
 #. data/bearings.blt, class: doublerowradialbearing
 msgid "Double row ball bearing"
-msgstr ""
+msgstr "Zweireihiges Kugellager"
 
 #. ClassName labeling nice
 #. data/bearings.blt, class: doublerowradialbearing
 #, python-format
 msgid "Double row ball bearing %(key)s"
-msgstr ""
+msgstr "Zweireihiges Kugellager %(key)s"
 
 #. ClassName description
 #. data/bearings.blt, class: doublerowradialbearing
 #. ClassStandard description
 msgid "Deep groove double row radial ball bearing, metric sizes"
-msgstr ""
+msgstr "Zweireihiges Rillen-Kugellager, metrische Größen"
 
 #. ClassName name nice
 #. data/extrusions.blt, class: tslot20x20
 msgid "T slot extrusion 20x20"
-msgstr ""
+msgstr "T-Nut Strangprofil 20x20"
 
 #. ClassName labeling nice
 #. data/extrusions.blt, class: tslot20x20
 #, python-format
 msgid "T slot extrusion 20x20x%(l)s"
-msgstr ""
+msgstr "T-Nut Strangprofil 20x20x%(l)s"
 
 #. ClassName description
 #. data/extrusions.blt, class: tslot20x20
 msgid "Generic T slot aluminium extrusion 20mmx20mm"
-msgstr ""
+msgstr "Generisches T-Nut Strangprofil 20mmx20mm"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_ipe750
 msgid "IPE 750 Profile"
-msgstr ""
+msgstr "IPE 750 Profil"
 
 #. ClassName description
 #. data/i_beams.blt, class: ibeam_ipe750
 msgid "IPE 750 profile, metric european i-beam profile"
-msgstr ""
+msgstr "IPE 750 Profil, metrisches europäisches I-Profil"
 
 #. ClassName name nice
 #. data/washer.blt, class: plainwasher1
 msgid "Metric plain washer"
-msgstr ""
+msgstr "Metrische Unterlagsscheibe"
 
 #. ClassName labeling nice
 #. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer %(key)s"
-msgstr ""
+msgstr "Unterlagsscheibe %(key)s"
 
 #. ClassName description
 #. data/washer.blt, class: plainwasher1
 #. ClassStandard description
 #. data/washer.blt, class: plainwasher2
 msgid "Plain washer, metric sizes"
-msgstr ""
+msgstr "Unterlagsscheibe, metrische Größen"
 
 #. ClassName name nice
 #. data/extrusions.blt, class: vslot20x60
 msgid "V-Slot 20x60mm"
-msgstr ""
+msgstr "V-Slot 20x60mm"
 
 #. ClassName labeling nice
 #. data/extrusions.blt, class: vslot20x60
 #, python-format
 msgid "%(finish)s V-Slot 20x60mm Length: %(l)s"
-msgstr ""
+msgstr "%(finish)s V-Slot 20x60mm Länge: %(l)s"
 
 #. ClassName name nice
 #. data/i_beams.blt, class: ibeam_ipeo
 msgid "IPEo Profile"
-msgstr ""
+msgstr "IPEo Profil"
 
 #. ClassName description
 #. data/i_beams.blt, class: ibeam_ipeo
 msgid "IPEo profile, metric european i-beam profile"
-msgstr ""
+msgstr "IPEo Profil, metrisches europäisches I-Profil"
 
 #. ClassStandard labeling nice
 #. data/c_beams.blt, class: cbeam_uap
 #, python-format
 msgid "NFA45-255 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "NFA45-255 %(type)s, l=%(l)s"
 
 #. ClassStandard labeling nice
 #. data/profiles_hollow.blt, class: circle_hollow
 #, python-format
 msgid "CHS DIN EN 10210-2 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "RO DIN EN 10210-2 %(type)s, l=%(l)s"
 
 #. ClassStandard description
 #. data/profiles_hollow.blt, class: circle_hollow
 msgid "Circular Hollow Section (CHS)"
-msgstr ""
+msgstr "Rohrprofil (RO)"
 
 #. ClassStandard labeling nice
 #. data/profiles_hollow.blt, class: circle_hollow
 #, python-format
 msgid "CHS EN 10210-2 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "RO EN 10210-2 %(type)s, l=%(l)s"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasher2
 #, python-format
 msgid "Plain washer DINENISO 7091 %(key)s"
-msgstr ""
+msgstr "Unterlagsscheibe DIN EN ISO 7091 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasherchamfered
 #, python-format
 msgid "Plain washer chamfered DIN EN ISO 7090 %(key)s"
-msgstr ""
+msgstr "Unterlagsscheibe, angefast DIN EN ISO 7090 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/hex_socket.blt, class: hexsocketcountersunk
 #, python-format
 msgid "Hex socket countersunk head screw DIN ISO 10642 %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Senkkopfschraube DIN ISO 10642 %(key)s %(l)s"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer EN 7089 %(key)s"
-msgstr ""
+msgstr "Unterlagsscheibe EN 7089 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/c_beams.blt, class: cbeam_upe
 #, python-format
 msgid "DIN1026-2 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "DIN 1026-2 %(type)s, l=%(l)s"
 
 #. ClassStandard labeling nice
 #. data/pipes.blt, class: din11850range2
 #, python-format
 msgid "DIN 11850 Range 2 DN %(dn)s length %(l)s"
-msgstr ""
+msgstr "DIN 11850 Reihe 2 DN %(dn)s Länge %(l)s"
 
 #. ClassStandard description
 #. data/pipes.blt, class: din11850range2
 msgid "Pipe according to DIN11850 Range 2"
-msgstr ""
+msgstr "Rohr nach DIN 11850 Reihe 2"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasherforcheesehead
 #, python-format
 msgid "Plain washer for cheese head screws ISO 7092 %(key)s"
-msgstr ""
+msgstr "Unterlagsscheibe für Zylinderkopfschrauben ISO 7092 %(key)s"
 
 #. ClassStandard description
 #. data/washer.blt, class: plainwasherforcheesehead
 msgid "Plain washer for cheese head screws"
-msgstr ""
+msgstr "Unterlagsscheibe für Zylinderkopfschrauben"
 
 #. ClassStandard labeling nice
 #. data/hex_socket.blt, class: hexsocketsetscrewdog
