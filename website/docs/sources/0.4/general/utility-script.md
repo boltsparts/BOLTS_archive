@@ -31,12 +31,6 @@ certain license, one can supply an additional argument:
 
     ./bolts.py export openscad --license lgpl2.1+
 
-One can also regenerate the HTML output, which is useful when creating drawings
-or adding new collections
-
-    ./bolts.py export html
-
-
 ### Running automatic checks
 
 BOLTS can run some automatic checks and detect a few common errors, problems
@@ -60,6 +54,11 @@ To show a list of such tasks use
 If there are tasks available, they are displayed together with a short
 explanation.
 
+### Helper for Connector drawings
+
+The utility script also helps with the creation of images to document
+connectors for OpenSCAD parts. For details see
+[the corresponding doc page]({{ doc(openscad,connectors}).
 
 ### Testing CAD applications
 
