@@ -10,27 +10,27 @@ the tools that are used to manage it.
 
 **If you just want to use BOLTS, then you should get the BOLTS distribution
 for the CAD tool of your choice from the**
-`download section <http://jreinhardt.github.io/BOLTS/downloads.html>`_
+`download section <http://www.bolts-library.org/en/downloads.html>`_
 **of the webpage instead. Instructions on how to use the distributions can be
 found in the**
-`documentation section <http://jreinhardt.github.io/BOLTS/doc/index.html>`_.
+`documentation section <http://www.bolts-library.org/en/docs/index.html>`_.
 
-The webpage contains a lot of general infos, an overview over the
-`specifications <http://jreinhardt.github.io/BOLTS/html/index.html>`_ of all
-parts contained in BOLTS and quite a bit of
-`documentation <http://jreinhardt.github.io/BOLTS/doc/index.html>`_.
+The webpage contains a lot of general infos, a 
+`list of all parts <http://www.bolts-library.org/en/parts/index.html>`_ 
+contained in BOLTS and quite a bit of
+`documentation <http://www.bolts-library.org/en/docs/index.html>`_.
 So if you have more questions, the chances to find answers on the webpage
 
-http://jreinhardt.github.io/BOLTS/index.html
+http://www.bolts-library.org/
 
 are much higher than to find them here.
 
 Use
 ===
 
-You should check out the `documentation
-<http://jreinhardt.github.io/BOLTS/doc/index.html>`_ on the `webpage
-<http://jreinhardt.github.io/BOLTS/index.html>`_ for more informations on how
+You should check out the 
+`documentation <http://www.bolts-library.org/en/docs/index.html>`_.
+on the `webpage <http://www.bolts-library.org/>`_ for more informations on how
 to get and use BOLTS.
 
 Dependencies for use
@@ -81,25 +81,16 @@ For BOLTS for SolidWorks
 
 * python-xlwt (http://python-excel.org/)
 
-To generate the HTML pages for the webpage
+To work on the website it is recommended to use a virtualenv for the python
+dependencies, see
+`the documentation <http://www.bolts-library.org/en/docs/index.html>`_ for more
+details. If you don't want to use a virtualenv, you can install the python
+requirements listed in `requirements.txt`. In addition you need
 
-* Graphviz dot (http://graphviz.org/)
-* Jekyll (jekyllrb.com/)
+* node-less
+* cleancss
 
 To run the  bolts.py utility script (for development)
 
 * python 2.7 (because of argparse)
 * pyyaml (http://pyyaml.org/)
-
-Dependencies for website
-------------------------
-
-The website is based on Flask with many extensions and bootstrap on the
-frontend. The python requirements are listed in `requirements.txt`.
-
-The css and js resources are compiled and minified by Flask-Assets. For this
-one needs to have installed
-
-* node-less
-* cleancss
-* python-babel
