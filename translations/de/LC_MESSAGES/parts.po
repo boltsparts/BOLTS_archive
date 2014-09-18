@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-02 14:01+0200\n"
-"PO-Revision-Date: 2014-09-14 07:39+0000\n"
+"PO-Revision-Date: 2014-09-18 06:16+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "parts/de/>\n"
@@ -1856,35 +1856,37 @@ msgid ""
 "Single row radial contact ball bearing, with single or double shields, "
 "single or double seal or open"
 msgstr ""
+"Einreihiges Radialschrägkugellager mit einfacher oder doppelter Deckscheibe, "
+"einfacher oder doppelter Dichtung oder offen"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasherchamfered
 #, python-format
 msgid "Plain washer chamfered DIN 125B %(key)s"
-msgstr ""
+msgstr "Angefaste Unterlegscheibe DIN 125B %(key)s"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer DIN 125A %(key)s"
-msgstr ""
+msgstr "Unterlegscheibe DIN 125A %(key)s"
 
 #. ClassStandard labeling nice
 #. data/i_beams.blt, class: inp
 #, python-format
 msgid "DIN1025-1 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "DIN 1025-1 %(type)s, l=%(l)s"
 
 #. ClassStandard description
 #. data/i_beams.blt, class: inp
 msgid "IPN profile, metric european standard i-beam profile"
-msgstr ""
+msgstr "IPN Profil, metrisches europäisches Norm-I-Profil"
 
 #. ClassStandard labeling nice
 #. data/hex_socket.blt, class: hexsocketheadcap
 #, python-format
 msgid "Hex socket head cap screw DIN 912 %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Zylinderschraube DIN 912 %(key)s %(l)s"
 
 #. ClassStandard labeling nice
 #. data/hex.blt, class: hexbolt2
