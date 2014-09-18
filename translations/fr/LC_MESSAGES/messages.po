@@ -8,17 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-09-02 14:01+0200\n"
+"POT-Creation-Date: 2014-09-18 15:19+0200\n"
 "PO-Revision-Date: 2014-09-08 19:31+0000\n"
 "Last-Translator: galou <galou_breizh@yahoo.fr>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/fr/>\n"
-"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
 "Generated-By: Babel 1.3\n"
 
 #: website/__init__.py:84
@@ -45,11 +43,11 @@ msgid ""
 "access."
 msgstr ""
 "Une erreur est survenue pendant le traitement de votre requête. Cela ne "
-"devrait pas arriver, et nous en sommes désolés. Veuillez nous aviser de ce "
-"problème par courriel à BOLTS@ist-dein-freund.de en incluant l'URL que vous "
-"tentiez d'accéder."
+"devrait pas arriver, et nous en sommes désolés. Veuillez nous aviser de "
+"ce problème par courriel à BOLTS@ist-dein-freund.de en incluant l'URL que"
+" vous tentiez d'accéder."
 
-#: website/blog/templates/blog.html:6
+#: website/blog/templates/blog.html:6 website/templates/base.html:26
 msgid "Blog"
 msgstr "Blogue"
 
@@ -71,8 +69,8 @@ msgstr "En savoir plus"
 #, python-format
 msgid "Older posts can be found in the <a href=\"%(url)s\">Blog archive</a>."
 msgstr ""
-"Les articles plus anciens se trouvent dans les <a href=\"%(url)s\">archives "
-"du blogue</a>."
+"Les articles plus anciens se trouvent dans les <a "
+"href=\"%(url)s\">archives du blogue</a>."
 
 #: website/blog/templates/blog/index.html:22
 msgid "Welcome to the BOLTS blog"
@@ -84,8 +82,8 @@ msgid ""
 "The latest and greatest on BOLTS. <a href=\"%(url)s\">Subscribe the RSS "
 "feed</a> for updates."
 msgstr ""
-"Les dernières nouvelles sur BOLTS. <a href=\"%(url)s\">Abonnez-vous au flux "
-"RSS</a>."
+"Les dernières nouvelles sur BOLTS. <a href=\"%(url)s\">Abonnez-vous au "
+"flux RSS</a>."
 
 #: website/blog/templates/blog/index.html:27
 msgid "Post archive"
@@ -94,8 +92,7 @@ msgstr "Archive de messages"
 #: website/blog/templates/blog/index.html:28
 #, python-format
 msgid "View all posts in the <a href=\"%(url)s\">Blog archive</a>."
-msgstr ""
-"Voir tous les messages dans <a href=\"%(url)s\">l'archive du blogue</a>."
+msgstr "Voir tous les messages dans <a href=\"%(url)s\">l'archive du blogue</a>."
 
 #: website/blog/templates/blog/post.html:10
 #, python-format
@@ -117,7 +114,7 @@ msgstr "spécification du format blt"
 msgid "Changelog"
 msgstr ""
 
-#: website/main/__init__.py:32
+#: website/main/__init__.py:32 website/templates/base.html:25
 msgid "Home"
 msgstr "Page principale"
 
@@ -135,12 +132,13 @@ msgid ""
 "expected, what you think could be done better or how BOLTS could be made "
 "more useful for you."
 msgstr ""
-"Vous pouvez aider BOLTS simplement en l'essayant et en nous disant ce que "
-"vous en pensez. Que vous l'utilisiez avec <a href=\"http://freecadweb.org/\""
-">FreeCAD</a> ou <a href=\"http://www.openscad.org/\">OpenSCAD</a>, <a href=\""
-"%(url)s\">installez la et utilisez la</a> et dites-vous ce qui n'a pas "
-"fonctionné, ce que vous pensez qui pourrait être amélioré ou comment changer "
-"BOLTS pourrait être plus utile pour vous vous."
+"Vous pouvez aider BOLTS simplement en l'essayant et en nous disant ce que"
+" vous en pensez. Que vous l'utilisiez avec <a "
+"href=\"http://freecadweb.org/\">FreeCAD</a> ou <a "
+"href=\"http://www.openscad.org/\">OpenSCAD</a>, <a "
+"href=\"%(url)s\">installez la et utilisez la</a> et dites-vous ce qui n'a"
+" pas fonctionné, ce que vous pensez qui pourrait être amélioré ou comment"
+" changer BOLTS pourrait être plus utile pour vous vous."
 
 #: website/main/templates/contribute.html:17
 msgid ""
@@ -152,12 +150,13 @@ msgid ""
 "href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue "
 "tracker</a> on GitHub."
 msgstr ""
-"Vous pouvez nous contacter en écrivant un <a href=\"mailto:BOLTS@ist-dein-"
-"freund.de\">email</a>, en postant un message sur le fil <a href=\""
-"http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=8&t=4549\">BOLTS "
-"development</a> sur le forum FreeCAD forums ou en utilisant <a href=\""
-"https://github.com/jreinhardt/BOLTS/issues\">gestionnaire de bugs de "
-"BOLTS</a> sur GitHub."
+"Vous pouvez nous contacter en écrivant un <a href=\"mailto:BOLTS@ist-"
+"dein-freund.de\">email</a>, en postant un message sur le fil <a "
+"href=\"http://sourceforge.net/apps/phpbb/free-"
+"cad/viewtopic.php?f=8&t=4549\">BOLTS development</a> sur le forum FreeCAD"
+" forums ou en utilisant <a "
+"href=\"https://github.com/jreinhardt/BOLTS/issues\">gestionnaire de bugs "
+"de BOLTS</a> sur GitHub."
 
 #: website/main/templates/contribute.html:21
 msgid "Add more parts and drawings"
@@ -169,9 +168,9 @@ msgid ""
 " are already there. To do so, you should first read about a few basic "
 "things, that will be useful to know"
 msgstr ""
-"vous pouvez aider en ajoutant des pièces à BOLTS ou en améliorant les pièces "
-"existantes. Dans ce but, vous devriez commencer par lire quelques bases qui "
-"vous seront utiles"
+"vous pouvez aider en ajoutant des pièces à BOLTS ou en améliorant les "
+"pièces existantes. Dans ce but, vous devriez commencer par lire quelques "
+"bases qui vous seront utiles"
 
 #: website/main/templates/contribute.html:25
 msgid "A short introduction to BOLTS"
@@ -189,8 +188,8 @@ msgid ""
 "documentation</a>."
 msgstr ""
 "Après cela, vous êtes prêt(e) à ajouter des pièces, des données ou des "
-"schémas. Les détails sur les contributions sont sur <a href=\"%(url)s\">la "
-"documentation du contributeur</a>."
+"schémas. Les détails sur les contributions sont sur <a "
+"href=\"%(url)s\">la documentation du contributeur</a>."
 
 #: website/main/templates/contribute.html:32
 msgid "Improve data"
@@ -204,11 +203,11 @@ msgid ""
 "list of things that could be fixed or improved</a>. This is a great "
 "starting point for contributing to BOLTS."
 msgstr ""
-"BOLTS vérifie dans sa base de données qu'elle ne contient pas de paradoxes "
-"et de problèmes communs et que les informations soient claires et complètes "
-"et génère automatiquement <a href=\"%(url)s\">une liste de points qui "
-"peuvent être réparés ou améliorés</a>. C'est un très bon point de départ "
-"pour contribuer à BOLTS."
+"BOLTS vérifie dans sa base de données qu'elle ne contient pas de "
+"paradoxes et de problèmes communs et que les informations soient claires "
+"et complètes et génère automatiquement <a href=\"%(url)s\">une liste de "
+"points qui peuvent être réparés ou améliorés</a>. C'est un très bon point"
+" de départ pour contribuer à BOLTS."
 
 #: website/main/templates/contribute.html:35
 msgid ""
@@ -216,9 +215,9 @@ msgid ""
 "website, you can directly report them using the comment field embedded in"
 " many pages."
 msgstr ""
-"Si vous repérez des erreurs de données, de traduction ou autres sur le site "
-"web, vous pouvez écrire un rapport en utilisant le champ commentaire inclu "
-"dans beaucoup de pages du site."
+"Si vous repérez des erreurs de données, de traduction ou autres sur le "
+"site web, vous pouvez écrire un rapport en utilisant le champ commentaire"
+" inclu dans beaucoup de pages du site."
 
 #: website/main/templates/contribute.html:40
 msgid "Spread the word"
@@ -656,7 +655,7 @@ msgstr ""
 msgid "title"
 msgstr ""
 
-#: website/search/templates/search.html:5
+#: website/search/templates/search.html:5 website/templates/base.html:31
 msgid "Search"
 msgstr ""
 
@@ -691,6 +690,51 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
+#: website/templates/base.html:19
+msgid "Toggle navigation"
+msgstr ""
+
+#: website/templates/base.html:27
+msgid "Parts"
+msgstr ""
+
+#: website/templates/base.html:28
+msgid "Documentation"
+msgstr ""
+
+#: website/templates/base.html:29
+msgid "Contribute"
+msgstr ""
+
+#: website/templates/base.html:30
+msgid "Downloads"
+msgstr ""
+
+#: website/templates/base.html:37
+msgid "English"
+msgstr ""
+
+#: website/templates/base.html:38
+msgid "German"
+msgstr ""
+
+#: website/templates/base.html:39
+msgid "French"
+msgstr ""
+
+#: website/templates/base.html:40
+msgid "Spanish"
+msgstr ""
+
+#: website/templates/base.html:56
+msgid ""
+"title image by <a "
+"href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv "
+"Patel</a>, theme based on a <a href=\"https://github.com/Wolfr/cactus-"
+"jekyll-theme\">design</a> by <a "
+"href=\"http://wolfslittlestore.be\">Wolf's Little Store</a>"
+msgstr ""
+
 #: website/templates/error.html:13
 msgid "Rusty nuts and bolts"
 msgstr ""
@@ -722,16 +766,6 @@ msgstr ""
 #~ msgid "Try and tell"
 #~ msgstr ""
 
-#~ msgid ""
-#~ "You can help BOLTS by just trying"
-#~ " it and giving feedback. Whether you"
-#~ " are using <a "
-#~ "href=\"http://freecadweb.org/\">FreeCAD</a> or <a "
-#~ "href=\"http://www.openscad.org/\">OpenSCAD</a>, just <a"
-#~ " href=\"%(url)s\">install and use it</a> "
-#~ "and tell us"
-#~ msgstr ""
-
 #~ msgid "what didn't work as expected for you"
 #~ msgstr ""
 
@@ -742,27 +776,6 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "There are many ways to reach us:"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Problems with the documentation can be"
-#~ " reported via the comments section "
-#~ "embedded into each page."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "For FreeCAD related things, there is "
-#~ "a <a href=\"http://sourceforge.net/apps/phpbb/free-"
-#~ "cad/viewtopic.php?f=8&t=4549\">development thread</a> on"
-#~ " the FreeCAD forums."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The <a "
-#~ "href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue"
-#~ " tracker</a> on GitHub is also a "
-#~ "good place to report problems and "
-#~ "discuss improvements."
 #~ msgstr ""
 
 #~ msgid "Toggle navigation"
@@ -792,12 +805,3 @@ msgstr ""
 #~ msgid "Spanish"
 #~ msgstr ""
 
-#~ msgid ""
-#~ "title image by <a "
-#~ "href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv"
-#~ " Patel</a>, theme based on a <a "
-#~ "href=\"https://github.com/Wolfr/cactus-jekyll-"
-#~ "theme\">design</a> by <a "
-#~ "href=\"http://wolfslittlestore.be\">Wolf's Little "
-#~ "Store</a>"
-#~ msgstr ""

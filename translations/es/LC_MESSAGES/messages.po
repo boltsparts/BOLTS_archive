@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-09-02 14:01+0200\n"
+"POT-Creation-Date: 2014-09-18 15:19+0200\n"
 "PO-Revision-Date: 2014-07-28 13:12+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgid ""
 "access."
 msgstr ""
 
-#: website/blog/templates/blog.html:6
+#: website/blog/templates/blog.html:6 website/templates/base.html:26
 msgid "Blog"
 msgstr ""
 
@@ -103,7 +103,7 @@ msgstr ""
 msgid "Changelog"
 msgstr ""
 
-#: website/main/__init__.py:32
+#: website/main/__init__.py:32 website/templates/base.html:25
 msgid "Home"
 msgstr ""
 
@@ -613,7 +613,7 @@ msgstr ""
 msgid "title"
 msgstr ""
 
-#: website/search/templates/search.html:5
+#: website/search/templates/search.html:5 website/templates/base.html:31
 msgid "Search"
 msgstr ""
 
@@ -646,6 +646,51 @@ msgstr ""
 
 #: website/search/templates/search.html:41
 msgid "Version"
+msgstr ""
+
+#: website/templates/base.html:19
+msgid "Toggle navigation"
+msgstr ""
+
+#: website/templates/base.html:27
+msgid "Parts"
+msgstr ""
+
+#: website/templates/base.html:28
+msgid "Documentation"
+msgstr ""
+
+#: website/templates/base.html:29
+msgid "Contribute"
+msgstr ""
+
+#: website/templates/base.html:30
+msgid "Downloads"
+msgstr ""
+
+#: website/templates/base.html:37
+msgid "English"
+msgstr ""
+
+#: website/templates/base.html:38
+msgid "German"
+msgstr ""
+
+#: website/templates/base.html:39
+msgid "French"
+msgstr ""
+
+#: website/templates/base.html:40
+msgid "Spanish"
+msgstr ""
+
+#: website/templates/base.html:56
+msgid ""
+"title image by <a "
+"href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv "
+"Patel</a>, theme based on a <a href=\"https://github.com/Wolfr/cactus-"
+"jekyll-theme\">design</a> by <a "
+"href=\"http://wolfslittlestore.be\">Wolf's Little Store</a>"
 msgstr ""
 
 #: website/templates/error.html:13
@@ -685,16 +730,6 @@ msgstr ""
 #~ msgid "Try and tell"
 #~ msgstr ""
 
-#~ msgid ""
-#~ "You can help BOLTS by just trying"
-#~ " it and giving feedback. Whether you"
-#~ " are using <a "
-#~ "href=\"http://freecadweb.org/\">FreeCAD</a> or <a "
-#~ "href=\"http://www.openscad.org/\">OpenSCAD</a>, just <a"
-#~ " href=\"%(url)s\">install and use it</a> "
-#~ "and tell us"
-#~ msgstr ""
-
 #~ msgid "what didn't work as expected for you"
 #~ msgstr ""
 
@@ -705,27 +740,6 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "There are many ways to reach us:"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Problems with the documentation can be"
-#~ " reported via the comments section "
-#~ "embedded into each page."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "For FreeCAD related things, there is "
-#~ "a <a href=\"http://sourceforge.net/apps/phpbb/free-"
-#~ "cad/viewtopic.php?f=8&t=4549\">development thread</a> on"
-#~ " the FreeCAD forums."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The <a "
-#~ "href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue"
-#~ " tracker</a> on GitHub is also a "
-#~ "good place to report problems and "
-#~ "discuss improvements."
 #~ msgstr ""
 
 #~ msgid "Toggle navigation"
@@ -753,15 +767,5 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Spanish"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "title image by <a "
-#~ "href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv"
-#~ " Patel</a>, theme based on a <a "
-#~ "href=\"https://github.com/Wolfr/cactus-jekyll-"
-#~ "theme\">design</a> by <a "
-#~ "href=\"http://wolfslittlestore.be\">Wolf's Little "
-#~ "Store</a>"
 #~ msgstr ""
 

@@ -1,405 +1,18 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-09-02 14:01+0200\n"
+"POT-Creation-Date: 2014-09-18 15:19+0200\n"
 "PO-Revision-Date: 2014-09-08 19:18+0000\n"
 "Last-Translator: galou <galou_breizh@yahoo.fr>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "docs/fr/>\n"
-"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
 "Generated-By: Babel 1.3\n"
-
-#. document title
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid "How to setup a fcstd base"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"\n"
-"You need to have FreeCAD and [FreeCAD for BOLTS installed]({{ "
-"doc(freecad,installation) }})."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"This assumes, that the blt file for this part is already created, and you"
-" have\n"
-"a fcstd file with the part that you want to add to BOLTS."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid "We do this at the example of a aluminum T slot extrusion."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid "### Check the fcstd file in FreeCAD"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid "Load the part in FreeCAD and check that it looks visually ok."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"If the part is supposed to be parametric, then try to change the "
-"parameters\n"
-"that BOLTS should be able to set. For the aluminum extrusion this is only"
-" the\n"
-"length, which corresponds to the height of the box in the file. So we "
-"select\n"
-"the box in the combo view, select the data tab and change the value for "
-"the\n"
-"height. The part should now change its length, but still look like "
-"expected. Do\n"
-"this for all parameters, also check combinations."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"[<img alt=\"Visually checking the part\" src=\"{{ static(fcstd-base1.png)"
-" }}\" />]({{ static(fcstd-base1.png) }})"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid "### Find out feature and property names"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"Usually, a part consists of several features. We need a way to tell BOLTS"
-" which\n"
-"feature is the one that it should use. If the part is parametric, we also"
-" need\n"
-"to tell it, how the properties of the features map to the parameters."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"Features in FreeCAD have a unique name in a document, but this name is "
-"not\n"
-"always identical to the label that is displayed in the combo view, so be\n"
-"careful. BOLTS offers a convenient way to find out the names of all "
-"features in\n"
-"the document. Enter the following lines into the python console of "
-"FreeCAD:"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"    import BOLTS\n"
-"    BOLTS.list_names(FreeCAD.ActiveDocument)"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"The first line imports and starts BOLTS, the second line calls a function"
-" from\n"
-"BOLTS that gives out a list of all features with their label and the\n"
-"corresponding object names."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"[<img alt=\"Finding feature names\" src=\"{{ static(fcstd-base2.png) }}\""
-" />]({{ static(fcstd-base2.png) }})"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"We need to remember the name of the root feature, that BOLTS is supposed "
-"to\n"
-"insert, and the names of all features that provide parametric behaviour "
-"and the\n"
-"corresponding names of the properties."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"For the T slot extrusion, the root feature has the label `Fillet`, and "
-"the name\n"
-"`Fillet`, the length of the extrusion can be changed with the `Height` "
-"property\n"
-"of the `Box` (both name and label)."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid "### Copy the fcstd file to the correct directory"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"The fcstd file goes to the subdirectory of the collection in the freecad\n"
-"directory of the repository."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.4/freecad/basefunction
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/freecad/basefcstd
-#. docs/0.3/freecad/basefunction
-#. docs/0.3/openscad/basemodule
-msgid "### Write the base file"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"The base file provides BOLTS with all the informations it needs to know "
-"about\n"
-"the files in a collection directory."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid "For the aluminum extrusion it looks like this:"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-#, python-format
-msgid ""
-"    ---\n"
-"    - filename: tslot-20x20-2S.fcstd\n"
-"      author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
-"      license: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>\n"
-"      type: fcstd\n"
-"      objects:\n"
-"       - objectname: Fillet\n"
-"         classids: [tslot20x20-2s]\n"
-"         proptoparam:\n"
-"           Fillet : {Label : name}\n"
-"           Box: {Height : l}\n"
-"      source: created from scratch, dimensions from http://www13"
-".boschrexroth-"
-"us.com/partstream/Load_Category.aspx?Category=20mm%%20Series&menu=1,1,1\n"
-"    ..."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"The hyphens and dots on the first and the last line indicate the begin "
-"and end\n"
-"of the metadata (a base file is a [YAML file](http://yaml.org/). Between "
-"those\n"
-"two markers follows a list of base file elements, one for each file. The "
-"begin\n"
-"of a new element is indicated by a hyphen. If there are more than one "
-"file in\n"
-"the collection directory, there would be more elements, but here it is "
-"only\n"
-"one."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"Each element contains various fields with information about the file, "
-"e.g. the\n"
-"filename or name and email address of the author, here in lines 2 and 3."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"Because the part will form a combined work with the rest of the design, "
-"and we\n"
-"do not want to force the users of BOLTS to put their work under a certain"
-"\n"
-"license, BOLTS requires that the author waives all rights for this part, "
-"by\n"
-"releasing it in the Public Domain, preferably by the use of the [CC0\n"
-"License](http://creativecommons.org/publicdomain/zero/1.0/).  This is "
-"done in\n"
-"the fourth line."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"In the fifth line the type of file is indicated, in this case it is a "
-"fcstd\n"
-"file. Then follows a list of objects. It is in principle possible, to "
-"have\n"
-"several different parts in one fcstd file. Each element describes one "
-"object."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"The objectname field gives the name of the root feature for this object. "
-"We\n"
-"learned this name in the second step of this tutorial. For the extrusion "
-"this\n"
-"is `Fillet`."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"The classids field gives a list of classids (as given in the blt file of "
-"this\n"
-"collection), for which this object is used. In our example it is only a "
-"single\n"
-"classid."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"The proptoparam field gives the mapping between the parameters as "
-"specified in\n"
-"the blt file of the collection, and the feature names and properties that"
-" we\n"
-"found out in the second step of this tutorial. The `Label` property of "
-"the\n"
-"feature with name `Fillet` (the root feature) should be set to the name "
-"of the\n"
-"part and the `Height` property of the feature `Box` should be set to the "
-"length\n"
-"`l`."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"A parameter might appear more than once if more than one feature needs to"
-" be\n"
-"adjusted."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"The optional source field allows to give informations about the origin of"
-" the\n"
-"file. So if there is a URL from which this file was downloaded, this can "
-"be\n"
-"included here."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.4/freecad/basefunction
-#. docs/0.3/freecad/basefcstd
-#. docs/0.3/freecad/basefunction
-msgid ""
-"When working on base files, pay attention to whitespace and identation "
-"and do\n"
-"not use tabs."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid "### Test it"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.4/freecad/basefunction
-#. docs/0.3/freecad/basefcstd
-#. docs/0.3/freecad/basefunction
-msgid ""
-"You should now test the newly added part. This is most easily done on the"
-"\n"
-"command line by typing"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.4/freecad/basefunction
-#. docs/0.4/general/utility-script
-#. docs/0.3/freecad/basefcstd
-#. docs/0.3/freecad/basefunction
-#. docs/0.3/general/utility-script
-msgid ""
-"    ./bolts.py export freecad\n"
-"    ./bolts.py test freecad"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.4/freecad/basefunction
-#. docs/0.3/freecad/basefcstd
-#. docs/0.3/freecad/basefunction
-msgid ""
-"in the repo directory. This will fire up a FreeCAD instance with the "
-"module\n"
-"search path set appropriately, so that typing"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.4/freecad/basefunction
-#. docs/0.4/general/utility-script
-#. docs/0.3/freecad/basefcstd
-#. docs/0.3/freecad/basefunction
-#. docs/0.3/general/utility-script
-msgid "    import BOLTS"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.4/freecad/basefunction
-#. docs/0.3/freecad/basefcstd
-#. docs/0.3/freecad/basefunction
-msgid "on the FreeCAD python console should do the trick."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.4/freecad/basefunction
-#. docs/0.3/freecad/basefcstd
-#. docs/0.3/freecad/basefunction
-msgid ""
-"If BOLTS is started successfully, try adding the newly added part to the\n"
-"current document with different combinations of parameters."
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"[<img alt=\"Testing the result\" src=\"{{ static(fcstd-base3.png) }}\" "
-"/>]({{ static(fcstd-base3.png) }})"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.4/freecad/installation
-#. docs/0.4/freecad/basefunction
-#. docs/0.4/freecad/toolbar
-#. docs/0.3/freecad/basefcstd
-#. docs/0.3/freecad/installation
-#. docs/0.3/freecad/basefunction
-#. docs/0.3/freecad/toolbar
-msgid "### Next steps"
-msgstr ""
-
-#. docs/0.4/freecad/basefcstd
-#. docs/0.3/freecad/basefcstd
-msgid ""
-"You might want to [contribute]({{ doc(general,development) }}) this part "
-"to\n"
-"BOLTS, so that every user can profit from your efforts.\n"
-msgstr ""
 
 #. document title
 #. docs/0.4/freecad/installation
@@ -550,6 +163,17 @@ msgid ""
 " where\n"
 "you can report problems, a list can be found\n"
 "[on the contribute page]({{ url(main.contribute) }})."
+msgstr ""
+
+#. docs/0.4/freecad/installation
+#. docs/0.4/freecad/basefunction
+#. docs/0.4/freecad/toolbar
+#. docs/0.4/openscad/connectors
+#. docs/0.3/freecad/basefcstd
+#. docs/0.3/freecad/installation
+#. docs/0.3/freecad/basefunction
+#. docs/0.3/freecad/toolbar
+msgid "### Next steps"
 msgstr ""
 
 #. docs/0.4/freecad/installation
@@ -815,6 +439,14 @@ msgid ""
 msgstr ""
 
 #. docs/0.4/freecad/basefunction
+#. docs/0.4/openscad/basemodule
+#. docs/0.3/freecad/basefcstd
+#. docs/0.3/freecad/basefunction
+#. docs/0.3/openscad/basemodule
+msgid "### Write the base file"
+msgstr ""
+
+#. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
 msgid ""
 "The base file provides BOLTS with all the informations it needs to know "
@@ -904,10 +536,69 @@ msgid ""
 msgstr ""
 
 #. docs/0.4/freecad/basefunction
+#. docs/0.3/freecad/basefcstd
+#. docs/0.3/freecad/basefunction
+msgid ""
+"When working on base files, pay attention to whitespace and identation "
+"and do\n"
+"not use tabs."
+msgstr ""
+
+#. docs/0.4/freecad/basefunction
 #. docs/0.4/openscad/basemodule
 #. docs/0.3/freecad/basefunction
 #. docs/0.3/openscad/basemodule
 msgid "### Testing"
+msgstr ""
+
+#. docs/0.4/freecad/basefunction
+#. docs/0.3/freecad/basefcstd
+#. docs/0.3/freecad/basefunction
+msgid ""
+"You should now test the newly added part. This is most easily done on the"
+"\n"
+"command line by typing"
+msgstr ""
+
+#. docs/0.4/freecad/basefunction
+#. docs/0.4/general/utility-script
+#. docs/0.3/freecad/basefcstd
+#. docs/0.3/freecad/basefunction
+#. docs/0.3/general/utility-script
+msgid ""
+"    ./bolts.py export freecad\n"
+"    ./bolts.py test freecad"
+msgstr ""
+
+#. docs/0.4/freecad/basefunction
+#. docs/0.3/freecad/basefcstd
+#. docs/0.3/freecad/basefunction
+msgid ""
+"in the repo directory. This will fire up a FreeCAD instance with the "
+"module\n"
+"search path set appropriately, so that typing"
+msgstr ""
+
+#. docs/0.4/freecad/basefunction
+#. docs/0.4/general/utility-script
+#. docs/0.3/freecad/basefcstd
+#. docs/0.3/freecad/basefunction
+#. docs/0.3/general/utility-script
+msgid "    import BOLTS"
+msgstr ""
+
+#. docs/0.4/freecad/basefunction
+#. docs/0.3/freecad/basefcstd
+#. docs/0.3/freecad/basefunction
+msgid "on the FreeCAD python console should do the trick."
+msgstr ""
+
+#. docs/0.4/freecad/basefunction
+#. docs/0.3/freecad/basefcstd
+#. docs/0.3/freecad/basefunction
+msgid ""
+"If BOLTS is started successfully, try adding the newly added part to the\n"
+"current document with different combinations of parameters."
 msgstr ""
 
 #. docs/0.4/freecad/basefunction
@@ -1202,6 +893,241 @@ msgstr ""
 msgid ""
 "[<img alt=\"Successful installation\" src=\"{{ static(openscad-"
 "installation.png) }}\" />]({{ static(openscad-installation.png) }})"
+msgstr ""
+
+#. document title
+#. docs/0.4/openscad/connectors
+msgid "How to add connectors"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+msgid ""
+"\n"
+"This page shows you how to add connectors for a part, for which a "
+"OpenSCAD\n"
+"[basemodule]({{ doc(openscad,basemodule) }}) exists. It continues the "
+"example\n"
+"from the [basemodule guide]({{ doc(openscad,basemodule) }})"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+msgid ""
+"[Connectors]({{ doc(openscad,usage) }})\n"
+"simplify the positioning of parts in OpenSCAD, but require a bit of\n"
+"preparation. Three things need to be added: "
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+msgid ""
+"- a function for the connectors in the scad file\n"
+"- a entry in the base file\n"
+"- drawings for the documentation."
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+msgid "### Adding a connector function in the scad file"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid ""
+"The function is added to the `.scad` file, and calculates the position "
+"and\n"
+"orientation for the various connector locations from the parameters of "
+"the\n"
+"model. It returns a list containing as first element the origin of the\n"
+"coordinate system in terms of global coordinates, as second element a "
+"list with\n"
+"two directions for the first and second direction of the connector. In "
+"case the\n"
+"direction is unknown, the function should return \"Error\"."
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid "For the pipes ths function could look like this:"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid ""
+"    function pipeConn(l,location) =\n"
+"    \t(location == \"front-in\")  ? [[0,0,-l/2],[[0,0,1],[1,0,0]]] :\n"
+"    \t(location == \"front-out\") ? [[0,0,-l/2],[[0,0,-1],[-1,0,0]]] :\n"
+"    \t(location == \"back-in\")   ? [[0,0,+l/2],[[0,0,-1],[-1,0,0]]] :\n"
+"    \t(location == \"back-out\")  ? [[0,0,+l/2],[[0,0,1],[1,0,0]]] :\n"
+"    \t\"Error\";"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid ""
+"Here only the origin of the connector depends on the length of the pipe, "
+"but\n"
+"for other locations other parameters might be required. The function can "
+"make\n"
+"use of all parameters that are available to the geometry modules in "
+"addition to\n"
+"the location, and the order in which these are passed to the function is "
+"not\n"
+"relevant."
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+msgid "### Add an entry in the base file"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+msgid ""
+"To tell BOLTS about this and things like the available selection of "
+"locations\n"
+"available. This is done by a additional field in the base file (see also"
+" \n"
+"[the basemodule documentation]({{ doc(openscad,basemodule) }})). The "
+"entries are\n"
+"selfexplanatory, so here is the content of the base file with the "
+"connector\n"
+"infos:"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid ""
+"    ---\n"
+"    - filename: pipe.scad\n"
+"      type: module\n"
+"      author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
+"      license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>\n"
+"      modules:\n"
+"        - name: pipe\n"
+"          arguments: [id, od, l]\n"
+"          classids: [genericpipe, din11850range2]\n"
+"          connectors:\n"
+"            name: pipeConn\n"
+"            arguments: [l,location]\n"
+"            locations: [front-in, front-out, back-in, back-out]\n"
+"      source: own work\n"
+"    ..."
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+msgid ""
+"This is a good time to test again. You can use the utility script like "
+"shown\n"
+"[in the basemodule guide]({{ doc(openscad,basemodule) }}). Make sure all\n"
+"connectors are where they should be and that this remains the case when "
+"you use\n"
+"a range of parameters."
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+msgid "### Create drawings"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+msgid ""
+"The final thing to do is create drawings for the connectors to visually "
+"show\n"
+"their location for easy reference. The utility script can do most of the "
+"heavy\n"
+"lifting, by creating OpenSCAD scripts for each location that shows the "
+"part\n"
+"together with the connector there."
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid "    ./bolts.py connectors"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid ""
+"This results in a directory called `connectordrawings` in the output "
+"directory.\n"
+"It contains BOLTS for OpenSCAD and a directory called scad that contains "
+"scad\n"
+"files for all classes with connectors that have no drawings.  All that "
+"remains\n"
+"to do is to load these scripts into OpenSCAD, find a good angle and "
+"export a\n"
+"png using `Design->export as image...`. Make sure that it is easy to "
+"understand\n"
+"from the picture where the connector is located on the part, and how it "
+"is\n"
+"oriented.The images go into the `pipes` subdirectory of the `drawings` "
+"folder."
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid ""
+"[<img alt=\"Finding a good angle\" src=\"{{ static(openscad-"
+"connectordrawings.png) }}\" />]({{ static(openscad-connectordrawings.png)"
+" }})"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid ""
+"The final step is to add entries to the base file in this folder to tell "
+"BOLTS\n"
+"about all the drawings. Here is an example how it looks for the `front-"
+"in`\n"
+"connector:"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid ""
+"    - filename: pipe-back-in\n"
+"      author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
+"      license: CC0 1.0 "
+"<http://creativecommons.org/publicdomain/zero/1.0/>\n"
+"      type: drawing-connector\n"
+"      location: back-in\n"
+"      source: own work\n"
+"      classids: [genericpipe,din11850range2]"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid ""
+"You should add your name as author. The license should be chosen to CC0, "
+"as\n"
+"this makes things easier. `type` must be `drawing-connector`."
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+msgid "### Check everything again"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid "To check that everything went fine, you can use"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.4/general/utility-script
+#. docs/0.3/openscad/basemodule
+#. docs/0.3/general/utility-script
+msgid "    ./bolts.py tasks"
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/openscad/basemodule
+msgid ""
+"and make sure that the classes you have been working on are not listed "
+"anymore\n"
+"with `Missing Connectors` and `Missing Drawings`."
+msgstr ""
+
+#. docs/0.4/openscad/connectors
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"You might want to [contribute]({{ doc(general,development) }}) this part "
+"to\n"
+"BOLTS, so that every user can profit from your efforts.\n"
 msgstr ""
 
 #. document title
@@ -1954,214 +1880,19 @@ msgstr ""
 
 #. docs/0.4/openscad/basemodule
 #. docs/0.3/openscad/basemodule
-msgid "### Adding connectors"
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"[Connectors]({{ doc(openscad,usage) }})\n"
-"simplify the positioning of parts in OpenSCAD, but require a bit of\n"
-"preparation. Three things need to be added: A function for the connectors"
-"\n"
-"and a entry in the base file and drawings for the documentation."
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"The function is added to the `.scad` file, and calculates the position "
-"and\n"
-"orientation for the various connector locations from the parameters of "
-"the\n"
-"model. It returns a list containing as first element the origin of the\n"
-"coordinate system in terms of global coordinates, as second element a "
-"list with\n"
-"two directions for the first and second direction of the connector. In "
-"case the\n"
-"direction is unknown, the function should return \"Error\"."
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid "For the pipes ths function could look like this:"
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"    function pipeConn(l,location) =\n"
-"    \t(location == \"front-in\")  ? [[0,0,-l/2],[[0,0,1],[1,0,0]]] :\n"
-"    \t(location == \"front-out\") ? [[0,0,-l/2],[[0,0,-1],[-1,0,0]]] :\n"
-"    \t(location == \"back-in\")   ? [[0,0,+l/2],[[0,0,-1],[-1,0,0]]] :\n"
-"    \t(location == \"back-out\")  ? [[0,0,+l/2],[[0,0,1],[1,0,0]]] :\n"
-"    \t\"Error\";"
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"Here only the origin of the connector depends on the length of the pipe, "
-"but\n"
-"for other locations other parameters might be required. The function can "
-"make\n"
-"use of all parameters that are available to the geometry modules in "
-"addition to\n"
-"the location, and the order in which these are passed to the function is "
-"not\n"
-"relevant."
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"To tell BOLTS about this and things like the available selection of "
-"locations\n"
-"available. This is done by a additional field in the base file. The "
-"entries are\n"
-"selfexplanatory, so here is the content of the base file with the "
-"connector\n"
-"infos:"
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"    ---\n"
-"    - filename: pipe.scad\n"
-"      type: module\n"
-"      author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
-"      license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>\n"
-"      modules:\n"
-"        - name: pipe\n"
-"          arguments: [id, od, l]\n"
-"          classids: [genericpipe, din11850range2]\n"
-"          connectors:\n"
-"            name: pipeConn\n"
-"            arguments: [l,location]\n"
-"            locations: [front-in, front-out, back-in, back-out]\n"
-"      source: own work\n"
-"    ..."
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"This is a good time to test again. You can use the utility script like "
-"shown\n"
-"[earlier]({{ doc(openscad,basemodule) }}). Make sure all\n"
-"connectors are where they should be and that this remains the case when "
-"you use\n"
-"a range of parameters."
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"The final thing to do is create drawings for the connectors to visually "
-"show\n"
-"their location for easy reference. The utility script can do most of the "
-"heavy\n"
-"lifting, by creating OpenSCAD scripts for each location that shows the "
-"part\n"
-"together with the connector there. "
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid "    ./bolts.py connectors"
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"This results in a directory called `connectordrawings` in the output "
-"directory.\n"
-"It contains BOLTS for OpenSCAD and a directory called scad that contains "
-"scad\n"
-"files for all classes with connectors that have no drawings.  All that "
-"remains\n"
-"to do is to load these scripts into OpenSCAD, find a good angle and "
-"export a\n"
-"png using `Design->export as image...`. Make sure that it is easy to "
-"understand\n"
-"from the picture where the connector is located on the part, and how it "
-"is\n"
-"oriented.The images go into the `pipes` subdirectory of the `drawings` "
-"folder."
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"[<img alt=\"Finding a good angle\" src=\"{{ static(openscad-"
-"connectordrawings.png) }}\" />]({{ static(openscad-connectordrawings.png)"
-" }})"
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"The final step is to add entries to the base file in this folder to tell "
-"BOLTS\n"
-"about all the drawings. Here is an example how it looks for the `front-"
-"in`\n"
-"connector:"
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"    - filename: pipe-back-in\n"
-"      author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
-"      license: CC0 1.0 "
-"<http://creativecommons.org/publicdomain/zero/1.0/>\n"
-"      type: drawing-connector\n"
-"      location: back-in\n"
-"      source: own work\n"
-"      classids: [genericpipe,din11850range2]"
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"You should add your name as author. The license should be chosen to CC0, "
-"as\n"
-"this makes things easier. `type` must be `drawing-connector`."
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid "To check that everything went fine, you can use"
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.4/general/utility-script
-#. docs/0.3/openscad/basemodule
-#. docs/0.3/general/utility-script
-msgid "    ./bolts.py tasks"
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
-msgid ""
-"and make sure that the classes you have been working on are not listed "
-"anymore\n"
-"with `Missing Connectors` and `Missing Drawings`."
-msgstr ""
-
-#. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
 msgid ""
 "\n"
 "### Next steps"
 msgstr ""
 
 #. docs/0.4/openscad/basemodule
-#. docs/0.3/openscad/basemodule
 msgid ""
-"You might want to [contribute]({{ doc(general,development) }}) this\n"
-"part to BOLTS, so that every user can profit from your efforts.\n"
+"You might want to [add connectors]({{ doc(openscad,connectors) }}) to "
+"simplify\n"
+"the positioning of the part in OpenSCAD and/or\n"
+"[contribute]({{ doc(general,development) }}) this part to BOLTS, so that "
+"every\n"
+"user can profit from your efforts.\n"
 msgstr ""
 
 #. document title
@@ -3251,12 +2982,11 @@ msgid ""
 msgstr ""
 
 #. docs/0.4/general/licensing
-#. docs/0.3/general/licensing
 msgid ""
 "* the backend specific data is specific to the CAD application (FreeCAD "
-"or OpenSCAD at the moment), and can come in two forms: as code (OpenSCAD "
-"modules or FreeCAD python functions) or as data (stl files for OpenSCAD "
-"or fcstd files for FreeCAD. Its license is chosen by the creator."
+"or OpenSCAD at the moment), and generally comes in form of code (OpenSCAD"
+" modules or FreeCAD python functions). Its license is chosen by the "
+"creator."
 msgstr ""
 
 #. docs/0.4/general/licensing
@@ -3422,13 +3152,6 @@ msgstr ""
 
 #. docs/0.4/general/licensing
 #. docs/0.3/general/licensing
-msgid ""
-"I mentioned earlier, that there is application specific data in form of "
-"code and in form of data. These two cases have to be distinguished:"
-msgstr ""
-
-#. docs/0.4/general/licensing
-#. docs/0.3/general/licensing
 msgid "#### Backend specific data in form of code"
 msgstr ""
 
@@ -3439,33 +3162,6 @@ msgid ""
 " which is not affected by the license of the programm. So parts created "
 "by code (FreeCAD python functions and OpenSCAD modules) cause no "
 "licensing related restrictions on the resulting design."
-msgstr ""
-
-#. docs/0.4/general/licensing
-#. docs/0.3/general/licensing
-msgid "#### Backend specific data in form of data"
-msgstr ""
-
-#. docs/0.4/general/licensing
-#. docs/0.3/general/licensing
-msgid ""
-"In this case on has to consider the final design as a combined work "
-"between the part (in form of a FreeCAD fcstd file or a STL file) and the "
-"rest of the design that the user created. If the BOLTS part were licensed"
-" under a fairly restrictive license like GPL, the whole design would need"
-" to be licensed under the GPL."
-msgstr ""
-
-#. docs/0.4/general/licensing
-#. docs/0.3/general/licensing
-msgid ""
-"As this is undesireable, BOLTS must not contain backend specific data in "
-"form of data that causes such restrictions. This means, that such data "
-"must be placed in the public domain, or better yet, the author must waive"
-" all rights on this content using "
-"[CC0](http://creativecommons.org/about/cc0). The latter is a legally more"
-" sound procedure, as the public domain is a legal concept that does not "
-"exist in all legislations."
 msgstr ""
 
 #. docs/0.4/general/licensing
@@ -3568,11 +3264,6 @@ msgstr ""
 msgid ""
 "From all available .blt files and backen specific data, distributions "
 "with specific licenses are created automatically."
-msgstr ""
-
-#. docs/0.4/general/licensing
-#. docs/0.3/general/licensing
-msgid "\n"
 msgstr ""
 
 #. document title
@@ -4201,23 +3892,7 @@ msgid "    ./bolts.py export openscad --license lgpl2.1+"
 msgstr ""
 
 #. docs/0.4/general/utility-script
-#. docs/0.3/general/utility-script
-msgid ""
-"One can also regenerate the HTML output, which is useful when creating "
-"drawings\n"
-"or adding new collections"
-msgstr ""
-
-#. docs/0.4/general/utility-script
-#. docs/0.3/general/utility-script
-msgid "    ./bolts.py export html"
-msgstr ""
-
-#. docs/0.4/general/utility-script
-#. docs/0.3/general/utility-script
-msgid ""
-"\n"
-"### Running automatic checks"
+msgid "### Running automatic checks"
 msgstr ""
 
 #. docs/0.4/general/utility-script
@@ -4269,10 +3944,18 @@ msgid ""
 msgstr ""
 
 #. docs/0.4/general/utility-script
-#. docs/0.3/general/utility-script
+msgid "### Helper for Connector drawings"
+msgstr ""
+
+#. docs/0.4/general/utility-script
 msgid ""
-"\n"
-"### Testing CAD applications"
+"The utility script also helps with the creation of images to document\n"
+"connectors for OpenSCAD parts. For details see\n"
+"[the corresponding doc page]({{ doc(openscad,connectors})."
+msgstr ""
+
+#. docs/0.4/general/utility-script
+msgid "### Testing CAD applications"
 msgstr ""
 
 #. docs/0.4/general/utility-script
@@ -4414,19 +4097,16 @@ msgid "### Backend specific data"
 msgstr ""
 
 #. docs/0.4/general/introduction
-#. docs/0.3/general/introduction
 msgid ""
 "There is also data required to create a 3D representation of a part in a "
 "CAD\n"
-"tool. For OpenSCAD we use a module definition in a scad file or a stl "
-"file, for\n"
-"FreeCAD a python function or a fcstd file containing the model. These are"
-" also\n"
-"called base modules, base functions or base fcstd files, or base "
-"geometries\n"
-"when referring to any of them. Together with a base file containing "
-"metadata\n"
-"this forms the backend specific data. "
+"tool. For OpenSCAD we use a module definition in a scad file, for FreeCAD"
+" a\n"
+"python function. These are also called base modules or base functions, or"
+" base\n"
+"geometries when referring to any of them. Together with a base file "
+"containing\n"
+"metadata this forms the backend specific data."
 msgstr ""
 
 #. docs/0.4/general/introduction
@@ -4475,6 +4155,397 @@ msgid ""
 "more classes\n"
 " - For a class to be usable in an application, BOLTS must have a suitable"
 " base geometry for that class.\n"
+msgstr ""
+
+#. document title
+#. docs/0.3/freecad/basefcstd
+msgid "How to setup a fcstd base"
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"\n"
+"You need to have FreeCAD and [FreeCAD for BOLTS installed]({{ "
+"doc(freecad,installation) }})."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"This assumes, that the blt file for this part is already created, and you"
+" have\n"
+"a fcstd file with the part that you want to add to BOLTS."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid "We do this at the example of a aluminum T slot extrusion."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid "### Check the fcstd file in FreeCAD"
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid "Load the part in FreeCAD and check that it looks visually ok."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"If the part is supposed to be parametric, then try to change the "
+"parameters\n"
+"that BOLTS should be able to set. For the aluminum extrusion this is only"
+" the\n"
+"length, which corresponds to the height of the box in the file. So we "
+"select\n"
+"the box in the combo view, select the data tab and change the value for "
+"the\n"
+"height. The part should now change its length, but still look like "
+"expected. Do\n"
+"this for all parameters, also check combinations."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"[<img alt=\"Visually checking the part\" src=\"{{ static(fcstd-base1.png)"
+" }}\" />]({{ static(fcstd-base1.png) }})"
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid "### Find out feature and property names"
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"Usually, a part consists of several features. We need a way to tell BOLTS"
+" which\n"
+"feature is the one that it should use. If the part is parametric, we also"
+" need\n"
+"to tell it, how the properties of the features map to the parameters."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"Features in FreeCAD have a unique name in a document, but this name is "
+"not\n"
+"always identical to the label that is displayed in the combo view, so be\n"
+"careful. BOLTS offers a convenient way to find out the names of all "
+"features in\n"
+"the document. Enter the following lines into the python console of "
+"FreeCAD:"
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"    import BOLTS\n"
+"    BOLTS.list_names(FreeCAD.ActiveDocument)"
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"The first line imports and starts BOLTS, the second line calls a function"
+" from\n"
+"BOLTS that gives out a list of all features with their label and the\n"
+"corresponding object names."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"[<img alt=\"Finding feature names\" src=\"{{ static(fcstd-base2.png) }}\""
+" />]({{ static(fcstd-base2.png) }})"
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"We need to remember the name of the root feature, that BOLTS is supposed "
+"to\n"
+"insert, and the names of all features that provide parametric behaviour "
+"and the\n"
+"corresponding names of the properties."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"For the T slot extrusion, the root feature has the label `Fillet`, and "
+"the name\n"
+"`Fillet`, the length of the extrusion can be changed with the `Height` "
+"property\n"
+"of the `Box` (both name and label)."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid "### Copy the fcstd file to the correct directory"
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"The fcstd file goes to the subdirectory of the collection in the freecad\n"
+"directory of the repository."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"The base file provides BOLTS with all the informations it needs to know "
+"about\n"
+"the files in a collection directory."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid "For the aluminum extrusion it looks like this:"
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+#, python-format
+msgid ""
+"    ---\n"
+"    - filename: tslot-20x20-2S.fcstd\n"
+"      author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>\n"
+"      license: CC0 <http://creativecommons.org/publicdomain/zero/1.0/>\n"
+"      type: fcstd\n"
+"      objects:\n"
+"       - objectname: Fillet\n"
+"         classids: [tslot20x20-2s]\n"
+"         proptoparam:\n"
+"           Fillet : {Label : name}\n"
+"           Box: {Height : l}\n"
+"      source: created from scratch, dimensions from http://www13"
+".boschrexroth-"
+"us.com/partstream/Load_Category.aspx?Category=20mm%%20Series&menu=1,1,1\n"
+"    ..."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"The hyphens and dots on the first and the last line indicate the begin "
+"and end\n"
+"of the metadata (a base file is a [YAML file](http://yaml.org/). Between "
+"those\n"
+"two markers follows a list of base file elements, one for each file. The "
+"begin\n"
+"of a new element is indicated by a hyphen. If there are more than one "
+"file in\n"
+"the collection directory, there would be more elements, but here it is "
+"only\n"
+"one."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"Each element contains various fields with information about the file, "
+"e.g. the\n"
+"filename or name and email address of the author, here in lines 2 and 3."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"Because the part will form a combined work with the rest of the design, "
+"and we\n"
+"do not want to force the users of BOLTS to put their work under a certain"
+"\n"
+"license, BOLTS requires that the author waives all rights for this part, "
+"by\n"
+"releasing it in the Public Domain, preferably by the use of the [CC0\n"
+"License](http://creativecommons.org/publicdomain/zero/1.0/).  This is "
+"done in\n"
+"the fourth line."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"In the fifth line the type of file is indicated, in this case it is a "
+"fcstd\n"
+"file. Then follows a list of objects. It is in principle possible, to "
+"have\n"
+"several different parts in one fcstd file. Each element describes one "
+"object."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"The objectname field gives the name of the root feature for this object. "
+"We\n"
+"learned this name in the second step of this tutorial. For the extrusion "
+"this\n"
+"is `Fillet`."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"The classids field gives a list of classids (as given in the blt file of "
+"this\n"
+"collection), for which this object is used. In our example it is only a "
+"single\n"
+"classid."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"The proptoparam field gives the mapping between the parameters as "
+"specified in\n"
+"the blt file of the collection, and the feature names and properties that"
+" we\n"
+"found out in the second step of this tutorial. The `Label` property of "
+"the\n"
+"feature with name `Fillet` (the root feature) should be set to the name "
+"of the\n"
+"part and the `Height` property of the feature `Box` should be set to the "
+"length\n"
+"`l`."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"A parameter might appear more than once if more than one feature needs to"
+" be\n"
+"adjusted."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"The optional source field allows to give informations about the origin of"
+" the\n"
+"file. So if there is a URL from which this file was downloaded, this can "
+"be\n"
+"included here."
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid "### Test it"
+msgstr ""
+
+#. docs/0.3/freecad/basefcstd
+msgid ""
+"[<img alt=\"Testing the result\" src=\"{{ static(fcstd-base3.png) }}\" "
+"/>]({{ static(fcstd-base3.png) }})"
+msgstr ""
+
+#. docs/0.3/openscad/basemodule
+msgid "### Adding connectors"
+msgstr ""
+
+#. docs/0.3/openscad/basemodule
+msgid ""
+"[Connectors]({{ doc(openscad,usage) }})\n"
+"simplify the positioning of parts in OpenSCAD, but require a bit of\n"
+"preparation. Three things need to be added: A function for the connectors"
+"\n"
+"and a entry in the base file and drawings for the documentation."
+msgstr ""
+
+#. docs/0.3/openscad/basemodule
+msgid ""
+"To tell BOLTS about this and things like the available selection of "
+"locations\n"
+"available. This is done by a additional field in the base file. The "
+"entries are\n"
+"selfexplanatory, so here is the content of the base file with the "
+"connector\n"
+"infos:"
+msgstr ""
+
+#. docs/0.3/openscad/basemodule
+msgid ""
+"This is a good time to test again. You can use the utility script like "
+"shown\n"
+"[earlier]({{ doc(openscad,basemodule) }}). Make sure all\n"
+"connectors are where they should be and that this remains the case when "
+"you use\n"
+"a range of parameters."
+msgstr ""
+
+#. docs/0.3/openscad/basemodule
+msgid ""
+"The final thing to do is create drawings for the connectors to visually "
+"show\n"
+"their location for easy reference. The utility script can do most of the "
+"heavy\n"
+"lifting, by creating OpenSCAD scripts for each location that shows the "
+"part\n"
+"together with the connector there. "
+msgstr ""
+
+#. docs/0.3/openscad/basemodule
+msgid ""
+"You might want to [contribute]({{ doc(general,development) }}) this\n"
+"part to BOLTS, so that every user can profit from your efforts.\n"
+msgstr ""
+
+#. docs/0.3/general/licensing
+msgid ""
+"* the backend specific data is specific to the CAD application (FreeCAD "
+"or OpenSCAD at the moment), and can come in two forms: as code (OpenSCAD "
+"modules or FreeCAD python functions) or as data (stl files for OpenSCAD "
+"or fcstd files for FreeCAD. Its license is chosen by the creator."
+msgstr ""
+
+#. docs/0.3/general/licensing
+msgid ""
+"I mentioned earlier, that there is application specific data in form of "
+"code and in form of data. These two cases have to be distinguished:"
+msgstr ""
+
+#. docs/0.3/general/licensing
+msgid "#### Backend specific data in form of data"
+msgstr ""
+
+#. docs/0.3/general/licensing
+msgid ""
+"In this case on has to consider the final design as a combined work "
+"between the part (in form of a FreeCAD fcstd file or a STL file) and the "
+"rest of the design that the user created. If the BOLTS part were licensed"
+" under a fairly restrictive license like GPL, the whole design would need"
+" to be licensed under the GPL."
+msgstr ""
+
+#. docs/0.3/general/licensing
+msgid ""
+"As this is undesireable, BOLTS must not contain backend specific data in "
+"form of data that causes such restrictions. This means, that such data "
+"must be placed in the public domain, or better yet, the author must waive"
+" all rights on this content using "
+"[CC0](http://creativecommons.org/about/cc0). The latter is a legally more"
+" sound procedure, as the public domain is a legal concept that does not "
+"exist in all legislations."
+msgstr ""
+
+#. docs/0.3/general/licensing
+msgid "\n"
+msgstr ""
+
+#. docs/0.3/general/utility-script
+msgid ""
+"One can also regenerate the HTML output, which is useful when creating "
+"drawings\n"
+"or adding new collections"
+msgstr ""
+
+#. docs/0.3/general/utility-script
+msgid "    ./bolts.py export html"
+msgstr ""
+
+#. docs/0.3/general/utility-script
+msgid ""
+"\n"
+"### Running automatic checks"
+msgstr ""
+
+#. docs/0.3/general/utility-script
+msgid ""
+"\n"
+"### Testing CAD applications"
+msgstr ""
+
+#. docs/0.3/general/introduction
+msgid ""
+"There is also data required to create a 3D representation of a part in a "
+"CAD\n"
+"tool. For OpenSCAD we use a module definition in a scad file or a stl "
+"file, for\n"
+"FreeCAD a python function or a fcstd file containing the model. These are"
+" also\n"
+"called base modules, base functions or base fcstd files, or base "
+"geometries\n"
+"when referring to any of them. Together with a base file containing "
+"metadata\n"
+"this forms the backend specific data. "
 msgstr ""
 
 #. docs/0.3/general/introduction
@@ -4744,3 +4815,4 @@ msgstr ""
 
 #~ msgid "Beimer, beimer, beimer"
 #~ msgstr ""
+

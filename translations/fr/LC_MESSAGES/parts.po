@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-09-02 14:01+0200\n"
+"POT-Creation-Date: 2014-09-18 15:19+0200\n"
 "PO-Revision-Date: 2014-07-28 13:14+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -815,7 +815,7 @@ msgstr ""
 
 #. ClassName description
 #. data/bearings.blt, class: singlerowradialbearingimperial
-msgid "Single row radial contact ball bearing, imperial sizes"
+msgid "Single row radial ball bearing, imperial sizes"
 msgstr ""
 
 #. ClassName name nice
@@ -997,8 +997,8 @@ msgstr ""
 #. ClassName description
 #. data/bearings.blt, class: singlerowradialbearing
 msgid ""
-"Single row radial contact ball bearing, with single or double shields, "
-"single or double seal or open, metric sizes"
+"Single row radial ball bearing, with single or double shields, single or "
+"double seal or open, metric sizes"
 msgstr ""
 
 #. ClassName name nice
@@ -1828,8 +1828,8 @@ msgstr ""
 #. ClassStandard description
 #. data/bearings.blt, class: singlerowradialbearing
 msgid ""
-"Single row radial contact ball bearing, with single or double shields, "
-"single or double seal or open"
+"Single row radial ball bearing, with single or double shields, single or "
+"double seal or open"
 msgstr ""
 
 #. ClassStandard labeling nice
@@ -2088,5 +2088,21 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "INP profile"
+#~ msgstr ""
+
+#~ msgid "Single row radial contact ball bearing, imperial sizes"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Single row radial contact ball bearing,"
+#~ " with single or double shields, "
+#~ "single or double seal or open, "
+#~ "metric sizes"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Single row radial contact ball bearing,"
+#~ " with single or double shields, "
+#~ "single or double seal or open"
 #~ msgstr ""
 
