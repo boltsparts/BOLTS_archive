@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-02 14:01+0200\n"
-"PO-Revision-Date: 2014-09-09 20:13+0000\n"
+"PO-Revision-Date: 2014-09-18 06:16+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "parts/de/>\n"
@@ -1587,18 +1587,18 @@ msgstr "Unterlagsscheibe für Zylinderkopfschrauben"
 #. data/hex_socket.blt, class: hexsocketsetscrewdog
 #, python-format
 msgid "Hex socket set screw dog cone ISO 4028 %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Gewindestift mit Zapfen ISO 4028 %(key)s %(l)s"
 
 #. ClassStandard description
 #. data/hex_socket.blt, class: hexsocketsetscrewdog
 msgid "Hexagon socket set screw with dog point"
-msgstr ""
+msgstr "Innensechskant-Gewindestift mit Zapfen"
 
 #. ClassStandard labeling nice
 #. data/batteries.blt, class: round_battery
 #, python-format
 msgid "IEC 60086 Category 1 Battery %(T)s"
-msgstr ""
+msgstr "IEC 60086 Typ 1 Batterie %(T)s"
 
 #. ClassStandard description
 #. data/batteries.blt, class: round_battery
@@ -1606,69 +1606,71 @@ msgid ""
 "Cylindrical cells with protruding positive and recessed or flat negative "
 "terminals."
 msgstr ""
+"Zylindrische Zellen mit überstehenden positiven und vertieften oder flachen "
+"negativen Kontakten."
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasher2
 #, python-format
 msgid "Plain washer ISO 7091 %(key)s"
-msgstr ""
+msgstr "Unterlagsscheibe ISO 7091 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/hex_socket.blt, class: hexsocketsetscrewcup
 #, python-format
 msgid "Hex socket set screw cup cone ISO 4029 %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Gewindestift mit Ringschneide ISO 4029 %(key)s %(l)s"
 
 #. ClassStandard description
 #. data/hex_socket.blt, class: hexsocketsetscrewcup
 msgid "Hexagon socket set screw with cup point"
-msgstr ""
+msgstr "Innensechskant-Gewindestift mit Ringschneide"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasher2
 #, python-format
 msgid "Plain washer DIN 126 %(key)s"
-msgstr ""
+msgstr "Unterlagsscheibe DIN 126 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/nut.blt, class: hexagonnut3
 #, python-format
 msgid "Hexagon nut ANSI B18.2.2 %(key)s"
-msgstr ""
+msgstr "Sechskantmutter ANSI B18.2.2 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/hex_socket.blt, class: hexsocketheadcap
 #, python-format
 msgid "Hex socket head cap screw DINENISO 4762 %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Zylinderschraube DIN EN ISO 4762 %(key)s %(l)s"
 
 #. ClassStandard description
 #. data/hex_socket.blt, class: hexsocketheadcap
 msgid "Hexagon socket head cap screw"
-msgstr ""
+msgstr "Innensechskant-Zylinderschraube"
 
 #. ClassStandard labeling nice
 #. data/bearings.blt, class: cylindricalrollerbearing
 #, python-format
 msgid "Cylindrical roller bearing %(key)s"
-msgstr ""
+msgstr "Zylinder-Rollenlager %(key)s"
 
 #. ClassStandard description
 #. data/bearings.blt, class: cylindricalrollerbearing
 msgid "Cylindrical single row roller bearing"
-msgstr ""
+msgstr "Einreihiges Zylinder-Rollenlager"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer ISO 7089 %(key)s"
-msgstr ""
+msgstr "Unterlegscheibe ISO 7089 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/pipes.blt, class: nominalpipesize
 #, python-format
 msgid "Wrought steel pipe API 5L %(nps)s %(sched)s Length %(l)s"
-msgstr ""
+msgstr "Schweißstahl-Rohr API 5L %(nps)s %(sched)s Länge %(l)s"
 
 #. ClassStandard description
 #. data/pipes.blt, class: nominalpipesize
@@ -1676,175 +1678,177 @@ msgid ""
 "Welded and seamless wrought steel pipe for high or low temperatures and "
 "pressures"
 msgstr ""
+"Geschweißte und nahtlose Schweißstahl-Rohre für hohe oder niedrige "
+"Temperaturen und Drücke"
 
 #. ClassStandard labeling nice
 #. data/i_beams.blt, class: ibeam_heb
 #, python-format
 msgid "DIN1025-2 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "DIN 1025-2 %(type)s, l=%(l)s"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer DINENISO 7089 %(key)s"
-msgstr ""
+msgstr "Unterlegscheibe DIN EN ISO 7089 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/hex.blt, class: hexscrew2
 #, python-format
 msgid "Hexagon head screw EN ISO 24017 %(key)s - %(l)s"
-msgstr ""
+msgstr "Sechskantschraube EN ISO 24017 %(key)s - %(l)s"
 
 #. ClassStandard description
 #. data/hex.blt, class: hexscrew2
 msgid "Hexagon head screw according to ENISO24017"
-msgstr ""
+msgstr "Sechskantschraube nach EN ISO 24017"
 
 #. ClassStandard labeling nice
 #. data/bearings.blt, class: axialthrustbearing
 #, python-format
 msgid "Axial thrust bearing DIN 711 %(key)s"
-msgstr ""
+msgstr "Axial-Rillenkugellager DIN 711 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/profiles_hollow.blt, class: rectangular_hollow
 #, python-format
 msgid "RHS EN 10210-2 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "RHS EN 10210-2 %(type)s, l=%(l)s"
 
 #. ClassStandard description
 #. data/profiles_hollow.blt, class: rectangular_hollow
 msgid "Rectangular Hollow Section (RHS)"
-msgstr ""
+msgstr "Rechteck-Hohlprofil"
 
 #. ClassStandard labeling nice
 #. data/hex_socket.blt, class: hexsocketcountersunk
 #, python-format
 msgid "Hex socket countersunk head screw DIN 7991 %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Senkkopfschraube DIN 7991 %(key)s %(l)s"
 
 #. ClassStandard labeling nice
 #. data/hex_socket.blt, class: hexsocketcountersunk
 #, python-format
 msgid "Hex socket countersunk head screw ISO 10642 %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Senkkopfschraube ISO 10642 %(key)s %(l)s"
 
 #. ClassStandard labeling nice
 #. data/bearings.blt, class: axialthrustbearing
 #, python-format
 msgid "Axial thrust bearing ISO 104 %(key)s"
-msgstr ""
+msgstr "Axiallager ISO 104 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/pipes.blt, class: nominalpipesize
 #, python-format
 msgid "Wrought steel pipe ASME B36.10M %(nps)s %(sched)s Length %(l)s"
-msgstr ""
+msgstr "Schweißstahl-Rohr ASME B36.10M %(nps)s %(sched)s Länge %(l)s"
 
 #. ClassStandard labeling nice
 #. data/hex.blt, class: hexscrew2
 #, python-format
 msgid "hexagon_head_screw_ISO4017_%(key)s_%(l)s"
-msgstr ""
+msgstr "Sechskantschraube ISO 4017 %(key)s %(l)s"
 
 #. ClassStandard description
 #. data/hex.blt, class: hexscrew2
 msgid "Hexagon head screw according to ISO4017"
-msgstr ""
+msgstr "Sechskantschraube gemäß ISO 4017"
 
 #. ClassStandard labeling nice
 #. data/hex_socket.blt, class: hexsocketsetscrewall
 #, python-format
 msgid "Hex socket set screw ANSI B18.3.6M %(point)s point %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Gewindestift ANSI B18.3.6M %(point)s point %(key)s %(l)s"
 
 #. ClassStandard labeling nice
 #. data/i_beams.blt, class: ibeam_hea
 #, python-format
 msgid "DIN1025-3 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "DIN 1025-3 %(type)s, l=%(l)s"
 
 #. ClassStandard labeling nice
 #. data/hex.blt, class: hexbolt2
 #, python-format
 msgid "Hexagon head bolt DINEN 24014 %(key)s - %(l)s"
-msgstr ""
+msgstr "Sechskant-Schaftschraube DIN EN 24014 %(key)s - %(l)s"
 
 #. ClassStandard description
 #. data/hex.blt, class: hexbolt2
 msgid "Hexagon head bolt according to DINEN 24014"
-msgstr ""
+msgstr "Sechskant-Schaftschraube gemäß DIN EN 24014"
 
 #. ClassStandard labeling nice
 #. data/nut.blt, class: hexagonthinnut1
 #, python-format
 msgid "Hexagon thin nut ISO 4035 %(key)s"
-msgstr ""
+msgstr "Niedrige Sechskantmutter ISO 4035 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/i_beams.blt, class: ibeam_hem
 #, python-format
 msgid "DIN1025-4 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "DIN 1025-4 %(type)s, l=%(l)s"
 
 #. ClassStandard labeling nice
 #. data/hex_socket.blt, class: hexsocketheadcap
 #, python-format
 msgid "Hex socket head cap screw ISO 4762 %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Zylinderschraube ISO 4762 %(key)s %(l)s"
 
 #. ClassStandard labeling nice
 #. data/pipes.blt, class: nominalpipesize
 #, python-format
 msgid "Wrought steel pipe ANSI B36.10M %(nps)s %(sched)s Length %(l)s"
-msgstr ""
+msgstr "Schweißstahl-Rohr ANSI B36.10M %(nps)s %(sched)s Länge %(l)s"
 
 #. ClassStandard labeling nice
 #. data/bearings.blt, class: doublerowradialbearing
 #, python-format
 msgid "Double row radial ball bearing DIN 625-3 %(key)s"
-msgstr ""
+msgstr "Zweireihiges Radialkugellager DIN 625-3 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/profiles_hollow.blt, class: rectangular_hollow
 #, python-format
 msgid "RHS DIN EN 10210-2 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "Rechteckiges Hohlprofil DIN EN 10210-2 %(type)s, l=%(l)s"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasherforcheesehead
 #, python-format
 msgid "Plain washer for cheese head screws DIN EN ISO 7092 %(key)s"
-msgstr ""
+msgstr "Unterlegscheibe für Zylinderkopfschrauben DIN EN ISO 7092 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/profiles_hollow.blt, class: square_hollow
 #, python-format
 msgid "SHS DIN EN 10210-2 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "Quadratisches Hohlprofil DIN EN 10210-2 %(type)s, l=%(l)s"
 
 #. ClassStandard description
 #. data/profiles_hollow.blt, class: square_hollow
 msgid "Square Hollow Section (SHS)"
-msgstr ""
+msgstr "Quadratisches Hohlprofil"
 
 #. ClassStandard labeling nice
 #. data/i_beams.blt, class: ibeam_ipe
 #, python-format
 msgid "DIN1025-5 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "DIN 1025-5 %(type)s, l=%(l)s"
 
 #. ClassStandard labeling nice
 #. data/nut.blt, class: hexagonthinnut1
 #, python-format
 msgid "Hexagon thin nut DINENISO 4035 %(key)s"
-msgstr ""
+msgstr "Niedrige Sechskantmutter DIN EN ISO 4035 %(key)s"
 
 #. ClassStandard labeling nice
 #. data/bearings.blt, class: singlerowradialbearing
 #, python-format
 msgid "Radial Ball Bearing DIN625-1 %(key)s%(postfix)s"
-msgstr ""
+msgstr "Radialkugellager DIN 625-1 %(key)s%(postfix)s"
 
 #. ClassStandard description
 #. data/bearings.blt, class: singlerowradialbearing
@@ -1852,35 +1856,37 @@ msgid ""
 "Single row radial contact ball bearing, with single or double shields, "
 "single or double seal or open"
 msgstr ""
+"Einreihiges Radialschrägkugellager mit einfacher oder doppelter Deckscheibe, "
+"einfacher oder doppelter Dichtung oder offen"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasherchamfered
 #, python-format
 msgid "Plain washer chamfered DIN 125B %(key)s"
-msgstr ""
+msgstr "Angefaste Unterlegscheibe DIN 125B %(key)s"
 
 #. ClassStandard labeling nice
 #. data/washer.blt, class: plainwasher1
 #, python-format
 msgid "Plain washer DIN 125A %(key)s"
-msgstr ""
+msgstr "Unterlegscheibe DIN 125A %(key)s"
 
 #. ClassStandard labeling nice
 #. data/i_beams.blt, class: inp
 #, python-format
 msgid "DIN1025-1 %(type)s, l=%(l)s"
-msgstr ""
+msgstr "DIN 1025-1 %(type)s, l=%(l)s"
 
 #. ClassStandard description
 #. data/i_beams.blt, class: inp
 msgid "IPN profile, metric european standard i-beam profile"
-msgstr ""
+msgstr "IPN Profil, metrisches europäisches Norm-I-Profil"
 
 #. ClassStandard labeling nice
 #. data/hex_socket.blt, class: hexsocketheadcap
 #, python-format
 msgid "Hex socket head cap screw DIN 912 %(key)s %(l)s"
-msgstr ""
+msgstr "Innensechskant-Zylinderschraube DIN 912 %(key)s %(l)s"
 
 #. ClassStandard labeling nice
 #. data/hex.blt, class: hexbolt2
