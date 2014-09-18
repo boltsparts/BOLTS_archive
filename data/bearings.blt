@@ -27,13 +27,13 @@ classes:
     names:
       name: Radial Ball Bearing
       labeling: Radial Ball Bearing %(key)s%(postfix)s
-      description: Single row radial contact ball bearing, with single or double shields, single or double seal or open, metric sizes
+      description: Single row radial ball bearing, with single or double shields, single or double seal or open, metric sizes
     standards:
       body: DIN
       standard: DIN 625-1
       group: DIN 625
       labeling: Radial Ball Bearing DIN625-1 %(key)s%(postfix)s
-      description: Single row radial contact ball bearing, with single or double shields, single or double seal or open
+      description: Single row radial ball bearing, with single or double shields, single or double seal or open
     parameters:
         free: [key,type]
         defaults: {key: "608", type: "open"}
@@ -111,7 +111,7 @@ classes:
     names:
       name: Radial Ball Bearing imperial
       labeling: imperial Radial Ball Bearing %(key)s
-      description: Single row radial contact ball bearing, imperial sizes
+      description: Single row radial ball bearing, imperial sizes
     parameters:
         free: [key]
         defaults: {key: "RLS8"}
