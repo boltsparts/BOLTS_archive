@@ -11,6 +11,7 @@ from docs import docs
 from main import main
 from parts import parts
 from search import search, rebuild_index
+from rest import rest
 from . import utils, html, cms
 import logging
 from logging.handlers import RotatingFileHandler
@@ -53,6 +54,7 @@ app.register_blueprint(blog)
 app.register_blueprint(docs)
 app.register_blueprint(parts)
 app.register_blueprint(search)
+app.register_blueprint(rest)
 
 babel = Babel(app,default_domain=translation.messages_domain)
 
