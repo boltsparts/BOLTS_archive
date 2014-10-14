@@ -47,10 +47,7 @@ class SCADModule(BaseElement):
 		self.arguments = mod["arguments"]
 		self.classids = mod["classids"]
 
-		if "parameters" in mod:
-			self.parameters = Parameters(mod["parameters"])
-		else:
-			self.parameters = Parameters({"types" : {}})
+		self.parameters = Parameters(mod.get("parameters",{"types" : {}}))
 
 class Connectors:
 	def __init__(self,cs):

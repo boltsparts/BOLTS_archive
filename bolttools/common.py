@@ -329,9 +329,7 @@ class Parameters:
 			["literal","free","tables","tables2d","defaults","common","description"]
 		)
 
-		self.types = {}
-		if "types" in param:
-			self.types = param["types"]
+		self.types = param.get("types",{})
 
 		self.literal = {}
 		if "literal" in param:
@@ -340,9 +338,7 @@ class Parameters:
 					raise MissingTypeError(pname)
 				self.literal[pname] = convert_raw_parameter_value(pname,self.types[pname],val)
 
-		self.free = []
-		if "free" in param:
-			self.free = param["free"]
+		self.free = param.get("free",[])
 
 		self.tables = []
 		if "tables" in param:
@@ -360,9 +356,7 @@ class Parameters:
 			else:
 				self.tables2d.append(Table2D(param["tables2d"]))
 
-		self.description = {}
-		if "description" in param:
-			self.description = param["description"]
+		self.description = param.get("description",{})
 
 		self.parameters = []
 		self.parameters += self.literal.keys()
@@ -686,14 +680,9 @@ class Identifier(NamePair):
 		)
 
 		allowed = set(string.ascii_letters + string.digits + '_')
-
 		sane = self._sanitize(ident['nice'],allowed)
 
-		if "safe" in ident:
-			NamePair.__init__(self,ident['safe'],ident['nice'],allowed)
-		else:
-			NamePair.__init__(self,sane,ident['nice'],allowed)
-
+		NamePair.__init__(self,ident.get('safe',sane),ident['nice'],allowed)
 
 	def _sanitize(self,inp,allowed):
 		#try to make it camelCase
@@ -726,13 +715,9 @@ class Substitution(NamePair):
 		)
 
 		allowed = set(string.printable).difference(set("""/\\?*|"'>"""))
-
 		sane = self._sanitize(subst['nice'],allowed)
 
-		if "safe" in subst:
-			NamePair.__init__(self,subst['safe'],subst['nice'],allowed)
-		else:
-			NamePair.__init__(self,sane,subst['nice'],allowed)
+		NamePair.__init__(self,subst.get('safe',sane),subst['nice'],allowed)
 
 	def _sanitize(self,inp,allowed):
 		inp = "_".join(inp.split())
@@ -783,7 +768,4 @@ class BaseElement:
 
 		self.type = basefile["type"]
 
-		if "source" in basefile:
-			self.source = basefile["source"]
-		else:
-			self.source = ""
+		self.source = basefile.get("source","")

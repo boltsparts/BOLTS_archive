@@ -63,9 +63,7 @@ class ClassName(Designation):
 			e.set_class(self.id)
 			raise e
 
-		self.description = ''
-		if 'description' in cn:
-			self.description = cn['description']
+		self.description = cn.get('description','')
 
 		if 'group' in cn:
 			if isinstance(cn['group'],str):
@@ -107,19 +105,13 @@ class ClassStandard(Designation):
 			self.labeling = Substitution(sn['labeling'])
 
 		self.body = sn['body']
-		self.year = None
-		if 'year' in sn:
-			self.year = sn['year']
-		self.status = "active"
-		if 'status' in sn:
-			self.status = sn['status']
+		self.year = sn.get('year',None)
+		self.status = sn.get('status','active')
+
 		self.replacedby = None
-		self.replaces = None
-		if 'replaces' in sn:
-			self.replaces = sn['replaces']
-		self.description = ""
-		if 'description' in sn:
-			self.description = sn['description']
+
+		self.replaces = sn.get('replaces',None)
+		self.description = sn.get('description','')
 
 	def get_id(self):
 		return self.standard.get_safe()
@@ -139,21 +131,13 @@ class Class:
 		self.id = cl["id"]
 
 		try:
-			if "parameters" in cl:
-				self.parameters = Parameters(cl["parameters"])
-			else:
-				self.parameters = Parameters({"types" : {}})
+			self.parameters = Parameters(cl.get("parameters",{"types" : {}}))
 		except ParsingError as e:
 			e.set_class(self.id)
 			raise e
 
-		self.url = ""
-		if "url" in cl:
-			self.url = cl["url"]
-
-		self.notes = ""
-		if "notes" in cl:
-			self.notes = cl["notes"]
+		self.url = cl.get("url","")
+		self.notes = cl.get("notes","")
 
 		self.source = cl["source"]
 
@@ -173,13 +157,8 @@ class Collection:
 
 		self.id = coll["id"]
 
-		self.name = ""
-		if "name" in coll:
-			self.name = coll["name"]
-
-		self.description = ""
-		if "description" in coll:
-			self.description = coll["description"]
+		self.name = coll.get("name","")
+		self.description = coll.get("description","")
 
 		self.authors = coll["author"]
 		if isinstance(self.authors,str):

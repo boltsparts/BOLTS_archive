@@ -44,10 +44,7 @@ class BaseFunction(FreeCADGeometry):
 		self.name = function["name"]
 		self.classids = function["classids"]
 		self.module_name = splitext(basename(self.filename))[0]
-		if "parameters" in function:
-			self.parameters = Parameters(function["parameters"])
-		else:
-			self.parameters = Parameters({"types" : {}})
+		self.parameters = Parameters(function.get("parameters",{"types" : {}}))
 
 class FreeCADData(DataBase):
 	def __init__(self,repo):

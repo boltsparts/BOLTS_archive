@@ -34,9 +34,7 @@ class DesignTableClass:
 
 		self.classid = cl["classid"]
 		
-		self.naming = None
-		if "naming" in cl:
-			self.naming = Substitution(cl["naming"])
+		self.naming = Substitution(cl.get("naming",None))
 
 
 class DesignTable(BaseElement):
@@ -56,9 +54,7 @@ class DesignTable(BaseElement):
 
 		self.params = designtable["params"]
 
-		self.metadata = {}
-		if "metadata" in designtable:
-			self.metadata = designtable["metadata"]
+		self.metadata = designtable.get("metadata",{})
 
 		self.classes = []
 		for cl in designtable["classes"]:
