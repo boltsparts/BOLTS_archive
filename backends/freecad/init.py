@@ -37,20 +37,20 @@ except ImportError:
 				return i
 		raise Exception("No main window found")
 
-from gui.freecad_bolts import BoltsWidget
+import gui.freecad_bolts as gui
 
 
 #import repo
 rootpath =  dirname(__file__)
 repo = bolttools.blt.Repository(rootpath)
-freecad = bolttools.freecad.FreeCADData(repo)
+freecad_db = bolttools.freecad.FreeCADData(repo)
 
 widget = None
 
 def show_widget():
 	global widget
 	if widget is None:
-		widget = BoltsWidget(repo,freecad)
+		widget = gui.BoltsWidget(repo,freecad_db)
 
 		mw = getMainWindow()
 		mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
@@ -86,4 +86,26 @@ def list_names(doc):
 		if isinstance(part,Part.Feature):
 			print "%s    %s" % (part.Label, part.Name)
 
+def add_name(id,in_params):
+	name = repo.names[id]
+	cl = repo.class_names.get_src(name)
 
+	params = cl.parameters.collect(in_params)
+	params['name'] = name.labeling.get_nice(params)
+
+	#add part
+	base = freecad_db.base_classes.get_src(cl)
+	coll = repo.collection_classes.get_src(cl)
+	gui.add_part(coll,base,params,FreeCAD.ActiveDocument)
+
+def add_standard(id,in_params):
+	standard = repo.standards[id]
+	cl = repo.class_standards.get_src(standard)
+
+	params = cl.parameters.collect(in_params)
+	params['name'] = standard.labeling.get_nice(params)
+
+	#add part
+	base = freecad_db.base_classes.get_src(cl)
+	coll = repo.collection_classes.get_src(cl)
+	gui.add_part(coll,base,params,FreeCAD.ActiveDocument)
