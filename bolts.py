@@ -145,6 +145,32 @@ def connectors(args):
 	from backends.connectordrawings import ConnectorDrawingsBackend
 	ConnectorDrawingsBackend(repo,dbs).write_output(out_path)
 
+def add_lang(args):
+	#from website
+	_,fname = mkstemp(suffix=".pot")
+	os.system("pybabel extract -F website/babel.cfg -o %s website/" % fname)
+	os.system("pybabel init -D messages -d translations/ -i %s -l %s" % (fname,args.lang))
+	os.remove(fname)
+
+	#from documentation
+	from website.utils import Documentation
+	fhandle,fname = mkstemp(suffix=".pot")
+	with os.fdopen(fhandle,"w") as fid:
+		docs = Documentation(os.path.join(args.repo,'website','docs','sources'))
+		docs.extract_messages(fid)
+	os.system("pybabel init -D docs -d translations/ -i %s -l %s" % (fname,args.lang))
+	os.remove(fname)
+
+	#from parts data
+	repo = Repository(args.repo)
+	from backends.translations import TranslationBackend
+	fhandle,fname = mkstemp(suffix=".pot")
+	TranslationBackend(repo,[]).write_output(fname)
+
+	os.system("pybabel init -D parts -d translations/ -i %s -l %s" % (fname,args.lang))
+	os.remove(fname)
+	print "Don't forget to edit website/templates/base.html and add the language to the dropdown menu"
+
 def translate(args):
 	if args.update_translation:
 		#from website
@@ -311,6 +337,10 @@ parser_translate.add_argument("-u",dest='update_translation', action="store_true
 parser_translate.add_argument("-c",dest='compile_translation', action="store_true",
 	help="compile the po message catalogs into mo catalogs")
 parser_translate.set_defaults(func=translate)
+
+parser_add_lang = subparsers.add_parser("add_lang")
+parser_add_lang.add_argument('lang',help="add the specified language")
+parser_add_lang.set_defaults(func=add_lang)
 
 
 args = parser.parse_args()
