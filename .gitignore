@@ -2,11 +2,7 @@
 *.swp
 *.pyc
 doc/*.pdf
-output/freecad/*
-output/iges/*
-output/openscad/*
-output/solidworks/*
-output/connectordrawings/*
+output/**/*
 bolttools/.coverage
 .sass-cache
 _site
