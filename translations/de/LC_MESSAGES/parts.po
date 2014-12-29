@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-18 15:19+0200\n"
-"PO-Revision-Date: 2014-09-22 08:21+0000\n"
+"PO-Revision-Date: 2014-09-22 08:49+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "parts/de/>\n"
@@ -54,7 +54,7 @@ msgstr "Metrische und zöllische Rohre"
 #. collection name
 #. data/hex.blt
 msgid "Hexagon fasteners"
-msgstr "Sechskant Befestingungselemente"
+msgstr "Sechskant Befestigungselemente"
 
 #. collection description
 #. data/hex.blt
