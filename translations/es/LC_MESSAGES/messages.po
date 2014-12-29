@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-09-18 15:19+0200\n"
+"POT-Creation-Date: 2014-12-29 15:50+0100\n"
 "PO-Revision-Date: 2014-07-28 13:12+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -18,21 +18,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: website/__init__.py:84
+#: website/__init__.py:86
 msgid "Page not found (404)"
 msgstr ""
 
-#: website/__init__.py:85
+#: website/__init__.py:87
 msgid ""
 "The page you are looking for does not exist. Maybe you made a mistake "
 "while typing the URL"
 msgstr ""
 
-#: website/__init__.py:93
+#: website/__init__.py:95
 msgid "Something went wrong (500)"
 msgstr ""
 
-#: website/__init__.py:94
+#: website/__init__.py:96
 msgid ""
 "An error happened while processing your request. This should not happen, "
 "we are very sorry. Please tell us about the this problem by sending a "
@@ -684,7 +684,11 @@ msgstr ""
 msgid "Spanish"
 msgstr ""
 
-#: website/templates/base.html:56
+#: website/templates/base.html:41
+msgid "Swedish"
+msgstr ""
+
+#: website/templates/base.html:57
 msgid ""
 "title image by <a "
 "href=\"https://www.flickr.com/photos/dkpphotography/9468970843\">Dhruv "
@@ -767,5 +771,250 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Spanish"
+#~ msgstr ""
+
+#~ msgid "Page not found (404)"
+#~ msgstr ""
+
+#~ msgid "Something went wrong (500)"
+#~ msgstr ""
+
+#~ msgid "Blog"
+#~ msgstr ""
+
+#~ msgid "Blog Archive"
+#~ msgstr ""
+
+#~ msgid "Posted on %(date)s by %(author)s"
+#~ msgstr ""
+
+#~ msgid "Read more"
+#~ msgstr ""
+
+#~ msgid "Older posts can be found in the <a href=\"%(url)s\">Blog archive</a>."
+#~ msgstr ""
+
+#~ msgid "Welcome to the BOLTS blog"
+#~ msgstr ""
+
+#~ msgid "Post archive"
+#~ msgstr ""
+
+#~ msgid "View all posts in the <a href=\"%(url)s\">Blog archive</a>."
+#~ msgstr ""
+
+#~ msgid ", last update %(date)s"
+#~ msgstr ""
+
+#~ msgid "Comments"
+#~ msgstr ""
+
+#~ msgid "blt file format specification"
+#~ msgstr ""
+
+#~ msgid "Changelog"
+#~ msgstr ""
+
+#~ msgid "Home"
+#~ msgstr ""
+
+#~ msgid "Give us feedback"
+#~ msgstr ""
+
+#~ msgid "Add more parts and drawings"
+#~ msgstr ""
+
+#~ msgid "A short introduction to BOLTS"
+#~ msgstr ""
+
+#~ msgid "BOLTS development with git"
+#~ msgstr ""
+
+#~ msgid "Improve data"
+#~ msgstr ""
+
+#~ msgid "Spread the word"
+#~ msgstr ""
+
+#~ msgid "Translate to other languages"
+#~ msgstr ""
+
+#~ msgid "Part contributions"
+#~ msgstr ""
+
+#~ msgid "Work by the following is contained in BOLTS:"
+#~ msgstr ""
+
+#~ msgid "Help and inspiration"
+#~ msgstr ""
+
+#~ msgid "These people have helped in other ways or provided inspiration:"
+#~ msgstr ""
+
+#~ msgid "served as another source of inspiration."
+#~ msgstr ""
+
+#~ msgid "answered many questions about FreeCAD."
+#~ msgstr ""
+
+#~ msgid "had some good ideas for BOLTS for OpenSCAD and created OpenSCAD."
+#~ msgstr ""
+
+#~ msgid "helped with making BOLTS for FreeCAD work with python 2.6."
+#~ msgstr ""
+
+#~ msgid "found the fix for a tricky bug and provided a lot of feedback."
+#~ msgstr ""
+
+#~ msgid "helped with the development of the SolidWorks flavour of BOLTS."
+#~ msgstr ""
+
+#~ msgid "for his help with hosting and his general expertise."
+#~ msgstr ""
+
+#~ msgid "Current stable release"
+#~ msgstr ""
+
+#~ msgid "Development Snapshots"
+#~ msgstr ""
+
+#~ msgid "Illustration of different part sizes in a part library"
+#~ msgstr ""
+
+#~ msgid "<a href=\"%(url)s\">%(n)s people</a> contributed"
+#~ msgstr ""
+
+#~ msgid "%(n)s classes in"
+#~ msgstr ""
+
+#~ msgid " %(n)s <a href=\"%(url)s\">collections</a> following"
+#~ msgstr ""
+
+#~ msgid "%(n)s different standards issued by"
+#~ msgstr ""
+
+#~ msgid " %(n)s <a href=\"%(url)s\">standardization organisations</a>"
+#~ msgstr ""
+
+#~ msgid "Quickstart: Using BOLTS for OpenSCAD"
+#~ msgstr ""
+
+#~ msgid "For more information see the <a href=\"%(url)s\">Documentation</a>"
+#~ msgstr ""
+
+#~ msgid "Screenshot of a bolt from BOLTS in OpenSCAD"
+#~ msgstr ""
+
+#~ msgid "Quickstart: Using BOLTS for FreeCAD"
+#~ msgstr ""
+
+#~ msgid "Screenshot of a ball bearing from BOLTS in FreeCAD"
+#~ msgstr ""
+
+#~ msgid "Quickstart: Using BOLTS for IGES"
+#~ msgstr ""
+
+#~ msgid "Author"
+#~ msgid_plural "Authors"
+#~ msgstr[0] ""
+#~ msgstr[1] ""
+
+#~ msgid "License"
+#~ msgstr ""
+
+#~ msgid "Collection"
+#~ msgstr ""
+
+#~ msgid "Identical to"
+#~ msgstr ""
+
+#~ msgid "Status"
+#~ msgstr ""
+
+#~ msgid "Standard body"
+#~ msgstr ""
+
+#~ msgid "Replaces"
+#~ msgstr ""
+
+#~ msgid "Replaced by"
+#~ msgstr ""
+
+#~ msgid "Source"
+#~ msgstr ""
+
+#~ msgid "Parameter Name"
+#~ msgstr ""
+
+#~ msgid "Description"
+#~ msgstr ""
+
+#~ msgid "Location"
+#~ msgstr ""
+
+#~ msgid "Drawing"
+#~ msgstr ""
+
+#~ msgid "Specifications by %(body)s"
+#~ msgstr ""
+
+#~ msgid "Collections"
+#~ msgstr ""
+
+#~ msgid "Standardisation bodies"
+#~ msgstr ""
+
+#~ msgid "Drawings"
+#~ msgstr ""
+
+#~ msgid "No drawing found"
+#~ msgstr ""
+
+#~ msgid "Parameters"
+#~ msgstr ""
+
+#~ msgid "This part is not availaible for FreeCAD"
+#~ msgstr ""
+
+#~ msgid "Incantations"
+#~ msgstr ""
+
+#~ msgid "Connectors"
+#~ msgstr ""
+
+#~ msgid "This part is not availaible for OpenSCAD"
+#~ msgstr ""
+
+#~ msgid "Tables"
+#~ msgstr ""
+
+#~ msgid "title"
+#~ msgstr ""
+
+#~ msgid "Search"
+#~ msgstr ""
+
+#~ msgid "Search the BOLTS website"
+#~ msgstr ""
+
+#~ msgid "Part results"
+#~ msgstr ""
+
+#~ msgid "Page"
+#~ msgstr ""
+
+#~ msgid "Category"
+#~ msgstr ""
+
+#~ msgid "No results found"
+#~ msgstr ""
+
+#~ msgid "Documentation results"
+#~ msgstr ""
+
+#~ msgid "Version"
+#~ msgstr ""
+
+#~ msgid "Rusty nuts and bolts"
 #~ msgstr ""
 
