@@ -4,8 +4,7 @@
   author: Johannes <jreinhardt@ist-dein-freund.de>
 ---
 
-I wish everybody a happy new year 2015. I hope it will be a good year for
-BOLTS, I have a lot of ideas and hope to find a bit of time to work of time.
+I wish everybody a happy new year 2015. I hope it will be a good year for BOLTS, I have a lot of ideas and hope to find a bit of time to work on it.
 
 <!-- more -->
 
