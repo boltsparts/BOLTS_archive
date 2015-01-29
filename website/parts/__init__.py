@@ -8,9 +8,10 @@ from bolttools.freecad import FreeCADData
 from bolttools.openscad import OpenSCADData
 from bolttools.drawings import DrawingsData
 from backends.openscad import get_signature
-from .. import html,utils
-from ..cache import cache
-from ..translation import parts_domain, gettext_parts, languages
+import website.html as html
+import website.utils as utils
+from website.cache import cache
+from website.translation import parts_domain, gettext_parts, languages
 
 parts = Blueprint("parts",__name__,template_folder="templates",url_prefix='/<any(%s):lang_code>/parts' % ",".join(languages))
 

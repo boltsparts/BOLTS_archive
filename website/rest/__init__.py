@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, abort, redirect, request, url_for, g, jsonify
-from ..parts import repo, dbs
-from ..translation import parts_domain, gettext_parts, languages
+from website.parts import repo, dbs
+from website.translation import parts_domain, gettext_parts, languages
 from os.path import basename
 from urlparse import urljoin
 

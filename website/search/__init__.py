@@ -4,12 +4,12 @@ import gettext
 
 from contextlib import contextmanager
 
-from ..parts import repo
+from website.parts import repo
 from os import makedirs, environ
 from os.path import exists, join
 from shutil import rmtree
-from ..translation import languages, trans_dir
-from ..docs import SOURCES
+from website.translation import languages, trans_dir
+from website.docs import SOURCES
 
 from flask_wtf import Form
 from wtforms import TextField

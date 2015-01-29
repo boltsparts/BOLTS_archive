@@ -3,9 +3,9 @@ from os.path import exists,join
 from os import listdir
 from flask.helpers import safe_join, send_from_directory
 from urlparse import urljoin
-from ..cache import cache
-from ..translation import languages, gettext_docs
-from ..utils import Specification, Documentation
+from website.cache import cache
+from website.translation import languages, gettext_docs
+from website.utils import Specification, Documentation
 from docutils import core
 
 docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/docs/<version>' % ",".join(languages))

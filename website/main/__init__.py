@@ -3,12 +3,12 @@ from flask.ext.babelex import gettext
 from flask.helpers import send_from_directory
 from bolttools.statistics import Statistics
 from backends.checker import CheckerBackend
-from ..cache import cache
-from ..parts import repo, dbs
-from .. import html
-from ..translation import languages
-from ..docs import STABLE
-from ..utils import Downloads
+from website.cache import cache
+from website.parts import repo, dbs
+import website.html
+from website.translation import languages
+from website.docs import STABLE
+from website.utils import Downloads
 from os import environ
 from os.path import join
 
@@ -78,7 +78,7 @@ def tasks():
 			"title" : task.get_title(),
 			"description" : task.get_description(),
 			"length" : len(task.get_table()),
-			"table" : html.table({
+			"table" : website.html.table({
 				"class" : "table",
 				"data" : task.get_table(),
 				"header" : task.get_headers()
