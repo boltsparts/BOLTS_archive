@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-12-29 15:50+0100\n"
+"POT-Creation-Date: 2015-01-30 17:05+0100\n"
 "PO-Revision-Date: 2014-09-08 19:31+0000\n"
 "Last-Translator: galou <galou_breizh@yahoo.fr>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
@@ -21,17 +21,19 @@ msgstr ""
 
 #: website/__init__.py:86
 msgid "Page not found (404)"
-msgstr ""
+msgstr "Page introuvable (404)"
 
 #: website/__init__.py:87
 msgid ""
 "The page you are looking for does not exist. Maybe you made a mistake "
 "while typing the URL"
 msgstr ""
+"La page que vous recherchez n'existe pas. Peut-être avez-vous fait une "
+"erreur en saisissant l'URL ?"
 
 #: website/__init__.py:95
 msgid "Something went wrong (500)"
-msgstr ""
+msgstr "Un problème est survenu (500)"
 
 #: website/__init__.py:96
 msgid ""
@@ -40,33 +42,39 @@ msgid ""
 "mail to BOLTS@ist-dein-freund.de and include the URL you were trying to "
 "access."
 msgstr ""
+"Une erreur est survenue pendant le traitement de votre requête. Cela ne "
+"devrait pas arriver, et nous en sommes désolés. Veuillez nous aviser de "
+"ce problème par courriel à BOLTS@ist-dein-freund.de en incluant l'URL que"
+" vous tentiez d'accéder."
 
 #: website/blog/templates/blog.html:6 website/templates/base.html:26
 msgid "Blog"
-msgstr ""
+msgstr "Blogue"
 
 #: website/blog/templates/blog/archive.html:6
 msgid "Blog Archive"
-msgstr ""
+msgstr "Archive du blogue"
 
 #: website/blog/templates/blog/index.html:9
 #: website/blog/templates/blog/post.html:8
 #, python-format
 msgid "Posted on %(date)s by %(author)s"
-msgstr ""
+msgstr "Publié le %(date)s par %(author)s"
 
 #: website/blog/templates/blog/index.html:13
 msgid "Read more"
-msgstr ""
+msgstr "En savoir plus"
 
 #: website/blog/templates/blog/index.html:17
 #, python-format
 msgid "Older posts can be found in the <a href=\"%(url)s\">Blog archive</a>."
 msgstr ""
+"Les articles plus anciens se trouvent dans les <a "
+"href=\"%(url)s\">archives du blogue</a>."
 
 #: website/blog/templates/blog/index.html:22
 msgid "Welcome to the BOLTS blog"
-msgstr ""
+msgstr "Bienvenue sur le blogue de BOLTS"
 
 #: website/blog/templates/blog/index.html:23
 #, python-format
@@ -74,31 +82,33 @@ msgid ""
 "The latest and greatest on BOLTS. <a href=\"%(url)s\">Subscribe the RSS "
 "feed</a> for updates."
 msgstr ""
+"Les dernières nouvelles sur BOLTS. <a href=\"%(url)s\">Abonnez-vous au "
+"flux RSS</a>."
 
 #: website/blog/templates/blog/index.html:27
 msgid "Post archive"
-msgstr ""
+msgstr "Archive de messages"
 
 #: website/blog/templates/blog/index.html:28
 #, python-format
 msgid "View all posts in the <a href=\"%(url)s\">Blog archive</a>."
-msgstr ""
+msgstr "Voir tous les messages dans <a href=\"%(url)s\">l'archive du blogue</a>."
 
 #: website/blog/templates/blog/post.html:10
 #, python-format
 msgid ", last update %(date)s"
-msgstr ""
+msgstr ", dernière mise à jour %(date)s"
 
 #: website/blog/templates/blog/post.html:13
 #: website/docs/templates/docs/index.html:49
 #: website/docs/templates/docs/page.html:9
 #: website/docs/templates/docs/spec.html:8
 msgid "Comments"
-msgstr ""
+msgstr "Commentaires"
 
 #: website/docs/templates/docs/index.html:44
 msgid "blt file format specification"
-msgstr ""
+msgstr "spécification du format blt"
 
 #: website/docs/templates/docs/index.html:45
 msgid "Changelog"
@@ -106,11 +116,11 @@ msgstr ""
 
 #: website/main/__init__.py:32 website/templates/base.html:25
 msgid "Home"
-msgstr ""
+msgstr "Page principale"
 
 #: website/main/templates/contribute.html:14
 msgid "Give us feedback"
-msgstr ""
+msgstr "Dites-nous ce que vous en pensez"
 
 #: website/main/templates/contribute.html:15
 #, python-format
@@ -122,6 +132,13 @@ msgid ""
 "expected, what you think could be done better or how BOLTS could be made "
 "more useful for you."
 msgstr ""
+"Vous pouvez aider BOLTS simplement en l'essayant et en nous disant ce que"
+" vous en pensez. Que vous l'utilisiez avec <a "
+"href=\"http://freecadweb.org/\">FreeCAD</a> ou <a "
+"href=\"http://www.openscad.org/\">OpenSCAD</a>, <a "
+"href=\"%(url)s\">installez la et utilisez la</a> et dites-vous ce qui n'a"
+" pas fonctionné, ce que vous pensez qui pourrait être amélioré ou comment"
+" changer BOLTS pourrait être plus utile pour vous vous."
 
 #: website/main/templates/contribute.html:17
 msgid ""
@@ -133,10 +150,17 @@ msgid ""
 "href=\"https://github.com/jreinhardt/BOLTS/issues\">BOLTS issue "
 "tracker</a> on GitHub."
 msgstr ""
+"Vous pouvez nous contacter en écrivant un <a href=\"mailto:BOLTS@ist-"
+"dein-freund.de\">email</a>, en postant un message sur le fil <a "
+"href=\"http://sourceforge.net/apps/phpbb/free-"
+"cad/viewtopic.php?f=8&t=4549\">BOLTS development</a> sur le forum FreeCAD"
+" forums ou en utilisant <a "
+"href=\"https://github.com/jreinhardt/BOLTS/issues\">gestionnaire de bugs "
+"de BOLTS</a> sur GitHub."
 
 #: website/main/templates/contribute.html:21
 msgid "Add more parts and drawings"
-msgstr ""
+msgstr "Ajouter des pièces et des schémas"
 
 #: website/main/templates/contribute.html:22
 msgid ""
@@ -144,14 +168,17 @@ msgid ""
 " are already there. To do so, you should first read about a few basic "
 "things, that will be useful to know"
 msgstr ""
+"vous pouvez aider en ajoutant des pièces à BOLTS ou en améliorant les "
+"pièces existantes. Dans ce but, vous devriez commencer par lire quelques "
+"bases qui vous seront utiles"
 
 #: website/main/templates/contribute.html:25
 msgid "A short introduction to BOLTS"
-msgstr ""
+msgstr "Une introduction rapide à BOLTS"
 
 #: website/main/templates/contribute.html:26
 msgid "BOLTS development with git"
-msgstr ""
+msgstr "développement de BOLTS avec git"
 
 #: website/main/templates/contribute.html:29
 #, python-format
@@ -160,10 +187,13 @@ msgid ""
 "For details on how to do that see the <a href=\"%(url)s\">contributor "
 "documentation</a>."
 msgstr ""
+"Après cela, vous êtes prêt(e) à ajouter des pièces, des données ou des "
+"schémas. Les détails sur les contributions sont sur <a "
+"href=\"%(url)s\">la documentation du contributeur</a>."
 
 #: website/main/templates/contribute.html:32
 msgid "Improve data"
-msgstr ""
+msgstr "Améliorer les données"
 
 #: website/main/templates/contribute.html:34
 #, python-format
@@ -173,6 +203,11 @@ msgid ""
 "list of things that could be fixed or improved</a>. This is a great "
 "starting point for contributing to BOLTS."
 msgstr ""
+"BOLTS vérifie dans sa base de données qu'elle ne contient pas de "
+"paradoxes et de problèmes communs et que les informations soient claires "
+"et complètes et génère automatiquement <a href=\"%(url)s\">une liste de "
+"points qui peuvent être réparés ou améliorés</a>. C'est un très bon point"
+" de départ pour contribuer à BOLTS."
 
 #: website/main/templates/contribute.html:35
 msgid ""
@@ -180,10 +215,13 @@ msgid ""
 "website, you can directly report them using the comment field embedded in"
 " many pages."
 msgstr ""
+"Si vous repérez des erreurs de données, de traduction ou autres sur le "
+"site web, vous pouvez écrire un rapport en utilisant le champ commentaire"
+" inclu dans beaucoup de pages du site."
 
 #: website/main/templates/contribute.html:40
 msgid "Spread the word"
-msgstr ""
+msgstr "Diffusez"
 
 #: website/main/templates/contribute.html:41
 msgid ""
@@ -191,10 +229,13 @@ msgid ""
 "about BOLTS. Or blog about it, mention it on social networks and spread "
 "the word."
 msgstr ""
+"N'oubliez pas de parler de BOLTS à vos amis, collègues et co-bricoleurs. "
+"Pourquoi ne pas en parler dans votre blogue, en parler sur les réseaux "
+"sociaux et diffusez l'information."
 
 #: website/main/templates/contribute.html:44
 msgid "Translate to other languages"
-msgstr ""
+msgstr "Traduire en d'autres langues"
 
 #: website/main/templates/contribute.html:45
 msgid ""
@@ -499,62 +540,62 @@ msgid ""
 "distribution of BOLTS"
 msgstr ""
 
-#: website/parts/__init__.py:47
+#: website/parts/__init__.py:48
 msgid "Author"
 msgid_plural "Authors"
 msgstr[0] ""
 msgstr[1] ""
 
-#: website/parts/__init__.py:86 website/parts/__init__.py:122
-#: website/parts/__init__.py:170 website/parts/__init__.py:180
-#: website/parts/__init__.py:230 website/parts/__init__.py:272
-#: website/parts/__init__.py:284
+#: website/parts/__init__.py:87 website/parts/__init__.py:123
+#: website/parts/__init__.py:171 website/parts/__init__.py:181
+#: website/parts/__init__.py:231 website/parts/__init__.py:273
+#: website/parts/__init__.py:285
 msgid "License"
 msgstr ""
 
-#: website/parts/__init__.py:123 website/parts/__init__.py:231
+#: website/parts/__init__.py:124 website/parts/__init__.py:232
 msgid "Collection"
 msgstr ""
 
-#: website/parts/__init__.py:127 website/parts/__init__.py:235
+#: website/parts/__init__.py:128 website/parts/__init__.py:236
 msgid "Identical to"
 msgstr ""
 
-#: website/parts/__init__.py:129
+#: website/parts/__init__.py:130
 msgid "Status"
 msgstr ""
 
-#: website/parts/__init__.py:130
+#: website/parts/__init__.py:131
 msgid "Standard body"
 msgstr ""
 
-#: website/parts/__init__.py:132
+#: website/parts/__init__.py:133
 msgid "Replaces"
 msgstr ""
 
-#: website/parts/__init__.py:134
+#: website/parts/__init__.py:135
 msgid "Replaced by"
 msgstr ""
 
-#: website/parts/__init__.py:138 website/parts/__init__.py:240
+#: website/parts/__init__.py:139 website/parts/__init__.py:241
 msgid "Source"
 msgstr ""
 
-#: website/parts/__init__.py:158 website/parts/__init__.py:260
+#: website/parts/__init__.py:159 website/parts/__init__.py:261
 msgid "Parameter Name"
 msgstr ""
 
-#: website/parts/__init__.py:158 website/parts/__init__.py:260
+#: website/parts/__init__.py:159 website/parts/__init__.py:261
 #: website/parts/templates/parts/name.html:17
 #: website/parts/templates/parts/standard.html:15
 msgid "Description"
 msgstr ""
 
-#: website/parts/__init__.py:201 website/parts/__init__.py:305
+#: website/parts/__init__.py:202 website/parts/__init__.py:306
 msgid "Location"
 msgstr ""
 
-#: website/parts/__init__.py:201 website/parts/__init__.py:305
+#: website/parts/__init__.py:202 website/parts/__init__.py:306
 msgid "Drawing"
 msgstr ""
 
@@ -721,7 +762,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "How can I help?"
-#~ msgstr ""
+#~ msgstr "Comment est-ce que je peux aider?"
 
 #~ msgid "Statistics"
 #~ msgstr ""
@@ -766,250 +807,5 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Spanish"
-#~ msgstr ""
-
-#~ msgid "Page not found (404)"
-#~ msgstr "Page introuvable (404)"
-
-#~ msgid "Something went wrong (500)"
-#~ msgstr "Un problème est survenu (500)"
-
-#~ msgid "Blog"
-#~ msgstr "Blogue"
-
-#~ msgid "Blog Archive"
-#~ msgstr "Archive du blogue"
-
-#~ msgid "Posted on %(date)s by %(author)s"
-#~ msgstr "Publié le %(date)s par %(author)s"
-
-#~ msgid "Read more"
-#~ msgstr "En savoir plus"
-
-#~ msgid "Older posts can be found in the <a href=\"%(url)s\">Blog archive</a>."
-#~ msgstr ""
-
-#~ msgid "Welcome to the BOLTS blog"
-#~ msgstr "Bienvenue sur le blogue de BOLTS"
-
-#~ msgid "Post archive"
-#~ msgstr "Archive de messages"
-
-#~ msgid "View all posts in the <a href=\"%(url)s\">Blog archive</a>."
-#~ msgstr ""
-
-#~ msgid ", last update %(date)s"
-#~ msgstr ", dernière mise à jour %(date)s"
-
-#~ msgid "Comments"
-#~ msgstr "Commentaires"
-
-#~ msgid "blt file format specification"
-#~ msgstr "spécification du format blt"
-
-#~ msgid "Changelog"
-#~ msgstr ""
-
-#~ msgid "Home"
-#~ msgstr "Page principale"
-
-#~ msgid "Give us feedback"
-#~ msgstr "Dites-nous ce que vous en pensez"
-
-#~ msgid "Add more parts and drawings"
-#~ msgstr "Ajouter des pièces et des schémas"
-
-#~ msgid "A short introduction to BOLTS"
-#~ msgstr "Une introduction rapide à BOLTS"
-
-#~ msgid "BOLTS development with git"
-#~ msgstr "développement de BOLTS avec git"
-
-#~ msgid "Improve data"
-#~ msgstr "Améliorer les données"
-
-#~ msgid "Spread the word"
-#~ msgstr "Diffusez"
-
-#~ msgid "Translate to other languages"
-#~ msgstr "Traduire en d'autres langues"
-
-#~ msgid "Part contributions"
-#~ msgstr ""
-
-#~ msgid "Work by the following is contained in BOLTS:"
-#~ msgstr ""
-
-#~ msgid "Help and inspiration"
-#~ msgstr ""
-
-#~ msgid "These people have helped in other ways or provided inspiration:"
-#~ msgstr ""
-
-#~ msgid "served as another source of inspiration."
-#~ msgstr ""
-
-#~ msgid "answered many questions about FreeCAD."
-#~ msgstr ""
-
-#~ msgid "had some good ideas for BOLTS for OpenSCAD and created OpenSCAD."
-#~ msgstr ""
-
-#~ msgid "helped with making BOLTS for FreeCAD work with python 2.6."
-#~ msgstr ""
-
-#~ msgid "found the fix for a tricky bug and provided a lot of feedback."
-#~ msgstr ""
-
-#~ msgid "helped with the development of the SolidWorks flavour of BOLTS."
-#~ msgstr ""
-
-#~ msgid "for his help with hosting and his general expertise."
-#~ msgstr ""
-
-#~ msgid "Current stable release"
-#~ msgstr ""
-
-#~ msgid "Development Snapshots"
-#~ msgstr ""
-
-#~ msgid "Illustration of different part sizes in a part library"
-#~ msgstr ""
-
-#~ msgid "<a href=\"%(url)s\">%(n)s people</a> contributed"
-#~ msgstr ""
-
-#~ msgid "%(n)s classes in"
-#~ msgstr ""
-
-#~ msgid " %(n)s <a href=\"%(url)s\">collections</a> following"
-#~ msgstr ""
-
-#~ msgid "%(n)s different standards issued by"
-#~ msgstr ""
-
-#~ msgid " %(n)s <a href=\"%(url)s\">standardization organisations</a>"
-#~ msgstr ""
-
-#~ msgid "Quickstart: Using BOLTS for OpenSCAD"
-#~ msgstr ""
-
-#~ msgid "For more information see the <a href=\"%(url)s\">Documentation</a>"
-#~ msgstr ""
-
-#~ msgid "Screenshot of a bolt from BOLTS in OpenSCAD"
-#~ msgstr ""
-
-#~ msgid "Quickstart: Using BOLTS for FreeCAD"
-#~ msgstr ""
-
-#~ msgid "Screenshot of a ball bearing from BOLTS in FreeCAD"
-#~ msgstr ""
-
-#~ msgid "Quickstart: Using BOLTS for IGES"
-#~ msgstr ""
-
-#~ msgid "Author"
-#~ msgid_plural "Authors"
-#~ msgstr[0] ""
-#~ msgstr[1] ""
-
-#~ msgid "License"
-#~ msgstr ""
-
-#~ msgid "Collection"
-#~ msgstr ""
-
-#~ msgid "Identical to"
-#~ msgstr ""
-
-#~ msgid "Status"
-#~ msgstr ""
-
-#~ msgid "Standard body"
-#~ msgstr ""
-
-#~ msgid "Replaces"
-#~ msgstr ""
-
-#~ msgid "Replaced by"
-#~ msgstr ""
-
-#~ msgid "Source"
-#~ msgstr ""
-
-#~ msgid "Parameter Name"
-#~ msgstr ""
-
-#~ msgid "Description"
-#~ msgstr ""
-
-#~ msgid "Location"
-#~ msgstr ""
-
-#~ msgid "Drawing"
-#~ msgstr ""
-
-#~ msgid "Specifications by %(body)s"
-#~ msgstr ""
-
-#~ msgid "Collections"
-#~ msgstr ""
-
-#~ msgid "Standardisation bodies"
-#~ msgstr ""
-
-#~ msgid "Drawings"
-#~ msgstr ""
-
-#~ msgid "No drawing found"
-#~ msgstr ""
-
-#~ msgid "Parameters"
-#~ msgstr ""
-
-#~ msgid "This part is not availaible for FreeCAD"
-#~ msgstr ""
-
-#~ msgid "Incantations"
-#~ msgstr ""
-
-#~ msgid "Connectors"
-#~ msgstr ""
-
-#~ msgid "This part is not availaible for OpenSCAD"
-#~ msgstr ""
-
-#~ msgid "Tables"
-#~ msgstr ""
-
-#~ msgid "title"
-#~ msgstr ""
-
-#~ msgid "Search"
-#~ msgstr ""
-
-#~ msgid "Search the BOLTS website"
-#~ msgstr ""
-
-#~ msgid "Part results"
-#~ msgstr ""
-
-#~ msgid "Page"
-#~ msgstr ""
-
-#~ msgid "Category"
-#~ msgstr ""
-
-#~ msgid "No results found"
-#~ msgstr ""
-
-#~ msgid "Documentation results"
-#~ msgstr ""
-
-#~ msgid "Version"
-#~ msgstr ""
-
-#~ msgid "Rusty nuts and bolts"
 #~ msgstr ""
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-12-29 15:50+0100\n"
+"POT-Creation-Date: 2015-01-30 17:05+0100\n"
 "PO-Revision-Date: 2014-07-29 09:58+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -4414,6 +4414,12 @@ msgstr ""
 msgid ""
 "[<img alt=\"Testing the result\" src=\"{{ static(fcstd-base3.png) }}\" "
 "/>]({{ static(fcstd-base3.png) }})"
+msgstr ""
+
+#. docs/0.3/openscad/installation
+msgid ""
+"If this is not the case and OpenSCAD shows a syntax error instead, try "
+"the newest [development snapshot]({{ url(main.downloads) }}).\n"
 msgstr ""
 
 #. docs/0.3/openscad/basemodule
