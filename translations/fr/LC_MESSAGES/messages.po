@@ -9,27 +9,29 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-30 17:05+0100\n"
-"PO-Revision-Date: 2014-09-08 19:31+0000\n"
-"Last-Translator: galou <galou_breizh@yahoo.fr>\n"
+"PO-Revision-Date: 2015-01-30 16:15+0000\n"
+"Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/fr/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 1.10-dev\n"
 "Generated-By: Babel 1.3\n"
 
 #: website/__init__.py:86
 msgid "Page not found (404)"
-msgstr "Page introuvable (404)"
+msgstr "Page non trouvée (404)"
 
 #: website/__init__.py:87
 msgid ""
 "The page you are looking for does not exist. Maybe you made a mistake "
 "while typing the URL"
 msgstr ""
-"La page que vous recherchez n'existe pas. Peut-être avez-vous fait une "
-"erreur en saisissant l'URL ?"
+"La page recherchée n'existe pas. Peut-être avez-vous fait une erreur en "
+"tapant l'URL"
 
 #: website/__init__.py:95
 msgid "Something went wrong (500)"
@@ -87,7 +89,7 @@ msgstr ""
 
 #: website/blog/templates/blog/index.html:27
 msgid "Post archive"
-msgstr "Archive de messages"
+msgstr "Archive des messages"
 
 #: website/blog/templates/blog/index.html:28
 #, python-format
@@ -112,7 +114,7 @@ msgstr "spécification du format blt"
 
 #: website/docs/templates/docs/index.html:45
 msgid "Changelog"
-msgstr ""
+msgstr "journal des modifications"
 
 #: website/main/__init__.py:32 website/templates/base.html:25
 msgid "Home"
@@ -808,4 +810,3 @@ msgstr ""
 
 #~ msgid "Spanish"
 #~ msgstr ""
-
