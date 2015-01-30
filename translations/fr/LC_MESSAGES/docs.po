@@ -1,24 +1,25 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-30 17:05+0100\n"
-"PO-Revision-Date: 2014-09-08 19:18+0000\n"
-"Last-Translator: galou <galou_breizh@yahoo.fr>\n"
+"PO-Revision-Date: 2015-01-30 16:17+0000\n"
+"Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "docs/fr/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 1.10-dev\n"
 "Generated-By: Babel 1.3\n"
 
 #. document title
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "Installing BOLTS for FreeCAD"
-msgstr ""
+msgstr "Installer BOLTS pour FreeCAD"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -26,6 +27,8 @@ msgid ""
 "\n"
 "### Download a BOLTS for FreeCAD release"
 msgstr ""
+"\n"
+"### Télécharger BOLTS pour FreeCAD dernière version"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -33,6 +36,8 @@ msgid ""
 "You can find the most recent BOLTS for FreeCAD release at the [Downloads "
 "Page]({{ url(main.downloads) }})."
 msgstr ""
+"On peut trouver la dernière version de BOLTS pour FreeCAD sur la [Page de "
+"téléchargement]({{ url(main.downloads) }})."
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -40,11 +45,13 @@ msgid ""
 "There are different archive types available, if you are unsure, which to "
 "choose use the zip."
 msgstr ""
+"Différentes types d'archives sont disponibles. Si vous ne savez pas lequel "
+"choisir, prendre le zip."
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "### Extract it to your macro folder"
-msgstr ""
+msgstr "### Extraire l'archive dans le dossier des macros"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -55,6 +62,11 @@ msgid ""
 "listed\n"
 "there. On linux the macro folder is usually located at `~/.FreeCAD`."
 msgstr ""
+"On peut voir la localisation du dossier des macros dans les préférences: "
+"Choisir\n"
+"Édition->Préférences, dans la fenêtre sélectionner l'onglet macro. Le chemin "
+"vers le dossier des macro y est indiqué. Sous linux le dossier des macros "
+"est souvent situé à `~/.FreeCAD`."
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -4821,4 +4833,3 @@ msgstr ""
 
 #~ msgid "Beimer, beimer, beimer"
 #~ msgstr ""
-
