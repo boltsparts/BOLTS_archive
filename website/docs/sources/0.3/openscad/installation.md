@@ -41,3 +41,4 @@ The preview window should now show a hexagon bolt.
 
 [<img alt="Successful installation" src="{{ static(openscad-installation.png) }}" />]({{ static(openscad-installation.png) }})
 
+If this is not the case and OpenSCAD shows a syntax error instead, try the newest [development snapshot]({{ url(main.downloads) }}).
