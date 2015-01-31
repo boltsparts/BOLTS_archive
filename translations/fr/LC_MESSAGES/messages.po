@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-30 17:05+0100\n"
-"PO-Revision-Date: 2015-01-30 16:15+0000\n"
+"PO-Revision-Date: 2015-01-31 12:29+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/fr/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.2-dev\n"
 "Generated-By: Babel 1.3\n"
 
 #: website/__init__.py:86
@@ -248,6 +248,11 @@ msgid ""
 "help of <a href=\"http://weblate.org/\">Weblate</a>. No registration is "
 "necessary to suggest translations."
 msgstr ""
+"Afin de proposer BOLTS en plusieurs langues, les contenus du site web, la "
+"documentation et le nom des pièces ainsi que leurs descriptions ont besoin "
+"d'être traduit. Elle se fait <a href=\""
+"https://weblate.stbuehler.de/projects/BOLTS/\">ici</a> à l'aide de <a href=\""
+"http://weblate.org/\">Weblate</a>."
 
 #: website/main/templates/contributors.html:14
 msgid "Part contributions"
@@ -259,11 +264,11 @@ msgstr ""
 
 #: website/main/templates/contributors.html:23
 msgid "Help and inspiration"
-msgstr ""
+msgstr "Aide et inspiration"
 
 #: website/main/templates/contributors.html:24
 msgid "These people have helped in other ways or provided inspiration:"
-msgstr ""
+msgstr "Ces personnes ont aidés d'autres manières ou donnés de l'inspiration:"
 
 #: website/main/templates/contributors.html:26
 msgid ""
@@ -305,25 +310,27 @@ msgstr ""
 
 #: website/main/templates/downloads.html:12
 msgid "Current stable release"
-msgstr ""
+msgstr "Version stable actuelle"
 
 #: website/main/templates/downloads.html:32
 msgid "Development Snapshots"
-msgstr ""
+msgstr "Aperçu de développement"
 
 #: website/main/templates/downloads.html:52
 msgid ""
 "If in doubt, take the zip archive. <a href=\"http://www.7-zip.org/\">7 "
 "Zip</a> can be used to open xz archives on Windows."
 msgstr ""
+"Dans le doute, prendre l'archive zip. <a href=\"http://www.7-zip.org/\">7 "
+"Zip</a> peut être utilisé pour ouvrir les archives xz sous Windows."
 
 #: website/main/templates/home.html:8
 msgid "BOLTS is an Open Library of Technical Specifications."
-msgstr ""
+msgstr "BOLTS est une bibliothèque libre de spécifications techniques."
 
 #: website/main/templates/home.html:17
 msgid "What is BOLTS?"
-msgstr ""
+msgstr "Qu'est-ce que BOLTS?"
 
 #: website/main/templates/home.html:18
 msgid ""
@@ -331,10 +338,13 @@ msgid ""
 "library for CAD applications. It does so by providing a common database "
 "that can be utilized by many different CAD applications."
 msgstr ""
+"Le but de BOLTS est de créer une bibliothèque de pièces standard pour "
+"logiciels CAO ouverte et libre. Il le fait en fournissant une base de donnée "
+"commune qui peut être utilisé par différents logiciels CAO."
 
 #: website/main/templates/home.html:23
 msgid "What is a standard parts library?"
-msgstr ""
+msgstr "Qu'est ce qu'une bibliothèque de pièces standard ?"
 
 #: website/main/templates/home.html:24
 msgid ""
@@ -344,6 +354,11 @@ msgid ""
 "printing), and standard parts like nuts and bolts that you can buy in a "
 "hardware store."
 msgstr ""
+"Quand vous utilisez un logiciel CAO pour créer un modèle, ce modèle est "
+"souvent composé de deux différents types de pièces: des pièces à façon qui "
+"sont spécifique au besoin et qui doivent être fabriqué sur mesure (ex: "
+"impression 3D), et des pièces standard comme des écrous et des boulons que "
+"l'on peut acheter dans une quincaillerie."
 
 #: website/main/templates/home.html:25
 msgid ""
@@ -351,6 +366,9 @@ msgid ""
 "standard parts by providing them readily usable, so that you can focus on"
 " the interesting aspects of your design."
 msgstr ""
+"Une bibliothèque de pièces standard vous épargne la fastidieuse tâche de "
+"modélisation de ces pièces en les fournissant déjà modélisé, de tel manière "
+"que vous puissiez vous concentrer sur l'aspect essentiel de votre modèle."
 
 #: website/main/templates/home.html:26
 msgid ""
@@ -358,14 +376,20 @@ msgid ""
 "tools or for a fee, there is no free (as in freedom) standard parts "
 "library, yet. BOLTS tries to fill this gap."
 msgstr ""
+"Alors que de nombreux produits commerciaux offrent une bibliothèque de "
+"pièces standard dans leurs outils gratuitement ou au travers d'une option "
+"payante, il n'y a pas encore de bibliothèque de pièces standard libre. BOLTS "
+"tente de combler cette lacune."
 
 #: website/main/templates/home.html:29
 msgid "Illustration of different part sizes in a part library"
 msgstr ""
+"Illustration des différentes tailles d'une pièce dans une bibliothèque de "
+"pièces"
 
 #: website/main/templates/home.html:34
 msgid "How does BOLTS work?"
-msgstr ""
+msgstr "Comment fonctionne BOLTS ?"
 
 #: website/main/templates/home.html:35
 msgid ""
@@ -373,6 +397,9 @@ msgid ""
 "provide. This allows to obtain a huge number of different sizes and "
 "variants of a part from a single model."
 msgstr ""
+"BOLTS apporte les capacités paramétriques apporté par la plupart des "
+"logiciels CAO. Ce qui permet un grand nombre de tailles et de versions d'un "
+"type de pièce à partir d'un modèle unique."
 
 #: website/main/templates/home.html:36
 msgid ""
@@ -382,10 +409,14 @@ msgid ""
 "(\"BOLTS for ...\") for different CAD tools, that the user just can "
 "simply download and use."
 msgstr ""
+"Les dimensions et métadonnées de toutes les tailles et versions du type de "
+"pièce sont stockés dans des fichiers spécifique."
 
 #: website/main/templates/home.html:37
 msgid "So in a sense BOLTS is a tool to create standard parts libraries."
 msgstr ""
+"Donc dans un sens BOLTS est un outils pour créer des bibliothèques de pièces "
+"standard."
 
 #: website/main/templates/home.html:40
 msgid ""
@@ -393,10 +424,13 @@ msgid ""
 "specific data for a CAD system are used to create a standard library for "
 "this system"
 msgstr ""
+"Représentation schématique de comment les données indépendantes d'arrière-"
+"plant et les données spécifiques d'arrière-plant sont utilisées pour créer "
+"une bibliothèque standard dans un système"
 
 #: website/main/templates/home.html:45
 msgid "How can I help?"
-msgstr ""
+msgstr "Comment puis-je aider ?"
 
 #: website/main/templates/home.html:46
 #, python-format
@@ -405,6 +439,9 @@ msgid ""
 "by adding dimensions and metadata for new parts, or by creating drawings "
 "for the <a href=\"%(url)s\">online part directory</a>."
 msgstr ""
+"Vous pouvez aider BOLTS en modélisant des pièces pour un des logiciels CAO "
+"supporté, en ajoutant les dimensions et métadonnées d'une nouvelle pièce, ou "
+"en créant les plans pour <a href=\"%(url)s\">online part directory</a>."
 
 #: website/main/templates/home.html:47
 #, python-format
@@ -414,10 +451,14 @@ msgid ""
 "page</a>, it has more information and links to detailed descriptions of "
 "the different tasks."
 msgstr ""
+"Ces tâches sont relativement faciles, et la plupart ne demande pas de "
+"compétence en programmation. Pour en savoir plus, lire <a href=\"%(url)s\">"
+"this page</a>, il y a de plus amples informations et des liens vers des "
+"descriptions détaillés des différentes tâches."
 
 #: website/main/templates/home.html:50
 msgid "Statistics"
-msgstr ""
+msgstr "statistiques"
 
 #: website/main/templates/home.html:52
 #, python-format
@@ -446,7 +487,7 @@ msgstr ""
 
 #: website/main/templates/home.html:62
 msgid "Quickstart: Using BOLTS for OpenSCAD"
-msgstr ""
+msgstr "Prise en main: Utiliser BOLTS pour OpenSCAD"
 
 #: website/main/templates/home.html:63
 #, python-format
@@ -459,6 +500,12 @@ msgid ""
 " your OpenSCAD library path</a> to make sure OpenSCAD can find BOLTS.  "
 "Then add this at the top of your scad file:"
 msgstr ""
+"Télécharger l'archive avec BOLTS pour <a href=\"http://www.openscad.org/\""
+">OpenSCAD</a> a partir de la <a href=\"%(url)s\">page de téléchargement</a> "
+"et l'extraire dans un dossier. Démarrer OpenSCAD depuis de dossier ou <a "
+"href=\"http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries\">Ajuster "
+"votre chemin des bibliothèques</a> dans OpenSCAD pour être sur qu'il trouve "
+"BOLTS. Puis ajouter ceci au début de vos fichier scad :"
 
 #: website/main/templates/home.html:67
 #, python-format
@@ -466,19 +513,22 @@ msgid ""
 "You can now use BOLTS to add standard parts like a <a "
 "href=\"%(url)s\">washer</a>:"
 msgstr ""
+"Vous pouvez maintenant utiliser BOLTS pour ajouter des pièces standard comme "
+"une <a href=\"%(url)s\">rondelle</a> :"
 
 #: website/main/templates/home.html:71 website/main/templates/home.html:83
 #, python-format
 msgid "For more information see the <a href=\"%(url)s\">Documentation</a>"
 msgstr ""
+"Pour plus d'informations regarder la <a href=\"%(url)s\">Documentation</a>"
 
 #: website/main/templates/home.html:74
 msgid "Screenshot of a bolt from BOLTS in OpenSCAD"
-msgstr ""
+msgstr "Copie d'écran d'un boulon depuis BOLTS dans OpenSCAD"
 
 #: website/main/templates/home.html:79
 msgid "Quickstart: Using BOLTS for FreeCAD"
-msgstr ""
+msgstr "Prise en main: Utiliser BOLTS pour FreeCAD"
 
 #: website/main/templates/home.html:80
 #, python-format
@@ -490,26 +540,37 @@ msgid ""
 "preferences dialog on the macro tab. You also have to make sure to have "
 "<a href=\"https://bitbucket.org/xi/pyyaml\">pyyaml</a> installed."
 msgstr ""
+"Télécharger l'archive avec BOLTS pour <a href=\"http://freecadweb.org/\""
+">FreeCAD</a> à partir <a href=\"%(url)s\">Downloads page</a> et l'extraire "
+"dans le dossier des macro de FreeCAD. Si vous ne savez pas ou c'est, vous "
+"pouvez regarder dans la fenêtre de préférence dans l'onglet macro. vous "
+"devez aussi vous assurer d'avoir <a href=\"https://bitbucket.org/xi/pyyaml\""
+">pyyaml</a> installé."
 
 #: website/main/templates/home.html:81
 msgid ""
 "After starting FreeCAD, choose <code>Macros</code> from the "
 "<code>Macro</code> menu and execute the <code>start_bolts.FCMacro</code>"
 msgstr ""
+"Après avoir démarré FreeCAD, choisir <code>Macros</code> dans le menu "
+"<code>Macro</code> et exécuter <code>start_bolts.FCMacro</code>"
 
 #: website/main/templates/home.html:82
 msgid ""
 "A widget should appear. There you can select a part from the tree, give "
 "values for the parameters and add it to the current document."
 msgstr ""
+"Une fenêtre devrait apparaître. Vous pouvez y sélectionner une pièce dans "
+"l'arborescence, donner des valeurs à ses paramètres et l'ajouter au document "
+"en cours."
 
 #: website/main/templates/home.html:86
 msgid "Screenshot of a ball bearing from BOLTS in FreeCAD"
-msgstr ""
+msgstr "Copie d'écran d'un roulement depuis BOLTS dans FreeCAD"
 
 #: website/main/templates/home.html:91
 msgid "Quickstart: Using BOLTS for IGES"
-msgstr ""
+msgstr "Prise en main: Utiliser BOLTS pour IGES"
 
 #: website/main/templates/home.html:92
 #, python-format
@@ -519,6 +580,10 @@ msgid ""
 "href=\"%(url)s\">Downloads page</a> and extract it into a folder. This "
 "can require several hundred MByte of space."
 msgstr ""
+"Télécharger l'archive avec BOLTS pour <a href=\"http://en.wikipedia.org/wiki/"
+"IGES\">IGES</a> a partir <a href=\"%(url)s\">Downloads page</a> et "
+"l'extraire dans un dossier. Ceci peut nécessité plusieurs centaines de MByte "
+"d'espace."
 
 #: website/main/templates/home.html:93
 msgid ""
@@ -526,6 +591,10 @@ msgid ""
 "The details depend on the specific application, but usually one has to "
 "open or import a IGES file to be able to use the part."
 msgstr ""
+"IGES est un format très largement supporté, quasiment tout les outils CAO "
+"peuvent l'utiliser. Les détails dépendent du logiciel spécifiquement, mais "
+"habituellement on doit ouvrir ou importer un fichier IGES pour être en "
+"mesure d'utiliser la pièce."
 
 #: website/main/templates/home.html:94
 #, python-format
@@ -535,71 +604,77 @@ msgid ""
 "sizes or variants of all parts are available in BOLTS for IGES, if you "
 "miss something <a href=\"%(url2)s\">get in touch</a>."
 msgstr ""
+"Les fichiers sont structurés en sous-répertoires, qui correspondent aux "
+"collections affichés <a href=\"%(url1)s\">dans la liste des pièces</a>. "
+"Toutes les tailles et versions ne sont pas disponible dans BOLTS pour IGES, "
+"S'il vous manque quelque chose <a href=\"%(url2)s\">get in touch</a>."
 
 #: website/main/templates/home.html:97
 msgid ""
 "Illustrative screenshot of the many individual files in the IGES "
 "distribution of BOLTS"
 msgstr ""
+"Copie d'écran illustrant les nombreux fichiers individuel dans la version "
+"IGES de BOLTS"
 
 #: website/parts/__init__.py:48
 msgid "Author"
 msgid_plural "Authors"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Auteur"
+msgstr[1] "Auteurs"
 
 #: website/parts/__init__.py:87 website/parts/__init__.py:123
 #: website/parts/__init__.py:171 website/parts/__init__.py:181
 #: website/parts/__init__.py:231 website/parts/__init__.py:273
 #: website/parts/__init__.py:285
 msgid "License"
-msgstr ""
+msgstr "License"
 
 #: website/parts/__init__.py:124 website/parts/__init__.py:232
 msgid "Collection"
-msgstr ""
+msgstr "Collection"
 
 #: website/parts/__init__.py:128 website/parts/__init__.py:236
 msgid "Identical to"
-msgstr ""
+msgstr "Identique à"
 
 #: website/parts/__init__.py:130
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: website/parts/__init__.py:131
 msgid "Standard body"
-msgstr ""
+msgstr "corps standard"
 
 #: website/parts/__init__.py:133
 msgid "Replaces"
-msgstr ""
+msgstr "Remplace"
 
 #: website/parts/__init__.py:135
 msgid "Replaced by"
-msgstr ""
+msgstr "Remplacé par"
 
 #: website/parts/__init__.py:139 website/parts/__init__.py:241
 msgid "Source"
-msgstr ""
+msgstr "Source"
 
 #: website/parts/__init__.py:159 website/parts/__init__.py:261
 msgid "Parameter Name"
-msgstr ""
+msgstr "Nom du paramètre"
 
 #: website/parts/__init__.py:159 website/parts/__init__.py:261
 #: website/parts/templates/parts/name.html:17
 #: website/parts/templates/parts/standard.html:15
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: website/parts/__init__.py:202 website/parts/__init__.py:306
 msgid "Location"
-msgstr ""
+msgstr "Emplacement"
 
 #: website/parts/__init__.py:202 website/parts/__init__.py:306
 msgid "Drawing"
-msgstr ""
+msgstr "Plan"
 
 #: website/parts/templates/parts/body.html:4
 #, python-format
@@ -608,30 +683,30 @@ msgstr ""
 
 #: website/parts/templates/parts/index.html:6
 msgid "Collections"
-msgstr ""
+msgstr "Collections"
 
 #: website/parts/templates/parts/index.html:14
 msgid "Standardisation bodies"
-msgstr ""
+msgstr "Organismes de normalisation"
 
 #: website/parts/templates/parts/name.html:7
 #: website/parts/templates/parts/standard.html:8
 msgid "Drawings"
-msgstr ""
+msgstr "Plans"
 
 #: website/parts/templates/parts/name.html:11
 msgid "No drawing found"
-msgstr ""
+msgstr "Pas de plan trouvé"
 
 #: website/parts/templates/parts/name.html:14
 #: website/parts/templates/parts/standard.html:11
 msgid "Parameters"
-msgstr ""
+msgstr "Paramètres"
 
 #: website/parts/templates/parts/name.html:24
 #: website/parts/templates/parts/standard.html:22
 msgid "This part is not availaible for FreeCAD"
-msgstr ""
+msgstr "Cette pièce c'est pas disponible pour FreeCAD"
 
 #: website/parts/templates/parts/name.html:30
 #: website/parts/templates/parts/standard.html:28
@@ -646,7 +721,7 @@ msgstr ""
 #: website/parts/templates/parts/name.html:37
 #: website/parts/templates/parts/standard.html:35
 msgid "This part is not availaible for OpenSCAD"
-msgstr ""
+msgstr "Cette pièce n'est disponible pour OpenSCAD"
 
 #: website/parts/templates/parts/name.html:40
 #: website/parts/templates/parts/standard.html:38
@@ -655,82 +730,82 @@ msgstr ""
 
 #: website/search/__init__.py:149
 msgid "title"
-msgstr ""
+msgstr "Titre"
 
 #: website/search/templates/search.html:5 website/templates/base.html:31
 msgid "Search"
-msgstr ""
+msgstr "Recherche"
 
 #: website/search/templates/search.html:11
 msgid "Search the BOLTS website"
-msgstr ""
+msgstr "Recherche sur le site web de BOLTS"
 
 #: website/search/templates/search.html:22
 msgid "Part results"
-msgstr ""
+msgstr "Résultat pièce"
 
 #: website/search/templates/search.html:26
 #: website/search/templates/search.html:41
 msgid "Page"
-msgstr ""
+msgstr "Page"
 
 #: website/search/templates/search.html:26
 msgid "Category"
-msgstr ""
+msgstr "Catégorie"
 
 #: website/search/templates/search.html:33
 #: website/search/templates/search.html:48
 #: website/search/templates/search.html:53
 msgid "No results found"
-msgstr ""
+msgstr "Pas de résultat trouvé"
 
 #: website/search/templates/search.html:37
 msgid "Documentation results"
-msgstr ""
+msgstr "Résultat documentation"
 
 #: website/search/templates/search.html:41
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: website/templates/base.html:19
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Changer la navigation"
 
 #: website/templates/base.html:27
 msgid "Parts"
-msgstr ""
+msgstr "Pièces"
 
 #: website/templates/base.html:28
 msgid "Documentation"
-msgstr ""
+msgstr "Documentation"
 
 #: website/templates/base.html:29
 msgid "Contribute"
-msgstr ""
+msgstr "Contribuer"
 
 #: website/templates/base.html:30
 msgid "Downloads"
-msgstr ""
+msgstr "Téléchargements"
 
 #: website/templates/base.html:37
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 #: website/templates/base.html:38
 msgid "German"
-msgstr ""
+msgstr "Allemand"
 
 #: website/templates/base.html:39
 msgid "French"
-msgstr ""
+msgstr "Français"
 
 #: website/templates/base.html:40
 msgid "Spanish"
-msgstr ""
+msgstr "Espagnol"
 
 #: website/templates/base.html:41
 msgid "Swedish"
-msgstr ""
+msgstr "Suédois"
 
 #: website/templates/base.html:57
 msgid ""
@@ -740,10 +815,14 @@ msgid ""
 "jekyll-theme\">design</a> by <a "
 "href=\"http://wolfslittlestore.be\">Wolf's Little Store</a>"
 msgstr ""
+"Image de titre par <a href=\"https://www.flickr.com/photos/dkpphotography/"
+"9468970843\">Dhruv Patel</a>, thème basé sur un <a href=\""
+"https://github.com/Wolfr/cactus-jekyll-theme\">design</a> par <a href=\""
+"http://wolfslittlestore.be\">Wolf's Little Store</a>"
 
 #: website/templates/error.html:13
 msgid "Rusty nuts and bolts"
-msgstr ""
+msgstr "Écrous et boulons rouillés"
 
 #~ msgid "BOLTS is an Open Library of Technical Specifications."
 #~ msgstr ""
