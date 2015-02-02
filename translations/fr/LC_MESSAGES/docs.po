@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-30 17:05+0100\n"
-"PO-Revision-Date: 2015-01-31 12:32+0000\n"
+"PO-Revision-Date: 2015-02-02 17:45+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "docs/fr/>\n"
@@ -81,14 +81,14 @@ msgstr ""
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "The installation is now complete."
-msgstr ""
+msgstr "L'installation est maintenant terminé."
 
 #. docs/0.4/freecad/installation
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/installation
 #. docs/0.3/freecad/toolbar
 msgid "### Try it"
-msgstr ""
+msgstr "### Essaye-le"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -99,16 +99,21 @@ msgid ""
 "click on\n"
 "execute."
 msgstr ""
+"Démarrer FreeCAD et choisir <code>Macros</code> dans le menu "
+"<code>Macro</code>.\n"
+"Dans la fenêtre qui apparaît sélectionner <code>start_bolts.FCMacro</code> "
+"et cliquer sur\n"
+"exécuter."
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "If you get an error that says something like:"
-msgstr ""
+msgstr "Si vous avez un erreur disant quelque chose comme ceci :"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "    No module named yaml"
-msgstr ""
+msgstr "    Pas de module nommé yaml"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -127,11 +132,24 @@ msgid ""
 "it\n"
 "visible by checking it in the Menu View under point Views."
 msgstr ""
+"alors c'est que la bibliothèque yaml pour python n'est pas installé. si "
+"vous\n"
+"utilisez linux, vous pouvez souvent l'obtenir a partir du gestionnaire de "
+"paquet. si vous↵\n"
+"utilisez windows vous pouvez récupérer l'installateur "
+"[ici](http://pyyaml.org/wiki/PyYAML); vous↵\n"
+"devez installer YAML pour la version de Python (les deux premier chiffres) "
+"qui est↵\n"
+"distribué avec FreeCAD. Vous pouvez retrouver quelle version est utilisé à "
+"la première↵\n"
+"ligne de la console python de FreeCAD. Si elle n'est pas ouverte, vous "
+"pouvez↵\n"
+"la faire apparaître en la cochant dans le Menu Affichage dans Vues."
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "    No module named importlib"
-msgstr ""
+msgstr "    Pas de module nommé importlib"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -147,16 +165,27 @@ msgid ""
 " the\n"
 "version for the python version bundled with FreeCAD."
 msgstr ""
+"C'est parce que vous utilisez une ancienne version de python ne comportant "
+"pas\n"
+"la bibliothèque importlib. Vous pouvez la récupérer "
+"[ici](https://pypi.python.org/pypi/importlib/1.0.2).\n"
+"Il n'y a pas d'installateur d'importlib disponible spécialement pour "
+"windows. Les instructins↵\n"
+"pour installer un module python qui ne possede pas d'instalateur est donné↵\n"
+"[ici](http://docs.python.org/2/install/index.html). Encore une fois vous "
+"devez utiliser\n"
+"la même version de python que celle distribué avec FreeCAD."
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "If you get a message that says"
-msgstr ""
+msgstr "Si vous obtenez un message disant"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "    uic import failed. Make sure that the pyside tools are installed"
 msgstr ""
+"    l'importation uic a échoué. Vérifier que l'outil pyside est installé"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
