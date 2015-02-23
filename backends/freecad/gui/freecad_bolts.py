@@ -344,8 +344,7 @@ class BoltsWidget(QBoltsWidget):
 				if params[key] is None:
 					#A undefined value is not necessarily fatal
 					continue
-				revision = int(FreeCAD.Version()[2].split()[0])
-				if revision >= 2836:
+				if hasattr(FreeCAD.Units, "parseQuantity"):
 					params[key] = FreeCAD.Units.parseQuantity("%g %s" %
 						(params[key], lengths[tp])).Value
 				else:
