@@ -26,6 +26,8 @@ Start FreeCAD and choose <code>Macros</code> from the <code>Macro</code> menu.
 In the dialog that pops up select <code>start_bolts.FCMacro</code> and click on
 execute.
 
+### Troubleshooting
+
 If you get an error that says something like:
 
     No module named yaml
@@ -56,10 +58,21 @@ If you get a message that says
 then there is a part of the PySide Qt bindings missing. For Debian and Ubuntu
 this is contained in the package pyside-tools.
 
+### Windows
+
+On Windows it is sometimes necessary to copy the python dependencies to
+
+    <path to FreeCAD installation>\bin\Lib\site-packages
+
+so that they are picked up by the python version shipped with FreeCAD. See also
+[this
+thread](http://forum.freecadweb.org/viewtopic.php?f=8&t=4549&start=240#p80010)
+in the FreeCAD forums.
+
 If you get different errors, than please try the latest development snapshot.
-If it still does not work, please report that problem. The simplest way to do
-so is to use the comments below, but there is a number of of other places where
-you can report problems, a list can be found
+If it still does not work, please report that problem, and help me figure it
+out. The simplest way to do so is to use the comments below, but there is a
+number of of other places where you can report problems, a list can be found
 [on the contribute page]({{ url(main.contribute) }}).
 
 ### Next steps
