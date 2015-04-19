@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-30 17:05+0100\n"
-"PO-Revision-Date: 2015-02-01 11:27+0000\n"
+"PO-Revision-Date: 2015-04-19 14:13+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "messages/fr/>\n"
@@ -276,6 +276,8 @@ msgid ""
 "provided inspiration for BOLTS with his Mendel90 and his work sparked my "
 "fascination for 3D printers."
 msgstr ""
+"A donné de l'inspiration pour BOLTS avec sa Mendel90 et son travail qui a "
+"suscité ma fascination pour les imprimantes 3D."
 
 #: website/main/templates/contributors.html:27
 msgid "served as another source of inspiration."
@@ -414,7 +416,11 @@ msgid ""
 "simply download and use."
 msgstr ""
 "Les dimensions et métadonnées de toutes les tailles et versions du type de "
-"pièce sont stockés dans des fichiers spécifique."
+"pièce sont stockés dans des fichiers spécifique. BOLTS peut ensuite utiliser "
+"ces données et le modèle paramétrique de la pièce pour construire "
+"automatiquement les bibliothèques de pièces standard (\"BOLTS pour ...\") "
+"pour différents outils CAO, que l'utilisateur peut simplement télécharger et "
+"utiliser."
 
 #: website/main/templates/home.html:37
 msgid "So in a sense BOLTS is a tool to create standard parts libraries."
@@ -445,7 +451,8 @@ msgid ""
 msgstr ""
 "Vous pouvez aider BOLTS en modélisant des pièces pour un des logiciels CAO "
 "supporté, en ajoutant les dimensions et métadonnées d'une nouvelle pièce, ou "
-"en créant les plans pour <a href=\"%(url)s\">online part directory</a>."
+"en créant les plans pour la <a href=\"%(url)s\">bibliothèque de pièces en "
+"ligne</a>."
 
 #: website/main/templates/home.html:47
 #, python-format
@@ -457,12 +464,12 @@ msgid ""
 msgstr ""
 "Ces tâches sont relativement faciles, et la plupart ne demande pas de "
 "compétence en programmation. Pour en savoir plus, lire <a href=\"%(url)s\">"
-"this page</a>, il y a de plus amples informations et des liens vers des "
+"cette page</a>, il y a de plus amples informations et des liens vers des "
 "descriptions détaillés des différentes tâches."
 
 #: website/main/templates/home.html:50
 msgid "Statistics"
-msgstr "statistiques"
+msgstr "Statistiques"
 
 #: website/main/templates/home.html:52
 #, python-format
@@ -477,12 +484,12 @@ msgstr ""
 #: website/main/templates/home.html:54
 #, python-format
 msgid " %(n)s <a href=\"%(url)s\">collections</a> following"
-msgstr ""
+msgstr " %(n)s <a href=\"%(url)s\">collections</a> suivantes"
 
 #: website/main/templates/home.html:55
 #, python-format
 msgid "%(n)s different standards issued by"
-msgstr ""
+msgstr "%(n)s normes différentes émises par"
 
 #: website/main/templates/home.html:56
 #, python-format
@@ -545,11 +552,11 @@ msgid ""
 "<a href=\"https://bitbucket.org/xi/pyyaml\">pyyaml</a> installed."
 msgstr ""
 "Télécharger l'archive avec BOLTS pour <a href=\"http://freecadweb.org/\""
-">FreeCAD</a> à partir <a href=\"%(url)s\">Downloads page</a> et l'extraire "
-"dans le dossier des macro de FreeCAD. Si vous ne savez pas ou c'est, vous "
-"pouvez regarder dans la fenêtre de préférence dans l'onglet macro. vous "
-"devez aussi vous assurer d'avoir <a href=\"https://bitbucket.org/xi/pyyaml\""
-">pyyaml</a> installé."
+">FreeCAD</a> à partir de la <a href=\"%(url)s\">page de Téléchargement</a> "
+"et l'extraire dans le dossier des macro de FreeCAD. Si vous ne savez pas ou "
+"c'est, vous pouvez regarder dans la fenêtre de préférence dans l'onglet "
+"macro. vous devez aussi vous assurer d'avoir <a href=\""
+"https://bitbucket.org/xi/pyyaml\">pyyaml</a> installé."
 
 #: website/main/templates/home.html:81
 msgid ""
@@ -585,9 +592,9 @@ msgid ""
 "can require several hundred MByte of space."
 msgstr ""
 "Télécharger l'archive avec BOLTS pour <a href=\"http://en.wikipedia.org/wiki/"
-"IGES\">IGES</a> a partir <a href=\"%(url)s\">Downloads page</a> et "
-"l'extraire dans un dossier. Ceci peut nécessité plusieurs centaines de MByte "
-"d'espace."
+"IGES\">IGES</a> a partir de la <a href=\"%(url)s\">page de Téléchargement</a>"
+" et l'extraire dans un dossier. Ceci peut nécessité plusieurs centaines de "
+"MByte d'espace."
 
 #: website/main/templates/home.html:93
 msgid ""
@@ -611,7 +618,7 @@ msgstr ""
 "Les fichiers sont structurés en sous-répertoires, qui correspondent aux "
 "collections affichés <a href=\"%(url1)s\">dans la liste des pièces</a>. "
 "Toutes les tailles et versions ne sont pas disponible dans BOLTS pour IGES, "
-"S'il vous manque quelque chose <a href=\"%(url2)s\">get in touch</a>."
+"S'il vous manque quelque chose <a href=\"%(url2)s\">dites le nous</a>."
 
 #: website/main/templates/home.html:97
 msgid ""
@@ -725,7 +732,7 @@ msgstr "connecteurs"
 #: website/parts/templates/parts/name.html:37
 #: website/parts/templates/parts/standard.html:35
 msgid "This part is not availaible for OpenSCAD"
-msgstr "Cette pièce n'est disponible pour OpenSCAD"
+msgstr "Cette pièce n'est pas disponible pour OpenSCAD"
 
 #: website/parts/templates/parts/name.html:40
 #: website/parts/templates/parts/standard.html:38
