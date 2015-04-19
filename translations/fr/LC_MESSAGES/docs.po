@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-30 17:05+0100\n"
-"PO-Revision-Date: 2015-02-02 17:45+0000\n"
+"PO-Revision-Date: 2015-04-19 14:10+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "docs/fr/>\n"
@@ -170,8 +170,9 @@ msgstr ""
 "la bibliothèque importlib. Vous pouvez la récupérer "
 "[ici](https://pypi.python.org/pypi/importlib/1.0.2).\n"
 "Il n'y a pas d'installateur d'importlib disponible spécialement pour "
-"windows. Les instructins↵\n"
-"pour installer un module python qui ne possede pas d'instalateur est donné↵\n"
+"windows. Les instructions↵\n"
+"pour installer un module python qui ne possède pas d’installateur est donné↵"
+"\n"
 "[ici](http://docs.python.org/2/install/index.html). Encore une fois vous "
 "devez utiliser\n"
 "la même version de python que celle distribué avec FreeCAD."
@@ -194,6 +195,9 @@ msgid ""
 "Ubuntu\n"
 "this is contained in the package pyside-tools."
 msgstr ""
+"alors c'est qu'il manque un élément de PySide pour la liaison Qt. Pour "
+"Debian et Ubuntu↵\n"
+"il est contenu dans le paquet pyside-tools."
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -207,6 +211,14 @@ msgid ""
 "you can report problems, a list can be found\n"
 "[on the contribute page]({{ url(main.contribute) }})."
 msgstr ""
+"Si vous avez d'autres erreurs, essayez la dernière version de développement."
+"\n"
+"Si ca ne fonctionne toujours pas, merci de rapporter le problème. Le plus "
+"simple\n"
+"est d'utiliser les commentaires si dessous, mais il y a de nombreux autres "
+"endroits ou\n"
+"vous pouvez rapporter un problème, une liste se trouve↵\n"
+"[sur la page Contribuer]({{ url(main.contribute) }})."
 
 #. docs/0.4/freecad/installation
 #. docs/0.4/freecad/basefunction
@@ -217,7 +229,7 @@ msgstr ""
 #. docs/0.3/freecad/basefunction
 #. docs/0.3/freecad/toolbar
 msgid "### Next steps"
-msgstr ""
+msgstr "### Étape suivante"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -226,12 +238,16 @@ msgid ""
 "}}), or\n"
 "you can read [how to use BOLTS for FreeCAD]({{ doc(freecad,usage) }}).\n"
 msgstr ""
+"Si vous le souhaitez, vous pouvez [definir un bouton dans la barre "
+"d'outils]({{ doc(freecad,toolbar) }}), ou\n"
+"vous pouvez lire [comment utiliser BOLTS pour FreeCAD]({{ doc(freecad,usage) "
+"}}).\n"
 
 #. document title
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
 msgid "Using BOLTS for FreeCAD"
-msgstr ""
+msgstr "Utiliser BOLTS pour FreeCAD"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -240,11 +256,14 @@ msgid ""
 "You need to have [installed BOLTS for FreeCAD]({{ "
 "doc(freecad,installation) }})."
 msgstr ""
+"\n"
+"Vous avez besoin d'avoir [installé BOLTS pour FreeCAD]({{ "
+"doc(freecad,installation) }})."
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
 msgid "### Starting the part selector using the macro"
-msgstr ""
+msgstr "### Démarrer le sélecteur de pièce avec une macro"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -252,11 +271,14 @@ msgid ""
 "Choose <code>Macros</code> from the <code>Macro</code> menu and execute\n"
 "<code>start_bolts.FCMacro</code>."
 msgstr ""
+"Choisir <code>Macros</code> depuis le menu <code>Macro</code> et executer\n"
+"<code>start_bolts.FCMacro</code>."
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
 msgid "### Starting the parts selector using a toolbar button"
 msgstr ""
+"### Démarrer le sélecteur de pièce avec le bouton dans la barre d'outils"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -265,16 +287,19 @@ msgid ""
 " start\n"
 "the part selector by simply clicking on the button"
 msgstr ""
+"Si vous avez [défini un bouton dans la barre d'outils]({{ "
+"doc(freecad,toolbar) }}), vous pouvez démarrer\n"
+"le sélecteur de pièces en cliquant simplement sur le bouton"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
 msgid "### The different elements of the part selector"
-msgstr ""
+msgstr "### Les différents éléments du sélecteur de pièces"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
 msgid "The available parts are sorted in two ways:"
-msgstr ""
+msgstr "Les pièces disponibles sont triées de deux façons:"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -282,6 +307,8 @@ msgid ""
 "1. thematically by collections\n"
 "2. by the standardization organisation if standardized"
 msgstr ""
+"1. thématiquement par collections\n"
+"2. par l'organisme de normalisation si normalisé"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -292,6 +319,10 @@ msgid ""
 "selection\n"
 "are displayed."
 msgstr ""
+"En développant arborescence on peut naviguer dans les pièces disponibles. "
+"Dans la zone\n"
+"entre l’arborescence et le bouton s'affiche les informations sur la "
+"sélection en cours."
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -299,6 +330,8 @@ msgid ""
 "[<img alt=\"Expanded treeview\" src=\"{{ static(partsselector2.png) }}\" "
 "/>]({{ static(partsselector2.png) }})"
 msgstr ""
+"[<img alt=\"Arborescence développée\" src=\"{{ static(partsselector2.png) }}"
+"\" />]({{ static(partsselector2.png) }})"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -309,11 +342,16 @@ msgid ""
 "collection,\n"
 "once in the list of {{ body(DIN) }} standards."
 msgstr ""
+"Vous pouvez voir que certaines pièces (comme {{ standard(DIN931) }}, {{ "
+"standard(DIN933) }})\n"
+"sont visible deux fois dans cette capture d'écran, une fois dans la "
+"collection hexagon fastener,\n"
+"une fois dans la liste du standard {{ body(DIN) }}."
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
 msgid "### Specify parameters and insert the part"
-msgstr ""
+msgstr "### Spécifier les paramètres et insérer la pièce"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -324,6 +362,11 @@ msgid ""
 "allow to\n"
 "give values for the parameters of the part that are not yet specify."
 msgstr ""
+"Si vous sélectionnez une pièce, par exemple {{ standard(ISO4017) }}, un "
+"autre hexagon\n"
+"fastener, en dessous de la zone d'informations des éléments complémentaires "
+"apparaissent qui permettent de\n"
+"donner les valeurs aux paramètres de la pièces pas encore spécifiée."
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -333,6 +376,11 @@ msgid ""
 "The navigation of the [specification pages]({{ url(parts.index) }})\n"
 "is structured in the same way as the navigation in the parts selector."
 msgstr ""
+"Pour connaître le sens des paramètres, on peut consulter la\n"
+"[page de spécification BOLTS pour cette pièce]({{ standard_url(ISO4017) }})."
+"\n"
+"La navigation au seins des [pages de spécification]({{ url(parts.index) }})\n"
+"est structuré de la même façon que celle dans le sélecteur de pièces."
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -344,6 +392,13 @@ msgid ""
 "only\n"
 "accepts positive numbers."
 msgstr ""
+"Dans le cas d'{{ standard(ISO4017) }}, on a besoin de donner une longueur et "
+"un\n"
+"diamètre. Le diamètre peut être choisi depuis le menu-liste déroulant qui "
+"contient l'ensemble\n"
+"des choix connu de BOLTS, la longueur peut être entré dans la ligne "
+"d'édition. Il accepte\n"
+"seulement des valeurs positives."
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -356,6 +411,12 @@ msgid ""
 " of\n"
 "all the parameters we have specified."
 msgstr ""
+"Une fois les paramètres spécifiés, La pièce peut être insérée dans le "
+"document\n"
+"actif en cliquant sur le bouton `Add part`. Dans la vue combo sur le coté "
+"droit\n"
+"vous pouvez voir que le label de l’objet donne le standard et la valeur de \n"
+"tout les paramètres que l'on a spécifié."
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -363,6 +424,8 @@ msgid ""
 "[<img alt=\"Expanded treeview\" src=\"{{ static(partsselector3.png) }}\" "
 "/>]({{ static(partsselector3.png) }})\n"
 msgstr ""
+"[<img alt=\"Arborescence développée\" src=\"{{ static(partsselector3.png) }}"
+"\" />]({{ static(partsselector3.png) }})\n"
 
 #. document title
 #. docs/0.4/freecad/basefunction
@@ -691,7 +754,7 @@ msgstr ""
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
 msgid "Set up a toolbar button for BOLTS"
-msgstr ""
+msgstr "Créer un bouton pour BOLTS dans la barre d'outils"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -701,6 +764,9 @@ msgid ""
 "the FreeCAD "
 "wiki](http://freecadweb.org/wiki/index.php?title=Macros_recipes#How_to_use.3F)."
 msgstr ""
+"\n"
+"Ceci est une version adapté et étendu de la [description du wiki de FreeCAD]("
+"http://freecadweb.org/wiki/index.php?title=Macros_recipes#How_to_use.3F)."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -708,11 +774,13 @@ msgid ""
 "You need to have [installed BOLTS for FreeCAD]({{ "
 "doc(freecad,installation) }})."
 msgstr ""
+"Vous avez besoin d'avoir [installé BOLTS pour FreeCAD]({{ "
+"doc(freecad,installation) }})."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
 msgid "### Open the Customize dialog"
-msgstr ""
+msgstr "### Ouvrir la boîte de dialogue Personnaliser"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -722,11 +790,15 @@ msgid ""
 "message make sure you have [BOLTS for FreeCAD installed]({{ "
 "doc(freecad,installation)}})."
 msgstr ""
+"On peut la trouver dans Outils->Personnaliser. Sélectionner l'onglet Macros. "
+"Si vous obtenez un\n"
+"message d'erreur vérifier que vous avez [BOLTS pour FreeCAD installé]({{ "
+"doc(freecad,installation)}})."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
 msgid "### Select the macro and fill in fields"
-msgstr ""
+msgstr "### Sélectionnez la macro et remplir les champs"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -736,6 +808,10 @@ msgid ""
 "can be filled with `start BOLTS standard parts library` or something "
 "similar."
 msgstr ""
+"Sélectionner `start_bolts.FCMacro` depuis la liste du menu-déroulant . Les "
+"différents champs\n"
+"peuvent être remplis par `Démarrer BOLTS bibliothèque de pièces standard` ou "
+"quelque chose de similaire."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -748,11 +824,18 @@ msgid ""
 "the\n"
 "golden bolt icon with filename `bolts32.png`."
 msgstr ""
+"Puis cliquer sur les trois points a coté de Pixmap, choisir Dossier d'icônes "
+"et ajouter \n"
+"le dossier de BOLTS situé dans votre répertoire de macro (ceci peut s’avérer "
+"compliqué étant donné que le dossier de macro \n"
+"est caché). Ajouter les icônes du dossier en cliquant sur `Ouvrir`. Enfin "
+"choisissez\n"
+"l'icône doré en forme de boulon nommée `bolts32.png`."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
 msgid "When you are done, it should look like this:"
-msgstr ""
+msgstr "Lorsque vous avez terminé, ça devrait ressembler à ceci:"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -760,16 +843,18 @@ msgid ""
 "[<img alt=\"Filled in Customize dialog\" src=\"{{ "
 "static(toolbarbutton1.png) }}\" />]({{ static(toolbarbutton1.png) }})"
 msgstr ""
+"[<img alt=\"Boîte de dialogue personnaliser remplie\" src=\"{{ "
+"static(toolbarbutton1.png) }}\" />]({{ static(toolbarbutton1.png) }})"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
 msgid "### Confirm the custom macro"
-msgstr ""
+msgstr "### Confirmez la macro personnalisée"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
 msgid "You do this by clicking the `Add` button."
-msgstr ""
+msgstr "Vous faites cela en cliquant sur le bouton `Add`."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -780,11 +865,16 @@ msgid ""
 "them by\n"
 "clicking on the `Replace` button."
 msgstr ""
+"Si vous souhaitez changer quelque chose à posteriori, vous pouvez "
+"sélectionner la macro personnalisé dans\n"
+"la liste sur la gauche en double-cliquant, faîte vos changement, puis "
+"confirmer en\n"
+"cliquant sur le bouton `Replace`."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
 msgid "### Create a new toolbar and add the button"
-msgstr ""
+msgstr "### Créer une nouvelle barre d'outils et ajouter le bouton"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -795,6 +885,11 @@ msgid ""
 "create\n"
 "the toolbar button."
 msgstr ""
+"Dans la boîte de dialogue Personnaliser sélectionner l'onglet Barre "
+"d'outils. Dans la liste du menu déroulant de gauche\n"
+"sélectionner Macro, sur la droite sélectionner l'Atelier dans lequel vous "
+"souhaitez créer\n"
+"le bouton de la barre d'outils."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -804,6 +899,11 @@ msgid ""
 "macro can be added by selecting it in the left list and clicking on the\n"
 "right-facing arrow."
 msgstr ""
+"Puis créer une nouvelle barre d'outils en cliquant 'Nouveau...' et la nommer "
+"BOLTS. La macro\n"
+"de démarrage peut être ajouté en la sélectionnant dans la liste de gauche "
+"puis en cliquant sur\n"
+"la flèche vers la droite."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -811,11 +911,13 @@ msgid ""
 "[<img alt=\"New toolbar created and macro added\" src=\"{{ "
 "static(toolbarbutton2.png) }}\" />]({{ static(toolbarbutton2.png) }})"
 msgstr ""
+"[<img alt=\"Nouvelle barre d'outil créer et macro ajoutée\" src=\"{{ "
+"static(toolbarbutton2.png) }}\" />]({{ static(toolbarbutton2.png) }})"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
 msgid "Then close the Customize dialog."
-msgstr ""
+msgstr "Puis fermer la boîte de dialogue Personnaliser."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -824,6 +926,9 @@ msgid ""
 " Or\n"
 "switch away and back if this toolbar is currently active."
 msgstr ""
+"Passez à l'Atelier auquel vous avez ajouté la barre d'outils à l'étape "
+"précédente. Ou\n"
+"changer puis revenir si cette barre d'outils est actuellement active."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -832,6 +937,9 @@ msgid ""
 "should\n"
 "open the BOLTS standard part selector."
 msgstr ""
+"Vous devriez maintenant avoir une nouvelle barre d'outils, et un clic sur "
+"l'icône jaune en forme de boulon doit\n"
+"ouvrir le sélecteur de pièces standard BOLTS."
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
@@ -839,6 +947,8 @@ msgid ""
 "You can now learn [how to use BOLTS for FreeCAD]({{ doc(freecad,usage) "
 "}}).\n"
 msgstr ""
+"Vous pouvez maintenant apprendre [comment utiliser BOLTS pour FreeCAD]({{ "
+"doc(freecad,usage) }}).\n"
 
 #. document title
 #. docs/0.4/openscad/installation
