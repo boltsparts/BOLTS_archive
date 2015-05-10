@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-30 17:05+0100\n"
-"PO-Revision-Date: 2015-01-30 16:16+0000\n"
+"PO-Revision-Date: 2015-05-10 10:15+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: German <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "docs/de/>\n"
@@ -14,14 +14,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.2-dev\n"
 "Generated-By: Babel 1.3\n"
 
 #. document title
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "Installing BOLTS for FreeCAD"
-msgstr ""
+msgstr "Installation von BOLTS für FreeCAD"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -72,14 +72,14 @@ msgstr ""
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "The installation is now complete."
-msgstr ""
+msgstr "Die Installation ist nun fertiggestellt."
 
 #. docs/0.4/freecad/installation
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/installation
 #. docs/0.3/freecad/toolbar
 msgid "### Try it"
-msgstr ""
+msgstr "### Teste es"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -99,7 +99,7 @@ msgstr ""
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "    No module named yaml"
-msgstr ""
+msgstr "    No module named yaml"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -122,7 +122,7 @@ msgstr ""
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "    No module named importlib"
-msgstr ""
+msgstr "    No module named importlib"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -147,7 +147,7 @@ msgstr ""
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
 msgid "    uic import failed. Make sure that the pyside tools are installed"
-msgstr ""
+msgstr "    uic import failed. Make sure that the pyside tools are installed"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -179,7 +179,7 @@ msgstr ""
 #. docs/0.3/freecad/basefunction
 #. docs/0.3/freecad/toolbar
 msgid "### Next steps"
-msgstr ""
+msgstr "### Nächste Schritte"
 
 #. docs/0.4/freecad/installation
 #. docs/0.3/freecad/installation
@@ -239,7 +239,7 @@ msgstr ""
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
 msgid "The available parts are sorted in two ways:"
-msgstr ""
+msgstr "Die vorhandenen Teile sind auf zwei Arten sortiert:"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -280,7 +280,7 @@ msgstr ""
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
 msgid "### Specify parameters and insert the part"
-msgstr ""
+msgstr "### Spezifizieren Sie die Parameter und fügen das Teil ein"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -337,7 +337,7 @@ msgstr ""
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
 msgid "How to setup a base function"
-msgstr ""
+msgstr "Erstellen einer Basis-Funktion"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
@@ -369,16 +369,20 @@ msgid ""
 "\n"
 "### The function"
 msgstr ""
+"\n"
+"### Die Funktion"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
 msgid "As an example we  use the follwing function to create washers:"
 msgstr ""
+"Als Beispiel nutzen wir die folgenden Funktion um einen Unterlegscheibe zu "
+"erstellen:"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
 msgid "    import Part"
-msgstr ""
+msgstr "    import Part"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
@@ -574,6 +578,8 @@ msgid ""
 "\n"
 "command line by typing"
 msgstr ""
+"Sie sollten nun das neu hinzugefügte Teil testen. Dies geht am einfachsten "
+"in der Kommandozeile mit"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.4/general/utility-script
