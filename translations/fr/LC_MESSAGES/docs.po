@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-30 17:05+0100\n"
-"PO-Revision-Date: 2015-04-19 14:10+0000\n"
+"PO-Revision-Date: 2015-06-27 11:16+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "docs/fr/>\n"
@@ -299,7 +299,7 @@ msgstr "### Les différents éléments du sélecteur de pièces"
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
 msgid "The available parts are sorted in two ways:"
-msgstr "Les pièces disponibles sont triées de deux façons:"
+msgstr "Les pièces disponibles sont triées de deux façons :"
 
 #. docs/0.4/freecad/usage
 #. docs/0.3/freecad/usage
@@ -431,7 +431,7 @@ msgstr ""
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
 msgid "How to setup a base function"
-msgstr ""
+msgstr "Comment définir une fonction de base"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
@@ -440,6 +440,9 @@ msgid ""
 "You need to have FreeCAD and [FreeCAD for BOLTS installed]({{ "
 "doc(freecad, installation) }})."
 msgstr ""
+"\n"
+"Vous avez besoin d'avoir FreeCAD et [BOLTS pour FreeCAD installé]({{ doc("
+"freecad, installation) }})."
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
@@ -453,6 +456,14 @@ msgid ""
 "the [FreeCAD documentation on this "
 "topic](http://freecadweb.org/wiki/index.php?title=Power_users_hub)."
 msgstr ""
+"On suppose que le [fichier blt]({{ doc(general, blt-files) }})  pour cette "
+"pièce\n"
+"est déjà créée, et que vous avez la fonction python de création de la pièce "
+"que\n"
+"vous voulez ajouter à BOLTS. Pour plus d'informations concernant la création "
+"de pièces au moyen d'un script dans FreeCAD voir\n"
+"la [documentation FreeCAD dans ce "
+"sujet](http://freecadweb.org/wiki/index.php?title=Power_users_hub)."
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
@@ -460,16 +471,19 @@ msgid ""
 "\n"
 "### The function"
 msgstr ""
+"\n"
+"↵\n"
+"### La fonction"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
 msgid "As an example we  use the follwing function to create washers:"
-msgstr ""
+msgstr "On utilise la fonction suivant de création d'un boulon comme exemple :"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
 msgid "    import Part"
-msgstr ""
+msgstr "    import Part"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
@@ -481,6 +495,12 @@ msgid ""
 "        s = params['s']\n"
 "        name = params['name']"
 msgstr ""
+"    def washer1(params,document):\n"
+"        key = params['key']\n"
+"        d1 = params['d1']\n"
+"        d2 = params['d2']\n"
+"        s = params['s']\n"
+"        name = params['name']"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
@@ -490,6 +510,10 @@ msgid ""
 "        inner = Part.makeCylinder(d1,s)\n"
 "        part.Shape = outer.cut(inner).removeSplitter()"
 msgstr ""
+"        part = document.addObject(\"Part::Feature\",name)\n"
+"        outer = Part.makeCylinder(d2,s)\n"
+"        inner = Part.makeCylinder(d1,s)\n"
+"        part.Shape = outer.cut(inner).removeSplitter()"
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
@@ -498,6 +522,9 @@ msgid ""
 "possible to\n"
 "use BRep scripting."
 msgstr ""
+"Cette fonction utilise les capacités CSG de FreeCAD, mais il est également "
+"possible\n"
+"d’utiliser un script BRep."
 
 #. docs/0.4/freecad/basefunction
 #. docs/0.3/freecad/basefunction
@@ -835,7 +862,7 @@ msgstr ""
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
 msgid "When you are done, it should look like this:"
-msgstr "Lorsque vous avez terminé, ça devrait ressembler à ceci:"
+msgstr "Lorsque vous avez terminé, ça devrait ressembler à ceci :"
 
 #. docs/0.4/freecad/toolbar
 #. docs/0.3/freecad/toolbar
