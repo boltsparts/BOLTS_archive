@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-30 17:05+0100\n"
-"PO-Revision-Date: 2015-01-31 14:14+0000\n"
+"PO-Revision-Date: 2015-06-27 11:19+0000\n"
 "Last-Translator: Johannes <jreinhardt@ist-dein-freund.de>\n"
 "Language-Team: French <http://weblate.stbuehler.de/projects/BOLTS/web-"
 "parts/fr/>\n"
@@ -108,7 +108,7 @@ msgstr ""
 #. collection description
 #. data/hex_socket.blt
 msgid "Various standard hex socket bolts and screws"
-msgstr ""
+msgstr "Vis et écrous hexagonaux standards variés"
 
 #. collection name
 #. data/washer.blt
@@ -794,7 +794,7 @@ msgstr ""
 #. Parameter description tl
 #. data/connecting_bars.blt, class tubebarcrimpedends
 msgid "transition length"
-msgstr ""
+msgstr "taille de transition"
 
 #. Parameter description rl
 #. data/connecting_bars.blt, class tubebarcrimpedends
@@ -1009,7 +1009,7 @@ msgstr ""
 #. data/hex.blt, class: hexbolt1
 #. ClassName description
 msgid "Hexagon head bolt"
-msgstr ""
+msgstr "Tête de vis hexagonale"
 
 #. ClassName labeling nice
 #. data/hex.blt, class: hexbolt1
@@ -1076,7 +1076,7 @@ msgstr ""
 #. ClassName name nice
 #. data/batteries.blt, class: round_battery
 msgid "Round Batteries"
-msgstr ""
+msgstr "Batteries rondes"
 
 #. ClassName labeling nice
 #. data/batteries.blt, class: round_battery
@@ -1092,7 +1092,7 @@ msgstr ""
 #. ClassName name nice
 #. data/profiles_hollow.blt, class: generic_circle_hollow
 msgid "Circular hollow profile"
-msgstr ""
+msgstr "Profil creux circulaire"
 
 #. ClassName labeling nice
 #. data/profiles_hollow.blt, class: generic_circle_hollow
