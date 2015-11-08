@@ -54,6 +54,10 @@ version for the python version bundled with FreeCAD.
 If you get a message that says
 
     uic import failed. Make sure that the pyside tools are installed
+    
+or an error message that says
+
+    ImportError: No module named pysideuic
 
 then there is a part of the PySide Qt bindings missing. For Debian and Ubuntu
 this is contained in the package pyside-tools.
