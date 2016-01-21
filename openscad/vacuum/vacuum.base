@@ -1,0 +1,15 @@
+---
+- filename: CF-Flange.scad
+  type: module
+  author: KOLANICH
+  license: Unlicense <https://unlicense.org>
+  modules:
+    - name: CFFlange
+      arguments: [partLen, innerDiameter, outerDiameter, flangeDiameter, flangeSize, grooveRadius, openingDepth, openingDiameter, holeDiameter, holeTrDiameter]
+      classids: [vacuumflange]
+      connectors:
+        name: pipeConn
+        arguments: [l,location]
+        locations: [front-in, front-out, back-in, back-out]
+  source: based on the blueprints https://www.tracepartsonline.net/(S(c314dufymcnxxurthiwo4pow))/PartDetails.aspx?PartFamilyID=30-03062015-098588&PartID=30-03062015-098588
+...
