@@ -1,0 +1,82 @@
+#.+
+# .context    : BOLTS - Open Library of Technical Specifications
+# .title      : vacuum
+# .kind       : BOLTS blt file
+# .author     : KOLANICH
+# .creation   : 21-Jan2016
+# .license    : Unlicense <http://unlicense.org>
+#
+# This is free and unencumbered software released into the public domain.
+
+# Anyone is free to copy, modify, publish, use, compile, sell, or
+# distribute this software, either in source code form or as a compiled
+# binary, for any purpose, commercial or non-commercial, and by any
+# means.
+
+# In jurisdictions that recognize copyright laws, the author or authors
+# of this software dedicate any and all copyright interest in the
+# software to the public domain. We make this dedication for the benefit
+# of the public at large and to the detriment of our heirs and
+# successors. We intend this dedication to be an overt act of
+# relinquishment in perpetuity of all present and future rights to this
+# software under copyright law.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+# OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+
+# For more information, please refer to <http://unlicense.org/>
+#.-
+---
+id: vacuum
+name: Vacuum
+description: Vacuum equipment
+author: KOLANICH
+license: Unlicense <http://unlicense.org>
+blt-version: 0.4
+classes:
+  - id: vacuumflange
+    standards:
+      body: EN
+      standard: CF
+      group: CF
+      labeling: CF flange %(dn)s
+      description: CF flange %(dn)s
+    parameters:
+        free: [dn]
+        defaults: {dn: "DN100"}
+        types:
+          dn: Table Index
+          partLen: Length (mm)
+          innerDiameter: Length (mm)
+          outerDiameter: Length (mm)
+          flangeDiameter: Length (mm)
+          flangeSize: Length (mm)
+          grooveRadius: Length (mm)
+          openingDiameter: Length (mm)
+          openingDepth: Length (mm)
+          holeDiameter: Length (mm)
+          holeTrDiameter: Length (mm)
+        description:
+          partLen: The length of the part
+          innerDiameter: The inner diameter of the part
+          outerDiameter: the outer diameter of the part
+          flangeDiameter: The diameter of the flange
+          flangeSize: The thickness of the flange
+          grooveRadius: The radius of the flange
+          openingDiameter: The diameter of the opening in the part visibl from the side of the flange
+          openingDepth: The depthd of the opening in the part visibl from the side of the flange
+          holeDiameter: The diameters of the central hole, use zero is the hole is unneeded
+          holeTrDiameter: The diameter of the circumference the holes for fasteners are placed on
+        tables:
+          - index: dn
+            columns: [partLen, innerDiameter, outerDiameter, flangeDiameter, flangeSize, grooveRadius, openingDepth, openingDiameter, holeDiameter, holeTrDiameter]
+            data:
+                #dn     [innerDiameter, outerDiameter, flangeDiameter, flangeSize, grooveRadius, openingDepth, openingDiameter, holeDiameter, holeTrDiameter]
+                DN100:  [    100,            104,            152,          20,          1.5,          9,              106,            0,         130.3]
+    source: http://www.tracepartsonline.net/(S(c314dufymcnxxurthiwo4pow))/PartDetails.aspx?PartFamilyID=30-03062015-098588&PartID=30-03062015-098588
+...
