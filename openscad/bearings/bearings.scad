@@ -33,7 +33,7 @@ module makeRing(r1,r2,h){
 	}
 }
 
-module singlerowradialbearing(d1,d2,B){
+module singlerowradialbearing(d1,d2,B,type){
 	rb = B/4;
 	n = ceil((d2-d1)/rb);
 	translate([0,0,B/2]){
@@ -46,10 +46,19 @@ module singlerowradialbearing(d1,d2,B){
 				//track
 				makeSquorus((d2-d1)/2,rb);
 			}
-			for ( i = [0 : n-1] ){
-				rotate( i * 360 / n, [0, 0,1])
-				translate([0, (d2-d1)/2, 0])
-					sphere(r = rb);
+			if (type == "shielded,double" || type == "sealed,double"){
+				makeRing(d1/2+0.3*(d2-d1)/2,d1/2+0.6*(d2-d1)/2,0.8*B);
+			} else {
+				for ( i = [0 : n-1] ){
+					rotate( i * 360 / n, [0, 0,1])
+					translate([0, (d2-d1)/2, 0])
+						sphere(r = rb);
+				}
+
+				if(type == "shielded,single" || type == "sealed,single"){
+					translate([0,0,0.3*B])
+					makeRing(d1/2+0.3*(d2-d1)/2,d1/2+0.6*(d2-d1)/2,0.2*B);
+				}
 			}
 		}
 	}
