@@ -557,6 +557,29 @@ class MissingParameterDescriptionTable(ErrorTable):
 				row.append(', '.join(missing))
 				self.rows.append(row)
 
+class DefaultsMismatchTable(ErrorTable):
+	def __init__(self):
+		ErrorTable.__init__(self,
+			"Mismatch between default values and free parameters",
+			"Some free parameters have no default or literal values assigned, or defaults have been assigned to non-free parameters.",
+			["Class id","Collection","parameters"]
+		)
+	
+	def populate(self,repo,dbs):
+		for cl in repo.classes.values():
+			row = []
+			row.append(cl.id)
+			row.append(repo.collection_classes.get_src(cl).name)
+
+			defaults = cl.parameters.defaults
+
+			mismatch = set(cl.parameters.free) ^ set(defaults.keys())
+
+			if mismatch:
+				row.append(', '.join(mismatch))
+				self.rows.append(row)
+
+
 class PointlessGroupTable(ErrorTable):
 	def __init__(self):
 		ErrorTable.__init__(self,
@@ -644,6 +667,7 @@ class CheckerBackend(Backend):
 		self.checks["nonconformingclassids"] = NonconformingClassIdTable()
 		self.checks["missingbaseconnection"] = MissingBaseConnectionTable()
 		self.checks["missingparameterdescription"] = MissingParameterDescriptionTable()
+		self.checks["defaultsmismatch"] = DefaultsMismatchTable()
 		self.checks["unknownconnectors"] = UnknownConnectorLocationTable()
 		self.checks["pointlessgroup"] = PointlessGroupTable()
 		self.checks["lowercasedescription"] = LowercaseDescriptionTable()
