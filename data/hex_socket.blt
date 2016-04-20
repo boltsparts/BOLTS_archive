@@ -426,7 +426,7 @@ classes:
         s: Length (mm)
         e: Length (mm)
         point: Table Index
-      defaults: {key: M10, l: 20}
+      defaults: {key: M10, l: 20, point: "flat"}
       description:
         key: Thread designation
         l: total length
