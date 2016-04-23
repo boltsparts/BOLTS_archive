@@ -42,7 +42,8 @@ module hex_socket1(d1,d2,b1,b2,b3,k_max,s,t,L,h_max,l){
 }
 
 module hex_socket2(d1,d2,b,k,s,t_min,L,l){
-	h = (l<= L) ? 0 : l - b;
+	h_unthreaded = (l<= L) ? 0 : l - b;
+	h_threaded = (l<= L) ? l : l - b;
 
 	BOLTS_check_dimension_positive(h,"l too short");
 
@@ -51,9 +52,9 @@ module hex_socket2(d1,d2,b,k,s,t_min,L,l){
 			//Head
 			translate([0,0,-k]) cylinder(r=d2/2,h = k);
 			//unthreaded shaft
-			cylinder(r=d1/2,h=h);
+			cylinder(r=d1/2,h=h_unthreaded);
 			//threaded shaft
-			translate([0,0,h]) BOLTS_thread_external(d1,b);
+			#translate([0,0,h_unthreaded]) BOLTS_thread_external(d1,h_threaded);
 		}
 		translate([0,0,-k]) BOLTS_hex_socket_neg(t_min,s);
 	}
