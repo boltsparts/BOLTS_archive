@@ -51,7 +51,7 @@ def singlerowradialbearing(params,document):
 	if seal == "open" or seal.endswith("single"):
 		#track
 		t=Part.makeCylinder(cb+rb,2*0.7*rb).cut(Part.makeCylinder(cb-rb,2*0.7*rb))
-		t.translate((0,0,0.5*0.7*rb))
+		t.translate((0,0,(0.5*bth)-((2*0.7*rb)/2)))
 		our=our.cut(t)
 		inr=inr.cut(t)
 		shapes.append(our)
