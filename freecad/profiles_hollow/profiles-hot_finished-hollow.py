@@ -98,9 +98,9 @@ def rectangle_hollow(params,document):
                 part = document.addObject("Part::Feature","BOLTS_part")
                 part.Label = name
 
-                beam = face.extrude(Vector(0,0,l))
-                part.Shape = beam
-
+                outer = Part.Face(Wo)
+                inner = Part.Face(Wi)
+                part.Shape = outer.cut(inner).extrude(Vector(0,0,l))
 
 
 def square_hollow(params,document):
@@ -180,8 +180,9 @@ def square_hollow(params,document):
                 part = document.addObject("Part::Feature","BOLTS_part")
                 part.Label = name
 
-                beam = face.extrude(Vector(0,0,l))
-                part.Shape = beam
+                outer = Part.Face(Wo)
+                inner = Part.Face(Wi)
+                part.Shape = outer.cut(inner).extrude(Vector(0,0,l))
 
 
 def circle_hollow(params,document):
@@ -192,9 +193,9 @@ def circle_hollow(params,document):
 
         id = od - t
 
-        outer = Part.Wire(Part.makeCircle(0.5*od))
-        inner = Part.Wire(Part.makeCircle(0.5*id))
-        face = Part.Face([outer,inner])
+        Wo = Part.Wire(Part.makeCircle(0.5*od))
+        Wi = Part.Wire(Part.makeCircle(0.5*id))
+        face = Part.Face([Wo,Wi])
 
         if params['arch']:
                 part = Arch.makeStructure(name=name)
@@ -208,5 +209,6 @@ def circle_hollow(params,document):
                 part = document.addObject("Part::Feature","BOLTS_part")
                 part.Label = name
 
-                beam = face.extrude(Vector(0,0,l))
-                part.Shape = beam
+                outer = Part.Face(Wo)
+                inner = Part.Face(Wi)
+                part.Shape = outer.cut(inner).extrude(Vector(0,0,l))
