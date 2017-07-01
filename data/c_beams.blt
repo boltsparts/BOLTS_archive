@@ -34,7 +34,7 @@ classes:
       description: UPE profile, metric european standard c-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "UPE200", l: 3000}
+        defaults: {type: "UPE200", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -84,7 +84,7 @@ classes:
       description: UAP profile, metric european standard c-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "UAP200", l: 3000}
+        defaults: {type: "UAP200", l: 1000}
         types:
           type: Table Index
           h: Length (mm)

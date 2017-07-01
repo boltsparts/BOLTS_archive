@@ -29,7 +29,7 @@ classes:
       description: Generic circular hollow profile
     parameters:
         free: [D,t,l]
-        defaults: {D: 21.3, t: 2.3, l: 3000}
+        defaults: {D: 21.3, t: 2.3, l: 1000}
         types:
           D: Length (mm)
           t: Length (mm)
@@ -46,7 +46,7 @@ classes:
       description: Generic square hollow profile
     parameters:
         free: [b,t,l]
-        defaults: {b: 40, t: 2.6, l: 3000}
+        defaults: {b: 40, t: 2.6, l: 1000}
         types:
           b: Length (mm)
           t: Length (mm)
@@ -91,7 +91,7 @@ classes:
         description: Circular Hollow Section (CHS)
     parameters:
         free: [type,l]
-        defaults: {type: "21.3-2.3", l: 3000}
+        defaults: {type: "21.3-2.3", l: 1000}
         types:
           type: Table Index
           D: Length (mm)
@@ -345,7 +345,7 @@ classes:
         description: Square Hollow Section (SHS)
     parameters:
         free: [type,l]
-        defaults: {type: "40-2.6", l: 3000}
+        defaults: {type: "40-2.6", l: 1000}
         types:
           type: Table Index
           b: Length (mm)
@@ -485,7 +485,7 @@ classes:
         description: Rectangular Hollow Section (RHS)
     parameters:
         free: [type,l]
-        defaults: {type: "50-30-2.6", l: 3000}
+        defaults: {type: "50-30-2.6", l: 1000}
         types:
           type: Table Index
           h: Length (mm)

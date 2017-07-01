@@ -35,7 +35,7 @@ classes:
       description: HEA profile, metric european standard i-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "HEA200", l: 3000}
+        defaults: {type: "HEA200", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -90,7 +90,7 @@ classes:
       description: HEAA profile, metric european i-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "HEAA200", l: 3000}
+        defaults: {type: "HEAA200", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -151,7 +151,7 @@ classes:
       description: HEB profile, metric european standard i-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "HEB200", l: 3000}
+        defaults: {type: "HEB200", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -212,7 +212,7 @@ classes:
       description: HEM profile, metric european standard i-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "HEM200", l: 3000}
+        defaults: {type: "HEM200", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -277,7 +277,7 @@ classes:
         description: IPE profile, metric european standard i-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "IPE200", l: 3000}
+        defaults: {type: "IPE200", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -326,7 +326,7 @@ classes:
       description: IPE 750 profile, metric european i-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "IPE750x137", l: 3000}
+        defaults: {type: "IPE750x137", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -363,7 +363,7 @@ classes:
       description: IPEa profile, metric european i-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "IPEa200", l: 3000}
+        defaults: {type: "IPEa200", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -410,7 +410,7 @@ classes:
       description: IPEo profile, metric european i-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "IPEo200", l: 3000}
+        defaults: {type: "IPEo200", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -454,7 +454,7 @@ classes:
       description: IPEr profile, metric european i-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "IPEr200", l: 3000}
+        defaults: {type: "IPEr200", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -500,7 +500,7 @@ classes:
       description: IPEv profile, metric european i-beam profile
     parameters:
         free: [type,l]
-        defaults: {type: "IPEv400", l: 3000}
+        defaults: {type: "IPEv400", l: 1000}
         types:
           type: Table Index
           h: Length (mm)
@@ -545,7 +545,7 @@ classes:
       description: IPN profile, metric european standard i-beam profile
     parameters:
       free: [type, l]
-      defaults: {type: "IPN100", l: 3000}
+      defaults: {type: "IPN100", l: 1000}
       types:
         type: Table Index
         h: Length (mm)
