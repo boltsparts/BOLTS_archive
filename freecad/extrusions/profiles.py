@@ -200,12 +200,12 @@ def vslot(symmetry,vertices,fillets,corner_offset, circle_offsets):
 		holes[-1].reverse()
 
 	# big spaces
-	print 'Space'
+	print('Space')
 	for offset in circle_offsets[:-1]:
-		print space_symmetry, vslot_space
+		print(space_symmetry, vslot_space)
 		holes.append(Part.Wire(assemble(space_symmetry,4*[vslot_space],(offset,0))))
 		holes[-1].reverse()
-	print 'Space'
+	print('Space')
 
 	#put everything together
 	return Part.Face([outline] + holes)

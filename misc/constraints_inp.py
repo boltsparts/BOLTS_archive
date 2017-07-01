@@ -100,7 +100,7 @@ for name in sorted(dims.keys()):
 	
 
 
-	print '"%s" : [ %g, %g, %g, %g, %g, %g, %g, %g, %g ]' % (name,b,h,s,t,r1,r2,d,f,g)
+	print('"%s" : [ %g, %g, %g, %g, %g, %g, %g, %g, %g ]' % (name,b,h,s,t,r1,r2,d,f,g))
 
 	plot_line([0,0],[0.5*s,0])
 	plot_line([0.5*s,0],[0.5*s,c1[1]])

@@ -77,7 +77,7 @@ class WebGLExporter(BackendExporter):
 					parameters = cl.parameters.union(base.parameters)
 					params = parameters.collect(parameters.defaults)
 				except:
-					print "A problem occured when parameters for %s where collected for %s" % \
+					print("A problem occured when parameters for %s where collected for %s" % \)
 						(cl.parameters.defaults,cl.id)
 					raise
 				params["standard"] = cl.name

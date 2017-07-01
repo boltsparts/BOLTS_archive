@@ -79,7 +79,7 @@ class Downloads:
 
 	def get_latest(self,backend,kind,ext,license):
 		cand = self.get_documents(backend=backend,ext=ext,kind=kind,license=license)
-		print backend, kind, ext, license
+		print(backend, kind, ext, license)
 		cand.sort(key=lambda x: x["version"])
 		return cand[-1]
 
