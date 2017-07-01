@@ -1,0 +1,17 @@
+---
+- filename: profile_z.py
+  author: Bernd Hahnebach <bernd@bimstatik.org>
+  license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+  type: function
+  functions:
+    - name: zbeam
+      parameters:
+        free: [arch]
+        types:
+          arch: Bool
+        description:
+          arch: If true, an Arch structure is created, if false, a Part feature.
+        defaults:
+          arch: false
+      classids: [zbeam]
+...
