@@ -473,7 +473,7 @@ class Parameters:
 					for v in self.choices[self.free[idx]]:
 						self._populate_common(tup,values + [v], idx+1)
 				else:
-					print "That should not happen"
+					print("That should not happen")
 			else:
 				for v in tup[idx]:
 					self._populate_common(tup,values + [v], idx+1)
