@@ -1,5 +1,5 @@
 ---
-- filename: profile_hotfinished_hollow.py
+- filename: profile_hollow.py
   author: Bernd Hahnebach <bernd@bimstatik.org>
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: function
@@ -13,7 +13,7 @@
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
           arch: false
-      classids: [rectangular_hollow,generic_rectangular_hollow]
+      classids: [hollow_rectangular,hollow_generic_rectangular]
     - name: square_hollow
       parameters:
         free: [arch]
@@ -23,7 +23,7 @@
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
           arch: false
-      classids: [square_hollow,generic_square_hollow]
+      classids: [hollow_square,hollow_generic_square]
     - name: circle_hollow
       parameters:
         free: [arch]
@@ -33,5 +33,5 @@
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
           arch: false
-      classids: [circle_hollow,generic_circle_hollow]
+      classids: [hollow_circle,hollow_generic_circle]
 ...
