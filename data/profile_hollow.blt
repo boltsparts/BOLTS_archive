@@ -15,14 +15,14 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 ---
-id: profiles_hollow
+id: profile_hollow
 name: Profiles Hollow
 description: Hot finished structural hollow profiles
 author: [Bernd Hahnebach <bernd@bimstatik.org>, Johannes Reinhardt <jreinhardt@ist-dein-freund.de>]
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4
 classes:
-  - id: generic_circle_hollow
+  - id: hollow_generic_circle
     names:
         name: Generic circular hollow profile
         labeling: "Circular hollow profile %(D)s/%(t)s l=%(l)s"
@@ -39,7 +39,7 @@ classes:
           t: thickness
           l: profile length
     source: No source information used
-  - id: generic_square_hollow
+  - id: hollow_generic_square
     names:
         name: Generic square hollow profile
         labeling: "Square hollow profile %(b)s/%(t)s l=%(l)s"
@@ -56,7 +56,7 @@ classes:
           t: web thickness
           l: profile length
     source: No source information used
-  - id: generic_rectangular_hollow
+  - id: hollow_generic_rectangular
     names:
         name: Generic rectangular hollow
         labeling: "Rectangular hollow profile %(h)s-%(b)s-%(t)s, l=%(l)s"
@@ -75,7 +75,7 @@ classes:
           t: web thickness
           l: profile length
     source: No source information used
-  - id: circle_hollow
+  - id: hollow_circle
     names:
         name: Circular Hollow Section (CHS)
         labeling: "%(type)s, l=%(l)s"
@@ -333,7 +333,7 @@ classes:
                 1219.0-25.0:   [  1219.0,  25.0 ]
     source: EN 10210-2:2006, Table B.1
     notes: http://en.wikipedia.org/wiki/Structural_steel
-  - id: square_hollow
+  - id: hollow_square
     names:
         name: Square Hollow Section (SHS)
         labeling: "%(type)s, l=%(l)s"
@@ -477,7 +477,7 @@ classes:
                 400-20.0:   [  400,  20.0 ]
     source: EN 10210-2:2006, Table B.2
     notes: http://en.wikipedia.org/wiki/Structural_steel
-  - id: rectangular_hollow
+  - id: hollow_rectangular
     names:
         name: Rectangular Hollow Section (RHS)
         labeling: "%(type)s, l=%(l)s"

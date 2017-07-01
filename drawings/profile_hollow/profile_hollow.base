@@ -1,20 +1,20 @@
 ---
-- filename: circle_hollow
+- filename: hollow_circle
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-dimensions
   source: own work
-  classids: [generic_circle_hollow, circle_hollow]
-- filename: rectangular_hollow
+  classids: [hollow_generic_circle, hollow_circle]
+- filename: hollow_rectangular
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-dimensions
   source: own work
-  classids: [generic_rectangular_hollow, rectangular_hollow]
-- filename: square_hollow
+  classids: [hollow_generic_rectangular, hollow_rectangular]
+- filename: hollow_square
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-dimensions
   source: own work
-  classids: [generic_square_hollow, square_hollow]
+  classids: [hollow_generic_square, hollow_square]
 ...

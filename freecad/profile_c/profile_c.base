@@ -1,5 +1,5 @@
 ---
-- filename: profile_rolled_cbeam.py
+- filename: profile_c.py
   author: Bernd Hahnebach <bernd@bimstatik.org>
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: function
