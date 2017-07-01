@@ -1,5 +1,5 @@
 ---
-- filename: profiles-rolled_i-beams.py
+- filename: profile_rolled_ibeam.py
   author: Bernd Hahnebach <bernd@bimstatik.org>
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: function

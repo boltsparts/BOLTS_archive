@@ -1,5 +1,5 @@
 ---
-- filename: profiles-hot_finished-hollow.py
+- filename: profile_hotfinished_hollow.py
   author: Bernd Hahnebach <bernd@bimstatik.org>
   license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
   type: function
