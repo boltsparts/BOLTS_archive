@@ -70,7 +70,7 @@ class IGESBackend(Backend):
 					try:
 						params = cl.parameters.collect(dict(zip(cl.parameters.free,free)))
 					except:
-						print "A problem occured when parameters for %s where collected for %s" % (free,cl.id)
+						print("A problem occured when parameters for %s where collected for %s" % (free,cl.id))
 						raise
 
 					for std, in self.dbs["freecad"].iterstandards(filter_class=cl):

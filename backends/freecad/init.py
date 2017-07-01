@@ -80,11 +80,11 @@ def make_drawing(scale,obj):
 		page.addObject(view)
 
 def list_names(doc):
-	print "Label   Name"
-	print "------------"
+	print("Label   Name")
+	print("------------")
 	for part in doc.findObjects():
 		if isinstance(part,Part.Feature):
-			print "%s    %s" % (part.Label, part.Name)
+			print("%s    %s" % (part.Label, part.Name))
 
 def add_name(id,in_params):
 	name = repo.names[id]

@@ -118,7 +118,7 @@ def check(args):
 	checker = CheckerBackend(repo,dbs)
 
 	for check in checker.checks.values():
-		print check.print_table(),
+		print(check.print_table(),)
 
 def tasks(args):
 	repo = Repository(args.repo)
@@ -132,7 +132,7 @@ def tasks(args):
 	checker = CheckerBackend(repo,dbs)
 
 	for task in checker.tasks.values():
-		print task.print_table(),
+		print(task.print_table(),)
 
 def connectors(args):
 	repo = Repository(args.repo)
@@ -169,7 +169,7 @@ def add_lang(args):
 
 	os.system("pybabel init -D parts -d translations/ -i %s -l %s" % (fname,args.lang))
 	os.remove(fname)
-	print "Don't forget to edit website/templates/base.html and add the language to the dropdown menu"
+	print("Don't forget to edit website/templates/base.html and add the language to the dropdown menu")
 
 def translate(args):
 	if args.update_translation:
@@ -205,14 +205,14 @@ def translate(args):
 def release(args):
 	#check that there are no uncommited changes
 	if call(["git","diff","--exit-code","--quiet"]) == 1:
-		print "There are uncommited changes present in the git repository. Please take care of them before releasing"
+		print("There are uncommited changes present in the git repository. Please take care of them before releasing")
 		exit(1)
 
 	if args.kind == "stable" and args.version is None:
-		print "Please specify a version using -v when releasing a stable version"
+		print("Please specify a version using -v when releasing a stable version")
 		exit(2)
 	if args.kind == "development" and not args.version is None:
-		print "No explicit version can be given for development releases"
+		print("No explicit version can be given for development releases")
 		exit(2)
 	repo = Repository(args.repo)
 
@@ -263,7 +263,7 @@ def release(args):
 		try:
 			import tarfile, lzma
 		except ImportError:
-			print "Could not find python-lzma, which is required for IGES export"
+			print("Could not find python-lzma, which is required for IGES export")
 			return
 		IGESBackend(repo,dbs).write_output(os.path.join(repo.path,"output","iges"),version=version)
 

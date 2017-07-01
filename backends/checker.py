@@ -64,7 +64,7 @@ class ErrorTable:
 		for i in range(len(width)):
 			width[i] += 2
 
-		#print headers
+		#print(headers)
 		res.append("".join("%-*s" % (width[i],self.headers[i]) for i in range(len(self.headers))))
 		res.append("".join("-"*w for w in width))
 
