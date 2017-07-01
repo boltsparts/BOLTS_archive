@@ -333,7 +333,7 @@ class Parameters:
 
 		self.literal = {}
 		if "literal" in param:
-			for pname,val in param["literal"].iteritems():
+			for pname,val in param["literal"].items():
 				if not pname in self.types:
 					raise MissingTypeError(pname)
 				self.literal[pname] = convert_raw_parameter_value(pname,self.types[pname],val)
@@ -372,7 +372,7 @@ class Parameters:
 		self.parameters = list(set(self.parameters))
 
 		#check types
-		for pname,tname in self.types.iteritems():
+		for pname,tname in self.types.items():
 			if not pname in self.parameters:
 				raise UnknownParameterError(pname)
 			if not tname in ALL_TYPES:
@@ -383,7 +383,7 @@ class Parameters:
 				raise MissingTypeError(pname)
 
 		#check description
-		for pname,tname in self.description.iteritems():
+		for pname,tname in self.description.items():
 			if not pname in self.parameters:
 				raise UnknownParameterError(pname)
 
@@ -432,7 +432,7 @@ class Parameters:
 		self.defaults = dict((pname,self.type_defaults[self.types[pname]])
 			for pname in self.free)
 		if "defaults" in param:
-			for pname,dvalue in param["defaults"].iteritems():
+			for pname,dvalue in param["defaults"].items():
 				if pname not in self.free:
 					raise NonFreeDefaultError(pname)
 				if self.types[pname] == "Table Index" and dvalue not in self.choices[pname]:
@@ -508,23 +508,23 @@ class Parameters:
 		res.tables2d = self.tables2d + other.tables2d
 		res.parameters = list(set(self.parameters + other.parameters))
 
-		for pname,tname in self.types.iteritems():
+		for pname,tname in self.types.items():
 			res.types[pname] = tname
-		for pname,tname in other.types.iteritems():
+		for pname,tname in other.types.items():
 			if pname in res.types and self.types[pname] != tname:
 				raise IncompatibleTypeError(pname,self.types[pname],tname)
 			res.types[pname] = tname
 
-		for pname,dname in self.defaults.iteritems():
+		for pname,dname in self.defaults.items():
 			res.defaults[pname] = dname
-		for pname,dname in other.defaults.iteritems():
+		for pname,dname in other.defaults.items():
 			if pname in res.defaults and self.defaults[pname] != dname:
 				raise IncompatibleDefaultError(pname,self.defaults[pname],dname)
 			res.defaults[pname] = dname
 
-		for pname,descr in self.description.iteritems():
+		for pname,descr in self.description.items():
 			res.description[pname] = descr
-		for pname,descr in other.description.iteritems():
+		for pname,descr in other.description.items():
 			if pname in res.description and self.description[pname] != descr:
 				raise IncompatibleDescriptionError(pname,self.description[pname],descr)
 			res.description[pname] = descr
