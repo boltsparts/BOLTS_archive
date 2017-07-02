@@ -84,7 +84,7 @@ def rectangle_hollow(params,document):
         # putting the segments together, make wires, make faces, extrude them and cut them
         Wo = Part.Wire([Lor1,Coc1,Lor2,Coc2,Lor3,Coc3,Lor4,Coc4,])
         Wi = Part.Wire([Lir1,Cic1,Lir2,Cic2,Lir3,Cic3,Lir4,Cic4,])
-        face = Part.Face([Wo,Wi])
+        face = Part.makeFace([Wo, Wi], "Part::FaceMakerBullseye")
 
         if params['arch']:
                 part = Arch.makeStructure(name=name)
@@ -166,7 +166,7 @@ def square_hollow(params,document):
         # putting the segments together, make wires, make faces, extrude them and cut them
         Wo = Part.Wire([Lor1,Coc1,Lor2,Coc2,Lor3,Coc3,Lor4,Coc4,])
         Wi = Part.Wire([Lir1,Cic1,Lir2,Cic2,Lir3,Cic3,Lir4,Cic4,])
-        face = Part.Face([Wo,Wi])
+        face = Part.makeFace([Wo, Wi], "Part::FaceMakerBullseye")
 
         if params['arch']:
                 part = Arch.makeStructure(name=name)
@@ -194,7 +194,7 @@ def circle_hollow(params,document):
 
         outer = Part.Wire(Part.makeCircle(0.5*od))
         inner = Part.Wire(Part.makeCircle(0.5*id))
-        face = Part.Face([outer,inner])
+        face = Part.makeFace([outer, inner], "Part::FaceMakerBullseye")
 
         if params['arch']:
                 part = Arch.makeStructure(name=name)
