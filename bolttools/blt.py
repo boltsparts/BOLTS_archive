@@ -389,7 +389,13 @@ class Repository:
 		"""
 		check_iterator_arguments(items,"name",["multiname","collection","class"],kwargs)
 
+		'''
 		for name in self.names.values():
+		'''
+		# use following two lines instead, to get the names sorted
+		for n in sorted(self.names):
+			name = self.names[n]
+
 			its = {"name" : name}
 			its["class"] = self.class_names.get_src(name)
 			if  self.multiname_names.contains_dst(name):
@@ -426,7 +432,13 @@ class Repository:
 		"""
 		check_iterator_arguments(items,"standard",["multistandard","body","collection","class"],kwargs)
 
+		'''
 		for std in self.standards.values():
+		'''
+		# use the following two lines instead, to get the standards sorted
+		for s in sorted(self.standards):
+			std = self.standards[s]
+
 			its = {"standard" : std}
 			its["class"] = self.class_standards.get_src(std)
 			its["body"] = self.body_standards.get_src(std)
@@ -478,8 +490,13 @@ class Repository:
 		
 		Not possible to request items
 		"""
+		'''
 		for coll in self.collections.values():
 			yield (coll,)
+		'''
+		# use these to get the collections sorted by their names
+		for coll in sorted(self.collections):
+			yield (self.collections[coll],)
 
 	def iterbodies(self):
 		"""
@@ -487,5 +504,10 @@ class Repository:
 		
 		Not possible to request items
 		"""
+		'''
 		for body in self.bodies.values():
 			yield (body,)
+		'''
+		# use these to get the bodies sorted by their names
+		for body in sorted(self.bodies):
+			yield (self.bodies[body],)
