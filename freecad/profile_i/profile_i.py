@@ -214,8 +214,13 @@ def ibeam_angled_flange(params,document):
     ]
     #add fillets in reverse order to not disturb the counting, as edges are added
     fillets.reverse()
+    '''
+    # the API of FreeCAD has changed in the regard of lines see https://forum.freecadweb.org/viewtopic.php?f=22&t=23252
+    # def edge_fillet needs adaption
     for fillet,r in fillets:
         lines[fillet] = edge_fillet(lines[fillet],r)
+    '''
+    print('The profile is made without Fillets atm.')
 
     F = Part.Face(Part.Wire(lines))
 
