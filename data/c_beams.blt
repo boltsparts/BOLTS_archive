@@ -16,8 +16,8 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 ---
 id: c_beams
-name: C-Beam profiles (rolled)
-description: Various rolled c-beam profiles
+name: Profiles C
+description: Various hotrolled C profiles
 author: Bernd Hahnebach <bernd@bimstatik.org>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4

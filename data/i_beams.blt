@@ -16,8 +16,8 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 ---
 id: i_beams
-name: I-Beam profiles (rolled)
-description: Various rolled i-beam profiles
+name: Profiles I
+description: Various hotrolled I profiles
 author: Bernd Hahnebach <bernd@bimstatik.org>
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4
@@ -542,7 +542,7 @@ classes:
       standard: DIN 1025-1
       group: DIN 1025
       labeling: DIN1025-1 %(type)s, l=%(l)s
-      description: IPN profile, metric european standard i-beam profile
+      description: IPN profile, metric european standard i-beam profile (also called INP)
     parameters:
       free: [type, l]
       defaults: {type: "IPN100", l: 1000}
