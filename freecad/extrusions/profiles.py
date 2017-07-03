@@ -83,8 +83,13 @@ def fillet(lines,indices,radius):
 	indices.sort()
 	indices.reverse()
 
+	'''
+	# the API of FreeCAD has changed in the regard of lines see https://forum.freecadweb.org/viewtopic.php?f=22&t=23252
+	# def edge_fillet needs adaption
 	for i in indices:
 		lines[slice(i,i+2)] = edge_fillet(lines[slice(i,i+2)],radius)
+    '''
+	print('The profile is made without Fillets atm.')
 
 	return lines
 
