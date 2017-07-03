@@ -189,8 +189,10 @@ class BoltsWidget(QBoltsWidget):
 			multinames = {}
 			multistds = {}
 
+			clasids = []
 			#names
 			for name,multiname in self.dbs["freecad"].iternames(['name','multiname'],filter_collection=coll):
+				clasids.append(self.repo.class_names.get_src(name).id)  # append classid
 				item = None
 				if multiname is None:
 					item = QtGui.QTreeWidgetItem(coll_item,[name.name.get_nice(), name.description])
@@ -204,14 +206,15 @@ class BoltsWidget(QBoltsWidget):
 			#single names
 			for std,multistd in self.dbs["freecad"].iterstandards(['standard','multistandard'],filter_collection = coll):
 				item = None
-				if multistd is None:
-					item = QtGui.QTreeWidgetItem(coll_item,[std.standard.get_nice(), std.description])
-				else:
-					if not multistd in multistds:
-						multistds[multistd] = QtGui.QTreeWidgetItem(coll_item,[multistd.standard.get_nice(),""])
-					item = QtGui.QTreeWidgetItem(multistds[multistd],[std.standard.get_nice(), std.description])
+				if self.repo.class_standards.get_src(std).id not in clasids:  # only add item if it is not in classids
+					if multistd is None:
+						item = QtGui.QTreeWidgetItem(coll_item,[std.standard.get_nice(), std.description])
+					else:
+						if not multistd in multistds:
+							multistds[multistd] = QtGui.QTreeWidgetItem(coll_item,[multistd.standard.get_nice(),""])
+						item = QtGui.QTreeWidgetItem(multistds[multistd],[std.standard.get_nice(), std.description])
 
-				item.setData(0,32,std)
+					item.setData(0,32,std)
 
 		multistds = {}
 
@@ -262,7 +265,8 @@ class BoltsWidget(QBoltsWidget):
 			else:
 				raise ValueError("Unknown type encountered for parameter %s: %s" % (p,p_type))
 			self.param_widgets[p].setToolTip(params.description[p])
-		#add them to layout
+
+			#add them to layout
 			self.ui.param_layout.addWidget(self.param_widgets[p])
 		if base.type == "fcstd":
 			self.ui.addButton.setText("Add part (may take a bit)")
@@ -387,6 +391,7 @@ class BoltsWidget(QBoltsWidget):
 			self.setup_props_name(data)
 			cl = self.repo.class_names.get_src(data)
 			base = self.dbs["freecad"].base_classes.get_src(cl)
+			print self.dbs["freecad"]
 			self.setup_param_widgets(cl,base)
 		elif isinstance(data,ClassStandard):
 			self.setup_props_standard(data)
