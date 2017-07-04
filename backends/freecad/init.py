@@ -37,7 +37,7 @@ except ImportError:
 				return i
 		raise Exception("No main window found")
 
-import gui.freecad_bolts as gui
+import gui.freecad_bolts as boltsgui
 
 
 #import repo
@@ -50,14 +50,12 @@ widget = None
 def show_widget():
 	global widget
 	if widget is None:
-		widget = gui.BoltsWidget(repo,freecad_db)
+		widget = boltsgui.BoltsWidget(repo,freecad_db)
 
 		mw = getMainWindow()
 		mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
 	else:
 		widget.show()
-
-show_widget()
 
 def make_drawing(scale,obj):
 	doc = FreeCAD.ActiveDocument
@@ -96,7 +94,7 @@ def add_name(id,in_params):
 	#add part
 	base = freecad_db.base_classes.get_src(cl)
 	coll = repo.collection_classes.get_src(cl)
-	gui.add_part(coll,base,params,FreeCAD.ActiveDocument)
+	boltsgui.add_part(coll,base,params,FreeCAD.ActiveDocument)
 
 def add_standard(id,in_params):
 	standard = repo.standards[id]
@@ -108,4 +106,4 @@ def add_standard(id,in_params):
 	#add part
 	base = freecad_db.base_classes.get_src(cl)
 	coll = repo.collection_classes.get_src(cl)
-	gui.add_part(coll,base,params,FreeCAD.ActiveDocument)
+	boltsgui.add_part(coll,base,params,FreeCAD.ActiveDocument)
