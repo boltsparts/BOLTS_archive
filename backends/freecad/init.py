@@ -84,9 +84,11 @@ def list_names(doc):
 		if isinstance(part,Part.Feature):
 			print("%s    %s" % (part.Label, part.Name))
 
-def add_name(id,in_params):
+def add_name(id,in_params=None):
 	name = repo.names[id]
 	cl = repo.class_names.get_src(name)
+	if not in_params:
+		in_params = get_free_in_params(cl)
 
 	params = cl.parameters.collect(in_params)
 	params['name'] = name.labeling.get_nice(params)
@@ -96,9 +98,11 @@ def add_name(id,in_params):
 	coll = repo.collection_classes.get_src(cl)
 	boltsgui.add_part(coll,base,params,FreeCAD.ActiveDocument)
 
-def add_standard(id,in_params):
+def add_standard(id,in_params=None):
 	standard = repo.standards[id]
 	cl = repo.class_standards.get_src(standard)
+	if not in_params:
+		in_params = get_free_in_params(cl)
 
 	params = cl.parameters.collect(in_params)
 	params['name'] = standard.labeling.get_nice(params)
@@ -107,3 +111,15 @@ def add_standard(id,in_params):
 	base = freecad_db.base_classes.get_src(cl)
 	coll = repo.collection_classes.get_src(cl)
 	boltsgui.add_part(coll,base,params,FreeCAD.ActiveDocument)
+
+def get_free_in_params(cl):
+	base = freecad_db.base_classes.get_src(cl)
+	params = cl.parameters.union(base.parameters)
+	free_params = params.free
+
+	in_params = {}
+	for p in free_params:
+		p_type = params.types[p]
+		default_value = params.defaults[p]
+		in_params[p] = default_value
+	return in_params
