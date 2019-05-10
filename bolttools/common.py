@@ -24,7 +24,7 @@ import collections
 from os.path import join
 from copy import deepcopy
 
-from errors import *
+from .errors import *
 
 
 def parse_angled(string):

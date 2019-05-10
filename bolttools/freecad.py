@@ -19,9 +19,9 @@ from os.path import join, exists, basename, splitext
 # pylint: disable=W0622
 from codecs import open
 
-from common import check_schema, DataBase, BaseElement, Parameters, Links
-from common import check_iterator_arguments, filter_iterator_items
-from errors import *
+from .common import check_schema, DataBase, BaseElement, Parameters, Links
+from .common import check_iterator_arguments, filter_iterator_items
+from .errors import *
 
 class FreeCADGeometry(BaseElement):
 	def __init__(self,basefile,collname,backend_root):

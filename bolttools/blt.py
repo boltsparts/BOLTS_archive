@@ -22,9 +22,9 @@ from os.path import splitext, exists, join
 # pylint: disable=W0622
 from codecs import open
 
-from errors import *
-from common import Links, Parameters, Identifier, Substitution, parse_angled, check_schema
-from common import check_iterator_arguments, filter_iterator_items
+from .errors import *
+from .common import Links, Parameters, Identifier, Substitution, parse_angled, check_schema
+from .common import check_iterator_arguments, filter_iterator_items
 
 CURRENT_VERSION = 0.4
 

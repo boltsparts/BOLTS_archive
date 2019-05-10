@@ -18,8 +18,8 @@
 import FreeCAD, FreeCADGui, Part
 from os.path import join, exists, dirname
 from os import listdir
-import bolttools.blt
-import bolttools.freecad
+from .bolttools import blt
+from .bolttools import freecad
 
 USE_PYSIDE=True
 
@@ -37,7 +37,7 @@ except ImportError:
 				return i
 		raise Exception("No main window found")
 
-import gui.freecad_bolts as boltsgui
+from .gui import freecad_bolts as boltsgui
 
 
 #import repo
