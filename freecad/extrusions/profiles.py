@@ -74,7 +74,7 @@ def edge_fillet(edges,radius):
 
 def fillet(lines,indices,radius):
 	"""
-	fillets the corner between the segments and their successors in lines indiated by indices
+	fillets the corner between the segments and their successors in lines indicated by indices
 	"""
 
 	lines = lines[:]

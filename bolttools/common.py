@@ -306,7 +306,7 @@ SORTINGS = [Numerical(), Lexicographical()]
 
 class Parameters:
 	"""
-	Python class that holds all the informations about the parameters of a
+	Python class that holds all the information about the parameters of a
 	BOLTS class, and implements common operations on them
 	"""
 	type_defaults = {

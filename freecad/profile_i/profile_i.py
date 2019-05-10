@@ -86,7 +86,7 @@ def ibeam_parallel_flange(params,document):
 
 
 
-        # lower flange, starting at the left web fillet, going against clockwise
+        # lower flange, starting at the left web fillet, going counter-clockwise
         Vlf1 = Vector((-tw/2-r),(-h/2+tf),0)
         Vlf2 = Vector(-b/2,(-h/2+tf),0)
         Vlf3 = Vector(-b/2,-h/2,0)
@@ -99,7 +99,7 @@ def ibeam_parallel_flange(params,document):
         Llf4 = makeLine(Vlf4,Vlf5)
         Llf5 = makeLine(Vlf5,Vlf6)
 
-        # upper flange, starting at the rigth web fillet, going clockwise
+        # upper flange, starting at the right web fillet, going clockwise
         Vuf1 = Vector(tw/2+r,(h/2-tf),0)
         Vuf2 = Vector(b/2,(h/2-tf),0)
         Vuf3 = Vector(b/2,h/2,0)
@@ -112,7 +112,7 @@ def ibeam_parallel_flange(params,document):
         Luf4 = makeLine(Vuf4,Vuf5)
         Luf5 = makeLine(Vuf5,Vuf6)
 
-        # web, starting rigth bottom, going against clockwise
+        # web, starting right bottom, going counter-clockwise
         Vw1 = Vector(tw/2,(-h/2+tf+r),0)
         Vw2 = Vector(tw/2,(h/2-tf-r),0)
         Vw3 = Vector(-tw/2,(h/2-tf-r),0)
@@ -120,7 +120,7 @@ def ibeam_parallel_flange(params,document):
         Lw1 = makeLine(Vw1,Vw2)
         Lw2 = makeLine(Vw3,Vw4)
 
-        # center of the fillets, starting right bottom, going against clockwise
+        # center of the fillets, starting right bottom, going counter-clockwise
         Vfc1 = Vector((tw/2+r),(-h/2+tf+r),0)
         Vfc2 = Vector((tw/2+r),(h/2-tf-r),0)
         Vfc3 = Vector((-tw/2-r),(h/2-tf-r),0)

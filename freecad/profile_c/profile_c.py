@@ -30,7 +30,7 @@ def cbeam_parallel_flange(params,document):
         l = params['l']
         name = params['name']
 
-        # lower flange, starting at the ene of web, going against clockwise
+        # lower flange, starting at the end of web, going counter-clockwise
         Vlf1 = Vector(0,(-h/2),0)
         Vlf2 = Vector(b,-h/2,0)
         Vlf3 = Vector(b,-h/2+tf,0)
@@ -39,7 +39,7 @@ def cbeam_parallel_flange(params,document):
         Llf2 = makeLine(Vlf2,Vlf3)
         Llf3 = makeLine(Vlf3,Vlf4)
 
-        # upper flange, starting at the rigth web fillet, going clockwise
+        # upper flange, starting at the right web fillet, going clockwise
         Vuf1 = Vector(tw+r,(h/2-tf),0)
         Vuf2 = Vector(b,(h/2-tf),0)
         Vuf3 = Vector(b,h/2,0)
@@ -48,7 +48,7 @@ def cbeam_parallel_flange(params,document):
         Luf2 = makeLine(Vuf2,Vuf3)
         Luf3 = makeLine(Vuf3,Vuf4)
 
-        # web, starting rigth bottom, going against clockwise
+        # web, starting right bottom, going counter-clockwise
         Vw1 = Vector(tw,(-h/2+tf+r),0)
         Vw2 = Vector(tw,(h/2-tf-r),0)
         Lw1 = makeLine(Vw1,Vw2)
