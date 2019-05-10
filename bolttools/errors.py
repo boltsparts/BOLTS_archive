@@ -30,7 +30,7 @@ class ParsingError(Exception):
 		self.trace_info["Base"] = base
 	def __str__(self):
 		trace = " ".join("%s: %s" % (k,str(v))
-			for k,v in self.trace_info.iteritems())
+			for k,v in self.trace_info.items())
 		return "%s.  %s" % (self.msg, trace)
 
 class VersionError(ParsingError):
