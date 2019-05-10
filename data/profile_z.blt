@@ -46,7 +46,7 @@ classes:
           l: Length (mm)
         description:
           type: beam type
-          h: beam hight
+          h: beam height
           c1: flange width
           tw: web thickness
           tf: flange thickness

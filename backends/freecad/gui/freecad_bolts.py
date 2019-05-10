@@ -178,7 +178,7 @@ class BoltsWidget(QBoltsWidget):
 
 		self.coll_root = QtGui.QTreeWidgetItem(self.ui.partsTree,['Collections','Ordered by collections'])
 		self.coll_root.setData(0,32,None)
-		self.std_root = QtGui.QTreeWidgetItem(self.ui.partsTree,['Standard','Ordered by issueing body'])
+		self.std_root = QtGui.QTreeWidgetItem(self.ui.partsTree,['Standard','Ordered by issuing body'])
 		self.std_root.setData(0,32,None)
 
 		#set up collections
@@ -366,7 +366,7 @@ class BoltsWidget(QBoltsWidget):
 			QtGui.QErrorMessage(self).showMessage(str(e))
 		except Exception as e:
 			FreeCAD.Console.PrintMessage(e)
-			QtGui.QErrorMessage(self).showMessage("An error occured when trying to add the part: %s\nParameter Values: %s" % (e,params))
+			QtGui.QErrorMessage(self).showMessage("An error occurred when trying to add the part: %s\nParameter Values: %s" % (e,params))
 
 	@Slot()
 	def on_partsTree_itemSelectionChanged(self):

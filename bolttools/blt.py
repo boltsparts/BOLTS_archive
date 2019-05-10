@@ -119,7 +119,7 @@ class ClassStandard(Designation):
 class Class:
 	"""
 	Python class representing a BOLTS class. There is no direct
-	correspondance between a class in the blt file and this python class,
+	correspondence between a class in the blt file and this python class,
 	some aspects are covered by other classes
 	"""
 	def __init__(self,cl):
