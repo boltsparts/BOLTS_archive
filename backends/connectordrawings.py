@@ -37,7 +37,7 @@ class ConnectorDrawingsBackend(Backend):
 		for coll,cl,module in self.dbs["openscad"].iterclasses(['collection','class','module']):
 			#find all locations
 			if not self.dbs["openscad"].module_connectors.contains_src(module):
-				#if no connector is defined fot this base
+				#if no connector is defined for this base
 				continue
 			locations = self.dbs["openscad"].module_connectors.get_dst(module).locations
 

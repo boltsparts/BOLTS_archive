@@ -25,7 +25,7 @@ class BackendError(Exception):
 
 class UncommitedChangesError(Exception):
 	def __str__(self):
-		return "There are uncommited changes in the git repo"
+		return "There are uncommitted changes in the git repo"
 
 class NonUniqueClassIdError(Exception):
 	def __init__(self,id):

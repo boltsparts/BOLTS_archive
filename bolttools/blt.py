@@ -254,7 +254,7 @@ class Repository:
 				))
 				# FullLoader is not implemented in pyyaml < 5.1
 			except AttributeError:
-				# this is depracated for newer pyyaml versions
+				# this is deprecated for newer pyyaml versions
 				raw_coll = list(yaml.load_all(open(join(path,"data",filename),"r","utf8")))
 			if len(raw_coll) == 0:
 				raise MalformedCollectionError(

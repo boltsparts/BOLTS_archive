@@ -68,7 +68,7 @@ class FreeCADData(DataBase):
 				base_info =  list(yaml.load_all(open(basefilename,"r","utf8"), Loader=yaml.FullLoader))
 				# FullLoader is not implemented in pyyaml < 5.1
 			except AttributeError:
-				# this is depracated for newer pyyaml versions
+				# this is deprecated for newer pyyaml versions
 				base_info =  list(yaml.load_all(open(basefilename,"r","utf8")))
 			if len(base_info) != 1:
 				raise MalformedCollectionError(

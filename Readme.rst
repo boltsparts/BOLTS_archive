@@ -30,7 +30,7 @@ Use
 
 You should check out the 
 `documentation <http://www.bolts-library.org/en/docs/index.html>`_.
-on the `webpage <http://www.bolts-library.org/>`_ for more informations on how
+on the `webpage <http://www.bolts-library.org/>`_ for more information on how
 to get and use BOLTS.
 
 Dependencies for use
