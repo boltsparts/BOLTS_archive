@@ -208,7 +208,7 @@ classes:
               "M60" : ["", "", "x4", "", "x2"]
               "M64" : ["", "", "x4", "", ""]
               "M68" : ["", "", "x4", "", ""]
-    source: Dimensions from http://almetal.nl/en/techinfo/hex/hd933.htm, common lengths from http://freecadweb.org/wiki/index.php?title=Macro_screw_maker1_2, thread pitch data from http://almetal.nl/en/techinfo/gti/scthmc.htm
+    source: Dimensions from http://almetal.nl/en/techinfo/hex/hd933.htm, common lengths from http://freecadweb.org/wiki/Macro_screw_maker1_2, thread pitch data from http://almetal.nl/en/techinfo/gti/scthmc.htm
   - id: hexscrew2
     names:
       name:

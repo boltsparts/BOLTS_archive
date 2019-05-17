@@ -203,9 +203,9 @@ def translate(args):
 		os.system("pybabel compile -D docs -d translations/")
 
 def release(args):
-	#check that there are no uncommited changes
+	#check that there are no uncommitted changes
 	if call(["git","diff","--exit-code","--quiet"]) == 1:
-		print("There are uncommited changes present in the git repository. Please take care of them before releasing")
+		print("There are uncommitted changes present in the git repository. Please take care of them before releasing")
 		exit(1)
 
 	if args.kind == "stable" and args.version is None:
@@ -323,7 +323,7 @@ parser_release.set_defaults(func=release)
 parser_release.add_argument("kind",
 	type=str,
 	choices=["development","stable"],
-	help="whether to create a development snapshot or a official relase",
+	help="whether to create a development snapshot or an official release",
 	default="development")
 parser_release.add_argument("target",
 	type=str,
