@@ -249,7 +249,9 @@ class Repository:
 			if splitext(filename)[1] != ".blt":
 				continue
 
-			raw_coll = list(yaml.load_all(open(join(path,"data",filename),"r","utf8")))
+			raw_coll = list(yaml.load_all(
+				open(join(path,"data",filename),"r","utf8"), Loader=yaml.FullLoader
+			))
 			if len(raw_coll) == 0:
 				raise MalformedCollectionError(
 						"No YAML document found in file %s" % filename)
