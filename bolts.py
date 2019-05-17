@@ -55,9 +55,6 @@ def export(args):
 		FreeCADBackend(repo,dbs).write_output(out_path,target_license=license,version="development")
 		copyfile(os.path.join(repo.path,"backends","licenses",args.license.strip("+")),
 			os.path.join(out_path,"BOLTS","LICENSE"))
-	elif args.target == "html":
-		from backends.html import HTMLBackend
-		HTMLBackend(repo,dbs).write_output(out_path)
 #	elif args.target == "solidworks":
 #		from backends.solidworks import SolidWorksBackend
 #		SolidWorksBackend(repo,dbs).write_output(out_path,"development")
@@ -291,7 +288,7 @@ subparsers = parser.add_subparsers()
 parser_export = subparsers.add_parser("export")
 parser_export.add_argument("target",
 	type=str,
-	choices=["openscad","freecad","html","iges"],
+	choices=["openscad","freecad","iges"],
 	help="the distribution to create")
 parser_export.add_argument("-l","--license",
 	type=str,
