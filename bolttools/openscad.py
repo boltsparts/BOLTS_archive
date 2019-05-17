@@ -21,9 +21,9 @@ from os.path import join, exists
 # pylint: disable=W0622
 from codecs import open
 
-from errors import *
-from common import DataBase, BaseElement, Parameters, check_schema, Links, BijectiveLinks
-from common import check_iterator_arguments, filter_iterator_items
+from .errors import *
+from .common import DataBase, BaseElement, Parameters, check_schema, Links, BijectiveLinks
+from .common import check_iterator_arguments, filter_iterator_items
 
 
 class SCADFile(BaseElement):

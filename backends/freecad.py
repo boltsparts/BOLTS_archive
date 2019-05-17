@@ -21,9 +21,9 @@ from codecs import open
 from datetime import datetime
 from PyQt4 import uic
 
-from common import Backend
-import license
-from errors import *
+from .common import Backend
+from . import license
+from .errors import *
 
 class FreeCADBackend(Backend):
 	def __init__(self,repo,databases):

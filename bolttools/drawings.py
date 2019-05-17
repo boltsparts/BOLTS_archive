@@ -22,9 +22,9 @@ from os.path import join, exists, splitext
 # pylint: disable=W0622
 from codecs import open
 
-from errors import *
-from common import BaseElement, DataBase, Parameters, check_schema, Links, BipartiteLinks
-from common import check_iterator_arguments, filter_iterator_items
+from .errors import *
+from .common import BaseElement, DataBase, Parameters, check_schema, Links, BipartiteLinks
+from .common import check_iterator_arguments, filter_iterator_items
 
 class Drawing(BaseElement):
 	def __init__(self,basefile,collname,backend_root):
@@ -34,7 +34,7 @@ class Drawing(BaseElement):
 		self.path = join(backend_root,collname,self.filename)
 
 		self.versions = {}
-	 	for version in iglob(self.path + ".*"):
+		for version in iglob(self.path + ".*"):
 			ext = splitext(version)[1][1:]
 			self.versions[ext] = version
 
