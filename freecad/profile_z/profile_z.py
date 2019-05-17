@@ -40,7 +40,7 @@ def zbeam(params, document):
         rf = tf / 2.0
         rw = tw
 
-        # points, starting at the left upper corner, going against clockwise
+        # points, starting at the left upper corner, going counter-clockwise
         V1 = Vector(-0.5 * tw, 0, 0)
         V2 = Vector(-0.5 * tw + c1, 0, 0)
         V3 = Vector(-0.5 * tw + c1, tf - rf, 0)
@@ -54,7 +54,7 @@ def zbeam(params, document):
         V11 = Vector(-0.5 * tw - rw, h - tf, 0)
         V12 = Vector(-0.5 * tw, h - tf - rw, 0)
 
-        # circle center of the fillets, starting right bottom, going against clockwise
+        # circle center of the fillets, starting right bottom, going counter-clockwise
         Vc1 = Vector(-0.5 * tw + c1 - rf, tf - rf, 0)
         Vc2 = Vector(0.5 * tw + rw, tf + rw, 0)
         Vc3 = Vector(0.5 * tw - c1 + rf, h - tf + rf, 0)

@@ -37,7 +37,7 @@ def lbeam_parallel_flange_equal(params, document):
         l = params['l']
         name = params['name']
 
-        # points, starting at the left upper corner, going against clockwise
+        # points, starting at the left upper corner, going counter-clockwise
         V1 = Vector(0, 0, 0)
         V2 = Vector(a, 0, 0)
         V3 = Vector(a, t - ro, 0)
@@ -48,7 +48,7 @@ def lbeam_parallel_flange_equal(params, document):
         V8 = Vector(t - ro, a, 0)
         V9 = Vector(0, a, 0)
 
-        # circle center of the fillets, starting right bottom, going against clockwise
+        # circle center of the fillets, starting right bottom, going counter-clockwise
         Vc1 = Vector(a - ro, t - ro, 0)
         Vc2 = Vector(t + ri, t + ri, 0)
         Vc3 = Vector(t - ro, a - ro, 0)

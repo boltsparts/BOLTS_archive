@@ -48,7 +48,7 @@ classes:
         description:
           key: Thread designation
           l: length excluding head
-          d1: threaded shaft diamater
+          d1: threaded shaft diameter
           k: head length
           s: width across flats
           e: head diameter
@@ -208,7 +208,7 @@ classes:
               "M60" : ["", "", "x4", "", "x2"]
               "M64" : ["", "", "x4", "", ""]
               "M68" : ["", "", "x4", "", ""]
-    source: Dimensions from http://almetal.nl/en/techinfo/hex/hd933.htm, commmon lengths from http://freecadweb.org/wiki/index.php?title=Macro_screw_maker1_2, thread pitch data from http://almetal.nl/en/techinfo/gti/scthmc.htm
+    source: Dimensions from http://almetal.nl/en/techinfo/hex/hd933.htm, common lengths from http://freecadweb.org/wiki/index.php?title=Macro_screw_maker1_2, thread pitch data from http://almetal.nl/en/techinfo/gti/scthmc.htm
   - id: hexscrew2
     names:
       name:
@@ -257,7 +257,7 @@ classes:
         description:
           key: Thread designation
           l: length excluding head
-          d1: threaded shaft diamater
+          d1: threaded shaft diameter
           k: head length
           s: width across flats
           e: head diameter
@@ -331,7 +331,7 @@ classes:
         description:
           key: Thread designation
           l: length excluding head
-          d1: threaded shaft diamater
+          d1: threaded shaft diameter
           b1: threaded length of shaft for l < 125 mm
           b2: threaded length of shaft for 125 mm < l < 200 mm
           b3: threaded length of shaft for l > 200 mm
@@ -421,7 +421,7 @@ classes:
         description:
           key: Thread designation
           l: length excluding head
-          d1: threaded shaft diamater
+          d1: threaded shaft diameter
           b1: threaded length of shaft for l < 125 mm
           b2: threaded length of shaft for 125 mm < l < 200 mm
           b3: threaded length of shaft for l > 200 mm
