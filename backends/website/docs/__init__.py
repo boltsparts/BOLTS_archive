@@ -3,9 +3,8 @@ from os.path import exists,join
 from os import listdir
 from flask.helpers import safe_join, send_from_directory
 from urlparse import urljoin
-from website.cache import cache
-from website.translation import languages, gettext_docs
-from website.utils import Specification, Documentation
+from backends.website.translation import languages, gettext_docs
+from backends.website.utils import Specification, Documentation
 from docutils import core
 
 docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>/docs/<version>' % ",".join(languages))
@@ -37,7 +36,6 @@ def static_version(filename):
 
 @docs.route("/")
 @docs.route("/index.html")
-@cache.cached()
 def index():
 	if not g.version in SOURCES.get_versions():
 		abort(404)
@@ -51,7 +49,6 @@ def index():
 
 @docs.route("/<cat>/<filename>")
 @docs.route("/<cat>/<filename>.html")
-@cache.cached()
 def document(cat,filename):
 	if not g.version in SOURCES.get_versions():
 		abort(404)
@@ -65,7 +62,6 @@ def document(cat,filename):
 
 @docs.route("/specification")
 @docs.route("/specification.html")
-@cache.cached()
 def specification():
 	parts = core.publish_parts(
 		source=SPECS.get_version(g.version),
@@ -77,7 +73,6 @@ def specification():
 
 @docs.route("/changes")
 @docs.route("/changes.html")
-@cache.cached()
 def changes():
 	parts = core.publish_parts(
 		source=SPECS.get_changes(),

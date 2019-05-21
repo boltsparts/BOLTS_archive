@@ -8,8 +8,8 @@ from website.parts import repo
 from os import makedirs, environ
 from os.path import exists, join
 from shutil import rmtree
-from website.translation import languages, trans_dir
-from website.docs import SOURCES
+from backends.website.translation import languages, trans_dir
+from backends.website.docs import SOURCES
 
 from flask_wtf import Form
 from wtforms import TextField

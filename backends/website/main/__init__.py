@@ -3,12 +3,10 @@ from flask.ext.babelex import gettext
 from flask.helpers import send_from_directory
 from bolttools.statistics import Statistics
 from backends.checker import CheckerBackend
-from website.cache import cache
-from website.parts import repo, dbs
-import website.html
-from website.translation import languages
-from website.docs import STABLE
-from website.utils import Downloads
+from backends.website.parts import repo, dbs
+from backends.website.translation import languages
+from backends.website.docs import STABLE
+from backends.website.utils import Downloads
 from os import environ
 from os.path import join
 
@@ -27,7 +25,6 @@ def pull_language_code(endpoint, values):
 
 @main.route("/")
 @main.route("/index.html")
-@cache.cached()
 def index():
 	page = {"title" : gettext("Home")}
 
@@ -41,7 +38,6 @@ def docindex():
 
 @main.route("/downloads")
 @main.route("/downloads.html")
-@cache.cached()
 def downloads():
 	page = {"title" : "Downloads"}
 
@@ -66,7 +62,6 @@ def files(filename):
 
 @main.route("/tasks")
 @main.route("/tasks.html")
-@cache.cached()
 def tasks():
 	page = {"title" : "Contribute"}
 
@@ -89,14 +84,12 @@ def tasks():
 
 @main.route("/contribute")
 @main.route("/contribute.html")
-@cache.cached()
 def contribute():
 	page = {"title" : "Contribute"}
 
 	return render_template("contribute.html",page=page)
 
 @main.route("/public_domain.html")
-@cache.cached()
 def public_domain():
 	page = {"title" : "Public Domain"}
 
@@ -104,7 +97,6 @@ def public_domain():
 
 @main.route("/contributors")
 @main.route("/contributors.html")
-@cache.cached()
 def contributors():
 	page = {"title" : "Contributors"}
 

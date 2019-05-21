@@ -2,7 +2,7 @@ from flask.ext.babelex import Domain
 from os import environ,listdir
 from os.path import join
 
-trans_dir = join(environ["OPENSHIFT_REPO_DIR"],"translations")
+trans_dir = join("/home/jreinhardt/Models/BOLTS","translations")
 messages_domain = Domain(trans_dir,domain="messages")
 parts_domain = Domain(trans_dir,domain="parts")
 docs_domain = Domain(trans_dir,domain="docs")

@@ -8,10 +8,9 @@ from bolttools.freecad import FreeCADData
 from bolttools.openscad import OpenSCADData
 from bolttools.drawings import DrawingsData
 from backends.openscad import get_signature
-import website.html as html
-import website.utils as utils
-from website.cache import cache
-from website.translation import parts_domain, gettext_parts, languages
+import backends.website.html as html
+import backends.website.utils as utils
+from backends.website.translation import parts_domain, gettext_parts, languages
 
 parts = Blueprint("parts",__name__,template_folder="templates",url_prefix='/<any(%s):lang_code>/parts' % ",".join(languages))
 
@@ -49,7 +48,6 @@ def format_author_prop(author_list):
 
 @parts.route('/')
 @parts.route('/index.html')
-@cache.cached()
 def index():
 	collections = [{'id' : coll.id, 'name' : coll.name} for coll, in repo.itercollections()]
 	bodies = [ body.body for body, in repo.iterbodies()]
@@ -62,7 +60,6 @@ def drawing(filename,coll):
 
 @parts.route('/collections/<id>')
 @parts.route('/collections/<id>.html')
-@cache.cached()
 def collection(id):
 	coll = repo.collections[id]
 	names = []
@@ -96,7 +93,6 @@ def collection(id):
 
 @parts.route('/bodies/<id>')
 @parts.route('/bodies/<id>.html')
-@cache.cached()
 def body(id):
 	body = repo.bodies[id]
 	standards = []
@@ -111,7 +107,6 @@ def body(id):
 
 @parts.route('/standards/<id>')
 @parts.route('/standards/<id>.html')
-@cache.cached()
 def standard(id):
 	std = repo.standards[id]
 	cl = repo.class_standards.get_src(std)
@@ -219,7 +214,6 @@ def standard(id):
 
 @parts.route('/names/<id>')
 @parts.route('/names/<id>.html')
-@cache.cached()
 def name(id):
 	name = repo.names[id]
 	cl = repo.class_names.get_src(name)
@@ -325,6 +319,5 @@ def name(id):
 
 @parts.route('/thingtracker')
 @parts.route('/thingtracker.json')
-@cache.cached()
 def thingtracker():
 	abort(404)

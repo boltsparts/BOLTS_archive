@@ -1,9 +1,9 @@
 from flask import url_for
 from jinja2 import contextfilter, Markup
-from docs import STABLE
+from backends.website.docs import STABLE
 import markdown
 import re
-import website.html
+#import backends.website.html as html
 from os.path import join
 
 def get_subs(version):
@@ -24,9 +24,9 @@ def get_subs(version):
 		),
 		'url' : lambda m: url_for(m.group(2),lang_code = lang_code),
 		'collection_url' : lambda m: url_for('parts.collection',id=m.group(2),lang_code=lang_code),
-		'standard' : lambda m: website.html.a(m.group(2),href=url_for('parts.standard',id=m.group(2),lang_code = lang_code)),
-		'name' : lambda m: website.html.a(m.group(2),href=url_for('parts.name',id=m.group(2),lang_code = lang_code)),
-		'body' : lambda m: website.html.a(m.group(2),href=url_for('parts.body',id=m.group(2),lang_code = lang_code)),
+		'standard' : lambda m: html.a(m.group(2),href=url_for('parts.standard',id=m.group(2),lang_code = lang_code)),
+		'name' : lambda m: html.a(m.group(2),href=url_for('parts.name',id=m.group(2),lang_code = lang_code)),
+		'body' : lambda m: html.a(m.group(2),href=url_for('parts.body',id=m.group(2),lang_code = lang_code)),
 		'standard_url' : lambda m: url_for('parts.standard',id=m.group(2),lang_code = lang_code),
 		'name_url' : lambda m: url_for('parts.name',id=m.group(2,lang_code = lang_code)),
 		'body_url' : lambda m: url_for('parts.body',id=m.group(2),lang_code = lang_code)

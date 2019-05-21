@@ -6,4 +6,4 @@ output/**/*
 bolttools/.coverage
 .sass-cache
 _site
-website/static/.webassets-cache
+backends/website/static/.webassets-cache
