@@ -2,14 +2,15 @@ from flask import Blueprint, render_template, abort, redirect, request, url_for,
 from flask.ext.babelex import gettext, ngettext
 from flask.helpers import safe_join, send_from_directory
 from os.path import join
+import os.path
 from os import environ
 from bolttools.blt import Repository
 from bolttools.freecad import FreeCADData
 from bolttools.openscad import OpenSCADData
 from bolttools.drawings import DrawingsData
 from backends.openscad import get_signature
-import backends.website.html as html
-import backends.website.utils as utils
+from .. import html
+from .. import utils
 from backends.website.translation import parts_domain, gettext_parts, languages
 
 parts = Blueprint("parts",__name__,template_folder="templates",url_prefix='/<any(%s):lang_code>/parts' % ",".join(languages))
@@ -22,7 +23,8 @@ def add_language_code(endpoint, values):
 def pull_language_code(endpoint, values):
 	g.lang_code = values.pop('lang_code')
 
-repo = Repository(environ['OPENSHIFT_REPO_DIR'])
+import backends
+repo = Repository(os.path.split(os.path.split(backends.__file__)[0])[0])
 dbs = {
 	"freecad" : FreeCADData(repo),
 	"openscad" : OpenSCADData(repo),

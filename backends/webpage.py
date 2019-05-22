@@ -56,5 +56,12 @@ class WebsiteBackend(Backend):
 
 		app.config["FREEZER_DESTINATION"] = out_path
 
-		freezer = Freezer(app)
+		freezer = Freezer(app, log_url_for=False, with_static_files=False)
+
+		urls = lambda: [('main.index', dict(lang_code="en"))]
+		print(urls())
+		freezer.register_generator(urls)
+
+		print(list(freezer.all_urls()))
+
 		freezer.freeze()

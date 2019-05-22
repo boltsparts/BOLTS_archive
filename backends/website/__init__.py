@@ -4,14 +4,13 @@ from flask.ext.assets import Bundle, Environment
 from os.path import join, exists
 from os import environ, makedirs, getenv
 from shutil import rmtree
-#from blog import blog
+from blog import blog
 from docs import docs
-#from main import main
-#from parts import parts
-#from search import search, rebuild_index
-#from rest import rest
-#import backends.website.cms
-#import backends.website.translation
+from main import main
+from parts import parts
+from rest import rest
+import cms
+import translation
 import logging
 
 
@@ -24,29 +23,25 @@ assets = Environment(app)
 assets.register('css',Bundle('source/style.less',depends='source/*.less',filters=['less','cleancss']),output='css/style.css')
 assets.register('js',Bundle('js/jquery-2.1.1.min.js','js/bootstrap.min.js'),output='js/all.js')
 
-#app.register_blueprint(main)
-#app.register_blueprint(blog)
+app.register_blueprint(main)
+app.register_blueprint(blog)
 app.register_blueprint(docs)
-#app.register_blueprint(parts)
-#app.register_blueprint(search)
-#app.register_blueprint(rest)
+app.register_blueprint(parts)
+app.register_blueprint(rest)
 
-#babel = Babel(app,default_domain=website.translation.messages_domain)
+babel = Babel(app,default_domain=translation.messages_domain)
 
-#app.jinja_env.filters['markdown_docs'] = website.cms.markdown_docs
-#app.jinja_env.filters['markdown_blog'] = website.cms.markdown_blog
-#app.jinja_env.globals['gettext_parts'] = website.translation.gettext_parts
-#app.jinja_env.globals['gettext_docs'] = website.translation.gettext_docs
+app.jinja_env.filters['markdown_docs'] = cms.markdown_docs
+app.jinja_env.filters['markdown_blog'] = cms.markdown_blog
+app.jinja_env.globals['gettext_parts'] = translation.gettext_parts
+app.jinja_env.globals['gettext_docs']  = translation.gettext_docs
 
-#@babel.localeselector
-#def get_locale():
-#	lang_code = getattr(g,'lang_code',None)
-#	if lang_code is None:
-#		#the four most popular languages from the website
-#		lang_code = request.accept_languages.best_match(website.translation.languages,'en')
-#	return lang_code
-#
-#rebuild_index(app)
+@babel.localeselector
+def get_locale():
+	lang_code = getattr(g,'lang_code',None)
+	if lang_code is None:
+		lang_code = 'en'
+	return lang_code
 
 @app.route('/')
 def index():

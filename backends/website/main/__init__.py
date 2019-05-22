@@ -13,7 +13,7 @@ from os.path import join
 main = Blueprint("main",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>' % ",".join(languages))
 
 stats = Statistics(repo,dbs)
-downs = Downloads(join(environ["OPENSHIFT_REPO_DIR"],"downloads"))
+downs = Downloads(join(repo.path,"downloads"))
 
 @main.url_defaults
 def add_language_code(endpoint, values):
