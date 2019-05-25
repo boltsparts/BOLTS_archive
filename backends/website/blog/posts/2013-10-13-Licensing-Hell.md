@@ -22,7 +22,7 @@ surprisingly easy, it is very little additional code required. It took me much
 more time to understand how this license stuff works and how to apply it to
 BOLTS.
 
-The result is a [document]({{ doc(general,licensing) }}) that I put into the
+The result is a [document]({{ doc_version(0.3,general,licensing) }}) that I put into the
 [documentation section]({{ url(docs.index) }}) (which is still rather empty,
 but slowly filling up). This document describes my understanding of the license
 related problems that BOLTS faces and describes how I chose to approach them

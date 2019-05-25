@@ -22,8 +22,8 @@
     <p>{% trans %}You can also help with adding more parts to BOLTS or improving those that are already there. To do so, you should first read about a few basic things, that will be useful to know{% endtrans %}</p>
 
     <ul>
-      <li><a href="{{ url_for('docs.document',cat='general',filename='introduction') }}">{% trans %}A short introduction to BOLTS{% endtrans %}</a></li>
-      <li><a href="{{ url_for('docs.document',cat='general',filename='development') }}">{% trans %}BOLTS development with git{% endtrans %}</a></li>
+      <li><a href="{{ url_for('docs.document', version=page.version, cat='general',filename='introduction') }}">{% trans %}A short introduction to BOLTS{% endtrans %}</a></li>
+      <li><a href="{{ url_for('docs.document', version=page.version,cat='general',filename='development') }}">{% trans %}BOLTS development with git{% endtrans %}</a></li>
     </ul>
 
     <p>{% trans url = url_for('main.docindex') %}After that you are well prepared to contribute parts, data or drawings. For details on how to do that see the <a href="{{ url }}">contributor documentation</a>.{% endtrans %}</p>

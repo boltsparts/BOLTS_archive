@@ -30,7 +30,6 @@ def pull_language_code(endpoint, values):
 @docs.route("/<version>")
 @docs.route("/<version>/index.html")
 def index(version):
-	print(version)
 	if not version in SOURCES.get_versions():
 		abort(404)
 	doc_structure = {}
@@ -49,7 +48,6 @@ def document(version, cat,filename):
 	doc = list(SOURCES.get_documents(version=version,category=cat,filename=filename))
 	if len(doc) != 1:
 		abort(404)
-	print(doc)
 	doc = doc[0].copy()
 	doc["content"] = "\n\n".join(gettext_docs(p) for p in doc["content"])
 	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : version}

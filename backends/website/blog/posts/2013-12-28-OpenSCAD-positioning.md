@@ -106,7 +106,7 @@ You can try this functionality with the most recent development snapshot from
 the [BOLTS page]({{ url(main.downloads) }}). Either place the contents of the
 archive in the same directory as the .scad files that use BOLTS, or follow the
 instructions on 
-[how to install BOLTS for OpenSCAD]({{ doc(openscad,installation) }}).
+[how to install BOLTS for OpenSCAD]({{ doc_version(0.4, openscad,installation) }}).
 
 Not all parts have connectors yet, but nuts, washers, hex bolts and
 batteries do. The names of the connectors are listed in the OpenSCAD section of the

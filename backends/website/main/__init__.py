@@ -88,7 +88,8 @@ def tasks():
 @main.route("/contribute")
 @main.route("/contribute.html")
 def contribute():
-	page = {"title" : "Contribute"}
+	from ..docs import STABLE
+	page = {"title" : "Contribute", "version" : STABLE}
 
 	return render_template("contribute.html",page=page)
 

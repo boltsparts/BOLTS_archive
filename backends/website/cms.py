@@ -22,7 +22,7 @@ def get_subs(version):
 			lang_code=lang_code,
 			**dict(zip(['year','month','day','slug'],(a.strip() for a in m.group(2).split('/'))))
 		),
-		'url' : lambda m: url_for(m.group(2),lang_code = lang_code),
+		'url' : lambda m: url_for(m.group(2),lang_code = lang_code, version=version),
 		'collection_url' : lambda m: url_for('parts.collection',id=m.group(2),lang_code=lang_code),
 		'standard' : lambda m: html.a(m.group(2),href=url_for('parts.standard',id=m.group(2),lang_code = lang_code)),
 		'name' : lambda m: html.a(m.group(2),href=url_for('parts.name',id=m.group(2),lang_code = lang_code)),

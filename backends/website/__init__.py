@@ -16,8 +16,6 @@ import logging
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = getenv('OPENSHIFT_SECRET_TOKEN','development_token')
-
 assets = Environment(app)
 
 assets.register('css',Bundle('source/style.less',depends='source/*.less',filters=['less','cleancss']),output='css/style.css')
