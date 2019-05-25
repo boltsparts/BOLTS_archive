@@ -55,13 +55,13 @@ class WebsiteBackend(Backend):
 					extra_files.append(os.path.join(dirpath,filename))
 
 		app.config["FREEZER_DESTINATION"] = out_path
+		app.config["FREEZER_BASE_URL"] = "https://ist-dein-freund.de/bolts"
 
-		freezer = Freezer(app, log_url_for=False, with_static_files=False)
-
-		urls = lambda: [('main.index', dict(lang_code="en"))]
-		print(urls())
+		freezer = Freezer(app, log_url_for=True)
+		
+		urls = lambda: [('main.index', dict(lang_code=l)) for l in ["en", "de", "fr", "sv", "es"]]
 		freezer.register_generator(urls)
 
-		print(list(freezer.all_urls()))
-
 		freezer.freeze()
+
+

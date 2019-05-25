@@ -10,7 +10,10 @@ blog = Blueprint("blog",__name__,template_folder="templates",static_folder="stat
 
 @blog.url_defaults
 def add_language_code(endpoint, values):
-	values.setdefault('lang_code',g.lang_code)
+	if hasattr(g,'lang_code'):
+		values.setdefault('lang_code',g.lang_code)
+	else:
+		values.setdefault('lang_code','en')
 
 @blog.url_value_preprocessor
 def pull_language_code(endpoint, values):

@@ -42,7 +42,7 @@
     <h3>BLT files</h3>
     <ul>
       <li><a href="{{ url_for('.specification',version=page.version) }}">{% trans %}blt file format specification{% endtrans %}</a></li>
-      <li><a href="{{ url_for('.changes') }}">{% trans %}Changelog{% endtrans %}</a></li>
+      <li><a href="{{ url_for('.changes', version=page.version) }}">{% trans %}Changelog{% endtrans %}</a></li>
     </ul>
   </div>
 </div>

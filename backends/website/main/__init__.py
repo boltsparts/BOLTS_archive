@@ -7,17 +7,21 @@ from backends.website.parts import repo, dbs
 from backends.website.translation import languages
 from backends.website.docs import STABLE
 from backends.website.utils import Downloads
+from .. import html
 from os import environ
 from os.path import join
 
-main = Blueprint("main",__name__,template_folder="templates",static_folder="static",url_prefix='/<any(%s):lang_code>' % ",".join(languages))
+main = Blueprint("main",__name__,template_folder="templates",static_folder="static", url_prefix='/<any(%s):lang_code>' % ",".join(languages))
 
 stats = Statistics(repo,dbs)
 downs = Downloads(join(repo.path,"downloads"))
 
 @main.url_defaults
 def add_language_code(endpoint, values):
-	values.setdefault('lang_code',g.lang_code)
+	if hasattr(g,'lang_code'):
+		values.setdefault('lang_code',g.lang_code)
+	else:
+		values.setdefault('lang_code','en')
 
 @main.url_value_preprocessor
 def pull_language_code(endpoint, values):
@@ -33,8 +37,7 @@ def index():
 @main.route("/docs")
 @main.route("/docs/index.html")
 def docindex():
-	g.version = STABLE
-	return redirect(url_for("docs.index"))
+	return redirect(url_for("docs.index", version=STABLE))
 
 @main.route("/downloads")
 @main.route("/downloads.html")
@@ -73,7 +76,7 @@ def tasks():
 			"title" : task.get_title(),
 			"description" : task.get_description(),
 			"length" : len(task.get_table()),
-			"table" : website.html.table({
+			"table" : html.table({
 				"class" : "table",
 				"data" : task.get_table(),
 				"header" : task.get_headers()

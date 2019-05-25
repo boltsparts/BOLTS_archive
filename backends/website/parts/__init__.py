@@ -58,7 +58,7 @@ def index():
 
 @parts.route('/drawings/<coll>/<filename>')
 def drawing(filename,coll):
-	return send_from_directory(join(environ['OPENSHIFT_REPO_DIR'],'drawings'),safe_join(coll,filename))
+	return send_from_directory(join(repo.path,'drawings'),safe_join(coll,filename))
 
 @parts.route('/collections/<id>')
 @parts.route('/collections/<id>.html')

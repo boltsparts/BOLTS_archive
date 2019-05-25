@@ -43,11 +43,6 @@ def get_locale():
 		lang_code = 'en'
 	return lang_code
 
-@app.route('/')
-def index():
-	g.lang_code = get_locale()
-	return redirect(url_for('main.index'))
-
 @app.errorhandler(404)
 def error_404(e):
 	g.lang_code = get_locale()
