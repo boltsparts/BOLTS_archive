@@ -6,7 +6,6 @@ from backends.checker import CheckerBackend
 from backends.website.parts import repo, dbs
 from backends.website.translation import languages
 from backends.website.docs import STABLE
-from backends.website.utils import Downloads
 from .. import html
 from os import environ
 
@@ -42,10 +41,6 @@ def docindex():
 def downloads():
 	page = {"title" : gettext("Downloads")}
 	return render_template("downloads.html",page=page)
-
-@main.route("/downloads/<path:filename>")
-def files(filename):
-	return send_from_directory(join(environ['OPENSHIFT_REPO_DIR'],'downloads'),filename)
 
 @main.route("/tasks")
 @main.route("/tasks.html")
