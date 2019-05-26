@@ -11,6 +11,8 @@ early stages of development.
 
 <!-- more -->
 
+Edit (May 2019): During the efforts to revive the website, the thingtracker network feature was removed.
+
 The Thing  Tracker Network specifies a way to publish your 3D designs in a way
 that is independent from any particular website, and thus opens the possibility
 for a world without 
@@ -25,13 +27,12 @@ This time slot closes though, the walls are getting higher, the users more lazy
 and unwilling to change anything.
 
 But the fundamental discussions aside, what I did is that I added an automatic
-export of a TTN tracker for all the parts in BOLTS. It is available
-[here (not for humans to read)]({{ url(parts.thingtracker) }}). That turned out
-to be very easy to do, as all of the information necessary is already available
-in computer readable and structured form. All it took were 50 lines of code.
+export of a TTN tracker for all the parts in BOLTS. It is available here (not
+for humans to read). That turned out to be very easy to do, as all of the
+information necessary is already available in computer readable and structured
+form. All it took were 50 lines of code.
 
-As a user one can not do very much with it, apart from
-[viewing the contents of the tracker](http://thingtracker.net/tools/viewer/?trackerURL={{ url(parts.thingtracker) }}#).
-The only way in which this is or might be useful is to raise awareness and
-activity for TTN and to help with the development of the TTN and of tools using
-it.
+As a user one can not do very much with it, apart from viewing the contents of
+the tracker.  The only way in which this is or might be useful is to raise
+awareness and activity for TTN and to help with the development of the TTN and
+of tools using it.

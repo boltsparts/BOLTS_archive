@@ -318,8 +318,3 @@ def name(id):
 		freecad = freecad,
 		openscad = openscad
 		)
-
-@parts.route('/thingtracker')
-@parts.route('/thingtracker.json')
-def thingtracker():
-	abort(404)
