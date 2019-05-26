@@ -38,6 +38,7 @@ def index():
 	return render_template("blog/index.html",page=page,posts=posts.get_posts()[:-6:-1])
 
 @blog.route("/all")
+@blog.route("/archive.html")
 def archive():
 	page = {"title" : "Blog"}
 	return render_template("blog/archive.html",page=page,posts=posts.get_posts()[::-1])
