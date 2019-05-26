@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, abort, redirect, request, url_for, g
-from os.path import exists,join
+from flask import Blueprint, render_template, abort, redirect, request, url_for, g, safe_join
+from os.path import exists
 from os import listdir
 from flask.helpers import safe_join, send_from_directory
 from urlparse import urljoin
@@ -9,12 +9,12 @@ from docutils import core
 
 docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static", url_prefix='/<any(%s):lang_code>/docs' % ",".join(languages))
 
-SOURCES = Documentation(join(docs.root_path,"sources"))
+SOURCES = Documentation(safe_join(docs.root_path,"sources"))
 
 STABLE = SOURCES.get_stable()
 DEV = SOURCES.get_dev()
 
-SPECS = Specification(join(docs.root_path,"specs"))
+SPECS = Specification(safe_join(docs.root_path,"specs"))
 
 @docs.url_defaults
 def add_language_code(endpoint, values):

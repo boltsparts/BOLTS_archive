@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template, abort, redirect, request, url_for, g
 from flask_babelex import gettext, ngettext
 from flask.helpers import safe_join, send_from_directory
-from os.path import join
-import os.path
+from os.path import split
 from os import environ
 from bolttools.blt import Repository
 from bolttools.freecad import FreeCADData
@@ -24,7 +23,7 @@ def pull_language_code(endpoint, values):
 	g.lang_code = values.pop('lang_code')
 
 import backends
-repo = Repository(os.path.split(os.path.split(backends.__file__)[0])[0])
+repo = Repository(split(split(backends.__file__)[0])[0])
 dbs = {
 	"freecad" : FreeCADData(repo),
 	"openscad" : OpenSCADData(repo),
@@ -58,7 +57,7 @@ def index():
 
 @parts.route('/drawings/<coll>/<filename>')
 def drawing(filename,coll):
-	return send_from_directory(join(repo.path,'drawings'),safe_join(coll,filename))
+	return send_from_directory(safe_join(repo.path,'drawings'),safe_join(coll,filename))
 
 @parts.route('/collections/<id>')
 @parts.route('/collections/<id>.html')

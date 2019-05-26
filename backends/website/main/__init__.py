@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort, redirect, url_for, request, g, Blueprint
+from flask import Flask, render_template, abort, redirect, url_for, request, g, Blueprint, safe_join
 from flask_babelex import gettext
 from flask.helpers import send_from_directory
 from bolttools.statistics import Statistics
@@ -9,7 +9,6 @@ from backends.website.docs import STABLE
 from backends.website.utils import Downloads
 from .. import html
 from os import environ
-from os.path import join
 
 main = Blueprint("main",__name__,template_folder="templates",static_folder="static", url_prefix='/<any(%s):lang_code>' % ",".join(languages))
 

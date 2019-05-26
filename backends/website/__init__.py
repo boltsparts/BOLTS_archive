@@ -1,7 +1,7 @@
 from flask import Flask, render_template, abort, redirect, url_for, request, g
 from flask_babelex import Babel,format_datetime, gettext, lazy_gettext
 from flask_assets import Bundle, Environment
-from os.path import join, exists
+from os.path import exists
 from os import environ, makedirs, getenv
 from shutil import rmtree
 from blog import blog

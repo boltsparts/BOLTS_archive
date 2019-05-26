@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, abort, redirect, request, g, url_for
-from os.path import exists,join
+from flask import Blueprint, render_template, abort, redirect, request, g, url_for, safe_join
+from os.path import exists
 from urlparse import urljoin
 from werkzeug.contrib.atom import AtomFeed
 from backends.website.translation import languages
@@ -19,7 +19,7 @@ def add_language_code(endpoint, values):
 def pull_language_code(endpoint, values):
 	g.lang_code = values.pop('lang_code')
 
-posts = Posts(join(blog.root_path,"posts"))
+posts = Posts(safe_join(blog.root_path,"posts"))
 
 @blog.route("/<int:year>/<int:month>/<int:day>/<slug>")
 @blog.route("/<int:year>/<int:month>/<int:day>/<slug>.html")

@@ -1,10 +1,9 @@
-from flask import url_for
+from flask import url_for, safe_join
 from jinja2 import contextfilter, Markup
 from backends.website.docs import STABLE
 import markdown
 import re
 import html
-from os.path import join
 
 def get_subs(version):
 	lang_code = "en"
@@ -44,11 +43,11 @@ def markdown_docs(ctx,value):
 	else:
 		version = STABLE
 	subs = get_subs(version)
-	subs['static'] = lambda m: url_for('docs.static',filename=join(version,m.group(2)))
+	subs['static'] = lambda m: url_for('docs.static',filename=safe_join(version,m.group(2)))
 	subs['spec'] = lambda m: url_for('docs.specification', version=version) + ("#%s" % m.group(2))
 	return markdownsub(value,subs)
 
 def markdown_blog(value):
 	subs = get_subs(str(STABLE))
-	subs['static'] = lambda m: url_for('blog.static',filename=join(m.group(2)))
+	subs['static'] = lambda m: url_for('blog.static',filename=m.group(2))
 	return markdownsub(value,subs)

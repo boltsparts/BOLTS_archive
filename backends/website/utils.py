@@ -1,11 +1,12 @@
 import datetime
 import re
 from os import walk, listdir
-from os.path import exists, join, relpath, splitext
+from os.path import exists, relpath, splitext
 import markdown
 from yaml import safe_load as load
 from babel.messages.catalog import Catalog
 from babel.messages.pofile import write_po, read_po
+from flask import safe_join
 
 from bolttools.common import UNITS
 
@@ -86,14 +87,14 @@ class Downloads:
 class Specification:
 	def __init__(self,path):
 		self.version = {}
-		self.changes = open(join(path,"changes.rst")).read()
+		self.changes = open(safe_join(path,"changes.rst")).read()
 
 		spec_pattern = re.compile("blt_spec_([0-9]\.[0-9])\.rst")
 
 		for filename in listdir(path):
 			match = spec_pattern.match(filename)
 			if not match is None:
-				self.version[match.group(1)] = open(join(path,filename)).read()
+				self.version[match.group(1)] = open(safe_join(path,filename)).read()
 	def get_version(self,version):
 		return self.version[version]
 	def get_changes(self):
@@ -108,16 +109,16 @@ class Documentation:
 
 		for version in listdir(path):
 			self.versions.add(version)
-			for cat in listdir(join(path,version)):
+			for cat in listdir(safe_join(path,version)):
 				self.categories.add(cat)
-				for filename in listdir(join(path,version,cat)):
+				for filename in listdir(safe_join(path,version,cat)):
 					if filename.startswith('.'):
 						continue
 					doc = {}
 					doc["category"] = cat
 					doc["version"] = version
 
-					with open(join(path,version,cat,filename)) as fid:
+					with open(safe_join(path,version,cat,filename)) as fid:
 						header, content = split_yaml_header(fid)
 
 					doc["title"] = header["title"]
@@ -198,7 +199,7 @@ class Posts:
 			post["slug"] = '.'.join('-'.join(parts[3:]).split('.')[:-1])
 			post["url_values"] = {"year" : year, "month" : month, "day" : day, "slug" : post["slug"]}
 
-			with open(join(path,filename)) as fid:
+			with open(safe_join(path,filename)) as fid:
 				header, content = fid.read().split('\n---\n')
 				header = load(header)
 				post["content"] = markdown.markdown(content)
