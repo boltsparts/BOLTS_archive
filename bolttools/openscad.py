@@ -84,7 +84,10 @@ class OpenSCADData(DataBase):
 			if not exists(basefilename):
 				#skip directory that is no collection
 				continue
-			base =  list(yaml.load_all(open(basefilename,"r","utf8")))
+			base =  list(yaml.load_all(
+				open(basefilename,"r","utf8"),
+				Loader=yaml.SafeLoader
+				))
 			if len(base) != 1:
 				raise MalformedCollectionError(
 						"No YAML document found in file %s" % basefilename)

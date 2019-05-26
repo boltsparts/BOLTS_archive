@@ -94,7 +94,10 @@ class DrawingsData(DataBase):
 				raise MalformedRepositoryError(
 					"Drawings for unknown collection found: %s " % coll)
 					
-			base_info =  list(yaml.load_all(open(basefilename,"r","utf8")))
+			base_info =  list(yaml.load_all(
+				open(basefilename,"r","utf8"),
+				Loader=yaml.SafeLoader
+				))
 			if len(base_info) != 1:
 				raise MalformedCollectionError(
 					"Not exactly one YAML document found in file %s" % basefilename)
