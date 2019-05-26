@@ -9,45 +9,12 @@
 {% endblock %}
 
 {% block content %}
-<h2>{% trans %}Current stable release{% endtrans %}</h2>
+<h2>{% trans %}Release files{% endtrans %}</h2>
 <div id="row">
-  <div class="col-xs-12 col-md-4">
-    <h3>FreeCAD</h3>
-
-    <a href="{{ url_for('main.files',filename=release.freecad.stable.targz.path) }}">.tar.gz</a>,
-    <a href="{{ url_for('main.files',filename=release.freecad.stable.zip.path) }}">.zip</a>
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <h3>OpenSCAD</h3>
-
-    <a href="{{ url_for('main.files',filename=release.openscad.stable.targz.path) }}">.tar.gz</a>,
-    <a href="{{ url_for('main.files',filename=release.openscad.stable.zip.path) }}">.zip</a>
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <h3>IGES</h3>
-
-    <a href="{{ url_for('main.files',filename=release.iges.stable.tarxz.path) }}">.tar.xz</a>
+  <div class="col-xs-12 col-md-12">
+    <p>{% trans %}You can find all releases on our <a href="https://github.com/boltsparts/BOLTS/releases">Github Release page</a>.
+    Click here to go directly to the <a href="https://github.com/boltsparts/BOLTS/releases/latest">current stable release</a>{% endtrans %}</p>
   </div>
 </div>
-<h2>{% trans %}Development Snapshots{% endtrans %}</h2>
 <div id="row">
-  <div class="col-xs-12 col-md-4">
-    <h3>FreeCAD</h3>
-
-    <a href="{{ url_for('main.files',filename=release.freecad.devel.targz.path) }}">.tar.gz</a>,
-    <a href="{{ url_for('main.files',filename=release.freecad.devel.zip.path) }}">.zip</a>
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <h3>OpenSCAD</h3>
-
-    <a href="{{ url_for('main.files',filename=release.openscad.devel.targz.path) }}">.tar.gz</a>,
-    <a href="{{ url_for('main.files',filename=release.openscad.devel.zip.path) }}">.zip</a>
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <h3>IGES</h3>
-
-    <a href="{{ url_for('main.files',filename=release.iges.devel.tarxz.path) }}">.tar.xz</a>
-  </div>
-</div>
-<p>{% trans %}If in doubt, take the zip archive. <a href="http://www.7-zip.org/">7 Zip</a> can be used to open xz archives on Windows.{% endtrans %}</p>
 {% endblock %}
