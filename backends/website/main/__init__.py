@@ -34,7 +34,7 @@ def index():
 @main.route("/docs")
 @main.route("/docs/index.html")
 def docindex():
-	return redirect(url_for("docs.index", version=STABLE))
+	return render_template("redirect.html", url = url_for("docs.index", version=STABLE))
 
 @main.route("/downloads")
 @main.route("/downloads.html")

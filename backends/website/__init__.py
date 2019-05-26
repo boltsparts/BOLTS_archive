@@ -59,5 +59,12 @@ def error_500(e):
 		message=gettext('An error happened while processing your request. This should not happen, we are very sorry. Please tell us about the this problem by sending a mail to BOLTS@ist-dein-freund.de and include the URL you were trying to access.')
 	), 500
 
+
+@app.route("/")
+@app.route("/index.html")
+def index():
+	page = {"title" : gettext("Home")}
+	return render_template("redirect.html", url = url_for("main.index", lang_code=get_locale()))
+
 if __name__ == "__main__":
 	app.run()

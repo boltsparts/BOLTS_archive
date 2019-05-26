@@ -56,13 +56,8 @@ class WebsiteBackend(Backend):
 
 		app.config["FREEZER_DESTINATION"] = out_path
 		app.config["FREEZER_BASE_URL"] = "https://ist-dein-freund.de/bolts"
-		app.config["FREEZER_REDIRECT_POLICY"] = "ignore"
 
-		freezer = Freezer(app, log_url_for=True)
-		
-		urls = lambda: [('main.index', dict(lang_code=l)) for l in ["en", "de", "fr", "sv", "es"]]
-		freezer.register_generator(urls)
-
+		freezer = Freezer(app)
 		freezer.freeze()
 
 
