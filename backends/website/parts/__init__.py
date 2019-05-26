@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, abort, redirect, request, url_for, g
-from flask.ext.babelex import gettext, ngettext
+from flask_babelex import gettext, ngettext
 from flask.helpers import safe_join, send_from_directory
 from os.path import join
 import os.path

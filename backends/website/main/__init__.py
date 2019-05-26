@@ -1,5 +1,5 @@
 from flask import Flask, render_template, abort, redirect, url_for, request, g, Blueprint
-from flask.ext.babelex import gettext
+from flask_babelex import gettext
 from flask.helpers import send_from_directory
 from bolttools.statistics import Statistics
 from backends.checker import CheckerBackend

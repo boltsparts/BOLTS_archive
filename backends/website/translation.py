@@ -1,4 +1,4 @@
-from flask.ext.babelex import Domain
+from flask_babelex import Domain
 from os import environ,listdir
 from os.path import join
 
