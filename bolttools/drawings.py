@@ -94,10 +94,12 @@ class DrawingsData(DataBase):
 				raise MalformedRepositoryError(
 					"Drawings for unknown collection found: %s " % coll)
 					
-			base_info =  list(yaml.load_all(
-				open(basefilename,"r","utf8"),
-				Loader=yaml.SafeLoader
-				))
+			try:
+				base_info =  list(yaml.load_all(open(basefilename,"r","utf8"), Loader=yaml.SafeLoader))
+				# SafeLoader is not implemented in pyyaml < 5.1
+			except AttributeError:
+				# this is deprecated for newer pyyaml versions
+				base_info =  list(yaml.load_all(open(basefilename,"r","utf8")))
 			if len(base_info) != 1:
 				raise MalformedCollectionError(
 					"Not exactly one YAML document found in file %s" % basefilename)
