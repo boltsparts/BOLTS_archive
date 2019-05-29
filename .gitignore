@@ -5,5 +5,5 @@ doc/*.pdf
 output/**/*
 bolttools/.coverage
 .sass-cache
-_site
 backends/website/static/.webassets-cache
+venv
