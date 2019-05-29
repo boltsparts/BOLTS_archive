@@ -248,17 +248,20 @@ class Repository:
 		for filename in os.listdir(join(path,"data")):
 			if splitext(filename)[1] != ".blt":
 				continue
-
-			raw_coll = list(yaml.load_all(
-				open(join(path,"data",filename),"r","utf8"),
-				Loader=yaml.SafeLoader
+			try:
+				raw_coll = list(yaml.load_all(
+					open(join(path,"data",filename),"r","utf8"), Loader=yaml.SafeLoader
 				))
+				# SafeLoader is not implemented in pyyaml < 5.1
+			except AttributeError:
+				# this is deprecated for newer pyyaml versions
+				raw_coll = list(yaml.load_all(open(join(path,"data",filename),"r","utf8")))
 			if len(raw_coll) == 0:
 				raise MalformedCollectionError(
-						"No YAML document found in file %s" % filename)
+					"No YAML document found in file %s" % filename)
 			if len(raw_coll) > 1:
 				raise MalformedCollectionError(
-						"More than one YAML document found in file %s" % filename)
+					"More than one YAML document found in file %s" % filename)
 			#we only consider the first YAML document
 			raw_coll = raw_coll[0]
 

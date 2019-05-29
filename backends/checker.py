@@ -147,7 +147,7 @@ class MissingDrawingTable(ErrorTable):
 		for coll,cl,module in dbs["openscad"].iterclasses(["collection","class","module"]):
 			#find all locations
 			if not dbs["openscad"].module_connectors.contains_src(module):
-				#if no connector is defined fot this module
+				#if no connector is defined for this module
 				continue
 			locations = dbs["openscad"].module_connectors.get_dst(module).locations
 
@@ -178,7 +178,7 @@ class UnknownConnectorLocationTable(ErrorTable):
 		for coll,cl,module in dbs["openscad"].iterclasses(["collection","class","module"]):
 			#find all locations
 			if not dbs["openscad"].module_connectors.contains_src(module):
-				#if no connector is defined fot this module
+				#if no connector is defined for this module
 				continue
 			locations = dbs["openscad"].module_connectors.get_dst(module).locations
 
