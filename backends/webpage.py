@@ -55,7 +55,9 @@ class WebsiteBackend(Backend):
 					extra_files.append(os.path.join(dirpath,filename))
 
 		app.config["FREEZER_DESTINATION"] = out_path
-		app.config["FREEZER_BASE_URL"] = "https://ist-dein-freund.de/bolts"
+		app.config["FREEZER_BASE_URL"] = "https://boltsparts.github.io"
+		app.config["FREEZER_DESTINATION_IGNORE"] = [".git*"]
+		app.config["FREEZER_STATIC_IGNORE"] = ["source/*"]
 
 		freezer = Freezer(app)
 		freezer.freeze()
