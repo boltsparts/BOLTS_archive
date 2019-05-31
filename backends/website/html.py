@@ -1,4 +1,7 @@
 from jinja2 import Markup
+import sys
+if sys.version_info.major >= 3:
+    unicode = str
 
 def table(value):
 	"""
@@ -79,8 +82,8 @@ def properties(value):
 	return Markup(u"\n".join(res))
 
 def a(content,**kwargs):
-	return u"<a %s>%s</a>" % (" ".join('%s="%s"' % kv for kv in kwargs.iteritems()),content)
+	return u"<a %s>%s</a>" % (" ".join('%s="%s"' % kv for kv in kwargs.items()),content)
 
 def img(**kwargs):
-	return u"<img %s>" % (" ".join('%s="%s"' % kv for kv in kwargs.iteritems()))
+	return u"<img %s>" % (" ".join('%s="%s"' % kv for kv in kwargs.items()))
 

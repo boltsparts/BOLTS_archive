@@ -21,11 +21,11 @@ from shutil import copy
 import re
 # pylint: disable=W0622
 from codecs import open
-import license
+from . import license
 from datetime import datetime
 
-from errors import *
-from common import Backend, UNITS
+from .errors import *
+from .common import Backend, UNITS
 
 def get_signature(params,defaults=True):
 	arg_strings = []
@@ -242,7 +242,7 @@ class OpenSCADBackend(Backend):
 		for table,i in zip(params.tables,range(len(params.tables))):
 			fid.write("function %s_table_%d(idx) =\n" % (cl.id,i))
 			fid.write("//%s\n" % ", ".join(table.columns))
-			for k,values in table.data.iteritems():
+			for k,values in table.data.items():
 				data = ["None" if v is None else v for v in values]
 				fid.write('idx == "%s" ? %s :\n' % (k,str(data).replace("'",'"')))
 			fid.write('"Error";\n\n')
@@ -255,7 +255,7 @@ class OpenSCADBackend(Backend):
 			fid.write('"Error";\n\n')
 
 			fid.write("function %s_table2d_rows_%d(rowidx) =\n" % (cl.id,i))
-			for k,values in table.data.iteritems():
+			for k,values in table.data.items():
 				data = ["None" if v is None else v for v in values]
 				fid.write('rowidx == "%s" ? %s :\n' % (k,str(data).replace("'",'"')))
 			fid.write('"Error";\n\n')

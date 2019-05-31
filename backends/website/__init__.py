@@ -4,13 +4,13 @@ from flask_assets import Bundle, Environment
 from os.path import exists
 from os import environ, makedirs, getenv
 from shutil import rmtree
-from blog import blog
-from docs import docs
-from main import main
-from parts import parts
-from rest import rest
-import cms
-import translation
+from .blog import blog
+from .docs import docs
+from .main import main
+from .parts import parts
+from .rest import rest
+from . import cms
+from . import translation
 import logging
 
 
