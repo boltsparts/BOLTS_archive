@@ -2,7 +2,11 @@ from flask import Blueprint, render_template, abort, redirect, request, url_for,
 from os.path import exists
 from os import listdir
 from flask.helpers import safe_join, send_from_directory
-from urlparse import urljoin
+import sys
+if sys.version_info.major < 3:
+	from urlparse import urljoin
+else:
+	from urllib.parse import urljoin
 from backends.website.translation import languages, gettext_docs
 from backends.website.utils import Specification, Documentation
 from docutils import core

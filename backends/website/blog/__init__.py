@@ -1,6 +1,10 @@
 from flask import Blueprint, render_template, abort, redirect, request, g, url_for, safe_join
 from os.path import exists
-from urlparse import urljoin
+import sys
+if sys.version_info.major < 3:
+	from urlparse import urljoin
+else:
+	from urllib.parse import urljoin
 from werkzeug.contrib.atom import AtomFeed
 from backends.website.translation import languages
 from backends.website.utils import Posts

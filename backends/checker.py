@@ -17,9 +17,9 @@ from os import listdir
 from os.path import join, exists, basename, splitext, isdir
 import re
 
-from common import Backend
-import license
-from errors import *
+from .common import Backend
+from . import license
+from .errors import *
 
 class ErrorTable:
 	def __init__(self,title,description,headers):
@@ -468,7 +468,7 @@ class HyperUnionFind:
 			assert(not x in comp)
 		self.components[x] = set([x])
 	def find_set(self,x):
-		for c,comp in self.components.iteritems():
+		for c,comp in self.components.items():
 			if x in comp:
 				return c
 		raise ValueError("Unknown element: %s" % x)

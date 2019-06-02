@@ -2,7 +2,11 @@ from flask import Blueprint, render_template, abort, redirect, request, url_for,
 from backends.website.parts import repo, dbs
 from backends.website.translation import parts_domain, gettext_parts, languages
 from os.path import basename
-from urlparse import urljoin
+import sys
+if sys.version_info.major < 3:
+	from urlparse import urljoin
+else:
+	from urllib.parse import urljoin
 
 rest = Blueprint("rest",__name__,url_prefix='/<any(%s):lang_code>/api' % ",".join(languages))
 
@@ -21,7 +25,7 @@ def ml_standard(id):
 	coll = repo.collection_standards.get_src(std)
 	draw = dbs["drawings"].iterdimdrawings(filter_classes=cl).next()[0]
 
-	params = cl.parameters.collect(dict(request.args.iteritems()))
+	params = cl.parameters.collect(dict(request.args.items()))
 
 	draw_url = urljoin(request.url_root,url_for('parts.drawing',coll=coll.id,filename=basename(draw.filename) + '.png'))
 
@@ -40,7 +44,7 @@ def ml_name(id):
 	coll = repo.collection_names.get_src(name)
 	draw = dbs["drawings"].iterdimdrawings(filter_classes=cl).next()[0]
 
-	params = cl.parameters.collect(dict(request.args.iteritems()))
+	params = cl.parameters.collect(dict(request.args.items()))
 
 	draw_url = urljoin(request.url_root,url_for('parts.drawing',coll=coll.id,filename=basename(draw.filename) + '.png'))
 

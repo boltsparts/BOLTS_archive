@@ -50,7 +50,7 @@ def tasks():
 	checker = CheckerBackend(repo,dbs)
 
 	tables = []
-	for name,task in checker.tasks.iteritems():
+	for name,task in checker.tasks.items():
 		tables.append({
 			"title" : task.get_title(),
 			"description" : task.get_description(),
