@@ -3,7 +3,7 @@ from jinja2 import contextfilter, Markup
 from backends.website.docs import STABLE
 import markdown
 import re
-import html
+from . import html
 
 def get_subs(version):
 	lang_code = "en"

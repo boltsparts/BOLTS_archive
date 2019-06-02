@@ -8,13 +8,13 @@
 <p>{{ gettext_parts(coll.description) }}</p>
 <h2>Names</h2>
 <table class="table">
-  {% for name in names | sort %}
+  {% for name in names %}
   <tr><td><a href="{{ url_for('.name',id=name.id) }}">{{ gettext_parts(name.name) }}</a></td><td>{{ gettext_parts(name.description) }}</td></tr>
   {% endfor %}
 </table>
 <h2>Standards</h2>
 <table class="table">
-  {% for std in standards | sort %}
+  {% for std in standards %}
   <tr><td><a href="{{ url_for('.standard',id=std.id) }}">{{ gettext_parts(std.standard) }}</a></td><td>{{ gettext_parts(std.description) }}</td></tr>
   {% endfor %}
 </table>

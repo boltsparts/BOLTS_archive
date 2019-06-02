@@ -87,8 +87,8 @@ def collection(id):
 	return render_template("parts/collection.html",
 		page=page,
 		coll=coll,
-		standards=standards,
-		names=names,
+		standards=sorted(standards, key=lambda x: x["id"]),
+		names=sorted(names, key=lambda x: x["id"]),
 		props=html.properties(props)
 	)
 
