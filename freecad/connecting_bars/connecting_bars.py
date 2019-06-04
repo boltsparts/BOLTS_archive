@@ -49,7 +49,7 @@ def tube_bar_crimped_ends(params,document):
     part.Label = name
 
     ## round to crimped transition
- 
+
     def oval(pm,tn,y,z):
         """ Return an oval wire with given perimeter *pm* and thickness *tn*,
         centered at 0, *y*, *z*. The oval plane is parallel to the xy plane
@@ -81,7 +81,7 @@ def tube_bar_crimped_ends(params,document):
         dy = (id - cg) / 2.
     else:
         dy = 0.
-   
+
     # inner part
     round_i1 = Part.Wire(Part.makeCircle(0.5 * id))
     dv = Base.Vector(0.,0.,0.02 * tl)

@@ -390,7 +390,7 @@ class Repository:
 	def iternames(self,items=["name"],**kwargs):
 		"""
 		Iterator over all names of the repo.
-		
+
 		Possible items to request: name, multiname, collection, class
 		"""
 		check_iterator_arguments(items,"name",["multiname","collection","class"],kwargs)
@@ -433,7 +433,7 @@ class Repository:
 	def iterstandards(self,items=["standard"],**kwargs):
 		"""
 		Iterator over all standards of the repo.
-		
+
 		Possible items to request: standard, multistandard, body, collection, class
 		"""
 		check_iterator_arguments(items,"standard",["multistandard","body","collection","class"],kwargs)
@@ -479,7 +479,7 @@ class Repository:
 	def iterclasses(self,items=["class"],**kwargs):
 		"""
 		Iterator over all classes of the repo.
-		
+
 		Possible items to request: class, collection
 		"""
 		check_iterator_arguments(items,"class",["collection"],kwargs)
@@ -493,7 +493,7 @@ class Repository:
 	def itercollections(self):
 		"""
 		Iterator over all collections of the repo.
-		
+
 		Not possible to request items
 		"""
 		'''
@@ -507,7 +507,7 @@ class Repository:
 	def iterbodies(self):
 		"""
 		Iterator over all standard bodies of the repo.
-		
+
 		Not possible to request items
 		"""
 		'''

@@ -17,6 +17,7 @@
 
 import Part
 
+
 def roundBattery(params,document):
 	diam = params['d']
 	h = params['h']
@@ -27,4 +28,3 @@ def roundBattery(params,document):
 	cell = Part.makeCylinder(0.5*diam,0.97*h)
 	part.Shape = nub.fuse(cell).removeSplitter()
 	part.Label = name
-

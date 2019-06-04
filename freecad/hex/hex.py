@@ -15,16 +15,20 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
+
 from FreeCAD import Vector
 from Part import makeBox
 import Part
 import math
 import FreeCADGui
 
+
 thread_color = (0.5,1.,5.,0.)
+
 
 def runs_headless():
 	return 'setupWithoutGUI' in FreeCADGui.__dict__
+
 
 def color_face(part,n):
 	if runs_headless():
@@ -32,6 +36,7 @@ def color_face(part,n):
 	color = part.ViewObject.DiffuseColor[0]
 	n_faces = len(part.Shape.Faces)
 	part.ViewObject.DiffuseColor = [color if i != n else thread_color for i in range(n_faces)]
+
 
 def hex1(params,document):
 	key = params['key']
@@ -67,6 +72,7 @@ def hex1(params,document):
 
 	#color thread
 	color_face(part,9)
+
 
 def hex2(params,document):
 	key = params['key']
@@ -107,4 +113,3 @@ def hex2(params,document):
 
 	#color thread
 	color_face(part,9)
-

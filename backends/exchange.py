@@ -94,6 +94,3 @@ class IGESBackend(Backend):
 
 		#restore byte code writing
 		sys.dont_write_bytecode = write_bytecode
-
-
-

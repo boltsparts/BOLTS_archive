@@ -55,4 +55,3 @@ def ml_name(id):
 	}
 
 	return jsonify(**res)
-

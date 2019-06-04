@@ -54,4 +54,3 @@ class Statistics:
 
 	def get_contributors(self):
 		return self.contributors_names
-

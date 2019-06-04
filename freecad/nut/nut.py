@@ -66,4 +66,3 @@ def nut1(params,document):
 
 	#color thread
 	color_face(part,7)
-

@@ -126,7 +126,7 @@ class OpenSCADData(DataBase):
 	def iternames(self,items=["name"],**kwargs):
 		"""
 		Iterator over all names of the repo.
-		
+
 		Possible items to request: name, multiname, collection, class, module
 		"""
 		check_iterator_arguments(items,"name",["multiname","collection","class","module"],kwargs)
@@ -142,7 +142,7 @@ class OpenSCADData(DataBase):
 	def iterstandards(self,items=["standard"],**kwargs):
 		"""
 		Iterator over all standards of the repo.
-		
+
 		Possible items to request: standard, multistandard, collection, class, module
 		"""
 		check_iterator_arguments(items,"standard",["multistandard","collection","class","module"],kwargs)
@@ -158,7 +158,7 @@ class OpenSCADData(DataBase):
 	def iterclasses(self,items=["class"],**kwargs):
 		"""
 		Iterator over all classes of the repo.
-		
+
 		Possible items to request: class, collection, scadfile, module
 		"""
 		check_iterator_arguments(items,"class",["collection","scadfile","module"],kwargs)

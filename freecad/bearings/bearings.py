@@ -86,7 +86,7 @@ def singlerowradialbearing(params,document):
 	part.Label = name
 
 
-def doublerowradialbearing(params,document): 
+def doublerowradialbearing(params,document):
 	rin=0.5*params['d1']
 	rout=0.5*params['d2']
 	bth=params['B']
@@ -136,8 +136,8 @@ def doublerowradialbearing(params,document):
 		Alpha=(i*2*math.pi)/nb
 		bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),rb+bth/2)
 		b.translate(bv)
-		shapes.append(b) 
-	
+		shapes.append(b)
+
 	offset=math.asin(rb/cb)
 	for i in range(nb):
 		b=Part.makeSphere(rb)
@@ -200,9 +200,9 @@ def axialthrustbearing(params, document):
 	NBall=NBall*0.9
 	NBall=int(NBall)
 	#Ball creator
-	for i in range (NBall): 
+	for i in range (NBall):
 		Ball=Part.makeSphere(RBall)
-		Alpha=(i*2*math.pi)/NBall 
+		Alpha=(i*2*math.pi)/NBall
 		BV=(CBall*math.cos(Alpha),CBall*math.sin(Alpha),bth/2.00)
 		Ball.translate(BV)
 		shapes.append(Ball)

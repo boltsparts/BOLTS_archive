@@ -20,6 +20,7 @@ from FreeCAD import Vector
 from Part import makeCircle, makeLine
 import Part, Arch
 
+
 def dualvwheel(params,document):
 	#no params
 	name = params["name"]
@@ -114,6 +115,7 @@ def solidvwheel(params,document):
 
 	part.Shape  = Part.Face(Part.Wire(lines)).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
 
+
 def minivwheel(params,document):
 	#no params
 	name = params["name"]
@@ -158,7 +160,3 @@ def minivwheel(params,document):
 	part.Label = name
 
 	part.Shape  = Part.Face(Part.Wire(lines)).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
-
-
-
-

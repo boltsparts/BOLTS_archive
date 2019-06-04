@@ -223,4 +223,3 @@ def tables_as_dicts(params):
 			"header" : header,
 		})
 	return res
-

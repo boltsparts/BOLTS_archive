@@ -52,7 +52,7 @@ class TestBipartiteLinks(unittest.TestCase):
 	def test_errors(self):
 		a = common.BipartiteLinks()
 		a.add_link("a",1)
-		
+
 		self.assertRaises(ValueError,lambda: a.add_link(1,2))
 		self.assertRaises(ValueError,lambda: a.add_link(2,"a"))
 
@@ -73,7 +73,7 @@ class TestBijectiveLinks(unittest.TestCase):
 	def test_errors(self):
 		a = common.BijectiveLinks()
 		a.add_link("a",1)
-		
+
 		self.assertRaises(ValueError,lambda: a.add_link(1,2))
 		self.assertRaises(ValueError,lambda: a.add_link(2,"a"))
 		self.assertRaises(ValueError,lambda: a.add_link("a",3))
@@ -262,7 +262,7 @@ description:
 		for c in ['row1','row3']:
 			self.assertIn(c,self.params.choices['ind'])
 		self.assertNotIn('row2',self.params.choices['ind'])
-		
+
 		self.assertEqual(self.params.defaults['ind'],'row1')
 		self.assertEqual(self.params.defaults['ind2'],'foo')
 
@@ -393,5 +393,3 @@ safe: Test Part with/Garba%;üe
 
 if __name__ == '__main__':
 	unittest.main()
-
-

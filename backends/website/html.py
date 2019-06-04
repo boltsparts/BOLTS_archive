@@ -86,4 +86,3 @@ def a(content,**kwargs):
 
 def img(**kwargs):
 	return u"<img %s>" % (" ".join('%s="%s"' % kv for kv in kwargs.items()))
-
