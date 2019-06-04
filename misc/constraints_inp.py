@@ -1,10 +1,11 @@
-#released into the public domain
-#2014 Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+# released into the public domain
+# 2014 Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 
 import numpy as np
 import scipy as sp
 from scipy.optimize import minimize
 import matplotlib.pyplot as pl
+
 
 def plot_circle(center,radius):
 	alpha = np.linspace(0,2*np.pi,100)
@@ -12,14 +13,16 @@ def plot_circle(center,radius):
 	y = center[1] + radius*np.sin(alpha)
 	pl.plot(x,y)
 
+
 def plot_line(a,b):
 	x = np.array([a[0],b[0]])
 	y = np.array([a[1],b[1]])
 	pl.plot(x,y)
 
-#ci and ri are the centers and radii of the two circles, t is a vector with the
-#coordinates of the tangent points (t1x,t1y,t2x,t2y)
-#this evaluates to 0 if t1,t2 fulfill the tangent condition
+
+# ci and ri are the centers and radii of the two circles, t is a vector with the
+# coordinates of the tangent points (t1x,t1y,t2x,t2y)
+# this evaluates to 0 if t1,t2 fulfill the tangent condition
 def constraints(c1,c2,r1,r2,t1,t2,m1,d):
 	return np.linalg.norm([
 		#on circle constraints
@@ -33,8 +36,9 @@ def constraints(c1,c2,r1,r2,t1,t2,m1,d):
 	])
 
 
-#from http://b2bmetal.eu/i-sections-inp-specification
-#we put the coordinate system in the middle
+# from http://b2bmetal.eu/i-sections-inp-specification
+# we put the coordinate system in the middle
+
 
 dims = {
 #name        b    h    s     t     r1    r2   d
@@ -77,6 +81,7 @@ def unpack(x,dim):
 
 	return c1,c2,r1,r2,t1,t2,m1,d
 
+
 for name in sorted(dims.keys()):
 	dim = dims[name]
 	#upper right flange
@@ -97,8 +102,6 @@ for name in sorted(dims.keys()):
 
 	f = flange(0.5*s)
 	g = 0.5*h - flange(0.5*b)
-	
-
 
 	print('"%s" : [ %g, %g, %g, %g, %g, %g, %g, %g, %g ]' % (name,b,h,s,t,r1,r2,d,f,g))
 

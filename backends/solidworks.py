@@ -87,7 +87,7 @@ class SolidWorksExporter(BackendExporter):
 					col = 0
 					worksheet.write(row,col,name)
 					col += 1
-					
+
 					for pname in designtable.params.values():
 						worksheet.write(r,c,params[pname])
 						col += 1
@@ -99,8 +99,3 @@ class SolidWorksExporter(BackendExporter):
 					row += 1
 
 			workbook.save(join(coll_path,designtable.outname))
-
-
-
-
-

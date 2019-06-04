@@ -33,7 +33,7 @@ class DesignTableClass:
 		)
 
 		self.classid = cl["classid"]
-		
+
 		self.naming = Substitution(cl.get("naming",None))
 
 
@@ -90,9 +90,3 @@ class SolidWorksData(DataBase):
 				if not designtable["type"] == "solidworks":
 					continue
 				self.designtables.append(DesignTable(designtable,coll,self.backend_root))
-
-
-
-
-
-

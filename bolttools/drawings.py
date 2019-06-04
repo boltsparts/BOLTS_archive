@@ -93,7 +93,7 @@ class DrawingsData(DataBase):
 			if coll not in repo.collections:
 				raise MalformedRepositoryError(
 					"Drawings for unknown collection found: %s " % coll)
-					
+
 			try:
 				base_info =  list(yaml.load_all(open(basefilename,"r","utf8"), Loader=yaml.SafeLoader))
 				# SafeLoader is not implemented in pyyaml < 5.1
@@ -135,7 +135,7 @@ class DrawingsData(DataBase):
 	def iterclasses(self,items=["class"],**kwargs):
 		"""
 		Iterator over all classes of the repo.
-		
+
 		Possible items to request: class, collection, dimdrawing, condrawings
 		"""
 		check_iterator_arguments(items,"class",["collection","dimdrawing","condrawings"],kwargs)
@@ -157,7 +157,7 @@ class DrawingsData(DataBase):
 	def iterdimdrawings(self,items=["dimdrawing"],**kwargs):
 		"""
 		Iterator over all dimension drawings of the repo.
-		
+
 		Possible items to request: dimdrawing, classes, collection
 		"""
 		check_iterator_arguments(items,"dimdrawing",["classes", "collection"],kwargs)
@@ -173,7 +173,7 @@ class DrawingsData(DataBase):
 	def itercondrawings(self,items=["condrawing"],**kwargs):
 		"""
 		Iterator over all connector drawings of the repo.
-		
+
 		Possible items to request: condrawing, conlocations, classes, collection
 		"""
 		check_iterator_arguments(items,"condrawing",["conlocations", "classes", "collection"],kwargs)

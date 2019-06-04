@@ -27,7 +27,7 @@ class TestClass(unittest.TestCase):
 id: roundBattery
 names:
   - name:
-      safe: roundBattery 
+      safe: roundBattery
       nice: Round Batteries
     labeling:
       nice: "%(T)s Battery"
@@ -136,7 +136,7 @@ class TestRepository(unittest.TestCase):
 	def test_filters(self):
 		self.assertEqual(len(list(self.repo.iternames(filter_collection=self.repo.collections['nut']))),3)
 		self.assertEqual(len(list(self.repo.itermultistandards(filter_standards=self.repo.standards['DIN625_1']))),1)
-		
+
 
 	def test_bodies(self):
 		self.assertEqual(len(self.repo.bodies),5)
@@ -150,5 +150,3 @@ class TestRepository(unittest.TestCase):
 
 if __name__ == '__main__':
 	unittest.main()
-
-

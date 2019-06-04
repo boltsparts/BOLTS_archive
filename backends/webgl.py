@@ -101,6 +101,3 @@ class WebGLExporter(BackendExporter):
 
 		#restore byte code writing
 		sys.dont_write_bytecode = write_bytecode
-
-
-

@@ -179,7 +179,7 @@ class OpenSCADBackend(Backend):
 		#copy common files
 		if not license.is_combinable_with("LGPL 2.1+",args["target_license"]):
 			raise IncompatibleLicenseError(
-				"OpenSCAD common files are LGPL 2.1+, which is not compatible with %s" % 
+				"OpenSCAD common files are LGPL 2.1+, which is not compatible with %s" %
 					args["target_license"])
 		makedirs(join(out_path,"common"))
 		for filename in listdir(join(self.repo.path,"backends","openscad")):
@@ -386,4 +386,3 @@ class OpenSCADBackend(Backend):
 			#conns
 			fid.write('function %s_conn(location,%s) = %s_conn(location,%s);\n\n' %
 				(name.get_id(),get_signature(params),cl.id,get_signature(params,False)))
-

@@ -564,7 +564,7 @@ class DefaultsMismatchTable(ErrorTable):
 			"Some free parameters have no default or literal values assigned, or defaults have been assigned to non-free parameters.",
 			["Class id","Collection","parameters"]
 		)
-	
+
 	def populate(self,repo,dbs):
 		for cl in repo.classes.values():
 			row = []

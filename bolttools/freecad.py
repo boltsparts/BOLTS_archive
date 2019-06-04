@@ -101,7 +101,7 @@ class FreeCADData(DataBase):
 	def iterclasses(self,items=["class"],**kwargs):
 		"""
 		Iterator over all classes of the repo.
-		
+
 		Possible items to request: class, collection, base
 		"""
 		check_iterator_arguments(items,"class",["collection","base"],kwargs)
@@ -149,7 +149,7 @@ class FreeCADData(DataBase):
 	def iterbases(self,items=["base"],**kwargs):
 		"""
 		Iterator over all freecad bases of the repo.
-		
+
 		Possible items to request: base, classes, collection
 		"""
 		check_iterator_arguments(items,"base",["classes", "collection"],kwargs)

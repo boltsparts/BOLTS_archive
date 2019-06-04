@@ -61,5 +61,3 @@ class WebsiteBackend(Backend):
 
 		freezer = Freezer(app)
 		freezer.freeze()
-
-

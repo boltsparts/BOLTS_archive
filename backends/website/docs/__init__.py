@@ -78,4 +78,3 @@ def changes(version):
 	content = parts["body_pre_docinfo"]+parts["fragment"]
 	page = {"title" : "Documentation", "stable" : str(STABLE), "dev" : str(DEV), "version" : version}
 	return render_template("docs/spec.html",page=page,content = content)
-
