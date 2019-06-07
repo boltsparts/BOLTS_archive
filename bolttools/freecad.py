@@ -65,8 +65,8 @@ class FreeCADData(DataBase):
 				#skip directory that is no collection
 				continue
 			try:
-				base_info =  list(yaml.load_all(open(basefilename,"r","utf8"), Loader=yaml.FullLoader))
-				# FullLoader is not implemented in pyyaml < 5.1
+				base_info =  list(yaml.load_all(open(basefilename,"r","utf8"), Loader=yaml.SafeLoader))
+				# SafeLoader is not implemented in pyyaml < 5.1
 			except AttributeError:
 				# this is deprecated for newer pyyaml versions
 				base_info =  list(yaml.load_all(open(basefilename,"r","utf8")))

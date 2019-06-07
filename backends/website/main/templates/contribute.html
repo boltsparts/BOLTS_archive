@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block titlebar %}
+  <div class="page-title-bar">
+    <div class="container">
+      <h2>Contribute</h2>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-4 col-xs-12">
+    <h3>{% trans %}Give us feedback{% endtrans %}</h3>
+    <p>{% trans url = url_for('main.docindex') %}You can help BOLTS by just trying it and giving feedback. Whether you are using <a href="http://freecadweb.org/">FreeCAD</a> or <a href="http://www.openscad.org/">OpenSCAD</a>, just <a href="{{ url }}">install and use it</a> and tell us what didn't work as expected, what you think could be done better or how BOLTS could be made more useful for you.{% endtrans %}</p>
+
+    <p>{% trans %}You can reach us by writing an <a href="mailto:BOLTS@ist-dein-freund.de">email</a>, posting in the <a href="http://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=8&t=4549">BOLTS development thread</a> on the FreeCAD forums or use the <a href="https://github.com/jreinhardt/BOLTS/issues">BOLTS issue tracker</a> on GitHub.{% endtrans %}</p>
+
+  </div>
+  <div class="col-md-4 col-xs-12">
+    <h3>{% trans %}Add more parts and drawings{% endtrans %}</h3>
+    <p>{% trans %}You can also help with adding more parts to BOLTS or improving those that are already there. To do so, you should first read about a few basic things, that will be useful to know{% endtrans %}</p>
+
+    <ul>
+      <li><a href="{{ url_for('docs.document', version=page.version, cat='general',filename='introduction') }}">{% trans %}A short introduction to BOLTS{% endtrans %}</a></li>
+      <li><a href="{{ url_for('docs.document', version=page.version,cat='general',filename='development') }}">{% trans %}BOLTS development with git{% endtrans %}</a></li>
+    </ul>
+
+    <p>{% trans url = url_for('main.docindex') %}After that you are well prepared to contribute parts, data or drawings. For details on how to do that see the <a href="{{ url }}">contributor documentation</a>.{% endtrans %}</p>
+  </div>
+  <div class="col-md-4 col-xs-12">
+    <h3>{% trans %}Improve data{% endtrans %}</h3>
+
+    <p>{% trans url = url_for('main.tasks') %}BOLTS scans its database for inconsistencies, common problems, missing or unclear informations and automatically generates <a href="{{ url }}">a list of things that could be fixed or improved</a>. This is a great starting point for contributing to BOLTS.{% endtrans %}</p>
+    <p>{% trans %}If you notice errors, translation problems or other problems on the website, you can directly report them using the comment field embedded in many pages.{% endtrans %}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-xs-12">
+    <h3>{% trans %}Spread the word{% endtrans %}</h3>
+    <p>{% trans %}Also don't forget to tell all your friends, colleagues and fellow makers about BOLTS. Or blog about it, mention it on social networks and spread the word.{% endtrans %}</p>
+  </div>
+  <div class="col-md-4 col-xs-12">
+    <h3>{% trans %}Translate to other languages{% endtrans %}</h3>
+    <p>{% trans %}In order to provide BOLTS in multiple languages, the website contents, the documentation and the part names and descriptions need to be translated. This is done <a href="https://weblate.stbuehler.de/projects/BOLTS/">here</a> with the help of <a href="http://weblate.org/">Weblate</a>. No registration is necessary to suggest translations.{% endtrans %}</p>
+  </div>
+</div>
+{% endblock %}

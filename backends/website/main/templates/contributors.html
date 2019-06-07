@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titlebar %}
+  <div class="page-title-bar">
+    <div class="container">
+      <h2>Contributors</h2>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h1>{% trans %}Part contributions{% endtrans %}</h1>
+    <p>{% trans %}Work by the following is contained in BOLTS:{% endtrans %}</p>
+    <table class="table">
+      {% for contributor in contributors %}
+      <tr><td>{{ contributor }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <h1>{% trans %}Help and inspiration{% endtrans %}</h1>
+    <p>{% trans %}These people have helped in other ways or provided inspiration:{% endtrans %}</p>
+    <table class="table">
+      <tr><td><a href="http://hydraraptor.blogspot.co.uk/">nophead</a></td><td>{% trans %}provided inspiration for BOLTS with his Mendel90 and his work sparked my fascination for 3D printers.{% endtrans %}</td></tr>
+      <tr><td><a href="https://github.com/openscad/MCAD">MCAD</a></td><td>{% trans %}served as another source of inspiration.{% endtrans %}</td></tr>
+      <tr><td><a href="http://yorik.uncreated.net/">Yorik van Havre</a></td><td>{% trans %}answered many questions about FreeCAD.{% endtrans %}</td></tr>
+      <tr><td>Marius Kintel</td><td>{% trans %}had some good ideas for BOLTS for OpenSCAD and created OpenSCAD.{% endtrans %}</td></tr>
+      <tr><td>shoogen</td><td>{% trans %}helped with some difficult questions about the inner workings of FreeCAD.{% endtrans %}</td></tr>
+      <tr><td>Keith Sloan</td><td>{% trans %}helped with making BOLTS for FreeCAD work with python 2.6.{% endtrans %}</td></tr>
+      <tr><td><a href="http://shop.arcol.hu/">arcol</a></td><td>{% trans %}found the fix for a tricky bug and provided a lot of feedback.{% endtrans %}</td></tr>
+      <tr><td>Dale Dunn</td><td>{% trans %}helped with the development of the SolidWorks flavour of BOLTS.{% endtrans %}</td></tr>
+      <tr><td>Stefan Bühler</td><td>{% trans %}for his help with hosting and his general expertise.{% endtrans %}</td></tr>
+      <tr><td>Bernd Hahnebach</td><td>{% trans %}for his persistance, patience and for the maintainence and improvement of the FreeCAD integration.{% endtrans %}</td></tr>
+    </table>
+  </div>
+</div>
+{% endblock %}

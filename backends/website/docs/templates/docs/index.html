@@ -1,0 +1,51 @@
+{% extends "docs.html" %}
+
+{% block content %}
+{% for audience,cats in auds | dictsort | reverse %}
+<h1>{{audience | capitalize}} Documentation</h1>
+<div class="row">
+  {% if cats.general != [] %}
+  <div class="col-xs-14 col-md-4">
+    <h3>General</h3>
+    <ul>
+      {% for doc in cats.general %}
+      <li><a href="{{ url_for('.document',version=page.version,cat='general',filename=doc.filename) }}">{{ gettext_docs(doc.title) }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% if cats.freecad != [] %}
+  <div class="col-xs-12 col-md-4">
+    <h3>FreeCAD</h3>
+    <ul>
+      {% for doc in cats.freecad %}
+      <li><a href="{{ url_for('.document',version=page.version,cat='freecad',filename=doc.filename) }}">{{ gettext_docs(doc.title) }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% if cats.openscad != [] %}
+  <div class="col-xs-12 col-md-4">
+    <h3>OpenSCAD</h3>
+    <ul>
+      {% for doc in cats.openscad %}
+      <li><a href="{{ url_for('.document',version=page.version,cat='openscad',filename=doc.filename) }}">{{ gettext_docs(doc.title) }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
+{% endfor %}
+<h1>Specification</h1>
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <h3>BLT files</h3>
+    <ul>
+      <li><a href="{{ url_for('.specification',version=page.version) }}">{% trans %}blt file format specification{% endtrans %}</a></li>
+      <li><a href="{{ url_for('.changes', version=page.version) }}">{% trans %}Changelog{% endtrans %}</a></li>
+    </ul>
+  </div>
+</div>
+<h1>{% trans %}Comments{% endtrans %}</h1>
+<div id="comments"></div>
+{% endblock %}

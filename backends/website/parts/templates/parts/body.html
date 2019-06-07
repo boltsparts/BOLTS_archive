@@ -1,0 +1,10 @@
+{% extends "parts.html" %}
+
+{% block content %}
+<h1>{% trans body=body.body %}Specifications by {{ body }}{% endtrans %}</h1>
+<table class="table">
+  {% for std in standards %}
+  <tr><td><a href="{{ url_for('.standard',id=std.id) }}">{{ gettext_parts(std.standard) }}</a></td><td>{{ gettext_parts(std.description) }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

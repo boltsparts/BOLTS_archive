@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block titlebar %}
+  <div class="page-title-bar">
+    <div class="container">
+      <h2>Downloads</h2>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<h2>{% trans %}Release files{% endtrans %}</h2>
+<div id="row">
+  <div class="col-xs-12 col-md-12">
+    <p>{% trans %}You can find all releases on our <a href="https://github.com/boltsparts/BOLTS/releases">Github Release page</a>.
+    Click here to go directly to the <a href="https://github.com/boltsparts/BOLTS/releases/latest">current stable release</a>{% endtrans %}</p>
+  </div>
+</div>
+<div id="row">
+{% endblock %}

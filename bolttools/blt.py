@@ -250,9 +250,9 @@ class Repository:
 				continue
 			try:
 				raw_coll = list(yaml.load_all(
-					open(join(path,"data",filename),"r","utf8"), Loader=yaml.FullLoader
+					open(join(path,"data",filename),"r","utf8"), Loader=yaml.SafeLoader
 				))
-				# FullLoader is not implemented in pyyaml < 5.1
+				# SafeLoader is not implemented in pyyaml < 5.1
 			except AttributeError:
 				# this is deprecated for newer pyyaml versions
 				raw_coll = list(yaml.load_all(open(join(path,"data",filename),"r","utf8")))

@@ -55,15 +55,15 @@ def export(args):
 		FreeCADBackend(repo,dbs).write_output(out_path,target_license=license,version="development")
 		copyfile(os.path.join(repo.path,"backends","licenses",args.license.strip("+")),
 			os.path.join(out_path,"BOLTS","LICENSE"))
-	elif args.target == "html":
-		from backends.html import HTMLBackend
-		HTMLBackend(repo,dbs).write_output(out_path)
 #	elif args.target == "solidworks":
 #		from backends.solidworks import SolidWorksBackend
 #		SolidWorksBackend(repo,dbs).write_output(out_path,"development")
 	elif args.target == "iges":
 		from backends.exchange import IGESBackend
 		IGESBackend(repo,dbs).write_output(out_path,"development")
+	elif args.target == "website":
+		from backends.webpage import WebsiteBackend
+		WebsiteBackend(repo,dbs).write_output(out_path)
 
 def test(args):
 	exec_dir = os.path.join(args.repo,"output",args.target)
@@ -74,10 +74,9 @@ def test(args):
 		freecad_process = Popen(["openscad"],cwd=exec_dir)
 		freecad_process.wait()
 	elif args.target == "website":
-		import website
-		from website import app
+		from backends.website import app
 		extra_files = []
-		blog_path = os.path.join(args.repo,"website","blog","posts")
+		blog_path = os.path.join(args.repo,"backends","website","blog","posts")
 		for filename in listdir(blog_path):
 			if filename.startswith('.'):
 				continue
@@ -101,8 +100,6 @@ def test(args):
 			if os.path.basename(dirpath) == "templates":
 				for filename in filenames:
 					extra_files.append(os.path.join(dirpath,filename))
-
-
 
 		app.run(debug=True,extra_files=extra_files)
 
@@ -291,7 +288,7 @@ subparsers = parser.add_subparsers()
 parser_export = subparsers.add_parser("export")
 parser_export.add_argument("target",
 	type=str,
-	choices=["openscad","freecad","html","iges"],
+	choices=["openscad","freecad","iges","website"],
 	help="the distribution to create")
 parser_export.add_argument("-l","--license",
 	type=str,
