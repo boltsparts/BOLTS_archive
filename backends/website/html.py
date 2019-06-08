@@ -1,7 +1,7 @@
 from jinja2 import Markup
 import sys
 if sys.version_info.major >= 3:
-    unicode = str
+	unicode = str
 
 def table(value):
 	"""

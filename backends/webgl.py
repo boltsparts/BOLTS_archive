@@ -80,7 +80,7 @@ class WebGLExporter(BackendExporter):
 					print(
 						"A problem occurred when parameters for {} where collected for {}"
 						.format(cl.parameters.defaults, cl.id)
-                    )
+					)
 					raise
 				params["standard"] = cl.name
 				params["name"] = "irrelevant"
