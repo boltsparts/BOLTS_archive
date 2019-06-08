@@ -88,7 +88,7 @@ def fillet(lines,indices,radius):
 	# def edge_fillet needs adaption
 	for i in indices:
 		lines[slice(i,i+2)] = edge_fillet(lines[slice(i,i+2)],radius)
-    '''
+	'''
 	print('The profile is made without Fillets atm.')
 
 	return lines

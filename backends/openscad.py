@@ -196,8 +196,10 @@ class OpenSCADBackend(Backend):
 		version_fid = open(join(out_path,"common","version.scad"),"w","utf8")
 		if args["stable"]:
 			major, minor = str(args["version"]).split('.')
-			version_fid.write('function BOLTS_version() = [%s, %s, "%s"];\n' %
-				 (major, minor, target_license))
+			version_fid.write(
+				'function BOLTS_version() = [%s, %s, "%s"];\n' %
+				(major, minor, target_license)
+			)
 		else:
 			version_fid.write('function BOLTS_version() = "%s";\n' % args["version"])
 		date = datetime.now()
