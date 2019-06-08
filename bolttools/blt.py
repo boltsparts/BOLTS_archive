@@ -384,7 +384,8 @@ class Repository:
 				if not standard.replaces in self.standards:
 					raise MalformedRepositoryError(
 						"Unknown replace field %s in standard %s" %
-							(standard.replaces,standard.get_id()))
+						(standard.replaces,standard.get_id())
+					)
 				self.standard_replaced.add_link(standard,self.standards[standard.replaces])
 
 	def iternames(self,items=["name"],**kwargs):
