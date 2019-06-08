@@ -204,14 +204,15 @@ def standard(id):
 
 
 	page = {"title" : "Part list"}
-	return render_template("parts/standard.html",
+	return render_template(
+		"parts/standard.html",
 		page = page,
 		std = std,
 		props = html.properties(props),
 		parameters = parameters,
 		freecad = freecad,
 		openscad = openscad
-		)
+	)
 
 @parts.route('/names/<id>')
 @parts.route('/names/<id>.html')
@@ -309,11 +310,12 @@ def name(id):
 
 
 	page = {"title" : "Part list"}
-	return render_template("parts/name.html",
+	return render_template(
+		"parts/name.html",
 		page = page,
 		name = name,
 		props = html.properties(props),
 		parameters = parameters,
 		freecad = freecad,
 		openscad = openscad
-		)
+	)

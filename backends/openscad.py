@@ -180,7 +180,8 @@ class OpenSCADBackend(Backend):
 		if not license.is_combinable_with("LGPL 2.1+",args["target_license"]):
 			raise IncompatibleLicenseError(
 				"OpenSCAD common files are LGPL 2.1+, which is not compatible with %s" %
-					args["target_license"])
+				args["target_license"]
+			)
 		makedirs(join(out_path,"common"))
 		for filename in listdir(join(self.repo.path,"backends","openscad")):
 			if not filename.endswith(".scad"):
