@@ -83,7 +83,8 @@ class SolidWorksData(DataBase):
 				base =  list(yaml.load_all(open(basefilename,"r","utf8")))
 			if len(base) != 1:
 				raise MalformedCollectionError(
-						"No YAML document found in file %s" % basefilename)
+					"No YAML document found in file %s" % basefilename
+				)
 			base = base[0]
 
 			for designtable in base:
