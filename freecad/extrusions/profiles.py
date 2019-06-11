@@ -16,12 +16,406 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 
+import math
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part, Arch
-import math
+import Part 
+import Arch
 
-def edge_fillet(edges,radius):
+
+# ************************************************************************************************
+def vslot20x20(
+	params,
+	document
+):
+	name = params["name"]
+	l = params["l"]
+
+	#due to symmetry this can be nicely decomposed
+	# x offset, y offset, reverse, switch, mir_x, mir_y
+	symmetry = [
+		(0,0,False,False,False,False),
+		(0,0,True, True ,False,False),
+		(0,0,False,True ,True ,False),
+		(0,0,True, False,True ,False),
+		(0,0,False,False,True ,True ),
+		(0,0,True, True ,True ,True ),
+		(0,0,False,True ,False,True ),
+		(0,0,True, False,False,True ),
+	]
+
+	vertices = 8*[vslot_outline]
+	fillets = [5,17,29,41]
+	corner_offset = 0
+	circle_offsets = [0]
+
+	face = vslot(symmetry,vertices,fillets,corner_offset,circle_offsets)
+
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
+	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
+
+	#color
+	if params['finish'] == "Black":
+		part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
+
+
+# ************************************************************************************************
+def vslot20x40(
+	params,
+	document
+):
+	name = params["name"]
+	l = params["l"]
+
+	#due to symmetry this can be nicely decomposed
+	# x offset, y offset, reverse, switch, mir_x, mir_y
+	symmetry = [
+		(0,0,False,False,False,False),
+		(0,0,True, True ,False,False),
+		(0,0,False,True ,True ,False),
+		(-w,0,True, True ,False,False),
+		(-w,0,False,True ,True ,False),
+		(-w,0,True, False,True ,False),
+		(-w,0,False, False,True ,True ),
+		(-w,0,True, True ,True ,True ),
+		(-w,0,False, True ,False,True ),
+		(0,0,True, True ,True ,True ),
+		(0,0,False, True ,False,True ),
+		(0,0,True, False,False,True ),
+	]
+
+	vertices = 12*[vslot_outline]
+
+	fillets = [5,29,41,65]
+	corner_offset = -1*w
+	circle_offsets = [0,-w]
+
+	face = vslot(symmetry,vertices,fillets,corner_offset,circle_offsets)
+
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
+	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
+
+	#color
+	if params['finish'] == "Black":
+		part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
+
+
+# ************************************************************************************************
+def vslot20x60(
+	params,
+	document
+):
+	name = params["name"]
+	l = params["l"]
+
+	#due to symmetry this can be nicely decomposed
+	# x offset, y offset, reverse, switch, mir_x, mir_y
+	symmetry = [
+		(0,0,False,False,False,False),
+		(0,0,True, True ,False,False),
+		(0,0,False, True ,True ,False),
+		(-w,0,True, True ,False,False),
+		(-w,0,False, True ,True ,False),
+		(-2*w,0,True, True ,False,False),
+		(-2*w,0,False, True ,True ,False),
+		(-2*w,0,True, False,True ,False),
+		(-2*w,0,False, False,True ,True ),
+		(-2*w,0,True, True ,True ,True ),
+		(-2*w,0,False, True ,False,True ),
+		(-w,0,True, True ,True ,True ),
+		(-w,0,False, True ,False,True ),
+		(0,0,True, True ,True ,True ),
+		(0,0,False, True ,False,True ),
+		(0,0,True, False,False,True ),
+	]
+
+	vertices = 16*[vslot_outline]
+
+	#add fillets in reverse order, as this inserts additional edges
+	fillets = [5,41,53,89]
+	corner_offset = -2*w
+	circle_offsets = [0,-w,-2*w]
+
+	face = vslot(symmetry,vertices,fillets,corner_offset,circle_offsets)
+
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
+	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
+
+	#color
+	if params['finish'] == "Black":
+		part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
+
+
+# ************************************************************************************************
+def vslot20x80(
+	params,
+	document
+):
+	name = params["name"]
+	l = params["l"]
+
+	#due to symmetry this can be nicely decomposed
+	# x offset, y offset, reverse, switch, mir_x, mir_y
+	symmetry = [
+		(0,0,False,False,False,False),
+		(0,0,True, True ,False,False),
+		(0,0,False, True ,True ,False),
+		(-w,0,True, True ,False,False),
+		(-w,0,False, True ,True ,False),
+		(-2*w,0,True, True ,False,False),
+		(-2*w,0,False, True ,True ,False),
+		(-3*w,0,True, True ,False,False),
+		(-3*w,0,False, True ,True ,False),
+		(-3*w,0,True, False,True ,False),
+		(-3*w,0,False, False,True ,True ),
+		(-3*w,0,True, True ,True ,True ),
+		(-3*w,0,False, True ,False,True ),
+		(-2*w,0,True, True ,True ,True ),
+		(-2*w,0,False, True ,False,True ),
+		(-w,0,True, True ,True ,True ),
+		(-w,0,False, True ,False,True ),
+		(0,0,True, True ,True ,True ),
+		(0,0,False, True ,False,True ),
+		(0,0,True, False,False,True ),
+	]
+
+	vertices = 20*[vslot_outline]
+
+	#add fillets in reverse order, as this inserts additional edges
+	fillets = [5,53,65,113]
+	corner_offset = -3*w
+	circle_offsets = [0,-w,-2*w,-3*w]
+
+	face = vslot(symmetry,vertices,fillets,corner_offset,circle_offsets)
+
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
+	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
+
+	#color
+	if params['finish'] == "Black":
+		part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
+
+
+# ************************************************************************************************
+def tslot20x20(
+	params,
+	document
+):
+	name = params["name"]
+	l = params["l"]
+
+	#due to symmetry this can be nicely decomposed
+	# x offset, y offset, reverse, switch, mir_x, mir_y
+	symmetry = [
+		(0,0,False,False,False,False),
+		(0,0,True, True ,False,False),
+		(0,0,False,True ,True ,False),
+		(0,0,True, False,True ,False),
+		(0,0,False,False,True ,True ),
+		(0,0,True, True ,True ,True ),
+		(0,0,False,True ,False,True ),
+		(0,0,True, False,False,True ),
+	]
+
+	vertices = 8*[tslot_outline]
+	fillets = [5,17,29,41]
+	corner_offset = 0
+	circle_offsets = [0]
+
+	face = tslot(symmetry,vertices,fillets,[],[],corner_offset,circle_offsets)
+
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
+	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
+
+
+# ************************************************************************************************
+def tslot20x20_three_slot(
+	params,
+	document
+):
+	name = params["name"]
+	l = params["l"]
+
+	#due to symmetry this can be nicely decomposed
+	# x offset, y offset, reverse, switch, mir_x, mir_y
+	symmetry = [
+		(0,0,False,False,False,False),
+		(0,0,True, True ,False,False),
+		(0,0,False,True ,True ,False),
+		(0,0,True, False,True ,False),
+		(0,0,False,False,True ,True ),
+		(0,0,True, True ,True ,True ),
+		(0,0,False,True ,False,True ),
+		(0,0,True, False,False,True ),
+	]
+
+	vertices = [tslot_outline] + 2*[tslot_closed] + 5*[tslot_outline]
+	fillets = [5,7,19,31]
+
+	closed_symmetry = [
+		(0,0,False,True,False,False),
+	]
+	closed_vertices = [tslot_closed_space]
+
+	corner_offset = 0
+	circle_offsets = [0]
+
+	face = tslot(symmetry,vertices,fillets,closed_symmetry,closed_vertices,corner_offset,circle_offsets)
+
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
+	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
+
+
+# ************************************************************************************************
+def tslot20x20_two_slot(
+	params,
+	document
+):
+	name = params["name"]
+	l = params["l"]
+
+	#due to symmetry this can be nicely decomposed
+	# x offset, y offset, reverse, switch, mir_x, mir_y
+	symmetry = [
+		(0,0,False,False,False,False),
+		(0,0,True, True ,False,False),
+		(0,0,False,True ,True ,False),
+		(0,0,True, False,True ,False),
+		(0,0,False,False,True ,True ),
+		(0,0,True, True ,True ,True ),
+		(0,0,False,True ,False,True ),
+		(0,0,True, False,False,True ),
+	]
+
+	vertices = [tslot_outline] + 4*[tslot_closed] + 3*[tslot_outline]
+	fillets = [5,7,9,21]
+
+	closed_symmetry = [
+		(0,0,False,True,False,False),
+		(0,0,False,False,True,False),
+	]
+	closed_vertices = 2*[tslot_closed_space]
+
+	corner_offset = 0
+	circle_offsets = [0]
+
+	face = tslot(symmetry,vertices,fillets,closed_symmetry,closed_vertices,corner_offset,circle_offsets)
+
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
+	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
+
+
+# ************************************************************************************************
+def tslot20x20_two_slot_opp(
+	params,
+	document
+):
+	name = params["name"]
+	l = params["l"]
+
+	#due to symmetry this can be nicely decomposed
+	# x offset, y offset, reverse, switch, mir_x, mir_y
+	symmetry = [
+		(0,0,False,False,False,False),
+		(0,0,True, True ,False,False),
+		(0,0,False,True ,True ,False),
+		(0,0,True, False,True ,False),
+		(0,0,False,False,True ,True ),
+		(0,0,True, True ,True ,True ),
+		(0,0,False,True ,False,True ),
+		(0,0,True, False,False,True ),
+	]
+
+	vertices = [tslot_outline] + 2*[tslot_closed] + 2*[tslot_outline]+ 2*[tslot_closed] + [tslot_outline]
+	fillets = [5,7,19,21]
+
+	closed_symmetry = [
+		(0,0,False,True,False,False),
+		(0,0,False,True,False,True),
+	]
+	closed_vertices = 2*[tslot_closed_space]
+
+	corner_offset = 0
+	circle_offsets = [0]
+
+	face = tslot(symmetry,vertices,fillets,closed_symmetry,closed_vertices,corner_offset,circle_offsets)
+
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
+	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
+
+
+# ************************************************************************************************
+def tslot20x20_one_slot(
+	params,
+	document
+):
+	name = params["name"]
+	l = params["l"]
+
+	#due to symmetry this can be nicely decomposed
+	# x offset, y offset, reverse, switch, mir_x, mir_y
+	symmetry = [
+		(0,0,False,False,False,False),
+		(0,0,True, True ,False,False),
+		(0,0,False,True ,True ,False),
+		(0,0,True, False,True ,False),
+		(0,0,False,False,True ,True ),
+		(0,0,True, True ,True ,True ),
+		(0,0,False,True ,False,True ),
+		(0,0,True, False,False,True ),
+	]
+
+	vertices = [tslot_outline] + 6*[tslot_closed] + [tslot_outline]
+	fillets = [5,7,9,11]
+
+	closed_symmetry = [
+		(0,0,False,True,False,False),
+		(0,0,False,False,True,False),
+		(0,0,False,True,False,True),
+	]
+	closed_vertices = 3*[tslot_closed_space]
+
+	corner_offset = 0
+	circle_offsets = [0]
+
+	face = tslot(
+		symmetry,
+		vertices,
+		fillets,
+		closed_symmetry,
+		closed_vertices,
+		corner_offset,
+		circle_offsets
+	)
+
+	part = document.addObject("Part::Feature","BOLTS_part")
+	part.Label = name
+
+	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
+
+
+# ************************************************************************************************
+# helper
+def edge_fillet(
+	edges,
+	radius
+):
 	"""
 	when given a list of two connected lines, returns a list of three
 	curves (line, arc, line) corresponding to a filleted edge
@@ -72,7 +466,12 @@ def edge_fillet(edges,radius):
 		Part.makeCircle(radius,center,normal,alpha1,alpha2),
 		Part.makeLine(t2,l2.Curve.EndPoint)]
 
-def fillet(lines,indices,radius):
+
+def fillet(
+	lines,
+	indices,
+	radius
+):
 	"""
 	fillets the corner between the segments and their successors in lines indicated by indices
 	"""
@@ -83,9 +482,9 @@ def fillet(lines,indices,radius):
 	indices.sort()
 	indices.reverse()
 
-	'''
 	# the API of FreeCAD has changed in the regard of lines see https://forum.freecadweb.org/viewtopic.php?f=22&t=23252
 	# def edge_fillet needs adaption
+	'''
 	for i in indices:
 		lines[slice(i,i+2)] = edge_fillet(lines[slice(i,i+2)],radius)
 	'''
@@ -93,7 +492,12 @@ def fillet(lines,indices,radius):
 
 	return lines
 
-def assemble(symmetry,vertices,offset_global=(0,0)):
+
+def assemble(
+	symmetry,
+	vertices,
+	offset_global=(0,0)
+):
 	"""
 	Assemble a wire from a list of symmetry information and a list of list of vertices
 
@@ -135,15 +539,19 @@ def assemble(symmetry,vertices,offset_global=(0,0)):
 			lines.append(makeLine(vlast,vcur))
 	return lines
 
-#profile size
+
+# ************************************************************************************************
+# profile size
 w = 20
 
-#Vslot profile:
 
-#the size of the inner square
+# ************************************************************************************************
+# Vslot profile:
+
+# the size of the inner square
 d = 5.68 + 3/math.sqrt(2)
 
-#one eight of the outline
+# one eight of the outline
 vslot_outline = [
 	(0.5*d,0,0),
 	(0.5*d,0.5*5.68,0),
@@ -161,7 +569,7 @@ space_symmetry = [
 	(0,  0, True, False, True, True)
 ]
 
-#big spaces
+# big spaces
 vslot_space = [
 	(0.5*d,0,0),
 	(0.5*d,0.5*5.68,0),
@@ -170,7 +578,7 @@ vslot_space = [
 	(0.5*w,0.5*w-1.8,0),
 ]
 
-#corner holes
+# corner holes
 vslot_cornerhole = [
 	(0.5*w - 1.8,0.5*w - 1.8 - 1.64 - 1.5/math.sqrt(2)+1.07,0),
 	(0.5*w - 1.8,0.5*w-1.8,0),
@@ -178,7 +586,13 @@ vslot_cornerhole = [
 	(0.5*w - 1.8,0.5*w - 1.8 - 1.64 - 1.5/math.sqrt(2)+1.07,0)
 ]
 
-def vslot(symmetry,vertices,fillets,corner_offset, circle_offsets):
+def vslot(
+	symmetry,
+	vertices,
+	fillets,
+	corner_offset,
+	circle_offsets
+):
 	outline = assemble(symmetry,vertices)
 	outline = fillet(outline,fillets,1.5)
 	outline = Part.Wire(outline)
@@ -215,170 +629,11 @@ def vslot(symmetry,vertices,fillets,corner_offset, circle_offsets):
 	#put everything together
 	return Part.Face([outline] + holes)
 
-def vslot20x20(params,document):
-	name = params["name"]
-	l = params["l"]
 
-	#due to symmetry this can be nicely decomposed
-	# x offset, y offset, reverse, switch, mir_x, mir_y
-	symmetry = [
-		(0,0,False,False,False,False),
-		(0,0,True, True ,False,False),
-		(0,0,False,True ,True ,False),
-		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
-	]
+# ************************************************************************************************
+# T slot profile:
 
-	vertices = 8*[vslot_outline]
-	fillets = [5,17,29,41]
-	corner_offset = 0
-	circle_offsets = [0]
-
-	face = vslot(symmetry,vertices,fillets,corner_offset,circle_offsets)
-
-	part = document.addObject("Part::Feature","BOLTS_part")
-	part.Label = name
-
-	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
-
-	#color
-	if params['finish'] == "Black":
-		part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
-
-def vslot20x40(params,document):
-	name = params["name"]
-	l = params["l"]
-
-	#due to symmetry this can be nicely decomposed
-	# x offset, y offset, reverse, switch, mir_x, mir_y
-	symmetry = [
-		(0,0,False,False,False,False),
-		(0,0,True, True ,False,False),
-		(0,0,False,True ,True ,False),
-		(-w,0,True, True ,False,False),
-		(-w,0,False,True ,True ,False),
-		(-w,0,True, False,True ,False),
-		(-w,0,False, False,True ,True ),
-		(-w,0,True, True ,True ,True ),
-		(-w,0,False, True ,False,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False, True ,False,True ),
-		(0,0,True, False,False,True ),
-	]
-
-	vertices = 12*[vslot_outline]
-
-	fillets = [5,29,41,65]
-	corner_offset = -1*w
-	circle_offsets = [0,-w]
-
-	face = vslot(symmetry,vertices,fillets,corner_offset,circle_offsets)
-
-	part = document.addObject("Part::Feature","BOLTS_part")
-	part.Label = name
-
-	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
-
-	#color
-	if params['finish'] == "Black":
-		part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
-
-def vslot20x60(params,document):
-	name = params["name"]
-	l = params["l"]
-
-	#due to symmetry this can be nicely decomposed
-	# x offset, y offset, reverse, switch, mir_x, mir_y
-	symmetry = [
-		(0,0,False,False,False,False),
-		(0,0,True, True ,False,False),
-		(0,0,False, True ,True ,False),
-		(-w,0,True, True ,False,False),
-		(-w,0,False, True ,True ,False),
-		(-2*w,0,True, True ,False,False),
-		(-2*w,0,False, True ,True ,False),
-		(-2*w,0,True, False,True ,False),
-		(-2*w,0,False, False,True ,True ),
-		(-2*w,0,True, True ,True ,True ),
-		(-2*w,0,False, True ,False,True ),
-		(-w,0,True, True ,True ,True ),
-		(-w,0,False, True ,False,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False, True ,False,True ),
-		(0,0,True, False,False,True ),
-	]
-
-	vertices = 16*[vslot_outline]
-
-	#add fillets in reverse order, as this inserts additional edges
-	fillets = [5,41,53,89]
-	corner_offset = -2*w
-	circle_offsets = [0,-w,-2*w]
-
-	face = vslot(symmetry,vertices,fillets,corner_offset,circle_offsets)
-
-	part = document.addObject("Part::Feature","BOLTS_part")
-	part.Label = name
-
-	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
-
-	#color
-	if params['finish'] == "Black":
-		part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
-
-def vslot20x80(params,document):
-	name = params["name"]
-	l = params["l"]
-
-	#due to symmetry this can be nicely decomposed
-	# x offset, y offset, reverse, switch, mir_x, mir_y
-	symmetry = [
-		(0,0,False,False,False,False),
-		(0,0,True, True ,False,False),
-		(0,0,False, True ,True ,False),
-		(-w,0,True, True ,False,False),
-		(-w,0,False, True ,True ,False),
-		(-2*w,0,True, True ,False,False),
-		(-2*w,0,False, True ,True ,False),
-		(-3*w,0,True, True ,False,False),
-		(-3*w,0,False, True ,True ,False),
-		(-3*w,0,True, False,True ,False),
-		(-3*w,0,False, False,True ,True ),
-		(-3*w,0,True, True ,True ,True ),
-		(-3*w,0,False, True ,False,True ),
-		(-2*w,0,True, True ,True ,True ),
-		(-2*w,0,False, True ,False,True ),
-		(-w,0,True, True ,True ,True ),
-		(-w,0,False, True ,False,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False, True ,False,True ),
-		(0,0,True, False,False,True ),
-	]
-
-	vertices = 20*[vslot_outline]
-
-	#add fillets in reverse order, as this inserts additional edges
-	fillets = [5,53,65,113]
-	corner_offset = -3*w
-	circle_offsets = [0,-w,-2*w,-3*w]
-
-	face = vslot(symmetry,vertices,fillets,corner_offset,circle_offsets)
-
-	part = document.addObject("Part::Feature","BOLTS_part")
-	part.Label = name
-
-	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
-
-	#color
-	if params['finish'] == "Black":
-		part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
-
-#T slot profile:
-
-#outline
+# outline
 tslot_outline = [
 	(5.0,0,0),
 	(5.0,3.5,0),
@@ -389,13 +644,13 @@ tslot_outline = [
 	(10.0,10.0,0),
 ]
 
-#closed slots ouline
+# closed slots ouline
 tslot_closed = [
 	(10.0,0.0,0),
 	(10.0,10.0,0),
 ]
 
-#closed slots spaces
+# closed slots spaces
 tslot_closed_space = [
 	(5.0,0,0),
 	(5.0,3.5,0),
@@ -407,7 +662,7 @@ tslot_closed_space = [
 	(5.0,0,0),
 ]
 
-#big spaces
+# big spaces
 tslot_space = [
 	(0.5*d,0,0),
 	(0.5*d,0.5*5.68,0),
@@ -417,7 +672,15 @@ tslot_space = [
 ]
 
 
-def tslot(symmetry,vertices,fillets,closed_symmetry,closed_vertices,corner_offset, circle_offsets):
+def tslot(
+	symmetry,
+	vertices,
+	fillets,
+	closed_symmetry,
+	closed_vertices,
+	corner_offset,
+	circle_offsets
+):
 	outline = assemble(symmetry,vertices)
 	outline = fillet(outline,fillets,1.5)
 	outline = Part.Wire(outline)
@@ -438,176 +701,3 @@ def tslot(symmetry,vertices,fillets,closed_symmetry,closed_vertices,corner_offse
 
 	#put everything together
 	return Part.Face([outline] + holes)
-
-def tslot20x20(params,document):
-	name = params["name"]
-	l = params["l"]
-
-	#due to symmetry this can be nicely decomposed
-	# x offset, y offset, reverse, switch, mir_x, mir_y
-	symmetry = [
-		(0,0,False,False,False,False),
-		(0,0,True, True ,False,False),
-		(0,0,False,True ,True ,False),
-		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
-	]
-
-	vertices = 8*[tslot_outline]
-	fillets = [5,17,29,41]
-	corner_offset = 0
-	circle_offsets = [0]
-
-	face = tslot(symmetry,vertices,fillets,[],[],corner_offset,circle_offsets)
-
-	part = document.addObject("Part::Feature","BOLTS_part")
-	part.Label = name
-
-	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
-
-def tslot20x20_three_slot(params,document):
-	name = params["name"]
-	l = params["l"]
-
-	#due to symmetry this can be nicely decomposed
-	# x offset, y offset, reverse, switch, mir_x, mir_y
-	symmetry = [
-		(0,0,False,False,False,False),
-		(0,0,True, True ,False,False),
-		(0,0,False,True ,True ,False),
-		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
-	]
-
-	vertices = [tslot_outline] + 2*[tslot_closed] + 5*[tslot_outline]
-	fillets = [5,7,19,31]
-
-	closed_symmetry = [
-		(0,0,False,True,False,False),
-	]
-	closed_vertices = [tslot_closed_space]
-
-	corner_offset = 0
-	circle_offsets = [0]
-
-	face = tslot(symmetry,vertices,fillets,closed_symmetry,closed_vertices,corner_offset,circle_offsets)
-
-	part = document.addObject("Part::Feature","BOLTS_part")
-	part.Label = name
-
-	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
-
-def tslot20x20_two_slot(params,document):
-	name = params["name"]
-	l = params["l"]
-
-	#due to symmetry this can be nicely decomposed
-	# x offset, y offset, reverse, switch, mir_x, mir_y
-	symmetry = [
-		(0,0,False,False,False,False),
-		(0,0,True, True ,False,False),
-		(0,0,False,True ,True ,False),
-		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
-	]
-
-	vertices = [tslot_outline] + 4*[tslot_closed] + 3*[tslot_outline]
-	fillets = [5,7,9,21]
-
-	closed_symmetry = [
-		(0,0,False,True,False,False),
-		(0,0,False,False,True,False),
-	]
-	closed_vertices = 2*[tslot_closed_space]
-
-	corner_offset = 0
-	circle_offsets = [0]
-
-	face = tslot(symmetry,vertices,fillets,closed_symmetry,closed_vertices,corner_offset,circle_offsets)
-
-	part = document.addObject("Part::Feature","BOLTS_part")
-	part.Label = name
-
-	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
-
-def tslot20x20_two_slot_opp(params,document):
-	name = params["name"]
-	l = params["l"]
-
-	#due to symmetry this can be nicely decomposed
-	# x offset, y offset, reverse, switch, mir_x, mir_y
-	symmetry = [
-		(0,0,False,False,False,False),
-		(0,0,True, True ,False,False),
-		(0,0,False,True ,True ,False),
-		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
-	]
-
-	vertices = [tslot_outline] + 2*[tslot_closed] + 2*[tslot_outline]+ 2*[tslot_closed] + [tslot_outline]
-	fillets = [5,7,19,21]
-
-	closed_symmetry = [
-		(0,0,False,True,False,False),
-		(0,0,False,True,False,True),
-	]
-	closed_vertices = 2*[tslot_closed_space]
-
-	corner_offset = 0
-	circle_offsets = [0]
-
-	face = tslot(symmetry,vertices,fillets,closed_symmetry,closed_vertices,corner_offset,circle_offsets)
-
-	part = document.addObject("Part::Feature","BOLTS_part")
-	part.Label = name
-
-	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
-
-def tslot20x20_one_slot(params,document):
-	name = params["name"]
-	l = params["l"]
-
-	#due to symmetry this can be nicely decomposed
-	# x offset, y offset, reverse, switch, mir_x, mir_y
-	symmetry = [
-		(0,0,False,False,False,False),
-		(0,0,True, True ,False,False),
-		(0,0,False,True ,True ,False),
-		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
-	]
-
-	vertices = [tslot_outline] + 6*[tslot_closed] + [tslot_outline]
-	fillets = [5,7,9,11]
-
-	closed_symmetry = [
-		(0,0,False,True,False,False),
-		(0,0,False,False,True,False),
-		(0,0,False,True,False,True),
-	]
-	closed_vertices = 3*[tslot_closed_space]
-
-	corner_offset = 0
-	circle_offsets = [0]
-
-	face = tslot(symmetry,vertices,fillets,closed_symmetry,closed_vertices,corner_offset,circle_offsets)
-
-	part = document.addObject("Part::Feature","BOLTS_part")
-	part.Label = name
-
-	part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
