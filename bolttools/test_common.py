@@ -112,7 +112,7 @@ class TestCheckSchema(unittest.TestCase):
 a: 100
 b: Eimer
 c: 3.4
-		""")
+""")
         common.check_schema(res,"Tests",["a","b"],["c","d"])
 
     def test_unknown_field(self):
@@ -121,14 +121,14 @@ a: 100
 b: Eimer
 c: 3.4
 e: foo
-		""")
+""")
         self.assertRaises(UnknownFieldError,lambda: common.check_schema(res,"Tests",["a","b"],["c","d"]))
 
     def test_missing_field(self):
         res = yaml.load("""
 a: 100
 c: 3.4
-		""")
+""")
         self.assertRaises(MissingFieldError,lambda: common.check_schema(res,"Tests",["a","b"],["c","d"]))
 
 

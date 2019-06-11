@@ -195,9 +195,10 @@ def standard(id):
 						conns.append([loc,html.a(html.img(src=draw_url,width="200"),href=draw_url)])
 
 			openscad["connectors"] = html.table({
-					"header" : [gettext("Location"),gettext("Drawing")],
-					"class" : "table",
-					"data" : conns})
+				"header" : [gettext("Location"),gettext("Drawing")],
+				"class" : "table",
+				"data" : conns
+			})
 		else:
 			openscad["connectors"] = None
 
@@ -299,9 +300,10 @@ def name(id):
 						conns.append([loc,html.a(html.img(src=draw_url,width="200"),href=draw_url)])
 
 			openscad["connectors"] = html.table({
-					"header" : [gettext("Location"),gettext("Drawing")],
-					"class" : "table",
-					"data" : conns})
+				"header" : [gettext("Location"),gettext("Drawing")],
+				"class" : "table",
+				"data" : conns
+			})
 		else:
 			openscad["connectors"] = None
 	else:

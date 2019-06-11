@@ -72,7 +72,8 @@ class FreeCADData(DataBase):
 				base_info =  list(yaml.load_all(open(basefilename,"r","utf8")))
 			if len(base_info) != 1:
 				raise MalformedCollectionError(
-						"Not exactly one YAML document found in file %s" % basefilename)
+					"Not exactly one YAML document found in file %s" % basefilename
+				)
 			base_info = base_info[0]
 			for basefile in base_info:
 				if basefile["type"] == "function":

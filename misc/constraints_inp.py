@@ -98,7 +98,7 @@ for name in sorted(dims.keys()):
 
 	c1,c2,r1,r2,t1,t2,m1,d = unpack(p.x,dim)
 
-	flange = lambda x: 	t1[1]*(t2[0] - x)/(t2[0] - t1[0]) + t2[1]*(x - t1[0])/(t2[0] - t1[0])
+	flange = lambda x: t1[1]*(t2[0] - x)/(t2[0] - t1[0]) + t2[1]*(x - t1[0])/(t2[0] - t1[0])
 
 	f = flange(0.5*s)
 	g = 0.5*h - flange(0.5*b)
