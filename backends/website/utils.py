@@ -32,7 +32,7 @@ class Specification:
 
 		for filename in listdir(path):
 			match = spec_pattern.match(filename)
-			if not match is None:
+			if match is not None:
 				self.version[match.group(1)] = open(safe_join(path,filename)).read()
 	def get_version(self,version):
 		return self.version[version]
@@ -108,13 +108,13 @@ class Documentation:
 	def get_documents(self,version=None,category=None,audience=None,filename=None):
 		res = []
 		for doc in self.documents:
-			if (not version is None) and doc["version"] != version:
+			if (version is not None) and doc["version"] != version:
 				continue
-			if (not category is None) and doc["category"] != category:
+			if (category is not None) and doc["category"] != category:
 				continue
-			if (not audience is None) and doc["audience"] != audience:
+			if (audience is not None) and doc["audience"] != audience:
 				continue
-			if (not filename is None) and doc["filename"] != filename:
+			if (filename is not None) and doc["filename"] != filename:
 				continue
 			res.append(doc)
 		return res

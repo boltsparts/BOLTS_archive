@@ -208,7 +208,7 @@ def release(args):
 	if args.kind == "stable" and args.version is None:
 		print("Please specify a version using -v when releasing a stable version")
 		exit(2)
-	if args.kind == "development" and not args.version is None:
+	if args.kind == "development" and args.version is not None:
 		print("No explicit version can be given for development releases")
 		exit(2)
 	repo = Repository(args.repo)

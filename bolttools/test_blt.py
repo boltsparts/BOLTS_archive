@@ -144,7 +144,7 @@ class TestRepository(unittest.TestCase):
 
     def test_multistandards(self):
         for std,mstd in self.repo.iterstandards(["standard","multistandard"]):
-            if not mstd is None:
+            if mstd is not None:
                 self.assertIn(std,self.repo.multistandard_standards.get_dsts(mstd))
 
 

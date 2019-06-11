@@ -125,9 +125,9 @@ def standard(id):
 
 	props.append((gettext('Status'),std.status))
 	props.append((gettext('Standard body'),html.a(std.body,href=url_for('.body',id=std.body))))
-	if not std.replaces is None:
+	if std.replaces is not None:
 		props.append((gettext('Replaces'),std.replaces))
-	if not std.replacedby is None:
+	if std.replacedby is not None:
 		props.append((gettext('Replaced by'),std.replacedby))
 	if not cl.url == "":
 		props.append(('URL',cl.url))

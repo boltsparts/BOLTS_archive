@@ -129,7 +129,7 @@ class Links:
 		Add a link from src to dst
 		"""
 		if src in self.srctodsts:
-			if not self.N is None and len(self.srctodsts[src]) >= self.N:
+			if self.N is not None and len(self.srctodsts[src]) >= self.N:
 				raise LimitExceededError(src,dst)
 			self.srctodsts[src].append(dst)
 		else:
