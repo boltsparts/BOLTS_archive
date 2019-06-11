@@ -293,9 +293,9 @@ class BoltsWidget(QBoltsWidget):
 			self.props_widgets.append(PropertyWidget(self.ui.props,"Status","<font color='red'>%s</font>" % std.status))
 		else:
 			self.props_widgets.append(PropertyWidget(self.ui.props,"Status","<font color='green'>%s</font>" % std.status))
-		if not std.replaces is None:
+		if std.replaces is not None:
 			self.props_widgets.append(PropertyWidget(self.ui.props,"Replaces",std.replaces))
-		if not std.replacedby is None:
+		if std.replacedby is not None:
 			self.props_widgets.append(PropertyWidget(self.ui.props,"Replacedby",std.replacedby))
 		self.props_widgets.append(PropertyWidget(self.ui.props,"ID",std.get_id()))
 

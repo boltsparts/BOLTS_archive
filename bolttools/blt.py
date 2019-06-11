@@ -380,7 +380,7 @@ class Repository:
 						self.multistandard_standards.add_link(multistd,standard)
 
 		for standard in self.standards.values():
-			if not standard.replaces is None:
+			if standard.replaces is not None:
 				if not standard.replaces in self.standards:
 					raise MalformedRepositoryError(
 						"Unknown replace field %s in standard %s" %

@@ -32,7 +32,7 @@ def table(value):
 	else:
 		res.append('<table>')
 
-	if not header is None:
+	if header is not None:
 		row = " ".join([u"<th>%s</th>" % unicode(head) for head in header])
 		res.append(u"<tr>%s<tr>" % row)
 
