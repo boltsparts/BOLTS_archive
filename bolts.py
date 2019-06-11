@@ -242,7 +242,7 @@ def release(args):
 			os.path.join(repo.path,"output","freecad","BOLTS","LICENSE"))
 
 		for backend in ["openscad", "freecad"]:
-			if not backend in targets:
+			if backend not in targets:
 				continue
 			backend_name = backend_names[backend]
 			#construct filename from date

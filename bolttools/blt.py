@@ -275,7 +275,7 @@ class Repository:
 				raise MalformedCollectionError(
 					"Collection ID is not identical with file name: %s" % filename)
 			for c in raw_coll["id"]:
-				if not c in string.ascii_letters +  string.digits + "_":
+				if c not in string.ascii_letters +  string.digits + "_":
 					raise MalformedCollectionError(
 						"Collection ID contains invalid character: %s" % c)
 
@@ -334,7 +334,7 @@ class Repository:
 
 					multinameid = name.group.get_safe()
 					if multinameid:
-						if not multinameid in self.multinames:
+						if multinameid not in self.multinames:
 							multiname = MultiName(name.group)
 							self.multinames[multinameid] = multiname
 						else:
@@ -369,7 +369,7 @@ class Repository:
 
 					multistdid = standard.group.get_safe()
 					if multistdid:
-						if not multistdid in self.multistandards:
+						if multistdid not in self.multistandards:
 							multistd = MultiStandard(standard.group)
 							self.multistandards[multistdid] = multistd
 							self.body_multistandards.add_link(body,multistd)
@@ -381,7 +381,7 @@ class Repository:
 
 		for standard in self.standards.values():
 			if standard.replaces is not None:
-				if not standard.replaces in self.standards:
+				if standard.replaces not in self.standards:
 					raise MalformedRepositoryError(
 						"Unknown replace field %s in standard %s" %
 						(standard.replaces,standard.get_id())

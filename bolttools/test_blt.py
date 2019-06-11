@@ -114,7 +114,7 @@ class MockDesignation(blt.Designation):
     def contains_name_single(self,id):
         return id in self.subids
     def get_standard_single(self,id):
-        if not id in self.subids:
+        if id not in self.subids:
             raise KeyError("Key not found")
         return MockDesignation(id)
 

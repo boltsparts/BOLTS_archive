@@ -34,7 +34,7 @@ def pull_language_code(endpoint, values):
 @docs.route("/<version>")
 @docs.route("/<version>/index.html")
 def index(version):
-	if not version in SOURCES.get_versions():
+	if version not in SOURCES.get_versions():
 		abort(404)
 	doc_structure = {}
 	for aud in SOURCES.get_audiences():
@@ -47,7 +47,7 @@ def index(version):
 @docs.route("/<version>/document/<cat>/<filename>")
 @docs.route("/<version>/document/<cat>/<filename>.html")
 def document(version, cat,filename):
-	if not version in SOURCES.get_versions():
+	if version not in SOURCES.get_versions():
 		abort(404)
 	doc = list(SOURCES.get_documents(version=version,category=cat,filename=filename))
 	if len(doc) != 1:

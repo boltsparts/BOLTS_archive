@@ -68,7 +68,7 @@ class WebGLExporter(BackendExporter):
 			makedirs(join(out_path,coll.id))
 			sys.path.append(join(self.repo.path,"freecad",coll.id))
 			for cl in coll.classes_by_ids():
-				if not cl.id in self.freecad.getbase:
+				if cl.id not in self.freecad.getbase:
 					continue
 
 				base = self.freecad.getbase[cl.id]

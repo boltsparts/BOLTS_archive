@@ -85,7 +85,7 @@ class FreeCADData(DataBase):
 							self.bases.append(function)
 							self.collection_bases.add_link(repo.collections[coll],function)
 							for id in func["classids"]:
-								if not id in repo.classes:
+								if id not in repo.classes:
 									raise MalformedBaseError(
 										"Unknown class %s" % id)
 								if self.base_classes.contains_dst(repo.classes[id]):

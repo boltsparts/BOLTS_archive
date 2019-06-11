@@ -57,12 +57,12 @@ def check_iterator_arguments(items,primary,optional,kwargs):
 	for it in items:
 		if it == primary:
 			continue
-		if not it in optional:
+		if it not in optional:
 			raise ValueError("Unknown item requested in iterator: %s" % it)
 	#check filters
 	filters = ["filter_%s" % o for o in optional]
 	for k in kwargs:
-		if not k in filters:
+		if k not in filters:
 			raise ValueError("Unknown argument %s for iterator" % k)
 
 def filter_iterator_items(its,kwargs):
@@ -86,7 +86,7 @@ def convert_raw_parameter_value(pname,tname,value):
 	positive = ["Length (mm)", "Length (in)"]
 
 	#Check
-	if not tname in ALL_TYPES:
+	if tname not in ALL_TYPES:
 		raise UnknownTypeError(tname)
 
 	#Convert
@@ -334,7 +334,7 @@ class Parameters:
 		self.literal = {}
 		if "literal" in param:
 			for pname,val in param["literal"].items():
-				if not pname in self.types:
+				if pname not in self.types:
 					raise MissingTypeError(pname)
 				self.literal[pname] = convert_raw_parameter_value(pname,self.types[pname],val)
 
@@ -373,18 +373,18 @@ class Parameters:
 
 		#check types
 		for pname,tname in self.types.items():
-			if not pname in self.parameters:
+			if pname not in self.parameters:
 				raise UnknownParameterError(pname)
-			if not tname in ALL_TYPES:
+			if tname not in ALL_TYPES:
 				raise UnknownTypeError(tname)
 
 		for pname in self.parameters:
-			if not pname in self.types:
+			if pname not in self.types:
 				raise MissingTypeError(pname)
 
 		#check description
 		for pname,tname in self.description.items():
-			if not pname in self.parameters:
+			if pname not in self.parameters:
 				raise UnknownParameterError(pname)
 
 		#check and normalize tables
@@ -406,18 +406,18 @@ class Parameters:
 				continue
 			for table in self.tables:
 				if table.index == pname:
-					if not pname in self.choices:
+					if pname not in self.choices:
 						self.choices[pname] = set(table.data.keys())
 					else:
 						self.choices[pname] &= set(table.data.keys())
 			for table in self.tables2d:
 				if table.rowindex == pname:
-					if not pname in self.choices:
+					if pname not in self.choices:
 						self.choices[pname] = set(table.data.keys())
 					else:
 						self.choices[pname] &= set(table.data.keys())
 				elif table.colindex == pname:
-					if not pname in self.choices:
+					if pname not in self.choices:
 						self.choices[pname] = set(table.columns)
 					else:
 						self.choices[pname] &= set(table.columns)
@@ -491,7 +491,7 @@ class Parameters:
 		for table in self.tables2d:
 			res.update(table.get_value(res[table.rowindex],res[table.colindex]))
 		for pname in self.parameters:
-			if not pname in res:
+			if pname not in res:
 				raise KeyError("Parameter value not collected: %s" % pname)
 		return res
 
@@ -653,7 +653,7 @@ class NamePair:
 
 		#check for only allowed characters
 		for c in self.safe:
-			if not c in self.allowed:
+			if c not in self.allowed:
 				raise ValueError('String %s contains forbidden characters: %s' % (self.safe,c))
 
 	def get_safe(self):
@@ -697,7 +697,7 @@ class Identifier(NamePair):
 		res = "".join(res)
 		#remove all disallowed characters
 		for c in res[:]:
-			if not c in allowed:
+			if c not in allowed:
 				if c in '- ':
 					res = res.replace(c,'_')
 				else:
@@ -723,7 +723,7 @@ class Substitution(NamePair):
 		inp = "_".join(inp.split())
 		#remove all disallowed characters
 		for c in inp[:]:
-			if not c in allowed:
+			if c not in allowed:
 				inp = inp.replace(c,'')
 		return inp
 

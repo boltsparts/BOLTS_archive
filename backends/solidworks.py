@@ -51,7 +51,7 @@ class SolidWorksExporter(BackendExporter):
 			if not exists(coll_path):
 				makedirs(coll_path)
 			#check for case
-			if not designtable.filename in listdir(
+			if designtable.filename not in listdir(
 					join(self.solidworks.backend_root,designtable.collection)):
 				raise FileNotFoundError(designtable.filename)
 			model_path = join(coll_path,designtable.filename)
