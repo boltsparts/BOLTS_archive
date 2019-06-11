@@ -39,7 +39,7 @@ class Backend:
 		self.name = name
 		self.dbs = {}
 		for db in required:
-			if not db in databases:
+			if db not in databases:
 				raise DatabaseNotAvailableError(self.name,db)
 			self.dbs[db] = databases[db]
 		for db in optional:

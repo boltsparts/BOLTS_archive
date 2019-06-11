@@ -93,7 +93,7 @@ class FreeCADBackend(Backend):
 			open(join(bolts_path,"freecad",coll.id,"__init__.py"),"w").close()
 
 			for base, in self.dbs["freecad"].iterbases(filter_collection=coll):
-				if not base.license_name in license.LICENSES:
+				if base.license_name not in license.LICENSES:
 					continue
 				if not license.is_combinable_with(base.license_name,args["target_license"]):
 					continue

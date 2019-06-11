@@ -197,7 +197,7 @@ class BoltsWidget(QBoltsWidget):
 				if multiname is None:
 					item = QtGui.QTreeWidgetItem(coll_item,[name.name.get_nice(), name.description])
 				else:
-					if not multiname in multinames:
+					if multiname not in multinames:
 						multinames[multiname] = QtGui.QTreeWidgetItem(coll_item,[multiname.group.get_nice(),""])
 					item = QtGui.QTreeWidgetItem(multinames[multiname],[name.name.get_nice(), name.description])
 
@@ -210,7 +210,7 @@ class BoltsWidget(QBoltsWidget):
 					if multistd is None:
 						item = QtGui.QTreeWidgetItem(coll_item,[std.standard.get_nice(), std.description])
 					else:
-						if not multistd in multistds:
+						if multistd not in multistds:
 							multistds[multistd] = QtGui.QTreeWidgetItem(coll_item,[multistd.standard.get_nice(),""])
 						item = QtGui.QTreeWidgetItem(multistds[multistd],[std.standard.get_nice(), std.description])
 
@@ -227,7 +227,7 @@ class BoltsWidget(QBoltsWidget):
 				if multistd is None:
 					item = QtGui.QTreeWidgetItem(std_item,[std.standard.get_nice(), std.description])
 				else:
-					if not multistd in multistds:
+					if multistd not in multistds:
 						multistds[multistd] = QtGui.QTreeWidgetItem(std_item,[multistd.standard.get_nice(),""])
 					item = QtGui.QTreeWidgetItem(multistds[multistd],[std.standard.get_nice(), std.description])
 

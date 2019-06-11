@@ -56,7 +56,7 @@ class Connectors:
 			[])
 		self.name = cs["name"]
 		self.arguments = cs["arguments"]
-		if not "location" in self.arguments:
+		if "location" not in self.arguments:
 			raise MissingLocationError(self.arguments)
 		self.locations = cs["locations"]
 
@@ -111,7 +111,7 @@ class OpenSCADData(DataBase):
 								self.module_connectors.add_link(module,connectors)
 
 							for id in module.classids:
-								if not id in repo.classes:
+								if id not in repo.classes:
 									raise MalformedBaseError(
 										"Unknown class %s" % id)
 								if self.module_classes.contains_dst(repo.classes[id]):

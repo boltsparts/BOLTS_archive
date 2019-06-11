@@ -465,7 +465,7 @@ class HyperUnionFind:
 		self.components = {}
 	def make_set(self,x):
 		for comp in self.components.values():
-			assert(not x in comp)
+			assert(x not in comp)
 		self.components[x] = set([x])
 	def find_set(self,x):
 		for c,comp in self.components.items():
@@ -550,7 +550,7 @@ class MissingParameterDescriptionTable(ErrorTable):
 
 			missing = []
 			for pname in cl.parameters.parameters:
-				if not pname in cl.parameters.description:
+				if pname not in cl.parameters.description:
 					missing.append(pname)
 
 			if len(missing) > 0:

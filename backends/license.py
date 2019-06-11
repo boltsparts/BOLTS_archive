@@ -85,7 +85,7 @@ _populate_license_graph()
 def is_combinable_with(a,b):
 	if a == b:
 		return True
-	if not a in LICENSES or not b in LICENSES:
+	if a not in LICENSES or b not in LICENSES:
 		return False
 	if b in LICENSE_GRAPH[a]:
 		return True

@@ -123,7 +123,7 @@ class DrawingsData(DataBase):
 					if draw.get_svg() is None and draw.get_png() is None:
 						raise MalformedRepositoryError("No drawing files present for %s/%s" % (coll,draw.filename))
 
-					if not draw.location in self.conlocations:
+					if draw.location not in self.conlocations:
 						self.conlocations.append(draw.location)
 					self.conlocations_condrawings.add_link(draw.location,draw)
 
