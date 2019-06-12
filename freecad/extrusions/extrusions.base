@@ -12,6 +12,16 @@
      classids: [vslot20x60]
    - name: vslot20x80
      classids: [vslot20x80]
+   - name: tslot20x20
+     classids: [tslot20x20]
+   - name: tslot20x20_three_slot
+     classids: [tslot20x20_3s]
+   - name: tslot20x20_two_slot
+     classids: [tslot20x20_2sa]
+   - name: tslot20x20_two_slot_opp
+     classids: [tslot20x20_2s]
+   - name: tslot20x20_one_slot
+     classids: [tslot20x20_1s]
   source: created from scratch, dimensions from https://store-itwgldve.mybigcommerce.com//product_downloads/Open%20Source%20Downloads%20for%20Store/VSLOT%20Extrusion/VSLOT%20Extrusion_10.zip
 - filename: wheels.py
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
