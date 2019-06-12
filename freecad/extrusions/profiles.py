@@ -21,6 +21,7 @@ from FreeCAD import Vector
 from Part import makeCircle, makeLine
 import Part 
 import Arch
+from DraftGeomUtils import fillet as draft_fillet
 
 
 # ************************************************************************************************
@@ -482,13 +483,13 @@ def fillet(
 	indices.sort()
 	indices.reverse()
 
-	# the API of FreeCAD has changed in the regard of lines see https://forum.freecadweb.org/viewtopic.php?f=22&t=23252
+	# the API of FreeCAD has changed in the regard of lines,
+	# see https://forum.freecadweb.org/viewtopic.php?f=22&t=23252
 	# def edge_fillet needs adaption
-	'''
+	# we gone use the fillet method from FreeCADs DraftGeomUtils
 	for i in indices:
-		lines[slice(i,i+2)] = edge_fillet(lines[slice(i,i+2)],radius)
-	'''
-	print('The profile is made without Fillets atm.')
+		# lines[slice(i,i+2)] = edge_fillet(lines[slice(i,i+2)],radius)
+		lines[slice(i,i+2)] = draft_fillet(lines[slice(i,i+2)], radius)
 
 	return lines
 
