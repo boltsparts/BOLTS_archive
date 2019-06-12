@@ -20,6 +20,7 @@
 from os import listdir,makedirs, remove
 from os.path import join, exists, isfile
 from shutil import rmtree
+from .errors import *
 
 UNITS = {"Length (mm)" : "mm", "Length (in)" : "in"}
 
