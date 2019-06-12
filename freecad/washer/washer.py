@@ -18,7 +18,7 @@
 import Part
 
 def washer1(params,document):
-	key = params['key']
+	# key = params['key']  # not used
 	d1 = params['d1']
 	d2 = params['d2']
 	s = params['s']
@@ -32,7 +32,7 @@ def washer1(params,document):
 	part.Shape = outer.cut(inner).removeSplitter()
 
 def washer2(params,document):
-	key = params['key']
+	# key = params['key']  # not used
 	d1 = params['d1']
 	d2 = params['d2']
 	s = params['s']

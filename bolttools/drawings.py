@@ -164,7 +164,7 @@ class DrawingsData(DataBase):
 
 		for draw in self.dimdrawings:
 			its = {"dimdrawing" : draw}
-			its["collection"] = self.collection_dimdrawings.get_src(draw);
+			its["collection"] = self.collection_dimdrawings.get_src(draw)
 			its["classes"] = self.dimdrawing_classes.get_dsts(draw)
 
 			if filter_iterator_items(its,kwargs):

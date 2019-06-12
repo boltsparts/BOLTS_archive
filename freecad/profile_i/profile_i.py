@@ -25,7 +25,7 @@ from DraftGeomUtils import fillet as draft_fillet
 
 
 def ibeam_parallel_flange(params,document):
-        key = params['type']
+        # key = params['type']  # not used
         h = params['h']
         b = params['b']
         tf = params['tf']
@@ -106,9 +106,9 @@ def ibeam_parallel_flange(params,document):
 def ibeam_angled_flange(params,document):
     h = params['h']
     b = params['b']
-    tf = params['tf']
+    # tf = params['tf']  # not used
     tw = params['tw']
-    hw = params ['hw']
+    # hw = params ['hw']  # not use
     f = params ['f']
     g = params ['g']
     r1 = params ['r1']
