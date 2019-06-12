@@ -21,57 +21,7 @@ from Part import makeCircle, makeLine
 import Part, Arch
 from math import sin,cos,fabs
 import math
-
-def edge_fillet(edges,radius):
-    """
-    when given a list of two lines connected lines, returns a list of three
-    curves (line, arc, line) corresponding to a filleted edge
-    """
-    l1 = edges[0]
-    l2 = edges[1]
-    assert(l1.Curve.EndPoint == l2.Curve.StartPoint)
-    dir1 =l1.Curve.EndPoint - l1.Curve.StartPoint
-    dir2 =l2.Curve.EndPoint - l2.Curve.StartPoint
-
-    normal = dir1.cross(dir2)
-
-    raw_angle = math.asin(normal[2]/dir1.Length/dir2.Length)
-    #This is the smaller angle enclosed by the two lines in radians
-    angle = math.pi - abs(raw_angle)
-
-    #to find the transition points of the fillet, we consider a rectangular
-    #triangle with one kathete equal to the radius and the other one lying on
-    #one of the input lines with length a
-    a = radius/math.tan(0.5*angle)
-    #parameter per length
-    ppl1 = (l1.Curve.LastParameter-l1.Curve.FirstParameter)/l1.Curve.length()
-    ppl2 = (l2.Curve.LastParameter-l2.Curve.FirstParameter)/l2.Curve.length()
-
-    t1 = l1.Curve.value(l1.Curve.LastParameter - a*ppl1)
-    t2 = l2.Curve.value(l1.Curve.FirstParameter + a*ppl2)
-
-    #to fine the center of the fillet radius, we construct the angle bisector
-    #between the two input lines, and get the distance of the center from the
-    #common point by a trigonometric consideration
-    bis = Part.makeLine(l1.Curve.EndPoint,(t1+t2).scale(0.5,0.5,0.5))
-    pplb = (bis.Curve.LastParameter-bis.Curve.FirstParameter)/bis.Curve.length()
-    d = radius/math.sin(0.5*angle)
-    center = bis.Curve.value(bis.Curve.FirstParameter + d*pplb)
-
-    #to construct the circle we need start and end angles
-    r1 = t1 - center
-    r2 = t2 - center
-    if raw_angle > 0:
-        alpha1 = math.atan2(r1[1],r1[0])*180/math.pi
-        alpha2 = math.atan2(r2[1],r2[0])*180/math.pi
-    else:
-        alpha2 = math.atan2(r1[1],r1[0])*180/math.pi
-        alpha1 = math.atan2(r2[1],r2[0])*180/math.pi
-        normal *= -1
-
-    return [Part.makeLine(l1.Curve.StartPoint,t1),
-        Part.makeCircle(radius,center,normal,alpha1,alpha2),
-        Part.makeLine(t2,l2.Curve.EndPoint)]
+from DraftGeomUtils import fillet as draft_fillet
 
 
 def ibeam_parallel_flange(params,document):
@@ -214,13 +164,8 @@ def ibeam_angled_flange(params,document):
     ]
     #add fillets in reverse order to not disturb the counting, as edges are added
     fillets.reverse()
-    '''
-    # the API of FreeCAD has changed in the regard of lines see https://forum.freecadweb.org/viewtopic.php?f=22&t=23252
-    # def edge_fillet needs adaption
     for fillet,r in fillets:
-        lines[fillet] = edge_fillet(lines[fillet],r)
-    '''
-    print('The profile is made without Fillets atm.')
+        lines[fillet] = draft_fillet(lines[fillet],r)
 
     F = Part.Face(Part.Wire(lines))
 
