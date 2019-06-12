@@ -618,7 +618,7 @@ class Table2D:
 			for char in key:
 				if char in '\\/?*:|"\'<>\t\n\r':
 					raise MalformedTableIndexError(key)
-		res_type = types[self.result]
+		# res_type = types[self.result]  # not used
 		for key in self.data:
 			#check key
 			for char in key:

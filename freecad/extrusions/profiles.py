@@ -17,10 +17,11 @@
 
 
 import math
+
+import Part
+import Arch
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part 
-import Arch
 from DraftGeomUtils import fillet as draft_fillet
 
 
@@ -39,10 +40,10 @@ def vslot20x20(
 		(0,0,True, True ,False,False),
 		(0,0,False,True ,True ,False),
 		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
+		(0,0,False,False,True ,True),
+		(0,0,True, True ,True ,True),
+		(0,0,False,True ,False,True),
+		(0,0,True, False,False,True),
 	]
 
 	vertices = 8*[vslot_outline]
@@ -79,12 +80,12 @@ def vslot20x40(
 		(-w,0,True, True ,False,False),
 		(-w,0,False,True ,True ,False),
 		(-w,0,True, False,True ,False),
-		(-w,0,False, False,True ,True ),
-		(-w,0,True, True ,True ,True ),
-		(-w,0,False, True ,False,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False, True ,False,True ),
-		(0,0,True, False,False,True ),
+		(-w,0,False, False,True ,True),
+		(-w,0,True, True ,True ,True),
+		(-w,0,False, True ,False,True),
+		(0,0,True, True ,True ,True),
+		(0,0,False, True ,False,True),
+		(0,0,True, False,False,True),
 	]
 
 	vertices = 12*[vslot_outline]
@@ -124,14 +125,14 @@ def vslot20x60(
 		(-2*w,0,True, True ,False,False),
 		(-2*w,0,False, True ,True ,False),
 		(-2*w,0,True, False,True ,False),
-		(-2*w,0,False, False,True ,True ),
-		(-2*w,0,True, True ,True ,True ),
-		(-2*w,0,False, True ,False,True ),
-		(-w,0,True, True ,True ,True ),
-		(-w,0,False, True ,False,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False, True ,False,True ),
-		(0,0,True, False,False,True ),
+		(-2*w,0,False, False,True ,True),
+		(-2*w,0,True, True ,True ,True),
+		(-2*w,0,False, True ,False,True),
+		(-w,0,True, True ,True ,True),
+		(-w,0,False, True ,False,True),
+		(0,0,True, True ,True ,True),
+		(0,0,False, True ,False,True),
+		(0,0,True, False,False,True),
 	]
 
 	vertices = 16*[vslot_outline]
@@ -174,16 +175,16 @@ def vslot20x80(
 		(-3*w,0,True, True ,False,False),
 		(-3*w,0,False, True ,True ,False),
 		(-3*w,0,True, False,True ,False),
-		(-3*w,0,False, False,True ,True ),
-		(-3*w,0,True, True ,True ,True ),
-		(-3*w,0,False, True ,False,True ),
-		(-2*w,0,True, True ,True ,True ),
-		(-2*w,0,False, True ,False,True ),
-		(-w,0,True, True ,True ,True ),
-		(-w,0,False, True ,False,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False, True ,False,True ),
-		(0,0,True, False,False,True ),
+		(-3*w,0,False, False,True ,True),
+		(-3*w,0,True, True ,True ,True),
+		(-3*w,0,False, True ,False,True),
+		(-2*w,0,True, True ,True ,True),
+		(-2*w,0,False, True ,False,True),
+		(-w,0,True, True ,True ,True),
+		(-w,0,False, True ,False,True),
+		(0,0,True, True ,True ,True),
+		(0,0,False, True ,False,True),
+		(0,0,True, False,False,True),
 	]
 
 	vertices = 20*[vslot_outline]
@@ -220,10 +221,10 @@ def tslot20x20(
 		(0,0,True, True ,False,False),
 		(0,0,False,True ,True ,False),
 		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
+		(0,0,False,False,True ,True),
+		(0,0,True, True ,True ,True),
+		(0,0,False,True ,False,True),
+		(0,0,True, False,False,True),
 	]
 
 	vertices = 8*[tslot_outline]
@@ -254,10 +255,10 @@ def tslot20x20_three_slot(
 		(0,0,True, True ,False,False),
 		(0,0,False,True ,True ,False),
 		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
+		(0,0,False,False,True ,True),
+		(0,0,True, True ,True ,True),
+		(0,0,False,True ,False,True),
+		(0,0,True, False,False,True),
 	]
 
 	vertices = [tslot_outline] + 2*[tslot_closed] + 5*[tslot_outline]
@@ -294,10 +295,10 @@ def tslot20x20_two_slot(
 		(0,0,True, True ,False,False),
 		(0,0,False,True ,True ,False),
 		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
+		(0,0,False,False,True ,True),
+		(0,0,True, True ,True ,True),
+		(0,0,False,True ,False,True),
+		(0,0,True, False,False,True),
 	]
 
 	vertices = [tslot_outline] + 4*[tslot_closed] + 3*[tslot_outline]
@@ -335,10 +336,10 @@ def tslot20x20_two_slot_opp(
 		(0,0,True, True ,False,False),
 		(0,0,False,True ,True ,False),
 		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
+		(0,0,False,False,True ,True),
+		(0,0,True, True ,True ,True),
+		(0,0,False,True ,False,True),
+		(0,0,True, False,False,True),
 	]
 
 	vertices = [tslot_outline] + 2*[tslot_closed] + 2*[tslot_outline]+ 2*[tslot_closed] + [tslot_outline]
@@ -376,10 +377,10 @@ def tslot20x20_one_slot(
 		(0,0,True, True ,False,False),
 		(0,0,False,True ,True ,False),
 		(0,0,True, False,True ,False),
-		(0,0,False,False,True ,True ),
-		(0,0,True, True ,True ,True ),
-		(0,0,False,True ,False,True ),
-		(0,0,True, False,False,True ),
+		(0,0,False,False,True ,True),
+		(0,0,True, True ,True ,True),
+		(0,0,False,True ,False,True),
+		(0,0,True, False,False,True),
 	]
 
 	vertices = [tslot_outline] + 6*[tslot_closed] + [tslot_outline]

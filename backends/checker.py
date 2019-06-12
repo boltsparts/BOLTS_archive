@@ -433,7 +433,7 @@ class InvalidLabelingTable(ErrorTable):
 
 	def populate(self,repo,dbs):
 		for std,cl,coll in repo.iterstandards(["standard","class","collection"]):
-			args = dict([ (p,"") for p in cl.parameters.parameters])
+			args = dict([(p,"") for p in cl.parameters.parameters])
 			try:
 				std.labeling.get_nice(args)
 			except:
@@ -445,7 +445,7 @@ class InvalidLabelingTable(ErrorTable):
 				self.rows.append(row)
 
 		for name,cl,coll in repo.iternames(["name","class","collection"]):
-			args = dict([ (p,"") for p in cl.parameters.parameters])
+			args = dict([(p,"") for p in cl.parameters.parameters])
 			try:
 				name.labeling.get_nice(args)
 			except:

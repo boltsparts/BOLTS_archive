@@ -35,13 +35,13 @@ def color_face(part,n):
 
 
 def nut1(params,document):
-	key = params['key']
+	# key = params['key']  # not used
 	d1 = params['d1']
 	s = params['s']
 	m_max = params['m_max']
 	name = params['name']
 
-	r_fillet = 0.03*s
+	# r_fillet = 0.03*s  # not used ATM
 
 	part = document.addObject("Part::Feature","BOLTS_part")
 	part.Label = name

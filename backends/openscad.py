@@ -323,9 +323,11 @@ class OpenSCADBackend(Backend):
 			if std.status == "withdrawn":
 				fid.write('\tBOLTS_warning("The standard %s is withdrawn.' % std.get_id())
 				if std.replacedby is not None:
-					fid.write('Although withdrawn standards are often still in use.' +
+					fid.write(
+						'Although withdrawn standards are often still in use.'
 						'it might be better to use its successor %s instead"' %
-						(std.standard.get_nice(),std.replacedby))
+						(std.standard.get_nice(),std.replacedby)
+					)
 				fid.write('");\n')
 			for pname in params.free:
 				fid.write('\tBOLTS_check_parameter_type("%s","%s",%s,"%s");\n' %

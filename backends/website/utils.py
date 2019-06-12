@@ -66,7 +66,7 @@ class Documentation:
 
 					self.audiences.add(header["audience"])
 
-					doc["content"] = [ p.replace("%","%%") for p in content.split('\n\n')]
+					doc["content"] = [p.replace("%","%%") for p in content.split('\n\n')]
 					self.documents.append(doc)
 
 		self.categories = list(self.categories)

@@ -39,7 +39,7 @@ def color_face(part,n):
 
 
 def hex1(params,document):
-	key = params['key']
+	# key = params['key']  # not used
 	d1 = params['d1']
 	k = params['k']
 	s = params['s']
@@ -75,7 +75,7 @@ def hex1(params,document):
 
 
 def hex2(params,document):
-	key = params['key']
+	# key = params['key']  # not used
 	d1 = params['d1']
 	k = params['k']
 	s = params['s']
@@ -83,7 +83,7 @@ def hex2(params,document):
 	b2 = params['b2']
 	b3 = params['b3']
 	l = params['l']
-	b = b3;
+	b = b3
 	if l < 125:
 		b = b1
 	elif l < 200:

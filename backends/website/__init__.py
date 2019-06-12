@@ -32,7 +32,7 @@ babel = Babel(app,default_domain=translation.messages_domain)
 app.jinja_env.filters['markdown_docs'] = cms.markdown_docs
 app.jinja_env.filters['markdown_blog'] = cms.markdown_blog
 app.jinja_env.globals['gettext_parts'] = translation.gettext_parts
-app.jinja_env.globals['gettext_docs']  = translation.gettext_docs
+app.jinja_env.globals['gettext_docs'] = translation.gettext_docs
 
 @babel.localeselector
 def get_locale():
@@ -63,7 +63,7 @@ def error_500(e):
 @app.route("/")
 @app.route("/index.html")
 def index():
-	page = {"title" : gettext("Home")}
+	# page = {"title" : gettext("Home")}  # not used
 	return render_template("redirect.html", url = url_for("main.index", lang_code=get_locale()))
 
 if __name__ == "__main__":

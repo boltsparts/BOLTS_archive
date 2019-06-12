@@ -51,7 +51,7 @@ def format_author_prop(author_list):
 @parts.route('/index.html')
 def index():
 	collections = [{'id' : coll.id, 'name' : coll.name} for coll, in repo.itercollections()]
-	bodies = [ body.body for body, in repo.iterbodies()]
+	bodies = [body.body for body, in repo.iterbodies()]
 	page = {"title" : "Part list"}
 	return render_template("parts/index.html",page=page,collections=collections,bodies=bodies)
 
