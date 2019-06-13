@@ -122,16 +122,9 @@ def add_part_by_name(save_class_name, in_params=None):
     """
     name = repo.names[save_class_name]
     cl = repo.class_names.get_src(name)
-    if not in_params:
-        in_params = get_free_in_params(cl)
 
-    params = cl.parameters.collect(in_params)
-    params['name'] = name.labeling.get_nice(params)
-
-    #add part
-    base = freecad_db.base_classes.get_src(cl)
-    coll = repo.collection_classes.get_src(cl)
-    boltsgui.add_part(coll,base,params,FreeCAD.ActiveDocument)
+    # get params and add part
+    _add_part(cl, in_params)
 
 
 def add_part_by_standard(save_standard_name, in_params=None):
@@ -157,16 +150,9 @@ def add_part_by_standard(save_standard_name, in_params=None):
     """
     standard = repo.standards[save_standard_name]
     cl = repo.class_standards.get_src(standard)
-    if not in_params:
-        in_params = get_free_in_params(cl)
 
-    params = cl.parameters.collect(in_params)
-    params['name'] = standard.labeling.get_nice(params)
-
-    # add part
-    base = freecad_db.base_classes.get_src(cl)
-    coll = repo.collection_classes.get_src(cl)
-    boltsgui.add_part(coll,base,params,FreeCAD.ActiveDocument)
+    # get params and add part
+    _add_part(cl, in_params)
 
 
 """
@@ -178,14 +164,54 @@ BOLTS.add_part_by_standard("DIN933")
 
 # ************************************************************************************************
 # helper
-def get_free_in_params(cl):
+def _get_default_params(cl):
+
     base = freecad_db.base_classes.get_src(cl)
     params = cl.parameters.union(base.parameters)
     free_params = params.free
 
-    in_params = {}
+    default_params = {}
     for p in free_params:
         # p_type = params.types[p]  # not used
         default_value = params.defaults[p]
-        in_params[p] = default_value
-    return in_params
+        default_params[p] = default_value
+    return default_params
+
+
+def _add_missing_inparams(cl, params):
+
+    # print(cl.id)
+    # print(params)
+    default_params = _get_default_params(cl)
+    for def_key in default_params:
+        if def_key not in params:
+            params[def_key] = default_params[def_key]
+            print(
+                "Added default parameter: {}: {}"
+                .format(def_key, default_params[def_key])
+            )
+    return params
+
+
+def _add_part(cl, in_params):
+
+    # params
+    if not in_params:
+        in_params = _get_default_params(cl)
+    all_params = _add_missing_inparams(cl, in_params)
+    all_params = cl.parameters.collect(in_params)
+
+    # add name to all_params
+    if "name" not in all_params:
+        name = repo.names[get_name(cl.id)]
+        all_params["name"] = name.labeling.get_nice(all_params)
+
+    # add part
+    base = freecad_db.base_classes.get_src(cl)
+    coll = repo.collection_classes.get_src(cl)
+    boltsgui.add_part(
+        coll,
+        base,
+        all_params,
+        FreeCAD.ActiveDocument
+    )
