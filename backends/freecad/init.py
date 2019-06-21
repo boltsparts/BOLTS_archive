@@ -43,7 +43,7 @@ from .gui import freecad_bolts as boltsgui
 
 
 #import repo
-rootpath =  dirname(__file__)
+rootpath = dirname(__file__)
 repo = blt.Repository(rootpath)
 print(repo)
 freecad_db = freecad.FreeCADData(repo)

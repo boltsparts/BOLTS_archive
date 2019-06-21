@@ -157,7 +157,7 @@ def axialthrustbearing(params, document):
 	rin_g = 0.5*params['d_g']
 	rout_w = 0.5*params['D_w']
 	rout_g = 0.5*params['D_g']
-	r_fillet =  params['r_fillet']
+	r_fillet = params['r_fillet']
 	bth = params['T']
 	name = params['name']
 	fth=0.3*bth  #Thrust plate widh
