@@ -275,7 +275,7 @@ class Repository:
 				raise MalformedCollectionError(
 					"Collection ID is not identical with file name: %s" % filename)
 			for c in raw_coll["id"]:
-				if c not in string.ascii_letters +  string.digits + "_":
+				if c not in string.ascii_letters + string.digits + "_":
 					raise MalformedCollectionError(
 						"Collection ID contains invalid character: %s" % c)
 
