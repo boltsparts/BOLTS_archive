@@ -59,7 +59,7 @@ def singlerowradialbearing(params,document):
 
 		#Balls
 		nb=int(math.floor(math.pi*cb*0.8/rb))
-		for i in range (nb):
+		for i in range(nb):
 			b=Part.makeSphere(rb)
 			Alpha=(i*2*math.pi)/nb
 			bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),bth/2)
@@ -131,7 +131,7 @@ def doublerowradialbearing(params,document):
 	nb=(math.pi*cb)*0.8/(rb)
 	nb=math.floor(nb)
 	nb=int(nb)
-	for i in range (nb):
+	for i in range(nb):
 		b=Part.makeSphere(rb)
 		Alpha=(i*2*math.pi)/nb
 		bv=(cb*math.cos(Alpha),cb*math.sin(Alpha),rb+bth/2)
@@ -200,7 +200,7 @@ def axialthrustbearing(params, document):
 	NBall=NBall*0.9
 	NBall=int(NBall)
 	#Ball creator
-	for i in range (NBall):
+	for i in range(NBall):
 		Ball=Part.makeSphere(RBall)
 		Alpha=(i*2*math.pi)/NBall
 		BV=(CBall*math.cos(Alpha),CBall*math.sin(Alpha),bth/2.00)
@@ -293,7 +293,7 @@ def cylindricalrollerbearing(params,document):
 	ncy=(2*math.pi*ccy)*0.8/(2*rcy)
 	ncy=math.floor(ncy)
 	ncy=int(ncy)
-	for i in range (ncy):
+	for i in range(ncy):
 		c=Part.makeCylinder(rcy,0.6*bth)
 		Alpha=(i*2*math.pi)/ncy
 		cv=(ccy*math.cos(Alpha),ccy*math.sin(Alpha),bth*0.2)

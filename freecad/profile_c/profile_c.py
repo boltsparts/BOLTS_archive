@@ -26,7 +26,7 @@ def cbeam_parallel_flange(params,document):
         b = params['b']
         tf = params['tf']
         tw = params['tw']
-        r = params ['r']
+        r = params['r']
         l = params['l']
         name = params['name']
 
