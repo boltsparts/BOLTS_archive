@@ -17,9 +17,10 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-import Part
-import FreeCAD
 import math
+
+# import FreeCAD
+import Part
 
 def makeRing(r1,r2):
 	"""create a ring that can be used as a drop in replacement for torus to work around a performance problem"""

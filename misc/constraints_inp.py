@@ -2,7 +2,6 @@
 # 2014 Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
 
 import numpy as np
-import scipy as sp
 from scipy.optimize import minimize
 import matplotlib.pyplot as pl
 

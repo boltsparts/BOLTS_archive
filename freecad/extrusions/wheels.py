@@ -16,10 +16,9 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 
-from FreeCAD import Vector
-from Part import makeCircle, makeLine
 import Part
-import Arch
+from FreeCAD import Vector
+from Part import makeLine
 
 
 def dualvwheel(params,document):
