@@ -18,7 +18,8 @@
 
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part, Arch
+import Part
+import Arch
 
 def rectangle_hollow(params,document):
         h = params['h']

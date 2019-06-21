@@ -21,7 +21,9 @@ FREECADPATH = '/usr/lib/freecad/lib/'  # path to your FreeCAD.so or FreeCAD.dll 
 import sys
 sys.path.append(FREECADPATH)
 try:
-	import FreeCAD, Part, Sketcher
+	import FreeCAD
+	import Part
+	import Sketcher
 except:
 	raise MissingFreeCADError()
 
