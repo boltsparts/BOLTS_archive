@@ -23,6 +23,7 @@ def add_language_code(endpoint, values):
 def pull_language_code(endpoint, values):
 	g.lang_code = values.pop('lang_code')
 
+
 posts = Posts(safe_join(blog.root_path,"posts"))
 
 @blog.route("/<int:year>/<int:month>/<int:day>/<slug>")

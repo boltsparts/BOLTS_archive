@@ -66,5 +66,6 @@ def index():
 	# page = {"title" : gettext("Home")}  # not used
 	return render_template("redirect.html", url = url_for("main.index", lang_code=get_locale()))
 
+
 if __name__ == "__main__":
 	app.run()
