@@ -18,7 +18,8 @@
 
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part, Arch
+import Part
+import Arch
 
 
 def dualvwheel(params,document):

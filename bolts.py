@@ -258,7 +258,8 @@ def release(args):
 	from backends.exchange import IGESBackend
 	if "iges" in targets:
 		try:
-			import tarfile, lzma
+			import tarfile
+			import lzma
 		except ImportError:
 			print("Could not find python-lzma, which is required for IGES export")
 			return

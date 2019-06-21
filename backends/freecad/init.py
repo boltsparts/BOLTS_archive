@@ -16,7 +16,9 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 
-import FreeCAD, FreeCADGui, Part
+import FreeCAD
+import FreeCADGui
+import Part
 from os.path import join, exists, dirname
 from os import listdir
 from .bolttools import blt

@@ -18,7 +18,8 @@
 
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part, Arch
+import Part
+import Arch
 from math import sin,cos,fabs
 import math
 from DraftGeomUtils import fillet as draft_fillet
