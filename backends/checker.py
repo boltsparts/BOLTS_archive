@@ -513,25 +513,25 @@ class MissingBaseConnectionTable(ErrorTable):
 		for module, in dbs["openscad"].itermodules():
 			eq = union.get_set(module.classids[0])
 			classids = set(module.classids)
-			if  eq > classids:
+			if eq > classids:
 				self.rows.append(["OpenSCAD",module.filename,",".join(eq - classids)])
 
 		for base, in dbs["freecad"].iterbases():
 			eq = union.get_set(base.classids[0])
 			classids = set(base.classids)
-			if  eq > classids:
+			if eq > classids:
 				self.rows.append(["FreeCAD",base.filename,",".join(eq - classids)])
 
 		for classes,draw in dbs["drawings"].iterdimdrawings(["classes","dimdrawing"]):
 			classids = set([cl.id for cl in classes])
 			eq = union.get_set(classes[0].id)
-			if  eq > classids:
+			if eq > classids:
 				self.rows.append(["Dimension drawing",draw.filename,",".join(eq - classids)])
 
 		for classes,draw in dbs["drawings"].itercondrawings(["classes","condrawing"]):
 			classids = set([cl.id for cl in classes])
 			eq = union.get_set(classes[0].id)
-			if  eq > classids:
+			if eq > classids:
 				self.rows.append(["Connector drawing",draw.filename,",".join(eq - classids)])
 
 class MissingParameterDescriptionTable(ErrorTable):
