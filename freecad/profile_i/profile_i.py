@@ -30,7 +30,7 @@ def ibeam_parallel_flange(params,document):
         b = params['b']
         tf = params['tf']
         tw = params['tw']
-        r = params ['r']
+        r = params['r']
         l = params['l']
         name = params['name']
 
@@ -108,11 +108,11 @@ def ibeam_angled_flange(params,document):
     b = params['b']
     # tf = params['tf']  # not used
     tw = params['tw']
-    # hw = params ['hw']  # not use
-    f = params ['f']
-    g = params ['g']
-    r1 = params ['r1']
-    r2 = params ['r2']
+    # hw = params['hw']  # not use
+    f = params['f']
+    g = params['g']
+    r1 = params['r1']
+    r2 = params['r2']
     l = params['l']
     name = params['name']
 
