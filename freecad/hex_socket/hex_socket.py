@@ -17,7 +17,6 @@
 
 from FreeCAD import Vector
 from Part import makeBox, makeCone, makeCylinder
-import Part
 import math
 import FreeCADGui
 

@@ -19,9 +19,7 @@
 import math
 
 import Part
-import Arch
 from FreeCAD import Vector
-from Part import makeCircle, makeLine
 from DraftGeomUtils import fillet as draft_fillet
 
 
@@ -478,7 +476,7 @@ def assemble(
 			vcur[0] = mir_x*vcur[0]+o_x+offset[0]
 			vcur[1] = mir_y*vcur[1]+o_y+offset[1]
 
-			lines.append(makeLine(vlast,vcur))
+			lines.append(Part.makeLine(vlast,vcur))
 	return lines
 
 

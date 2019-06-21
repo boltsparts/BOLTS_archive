@@ -16,12 +16,10 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 
-from FreeCAD import Vector
-from Part import makeCircle, makeLine
 import Part
 import Arch
-from math import sin,cos,fabs
-import math
+from FreeCAD import Vector
+from Part import makeCircle, makeLine
 from DraftGeomUtils import fillet as draft_fillet
 
 
