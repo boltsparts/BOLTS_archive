@@ -42,8 +42,9 @@ class TranslationBackend(Backend):
 
 	def _coll_extract(self,cat,coll):
 		cat.add(coll.name,auto_comments=['collection name','data/%s.blt' % coll.id])
-		cat.add(coll.description,auto_comments=['collection description','data/%s.blt' % coll.id])
-
+		cat.add(coll.description,auto_comments=[
+			'collection description','data/%s.blt' % coll.id
+		])
 
 	def write_output(self,out_path,**kwargs):
 		args = self.validate_arguments(kwargs,[],{})

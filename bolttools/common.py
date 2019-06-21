@@ -670,7 +670,6 @@ class NamePair:
 		return self.safe != other.safe or self.nice != other.nice
 
 
-
 class Identifier(NamePair):
 	"""Python class for identifying a BOLTS class"""
 	def __init__(self,ident):
@@ -703,7 +702,6 @@ class Identifier(NamePair):
 				else:
 					res = res.replace(c,'')
 		return res
-
 
 
 class Substitution(NamePair):
