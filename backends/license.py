@@ -22,7 +22,8 @@ LICENSES = {
 	"unclear" : "http://jreinhardt.github.io/BOLTS/unclear_license.html",
 	"CC0 1.0" : "http://creativecommons.org/publicdomain/zero/1.0/",
 	"Public Domain" : "http://jreinhardt.github.io/BOLTS/public_domain.html",
-	"MIT" : "http://opensource.org/licenses/MIT", #see https://fedoraproject.org/wiki/Licensing:MIT?rd=Licensing/MIT
+	# see https://fedoraproject.org/wiki/Licensing:MIT?rd=Licensing/MIT
+	"MIT" : "http://opensource.org/licenses/MIT",
 	"BSD 3-clause" : "http://opensource.org/licenses/BSD-3-Clause",
 	"Apache 2.0" : "http://www.apache.org/licenses/LICENSE-2.0",
 	"LGPL 2.1" : "http://www.gnu.org/licenses/lgpl-2.1",

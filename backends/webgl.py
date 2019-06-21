@@ -17,7 +17,7 @@
 
 from errors import *
 
-FREECADPATH = '/usr/lib/freecad/lib/' # path to your FreeCAD.so or FreeCAD.dll file
+FREECADPATH = '/usr/lib/freecad/lib/'  # path to your FreeCAD.so or FreeCAD.dll file
 import sys
 sys.path.append(FREECADPATH)
 try:
