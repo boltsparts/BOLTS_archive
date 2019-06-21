@@ -405,7 +405,7 @@ class Repository:
 
 			its = {"name" : name}
 			its["class"] = self.class_names.get_src(name)
-			if  self.multiname_names.contains_dst(name):
+			if self.multiname_names.contains_dst(name):
 				its["multiname"] = self.multiname_names.get_src(name)
 				its["collection"] = self.collection_multinames.get_src(multiname)
 			else:
@@ -450,7 +450,7 @@ class Repository:
 			its["class"] = self.class_standards.get_src(std)
 			its["body"] = self.body_standards.get_src(std)
 
-			if  self.multistandard_standards.contains_dst(std):
+			if self.multistandard_standards.contains_dst(std):
 				its["multistandard"] = self.multistandard_standards.get_src(std)
 				its["collection"] = self.collection_multistandards.get_src(its["multistandard"])
 			else:

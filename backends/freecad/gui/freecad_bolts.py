@@ -67,7 +67,7 @@ def add_part(collection, base,params,doc):
 			(collection.id,base.module_name))
 		module.__dict__[base.name](params,doc)
 	else:
-		raise  RuntimeError("Unknown base geometry type: %s" % type(base))
+		raise RuntimeError("Unknown base geometry type: %s" % type(base))
 
 #custom widgets
 
