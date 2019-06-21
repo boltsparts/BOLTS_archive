@@ -167,7 +167,7 @@ class Posts:
 					post["author"] = "Unknown"
 
 				if post["slug"] in self.slugs:
-					raise ValueError("Nonunique slug: %s"% post["slug"])
+					raise ValueError("Nonunique slug: %s" % post["slug"])
 				self.slugs[post["slug"]] = post
 
 		self.posts = sorted(self.slugs.values(),key = lambda x: x["date"])

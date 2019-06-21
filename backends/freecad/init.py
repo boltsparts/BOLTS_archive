@@ -22,7 +22,7 @@ from os import listdir
 from .bolttools import blt
 from .bolttools import freecad
 
-USE_PYSIDE=True
+USE_PYSIDE = True
 
 
 try:
@@ -30,7 +30,7 @@ try:
 	from FreeCADGui import getMainWindow
 except ImportError:
 	from PyQt4 import QtCore, QtGui
-	USE_PYSIDE=False
+	USE_PYSIDE = False
 
 	def getMainWindow():
 		"returns the main window"

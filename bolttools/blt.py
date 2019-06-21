@@ -266,7 +266,7 @@ class Repository:
 			raw_coll = raw_coll[0]
 
 			if not isinstance(raw_coll["classes"],list):
-				raise MalformedCollectionError("No class in collection %s"% raw_coll["id"])
+				raise MalformedCollectionError("No class in collection %s" % raw_coll["id"])
 
 			if raw_coll["id"] in self.collections:
 				raise MalformedCollectionError("Duplicate collection id %s" % raw_coll["id"])

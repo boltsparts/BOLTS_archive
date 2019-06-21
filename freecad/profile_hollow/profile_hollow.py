@@ -28,8 +28,8 @@ def rectangle_hollow(params,document):
         name = params['name']
 
         ## Definition in EN standard
-        ri=1.0*t
-        ro=1.5*t
+        ri = 1.0*t
+        ro = 1.5*t
 
         # outer rectangle, going clockwise
         Vor1 = Vector((b/2),(h/2-ro),0)
@@ -49,7 +49,7 @@ def rectangle_hollow(params,document):
         Voc1 = Vector((b/2-ro),(-h/2+ro),0)
         Voc2 = Vector((-b/2+ro),(-h/2+ro),0)
         Voc3 = Vector((-b/2+ro),(h/2-ro),0)
-        Voc4= Vector((b/2-ro),(h/2-ro),0)
+        Voc4 = Vector((b/2-ro),(h/2-ro),0)
         normal = Vector(0,0,1)
         Coc1 = makeCircle(ro,Voc1,normal,270,  0)
         Coc2 = makeCircle(ro,Voc2,normal,180,270)
@@ -74,7 +74,7 @@ def rectangle_hollow(params,document):
         Vic1 = Vector((b/2-t-ri),(-h/2+t+ri),0)
         Vic2 = Vector((-b/2+t+ri),(-h/2+t+ri),0)
         Vic3 = Vector((-b/2+t+ri),(h/2-t-ri),0)
-        Vic4= Vector((b/2-t-ri),(h/2-t-ri),0)
+        Vic4 = Vector((b/2-t-ri),(h/2-t-ri),0)
         normal = Vector(0,0,1)
         Cic1 = makeCircle(ri,Vic1,normal,270,  0)
         Cic2 = makeCircle(ri,Vic2,normal,180,270)
@@ -110,8 +110,8 @@ def square_hollow(params,document):
         name = params['name']
 
         ## Definition in EN standard
-        ri=1.0*t
-        ro=1.5*t
+        ri = 1.0*t
+        ro = 1.5*t
 
         # outer rectangle, going clockwise
         Vor1 = Vector((b/2),(b/2-ro),0)
@@ -131,7 +131,7 @@ def square_hollow(params,document):
         Voc1 = Vector((b/2-ro),(-b/2+ro),0)
         Voc2 = Vector((-b/2+ro),(-b/2+ro),0)
         Voc3 = Vector((-b/2+ro),(b/2-ro),0)
-        Voc4= Vector((b/2-ro),(b/2-ro),0)
+        Voc4 = Vector((b/2-ro),(b/2-ro),0)
         normal = Vector(0,0,1)
         Coc1 = makeCircle(ro,Voc1,normal,270,  0)
         Coc2 = makeCircle(ro,Voc2,normal,180,270)
@@ -156,7 +156,7 @@ def square_hollow(params,document):
         Vic1 = Vector((b/2-t-ri),(-b/2+t+ri),0)
         Vic2 = Vector((-b/2+t+ri),(-b/2+t+ri),0)
         Vic3 = Vector((-b/2+t+ri),(b/2-t-ri),0)
-        Vic4= Vector((b/2-t-ri),(b/2-t-ri),0)
+        Vic4 = Vector((b/2-t-ri),(b/2-t-ri),0)
         normal = Vector(0,0,1)
         Cic1 = makeCircle(ri,Vic1,normal,270,  0)
         Cic2 = makeCircle(ri,Vic2,normal,180,270)
