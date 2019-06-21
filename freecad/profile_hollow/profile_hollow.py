@@ -102,7 +102,6 @@ def rectangle_hollow(params,document):
                 part.Shape = beam
 
 
-
 def square_hollow(params,document):
         b = params['b']
         t = params['t']

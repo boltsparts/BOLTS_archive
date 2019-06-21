@@ -34,8 +34,6 @@ def ibeam_parallel_flange(params,document):
         l = params['l']
         name = params['name']
 
-
-
         # lower flange, starting at the left web fillet, going counter-clockwise
         Vlf1 = Vector((-tw/2-r),(-h/2+tf),0)
         Vlf2 = Vector(-b/2,(-h/2+tf),0)
@@ -85,7 +83,6 @@ def ibeam_parallel_flange(params,document):
         W = Part.Wire([Llf1,Llf2,Llf3,Llf4,Llf5,Cfc1,Lw1,Cfc2,Luf1,Luf2,Luf3,Luf4,Luf5,Cfc3,Lw2,Cfc4])
         F = Part.Face(W)
 
-
         if params['arch']:
                 part = Arch.makeStructure(name=name)
 
@@ -100,7 +97,6 @@ def ibeam_parallel_flange(params,document):
 
                 beam = F.extrude(Vector(0,0,l))
                 part.Shape = beam
-
 
 
 def ibeam_angled_flange(params,document):

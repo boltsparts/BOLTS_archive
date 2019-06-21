@@ -655,7 +655,6 @@ class LowercaseDescriptionTable(ErrorTable):
 				self.rows.append(row)
 
 
-
 class CheckerBackend(Backend):
 	def __init__(self,repo,databases):
 		Backend.__init__(self,repo,"checker",databases)

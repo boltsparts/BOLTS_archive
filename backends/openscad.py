@@ -213,7 +213,6 @@ class OpenSCADBackend(Backend):
 		else:
 			bolts_fid.write(open(join(out_path,"common","version.scad")).read())
 
-
 		makedirs(join(out_path,"base"))
 		makedirs(join(out_path,"classes"))
 		for scadfile, in self.dbs["openscad"].iterscadfiles():
@@ -298,7 +297,6 @@ class OpenSCADBackend(Backend):
 			connectors = self.dbs["openscad"].module_connectors.get_dst(module)
 			cargs = args.copy()
 			cargs["location"] = "location"
-
 
 			call = "%s(%s)" % (connectors.name, ", ".join(cargs[arg] for arg in connectors.arguments))
 

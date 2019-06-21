@@ -182,7 +182,6 @@ def standard(id):
 		openscad["incantation_dims"] = "function %s_dims(%s)" % (std.get_id(),get_signature(params))
 		openscad["incantation_conn"] = "function %s_conn(location,%s)" % (std.get_id(),get_signature(params))
 
-
 		if dbs["openscad"].module_connectors.contains_src(module):
 			connectors = dbs["openscad"].module_connectors.get_dst(module)
 			conns = []
@@ -201,8 +200,6 @@ def standard(id):
 			})
 		else:
 			openscad["connectors"] = None
-
-
 
 	page = {"title" : "Part list"}
 	return render_template(
@@ -287,7 +284,6 @@ def name(id):
 		openscad["incantation_dims"] = "function %s_dims(%s)" % (name.get_id(),get_signature(params))
 		openscad["incantation_conn"] = "function %s_conn(location,%s)" % (name.get_id(),get_signature(params))
 
-
 		if dbs["openscad"].module_connectors.contains_src(module):
 			connectors = dbs["openscad"].module_connectors.get_dst(module)
 			conns = []
@@ -308,8 +304,6 @@ def name(id):
 			openscad["connectors"] = None
 	else:
 		openscad = None
-
-
 
 	page = {"title" : "Part list"}
 	return render_template(

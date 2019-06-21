@@ -273,10 +273,6 @@ def release(args):
 		xz_fid.close()
 
 
-
-
-
-
 parser = argparse.ArgumentParser()
 parser.add_argument("--repo",
 	type=str,

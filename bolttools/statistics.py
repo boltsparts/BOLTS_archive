@@ -48,7 +48,6 @@ class Statistics:
 
 		self.stats["contributors"] = len(self.contributors_names)
 
-
 	def get_statistics(self):
 		return self.stats
 

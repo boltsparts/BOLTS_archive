@@ -63,7 +63,6 @@ def dualvwheel(params,document):
 		vcur[0] *= -1
 		lines.append(makeLine(vcur,vlast))
 
-
 	part = document.addObject("Part::Feature","BOLTS_part")
 	part.Label = name
 
@@ -109,7 +108,6 @@ def solidvwheel(params,document):
 		vcur[0] *= -1
 		lines.append(makeLine(vcur,vlast))
 
-
 	part = document.addObject("Part::Feature","BOLTS_part")
 	part.Label = name
 
@@ -154,7 +152,6 @@ def minivwheel(params,document):
 		vcur = Vector(vertices[i])
 		vcur[0] *= -1
 		lines.append(makeLine(vcur,vlast))
-
 
 	part = document.addObject("Part::Feature","BOLTS_part")
 	part.Label = name

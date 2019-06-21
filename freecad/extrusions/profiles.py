@@ -635,7 +635,6 @@ def tslot(
 		if not sym[5]:
 			holes[-1].reverse()
 
-
 	#circular holes
 	for offset in circle_offsets:
 		holes.append(Part.Wire(Part.makeCircle(2.25,Vector(offset,0,0))))

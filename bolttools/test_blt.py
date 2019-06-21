@@ -137,7 +137,6 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(len(list(self.repo.iternames(filter_collection=self.repo.collections['nut']))),3)
         self.assertEqual(len(list(self.repo.itermultistandards(filter_standards=self.repo.standards['DIN625_1']))),1)
 
-
     def test_bodies(self):
         self.assertEqual(len(self.repo.bodies),5)
         self.assertTrue('DIN' in self.repo.bodies)
