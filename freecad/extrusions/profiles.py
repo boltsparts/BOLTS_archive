@@ -342,7 +342,7 @@ def tslot20x20_two_slot_opp(
 		(0,0,True, False,False,True),
 	]
 
-	vertices = [tslot_outline] + 2*[tslot_closed] + 2*[tslot_outline]+ 2*[tslot_closed] + [tslot_outline]
+	vertices = [tslot_outline] + 2*[tslot_closed] + 2*[tslot_outline] + 2*[tslot_closed] + [tslot_outline]
 	fillets = [5,7,19,21]
 
 	closed_symmetry = [
