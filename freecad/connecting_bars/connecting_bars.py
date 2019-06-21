@@ -48,7 +48,7 @@ def tube_bar_crimped_ends(params,document):
     part = document.addObject("Part::Feature","BOLTS_part")
     part.Label = name
 
-    ## round to crimped transition
+    # ********* round to crimped transition *********
 
     def oval(pm,tn,y,z):
         """ Return an oval wire with given perimeter *pm* and thickness *tn*,
@@ -103,17 +103,17 @@ def tube_bar_crimped_ends(params,document):
     crimped_o2.translate(dvn)
     trans_o = Part.makeLoft([round_o1,round_o2,crimped_o2,crimped_o1],True)
 
-    ## crimped parts
+    # ********* crimped parts *********
     eaxis = Base.Vector(0.,0.,cl)
     crimped_i = Part.Face(crimped_i1).extrude(eaxis)
     crimped_o = Part.Face(crimped_o1).extrude(eaxis)
 
-    ## fastening hole
+    # ********* fastening hole *********
     oxyz = Base.Vector(0.,-0.5 * tn_o + dy,tl + 0.5 * cl)
     haxis = Base.Vector(0.,1.,0.)
     hole = Part.makeCylinder(0.5 * hd,tn_o,oxyz,haxis)
 
-    ## combine the parts forming one end
+    # ********* combine the parts forming one end *********
 
     # join transitions and crimped parts
     end_i = trans_i.fuse(crimped_i)
@@ -125,17 +125,17 @@ def tube_bar_crimped_ends(params,document):
     # make the fastening hole
     end_a = end_a.cut(hole).removeSplitter()
 
-    ## the other end
+    # ********* the other end *********
     end_b = end_a.copy()
     p0 = Base.Vector(0.,0.,0.)
     end_b.rotate(p0,haxis,180.)
     end_b.translate(Base.Vector(0.,0.,-rl))
 
-    ## the central pipe
+    # ********* the central pipe *********
     caxis = Base.Vector(0.,0.,-1)
     pipe_o = Part.makeCylinder(0.5 * od,rl,p0,caxis)
     pipe_i = Part.makeCylinder(0.5 * id,rl,p0,caxis)
     pipe = pipe_o.cut(pipe_i).removeSplitter()
 
-    ## all together
+    # ********* all together *********
     part.Shape = end_a.fuse(end_b).fuse(pipe)

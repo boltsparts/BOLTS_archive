@@ -27,7 +27,7 @@ def rectangle_hollow(params,document):
         l = params['l']
         name = params['name']
 
-        ## Definition in EN standard
+        # Definition in EN standard
         ri = 1.0*t
         ro = 1.5*t
 
@@ -109,7 +109,7 @@ def square_hollow(params,document):
         l = params['l']
         name = params['name']
 
-        ## Definition in EN standard
+        # Definition in EN standard
         ri = 1.0*t
         ro = 1.5*t
 
