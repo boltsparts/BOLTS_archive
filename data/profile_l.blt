@@ -32,7 +32,8 @@ classes:
         description: metric european standard equal-sided LNP profile
     standards:
         body: DINEN
-        standard: DINEN10056-1
+        standard: DINEN10056-1 equal
+        group: DINEN10056-1
         labeling: DINEN10056-1 %(type)s, l=%(l)s
         description: corner profile, metric european standard equal-sided LNP profile
     source: http://www.bauforumstahl.de/Querschnittswerte
@@ -96,4 +97,43 @@ classes:
                 LNP200x18:  [  200,   18,   18,     9 ]
                 LNP200x20:  [  200,   20,   18,     9 ]
                 LNP200x24:  [  200,   24,   18,     9 ]
+  - id: lbeam_lnp_unequal
+    names:
+        name: LNP unequal-sided Profile
+        labeling: "%(type)s, l=%(l)s"
+        description: metric european standard unequal-sided LNP profile
+    standards:
+        body: DINEN
+        standard: DINEN10056-1 unequal
+        group: DINEN10056-1
+        labeling: DINEN10056-1 %(type)s, l=%(l)s
+        description: corner profile, metric european standard unequal-sided LNP profile
+    source: http://www.bauforumstahl.de/Querschnittswerte
+    notes: http://en.wikipedia.org/wiki/Structural_steel
+    parameters:
+        free: [type,l]
+        defaults: {type: "LNP50x30x5", l: 1000}
+        types:
+            type: Table Index
+            a: Length (mm)
+            b: Length (mm)
+            t: Length (mm)
+            r1: Length (mm)
+            r2: Length (mm)
+            l: Length (mm)
+        description:
+            type: beam type
+            a: beam heigth
+            b: beam width
+            t: thickness
+            r1: inner fillet radius
+            r2: outer fillet radius
+            l: beam length
+        tables:
+            index: type
+            columns: [a,b,t,r1,r2]
+            data:
+                #type           [    a     b     t    r1     r2 ]
+                LNP50x30x5:     [   50,   30,    5,    5,   2.5 ]
+                LNP200x100x10:  [  200,  100,   10,   12,     6 ]
 ...
