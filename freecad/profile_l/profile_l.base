@@ -6,12 +6,12 @@
   functions:
     - name: lbeam_parallel_flange_equal
       parameters:
-        free: [arch]
-        types:
-          arch: Bool
-        description:
-          arch: If true, an Arch structure is created, if false, a Part feature.
-        defaults:
-          arch: false
+          free: [arch]
+          types:
+              arch: Bool
+          description:
+              arch: If true, an Arch structure is created, if false, a Part feature.
+          defaults:
+              arch: false
       classids: [lbeam_lnp_equal]
 ...
