@@ -1,29 +1,43 @@
-#BOLTS - Open Library of Technical Specifications
-#Copyright (C) 2017 Bernd Hahnebach <bernd@bimstatik.org>
+# *****************************************************************************
+# BOLTS - Open Library of Technical Specifications
+# Copyright (C) 2017 Bernd Hahnebach <bernd@bimstatik.org>
 #
-#This library is free software; you can redistribute it and/or
-#modify it under the terms of the GNU Lesser General Public
-#License as published by the Free Software Foundation; either
-#version 2.1 of the License, or any later version.
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or any later version.
 #
-#This library is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-#Lesser General Public License for more details.
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser General Public License for more details.
 #
-#You should have received a copy of the GNU Lesser General Public
-#License along with this library; if not, write to the Free Software
-#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+# *****************************************************************************
 
 
+import Part
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part
 
+
+# ************************************************************************************************
 '''
-# to test copy the def in python konsole and run the following two lines
-my_test_params = {'type' : 'LNP100x10' , 'a' : 100, 't' : 10, 'r1' : 12, 'r2' : 6, 'l' : 500, 'name' : 'MyTestProfile', 'arch' : False}
-lbeam_parallel_flange_equal(my_test_params, App.ActiveDocument)
+from BOLTS.freecad.profile_l.profile_l import lbeam_parallel_flange_equal as equallnp
+# to test copy the def in python konsole and run the following code
+my_test_params = {
+    'type' : 'LNP100x10',
+    'a' : 100,
+    't' : 10,
+    'r1' : 12,
+    'r2' : 6,
+    'l' : 500,
+    'name' : 'MyTestProfile',
+    'arch' : False
+}
+equallnp(my_test_params, App.ActiveDocument)
 
 '''
 
@@ -34,7 +48,7 @@ def lbeam_parallel_flange_equal(params, document):
         t = params['t']
         ri = params['r1']
         ro = params['r2']
-        l = params['l']
+        le = params['l']
         name = params['name']
 
         # points, starting at the left upper corner, going counter-clockwise
@@ -77,10 +91,10 @@ def lbeam_parallel_flange_equal(params, document):
                 prof.Shape = F
                 part.Base = prof
 
-                part.Height = l
+                part.Height = le
         else:
                 part = document.addObject("Part::Feature", "BOLTS_part")
                 part.Label = name
 
-                beam = F.extrude(Vector(0, 0, l))
+                beam = F.extrude(Vector(0, 0, le))
                 part.Shape = beam
