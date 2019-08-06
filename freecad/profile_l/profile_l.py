@@ -43,61 +43,10 @@ equallnp(my_test_params, App.ActiveDocument)
 
 
 def lbeam_parallel_flange_equal(params, document):
-        # key = params['type']
-        a = params['a']
-        t = params['t']
-        ri = params['r1']
-        ro = params['r2']
-        le = params['l']
-        name = params['name']
-
-        # points, starting at the left upper corner, going counter-clockwise
-        V1 = Vector(0, 0, 0)
-        V2 = Vector(a, 0, 0)
-        V3 = Vector(a, t - ro, 0)
-        V4 = Vector(a - ro, t, 0)
-        V5 = Vector(t + ri, t, 0)
-        V6 = Vector(t, t + ri, 0)
-        V7 = Vector(t, a - ro, 0)
-        V8 = Vector(t - ro, a, 0)
-        V9 = Vector(0, a, 0)
-
-        # circle center of the fillets, starting right bottom, going counter-clockwise
-        Vc1 = Vector(a - ro, t - ro, 0)
-        Vc2 = Vector(t + ri, t + ri, 0)
-        Vc3 = Vector(t - ro, a - ro, 0)
-        normal = Vector(0, 0, 1)
-
-        # edges
-        E1 = makeLine(V1, V2)
-        E2 = makeLine(V2, V3)
-        E3 = makeCircle(ro, Vc1, normal, 0, 90)
-        E4 = makeLine(V4, V5)
-        E5 = makeCircle(ri, Vc2, normal, 180, 270)
-        E6 = makeLine(V6, V7)
-        E7 = makeCircle(ro, Vc3, normal, 0, 90)
-        E8 = makeLine(V8, V9)
-        E9 = makeLine(V9, V1)
-
-        # putting the segments together make a wire, a face and extrude it
-        W = Part.Wire([E1, E2, E3, E4, E5, E6, E7, E8, E9])
-        F = Part.Face(W)
-
-        if params['arch']:
-                import Arch
-                part = Arch.makeStructure(name=name)
-
-                prof = document.addObject("Part::Feature", "Profile")
-                prof.Shape = F
-                part.Base = prof
-
-                part.Height = le
-        else:
-                part = document.addObject("Part::Feature", "BOLTS_part")
-                part.Label = name
-
-                beam = F.extrude(Vector(0, 0, le))
-                part.Shape = beam
+    # use unequal method for equals too
+    # we just need te define params['b'], which equal to params['a'] for equals LNP
+    params['b'] = params['a']
+    lbeam_parallel_flange_unequal(params, document)
 
 
 # ************************************************************************************************
