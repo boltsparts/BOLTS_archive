@@ -29,7 +29,10 @@ import Part
 
 
 def makeRing(r1,r2):
-    """create a ring that can be used as a drop in replacement for torus to work around a performance problem"""
+    """
+    create a ring that can be used as a drop in replacement
+    for torus to work around a performance problem
+    """
     res = Part.makeCylinder(r1+r2,2*r2).cut(Part.makeCylinder(r1-r2,3*r2))
     res.translate((0,0,-r2))
     return res
@@ -49,15 +52,27 @@ def singlerowradialbearing(params,document):
     rb = (rout-rin)*0.25
     cb = ((rout-rin)/2.00+rin)
     # outer ring
-    our = Part.makeCylinder(rout,bth).cut(Part.makeCylinder(cb+rb*0.7,bth))
+    our = Part.makeCylinder(
+        rout,bth
+    ).cut(Part.makeCylinder(
+        cb+rb*0.7,bth
+    ))
     our = our.makeFillet(r_fillet,our.Edges)
     # inner ring
-    inr = Part.makeCylinder(cb-rb*0.7,bth).cut(Part.makeCylinder(rin,bth))
+    inr = Part.makeCylinder(
+        cb-rb*0.7,bth
+    ).cut(Part.makeCylinder(
+        rin,bth
+    ))
     inr = inr.makeFillet(r_fillet,inr.Edges)
 
     if seal == "open" or seal.endswith("single"):
         # track
-        t = Part.makeCylinder(cb+rb,2*0.7*rb).cut(Part.makeCylinder(cb-rb,2*0.7*rb))
+        t = Part.makeCylinder(
+            cb+rb,2*0.7*rb
+        ).cut(Part.makeCylinder(
+            cb-rb,2*0.7*rb
+        ))
         t.translate((0,0,(0.5*bth)-((2*0.7*rb)/2)))
         our = our.cut(t)
         inr = inr.cut(t)
@@ -75,7 +90,11 @@ def singlerowradialbearing(params,document):
 
         if seal.endswith("single"):
             # seal one side
-            sl = Part.makeCylinder(cb+rb*0.9,0.5*bth-RR).cut(Part.makeCylinder(cb-rb*0.9,0.5*bth-RR))
+            sl = Part.makeCylinder(
+                cb+rb*0.9,0.5*bth-RR
+            ).cut(Part.makeCylinder(
+                cb-rb*0.9,0.5*bth-RR
+            ))
             sl.translate((0,0,0.5*bth+RR))
             shapes.append(sl)
 
@@ -83,7 +102,11 @@ def singlerowradialbearing(params,document):
         shapes.append(our)
         shapes.append(inr)
         # seal
-        sl = Part.makeCylinder(cb+rb*0.9,bth-2*RR).cut(Part.makeCylinder(cb-rb*0.9,bth-2*RR))
+        sl = Part.makeCylinder(
+            cb+rb*0.9,bth-2*RR
+        ).cut(Part.makeCylinder(
+            cb-rb*0.9,bth-2*RR
+        ))
         sl.translate((0,0,RR))
         shapes.append(sl)
 

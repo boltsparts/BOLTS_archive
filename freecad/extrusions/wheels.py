@@ -71,7 +71,9 @@ def dualvwheel(params,document):
     part = document.addObject("Part::Feature","BOLTS_part")
     part.Label = name
 
-    part.Shape = Part.Face(Part.Wire(lines)).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
+    part.Shape = Part.Face(
+        Part.Wire(lines)
+    ).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
 
 
 def solidvwheel(params,document):
@@ -116,7 +118,9 @@ def solidvwheel(params,document):
     part = document.addObject("Part::Feature","BOLTS_part")
     part.Label = name
 
-    part.Shape = Part.Face(Part.Wire(lines)).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
+    part.Shape = Part.Face(
+        Part.Wire(lines)
+    ).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
 
 
 def minivwheel(params,document):
@@ -161,4 +165,6 @@ def minivwheel(params,document):
     part = document.addObject("Part::Feature","BOLTS_part")
     part.Label = name
 
-    part.Shape = Part.Face(Part.Wire(lines)).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
+    part.Shape = Part.Face(
+        Part.Wire(lines)
+    ).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
