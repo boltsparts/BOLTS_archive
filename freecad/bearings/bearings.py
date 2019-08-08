@@ -42,20 +42,20 @@ def singlerowradialbearing(params,document):
     name = params['name']
     seal = params['type']
 
-    #shapes
+    # shapes
     shapes = []
     RR = 0.015*rout
     rb = (rout-rin)*0.25
     cb = ((rout-rin)/2.00+rin)
-    #outer ring
+    # outer ring
     our = Part.makeCylinder(rout,bth).cut(Part.makeCylinder(cb+rb*0.7,bth))
     our = our.makeFillet(r_fillet,our.Edges)
-    #inner ring
+    # inner ring
     inr = Part.makeCylinder(cb-rb*0.7,bth).cut(Part.makeCylinder(rin,bth))
     inr = inr.makeFillet(r_fillet,inr.Edges)
 
     if seal == "open" or seal.endswith("single"):
-        #track
+        # track
         t = Part.makeCylinder(cb+rb,2*0.7*rb).cut(Part.makeCylinder(cb-rb,2*0.7*rb))
         t.translate((0,0,(0.5*bth)-((2*0.7*rb)/2)))
         our = our.cut(t)
@@ -63,7 +63,7 @@ def singlerowradialbearing(params,document):
         shapes.append(our)
         shapes.append(inr)
 
-        #Balls
+        # Balls
         nb = int(math.floor(math.pi*cb*0.8/rb))
         for i in range(nb):
             b = Part.makeSphere(rb)
@@ -73,7 +73,7 @@ def singlerowradialbearing(params,document):
             shapes.append(b)
 
         if seal.endswith("single"):
-            #seal one side
+            # seal one side
             sl = Part.makeCylinder(cb+rb*0.9,0.5*bth-RR).cut(Part.makeCylinder(cb-rb*0.9,0.5*bth-RR))
             sl.translate((0,0,0.5*bth+RR))
             shapes.append(sl)
@@ -81,7 +81,7 @@ def singlerowradialbearing(params,document):
     elif seal.endswith("double"):
         shapes.append(our)
         shapes.append(inr)
-        #seal
+        # seal
         sl = Part.makeCylinder(cb+rb*0.9,bth-2*RR).cut(Part.makeCylinder(cb-rb*0.9,bth-2*RR))
         sl.translate((0,0,RR))
         shapes.append(sl)
@@ -103,7 +103,7 @@ def doublerowradialbearing(params,document):
 
     shapes = []
 
-    #outer ring
+    # outer ring
     our1 = Part.makeCylinder(rout,bth)
     our2 = Part.makeCylinder(cb+rb*0.7,bth)
     our3 = Part.makeCylinder(rout,0.1*bth)
@@ -115,13 +115,13 @@ def doublerowradialbearing(params,document):
     our = our.cut(ours)
     oure = our.Edges
     our = our.makeFillet(RR,oure)
-    #inner ring
+    # inner ring
     inr1 = Part.makeCylinder(cb-rb*0.7,bth)
     inr2 = Part.makeCylinder(rin,bth)
     inr = inr1.cut(inr2)
     inre = inr.Edges
     inr = inr.makeFillet(RR,inre)
-    #track
+    # track
     t1 = makeRing(cb,rb)
     t2 = makeRing(cb,rb)
     vt1 = (0,0,rb+bth/2)
@@ -130,10 +130,10 @@ def doublerowradialbearing(params,document):
     t2.translate(vt2)
     our = our.cut(t1).cut(t2)
     inr = inr.cut(t1).cut(t2)
-    #shapes
+    # shapes
     shapes.append(our)
     shapes.append(inr)
-    #Balls
+    # Balls
     nb = (math.pi*cb)*0.8/(rb)
     nb = math.floor(nb)
     nb = int(nb)
@@ -170,42 +170,42 @@ def axialthrustbearing(params, document):
 
     shapes = []
 
-    #Lower ring
+    # Lower ring
     lr1 = Part.makeCylinder(rout_g,fth)
     lr2 = Part.makeCylinder(rin_g,fth)
     lr = lr1.cut(lr2)
     lre = lr.Edges
     lr = lr.makeFillet(r_fillet,lre)
-    #Upper ring
+    # Upper ring
     ur1 = Part.makeCylinder(rout_w,fth)
     ur2 = Part.makeCylinder(rin_w,fth)
     ur = ur1.cut(ur2)
     ure = ur.Edges
     ur = ur.makeFillet(r_fillet,ure)
-    #Positioning Vector
+    # Positioning Vector
     Vur = (0,0,bth-fth)
     ur.translate(Vur)
-    #Balltracks
+    # Balltracks
     tbigradius = ((rout_w-rin_g)/2.00)+rin_g
     tsmradius = (bth/2.00)-(0.75*fth)
     Vtorus = (0,0,bth/2.00)
     torus = makeRing(tbigradius,tsmradius)
-    #Positioning vector
+    # Positioning vector
     torus.translate(Vtorus)
-    #Booleans
+    # Booleans
     lr = lr.cut(torus)
     ur = ur.cut(torus)
     shapes.append(ur)
     shapes.append(lr)
-    #Balls
+    # Balls
     RBall = tsmradius
     CBall = tbigradius
-    #Ball number (constant multiplied by radius and rounded)
+    # Ball number (constant multiplied by radius and rounded)
     NBall = (2*math.pi*CBall)/(2*RBall)
     NBall = math.floor(NBall)
     NBall = NBall*0.9
     NBall = int(NBall)
-    #Ball creator
+    # Ball creator
     for i in range(NBall):
         Ball = Part.makeSphere(RBall)
         Alpha = (i*2*math.pi)/NBall
@@ -226,19 +226,19 @@ def needlebearing(params, document):
     name = params['name']
     rnd = (rout-rin)/2.00
     cnd = ((rout-rin)/2)+rin
-    #Needle number
+    # Needle number
     nnd = 2*math.pi*cnd/(1.8*2*rnd)
     nnd = int(math.floor(nnd))
 
     shapes = []
 
-    #needle cage
+    # needle cage
     ncrout = cnd+0.175*(rout-rin)
     ncrin = cnd-0.175*(rout-rin)
     nc1 = Part.makeCylinder(ncrout,bth)
     nc2 = Part.makeCylinder(ncrin,bth)
     nc = nc1.cut(nc2)
-    #needle space on the cage-
+    # needle space on the cage-
     rsnd = rnd*1.2
     thsnd = bth*0.8
     for i in range(nnd):
@@ -247,7 +247,7 @@ def needlebearing(params, document):
         nv = (cnd*math.cos(Alpha),cnd*math.sin(Alpha),0.1*bth)
         snd.translate(nv)
         nc = nc.cut(snd)
-    #Needle creation
+    # Needle creation
     for i in range(nnd):
         nd = Part.makeCylinder(rnd,thsnd)
         Alpha = (i*2*math.pi)/nnd
@@ -276,7 +276,7 @@ def cylindricalrollerbearing(params,document):
 
     shapes = []
 
-    #outer ring
+    # outer ring
     our1 = Part.makeCylinder(rout,bth)
     our2 = Part.makeCylinder(ccy+0.6*rcy,bth)
     our3 = Part.makeCylinder(ccy+rcy,bth*0.6)
@@ -286,16 +286,16 @@ def cylindricalrollerbearing(params,document):
     oure = our.Edges
     our.makeFillet(RR,oure)
     our = our.cut(our3)
-    #inner ring
+    # inner ring
     inr1 = Part.makeCylinder(ccy-rcy,bth)
     inr2 = Part.makeCylinder(rin,bth)
     inr = inr1.cut(inr2)
     inre = inr.Edges
     inr.makeFillet(RR,inre)
-    #shapes
+    # shapes
     shapes.append(our)
     shapes.append(inr)
-    #Cylinders
+    # Cylinders
     ncy = (2*math.pi*ccy)*0.8/(2*rcy)
     ncy = math.floor(ncy)
     ncy = int(ncy)

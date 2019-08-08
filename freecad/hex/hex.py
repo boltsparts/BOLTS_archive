@@ -57,7 +57,7 @@ def hex1(params,document):
     part = document.addObject("Part::Feature","BOLTS_part")
     part.Label = name
 
-    #head
+    # head
     a = s/math.tan(math.pi/3.)
     box1 = makeBox(a,s,k)
     box1.translate(Vector(-0.5*a,-0.5*s,0))
@@ -75,7 +75,7 @@ def hex1(params,document):
     shaft_threaded.translate(Vector(0,0,h+k))
     part.Shape = head.fuse(shaft_unthreaded).removeSplitter().fuse(shaft_threaded)
 
-    #color thread
+    # color thread
     color_face(part,9)
 
 
@@ -98,7 +98,7 @@ def hex2(params,document):
     part = document.addObject("Part::Feature","BOLTS_part")
     part.Label = name
 
-    #head
+    # head
     a = s/math.tan(math.pi/3.)
     box1 = makeBox(a,s,k)
     box1.translate(Vector(-0.5*a,-0.5*s,0))
@@ -116,5 +116,5 @@ def hex2(params,document):
     shaft_threaded.translate(Vector(0,0,l-b+k))
     part.Shape = head.fuse(shaft_unthreaded).removeSplitter().fuse(shaft_threaded)
 
-    #color thread
+    # color thread
     color_face(part,9)

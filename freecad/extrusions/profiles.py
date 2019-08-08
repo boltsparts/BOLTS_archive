@@ -36,7 +36,7 @@ def vslot20x20(
     name = params["name"]
     l = params["l"]
 
-    #due to symmetry this can be nicely decomposed
+    # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0,0,False,False,False,False),
@@ -61,7 +61,7 @@ def vslot20x20(
 
     part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
 
-    #color
+    # color
     if params['finish'] == "Black":
         part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
 
@@ -74,7 +74,7 @@ def vslot20x40(
     name = params["name"]
     l = params["l"]
 
-    #due to symmetry this can be nicely decomposed
+    # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0,0,False,False,False,False),
@@ -104,7 +104,7 @@ def vslot20x40(
 
     part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
 
-    #color
+    # color
     if params['finish'] == "Black":
         part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
 
@@ -117,7 +117,7 @@ def vslot20x60(
     name = params["name"]
     l = params["l"]
 
-    #due to symmetry this can be nicely decomposed
+    # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0,0,False,False,False,False),
@@ -140,7 +140,7 @@ def vslot20x60(
 
     vertices = 16*[vslot_outline]
 
-    #add fillets in reverse order, as this inserts additional edges
+    # add fillets in reverse order, as this inserts additional edges
     fillets = [5,41,53,89]
     corner_offset = -2*w
     circle_offsets = [0,-w,-2*w]
@@ -152,7 +152,7 @@ def vslot20x60(
 
     part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
 
-    #color
+    # color
     if params['finish'] == "Black":
         part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
 
@@ -165,7 +165,7 @@ def vslot20x80(
     name = params["name"]
     l = params["l"]
 
-    #due to symmetry this can be nicely decomposed
+    # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0,0,False,False,False,False),
@@ -192,7 +192,7 @@ def vslot20x80(
 
     vertices = 20*[vslot_outline]
 
-    #add fillets in reverse order, as this inserts additional edges
+    # add fillets in reverse order, as this inserts additional edges
     fillets = [5,53,65,113]
     corner_offset = -3*w
     circle_offsets = [0,-w,-2*w,-3*w]
@@ -204,7 +204,7 @@ def vslot20x80(
 
     part.Shape = face.extrude(Vector(0,0,l)).removeSplitter()
 
-    #color
+    # color
     if params['finish'] == "Black":
         part.ViewObject.DiffuseColor = (0.1,0.1,0.1)
 
@@ -217,7 +217,7 @@ def tslot20x20(
     name = params["name"]
     l = params["l"]
 
-    #due to symmetry this can be nicely decomposed
+    # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0,0,False,False,False,False),
@@ -251,7 +251,7 @@ def tslot20x20_three_slot(
     name = params["name"]
     l = params["l"]
 
-    #due to symmetry this can be nicely decomposed
+    # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0,0,False,False,False,False),
@@ -291,7 +291,7 @@ def tslot20x20_two_slot(
     name = params["name"]
     l = params["l"]
 
-    #due to symmetry this can be nicely decomposed
+    # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0,0,False,False,False,False),
@@ -332,7 +332,7 @@ def tslot20x20_two_slot_opp(
     name = params["name"]
     l = params["l"]
 
-    #due to symmetry this can be nicely decomposed
+    # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0,0,False,False,False,False),
@@ -373,7 +373,7 @@ def tslot20x20_one_slot(
     name = params["name"]
     l = params["l"]
 
-    #due to symmetry this can be nicely decomposed
+    # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0,0,False,False,False,False),
@@ -428,7 +428,7 @@ def fillet(
 
     lines = lines[:]
 
-    #sort them in descending order, as filleting inserts additional edges
+    # sort them in descending order, as filleting inserts additional edges
     indices.sort()
     indices.reverse()
 
@@ -571,7 +571,7 @@ def vslot(
         holes[-1].reverse()
     print('Space')
 
-    #put everything together
+    # put everything together
     return Part.Face([outline] + holes)
 
 
@@ -632,16 +632,16 @@ def tslot(
 
     holes = []
 
-    #closed holes
+    # closed holes
     for sym,vert in zip(closed_symmetry,closed_vertices):
         holes.append(Part.Wire(assemble([sym],[vert])))
         if not sym[5]:
             holes[-1].reverse()
 
-    #circular holes
+    # circular holes
     for offset in circle_offsets:
         holes.append(Part.Wire(Part.makeCircle(2.25,Vector(offset,0,0))))
         holes[-1].reverse()
 
-    #put everything together
+    # put everything together
     return Part.Face([outline] + holes)

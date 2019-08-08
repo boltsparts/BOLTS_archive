@@ -207,7 +207,7 @@ def circle_hollow(params,document):
         prof = document.addObject("Part::Feature","Profile")
         prof.Shape = face
         part.Base = prof
-        
+
         part.Height = l
     else:
         part = document.addObject("Part::Feature","BOLTS_part")
