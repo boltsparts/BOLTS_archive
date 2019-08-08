@@ -113,6 +113,7 @@ def lbeam_parallel_flange_unequal(params, document):
 
     if params["arch"]:
         import Arch
+
         part = Arch.makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
