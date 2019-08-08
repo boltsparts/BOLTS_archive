@@ -27,6 +27,7 @@ import math
 # import FreeCAD
 import Part
 
+
 def makeRing(r1,r2):
     """create a ring that can be used as a drop in replacement for torus to work around a performance problem"""
     res = Part.makeCylinder(r1+r2,2*r2).cut(Part.makeCylinder(r1-r2,3*r2))

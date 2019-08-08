@@ -531,6 +531,7 @@ vslot_cornerhole = [
     (0.5*w - 1.8,0.5*w - 1.8 - 1.64 - 1.5/math.sqrt(2)+1.07,0)
 ]
 
+
 def vslot(
     symmetry,
     vertices,

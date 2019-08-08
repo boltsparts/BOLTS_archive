@@ -26,10 +26,13 @@ from Part import makeBox, makeCone, makeCylinder
 import math
 import FreeCADGui
 
+
 thread_color = (0.5,1.,5.,0.)
+
 
 def runs_headless():
     return 'setupWithoutGUI' in FreeCADGui.__dict__
+
 
 def color_face(part,n):
     if runs_headless():
@@ -37,6 +40,7 @@ def color_face(part,n):
     color = part.ViewObject.DiffuseColor[0]
     n_faces = len(part.Shape.Faces)
     part.ViewObject.DiffuseColor = [color if i != n else thread_color for i in range(n_faces)]
+
 
 def hex_socket1(params,document):
     d1 = params['d1']
@@ -91,6 +95,7 @@ def hex_socket1(params,document):
 
     # color thread
     color_face(part,1)
+
 
 def hex_socket2(params,document):
     d1 = params['d1']

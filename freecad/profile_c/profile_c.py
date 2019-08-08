@@ -26,6 +26,7 @@ from Part import makeCircle, makeLine
 import Part
 import Arch
 
+
 def cbeam_parallel_flange(params,document):
     # key = params['type']  # not used
     h = params['h']

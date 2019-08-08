@@ -23,6 +23,7 @@
 
 import Part
 
+
 def washer1(params,document):
     # key = params['key']  # not used
     d1 = params['d1']
@@ -36,6 +37,7 @@ def washer1(params,document):
     outer = Part.makeCylinder(0.5*d2,s)
     inner = Part.makeCylinder(0.5*d1,s)
     part.Shape = outer.cut(inner).removeSplitter()
+
 
 def washer2(params,document):
     # key = params['key']  # not used
