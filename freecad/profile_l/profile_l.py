@@ -24,60 +24,60 @@ from Part import makeCircle, makeLine
 
 
 # ************************************************************************************************
-'''
+"""
 from BOLTS.freecad.profile_l.profile_l import lbeam_parallel_flange_equal as equallnp
 # to test copy the def in python konsole and run the following code
 my_test_params = {
-    'type' : 'LNP100x10',
-    'a' : 100,
-    't' : 10,
-    'r1' : 12,
-    'r2' : 6,
-    'l' : 500,
-    'name' : 'MyTestProfile',
-    'arch' : False
+    "type" : "LNP100x10",
+    "a" : 100,
+    "t" : 10,
+    "r1" : 12,
+    "r2" : 6,
+    "l" : 500,
+    "name" : "MyTestProfile",
+    "arch" : False
 }
 equallnp(my_test_params, App.ActiveDocument)
 
-'''
+"""
 
 
 def lbeam_parallel_flange_equal(params, document):
     # use unequal method for equals too
-    # we just need te define params['b'], which equal to params['a'] for equals LNP
-    params['b'] = params['a']
+    # we just need te define params["b"], which equal to params["a"] for equals LNP
+    params["b"] = params["a"]
     lbeam_parallel_flange_unequal(params, document)
 
 
 # ************************************************************************************************
-'''
+"""
 from BOLTS.freecad.profile_l.profile_l import lbeam_parallel_flange_unequal as nonequallnp
 # to test copy the def in python konsole and run the following code
 my_test_params = {
-    'type' : 'LNP100x10',
-    'a' : 200,
-    'b' : 100,
-    't' : 10,
-    'r1' : 12,
-    'r2' : 6,
-    'l' : 500,
-    'name' : 'MyTestProfile',
-    'arch' : False
+    "type" : "LNP100x10",
+    "a" : 200,
+    "b" : 100,
+    "t" : 10,
+    "r1" : 12,
+    "r2" : 6,
+    "l" : 500,
+    "name" : "MyTestProfile",
+    "arch" : False
 }
 nonequallnp(my_test_params, App.ActiveDocument)
 
-'''
+"""
 
 
 def lbeam_parallel_flange_unequal(params, document):
-    # key = params['type']
-    a = params['a']
-    b = params['b']
-    t = params['t']
-    ri = params['r1']
-    ro = params['r2']
-    le = params['l']
-    name = params['name']
+    # key = params["type"]
+    a = params["a"]
+    b = params["b"]
+    t = params["t"]
+    ri = params["r1"]
+    ro = params["r2"]
+    le = params["l"]
+    name = params["name"]
 
     # points, starting at the left upper corner, going counter-clockwise
     V1 = Vector(0, 0, 0)
@@ -111,7 +111,7 @@ def lbeam_parallel_flange_unequal(params, document):
     W = Part.Wire([E1, E2, E3, E4, E5, E6, E7, E8, E9])
     F = Part.Face(W)
 
-    if params['arch']:
+    if params["arch"]:
         import Arch
         part = Arch.makeStructure(name=name)
 
