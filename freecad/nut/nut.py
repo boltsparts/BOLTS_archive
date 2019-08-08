@@ -27,10 +27,13 @@ import Part
 import math
 import FreeCADGui
 
+
 thread_color = (0.5,1.,5.,0.)
+
 
 def runs_headless():
     return 'setupWithoutGUI' in FreeCADGui.__dict__
+
 
 def color_face(part,n):
     if runs_headless():

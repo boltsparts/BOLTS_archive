@@ -25,6 +25,7 @@ from FreeCAD import Vector
 from Part import makeCircle, makeLine
 import Part
 
+
 # ************************************************************************************************
 '''
 # to test copy the def in python konsole and run the following code
@@ -41,6 +42,7 @@ my_test_params = {
 zbeam(my_test_params, App.ActiveDocument)
 
 '''
+
 
 def zbeam(params, document):
     # key = params['type']

@@ -23,6 +23,7 @@
 
 import Part
 
+
 def pipe(params,document):
     id = params['id']
     od = params['od']
@@ -38,6 +39,7 @@ def pipe(params,document):
     outer = Part.makeCylinder(0.5*od,l)
     inner = Part.makeCylinder(0.5*id,l)
     part.Shape = outer.cut(inner).removeSplitter()
+
 
 def pipe_wall(params,document):
     od = params['od']
