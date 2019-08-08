@@ -51,5 +51,5 @@ def washer2(params,document):
     outer = outer.makeChamfer(0.3*s,outer.Edges[0:1])
     inner = Part.makeCylinder(0.5*d1,s)
     shape = outer.cut(inner)
-    #guessed size for the chamfer
+    # guessed size for the chamfer
     part.Shape = shape.removeSplitter()

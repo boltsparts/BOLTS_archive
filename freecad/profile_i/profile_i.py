@@ -116,8 +116,8 @@ def ibeam_angled_flange(params,document):
     l = params['l']
     name = params['name']
 
-    #The profile is symmetric, we store the positions relative to the
-    #origin for upper right quarter
+    # The profile is symmetric, we store the positions relative to the
+    # origin for upper right quarter
     vertices = [
         Vector((0.5*tw,0,0)),
         Vector((0.5*tw,f,0)),
@@ -130,20 +130,20 @@ def ibeam_angled_flange(params,document):
     plast = None
     pcur = vertices[0]
 
-    #upper right quadrant
+    # upper right quadrant
     for i in range(1,len(vertices)):
         plast = pcur
         pcur = Vector(vertices[i])
         lines.append(makeLine(plast,pcur))
 
-    #upper left quadrant
+    # upper left quadrant
     for i in range(len(vertices)-2,-1,-1):
         plast = pcur
         pcur = Vector(vertices[i])
         pcur[0] *= -1
         lines.append(makeLine(plast,pcur))
 
-    #lower left quadrant
+    # lower left quadrant
     for i in range(1,len(vertices)):
         plast = pcur
         pcur = Vector(vertices[i])
@@ -151,7 +151,7 @@ def ibeam_angled_flange(params,document):
         pcur[1] *= -1
         lines.append(makeLine(plast,pcur))
 
-    #lower right quadrant
+    # lower right quadrant
     for i in range(len(vertices)-2,-1,-1):
         plast = pcur
         pcur = Vector(vertices[i])
@@ -162,7 +162,7 @@ def ibeam_angled_flange(params,document):
         (slice(0,2), r1), (slice(1,3), r2), (slice(5,7),  r2), (slice(6,8),  r1),
         (slice(8,10),r1), (slice(9,11),r2), (slice(13,15),r1), (slice(14,16),r2)
     ]
-    #add fillets in reverse order to not disturb the counting, as edges are added
+    # add fillets in reverse order to not disturb the counting, as edges are added
     fillets.reverse()
     for fillet,r in fillets:
         lines[fillet] = draft_fillet(lines[fillet],r)

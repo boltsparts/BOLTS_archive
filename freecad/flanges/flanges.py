@@ -67,7 +67,7 @@ def flange(d1,k,D,b,d2,bn,blind,part):
         hole = Part.makeCylinder(0.5 * d1,b,p0,caxis)
         disk = disk.cut(hole).removeSplitter()
 
-    # ********** bolts holes ********** 
+    # ********** bolts holes **********
     h0 = Base.Vector(0.5 * k,0.,0.)
     hole = Part.makeCylinder(0.5 * d2,b,h0,caxis)
     holes = hole.copy()
@@ -78,5 +78,5 @@ def flange(d1,k,D,b,d2,bn,blind,part):
     # drill holes
     flange = disk.cut(holes).removeSplitter()
 
-    # ********** chamfer all edges ********** 
+    # ********** chamfer all edges **********
     part.Shape = flange.makeChamfer(0.05 * b,flange.Edges)

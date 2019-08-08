@@ -52,7 +52,7 @@ def nut1(params,document):
     part = document.addObject("Part::Feature","BOLTS_part")
     part.Label = name
 
-    #head
+    # head
     a = s/math.tan(math.pi/3.)
     box1 = makeBox(a,s,m_max)
     box1.translate(Vector(-0.5*a,-0.5*s,0))
@@ -67,8 +67,8 @@ def nut1(params,document):
 
     hole = Part.makeCylinder(0.5*d1,2*m_max)
     nut = head.cut(hole)
-#    nut = nut.makeFillet(r_fillet,nut.Edges)
+    # nut = nut.makeFillet(r_fillet,nut.Edges)
     part.Shape = nut.removeSplitter()
 
-    #color thread
+    # color thread
     color_face(part,7)

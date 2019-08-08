@@ -65,9 +65,9 @@ def hex_socket1(params,document):
 
     h = l - k_max - b
 
-    #head
+    # head
     head = makeCone(0.5*d2,0.5*d1,k_max)
-    #socket
+    # socket
     a = s/math.tan(math.pi/3.)
     box1 = makeBox(a,s,t)
     box1.translate(Vector(-0.5*a,-0.5*s,0))
@@ -89,7 +89,7 @@ def hex_socket1(params,document):
     part.Label = name
     part.Shape = head.fuse(shaft_unthreaded).cut(socket).removeSplitter().fuse(shaft_threaded)
 
-    #color thread
+    # color thread
     color_face(part,1)
 
 def hex_socket2(params,document):
@@ -110,9 +110,9 @@ def hex_socket2(params,document):
     if h < 0:
         raise ValueError("l is too short, resulting in negative h")
 
-    #head
+    # head
     head = makeCylinder(0.5*d2,k)
-    #socket
+    # socket
     a = s/math.tan(math.pi/3.)
     box1 = makeBox(a,s,t)
     box1.translate(Vector(-0.5*a,-0.5*s,0))
@@ -134,5 +134,5 @@ def hex_socket2(params,document):
     part.Label = name
     part.Shape = head.fuse(shaft_unthreaded).cut(socket).removeSplitter().fuse(shaft_threaded)
 
-    #color thread
+    # color thread
     color_face(part,1)
