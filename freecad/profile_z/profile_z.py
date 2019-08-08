@@ -20,13 +20,22 @@ from FreeCAD import Vector
 from Part import makeCircle, makeLine
 import Part
 
+# ************************************************************************************************
 '''
-# to test copy the def in python konsole and run the following two lines
-my_test_params = {'type' : 'ZNP100' , 'h' : 100, 'c1' : 55, 'tw' : 6.5, 'tf' : 8, 'l' : 500, 'name' : 'MyTestProfile', 'arch' : False}
+# to test copy the def in python konsole and run the following code
+my_test_params = {
+    'type' : 'ZNP100',
+    'h' : 100,
+    'c1' : 55,
+    'tw' : 6.5,
+    'tf' : 8,
+    'l' : 500,
+    'name' : 'MyTestProfile',
+    'arch' : False,
+}
 zbeam(my_test_params, App.ActiveDocument)
 
 '''
-
 
 def zbeam(params, document):
         # key = params['type']
