@@ -27,14 +27,14 @@ import math
 import FreeCADGui
 
 
-thread_color = (0.5,1.,5.,0.)
+thread_color = (0.5, 1., 5., 0.)
 
 
 def runs_headless():
     return 'setupWithoutGUI' in FreeCADGui.__dict__
 
 
-def color_face(part,n):
+def color_face(part, n):
     if runs_headless():
         return
     color = part.ViewObject.DiffuseColor[0]
@@ -42,7 +42,7 @@ def color_face(part,n):
     part.ViewObject.DiffuseColor = [color if i != n else thread_color for i in range(n_faces)]
 
 
-def hex_socket1(params,document):
+def hex_socket1(params, document):
     d1 = params['d1']
     d2 = params['d2']
     b1 = params['b1']
@@ -70,34 +70,34 @@ def hex_socket1(params,document):
     h = l - k_max - b
 
     # head
-    head = makeCone(0.5*d2,0.5*d1,k_max)
+    head = makeCone(0.5*d2, 0.5*d1, k_max)
     # socket
     a = s/math.tan(math.pi/3.)
-    box1 = makeBox(a,s,t)
-    box1.translate(Vector(-0.5*a,-0.5*s,0))
-    box1.rotate(Vector(0,0,0),Vector(0,0,1),30)
-    box2 = makeBox(a,s,t)
-    box2.translate(Vector(-0.5*a,-0.5*s,0))
-    box2.rotate(Vector(0,0,0),Vector(0,0,1),150)
-    box3 = makeBox(a,s,t)
-    box3.translate(Vector(-0.5*a,-0.5*s,0))
-    box3.rotate(Vector(0,0,0),Vector(0,0,1),270)
+    box1 = makeBox(a, s, t)
+    box1.translate(Vector(-0.5*a, -0.5*s, 0))
+    box1.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 30)
+    box2 = makeBox(a, s, t)
+    box2.translate(Vector(-0.5*a, -0.5*s, 0))
+    box2.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 150)
+    box3 = makeBox(a, s, t)
+    box3.translate(Vector(-0.5*a, -0.5*s, 0))
+    box3.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 270)
     socket = box1.fuse(box2).fuse(box3)
 
-    shaft_unthreaded = makeCylinder(0.5*d1,h+k_max)
-    shaft_threaded = makeCylinder(0.5*d1,b)
-    shaft_threaded.translate(Vector(0,0,h+k_max))
+    shaft_unthreaded = makeCylinder(0.5*d1, h+k_max)
+    shaft_threaded = makeCylinder(0.5*d1, b)
+    shaft_threaded.translate(Vector(0, 0, h+k_max))
 
     name = params['name']
-    part = document.addObject("Part::Feature","BOLTS_part")
+    part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
     part.Shape = head.fuse(shaft_unthreaded).cut(socket).removeSplitter().fuse(shaft_threaded)
 
     # color thread
-    color_face(part,1)
+    color_face(part, 1)
 
 
-def hex_socket2(params,document):
+def hex_socket2(params, document):
     d1 = params['d1']
     d2 = params['d2']
     b = params['b']
@@ -116,28 +116,28 @@ def hex_socket2(params,document):
         raise ValueError("l is too short, resulting in negative h")
 
     # head
-    head = makeCylinder(0.5*d2,k)
+    head = makeCylinder(0.5*d2, k)
     # socket
     a = s/math.tan(math.pi/3.)
-    box1 = makeBox(a,s,t)
-    box1.translate(Vector(-0.5*a,-0.5*s,0))
-    box1.rotate(Vector(0,0,0),Vector(0,0,1),30)
-    box2 = makeBox(a,s,t)
-    box2.translate(Vector(-0.5*a,-0.5*s,0))
-    box2.rotate(Vector(0,0,0),Vector(0,0,1),150)
-    box3 = makeBox(a,s,t)
-    box3.translate(Vector(-0.5*a,-0.5*s,0))
-    box3.rotate(Vector(0,0,0),Vector(0,0,1),270)
+    box1 = makeBox(a, s, t)
+    box1.translate(Vector(-0.5*a, -0.5*s, 0))
+    box1.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 30)
+    box2 = makeBox(a, s, t)
+    box2.translate(Vector(-0.5*a, -0.5*s, 0))
+    box2.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 150)
+    box3 = makeBox(a, s, t)
+    box3.translate(Vector(-0.5*a, -0.5*s, 0))
+    box3.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 270)
     socket = box1.fuse(box2).fuse(box3)
 
-    shaft_unthreaded = makeCylinder(0.5*d1,h+k)
-    shaft_threaded = makeCylinder(0.5*d1,b)
-    shaft_threaded.translate(Vector(0,0,h+k))
+    shaft_unthreaded = makeCylinder(0.5*d1, h+k)
+    shaft_threaded = makeCylinder(0.5*d1, b)
+    shaft_threaded.translate(Vector(0, 0, h+k))
 
     name = params['name']
-    part = document.addObject("Part::Feature","BOLTS_part")
+    part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
     part.Shape = head.fuse(shaft_unthreaded).cut(socket).removeSplitter().fuse(shaft_threaded)
 
     # color thread
-    color_face(part,1)
+    color_face(part, 1)

@@ -26,7 +26,7 @@ from FreeCAD import Vector
 from Part import makeLine
 
 
-def dualvwheel(params,document):
+def dualvwheel(params, document):
     # no params
     name = params["name"]
     # still name some quantities
@@ -38,16 +38,16 @@ def dualvwheel(params,document):
 
     # profile for revolution is symmetric, therefore only points from right half
     vertices = [
-        (0,r_1,0),
-        (0.5,r_1,0),
-        (0.5,r_2,0),
-        (0.5*10.23-0.3,r_2,0),
-        (0.5*10.23,r_2+0.3,0),
-        (0.5*10.23,r_3,0),
-        (0.5*(10.23-4.84),r_5,0),
-        (0.5*(10.23)-4.84,r_3,0),
-        (0.5*(10.23)-4.84,r_4,0),
-        (0,r_4,0)
+        (0, r_1, 0),
+        (0.5, r_1, 0),
+        (0.5, r_2, 0),
+        (0.5*10.23-0.3, r_2, 0),
+        (0.5*10.23, r_2+0.3, 0),
+        (0.5*10.23, r_3, 0),
+        (0.5*(10.23-4.84), r_5, 0),
+        (0.5*(10.23)-4.84, r_3, 0),
+        (0.5*(10.23)-4.84, r_4, 0),
+        (0, r_4, 0)
     ]
 
     lines = []
@@ -56,27 +56,27 @@ def dualvwheel(params,document):
     vcur = Vector(vertices[0])
 
     # right half
-    for i in range(1,len(vertices)):
+    for i in range(1, len(vertices)):
         vlast = vcur
         vcur = Vector(vertices[i])
-        lines.append(makeLine(vcur,vlast))
+        lines.append(makeLine(vcur, vlast))
 
     # left half
-    for i in range(len(vertices)-2,-1,-1):
+    for i in range(len(vertices)-2, -1, -1):
         vlast = vcur
         vcur = Vector(vertices[i])
         vcur[0] *= -1
-        lines.append(makeLine(vcur,vlast))
+        lines.append(makeLine(vcur, vlast))
 
-    part = document.addObject("Part::Feature","BOLTS_part")
+    part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
     part.Shape = Part.Face(
         Part.Wire(lines)
-    ).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
+    ).revolve(Vector(0, 0, 0), Vector(1, 0, 0), 360).removeSplitter()
 
 
-def solidvwheel(params,document):
+def solidvwheel(params, document):
     # no params
     name = params["name"]
     # still name some quantities
@@ -87,14 +87,14 @@ def solidvwheel(params,document):
 
     # profile for revolution is symmetric, therefore only points from right half
     vertices = [
-        (0,r_1,0),
-        (0.5,r_1,0),
-        (0.5,r_2,0),
-        (0.5*10.23-0.3,r_2,0),
-        (0.5*10.23,r_2+0.3,0),
-        (0.5*10.23,r_3,0),
-        (0.5*5.89,r_4,0),
-        (0,r_4,0),
+        (0, r_1, 0),
+        (0.5, r_1, 0),
+        (0.5, r_2, 0),
+        (0.5*10.23-0.3, r_2, 0),
+        (0.5*10.23, r_2+0.3, 0),
+        (0.5*10.23, r_3, 0),
+        (0.5*5.89, r_4, 0),
+        (0, r_4, 0),
     ]
 
     lines = []
@@ -103,27 +103,27 @@ def solidvwheel(params,document):
     vcur = Vector(vertices[0])
 
     # right half
-    for i in range(1,len(vertices)):
+    for i in range(1, len(vertices)):
         vlast = vcur
         vcur = Vector(vertices[i])
-        lines.append(makeLine(vcur,vlast))
+        lines.append(makeLine(vcur, vlast))
 
     # left half
-    for i in range(len(vertices)-2,-1,-1):
+    for i in range(len(vertices)-2, -1, -1):
         vlast = vcur
         vcur = Vector(vertices[i])
         vcur[0] *= -1
-        lines.append(makeLine(vcur,vlast))
+        lines.append(makeLine(vcur, vlast))
 
-    part = document.addObject("Part::Feature","BOLTS_part")
+    part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
     part.Shape = Part.Face(
         Part.Wire(lines)
-    ).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
+    ).revolve(Vector(0, 0, 0), Vector(1, 0, 0), 360).removeSplitter()
 
 
-def minivwheel(params,document):
+def minivwheel(params, document):
     # no params
     name = params["name"]
     # still name some quantities
@@ -134,14 +134,14 @@ def minivwheel(params,document):
 
     # profile for revolution is symmetric, therefore only points from right half
     vertices = [
-        (0,r_1,0),
-        (0.5,r_1,0),
-        (0.5,r_2,0),
-        (0.5*8.8-0.3,r_2,0),
-        (0.5*8.8,r_2+0.3,0),
-        (0.5*8.8,r_3,0),
-        (0.5*5.78,r_4,0),
-        (0,r_4,0),
+        (0, r_1, 0),
+        (0.5, r_1, 0),
+        (0.5, r_2, 0),
+        (0.5*8.8-0.3, r_2, 0),
+        (0.5*8.8, r_2+0.3, 0),
+        (0.5*8.8, r_3, 0),
+        (0.5*5.78, r_4, 0),
+        (0, r_4, 0),
     ]
 
     lines = []
@@ -150,21 +150,21 @@ def minivwheel(params,document):
     vcur = Vector(vertices[0])
 
     # right half
-    for i in range(1,len(vertices)):
+    for i in range(1, len(vertices)):
         vlast = vcur
         vcur = Vector(vertices[i])
-        lines.append(makeLine(vcur,vlast))
+        lines.append(makeLine(vcur, vlast))
 
     # left half
-    for i in range(len(vertices)-2,-1,-1):
+    for i in range(len(vertices)-2, -1, -1):
         vlast = vcur
         vcur = Vector(vertices[i])
         vcur[0] *= -1
-        lines.append(makeLine(vcur,vlast))
+        lines.append(makeLine(vcur, vlast))
 
-    part = document.addObject("Part::Feature","BOLTS_part")
+    part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
     part.Shape = Part.Face(
         Part.Wire(lines)
-    ).revolve(Vector(0,0,0),Vector(1,0,0),360).removeSplitter()
+    ).revolve(Vector(0, 0, 0), Vector(1, 0, 0), 360).removeSplitter()

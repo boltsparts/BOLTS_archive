@@ -25,7 +25,7 @@ from FreeCAD import Base
 import Part
 
 
-def plate_flange(params,document):
+def plate_flange(params, document):
     d1 = params['d1']
     k = params['k']
     D = params['D']
@@ -34,13 +34,13 @@ def plate_flange(params,document):
     bn = params['bn']
     name = params['name']
 
-    part = document.addObject("Part::Feature","BOLTS_part")
+    part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    flange(d1,k,D,b,d2,bn,False,part)
+    flange(d1, k, D, b, d2, bn, False, part)
 
 
-def blind_flange(params,document):
+def blind_flange(params, document):
     d1 = params['d1']
     k = params['k']
     D = params['D']
@@ -49,34 +49,34 @@ def blind_flange(params,document):
     bn = params['bn']
     name = params['name']
 
-    part = document.addObject("Part::Feature","BOLTS_part")
+    part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    flange(d1,k,D,b,d2,bn,True,part)
+    flange(d1, k, D, b, d2, bn, True, part)
 
 
-def flange(d1,k,D,b,d2,bn,blind,part):
+def flange(d1, k, D, b, d2, bn, blind, part):
 
     # ********** flange disk **********
-    p0 = Base.Vector(0.,0.,0.)
-    caxis = Base.Vector(0.,0.,1)
-    disk = Part.makeCylinder(0.5 * D,b,p0,caxis)
+    p0 = Base.Vector(0., 0., 0.)
+    caxis = Base.Vector(0., 0., 1)
+    disk = Part.makeCylinder(0.5 * D, b, p0, caxis)
 
     # if not a blind flange, make the inner hole.
     if not blind:
-        hole = Part.makeCylinder(0.5 * d1,b,p0,caxis)
+        hole = Part.makeCylinder(0.5 * d1, b, p0, caxis)
         disk = disk.cut(hole).removeSplitter()
 
     # ********** bolts holes **********
-    h0 = Base.Vector(0.5 * k,0.,0.)
-    hole = Part.makeCylinder(0.5 * d2,b,h0,caxis)
+    h0 = Base.Vector(0.5 * k, 0., 0.)
+    hole = Part.makeCylinder(0.5 * d2, b, h0, caxis)
     holes = hole.copy()
-    for i in range(1,int(bn)):
+    for i in range(1, int(bn)):
         nhole = hole.copy()
-        nhole.rotate(p0,caxis,i * 360. / bn)
+        nhole.rotate(p0, caxis, i * 360. / bn)
         holes = holes.fuse(nhole)
     # drill holes
     flange = disk.cut(holes).removeSplitter()
 
     # ********** chamfer all edges **********
-    part.Shape = flange.makeChamfer(0.05 * b,flange.Edges)
+    part.Shape = flange.makeChamfer(0.05 * b, flange.Edges)

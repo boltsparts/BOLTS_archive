@@ -27,7 +27,7 @@ import Part
 from math import pi
 
 
-def tube_bar_crimped_ends(params,document):
+def tube_bar_crimped_ends(params, document):
     id = params['id']
     od = params['od']
     cg = params['cg']
@@ -38,12 +38,12 @@ def tube_bar_crimped_ends(params,document):
     sd = params['sd']
     name = params['name']
 
-    part = document.addObject("Part::Feature","BOLTS_part")
+    part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
     # ********* round to crimped transition *********
 
-    def oval(pm,tn,y,z):
+    def oval(pm, tn, y, z):
         """ Return an oval wire with given perimeter *pm* and thickness *tn*,
         centered at 0, *y*, *z*. The oval plane is parallel to the xy plane
         and the oval has its long axis parallel to y axis. """
@@ -55,19 +55,19 @@ def tube_bar_crimped_ends(params,document):
         hfw = 0.25 * (pm - pi * tn)
 
         # control points
-        p1 = Base.Vector(-hfw,htn + y,z)
-        p2 = Base.Vector(+hfw,htn + y,z)
-        p3 = Base.Vector(+htn + hfw,y,z)
-        p4 = Base.Vector(+hfw,-htn + y,z)
-        p5 = Base.Vector(-hfw,-htn + y,z)
-        p6 = Base.Vector(-htn - hfw,y,z)
+        p1 = Base.Vector(-hfw, htn + y, z)
+        p2 = Base.Vector(+hfw, htn + y, z)
+        p3 = Base.Vector(+htn + hfw, y, z)
+        p4 = Base.Vector(+hfw, -htn + y, z)
+        p5 = Base.Vector(-hfw, -htn + y, z)
+        p6 = Base.Vector(-htn - hfw, y, z)
 
         # return oval wire
         return Part.Wire(Part.Shape([
-            Part.Line(p1,p2),
-            Part.Arc(p2,p3,p4),
-            Part.Line(p4,p5),
-            Part.Arc(p5,p6,p1)]).Edges)
+            Part.Line(p1, p2),
+            Part.Arc(p2, p3, p4),
+            Part.Line(p4, p5),
+            Part.Arc(p5, p6, p1)]).Edges)
 
     # if requested, shift along y from origin for side crimped oval
     if sd:
@@ -77,34 +77,34 @@ def tube_bar_crimped_ends(params,document):
 
     # inner part
     round_i1 = Part.Wire(Part.makeCircle(0.5 * id))
-    dv = Base.Vector(0.,0.,0.02 * tl)
-    dvn = Base.Vector(0.,0.,-0.02 * tl)
+    dv = Base.Vector(0., 0., 0.02 * tl)
+    dvn = Base.Vector(0., 0., -0.02 * tl)
     round_i2 = round_i1.copy()
     round_i2.translate(dv)
-    crimped_i1 = oval(pi * id,cg,dy,tl)
+    crimped_i1 = oval(pi * id, cg, dy, tl)
     crimped_i2 = crimped_i1.copy()
     crimped_i2.translate(dvn)
-    trans_i = Part.makeLoft([round_i1,round_i2,crimped_i2,crimped_i1],True)
+    trans_i = Part.makeLoft([round_i1, round_i2, crimped_i2, crimped_i1], True)
 
     # outer part
     round_o1 = Part.Wire(Part.makeCircle(0.5 * od))
     round_o2 = round_o1.copy()
     round_o2.translate(dv)
     tn_o = cg + od - id
-    crimped_o1 = oval(pi * od,tn_o,dy,tl)
+    crimped_o1 = oval(pi * od, tn_o, dy, tl)
     crimped_o2 = crimped_o1.copy()
     crimped_o2.translate(dvn)
-    trans_o = Part.makeLoft([round_o1,round_o2,crimped_o2,crimped_o1],True)
+    trans_o = Part.makeLoft([round_o1, round_o2, crimped_o2, crimped_o1], True)
 
     # ********* crimped parts *********
-    eaxis = Base.Vector(0.,0.,cl)
+    eaxis = Base.Vector(0., 0., cl)
     crimped_i = Part.Face(crimped_i1).extrude(eaxis)
     crimped_o = Part.Face(crimped_o1).extrude(eaxis)
 
     # ********* fastening hole *********
-    oxyz = Base.Vector(0.,-0.5 * tn_o + dy,tl + 0.5 * cl)
-    haxis = Base.Vector(0.,1.,0.)
-    hole = Part.makeCylinder(0.5 * hd,tn_o,oxyz,haxis)
+    oxyz = Base.Vector(0., -0.5 * tn_o + dy, tl + 0.5 * cl)
+    haxis = Base.Vector(0., 1., 0.)
+    hole = Part.makeCylinder(0.5 * hd, tn_o, oxyz, haxis)
 
     # ********* combine the parts forming one end *********
 
@@ -120,14 +120,14 @@ def tube_bar_crimped_ends(params,document):
 
     # ********* the other end *********
     end_b = end_a.copy()
-    p0 = Base.Vector(0.,0.,0.)
-    end_b.rotate(p0,haxis,180.)
-    end_b.translate(Base.Vector(0.,0.,-rl))
+    p0 = Base.Vector(0., 0., 0.)
+    end_b.rotate(p0, haxis, 180.)
+    end_b.translate(Base.Vector(0., 0., -rl))
 
     # ********* the central pipe *********
-    caxis = Base.Vector(0.,0.,-1)
-    pipe_o = Part.makeCylinder(0.5 * od,rl,p0,caxis)
-    pipe_i = Part.makeCylinder(0.5 * id,rl,p0,caxis)
+    caxis = Base.Vector(0., 0., -1)
+    pipe_o = Part.makeCylinder(0.5 * od, rl, p0, caxis)
+    pipe_i = Part.makeCylinder(0.5 * id, rl, p0, caxis)
     pipe = pipe_o.cut(pipe_i).removeSplitter()
 
     # ********* all together *********

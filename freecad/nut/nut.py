@@ -28,14 +28,14 @@ import math
 import FreeCADGui
 
 
-thread_color = (0.5,1.,5.,0.)
+thread_color = (0.5, 1., 5., 0.)
 
 
 def runs_headless():
     return 'setupWithoutGUI' in FreeCADGui.__dict__
 
 
-def color_face(part,n):
+def color_face(part, n):
     if runs_headless():
         return
     color = part.ViewObject.DiffuseColor[0]
@@ -43,7 +43,7 @@ def color_face(part,n):
     part.ViewObject.DiffuseColor = [color if i != n else thread_color for i in range(n_faces)]
 
 
-def nut1(params,document):
+def nut1(params, document):
     # key = params['key']  # not used
     d1 = params['d1']
     s = params['s']
@@ -52,26 +52,26 @@ def nut1(params,document):
 
     # r_fillet = 0.03*s  # not used ATM
 
-    part = document.addObject("Part::Feature","BOLTS_part")
+    part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
     # head
     a = s/math.tan(math.pi/3.)
-    box1 = makeBox(a,s,m_max)
-    box1.translate(Vector(-0.5*a,-0.5*s,0))
-    box1.rotate(Vector(0,0,0),Vector(0,0,1),30)
-    box2 = makeBox(a,s,m_max)
-    box2.translate(Vector(-0.5*a,-0.5*s,0))
-    box2.rotate(Vector(0,0,0),Vector(0,0,1),150)
-    box3 = makeBox(a,s,m_max)
-    box3.translate(Vector(-0.5*a,-0.5*s,0))
-    box3.rotate(Vector(0,0,0),Vector(0,0,1),270)
+    box1 = makeBox(a, s, m_max)
+    box1.translate(Vector(-0.5*a, -0.5*s, 0))
+    box1.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 30)
+    box2 = makeBox(a, s, m_max)
+    box2.translate(Vector(-0.5*a, -0.5*s, 0))
+    box2.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 150)
+    box3 = makeBox(a, s, m_max)
+    box3.translate(Vector(-0.5*a, -0.5*s, 0))
+    box3.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 270)
     head = box1.fuse(box2).fuse(box3)
 
-    hole = Part.makeCylinder(0.5*d1,2*m_max)
+    hole = Part.makeCylinder(0.5*d1, 2*m_max)
     nut = head.cut(hole)
     # nut = nut.makeFillet(r_fillet,nut.Edges)
     part.Shape = nut.removeSplitter()
 
     # color thread
-    color_face(part,7)
+    color_face(part, 7)
