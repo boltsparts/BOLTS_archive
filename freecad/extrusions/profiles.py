@@ -49,7 +49,7 @@ def vslot20x20(
         (0, 0, True, False, False, True),
     ]
 
-    vertices = 8*[vslot_outline]
+    vertices = 8 * [vslot_outline]
     fillets = [5, 17, 29, 41]
     corner_offset = 0
     circle_offsets = [0]
@@ -91,10 +91,10 @@ def vslot20x40(
         (0, 0, True, False, False, True),
     ]
 
-    vertices = 12*[vslot_outline]
+    vertices = 12 * [vslot_outline]
 
     fillets = [5, 29, 41, 65]
-    corner_offset = -1*w
+    corner_offset = -1 * w
     circle_offsets = [0, -w]
 
     face = vslot(symmetry, vertices, fillets, corner_offset, circle_offsets)
@@ -125,12 +125,12 @@ def vslot20x60(
         (0, 0, False, True , True , False),
         (-w, 0, True, True , False, False),
         (-w, 0, False, True , True , False),
-        (-2*w, 0, True, True , False, False),
-        (-2*w, 0, False, True , True , False),
-        (-2*w, 0, True, False, True , False),
-        (-2*w, 0, False, False, True , True),
-        (-2*w, 0, True, True , True , True),
-        (-2*w, 0, False, True , False, True),
+        (-2 * w, 0, True, True , False, False),
+        (-2 * w, 0, False, True , True , False),
+        (-2 * w, 0, True, False, True , False),
+        (-2 * w, 0, False, False, True , True),
+        (-2 * w, 0, True, True , True , True),
+        (-2 * w, 0, False, True , False, True),
         (-w, 0, True, True , True , True),
         (-w, 0, False, True , False, True),
         (0, 0, True, True , True , True),
@@ -138,12 +138,12 @@ def vslot20x60(
         (0, 0, True, False, False, True),
     ]
 
-    vertices = 16*[vslot_outline]
+    vertices = 16 * [vslot_outline]
 
     # add fillets in reverse order, as this inserts additional edges
     fillets = [5, 41, 53, 89]
-    corner_offset = -2*w
-    circle_offsets = [0, -w, -2*w]
+    corner_offset = -2 * w
+    circle_offsets = [0, -w, -2 * w]
 
     face = vslot(symmetry, vertices, fillets, corner_offset, circle_offsets)
 
@@ -173,16 +173,16 @@ def vslot20x80(
         (0, 0, False, True , True , False),
         (-w, 0, True, True , False, False),
         (-w, 0, False, True , True , False),
-        (-2*w, 0, True, True , False, False),
-        (-2*w, 0, False, True , True , False),
-        (-3*w, 0, True, True , False, False),
-        (-3*w, 0, False, True , True , False),
-        (-3*w, 0, True, False, True , False),
-        (-3*w, 0, False, False, True , True),
-        (-3*w, 0, True, True , True , True),
-        (-3*w, 0, False, True , False, True),
-        (-2*w, 0, True, True , True , True),
-        (-2*w, 0, False, True , False, True),
+        (-2 * w, 0, True, True , False, False),
+        (-2 * w, 0, False, True , True , False),
+        (-3 * w, 0, True, True , False, False),
+        (-3 * w, 0, False, True , True , False),
+        (-3 * w, 0, True, False, True , False),
+        (-3 * w, 0, False, False, True , True),
+        (-3 * w, 0, True, True , True , True),
+        (-3 * w, 0, False, True , False, True),
+        (-2 * w, 0, True, True , True , True),
+        (-2 * w, 0, False, True , False, True),
         (-w, 0, True, True , True , True),
         (-w, 0, False, True , False, True),
         (0, 0, True, True , True , True),
@@ -190,12 +190,12 @@ def vslot20x80(
         (0, 0, True, False, False, True),
     ]
 
-    vertices = 20*[vslot_outline]
+    vertices = 20 * [vslot_outline]
 
     # add fillets in reverse order, as this inserts additional edges
     fillets = [5, 53, 65, 113]
-    corner_offset = -3*w
-    circle_offsets = [0, -w, -2*w, -3*w]
+    corner_offset = -3 * w
+    circle_offsets = [0, -w, -2 * w, -3 * w]
 
     face = vslot(symmetry, vertices, fillets, corner_offset, circle_offsets)
 
@@ -230,7 +230,7 @@ def tslot20x20(
         (0, 0, True, False, False, True),
     ]
 
-    vertices = 8*[tslot_outline]
+    vertices = 8 * [tslot_outline]
     fillets = [5, 17, 29, 41]
     corner_offset = 0
     circle_offsets = [0]
@@ -264,7 +264,7 @@ def tslot20x20_three_slot(
         (0, 0, True, False, False, True),
     ]
 
-    vertices = [tslot_outline] + 2*[tslot_closed] + 5*[tslot_outline]
+    vertices = [tslot_outline] + 2 * [tslot_closed] + 5 * [tslot_outline]
     fillets = [5, 7, 19, 31]
 
     closed_symmetry = [
@@ -312,14 +312,14 @@ def tslot20x20_two_slot(
         (0, 0, True, False, False, True),
     ]
 
-    vertices = [tslot_outline] + 4*[tslot_closed] + 3*[tslot_outline]
+    vertices = [tslot_outline] + 4 * [tslot_closed] + 3 * [tslot_outline]
     fillets = [5, 7, 9, 21]
 
     closed_symmetry = [
         (0, 0, False, True, False, False),
         (0, 0, False, False, True, False),
     ]
-    closed_vertices = 2*[tslot_closed_space]
+    closed_vertices = 2 * [tslot_closed_space]
 
     corner_offset = 0
     circle_offsets = [0]
@@ -374,7 +374,7 @@ def tslot20x20_two_slot_opp(
         (0, 0, False, True, False, False),
         (0, 0, False, True, False, True),
     ]
-    closed_vertices = 2*[tslot_closed_space]
+    closed_vertices = 2 * [tslot_closed_space]
 
     corner_offset = 0
     circle_offsets = [0]
@@ -416,7 +416,7 @@ def tslot20x20_one_slot(
         (0, 0, True, False, False, True),
     ]
 
-    vertices = [tslot_outline] + 6*[tslot_closed] + [tslot_outline]
+    vertices = [tslot_outline] + 6 * [tslot_closed] + [tslot_outline]
     fillets = [5, 7, 9, 11]
 
     closed_symmetry = [
@@ -424,7 +424,7 @@ def tslot20x20_one_slot(
         (0, 0, False, False, True, False),
         (0, 0, False, True, False, True),
     ]
-    closed_vertices = 3*[tslot_closed_space]
+    closed_vertices = 3 * [tslot_closed_space]
 
     corner_offset = 0
     circle_offsets = [0]
@@ -463,7 +463,7 @@ def fillet(
     indices.reverse()
 
     for i in indices:
-        lines[slice(i, i+2)] = draft_fillet(lines[slice(i, i+2)], radius)
+        lines[slice(i, i + 2)] = draft_fillet(lines[slice(i, i + 2)], radius)
 
     return lines
 
@@ -499,8 +499,8 @@ def assemble(
             if switch:
                 vcur[0], vcur[1] = vcur[1], vcur[0]
 
-            vcur[0] = mir_x*vcur[0]+o_x+offset[0]
-            vcur[1] = mir_y*vcur[1]+o_y+offset[1]
+            vcur[0] = mir_x * vcur[0] + o_x + offset[0]
+            vcur[1] = mir_y * vcur[1] + o_y + offset[1]
 
         for v in verts[1:]:
             vlast = vcur
@@ -508,8 +508,8 @@ def assemble(
             if switch:
                 vcur[0], vcur[1] = vcur[1], vcur[0]
 
-            vcur[0] = mir_x*vcur[0]+o_x+offset[0]
-            vcur[1] = mir_y*vcur[1]+o_y+offset[1]
+            vcur[0] = mir_x * vcur[0] + o_x + offset[0]
+            vcur[1] = mir_y * vcur[1] + o_y + offset[1]
 
             lines.append(Part.makeLine(vlast, vcur))
     return lines
@@ -524,17 +524,17 @@ w = 20
 # Vslot profile:
 
 # the size of the inner square
-d = 5.68 + 3/math.sqrt(2)
+d = 5.68 + 3 / math.sqrt(2)
 
 # one eight of the outline
 vslot_outline = [
-    (0.5*d, 0, 0),
-    (0.5*d, 0.5*5.68, 0),
-    (0.5*w - 1.8 - 1.64, 0.5*w - 1.8 - 1.64 - 1.5/math.sqrt(2), 0),
-    (0.5*w - 1.8, 0.5*w - 1.8 - 1.64 - 1.5/math.sqrt(2), 0),
-    (0.5*w - 1.8, 0.5*5.68, 0),
-    (0.5*w, 0.5*5.68+1.8, 0),
-    (0.5*w, 0.5*w, 0)
+    (0.5 * d, 0, 0),
+    (0.5 * d, 0.5 * 5.68, 0),
+    (0.5 * w - 1.8 - 1.64, 0.5 * w - 1.8 - 1.64 - 1.5 / math.sqrt(2), 0),
+    (0.5 * w - 1.8, 0.5 * w - 1.8 - 1.64 - 1.5 / math.sqrt(2), 0),
+    (0.5 * w - 1.8, 0.5 * 5.68, 0),
+    (0.5 * w, 0.5 * 5.68 + 1.8, 0),
+    (0.5 * w, 0.5 * w, 0)
 ]
 
 space_symmetry = [
@@ -546,19 +546,19 @@ space_symmetry = [
 
 # big spaces
 vslot_space = [
-    (0.5*d, 0, 0),
-    (0.5*d, 0.5*5.68, 0),
-    (0.5*w-2.7, 0.5*w-1.8-1.96, 0),
-    (0.5*w-2.7, 0.5*w-1.8, 0),
-    (0.5*w, 0.5*w-1.8, 0),
+    (0.5 * d, 0, 0),
+    (0.5 * d, 0.5 * 5.68, 0),
+    (0.5 * w - 2.7, 0.5 * w - 1.8 - 1.96, 0),
+    (0.5 * w - 2.7, 0.5 * w - 1.8, 0),
+    (0.5 * w, 0.5 * w - 1.8, 0),
 ]
 
 # corner holes
 vslot_cornerhole = [
-    (0.5*w - 1.8, 0.5*w - 1.8 - 1.64 - 1.5/math.sqrt(2)+1.07, 0),
-    (0.5*w - 1.8, 0.5*w-1.8, 0),
-    (0.5*w - 1.8 - 1.64 - 1.5/math.sqrt(2)+1.07, 0.5*w - 1.8, 0),
-    (0.5*w - 1.8, 0.5*w - 1.8 - 1.64 - 1.5/math.sqrt(2)+1.07, 0)
+    (0.5 * w - 1.8, 0.5 * w - 1.8 - 1.64 - 1.5 / math.sqrt(2) + 1.07, 0),
+    (0.5 * w - 1.8, 0.5 * w - 1.8, 0),
+    (0.5 * w - 1.8 - 1.64 - 1.5 / math.sqrt(2) + 1.07, 0.5 * w - 1.8, 0),
+    (0.5 * w - 1.8, 0.5 * w - 1.8 - 1.64 - 1.5 / math.sqrt(2) + 1.07, 0)
 ]
 
 
@@ -598,7 +598,7 @@ def vslot(
     print('Space')
     for offset in circle_offsets[:-1]:
         print(space_symmetry, vslot_space)
-        holes.append(Part.Wire(assemble(space_symmetry, 4*[vslot_space], (offset, 0))))
+        holes.append(Part.Wire(assemble(space_symmetry, 4 * [vslot_space], (offset, 0))))
         holes[-1].reverse()
     print('Space')
 
@@ -640,11 +640,11 @@ tslot_closed_space = [
 
 # big spaces
 tslot_space = [
-    (0.5*d, 0, 0),
-    (0.5*d, 0.5*5.68, 0),
-    (0.5*w-2.7, 0.5*w-1.8-1.96, 0),
-    (0.5*w-2.7, 0.5*w-1.8, 0),
-    (0.5*w, 0.5*w-1.8, 0),
+    (0.5 * d, 0, 0),
+    (0.5 * d, 0.5 * 5.68, 0),
+    (0.5 * w - 2.7, 0.5 * w - 1.8 - 1.96, 0),
+    (0.5 * w - 2.7, 0.5 * w - 1.8, 0),
+    (0.5 * w, 0.5 * w - 1.8, 0),
 ]
 
 

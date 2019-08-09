@@ -70,23 +70,23 @@ def hex_socket1(params, document):
     h = l - k_max - b
 
     # head
-    head = makeCone(0.5*d2, 0.5*d1, k_max)
+    head = makeCone(0.5 * d2, 0.5 * d1, k_max)
     # socket
-    a = s/math.tan(math.pi/3.)
+    a = s / math.tan(math.pi / 3.)
     box1 = makeBox(a, s, t)
-    box1.translate(Vector(-0.5*a, -0.5*s, 0))
+    box1.translate(Vector(-0.5 * a, -0.5 * s, 0))
     box1.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 30)
     box2 = makeBox(a, s, t)
-    box2.translate(Vector(-0.5*a, -0.5*s, 0))
+    box2.translate(Vector(-0.5 * a, -0.5 * s, 0))
     box2.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 150)
     box3 = makeBox(a, s, t)
-    box3.translate(Vector(-0.5*a, -0.5*s, 0))
+    box3.translate(Vector(-0.5 * a, -0.5 * s, 0))
     box3.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 270)
     socket = box1.fuse(box2).fuse(box3)
 
-    shaft_unthreaded = makeCylinder(0.5*d1, h+k_max)
-    shaft_threaded = makeCylinder(0.5*d1, b)
-    shaft_threaded.translate(Vector(0, 0, h+k_max))
+    shaft_unthreaded = makeCylinder(0.5 * d1, h + k_max)
+    shaft_threaded = makeCylinder(0.5 * d1, b)
+    shaft_threaded.translate(Vector(0, 0, h + k_max))
 
     name = params['name']
     part = document.addObject("Part::Feature", "BOLTS_part")
@@ -116,23 +116,23 @@ def hex_socket2(params, document):
         raise ValueError("l is too short, resulting in negative h")
 
     # head
-    head = makeCylinder(0.5*d2, k)
+    head = makeCylinder(0.5 * d2, k)
     # socket
-    a = s/math.tan(math.pi/3.)
+    a = s / math.tan(math.pi / 3.)
     box1 = makeBox(a, s, t)
-    box1.translate(Vector(-0.5*a, -0.5*s, 0))
+    box1.translate(Vector(-0.5 * a, -0.5 * s, 0))
     box1.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 30)
     box2 = makeBox(a, s, t)
-    box2.translate(Vector(-0.5*a, -0.5*s, 0))
+    box2.translate(Vector(-0.5 * a, -0.5 * s, 0))
     box2.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 150)
     box3 = makeBox(a, s, t)
-    box3.translate(Vector(-0.5*a, -0.5*s, 0))
+    box3.translate(Vector(-0.5 * a, -0.5 * s, 0))
     box3.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 270)
     socket = box1.fuse(box2).fuse(box3)
 
-    shaft_unthreaded = makeCylinder(0.5*d1, h+k)
-    shaft_threaded = makeCylinder(0.5*d1, b)
-    shaft_threaded.translate(Vector(0, 0, h+k))
+    shaft_unthreaded = makeCylinder(0.5 * d1, h + k)
+    shaft_threaded = makeCylinder(0.5 * d1, b)
+    shaft_threaded.translate(Vector(0, 0, h + k))
 
     name = params['name']
     part = document.addObject("Part::Feature", "BOLTS_part")
