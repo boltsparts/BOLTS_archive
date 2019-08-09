@@ -25,9 +25,9 @@ import Part
 
 
 def roundBattery(params, document):
-    diam = params['d']
-    h = params['h']
-    name = params['name']
+    diam = params["d"]
+    h = params["h"]
+    name = params["name"]
 
     part = document.addObject("Part::Feature", "BOLTS_part")
     nub = Part.makeCylinder(0.15 * diam, h)

@@ -31,7 +31,7 @@ thread_color = (0.5, 1., 5., 0.)
 
 
 def runs_headless():
-    return 'setupWithoutGUI' in FreeCADGui.__dict__
+    return "setupWithoutGUI" in FreeCADGui.__dict__
 
 
 def color_face(part, n):
@@ -43,17 +43,17 @@ def color_face(part, n):
 
 
 def hex_socket1(params, document):
-    d1 = params['d1']
-    d2 = params['d2']
-    b1 = params['b1']
-    b2 = params['b2']
-    b3 = params['b3']
-    k_max = params['k_max']
-    s = params['s']
-    t = params['t']
-    L = params['L']
-    h_max = params['h_max']
-    le = params['l']
+    d1 = params["d1"]
+    d2 = params["d2"]
+    b1 = params["b1"]
+    b2 = params["b2"]
+    b3 = params["b3"]
+    k_max = params["k_max"]
+    s = params["s"]
+    t = params["t"]
+    L = params["L"]
+    h_max = params["h_max"]
+    le = params["l"]
 
     if le <= L:
         b = le - k_max - h_max
@@ -88,7 +88,7 @@ def hex_socket1(params, document):
     shaft_threaded = makeCylinder(0.5 * d1, b)
     shaft_threaded.translate(Vector(0, 0, h + k_max))
 
-    name = params['name']
+    name = params["name"]
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
     part.Shape = head.fuse(shaft_unthreaded).cut(socket).removeSplitter().fuse(shaft_threaded)
@@ -98,14 +98,14 @@ def hex_socket1(params, document):
 
 
 def hex_socket2(params, document):
-    d1 = params['d1']
-    d2 = params['d2']
-    b = params['b']
-    k = params['k']
-    s = params['s']
-    t = params['t_min']
-    L = params['L']
-    le = params['l']
+    d1 = params["d1"]
+    d2 = params["d2"]
+    b = params["b"]
+    k = params["k"]
+    s = params["s"]
+    t = params["t_min"]
+    L = params["L"]
+    le = params["l"]
 
     if le <= L:
         h = 0
@@ -134,7 +134,7 @@ def hex_socket2(params, document):
     shaft_threaded = makeCylinder(0.5 * d1, b)
     shaft_threaded.translate(Vector(0, 0, h + k))
 
-    name = params['name']
+    name = params["name"]
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
     part.Shape = head.fuse(shaft_unthreaded).cut(socket).removeSplitter().fuse(shaft_threaded)

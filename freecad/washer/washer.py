@@ -26,10 +26,10 @@ import Part
 
 def washer1(params, document):
     # key = params['key']  # not used
-    d1 = params['d1']
-    d2 = params['d2']
-    s = params['s']
-    name = params['name']
+    d1 = params["d1"]
+    d2 = params["d2"]
+    s = params["s"]
+    name = params["name"]
 
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
@@ -41,10 +41,10 @@ def washer1(params, document):
 
 def washer2(params, document):
     # key = params['key']  # not used
-    d1 = params['d1']
-    d2 = params['d2']
-    s = params['s']
-    name = params['name']
+    d1 = params["d1"]
+    d2 = params["d2"]
+    s = params["s"]
+    name = params["name"]
 
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name

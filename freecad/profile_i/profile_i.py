@@ -30,13 +30,13 @@ from DraftGeomUtils import fillet as draft_fillet
 
 def ibeam_parallel_flange(params, document):
     # key = params['type']  # not used
-    h = params['h']
-    b = params['b']
-    tf = params['tf']
-    tw = params['tw']
-    r = params['r']
-    le = params['l']
-    name = params['name']
+    h = params["h"]
+    b = params["b"]
+    tf = params["tf"]
+    tw = params["tw"]
+    r = params["r"]
+    le = params["l"]
+    name = params["name"]
 
     # lower flange, starting at the left web fillet, going counter-clockwise
     Vlf1 = Vector((-tw / 2 - r), (-h / 2 + tf), 0)
@@ -87,7 +87,7 @@ def ibeam_parallel_flange(params, document):
     W = Part.Wire([Llf1, Llf2, Llf3, Llf4, Llf5, Cfc1, Lw1, Cfc2, Luf1, Luf2, Luf3, Luf4, Luf5, Cfc3, Lw2, Cfc4])
     F = Part.Face(W)
 
-    if params['arch']:
+    if params["arch"]:
         part = Arch.makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
@@ -104,17 +104,17 @@ def ibeam_parallel_flange(params, document):
 
 
 def ibeam_angled_flange(params, document):
-    h = params['h']
-    b = params['b']
+    h = params["h"]
+    b = params["b"]
     # tf = params['tf']  # not used
-    tw = params['tw']
+    tw = params["tw"]
     # hw = params['hw']  # not use
-    f = params['f']
-    g = params['g']
-    r1 = params['r1']
-    r2 = params['r2']
-    le = params['l']
-    name = params['name']
+    f = params["f"]
+    g = params["g"]
+    r1 = params["r1"]
+    r2 = params["r2"]
+    le = params["l"]
+    name = params["name"]
 
     # The profile is symmetric, we store the positions relative to the
     # origin for upper right quarter
@@ -169,7 +169,7 @@ def ibeam_angled_flange(params, document):
 
     F = Part.Face(Part.Wire(lines))
 
-    if params['arch']:
+    if params["arch"]:
         part = Arch.makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")

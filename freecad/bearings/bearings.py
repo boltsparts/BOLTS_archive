@@ -39,12 +39,12 @@ def makeRing(r1, r2):
 
 
 def singlerowradialbearing(params, document):
-    rout = 0.5 * params['d2']
-    rin = 0.5 * params['d1']
-    bth = params['B']
-    r_fillet = 0.5 * params['r_fillet']
-    name = params['name']
-    seal = params['type']
+    rout = 0.5 * params["d2"]
+    rin = 0.5 * params["d1"]
+    bth = params["B"]
+    r_fillet = 0.5 * params["r_fillet"]
+    name = params["name"]
+    seal = params["type"]
 
     # shapes
     shapes = []
@@ -117,10 +117,10 @@ def singlerowradialbearing(params, document):
 
 
 def doublerowradialbearing(params, document):
-    rin = 0.5 * params['d1']
-    rout = 0.5 * params['d2']
-    bth = params['B']
-    name = params['name']
+    rin = 0.5 * params["d1"]
+    rout = 0.5 * params["d2"]
+    bth = params["B"]
+    name = params["name"]
     rb = 0.3 * (rout - rin)
     cb = (rout + rin) / 2.0
     RR = 0.015 * rout
@@ -183,13 +183,13 @@ def doublerowradialbearing(params, document):
 
 
 def axialthrustbearing(params, document):
-    rin_w = 0.5 * params['d_w']
-    rin_g = 0.5 * params['d_g']
-    rout_w = 0.5 * params['D_w']
-    rout_g = 0.5 * params['D_g']
-    r_fillet = params['r_fillet']
-    bth = params['T']
-    name = params['name']
+    rin_w = 0.5 * params["d_w"]
+    rin_g = 0.5 * params["d_g"]
+    rout_w = 0.5 * params["D_w"]
+    rout_g = 0.5 * params["D_g"]
+    r_fillet = params["r_fillet"]
+    bth = params["T"]
+    name = params["name"]
     fth = 0.3 * bth  # Thrust plate widh
 
     shapes = []
@@ -247,7 +247,7 @@ def needlebearing(params, document):
     rout = 0.5 * params["Ew"]
     rin = 0.5 * params["Fw"]
     bth = params["Bc"]
-    name = params['name']
+    name = params["name"]
     rnd = (rout - rin) / 2.00
     cnd = ((rout - rin) / 2) + rin
     # Needle number
@@ -287,10 +287,10 @@ def needlebearing(params, document):
 
 
 def cylindricalrollerbearing(params, document):
-    rin = 0.5 * params['d1']
-    rout = 0.5 * params['d2']
-    bth = params['B']
-    name = params['name']
+    rin = 0.5 * params["d1"]
+    rout = 0.5 * params["d2"]
+    bth = params["B"]
+    name = params["name"]
     rcy = 0.2 * (rout - rin)
     ccy = (((rout - rin) / 2.0) + rin)
     RR = 0.01 * rout

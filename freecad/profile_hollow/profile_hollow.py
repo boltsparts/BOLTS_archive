@@ -28,11 +28,11 @@ import Arch
 
 
 def rectangle_hollow(params, document):
-    h = params['h']
-    b = params['b']
-    t = params['t']
-    le = params['l']
-    name = params['name']
+    h = params["h"]
+    b = params["b"]
+    t = params["t"]
+    le = params["l"]
+    name = params["name"]
 
     # Definition in EN standard
     ri = 1.0 * t
@@ -93,7 +93,7 @@ def rectangle_hollow(params, document):
     Wi = Part.Wire([Lir1, Cic1, Lir2, Cic2, Lir3, Cic3, Lir4, Cic4, ])
     face = Part.makeFace([Wo, Wi], "Part::FaceMakerBullseye")
 
-    if params['arch']:
+    if params["arch"]:
         part = Arch.makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
@@ -110,10 +110,10 @@ def rectangle_hollow(params, document):
 
 
 def square_hollow(params, document):
-    b = params['b']
-    t = params['t']
-    le = params['l']
-    name = params['name']
+    b = params["b"]
+    t = params["t"]
+    le = params["l"]
+    name = params["name"]
 
     # Definition in EN standard
     ri = 1.0 * t
@@ -174,7 +174,7 @@ def square_hollow(params, document):
     Wi = Part.Wire([Lir1, Cic1, Lir2, Cic2, Lir3, Cic3, Lir4, Cic4, ])
     face = Part.makeFace([Wo, Wi], "Part::FaceMakerBullseye")
 
-    if params['arch']:
+    if params["arch"]:
         part = Arch.makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
@@ -191,10 +191,10 @@ def square_hollow(params, document):
 
 
 def circle_hollow(params, document):
-    od = params['D']
-    t = params['t']
-    le = params['l']
-    name = params['name']
+    od = params["D"]
+    t = params["t"]
+    le = params["l"]
+    name = params["name"]
 
     id = od - t
 
@@ -202,7 +202,7 @@ def circle_hollow(params, document):
     inner = Part.Wire(Part.makeCircle(0.5 * id))
     face = Part.makeFace([outer, inner], "Part::FaceMakerBullseye")
 
-    if params['arch']:
+    if params["arch"]:
         part = Arch.makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")

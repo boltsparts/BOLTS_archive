@@ -29,13 +29,13 @@ import Arch
 
 def cbeam_parallel_flange(params, document):
     # key = params['type']  # not used
-    h = params['h']
-    b = params['b']
-    tf = params['tf']
-    tw = params['tw']
-    r = params['r']
-    le = params['l']
-    name = params['name']
+    h = params["h"]
+    b = params["b"]
+    tf = params["tf"]
+    tw = params["tw"]
+    r = params["r"]
+    le = params["l"]
+    name = params["name"]
 
     # lower flange, starting at the end of web, going counter-clockwise
     Vlf1 = Vector(0, (-h / 2), 0)
@@ -72,7 +72,7 @@ def cbeam_parallel_flange(params, document):
     W = Part.Wire([Llf1, Llf2, Llf3, Cfc1, Lw1, Cfc2, Luf1, Luf2, Luf3, Lw2])
     F = Part.Face(W)
 
-    if params['arch']:
+    if params["arch"]:
         part = Arch.makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
