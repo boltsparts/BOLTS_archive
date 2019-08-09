@@ -58,8 +58,8 @@ def blind_flange(params, document):
 def flange(d1, k, D, b, d2, bn, blind, part):
 
     # ********** flange disk **********
-    p0 = Base.Vector(0., 0., 0.)
-    caxis = Base.Vector(0., 0., 1)
+    p0 = Base.Vector(0.0, 0.0, 0.0)
+    caxis = Base.Vector(0.0, 0.0, 1)
     disk = Part.makeCylinder(0.5 * D, b, p0, caxis)
 
     # if not a blind flange, make the inner hole.
@@ -68,12 +68,12 @@ def flange(d1, k, D, b, d2, bn, blind, part):
         disk = disk.cut(hole).removeSplitter()
 
     # ********** bolts holes **********
-    h0 = Base.Vector(0.5 * k, 0., 0.)
+    h0 = Base.Vector(0.5 * k, 0.0, 0.0)
     hole = Part.makeCylinder(0.5 * d2, b, h0, caxis)
     holes = hole.copy()
     for i in range(1, int(bn)):
         nhole = hole.copy()
-        nhole.rotate(p0, caxis, i * 360. / bn)
+        nhole.rotate(p0, caxis, i * 360.0 / bn)
         holes = holes.fuse(nhole)
     # drill holes
     flange = disk.cut(holes).removeSplitter()

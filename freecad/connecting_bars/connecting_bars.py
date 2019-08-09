@@ -71,14 +71,14 @@ def tube_bar_crimped_ends(params, document):
 
     # if requested, shift along y from origin for side crimped oval
     if sd:
-        dy = (id - cg) / 2.
+        dy = (id - cg) / 2.0
     else:
-        dy = 0.
+        dy = 0.0
 
     # inner part
     round_i1 = Part.Wire(Part.makeCircle(0.5 * id))
-    dv = Base.Vector(0., 0., 0.02 * tl)
-    dvn = Base.Vector(0., 0., -0.02 * tl)
+    dv = Base.Vector(0.0, 0.0, 0.02 * tl)
+    dvn = Base.Vector(0.0, 0.0, -0.02 * tl)
     round_i2 = round_i1.copy()
     round_i2.translate(dv)
     crimped_i1 = oval(pi * id, cg, dy, tl)
@@ -97,13 +97,13 @@ def tube_bar_crimped_ends(params, document):
     trans_o = Part.makeLoft([round_o1, round_o2, crimped_o2, crimped_o1], True)
 
     # ********* crimped parts *********
-    eaxis = Base.Vector(0., 0., cl)
+    eaxis = Base.Vector(0.0, 0.0, cl)
     crimped_i = Part.Face(crimped_i1).extrude(eaxis)
     crimped_o = Part.Face(crimped_o1).extrude(eaxis)
 
     # ********* fastening hole *********
-    oxyz = Base.Vector(0., -0.5 * tn_o + dy, tl + 0.5 * cl)
-    haxis = Base.Vector(0., 1., 0.)
+    oxyz = Base.Vector(0.0, -0.5 * tn_o + dy, tl + 0.5 * cl)
+    haxis = Base.Vector(0.0, 1.0, 0.0)
     hole = Part.makeCylinder(0.5 * hd, tn_o, oxyz, haxis)
 
     # ********* combine the parts forming one end *********
@@ -120,12 +120,12 @@ def tube_bar_crimped_ends(params, document):
 
     # ********* the other end *********
     end_b = end_a.copy()
-    p0 = Base.Vector(0., 0., 0.)
-    end_b.rotate(p0, haxis, 180.)
-    end_b.translate(Base.Vector(0., 0., -rl))
+    p0 = Base.Vector(0.0, 0.0, 0.0)
+    end_b.rotate(p0, haxis, 180.0)
+    end_b.translate(Base.Vector(0.0, 0.0, -rl))
 
     # ********* the central pipe *********
-    caxis = Base.Vector(0., 0., -1)
+    caxis = Base.Vector(0.0, 0.0, -1)
     pipe_o = Part.makeCylinder(0.5 * od, rl, p0, caxis)
     pipe_i = Part.makeCylinder(0.5 * id, rl, p0, caxis)
     pipe = pipe_o.cut(pipe_i).removeSplitter()

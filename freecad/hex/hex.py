@@ -28,7 +28,7 @@ import math
 import FreeCADGui
 
 
-thread_color = (0.5, 1., 5., 0.)
+thread_color = (0.5, 1.0, 5.0, 0.0)
 
 
 def runs_headless():
@@ -58,7 +58,7 @@ def hex1(params, document):
     part.Label = name
 
     # head
-    a = s / math.tan(math.pi / 3.)
+    a = s / math.tan(math.pi / 3.0)
     box1 = makeBox(a, s, k)
     box1.translate(Vector(-0.5 * a, -0.5 * s, 0))
     box1.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 30)
@@ -99,7 +99,7 @@ def hex2(params, document):
     part.Label = name
 
     # head
-    a = s / math.tan(math.pi / 3.)
+    a = s / math.tan(math.pi / 3.0)
     box1 = makeBox(a, s, k)
     box1.translate(Vector(-0.5 * a, -0.5 * s, 0))
     box1.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 30)
