@@ -22,7 +22,6 @@
 
 
 import Part
-import Arch
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
 from DraftGeomUtils import fillet as draft_fillet
@@ -88,7 +87,9 @@ def ibeam_parallel_flange(params, document):
     F = Part.Face(W)
 
     if params["arch"]:
-        part = Arch.makeStructure(name=name)
+        from ArchStructure import makeStructure
+
+        part = makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
         prof.Shape = F
@@ -170,7 +171,9 @@ def ibeam_angled_flange(params, document):
     F = Part.Face(Part.Wire(lines))
 
     if params["arch"]:
-        part = Arch.makeStructure(name=name)
+        from ArchStructure import makeStructure
+
+        part = makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
         prof.Shape = F
