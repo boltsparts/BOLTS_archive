@@ -34,7 +34,7 @@ def vslot20x20(
     document
 ):
     name = params["name"]
-    l = params["l"]
+    le = params["l"]
 
     # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
@@ -59,7 +59,7 @@ def vslot20x20(
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    part.Shape = face.extrude(Vector(0, 0, l)).removeSplitter()
+    part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
     # color
     if params['finish'] == "Black":
@@ -72,7 +72,7 @@ def vslot20x40(
     document
 ):
     name = params["name"]
-    l = params["l"]
+    le = params["l"]
 
     # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
@@ -102,7 +102,7 @@ def vslot20x40(
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    part.Shape = face.extrude(Vector(0, 0, l)).removeSplitter()
+    part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
     # color
     if params['finish'] == "Black":
@@ -115,7 +115,7 @@ def vslot20x60(
     document
 ):
     name = params["name"]
-    l = params["l"]
+    le = params["l"]
 
     # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
@@ -150,7 +150,7 @@ def vslot20x60(
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    part.Shape = face.extrude(Vector(0, 0, l)).removeSplitter()
+    part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
     # color
     if params['finish'] == "Black":
@@ -163,7 +163,7 @@ def vslot20x80(
     document
 ):
     name = params["name"]
-    l = params["l"]
+    le = params["l"]
 
     # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
@@ -202,7 +202,7 @@ def vslot20x80(
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    part.Shape = face.extrude(Vector(0, 0, l)).removeSplitter()
+    part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
     # color
     if params['finish'] == "Black":
@@ -215,7 +215,7 @@ def tslot20x20(
     document
 ):
     name = params["name"]
-    l = params["l"]
+    le = params["l"]
 
     # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
@@ -240,7 +240,7 @@ def tslot20x20(
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    part.Shape = face.extrude(Vector(0, 0, l)).removeSplitter()
+    part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
 
 # ************************************************************************************************
@@ -249,7 +249,7 @@ def tslot20x20_three_slot(
     document
 ):
     name = params["name"]
-    l = params["l"]
+    le = params["l"]
 
     # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
@@ -288,7 +288,7 @@ def tslot20x20_three_slot(
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    part.Shape = face.extrude(Vector(0, 0, l)).removeSplitter()
+    part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
 
 # ************************************************************************************************
@@ -297,7 +297,7 @@ def tslot20x20_two_slot(
     document
 ):
     name = params["name"]
-    l = params["l"]
+    le = params["l"]
 
     # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
@@ -337,7 +337,7 @@ def tslot20x20_two_slot(
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    part.Shape = face.extrude(Vector(0, 0, l)).removeSplitter()
+    part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
 
 # ************************************************************************************************
@@ -346,7 +346,7 @@ def tslot20x20_two_slot_opp(
     document
 ):
     name = params["name"]
-    l = params["l"]
+    le = params["l"]
 
     # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
@@ -392,7 +392,7 @@ def tslot20x20_two_slot_opp(
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    part.Shape = face.extrude(Vector(0, 0, l)).removeSplitter()
+    part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
 
 # ************************************************************************************************
@@ -401,7 +401,7 @@ def tslot20x20_one_slot(
     document
 ):
     name = params["name"]
-    l = params["l"]
+    le = params["l"]
 
     # due to symmetry this can be nicely decomposed
     # x offset, y offset, reverse, switch, mir_x, mir_y
@@ -442,7 +442,7 @@ def tslot20x20_one_slot(
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    part.Shape = face.extrude(Vector(0, 0, l)).removeSplitter()
+    part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
 
 # ************************************************************************************************

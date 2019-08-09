@@ -50,7 +50,7 @@ def zbeam(params, document):
     c1 = params['c1']
     tw = params['tw']
     tf = params['tf']
-    l = params['l']
+    le = params['l']
     name = params['name']
 
     rf = tf / 2.0
@@ -103,10 +103,10 @@ def zbeam(params, document):
         prof.Shape = F
         part.Base = prof
 
-        part.Height = l
+        part.Height = le
     else:
         part = document.addObject("Part::Feature", "BOLTS_part")
         part.Label = name
 
-        beam = F.extrude(Vector(0, 0, l))
+        beam = F.extrude(Vector(0, 0, le))
         part.Shape = beam

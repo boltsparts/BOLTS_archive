@@ -35,7 +35,7 @@ def ibeam_parallel_flange(params, document):
     tf = params['tf']
     tw = params['tw']
     r = params['r']
-    l = params['l']
+    le = params['l']
     name = params['name']
 
     # lower flange, starting at the left web fillet, going counter-clockwise
@@ -94,12 +94,12 @@ def ibeam_parallel_flange(params, document):
         prof.Shape = F
         part.Base = prof
 
-        part.Height = l
+        part.Height = le
     else:
         part = document.addObject("Part::Feature", "BOLTS_part")
         part.Label = name
 
-        beam = F.extrude(Vector(0, 0, l))
+        beam = F.extrude(Vector(0, 0, le))
         part.Shape = beam
 
 
@@ -113,7 +113,7 @@ def ibeam_angled_flange(params, document):
     g = params['g']
     r1 = params['r1']
     r2 = params['r2']
-    l = params['l']
+    le = params['l']
     name = params['name']
 
     # The profile is symmetric, we store the positions relative to the
@@ -176,10 +176,10 @@ def ibeam_angled_flange(params, document):
         prof.Shape = F
         part.Base = prof
 
-        part.Height = l
+        part.Height = le
     else:
         part = document.addObject("Part::Feature", "BOLTS_part")
         part.Label = name
 
-        beam = F.extrude(Vector(0, 0, l))
+        beam = F.extrude(Vector(0, 0, le))
         part.Shape = beam.removeSplitter()

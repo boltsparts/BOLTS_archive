@@ -51,7 +51,7 @@ def hex1(params, document):
     h = params['h']
     if h is None:
         h = 0.
-    l = params['l']
+    le = params['l']
     name = params['name']
 
     part = document.addObject("Part::Feature", "BOLTS_part")
@@ -71,7 +71,7 @@ def hex1(params, document):
     head = box1.fuse(box2).fuse(box3)
 
     shaft_unthreaded = Part.makeCylinder(0.5 * d1, h + k)
-    shaft_threaded = Part.makeCylinder(0.5 * d1, l - h)
+    shaft_threaded = Part.makeCylinder(0.5 * d1, le - h)
     shaft_threaded.translate(Vector(0, 0, h + k))
     part.Shape = head.fuse(shaft_unthreaded).removeSplitter().fuse(shaft_threaded)
 
@@ -87,11 +87,11 @@ def hex2(params, document):
     b1 = params['b1']
     b2 = params['b2']
     b3 = params['b3']
-    l = params['l']
+    le = params['l']
     b = b3
-    if l < 125:
+    if le < 125:
         b = b1
-    elif l < 200:
+    elif le < 200:
         b = b2
     name = params['name']
 
@@ -111,9 +111,9 @@ def hex2(params, document):
     box3.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 270)
     head = box1.fuse(box2).fuse(box3)
 
-    shaft_unthreaded = Part.makeCylinder(0.5 * d1, l - b + k)
+    shaft_unthreaded = Part.makeCylinder(0.5 * d1, le - b + k)
     shaft_threaded = Part.makeCylinder(0.5 * d1, b)
-    shaft_threaded.translate(Vector(0, 0, l - b + k))
+    shaft_threaded.translate(Vector(0, 0, le - b + k))
     part.Shape = head.fuse(shaft_unthreaded).removeSplitter().fuse(shaft_threaded)
 
     # color thread
