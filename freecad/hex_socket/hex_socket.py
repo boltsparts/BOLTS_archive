@@ -27,7 +27,7 @@ import math
 import FreeCADGui
 
 
-thread_color = (0.5, 1., 5., 0.)
+thread_color = (0.5, 1.0, 5.0, 0.0)
 
 
 def runs_headless():
@@ -72,7 +72,7 @@ def hex_socket1(params, document):
     # head
     head = makeCone(0.5 * d2, 0.5 * d1, k_max)
     # socket
-    a = s / math.tan(math.pi / 3.)
+    a = s / math.tan(math.pi / 3.0)
     box1 = makeBox(a, s, t)
     box1.translate(Vector(-0.5 * a, -0.5 * s, 0))
     box1.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 30)
@@ -118,7 +118,7 @@ def hex_socket2(params, document):
     # head
     head = makeCylinder(0.5 * d2, k)
     # socket
-    a = s / math.tan(math.pi / 3.)
+    a = s / math.tan(math.pi / 3.0)
     box1 = makeBox(a, s, t)
     box1.translate(Vector(-0.5 * a, -0.5 * s, 0))
     box1.rotate(Vector(0, 0, 0), Vector(0, 0, 1), 30)

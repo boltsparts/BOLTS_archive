@@ -110,10 +110,7 @@ def vslot20x40(
 
 
 # ************************************************************************************************
-def vslot20x60(
-    params,
-    document
-):
+def vslot20x60(params, document):
     name = params["name"]
     le = params["l"]
 
@@ -158,10 +155,7 @@ def vslot20x60(
 
 
 # ************************************************************************************************
-def vslot20x80(
-    params,
-    document
-):
+def vslot20x80(params, document):
     name = params["name"]
     le = params["l"]
 
