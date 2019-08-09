@@ -24,13 +24,13 @@
 import Part
 
 
-def roundBattery(params,document):
+def roundBattery(params, document):
     diam = params['d']
     h = params['h']
     name = params['name']
 
-    part = document.addObject("Part::Feature","BOLTS_part")
-    nub = Part.makeCylinder(0.15*diam,h)
-    cell = Part.makeCylinder(0.5*diam,0.97*h)
+    part = document.addObject("Part::Feature", "BOLTS_part")
+    nub = Part.makeCylinder(0.15*diam, h)
+    cell = Part.makeCylinder(0.5*diam, 0.97*h)
     part.Shape = nub.fuse(cell).removeSplitter()
     part.Label = name
