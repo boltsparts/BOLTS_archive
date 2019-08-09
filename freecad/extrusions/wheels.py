@@ -30,23 +30,23 @@ def dualvwheel(params, document):
     # no params
     name = params["name"]
     # still name some quantities
-    r_1 = 0.5*13.89
-    r_2 = 0.5*15.974
+    r_1 = 0.5 * 13.89
+    r_2 = 0.5 * 15.974
     r_3 = 9.77
-    r_4 = 0.5*18.75
-    r_5 = 0.5*24.39
+    r_4 = 0.5 * 18.75
+    r_5 = 0.5 * 24.39
 
     # profile for revolution is symmetric, therefore only points from right half
     vertices = [
         (0, r_1, 0),
         (0.5, r_1, 0),
         (0.5, r_2, 0),
-        (0.5*10.23-0.3, r_2, 0),
-        (0.5*10.23, r_2+0.3, 0),
-        (0.5*10.23, r_3, 0),
-        (0.5*(10.23-4.84), r_5, 0),
-        (0.5*(10.23)-4.84, r_3, 0),
-        (0.5*(10.23)-4.84, r_4, 0),
+        (0.5 * 10.23 - 0.3, r_2, 0),
+        (0.5 * 10.23, r_2 + 0.3, 0),
+        (0.5 * 10.23, r_3, 0),
+        (0.5 * (10.23 - 4.84), r_5, 0),
+        (0.5 * (10.23) - 4.84, r_3, 0),
+        (0.5 * (10.23) - 4.84, r_4, 0),
         (0, r_4, 0)
     ]
 
@@ -62,7 +62,7 @@ def dualvwheel(params, document):
         lines.append(makeLine(vcur, vlast))
 
     # left half
-    for i in range(len(vertices)-2, -1, -1):
+    for i in range(len(vertices) - 2, -1, -1):
         vlast = vcur
         vcur = Vector(vertices[i])
         vcur[0] *= -1
@@ -80,20 +80,20 @@ def solidvwheel(params, document):
     # no params
     name = params["name"]
     # still name some quantities
-    r_1 = 0.5*13.89
-    r_2 = 0.5*15.974
+    r_1 = 0.5 * 13.89
+    r_2 = 0.5 * 15.974
     r_3 = 9.77
-    r_4 = 0.5*23.89
+    r_4 = 0.5 * 23.89
 
     # profile for revolution is symmetric, therefore only points from right half
     vertices = [
         (0, r_1, 0),
         (0.5, r_1, 0),
         (0.5, r_2, 0),
-        (0.5*10.23-0.3, r_2, 0),
-        (0.5*10.23, r_2+0.3, 0),
-        (0.5*10.23, r_3, 0),
-        (0.5*5.89, r_4, 0),
+        (0.5 * 10.23 - 0.3, r_2, 0),
+        (0.5 * 10.23, r_2 + 0.3, 0),
+        (0.5 * 10.23, r_3, 0),
+        (0.5 * 5.89, r_4, 0),
         (0, r_4, 0),
     ]
 
@@ -109,7 +109,7 @@ def solidvwheel(params, document):
         lines.append(makeLine(vcur, vlast))
 
     # left half
-    for i in range(len(vertices)-2, -1, -1):
+    for i in range(len(vertices) - 2, -1, -1):
         vlast = vcur
         vcur = Vector(vertices[i])
         vcur[0] *= -1
@@ -127,20 +127,20 @@ def minivwheel(params, document):
     # no params
     name = params["name"]
     # still name some quantities
-    r_1 = 0.5*8.64
-    r_2 = 0.5*9.974
-    r_3 = 0.5*12.21
-    r_4 = 0.5*15.23
+    r_1 = 0.5 * 8.64
+    r_2 = 0.5 * 9.974
+    r_3 = 0.5 * 12.21
+    r_4 = 0.5 * 15.23
 
     # profile for revolution is symmetric, therefore only points from right half
     vertices = [
         (0, r_1, 0),
         (0.5, r_1, 0),
         (0.5, r_2, 0),
-        (0.5*8.8-0.3, r_2, 0),
-        (0.5*8.8, r_2+0.3, 0),
-        (0.5*8.8, r_3, 0),
-        (0.5*5.78, r_4, 0),
+        (0.5 * 8.8 - 0.3, r_2, 0),
+        (0.5 * 8.8, r_2 + 0.3, 0),
+        (0.5 * 8.8, r_3, 0),
+        (0.5 * 5.78, r_4, 0),
         (0, r_4, 0),
     ]
 
@@ -156,7 +156,7 @@ def minivwheel(params, document):
         lines.append(makeLine(vcur, vlast))
 
     # left half
-    for i in range(len(vertices)-2, -1, -1):
+    for i in range(len(vertices) - 2, -1, -1):
         vlast = vcur
         vcur = Vector(vertices[i])
         vcur[0] *= -1

@@ -34,8 +34,8 @@ def washer1(params, document):
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    outer = Part.makeCylinder(0.5*d2, s)
-    inner = Part.makeCylinder(0.5*d1, s)
+    outer = Part.makeCylinder(0.5 * d2, s)
+    inner = Part.makeCylinder(0.5 * d1, s)
     part.Shape = outer.cut(inner).removeSplitter()
 
 
@@ -49,9 +49,9 @@ def washer2(params, document):
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
 
-    outer = Part.makeCylinder(0.5*d2, s)
-    outer = outer.makeChamfer(0.3*s, outer.Edges[0:1])
-    inner = Part.makeCylinder(0.5*d1, s)
+    outer = Part.makeCylinder(0.5 * d2, s)
+    outer = outer.makeChamfer(0.3 * s, outer.Edges[0:1])
+    inner = Part.makeCylinder(0.5 * d1, s)
     shape = outer.cut(inner)
     # guessed size for the chamfer
     part.Shape = shape.removeSplitter()
