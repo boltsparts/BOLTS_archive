@@ -26,13 +26,13 @@ import Part
 
 
 def plate_flange(params, document):
-    d1 = params['d1']
-    k = params['k']
-    D = params['D']
-    b = params['b']
-    d2 = params['d2']
-    bn = params['bn']
-    name = params['name']
+    d1 = params["d1"]
+    k = params["k"]
+    D = params["D"]
+    b = params["b"]
+    d2 = params["d2"]
+    bn = params["bn"]
+    name = params["name"]
 
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
@@ -41,13 +41,13 @@ def plate_flange(params, document):
 
 
 def blind_flange(params, document):
-    d1 = params['d1']
-    k = params['k']
-    D = params['D']
-    b = params['b']
-    d2 = params['d2']
-    bn = params['bn']
-    name = params['name']
+    d1 = params["d1"]
+    k = params["k"]
+    D = params["D"]
+    b = params["b"]
+    d2 = params["d2"]
+    bn = params["bn"]
+    name = params["name"]
 
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name

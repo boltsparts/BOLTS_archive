@@ -32,7 +32,7 @@ thread_color = (0.5, 1., 5., 0.)
 
 
 def runs_headless():
-    return 'setupWithoutGUI' in FreeCADGui.__dict__
+    return "setupWithoutGUI" in FreeCADGui.__dict__
 
 
 def color_face(part, n):
@@ -45,10 +45,10 @@ def color_face(part, n):
 
 def nut1(params, document):
     # key = params['key']  # not used
-    d1 = params['d1']
-    s = params['s']
-    m_max = params['m_max']
-    name = params['name']
+    d1 = params["d1"]
+    s = params["s"]
+    m_max = params["m_max"]
+    name = params["name"]
 
     # r_fillet = 0.03*s  # not used ATM
 

@@ -62,7 +62,7 @@ def vslot20x20(
     part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
     # color
-    if params['finish'] == "Black":
+    if params["finish"] == "Black":
         part.ViewObject.DiffuseColor = (0.1, 0.1, 0.1)
 
 
@@ -105,7 +105,7 @@ def vslot20x40(
     part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
     # color
-    if params['finish'] == "Black":
+    if params["finish"] == "Black":
         part.ViewObject.DiffuseColor = (0.1, 0.1, 0.1)
 
 
@@ -153,7 +153,7 @@ def vslot20x60(
     part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
     # color
-    if params['finish'] == "Black":
+    if params["finish"] == "Black":
         part.ViewObject.DiffuseColor = (0.1, 0.1, 0.1)
 
 
@@ -205,7 +205,7 @@ def vslot20x80(
     part.Shape = face.extrude(Vector(0, 0, le)).removeSplitter()
 
     # color
-    if params['finish'] == "Black":
+    if params["finish"] == "Black":
         part.ViewObject.DiffuseColor = (0.1, 0.1, 0.1)
 
 
@@ -595,12 +595,12 @@ def vslot(
         holes[-1].reverse()
 
     # big spaces
-    print('Space')
+    print("Space")
     for offset in circle_offsets[:-1]:
         print(space_symmetry, vslot_space)
         holes.append(Part.Wire(assemble(space_symmetry, 4 * [vslot_space], (offset, 0))))
         holes[-1].reverse()
-    print('Space')
+    print("Space")
 
     # put everything together
     return Part.Face([outline] + holes)

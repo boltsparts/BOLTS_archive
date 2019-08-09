@@ -28,15 +28,15 @@ from math import pi
 
 
 def tube_bar_crimped_ends(params, document):
-    id = params['id']
-    od = params['od']
-    cg = params['cg']
-    hd = params['hd']
-    cl = params['cl']
-    rl = params['rl']
-    tl = params['tl']
-    sd = params['sd']
-    name = params['name']
+    id = params["id"]
+    od = params["od"]
+    cg = params["cg"]
+    hd = params["hd"]
+    cl = params["cl"]
+    rl = params["rl"]
+    tl = params["tl"]
+    sd = params["sd"]
+    name = params["name"]
 
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name

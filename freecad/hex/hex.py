@@ -32,7 +32,7 @@ thread_color = (0.5, 1., 5., 0.)
 
 
 def runs_headless():
-    return 'setupWithoutGUI' in FreeCADGui.__dict__
+    return "setupWithoutGUI" in FreeCADGui.__dict__
 
 
 def color_face(part, n):
@@ -45,14 +45,14 @@ def color_face(part, n):
 
 def hex1(params, document):
     # key = params['key']  # not used
-    d1 = params['d1']
-    k = params['k']
-    s = params['s']
-    h = params['h']
+    d1 = params["d1"]
+    k = params["k"]
+    s = params["s"]
+    h = params["h"]
     if h is None:
-        h = 0.
-    le = params['l']
-    name = params['name']
+        h = 0.0
+    le = params["l"]
+    name = params["name"]
 
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name
@@ -81,19 +81,19 @@ def hex1(params, document):
 
 def hex2(params, document):
     # key = params['key']  # not used
-    d1 = params['d1']
-    k = params['k']
-    s = params['s']
-    b1 = params['b1']
-    b2 = params['b2']
-    b3 = params['b3']
-    le = params['l']
+    d1 = params["d1"]
+    k = params["k"]
+    s = params["s"]
+    b1 = params["b1"]
+    b2 = params["b2"]
+    b3 = params["b3"]
+    le = params["l"]
     b = b3
     if le < 125:
         b = b1
     elif le < 200:
         b = b2
-    name = params['name']
+    name = params["name"]
 
     part = document.addObject("Part::Feature", "BOLTS_part")
     part.Label = name

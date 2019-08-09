@@ -25,10 +25,10 @@ import Part
 
 
 def pipe(params, document):
-    id = params['id']
-    od = params['od']
-    le = params['l']
-    name = params['name']
+    id = params["id"]
+    od = params["od"]
+    le = params["l"]
+    name = params["name"]
 
     if id > od:
         raise ValueError("Inner diameter must be smaller than outer diameter")
@@ -42,10 +42,10 @@ def pipe(params, document):
 
 
 def pipe_wall(params, document):
-    od = params['od']
-    wall = params['wall']
-    le = params['l']
-    name = params['name']
+    od = params["od"]
+    wall = params["wall"]
+    le = params["l"]
+    name = params["name"]
 
     id = od - 2 * wall
 

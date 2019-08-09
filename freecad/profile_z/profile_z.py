@@ -27,7 +27,7 @@ import Part
 
 
 # ************************************************************************************************
-'''
+"""
 # to test copy the def in python konsole and run the following code
 my_test_params = {
     'type' : 'ZNP100',
@@ -41,17 +41,17 @@ my_test_params = {
 }
 zbeam(my_test_params, App.ActiveDocument)
 
-'''
+"""
 
 
 def zbeam(params, document):
     # key = params['type']
-    h = params['h']
-    c1 = params['c1']
-    tw = params['tw']
-    tf = params['tf']
-    le = params['l']
-    name = params['name']
+    h = params["h"]
+    c1 = params["c1"]
+    tw = params["tw"]
+    tf = params["tf"]
+    le = params["l"]
+    name = params["name"]
 
     rf = tf / 2.0
     rw = tw
@@ -95,7 +95,7 @@ def zbeam(params, document):
     W = Part.Wire([E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12])
     F = Part.Face(W)
 
-    if params['arch']:
+    if params["arch"]:
         import Arch
         part = Arch.makeStructure(name=name)
 
