@@ -40,12 +40,12 @@ def vslot20x20(
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0, 0, False, False, False, False),
-        (0, 0, True, True , False, False),
-        (0, 0, False, True , True , False),
-        (0, 0, True, False, True , False),
-        (0, 0, False, False, True , True),
-        (0, 0, True, True , True , True),
-        (0, 0, False, True , False, True),
+        (0, 0, True, True, False, False),
+        (0, 0, False, True, True, False),
+        (0, 0, True, False, True, False),
+        (0, 0, False, False, True, True),
+        (0, 0, True, True, True, True),
+        (0, 0, False, True, False, True),
         (0, 0, True, False, False, True),
     ]
 
@@ -78,16 +78,16 @@ def vslot20x40(
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0, 0, False, False, False, False),
-        (0, 0, True, True , False, False),
-        (0, 0, False, True , True , False),
-        (-w, 0, True, True , False, False),
-        (-w, 0, False, True , True , False),
-        (-w, 0, True, False, True , False),
-        (-w, 0, False, False, True , True),
-        (-w, 0, True, True , True , True),
-        (-w, 0, False, True , False, True),
-        (0, 0, True, True , True , True),
-        (0, 0, False, True , False, True),
+        (0, 0, True, True, False, False),
+        (0, 0, False, True, True, False),
+        (-w, 0, True, True, False, False),
+        (-w, 0, False, True, True, False),
+        (-w, 0, True, False, True, False),
+        (-w, 0, False, False, True, True),
+        (-w, 0, True, True, True, True),
+        (-w, 0, False, True, False, True),
+        (0, 0, True, True, True, True),
+        (0, 0, False, True, False, True),
         (0, 0, True, False, False, True),
     ]
 
@@ -121,20 +121,20 @@ def vslot20x60(
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0, 0, False, False, False, False),
-        (0, 0, True, True , False, False),
-        (0, 0, False, True , True , False),
-        (-w, 0, True, True , False, False),
-        (-w, 0, False, True , True , False),
-        (-2 * w, 0, True, True , False, False),
-        (-2 * w, 0, False, True , True , False),
-        (-2 * w, 0, True, False, True , False),
-        (-2 * w, 0, False, False, True , True),
-        (-2 * w, 0, True, True , True , True),
-        (-2 * w, 0, False, True , False, True),
-        (-w, 0, True, True , True , True),
-        (-w, 0, False, True , False, True),
-        (0, 0, True, True , True , True),
-        (0, 0, False, True , False, True),
+        (0, 0, True, True, False, False),
+        (0, 0, False, True, True, False),
+        (-w, 0, True, True, False, False),
+        (-w, 0, False, True, True, False),
+        (-2 * w, 0, True, True, False, False),
+        (-2 * w, 0, False, True, True, False),
+        (-2 * w, 0, True, False, True, False),
+        (-2 * w, 0, False, False, True, True),
+        (-2 * w, 0, True, True, True, True),
+        (-2 * w, 0, False, True, False, True),
+        (-w, 0, True, True, True, True),
+        (-w, 0, False, True, False, True),
+        (0, 0, True, True, True, True),
+        (0, 0, False, True, False, True),
         (0, 0, True, False, False, True),
     ]
 
@@ -169,24 +169,24 @@ def vslot20x80(
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0, 0, False, False, False, False),
-        (0, 0, True, True , False, False),
-        (0, 0, False, True , True , False),
-        (-w, 0, True, True , False, False),
-        (-w, 0, False, True , True , False),
-        (-2 * w, 0, True, True , False, False),
-        (-2 * w, 0, False, True , True , False),
-        (-3 * w, 0, True, True , False, False),
-        (-3 * w, 0, False, True , True , False),
-        (-3 * w, 0, True, False, True , False),
-        (-3 * w, 0, False, False, True , True),
-        (-3 * w, 0, True, True , True , True),
-        (-3 * w, 0, False, True , False, True),
-        (-2 * w, 0, True, True , True , True),
-        (-2 * w, 0, False, True , False, True),
-        (-w, 0, True, True , True , True),
-        (-w, 0, False, True , False, True),
-        (0, 0, True, True , True , True),
-        (0, 0, False, True , False, True),
+        (0, 0, True, True, False, False),
+        (0, 0, False, True, True, False),
+        (-w, 0, True, True, False, False),
+        (-w, 0, False, True, True, False),
+        (-2 * w, 0, True, True, False, False),
+        (-2 * w, 0, False, True, True, False),
+        (-3 * w, 0, True, True, False, False),
+        (-3 * w, 0, False, True, True, False),
+        (-3 * w, 0, True, False, True, False),
+        (-3 * w, 0, False, False, True, True),
+        (-3 * w, 0, True, True, True, True),
+        (-3 * w, 0, False, True, False, True),
+        (-2 * w, 0, True, True, True, True),
+        (-2 * w, 0, False, True, False, True),
+        (-w, 0, True, True, True, True),
+        (-w, 0, False, True, False, True),
+        (0, 0, True, True, True, True),
+        (0, 0, False, True, False, True),
         (0, 0, True, False, False, True),
     ]
 
@@ -221,12 +221,12 @@ def tslot20x20(
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0, 0, False, False, False, False),
-        (0, 0, True, True , False, False),
-        (0, 0, False, True , True , False),
-        (0, 0, True, False, True , False),
-        (0, 0, False, False, True , True),
-        (0, 0, True, True , True , True),
-        (0, 0, False, True , False, True),
+        (0, 0, True, True, False, False),
+        (0, 0, False, True, True, False),
+        (0, 0, True, False, True, False),
+        (0, 0, False, False, True, True),
+        (0, 0, True, True, True, True),
+        (0, 0, False, True, False, True),
         (0, 0, True, False, False, True),
     ]
 
@@ -255,12 +255,12 @@ def tslot20x20_three_slot(
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0, 0, False, False, False, False),
-        (0, 0, True, True , False, False),
-        (0, 0, False, True , True , False),
-        (0, 0, True, False, True , False),
-        (0, 0, False, False, True , True),
-        (0, 0, True, True , True , True),
-        (0, 0, False, True , False, True),
+        (0, 0, True, True, False, False),
+        (0, 0, False, True, True, False),
+        (0, 0, True, False, True, False),
+        (0, 0, False, False, True, True),
+        (0, 0, True, True, True, True),
+        (0, 0, False, True, False, True),
         (0, 0, True, False, False, True),
     ]
 
@@ -303,12 +303,12 @@ def tslot20x20_two_slot(
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0, 0, False, False, False, False),
-        (0, 0, True, True , False, False),
-        (0, 0, False, True , True , False),
-        (0, 0, True, False, True , False),
-        (0, 0, False, False, True , True),
-        (0, 0, True, True , True , True),
-        (0, 0, False, True , False, True),
+        (0, 0, True, True, False, False),
+        (0, 0, False, True, True, False),
+        (0, 0, True, False, True, False),
+        (0, 0, False, False, True, True),
+        (0, 0, True, True, True, True),
+        (0, 0, False, True, False, True),
         (0, 0, True, False, False, True),
     ]
 
@@ -352,12 +352,12 @@ def tslot20x20_two_slot_opp(
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0, 0, False, False, False, False),
-        (0, 0, True, True , False, False),
-        (0, 0, False, True , True , False),
-        (0, 0, True, False, True , False),
-        (0, 0, False, False, True , True),
-        (0, 0, True, True , True , True),
-        (0, 0, False, True , False, True),
+        (0, 0, True, True, False, False),
+        (0, 0, False, True, True, False),
+        (0, 0, True, False, True, False),
+        (0, 0, False, False, True, True),
+        (0, 0, True, True, True, True),
+        (0, 0, False, True, False, True),
         (0, 0, True, False, False, True),
     ]
 
@@ -407,12 +407,12 @@ def tslot20x20_one_slot(
     # x offset, y offset, reverse, switch, mir_x, mir_y
     symmetry = [
         (0, 0, False, False, False, False),
-        (0, 0, True, True , False, False),
-        (0, 0, False, True , True , False),
-        (0, 0, True, False, True , False),
-        (0, 0, False, False, True , True),
-        (0, 0, True, True , True , True),
-        (0, 0, False, True , False, True),
+        (0, 0, True, True, False, False),
+        (0, 0, False, True, True, False),
+        (0, 0, True, False, True, False),
+        (0, 0, False, False, True, True),
+        (0, 0, True, True, True, True),
+        (0, 0, False, True, False, True),
         (0, 0, True, False, False, True),
     ]
 

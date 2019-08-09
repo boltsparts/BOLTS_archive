@@ -59,7 +59,7 @@ def cbeam_parallel_flange(params, document):
     Vw1 = Vector(tw, (-h / 2 + tf + r), 0)
     Vw2 = Vector(tw, (h / 2 - tf - r), 0)
     Lw1 = makeLine(Vw1, Vw2)
-    Lw2 = makeLine(Vuf4 , Vlf1)
+    Lw2 = makeLine(Vuf4, Vlf1)
 
     # center of the fillets, starting right bottom, going up
     Vfc1 = Vector((tw + r), (-h / 2 + tf + r), 0)
