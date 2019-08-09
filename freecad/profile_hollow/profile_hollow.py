@@ -21,10 +21,9 @@
 # **************************************************************************************
 
 
+import Part
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part
-import Arch
 
 
 def rectangle_hollow(params, document):
@@ -94,7 +93,9 @@ def rectangle_hollow(params, document):
     face = Part.makeFace([Wo, Wi], "Part::FaceMakerBullseye")
 
     if params["arch"]:
-        part = Arch.makeStructure(name=name)
+        from ArchStructure import makeStructure
+
+        part = makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
         prof.Shape = face
@@ -175,7 +176,9 @@ def square_hollow(params, document):
     face = Part.makeFace([Wo, Wi], "Part::FaceMakerBullseye")
 
     if params["arch"]:
-        part = Arch.makeStructure(name=name)
+        from ArchStructure import makeStructure
+
+        part = makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
         prof.Shape = face
@@ -203,7 +206,9 @@ def circle_hollow(params, document):
     face = Part.makeFace([outer, inner], "Part::FaceMakerBullseye")
 
     if params["arch"]:
-        part = Arch.makeStructure(name=name)
+        from ArchStructure import makeStructure
+
+        part = makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
         prof.Shape = face

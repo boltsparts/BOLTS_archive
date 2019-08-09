@@ -21,9 +21,9 @@
 # **************************************************************************************
 
 
+import Part
 from FreeCAD import Vector
 from Part import makeCircle, makeLine
-import Part
 
 
 # ************************************************************************************************
@@ -96,8 +96,9 @@ def zbeam(params, document):
     F = Part.Face(W)
 
     if params["arch"]:
-        import Arch
-        part = Arch.makeStructure(name=name)
+        from ArchStructure import makeStructure
+
+        part = makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
         prof.Shape = F
