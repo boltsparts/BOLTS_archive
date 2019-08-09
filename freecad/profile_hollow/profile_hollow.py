@@ -58,10 +58,10 @@ def rectangle_hollow(params, document):
     Voc3 = Vector((-b / 2 + ro), (h / 2 - ro), 0)
     Voc4 = Vector((b / 2 - ro), (h / 2 - ro), 0)
     normal = Vector(0, 0, 1)
-    Coc1 = makeCircle(ro, Voc1, normal, 270,  0)
+    Coc1 = makeCircle(ro, Voc1, normal, 270, 0)
     Coc2 = makeCircle(ro, Voc2, normal, 180, 270)
     Coc3 = makeCircle(ro, Voc3, normal, 90, 180)
-    Coc4 = makeCircle(ro, Voc4, normal,  0, 90)
+    Coc4 = makeCircle(ro, Voc4, normal, 0, 90)
 
     # inner rectangle, going clockwise
     Vir1 = Vector((b / 2 - t), (h / 2 - t - ri), 0)
@@ -83,10 +83,10 @@ def rectangle_hollow(params, document):
     Vic3 = Vector((-b / 2 + t + ri), (h / 2 - t - ri), 0)
     Vic4 = Vector((b / 2 - t - ri), (h / 2 - t - ri), 0)
     normal = Vector(0, 0, 1)
-    Cic1 = makeCircle(ri, Vic1, normal, 270,  0)
+    Cic1 = makeCircle(ri, Vic1, normal, 270, 0)
     Cic2 = makeCircle(ri, Vic2, normal, 180, 270)
     Cic3 = makeCircle(ri, Vic3, normal, 90, 180)
-    Cic4 = makeCircle(ri, Vic4, normal,  0, 90)
+    Cic4 = makeCircle(ri, Vic4, normal, 0, 90)
 
     # putting the segments together, make wires, make faces, extrude them and cut them
     Wo = Part.Wire([Lor1, Coc1, Lor2, Coc2, Lor3, Coc3, Lor4, Coc4, ])
@@ -139,10 +139,10 @@ def square_hollow(params, document):
     Voc3 = Vector((-b / 2 + ro), (b / 2 - ro), 0)
     Voc4 = Vector((b / 2 - ro), (b / 2 - ro), 0)
     normal = Vector(0, 0, 1)
-    Coc1 = makeCircle(ro, Voc1, normal, 270,  0)
+    Coc1 = makeCircle(ro, Voc1, normal, 270, 0)
     Coc2 = makeCircle(ro, Voc2, normal, 180, 270)
     Coc3 = makeCircle(ro, Voc3, normal, 90, 180)
-    Coc4 = makeCircle(ro, Voc4, normal,  0, 90)
+    Coc4 = makeCircle(ro, Voc4, normal, 0, 90)
 
     # inner rectangle, going clockwise
     Vir1 = Vector((b / 2 - t), (b / 2 - t - ri), 0)
@@ -164,10 +164,10 @@ def square_hollow(params, document):
     Vic3 = Vector((-b / 2 + t + ri), (b / 2 - t - ri), 0)
     Vic4 = Vector((b / 2 - t - ri), (b / 2 - t - ri), 0)
     normal = Vector(0, 0, 1)
-    Cic1 = makeCircle(ri, Vic1, normal, 270,  0)
+    Cic1 = makeCircle(ri, Vic1, normal, 270, 0)
     Cic2 = makeCircle(ri, Vic2, normal, 180, 270)
     Cic3 = makeCircle(ri, Vic3, normal, 90, 180)
-    Cic4 = makeCircle(ri, Vic4, normal,  0, 90)
+    Cic4 = makeCircle(ri, Vic4, normal, 0, 90)
 
     # putting the segments together, make wires, make faces, extrude them and cut them
     Wo = Part.Wire([Lor1, Coc1, Lor2, Coc2, Lor3, Coc3, Lor4, Coc4, ])

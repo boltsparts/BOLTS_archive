@@ -538,10 +538,10 @@ vslot_outline = [
 ]
 
 space_symmetry = [
-    (0,  0, False, False, True,  False),
+    (0, 0, False, False, True, False),
     (-w, 0, True, False, False, False),
-    (-w, 0, False, False, False,  True),
-    (0,  0, True, False, True, True)
+    (-w, 0, False, False, False, True),
+    (0, 0, True, False, True, True)
 ]
 
 # big spaces

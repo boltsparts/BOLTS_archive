@@ -80,8 +80,8 @@ def ibeam_parallel_flange(params, document):
     normal = Vector(0, 0, 1)
     Cfc1 = makeCircle(r, Vfc1, normal, 180, 270)
     Cfc2 = makeCircle(r, Vfc2, normal, 90, 180)
-    Cfc3 = makeCircle(r, Vfc3, normal,  0, 90)
-    Cfc4 = makeCircle(r, Vfc4, normal, 270,  0)
+    Cfc3 = makeCircle(r, Vfc3, normal, 0, 90)
+    Cfc4 = makeCircle(r, Vfc4, normal, 270, 0)
 
     # putting the segments together make a wire, a face and extrude it
     W = Part.Wire([Llf1, Llf2, Llf3, Llf4, Llf5, Cfc1, Lw1, Cfc2, Luf1, Luf2, Luf3, Luf4, Luf5, Cfc3, Lw2, Cfc4])
@@ -159,7 +159,7 @@ def ibeam_angled_flange(params, document):
         lines.append(makeLine(plast, pcur))
 
     fillets = [
-        (slice(0, 2), r1), (slice(1, 3), r2), (slice(5, 7),  r2), (slice(6, 8),  r1),
+        (slice(0, 2), r1), (slice(1, 3), r2), (slice(5, 7), r2), (slice(6, 8), r1),
         (slice(8, 10), r1), (slice(9, 11), r2), (slice(13, 15), r1), (slice(14, 16), r2)
     ]
     # add fillets in reverse order to not disturb the counting, as edges are added
