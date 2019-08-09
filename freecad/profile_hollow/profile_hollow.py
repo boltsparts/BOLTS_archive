@@ -31,7 +31,7 @@ def rectangle_hollow(params, document):
     h = params['h']
     b = params['b']
     t = params['t']
-    l = params['l']
+    le = params['l']
     name = params['name']
 
     # Definition in EN standard
@@ -100,19 +100,19 @@ def rectangle_hollow(params, document):
         prof.Shape = face
         part.Base = prof
 
-        part.Height = l
+        part.Height = le
     else:
         part = document.addObject("Part::Feature", "BOLTS_part")
         part.Label = name
 
-        beam = face.extrude(Vector(0, 0, l))
+        beam = face.extrude(Vector(0, 0, le))
         part.Shape = beam
 
 
 def square_hollow(params, document):
     b = params['b']
     t = params['t']
-    l = params['l']
+    le = params['l']
     name = params['name']
 
     # Definition in EN standard
@@ -181,19 +181,19 @@ def square_hollow(params, document):
         prof.Shape = face
         part.Base = prof
 
-        part.Height = l
+        part.Height = le
     else:
         part = document.addObject("Part::Feature", "BOLTS_part")
         part.Label = name
 
-        beam = face.extrude(Vector(0, 0, l))
+        beam = face.extrude(Vector(0, 0, le))
         part.Shape = beam
 
 
 def circle_hollow(params, document):
     od = params['D']
     t = params['t']
-    l = params['l']
+    le = params['l']
     name = params['name']
 
     id = od - t
@@ -209,10 +209,10 @@ def circle_hollow(params, document):
         prof.Shape = face
         part.Base = prof
 
-        part.Height = l
+        part.Height = le
     else:
         part = document.addObject("Part::Feature", "BOLTS_part")
         part.Label = name
 
-        beam = face.extrude(Vector(0, 0, l))
+        beam = face.extrude(Vector(0, 0, le))
         part.Shape = beam

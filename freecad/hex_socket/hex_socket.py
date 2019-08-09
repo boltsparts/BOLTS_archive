@@ -53,13 +53,13 @@ def hex_socket1(params, document):
     t = params['t']
     L = params['L']
     h_max = params['h_max']
-    l = params['l']
+    le = params['l']
 
-    if l <= L:
-        b = l - k_max - h_max
-    elif l < 125:
+    if le <= L:
+        b = le - k_max - h_max
+    elif le < 125:
         b = b1
-    elif l < 200:
+    elif le < 200:
         b = b2
     else:
         b = b3
@@ -67,7 +67,7 @@ def hex_socket1(params, document):
     if b < 0:
         raise ValueError("Invalid threaded length: %s" % b)
 
-    h = l - k_max - b
+    h = le - k_max - b
 
     # head
     head = makeCone(0.5 * d2, 0.5 * d1, k_max)
@@ -105,12 +105,12 @@ def hex_socket2(params, document):
     s = params['s']
     t = params['t_min']
     L = params['L']
-    l = params['l']
+    le = params['l']
 
-    if l <= L:
+    if le <= L:
         h = 0
     else:
-        h = l - b
+        h = le - b
 
     if h < 0:
         raise ValueError("l is too short, resulting in negative h")

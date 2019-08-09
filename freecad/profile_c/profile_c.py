@@ -34,7 +34,7 @@ def cbeam_parallel_flange(params, document):
     tf = params['tf']
     tw = params['tw']
     r = params['r']
-    l = params['l']
+    le = params['l']
     name = params['name']
 
     # lower flange, starting at the end of web, going counter-clockwise
@@ -79,10 +79,10 @@ def cbeam_parallel_flange(params, document):
         prof.Shape = F
         part.Base = prof
 
-        part.Height = l
+        part.Height = le
     else:
         part = document.addObject("Part::Feature", "BOLTS_part")
         part.Label = name
 
-        beam = F.extrude(Vector(0, 0, l))
+        beam = F.extrude(Vector(0, 0, le))
         part.Shape = beam
