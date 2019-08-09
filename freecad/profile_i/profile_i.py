@@ -83,7 +83,24 @@ def ibeam_parallel_flange(params, document):
     Cfc4 = makeCircle(r, Vfc4, normal, 270, 0)
 
     # putting the segments together make a wire, a face and extrude it
-    W = Part.Wire([Llf1, Llf2, Llf3, Llf4, Llf5, Cfc1, Lw1, Cfc2, Luf1, Luf2, Luf3, Luf4, Luf5, Cfc3, Lw2, Cfc4])
+    W = Part.Wire([
+        Llf1,
+        Llf2,
+        Llf3,
+        Llf4,
+        Llf5,
+        Cfc1,
+        Lw1,
+        Cfc2,
+        Luf1,
+        Luf2,
+        Luf3,
+        Luf4,
+        Luf5,
+        Cfc3,
+        Lw2,
+        Cfc4,
+    ])
     F = Part.Face(W)
 
     if params["arch"]:
