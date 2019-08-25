@@ -45,17 +45,28 @@ function BOLTS_convert_to_default_unit(value,unit) =
 
 function get_dim(dims,pname) = dims[search([pname],dims,1)[0]][1];
 
-//see http://rocklinux.net/pipermail/openscad/2013-September/005522.html
 function type(P) =
-	(len(P) == undef)
-	?	(P == true || P == false)
-		? "boolean"
-		: (P == undef)
-			? "undef"
-			: "number"
-	:	(P + [1] == undef)
-		?	"string"
-		:	"vector";
+	(version()[0] >= 2019) //check for is_*() functions
+	?	(is_undef(P))
+		?	"undef"
+		:	(is_num(P) || is_bool(P))
+			? (is_bool(P))
+			  ? "boolean"
+			  : "number"
+			: (is_string(P))
+			  ? "string"
+			  : "vector"
+	//backwards-compatible logic
+	//see http://rocklinux.net/pipermail/openscad/2013-September/005522.html
+	:	(len(P) == undef)
+		?	(P == true || P == false)
+			? "boolean"
+			: (P == undef)
+				? "undef"
+				: "number"
+		:	(P + [1] == undef)
+			?	"string"
+			:	"vector";
 
 module BOLTS_check_parameter_type(part_name,name,value,param_type){
 	if(param_type=="Length (mm)"){
