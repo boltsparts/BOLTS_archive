@@ -75,7 +75,7 @@ For BOLTS for OpenSCAD:
 For BOLTS for FreeCAD
 
 * FreeCAD (http://freecadweb.org/)
-* PyQt4
+* PyQt5
 
 For BOLTS for SolidWorks
 

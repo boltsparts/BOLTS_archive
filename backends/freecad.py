@@ -19,7 +19,7 @@ from shutil import copy, copytree, copyfile, rmtree
 # pylint: disable=W0622
 from codecs import open
 from datetime import datetime
-from PyQt4 import uic
+from PyQt5 import uic
 
 from .common import Backend
 from . import license
