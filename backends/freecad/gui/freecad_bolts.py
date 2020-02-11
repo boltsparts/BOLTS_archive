@@ -39,18 +39,18 @@ if USE_PYSIDE:
 	def unpack(x):
 		return x
 else:
-	from PyQt4 import QtGui, QtCore
+	from PyQt5 import QtGui, QtCore
 	from bolts_widget import Ui_BoltsWidget
-	from PyQt4.QtGui import QDockWidget as QBoltsWidget
+	from PyQt5.QtGui import QDockWidget as QBoltsWidget
 	from value_widget import Ui_ValueWidget
-	from PyQt4.QtGui import QWidget as QValueWidget
+	from PyQt5.QtGui import QWidget as QValueWidget
 	from bool_widget import Ui_BoolWidget
-	from PyQt4.QtGui import QWidget as QBoolWidget
+	from PyQt5.QtGui import QWidget as QBoolWidget
 	from tableindex_widget import Ui_TableIndexWidget
-	from PyQt4.QtGui import QWidget as QTableIndexWidget
+	from PyQt5.QtGui import QWidget as QTableIndexWidget
 	from property_widget import Ui_PropertyWidget
-	from PyQt4.QtGui import QWidget as QPropertyWidget
-	from PyQt4.QtCore import pyqtSlot as Slot
+	from PyQt5.QtGui import QWidget as QPropertyWidget
+	from PyQt5.QtCore import pyqtSlot as Slot
 	def unpack(x):
 		return x.toPyObject()
 
