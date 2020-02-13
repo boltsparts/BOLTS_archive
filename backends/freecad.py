@@ -25,9 +25,11 @@ from .common import Backend
 from . import license
 from .errors import *
 
+
 class FreeCADBackend(Backend):
     def __init__(self, repo, databases):
         Backend.__init__(self, repo, "freecad", databases, ["freecad"])
+
     def write_output(self, out_path, **kwargs):
         args = self.validate_arguments(kwargs, ["target_license", "version"])
 
