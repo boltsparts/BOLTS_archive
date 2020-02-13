@@ -23,7 +23,7 @@ from PyQt5 import uic
 
 from .common import Backend
 from . import license
-from .errors import *
+from .errors import IncompatibleLicenseError
 
 
 class FreeCADBackend(Backend):
