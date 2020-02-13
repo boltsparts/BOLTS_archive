@@ -34,29 +34,29 @@ class FreeCADBackend(Backend):
         self.clear_output_dir(out_path)
         bolts_path = join(out_path,"BOLTS")
 
-        #generate macro
+        # generate macro
         start_macro = open(join(out_path,"start_bolts.FCMacro"),"w")
         start_macro.write("import BOLTS\n")
         start_macro.write("BOLTS.show_widget()\n")
         start_macro.close()
 
-        #copy files
-        #bolttools
+        # copy files
+        # bolttools
         if not license.is_combinable_with("LGPL 2.1+",args["target_license"]):
             raise IncompatibleLicenseError(
                 "bolttools is LGPL 2.1+, which is not compatible with %s" % args["target_license"])
         copytree(join(self.repo.path,"bolttools"),join(bolts_path,"bolttools"))
-        #remove the test suite and documentation, to save space
+        # remove the test suite and documentation, to save space
         rmtree(join(bolts_path,"bolttools","test_blt"))
 
-        #generate version file
+        # generate version file
         date = datetime.now()
         version_file = open(join(bolts_path,"VERSION"),"w")
         version_file.write("%s\n%d-%d-%d\n%s\n" %
             (args["version"], date.year, date.month, date.day, args["target_license"]))
         version_file.close()
 
-        #freecad gui code
+        # freecad gui code
         if not license.is_combinable_with("LGPL 2.1+",args["target_license"]):
             raise IncompatibleLicenseError(
                 "FreeCAD gui files are LGPL 2.1+, which is not compatible with %s" % args["target_license"])
@@ -72,7 +72,7 @@ class FreeCADBackend(Backend):
         copyfile(join(self.repo.path,"backends","freecad","init.py"),join(bolts_path,"__init__.py"))
         open(join(bolts_path,"gui","__init__.py"),"w").close()
 
-        #compile ui files
+        # compile ui files
         uic.compileUiDir(join(bolts_path,"gui"))
 
         for coll, in self.repo.itercollections():
