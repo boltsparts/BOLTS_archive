@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 module hex_socket1(d1,d2,b1,b2,b3,k_max,s,t,L,h_max,l){
-	b = (l <= L) ? l - k_max - h_max : 
+	b = (l <= L) ? l - k_max - h_max :
 		l < 125 ? b1 :
 		l < 200 ? b2 :
 		b3;
@@ -43,7 +43,7 @@ module hex_socket1(d1,d2,b1,b2,b3,k_max,s,t,L,h_max,l){
 
 module hex_socket2(d1,d2,b,k,s,t_min,L,l){
 	h_unthreaded = (l<= L) ? 0 : l - b;
-	h_threaded = (l<= L) ? l : l - b;
+	h_threaded = (l<= L) ? l : b;
 
 	BOLTS_check_dimension_positive(h,"l too short");
 
@@ -59,4 +59,3 @@ module hex_socket2(d1,d2,b,k,s,t_min,L,l){
 		translate([0,0,-k]) BOLTS_hex_socket_neg(t_min,s);
 	}
 }
-
