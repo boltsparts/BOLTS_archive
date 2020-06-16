@@ -26,7 +26,7 @@
         defaults: {detailed: false}
       classids: [tslot20x20_2s]
     - name: tslot_20x20_2sa_base
-      arguments: [l]
+      arguments: [l, detailed]
       parameters:
         free: [detailed]
         types: {detailed: Bool}
