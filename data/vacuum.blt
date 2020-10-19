@@ -35,7 +35,7 @@
 id: vacuum
 name: Vacuum
 description: Vacuum equipment
-author: KOLANICH
+author: KOLANICH <>
 license: Unlicense <http://unlicense.org>
 blt-version: 0.4
 classes:
@@ -76,7 +76,7 @@ classes:
           - index: dn
             columns: [partLen, innerDiameter, outerDiameter, flangeDiameter, flangeSize, grooveRadius, openingDepth, openingDiameter, holeDiameter, holeTrDiameter]
             data:
-                #dn     [innerDiameter, outerDiameter, flangeDiameter, flangeSize, grooveRadius, openingDepth, openingDiameter, holeDiameter, holeTrDiameter]
-                DN100:  [    100,            104,            152,          20,          1.5,          9,              106,            0,         130.3]
+                #dn     [   partLen,      innerDiameter, outerDiameter, flangeDiameter, flangeSize, grooveRadius, openingDepth, openingDiameter, holeDiameter, holeTrDiameter]
+                DN100:  [    1000,            100,            104,            152,          20,          1.5,          9,              106,            0,         130.3]
     source: http://www.tracepartsonline.net/(S(c314dufymcnxxurthiwo4pow))/PartDetails.aspx?PartFamilyID=30-03062015-098588&PartID=30-03062015-098588
 ...

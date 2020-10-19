@@ -1,7 +1,7 @@
 ---
 - filename: CF-Flange.scad
   type: module
-  author: KOLANICH
+  author: KOLANICH <>
   license: Unlicense <https://unlicense.org>
   modules:
     - name: CFFlange
