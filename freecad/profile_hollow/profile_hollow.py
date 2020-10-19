@@ -194,16 +194,16 @@ def square_hollow(params, document):
 
 
 def circle_hollow(params, document):
-    od = params["D"]
+    outer_diameter = params["D"]
     t = params["t"]
     le = params["l"]
     name = params["name"]
 
-    id = od - 2 * t
+    inner_diameter = outer_diameter - 2 * t
 
-    outer = Part.Wire(Part.makeCircle(0.5 * od))
-    inner = Part.Wire(Part.makeCircle(0.5 * id))
-    face = Part.makeFace([outer, inner], "Part::FaceMakerBullseye")
+    outer_wire = Part.Wire(Part.makeCircle(0.5 * outer_diameter))
+    inner_wire = Part.Wire(Part.makeCircle(0.5 * inner_diameter))
+    hollow_face = Part.makeFace([outer_wire, inner_wire], "Part::FaceMakerBullseye")
 
     if params["arch"]:
         from ArchStructure import makeStructure
@@ -211,7 +211,7 @@ def circle_hollow(params, document):
         part = makeStructure(name=name)
 
         prof = document.addObject("Part::Feature", "Profile")
-        prof.Shape = face
+        prof.Shape = hollow_face
         part.Base = prof
 
         part.Height = le
@@ -219,5 +219,5 @@ def circle_hollow(params, document):
         part = document.addObject("Part::Feature", "BOLTS_part")
         part.Label = name
 
-        beam = face.extrude(Vector(0, 0, le))
+        beam = hollow_face.extrude(Vector(0, 0, le))
         part.Shape = beam
