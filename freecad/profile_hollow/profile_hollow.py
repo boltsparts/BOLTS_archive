@@ -199,7 +199,7 @@ def circle_hollow(params, document):
     le = params["l"]
     name = params["name"]
 
-    id = od - t
+    id = od - 2 * t
 
     outer = Part.Wire(Part.makeCircle(0.5 * od))
     inner = Part.Wire(Part.makeCircle(0.5 * id))
