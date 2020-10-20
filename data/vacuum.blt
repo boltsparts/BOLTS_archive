@@ -44,12 +44,16 @@ license: Unlicense <http://unlicense.org>
 blt-version: 0.4
 classes:
   - id: vacuumflange
+    names:
+      name: flanges
+      labeling: flange %(dn)s
+      description: flanges 
     standards:
       body: EN
       standard: CF
       group: CF
       labeling: CF flange %(dn)s
-      description: CF flange %(dn)s
+      description: EN CF flanges 
     parameters:
         free: [dn]
         defaults: {dn: "DN100"}
@@ -66,6 +70,7 @@ classes:
           holeDiameter: Length (mm)
           holeTrDiameter: Length (mm)
         description:
+          dn: DN type
           partLen: The length of the part
           innerDiameter: The inner diameter of the part
           outerDiameter: the outer diameter of the part
