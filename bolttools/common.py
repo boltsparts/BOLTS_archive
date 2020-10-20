@@ -35,7 +35,10 @@ def parse_angled(string):
 	RE_ANGLED = re.compile("([^<]*)<([^>]*)>")
 	match = RE_ANGLED.match(string)
 	if match is None:
-		raise MalformedStringError("Expected string containing <>")
+		raise MalformedStringError(
+			"String '{}' does not contain expected '<>'"
+			.format(string)
+		)
 	return match.group(1).strip(), match.group(2).strip()
 
 def check_schema(yaml_dict, element_name, mandatory_fields, optional_fields):
