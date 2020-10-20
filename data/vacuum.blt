@@ -31,6 +31,10 @@
 
 # For more information, please refer to <http://unlicense.org/>
 #.-
+
+# see https://github.com/boltsparts/BOLTS/pull/169
+# see https://en.wikipedia.org/wiki/Vacuum_flange
+
 ---
 id: vacuum
 name: Vacuum
