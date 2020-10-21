@@ -86,6 +86,7 @@ def add_part(collection, base, params, doc):
 
 # custom widgets
 
+
 class PropertyWidget(QPropertyWidget):
     def __init__(self, parent, prop, value):
         QPropertyWidget.__init__(self, parent)
@@ -94,6 +95,7 @@ class PropertyWidget(QPropertyWidget):
         self.ui.prop.setTextFormat(QtCore.Qt.RichText)
         self.ui.prop.setText("<b>%s:</b>" % prop)
         self.ui.value.setText(value)
+
 
 class LengthWidget(QValueWidget):
     def __init__(self, parent, label, default):
@@ -109,6 +111,7 @@ class LengthWidget(QValueWidget):
     def getValue(self):
         return float(self.ui.valueEdit.text())
 
+
 class NumberWidget(QValueWidget):
     def __init__(self, parent, label, default):
         QValueWidget.__init__(self, parent)
@@ -122,6 +125,7 @@ class NumberWidget(QValueWidget):
 
     def getValue(self):
         return float(self.ui.valueEdit.text())
+
 
 class AngleWidget(QValueWidget):
     def __init__(self, parent, label, default):
@@ -138,6 +142,7 @@ class AngleWidget(QValueWidget):
     def getValue(self):
         return float(self.ui.valueEdit.text())
 
+
 class StringWidget(QValueWidget):
     def __init__(self, parent, label, default):
         QValueWidget.__init__(self, parent)
@@ -148,6 +153,7 @@ class StringWidget(QValueWidget):
 
     def getValue(self):
         return self.ui.valueEdit.text()
+
 
 class BoolWidget(QBoolWidget):
     def __init__(self, parent, label, default):
@@ -163,6 +169,7 @@ class BoolWidget(QBoolWidget):
     def getValue(self):
         return self.ui.checkBox.isChecked()
 
+
 class TableIndexWidget(QTableIndexWidget):
     def __init__(self, parent, label, keys, default):
         QTableIndexWidget.__init__(self, parent)
@@ -177,6 +184,7 @@ class TableIndexWidget(QTableIndexWidget):
 
     def getValue(self):
         return str(self.ui.comboBox.currentText())
+
 
 class BoltsWidget(QBoltsWidget):
     def __init__(self, repo, freecad):
