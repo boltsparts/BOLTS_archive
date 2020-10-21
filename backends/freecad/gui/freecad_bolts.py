@@ -12,8 +12,7 @@
 # Lesser General Public License for more details.
 #
 # You should have received a copy of the GNU Lesser General Public
-# License along with this library; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import importlib
 import sys
@@ -35,13 +34,25 @@ if USE_PYSIDE:
 
     try:
         bolts_path = dirname(__file__)
-        Ui_BoltsWidget, QBoltsWidget = uic.loadUiType(join(bolts_path, 'bolts_widget.ui'))
-        Ui_ValueWidget, QValueWidget = uic.loadUiType(join(bolts_path, 'value_widget.ui'))
-        Ui_BoolWidget, QBoolWidget = uic.loadUiType(join(bolts_path, 'bool_widget.ui'))
-        Ui_TableIndexWidget, QTableIndexWidget = uic.loadUiType(join(bolts_path, 'tableindex_widget.ui'))
-        Ui_PropertyWidget, QPropertyWidget = uic.loadUiType(join(bolts_path, 'property_widget.ui'))
+        Ui_BoltsWidget, QBoltsWidget = uic.loadUiType(
+            join(bolts_path, 'bolts_widget.ui')
+        )
+        Ui_ValueWidget, QValueWidget = uic.loadUiType(
+            join(bolts_path, 'value_widget.ui')
+        )
+        Ui_BoolWidget, QBoolWidget = uic.loadUiType(
+            join(bolts_path, 'bool_widget.ui')
+        )
+        Ui_TableIndexWidget, QTableIndexWidget = uic.loadUiType(
+            join(bolts_path, 'tableindex_widget.ui')
+        )
+        Ui_PropertyWidget, QPropertyWidget = uic.loadUiType(
+            join(bolts_path, 'property_widget.ui')
+        )
     except ImportError:
-        FreeCAD.Console.PrintError("uic import failed. Make sure that the pyside tools are installed")
+        FreeCAD.Console.PrintError(
+            "uic import failed. Make sure that the pyside tools are installed"
+        )
         raise
     from PySide.QtCore import Slot
 
@@ -107,7 +118,9 @@ class LengthWidget(QValueWidget):
         self.ui.label.setText(label)
         self.ui.valueEdit.setText(default)
 
-        self.validator = QtGui.QDoubleValidator(0, sys.float_info.max, 4, self)
+        self.validator = QtGui.QDoubleValidator(
+            0, sys.float_info.max, 4, self
+        )
         self.ui.valueEdit.setValidator(self.validator)
 
     def getValue(self):
@@ -201,14 +214,23 @@ class BoltsWidget(QBoltsWidget):
         self.param_widgets = {}
         self.props_widgets = {}
 
-        self.coll_root = QtGui.QTreeWidgetItem(self.ui.partsTree, ['Collections', 'Ordered by collections'])
+        self.coll_root = QtGui.QTreeWidgetItem(
+            self.ui.partsTree,
+            ['Collections', 'Ordered by collections']
+        )
         self.coll_root.setData(0, 32, None)
-        self.std_root = QtGui.QTreeWidgetItem(self.ui.partsTree, ['Standard', 'Ordered by issuing body'])
+        self.std_root = QtGui.QTreeWidgetItem(
+            self.ui.partsTree,
+            ['Standard', 'Ordered by issuing body']
+        )
         self.std_root.setData(0, 32, None)
 
         # set up collections
         for coll, in self.repo.itercollections():
-            coll_item = QtGui.QTreeWidgetItem(self.coll_root, [coll.name, coll.description])
+            coll_item = QtGui.QTreeWidgetItem(
+                self.coll_root,
+                [coll.name, coll.description]
+            )
             coll_item.setData(0, 32, coll)
 
             multinames = {}
@@ -216,28 +238,52 @@ class BoltsWidget(QBoltsWidget):
 
             clasids = []
             # names
-            for name, multiname in self.dbs["freecad"].iternames(['name', 'multiname'], filter_collection=coll):
-                clasids.append(self.repo.class_names.get_src(name).id)  # append classid
+            for name, multiname in self.dbs["freecad"].iternames(
+                ['name', 'multiname'], filter_collection=coll
+            ):
+                # append classid
+                clasids.append(self.repo.class_names.get_src(name).id)
                 item = None
                 if multiname is None:
-                    item = QtGui.QTreeWidgetItem(coll_item, [name.name.get_nice(), name.description])
+                    item = QtGui.QTreeWidgetItem(
+                        coll_item,
+                        [name.name.get_nice(), name.description]
+                    )
                 else:
                     if multiname not in multinames:
-                        multinames[multiname] = QtGui.QTreeWidgetItem(coll_item, [multiname.group.get_nice(), ""])
-                    item = QtGui.QTreeWidgetItem(multinames[multiname], [name.name.get_nice(), name.description])
+                        multinames[multiname] = QtGui.QTreeWidgetItem(
+                            coll_item,
+                            [multiname.group.get_nice(), ""]
+                        )
+                    item = QtGui.QTreeWidgetItem(
+                        multinames[multiname],
+                        [name.name.get_nice(), name.description]
+                    )
 
                 item.setData(0, 32, name)
 
             # single names
-            for std, multistd in self.dbs["freecad"].iterstandards(['standard', 'multistandard'], filter_collection=coll):
+            for std, multistd in self.dbs["freecad"].iterstandards(
+                ['standard', 'multistandard'], filter_collection=coll
+            ):
                 item = None
-                if self.repo.class_standards.get_src(std).id not in clasids:  # only add item if it is not in classids
+                # only add item if it is not in classids
+                if self.repo.class_standards.get_src(std).id not in clasids:
                     if multistd is None:
-                        item = QtGui.QTreeWidgetItem(coll_item, [std.standard.get_nice(), std.description])
+                        item = QtGui.QTreeWidgetItem(
+                            coll_item,
+                            [std.standard.get_nice(), std.description]
+                        )
                     else:
                         if multistd not in multistds:
-                            multistds[multistd] = QtGui.QTreeWidgetItem(coll_item, [multistd.standard.get_nice(), ""])
-                        item = QtGui.QTreeWidgetItem(multistds[multistd], [std.standard.get_nice(), std.description])
+                            multistds[multistd] = QtGui.QTreeWidgetItem(
+                                coll_item,
+                                [multistd.standard.get_nice(), ""]
+                            )
+                        item = QtGui.QTreeWidgetItem(
+                            multistds[multistd],
+                            [std.standard.get_nice(), std.description]
+                        )
 
                     item.setData(0, 32, std)
 
@@ -245,16 +291,30 @@ class BoltsWidget(QBoltsWidget):
 
         # set up standards
         for body, in repo.iterbodies():
-            std_item = QtGui.QTreeWidgetItem(self.std_root, [body.body, "Standards issued by %s" % body.body])
+            std_item = QtGui.QTreeWidgetItem(
+                self.std_root,
+                [body.body, "Standards issued by %s" % body.body]
+            )
             std_item.setData(0, 32, None)
             # single standards
-            for std, multistd in self.dbs["freecad"].iterstandards(['standard', 'multistandard'], filter_body=body):
+            for std, multistd in self.dbs["freecad"].iterstandards(
+                ['standard', 'multistandard'], filter_body=body
+            ):
                 if multistd is None:
-                    item = QtGui.QTreeWidgetItem(std_item, [std.standard.get_nice(), std.description])
+                    item = QtGui.QTreeWidgetItem(
+                        std_item,
+                        [std.standard.get_nice(), std.description]
+                    )
                 else:
                     if multistd not in multistds:
-                        multistds[multistd] = QtGui.QTreeWidgetItem(std_item, [multistd.standard.get_nice(), ""])
-                    item = QtGui.QTreeWidgetItem(multistds[multistd], [std.standard.get_nice(), std.description])
+                        multistds[multistd] = QtGui.QTreeWidgetItem(
+                            std_item,
+                            [multistd.standard.get_nice(), ""]
+                        )
+                    item = QtGui.QTreeWidgetItem(
+                        multistds[multistd],
+                        [std.standard.get_nice(), std.description]
+                    )
 
                 item.setData(0, 32, std)
 
@@ -265,7 +325,13 @@ class BoltsWidget(QBoltsWidget):
         for child in children:
             self.remove_empty_items(child)
             data = unpack(child.data(0, 32))
-            if not (isinstance(data, ClassName) or isinstance(data, ClassStandard)) and child.childCount() == 0:
+            if (
+                not (
+                    isinstance(data, ClassName)
+                    or isinstance(data, ClassStandard)
+                )
+                and child.childCount() == 0
+            ):
                 root_item.removeChild(child)
 
     def setup_param_widgets(self, cl, base):
@@ -276,19 +342,34 @@ class BoltsWidget(QBoltsWidget):
             p_type = params.types[p]
             default = str(params.defaults[p])
             if p_type == "Length (mm)":
-                self.param_widgets[p] = LengthWidget(self.ui.params, p + " (mm)", default)
+                self.param_widgets[p] = LengthWidget(
+                    self.ui.params, p + " (mm)", default
+                )
             elif p_type == "Length (in)":
-                self.param_widgets[p] = LengthWidget(self.ui.params, p + " (in)", default)
+                self.param_widgets[p] = LengthWidget(
+                    self.ui.params, p + " (in)", default
+                )
             elif p_type == "Number":
-                self.param_widgets[p] = NumberWidget(self.ui.params, p, default)
+                self.param_widgets[p] = NumberWidget(
+                    self.ui.params, p, default
+                )
             elif p_type == "Angle (deg)":
-                self.param_widgets[p] = AngleWidget(self.ui.params, p + " (deg)", default)
+                self.param_widgets[p] = AngleWidget(
+                    self.ui.params, p + " (deg)", default
+                )
             elif p_type == "Bool":
-                self.param_widgets[p] = BoolWidget(self.ui.params, p, default)
+                self.param_widgets[p] = BoolWidget(
+                    self.ui.params, p, default
+                )
             elif p_type == "Table Index":
-                self.param_widgets[p] = TableIndexWidget(self.ui.params, p, params.choices[p], default)
+                self.param_widgets[p] = TableIndexWidget(
+                    self.ui.params, p, params.choices[p], default
+                )
             else:
-                raise ValueError("Unknown type encountered for parameter %s: %s" % (p, p_type))
+                raise ValueError(
+                    "Unknown type encountered for parameter %s: %s"
+                    % (p, p_type)
+                )
             self.param_widgets[p].setToolTip(params.description[p])
 
             # add them to layout
@@ -300,10 +381,18 @@ class BoltsWidget(QBoltsWidget):
 
     def setup_props_collection(self, coll):
         # construct widgets
-        self.props_widgets.append(PropertyWidget(self.ui.props, "Name", coll.name))
-        self.props_widgets.append(PropertyWidget(self.ui.props, "Description", coll.description))
-        self.props_widgets.append(PropertyWidget(self.ui.props, "Authors", ", ".join(coll.author_names)))
-        self.props_widgets.append(PropertyWidget(self.ui.props, "License", coll.license_name))
+        self.props_widgets.append(PropertyWidget(
+            self.ui.props, "Name", coll.name
+        ))
+        self.props_widgets.append(PropertyWidget(
+            self.ui.props, "Description", coll.description
+        ))
+        self.props_widgets.append(PropertyWidget(
+            self.ui.props, "Authors", ", ".join(coll.author_names)
+        ))
+        self.props_widgets.append(PropertyWidget(
+            self.ui.props, "License", coll.license_name
+        ))
 
         # add them to layout
         for widget in self.props_widgets:
@@ -311,18 +400,36 @@ class BoltsWidget(QBoltsWidget):
 
     def setup_props_standard(self, std):
         # construct widgets
-        self.props_widgets.append(PropertyWidget(self.ui.props, "Name", std.standard.get_nice()))
+        self.props_widgets.append(PropertyWidget(
+            self.ui.props, "Name", std.standard.get_nice()
+        ))
         if std.description:
-            self.props_widgets.append(PropertyWidget(self.ui.props, "Description", std.description))
+            self.props_widgets.append(PropertyWidget(
+                self.ui.props, "Description", std.description
+            ))
         if std.status == "withdrawn":
-            self.props_widgets.append(PropertyWidget(self.ui.props, "Status", "<font color='red'>%s</font>" % std.status))
+            self.props_widgets.append(PropertyWidget(
+                self.ui.props,
+                "Status",
+                "<font color='red'>%s</font>" % std.status
+            ))
         else:
-            self.props_widgets.append(PropertyWidget(self.ui.props, "Status", "<font color='green'>%s</font>" % std.status))
+            self.props_widgets.append(PropertyWidget(
+                self.ui.props,
+                "Status",
+                "<font color='green'>%s</font>" % std.status
+            ))
         if std.replaces is not None:
-            self.props_widgets.append(PropertyWidget(self.ui.props, "Replaces", std.replaces))
+            self.props_widgets.append(PropertyWidget(
+                self.ui.props, "Replaces", std.replaces
+            ))
         if std.replacedby is not None:
-            self.props_widgets.append(PropertyWidget(self.ui.props, "Replacedby", std.replacedby))
-        self.props_widgets.append(PropertyWidget(self.ui.props, "ID", std.get_id()))
+            self.props_widgets.append(PropertyWidget(
+                self.ui.props, "Replacedby", std.replacedby
+            ))
+        self.props_widgets.append(PropertyWidget(
+            self.ui.props, "ID", std.get_id()
+        ))
 
         # add them to layout
         for widget in self.props_widgets:
@@ -330,10 +437,16 @@ class BoltsWidget(QBoltsWidget):
 
     def setup_props_name(self, name):
         # construct widgets
-        self.props_widgets.append(PropertyWidget(self.ui.props, "Name", name.name.get_nice()))
+        self.props_widgets.append(PropertyWidget(
+            self.ui.props, "Name", name.name.get_nice()
+        ))
         if name.description:
-            self.props_widgets.append(PropertyWidget(self.ui.props, "Description", name.description))
-        self.props_widgets.append(PropertyWidget(self.ui.props, "ID", name.get_id()))
+            self.props_widgets.append(PropertyWidget(
+                self.ui.props, "Description", name.description
+            ))
+        self.props_widgets.append(PropertyWidget(
+            self.ui.props, "ID", name.get_id()
+        ))
 
         # add them to layout
         for widget in self.props_widgets:
@@ -393,7 +506,11 @@ class BoltsWidget(QBoltsWidget):
             QtGui.QErrorMessage(self).showMessage(str(e))
         except Exception as e:
             FreeCAD.Console.PrintMessage(e)
-            QtGui.QErrorMessage(self).showMessage("An error occurred when trying to add the part: %s\nParameter Values: %s" % (e, params))
+            QtGui.QErrorMessage(self).showMessage(
+                "An error occurred when trying to add the part: "
+                "%s\nParameter Values: %s"
+                % (e, params)
+            )
 
     @Slot()
     def on_partsTree_itemSelectionChanged(self):
