@@ -374,11 +374,13 @@ class BoltsWidget(QBoltsWidget):
                     # A undefined value is not necessarily fatal
                     continue
                 if hasattr(FreeCAD.Units, "parseQuantity"):
-                    params[key] = FreeCAD.Units.parseQuantity("%g %s" %
-                        (params[key], lengths[tp])).Value
+                    params[key] = FreeCAD.Units.parseQuantity(
+                        "%g %s" % (params[key], lengths[tp])
+                    ).Value
                 else:
-                    params[key] = FreeCAD.Units.translateUnit("%g %s" %
-                        (params[key], lengths[tp]))
+                    params[key] = FreeCAD.Units.translateUnit(
+                        "%g %s" % (params[key], lengths[tp])
+                    )
 
         # add part
         try:
