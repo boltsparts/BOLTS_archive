@@ -364,7 +364,7 @@ class BoltsWidget(QBoltsWidget):
 
         params['name'] = data.labeling.get_nice(params)
 
-        lengths = {"Length (mm)" : "mm", "Length (in)" : "in"}
+        lengths = {"Length (mm)": "mm", "Length (in)": "in"}
 
         for key, tp in cl.parameters.types.items():
             if tp in lengths:
