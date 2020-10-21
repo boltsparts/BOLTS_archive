@@ -44,6 +44,7 @@ if USE_PYSIDE:
         FreeCAD.Console.PrintError("uic import failed. Make sure that the pyside tools are installed")
         raise
     from PySide.QtCore import Slot
+
     def unpack(x):
         return x
 else:
@@ -60,6 +61,7 @@ else:
     from property_widget import Ui_PropertyWidget
     from PyQt5.QtGui import QWidget as QPropertyWidget
     from PyQt5.QtCore import pyqtSlot as Slot
+
     def unpack(x):
         return x.toPyObject()
 
