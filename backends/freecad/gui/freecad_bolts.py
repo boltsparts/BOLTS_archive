@@ -15,18 +15,26 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
+import importlib
+import sys
 from os.path import dirname, join
-bolts_path = dirname(__file__)
-from .. import USE_PYSIDE
 
 import FreeCAD
 import FreeCADGui
 
+from ..bolttools import freecad
+from ..bolttools.blt import Collection
+from ..bolttools.blt import ClassName
+from ..bolttools.blt import ClassStandard
+
+from .. import USE_PYSIDE
 if USE_PYSIDE:
-    from PySide import QtCore, QtGui
+    from PySide import QtCore
+    from PySide import QtGui
     from FreeCADGui import PySideUic as uic
 
     try:
+        bolts_path = dirname(__file__)
         Ui_BoltsWidget,QBoltsWidget = uic.loadUiType(join(bolts_path,'bolts_widget.ui'))
         Ui_ValueWidget,QValueWidget = uic.loadUiType(join(bolts_path,'value_widget.ui'))
         Ui_BoolWidget,QBoolWidget = uic.loadUiType(join(bolts_path,'bool_widget.ui'))
@@ -39,7 +47,8 @@ if USE_PYSIDE:
     def unpack(x):
         return x
 else:
-    from PyQt5 import QtGui, QtCore
+    from PyQt5 import QtGui
+    from PyQt5 import QtCore
     from bolts_widget import Ui_BoltsWidget
     from PyQt5.QtGui import QDockWidget as QBoltsWidget
     from value_widget import Ui_ValueWidget
@@ -54,14 +63,6 @@ else:
     def unpack(x):
         return x.toPyObject()
 
-import Part
-import Sketcher
-import sys
-from os import listdir
-from ..bolttools import blt
-from ..bolttools import freecad
-from ..bolttools.blt import Collection, Repository, ClassName, ClassStandard
-import importlib
 
 def add_part(collection, base,params,doc):
     if isinstance(base,freecad.BaseFunction):

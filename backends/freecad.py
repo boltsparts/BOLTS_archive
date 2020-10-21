@@ -13,17 +13,24 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from os import makedirs
-from os.path import join, exists, basename
-from shutil import copy, copytree, copyfile, rmtree
-# pylint: disable=W0622
 from codecs import open
 from datetime import datetime
+from os import makedirs
+from os.path import basename
+from os.path import exists
+from os.path import join
+from shutil import copy
+from shutil import copyfile
+from shutil import copytree
+from shutil import rmtree
+
 from PyQt5 import uic
 
-from .common import Backend
 from . import license
+from .common import Backend
 from .errors import IncompatibleLicenseError
+
+# pylint: disable=W0622
 
 
 class FreeCADBackend(Backend):
