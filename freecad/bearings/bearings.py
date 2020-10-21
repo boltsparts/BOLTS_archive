@@ -320,9 +320,6 @@ def cylindricalrollerbearing(params, document):
     shapes.append(our)
     shapes.append(inr)
     # Cylinders
-    ncy = (2 * math.pi * ccy) * 0.8 / (2 * rcy)
-    ncy = math.floor(ncy)
-    ncy = int(ncy)
     for i in range(ncy):
         c = Part.makeCylinder(rcy, 0.6 * bth)
         Alpha = (i * 2 * math.pi) / ncy
