@@ -6,7 +6,7 @@ Flask-Assets==0.12
 Flask-BabelEx==0.9.3
 Frozen-Flask==0.15
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 Markdown==3.1.1
 MarkupSafe==1.1.1
 pkg-resources==0.0.0
