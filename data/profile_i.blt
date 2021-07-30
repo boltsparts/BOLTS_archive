@@ -531,12 +531,9 @@ classes:
     notes: http://en.wikipedia.org/wiki/I-beam
   - id: inp
     names:
-      - name: INP Profile
-        labeling: "%(type)s, l=%(l)s"
-        description: INP Profile
-      - name: IPN Profile
-        labeling: "%(type)s, l=%(l)s"
-        description: IPN Profile
+      name: INP Profile
+      labeling: "%(type)s, l=%(l)s"
+      description: INP Profile
     standards:
       body: DIN
       standard: DIN 1025-1
