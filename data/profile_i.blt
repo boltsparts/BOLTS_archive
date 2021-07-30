@@ -385,6 +385,7 @@ classes:
             columns: [h,b,tw,tf,r]
             data:
                 #type      [       h     b   tw    tf   r ]
+                IPEa100:   [      98,  55,  3.6,  4.7,  7 ]
                 IPEa120:   [   117.6,  64,  3.8,  5.1,  7 ]
                 IPEa140:   [   137.4,  73,  3.8,  5.6,  7 ]
                 IPEa160:   [     157,  82,    4,  5.9,  9 ]
