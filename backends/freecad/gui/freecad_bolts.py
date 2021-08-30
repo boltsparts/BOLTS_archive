@@ -34,11 +34,7 @@ from ..bolttools.blt import ClassName
 from ..bolttools.blt import ClassStandard
 
 
-# load the uis
-bolts_path = dirname(__file__)
-Ui_BoltsWidget, QBoltsWidget = uic.loadUiType(
-    join(bolts_path, "bolts_widget.ui")
-)
+bolts_path = dirname(__file__)  # ui path
 
 
 def unpack(x):
@@ -185,11 +181,10 @@ class TableIndexWidget(QtGui.QWidget):
         return str(self.ui.comboBox.currentText())
 
 
-class BoltsWidget(QBoltsWidget):
+class BoltsWidget(QtGui.QWidget):
     def __init__(self, repo, freecad):
-        QBoltsWidget.__init__(self)
-        self.ui = Ui_BoltsWidget()
-        self.ui.setupUi(self)
+        super(BoltsWidget, self).__init__()
+        self.ui = uic.loadUi(join(bolts_path, 'bolts_widget.ui'))
 
         self.repo = repo
         self.dbs = {}
@@ -304,6 +299,15 @@ class BoltsWidget(QBoltsWidget):
 
         self.remove_empty_items(self.coll_root)
 
+        # connections
+        self.ui.addButton.clicked.connect(self.add_button_clicked)
+        self.ui.partsTree.clicked.connect(self.parts_tree_sel_changed)
+
+        # main layout for self.ui
+        layout = QtGui.QHBoxLayout()
+        layout.addWidget(self.ui)
+        self.setLayout(layout)
+
     def remove_empty_items(self, root_item):
         children = [root_item.child(i) for i in range(root_item.childCount())]
         for child in children:
@@ -319,6 +323,7 @@ class BoltsWidget(QBoltsWidget):
                 root_item.removeChild(child)
 
     def setup_param_widgets(self, cl, base):
+        # print("construct param widgets")
         # construct widgets
         params = cl.parameters.union(base.parameters)
 
@@ -436,15 +441,15 @@ class BoltsWidget(QBoltsWidget):
         for widget in self.props_widgets:
             self.ui.props_layout.addWidget(widget)
 
-    @Slot(bool)
-    def on_addButton_clicked(self, checked):
-        if FreeCAD.activeDocument() is None:
-            FreeCAD.newDocument()
-
+    def add_button_clicked(self):
+        # print("add button clicked")
         items = self.ui.partsTree.selectedItems()
 
         if len(items) < 1:
             return
+
+        if FreeCAD.activeDocument() is None:
+            FreeCAD.newDocument()
 
         data = unpack(items[0].data(0, 32))
 
@@ -496,8 +501,8 @@ class BoltsWidget(QBoltsWidget):
                 % (e, params)
             )
 
-    @Slot()
-    def on_partsTree_itemSelectionChanged(self):
+    def parts_tree_sel_changed(self):
+        # print("parts tree selection changed")
         items = self.ui.partsTree.selectedItems()
         if len(items) < 1:
             return
