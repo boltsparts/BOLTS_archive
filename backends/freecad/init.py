@@ -21,6 +21,9 @@ from os.path import dirname
 from os.path import exists
 from os.path import join
 
+from PySide import QtCore
+from PySide import QtGui
+
 import FreeCAD
 import FreeCADGui
 # TODO check if Gui is up, in FreeCADCmd mode importing by Python should be possible
@@ -29,23 +32,11 @@ import Part
 from .bolttools import blt
 from .bolttools import freecad
 
-
 try:
     from PySide import QtCore
 except ImportError:
     FreeCAD.Console.PrintError(
-        "uic import failed. Make sure that the pyside tools are installed"
-    )
-    raise
-# test if method FreeCADGui.PySideUic.loadUiType works
-try:
-    a_widget_path = join(dirname(__file__), "gui", "value_widget.ui")
-    from FreeCADGui import PySideUic as uic
-    Ui_ValueWidget, QValueWidget = uic.loadUiType(a_widget_path)
-except ImportError:
-    FreeCAD.Console.PrintError(
-        "The ui import failed. Make sure that the 'loadUiType' "
-        "method from FreeCADGui.PySideUic works proper."
+        "PySide import failed. Make sure that the pyside tools are installed"
     )
     raise
 
@@ -62,10 +53,12 @@ widget = None
 def show_widget():
     global widget
     if widget is None:
-        widget = boltsgui.BoltsWidget(repo,freecad_db)
-
+        QtGui.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
         mw = FreeCADGui.getMainWindow()
+        widget = QtGui.QDockWidget("BOLTS Parts Selector", mw)
+        widget.setWidget(boltsgui.BoltsWidget(repo, freecad_db))
         mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
+        QtGui.QApplication.restoreOverrideCursor()
     else:
         widget.show()
 
