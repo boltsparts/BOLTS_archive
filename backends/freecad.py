@@ -24,8 +24,6 @@ from shutil import copyfile
 from shutil import copytree
 from shutil import rmtree
 
-from PyQt5 import uic
-
 from . import license
 from .common import Backend
 from .errors import IncompatibleLicenseError
@@ -128,8 +126,6 @@ class FreeCADBackend(Backend):
         )
         open(join(bolts_path, "gui", "__init__.py"), "w").close()
 
-        # compile ui files
-        uic.compileUiDir(join(bolts_path, "gui"))
 
         for coll, in self.repo.itercollections():
             if (

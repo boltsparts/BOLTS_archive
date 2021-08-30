@@ -1,5 +1,6 @@
 # BOLTS - Open Library of Technical Specifications
 # Copyright (C) 2013 Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
+# Copyright (C) 2021 Bernd Hahnebach <bernd@bimstatik.org>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -16,65 +17,44 @@
 
 import importlib
 import sys
-from os.path import dirname, join
+from os.path import dirname
+from os.path import join
+
+from PySide import QtCore
+from PySide import QtGui
+from PySide.QtCore import Slot
 
 import FreeCAD
 import FreeCADGui
+from FreeCADGui import PySideUic as uic
 
 from ..bolttools import freecad
 from ..bolttools.blt import Collection
 from ..bolttools.blt import ClassName
 from ..bolttools.blt import ClassStandard
 
-from .. import USE_PYSIDE
-if USE_PYSIDE:
-    from PySide import QtCore
-    from PySide import QtGui
-    from FreeCADGui import PySideUic as uic
 
-    try:
-        bolts_path = dirname(__file__)
-        Ui_BoltsWidget, QBoltsWidget = uic.loadUiType(
-            join(bolts_path, 'bolts_widget.ui')
-        )
-        Ui_ValueWidget, QValueWidget = uic.loadUiType(
-            join(bolts_path, 'value_widget.ui')
-        )
-        Ui_BoolWidget, QBoolWidget = uic.loadUiType(
-            join(bolts_path, 'bool_widget.ui')
-        )
-        Ui_TableIndexWidget, QTableIndexWidget = uic.loadUiType(
-            join(bolts_path, 'tableindex_widget.ui')
-        )
-        Ui_PropertyWidget, QPropertyWidget = uic.loadUiType(
-            join(bolts_path, 'property_widget.ui')
-        )
-    except ImportError:
-        FreeCAD.Console.PrintError(
-            "uic import failed. Make sure that the pyside tools are installed"
-        )
-        raise
-    from PySide.QtCore import Slot
+# load the uis
+bolts_path = dirname(__file__)
+Ui_BoltsWidget, QBoltsWidget = uic.loadUiType(
+    join(bolts_path, 'bolts_widget.ui')
+)
+Ui_ValueWidget, QValueWidget = uic.loadUiType(
+    join(bolts_path, 'value_widget.ui')
+)
+Ui_BoolWidget, QBoolWidget = uic.loadUiType(
+    join(bolts_path, 'bool_widget.ui')
+)
+Ui_TableIndexWidget, QTableIndexWidget = uic.loadUiType(
+    join(bolts_path, 'tableindex_widget.ui')
+)
+Ui_PropertyWidget, QPropertyWidget = uic.loadUiType(
+    join(bolts_path, 'property_widget.ui')
+)
 
-    def unpack(x):
-        return x
-else:
-    from PyQt5 import QtGui
-    from PyQt5 import QtCore
-    from bolts_widget import Ui_BoltsWidget
-    from PyQt5.QtGui import QDockWidget as QBoltsWidget
-    from value_widget import Ui_ValueWidget
-    from PyQt5.QtGui import QWidget as QValueWidget
-    from bool_widget import Ui_BoolWidget
-    from PyQt5.QtGui import QWidget as QBoolWidget
-    from tableindex_widget import Ui_TableIndexWidget
-    from PyQt5.QtGui import QWidget as QTableIndexWidget
-    from property_widget import Ui_PropertyWidget
-    from PyQt5.QtGui import QWidget as QPropertyWidget
-    from PyQt5.QtCore import pyqtSlot as Slot
 
-    def unpack(x):
-        return x.toPyObject()
+def unpack(x):
+    return x
 
 
 def add_part(collection, base, params, doc):
