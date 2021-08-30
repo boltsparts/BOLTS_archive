@@ -45,7 +45,7 @@ is required.
 To use BOLTS for FreeCAD
 
 * FreeCAD (http://freecadweb.org/)
-* python 2.6 or 2.7 as well as 3.6
+* python 3.6
 * pyyaml (http://pyyaml.org/)
 * importlib (https://pypi.python.org/pypi/importlib/1.0.2) (only for python 2.6)
 
@@ -75,7 +75,7 @@ For BOLTS for OpenSCAD:
 For BOLTS for FreeCAD
 
 * FreeCAD (http://freecadweb.org/)
-* PyQt5
+* PySide
 
 For BOLTS for SolidWorks
 
@@ -92,5 +92,5 @@ requirements listed in `requirements.txt`. In addition you need
 
 To run the  bolts.py utility script (for development)
 
-* python 2.7 (because of argparse) or 3.6
+* python 3.6
 * pyyaml (http://pyyaml.org/)
