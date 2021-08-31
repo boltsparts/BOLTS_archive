@@ -94,6 +94,14 @@ class FreeCADBackend(Backend):
 
         copytree(
             join(
+                self.repo.path, "backends", "freecad", "app"
+            ),
+            join(
+                bolts_path, "app"
+            )
+        )
+        copytree(
+            join(
                 self.repo.path, "backends", "freecad", "gui"
             ),
             join(

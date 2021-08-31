@@ -16,32 +16,22 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
+import importlib
 from os import listdir
 from os.path import dirname
 from os.path import exists
 from os.path import join
-
-from PySide import QtCore
-from PySide import QtGui
 
 import FreeCAD
 import FreeCADGui
 # TODO check if Gui is up, in FreeCADCmd mode importing by Python should be possible
 import Part
 
+from .app.freecad_bolts_app import add_part
 from .bolttools import blt
 from .bolttools import freecad
 
-try:
-    from PySide import QtCore
-except ImportError:
-    FreeCAD.Console.PrintError(
-        "PySide import failed. Make sure that the pyside tools are installed"
-    )
-    raise
 
-
-from .gui import freecad_bolts as boltsgui
 # import repo
 rootpath = dirname(__file__)
 repo = blt.Repository(rootpath)
@@ -51,6 +41,13 @@ widget = None
 
 
 def show_widget():
+    if not FreeCAD.GuiUp:
+        print("FreeCAD Gui is not up. Thus starting the BOLTS widget is not possible.")
+        return
+
+    from PySide import QtCore
+    from PySide import QtGui
+    from .gui import freecad_bolts as boltsgui
     global widget
     if widget is None:
         QtGui.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
@@ -100,6 +97,9 @@ def list_names(doc):
 
 # ************************************************************************************************
 # add BOLTS parts by Python
+# *******
+# TODO somehow return the part if added from Python
+#********
 def add_part_by_classid(classid, in_params=None):
     """
     BOLTS.add_part_by_name(classid, [in_params])
@@ -249,7 +249,7 @@ def _add_part(cl, in_params):
     # add part
     base = freecad_db.base_classes.get_src(cl)
     coll = repo.collection_classes.get_src(cl)
-    boltsgui.add_part(
+    add_part(
         coll,
         base,
         all_params,
