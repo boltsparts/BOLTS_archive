@@ -136,6 +136,11 @@ def add_part_by_name(save_class_name, in_params=None):
 
         Add a BOLTS part by Python according the class name
 
+        save_class_name:
+            - get a list of all known names by BOLTS.get_names()
+            - print all known names with BOLTS.print_names()
+            - get a name from *.blt file classid by BOLTS.get_name(ClassID)
+
         in_params:
             - dictionary of all free Parameters
             - if ommited, the default parameters are taken (see Default in *.blt file)
@@ -162,6 +167,11 @@ def add_part_by_standard(save_standard_name, in_params=None):
     BOLTS.add_part_by_standard(save_standard_name, [in_params])
 
         Add a BOLTS part by Python according the national standard name
+
+        save_standard_name:
+            - get a list of all known standards by BOLTS.get_standards()
+            - print all known standards with BOLTS.print_standards()
+            - get a standard from *.blt file classid by BOLTS.get_name(ClassID)
 
         in_params:
             - dictionary of all free Parameters
@@ -245,3 +255,96 @@ def _add_part(cl, in_params):
         all_params,
         FreeCAD.ActiveDocument
     )
+
+
+# ************************************************************************************************
+# get information and data out of the repo
+# TODO this are FreeCAD independent methods to get information out of the repo
+# move to bolttools, all backends would need them
+# double check, they may exist already
+# see comment from Johannes:
+# for example the get_name method ...
+# I think I had a mechanism to do something like this efficiently,
+# but it has been long ago that I wrote this code,
+# and I can not try it right now, but I guess something like:
+"""
+repo.iternames(classid=classid)
+
+"""
+# the iterators can be found in bolttools/freecad.py and bolttools/openscad.py
+# this is for sure a better place, but some simple documentation here would be good
+# TODO: Why are the iterators duplicated in freecad and openscad
+# TODO: The yaml reader to initialize the repo seams duplicated too :-(
+
+def get_name(classid):
+    """
+    BOLTS.get_name()
+        get SaveClassName from classid (which can be retrieved from blt file)
+    """
+    for n in get_names():
+        name = repo.names[n]
+        cl = repo.class_names.get_src(name)
+        if classid == cl.id:
+            return n
+
+
+def get_standard(classid):
+    """
+    BOLTS.get_standard()
+        get SaveStandardName from classid (which can be retrieved from blt file)
+    """
+    for s in get_standards():
+        standard = repo.standards[s]
+        cl = repo.class_standards.get_src(standard)
+        if classid == cl.id:
+            return s
+
+
+def get_names():
+    """
+    BOLTS.get_names()
+        get all known class names
+    """
+    return sorted(list(repo.names.keys()))
+
+
+def print_names():
+    """
+    BOLTS.print_names()
+        print all known class names
+    """
+    for n in get_names():
+        print(n)
+
+
+def get_standards():
+    """
+    BOLTS.get_standards()
+        get all known class names
+    """
+    return sorted(list(repo.standards.keys()))
+
+
+def print_standards():
+    """
+    BOLTS.print_standards()
+        print all known class names
+    """
+    for n in get_standards():
+        print(n)
+
+
+def get_default_params_by_name(save_class_name):
+    """
+    BOLTS.get_default_params_by_name(save_class_name)
+    """
+    cl = repo.class_names.get_src(repo.names[save_class_name])
+    return _get_default_params(cl)
+
+
+def get_default_params_by_standard(save_standard_name):
+    """
+    BOLTS.get_default_params_by_standard(save_standard_name)
+    """
+    cl = repo.class_standards.get_src(repo.standards[save_standard_name])
+    return _get_default_params(cl)
