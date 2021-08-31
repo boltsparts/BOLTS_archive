@@ -1,14 +1,24 @@
-from flask import Blueprint, render_template, abort, redirect, request, url_for, g, safe_join
+from flask import Blueprint
+from flask import render_template
+from flask import abort
+from flask import redirect
+from flask import request
+from flask import url_for
+from flask import g
+# from flask import safe_join  # will be redefined later
 from os.path import exists
 from os import listdir
-from flask.helpers import safe_join, send_from_directory
+from flask.helpers import safe_join
+from flask.helpers import send_from_directory
 import sys
 if sys.version_info.major < 3:
 	from urlparse import urljoin
 else:
 	from urllib.parse import urljoin
-from backends.website.translation import languages, gettext_docs
-from backends.website.utils import Specification, Documentation
+from backends.website.translation import languages
+from backends.website.translation import gettext_docs
+from backends.website.utils import Specification
+from backends.website.utils import Documentation
 from docutils import core
 
 docs = Blueprint("docs",__name__,template_folder="templates",static_folder="static", url_prefix='/<any(%s):lang_code>/docs' % ",".join(languages))
