@@ -28,6 +28,7 @@ import FreeCAD
 import FreeCADGui
 from FreeCADGui import PySideUic as uic
 
+from ..app.freecad_bolts_app import add_part
 from ..bolttools import freecad
 from ..bolttools.blt import Collection
 from ..bolttools.blt import ClassName
@@ -41,29 +42,7 @@ def unpack(x):
     return x
 
 
-def add_part(collection, base, params, doc):
-    if isinstance(base, freecad.BaseFunction):
-        # absolute import BOLTS hardcoded
-        # does not work for FreeCAD new style wb
-        # module = importlib.import_module("BOLTS.freecad.%s.%s" %
-        #     (collection.id,base.module_name))
-        # example: import BOLTS.freecad.profile_l.profile_l
-
-        # use relative import
-        # example: import ..freecad.profile_l.profile_l
-        # print(__package__)  # BOLTS.gui for old style FreeCAD wb
-        module = importlib.import_module(
-            ".freecad.{}.{}".format(collection.id, base.module_name),
-            package=__package__.rstrip(".gui")
-        )
-
-        module.__dict__[base.name](params, doc)
-    else:
-        raise RuntimeError("Unknown base geometry type: %s" % type(base))
-
 # custom widgets
-
-
 class PropertyWidget(QtGui.QWidget):
     def __init__(self, parent, prop, value):
         super(PropertyWidget, self).__init__()
@@ -182,13 +161,13 @@ class TableIndexWidget(QtGui.QWidget):
 
 
 class BoltsWidget(QtGui.QWidget):
-    def __init__(self, repo, freecad):
+    def __init__(self, repo, freecad_db):
         super(BoltsWidget, self).__init__()
         self.ui = uic.loadUi(join(bolts_path, 'bolts_widget.ui'))
 
         self.repo = repo
         self.dbs = {}
-        self.dbs["freecad"] = freecad
+        self.dbs["freecad"] = freecad_db
 
         self.param_widgets = {}
         self.props_widgets = {}
