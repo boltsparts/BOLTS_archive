@@ -126,7 +126,6 @@ class FreeCADBackend(Backend):
         )
         open(join(bolts_path, "gui", "__init__.py"), "w").close()
 
-
         for coll, in self.repo.itercollections():
             if (
                 not license.is_combinable_with(
