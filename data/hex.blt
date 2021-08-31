@@ -23,6 +23,14 @@ license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4
 classes:
   - id: hexscrew1
+    names:
+      name:
+        safe: hexagonHeadScrew1
+        nice: Hexagon head screw 1
+      labeling:
+        nice: Hexagon head screw %(key)s - %(l)s
+        safe: hexagon_head_screw_%(key)s_%(l)s
+      description: Hexagon head screw
     standards:
       body: DIN
       status: withdrawn
