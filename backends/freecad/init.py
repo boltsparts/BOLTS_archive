@@ -100,6 +100,36 @@ def list_names(doc):
 
 # ************************************************************************************************
 # add BOLTS parts by Python
+def add_part_by_classid(classid, in_params=None):
+    """
+    BOLTS.add_part_by_name(classid, [in_params])
+
+        Add a BOLTS part by Python according the classid
+
+        classid:
+            - get the classid from *.blt file
+
+        in_params:
+            - dictionary of all free Parameters
+            - if ommited, the default parameters are taken (see Default in *.blt file)
+            - if a key is missing in Parameter, the default is added
+            - get the default parameters by BOLTS.get_default_params(SaveClassName)
+            - if the key "name" is given, this will be used as FreeCAD object name
+
+        Examples:
+            BOLTS.add_part_by_classid("ibeam_heb")
+            BOLTS.add_part_by_classid("ibeam_heb", {"type": "HEB500", "name": "my_profile"})
+            BOLTS.add_part_by_classid("ibeam_heb", {"type": "HEB500", "l" : 50, "arch" : True})
+            BOLTS.add_part_by_classid("tslot20x20", {"l": 5})
+            BOLTS.add_part_by_classid("vslot20x60", {"l": 5, "finish": "Clear anodized"})
+    """
+    name = repo.names[get_name(classid)]
+    cl = repo.class_names.get_src(name)
+
+    # get params and add part
+    _add_part(cl, in_params)
+
+
 def add_part_by_name(save_class_name, in_params=None):
     """
     BOLTS.add_part_by_name(save_class_name, [in_params])
