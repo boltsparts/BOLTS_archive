@@ -85,15 +85,42 @@ def make_drawing(scale,obj):
 
 
 def list_names(doc):
+    """
+    doc: FreeCAD document object
+    BOLTS.list_names(document)
+        lists object Labels and object Names
+        off all Part and Part.Feature document objects
+    """
     print("Label   Name")
     print("------------")
     for part in doc.findObjects():
-        if isinstance(part,Part.Feature):
+        if isinstance(part, Part.Feature):
             print("%s    %s" % (part.Label, part.Name))
 
 
-def add_name(id,in_params=None):
-    name = repo.names[id]
+# ************************************************************************************************
+# add BOLTS parts by Python
+def add_part_by_name(save_class_name, in_params=None):
+    """
+    BOLTS.add_part_by_name(save_class_name, [in_params])
+
+        Add a BOLTS part by Python according the class name
+
+        in_params:
+            - dictionary of all free Parameters
+            - if ommited, the default parameters are taken (see Default in *.blt file)
+            - if a key is missing in Parameter, the default is added
+            - get the default parameters by BOLTS.get_default_params(SaveClassName)
+            - if the key "name" is given, this will be used as FreeCAD object name
+
+        Examples:
+            BOLTS.add_part_by_name("HEBProfile")
+            BOLTS.add_part_by_name("HEAProfile", {"type": "HEA300", "name": "my_profile"})
+            BOLTS.add_part_by_name("HEBProfile", {"type": "HEB500", "l" : 50, "arch" : True})
+            BOLTS.add_part_by_name("TSlotExtrusion20x20", {"l": 5})
+            BOLTS.add_part_by_name("V_slot20x60mm", {"l": 5, "finish": "Clear anodized"})
+    """
+    name = repo.names[save_class_name]
     cl = repo.class_names.get_src(name)
     if not in_params:
         in_params = get_free_in_params(cl)
@@ -107,8 +134,28 @@ def add_name(id,in_params=None):
     boltsgui.add_part(coll,base,params,FreeCAD.ActiveDocument)
 
 
-def add_standard(id,in_params=None):
-    standard = repo.standards[id]
+def add_part_by_standard(save_standard_name, in_params=None):
+    """
+    BOLTS.add_part_by_standard(save_standard_name, [in_params])
+
+        Add a BOLTS part by Python according the national standard name
+
+        in_params:
+            - dictionary of all free Parameters
+            - if ommited, the default parameters are taken (see Default in *.blt file)
+            - if a key is missing in Parameter, the default is added
+            - get the default parameters by BOLTS.get_default_params(SaveClassName)
+            - if the key "name" is given, this will be used as FreeCAD object name
+
+        Examples:
+            BOLTS.add_part_by_standard("DIN1025_2")
+            BOLTS.add_part_by_standard("DIN1025_2", {"type": "HEB500", "name": "my_profile"})
+            BOLTS.add_part_by_standard("DIN1025_2", {"type": "HEB500", "l" : 50, "arch" : True})
+            BOLTS.add_part_by_standard("DINENISO4017")
+            BOLTS.add_part_by_standard("DIN933", {"name": "my_profile"})
+            BOLTS.add_part_by_standard("DIN933", {"key": "M10", "l": 120, "name": "my_profile"})
+    """
+    standard = repo.standards[save_standard_name]
     cl = repo.class_standards.get_src(standard)
     if not in_params:
         in_params = get_free_in_params(cl)
@@ -122,6 +169,15 @@ def add_standard(id,in_params=None):
     boltsgui.add_part(coll,base,params,FreeCAD.ActiveDocument)
 
 
+"""
+# TODO:
+# the following has errors, FIXME
+BOLTS.add_part_by_standard("DIN933")
+"""
+
+
+# ************************************************************************************************
+# helper
 def get_free_in_params(cl):
     base = freecad_db.base_classes.get_src(cl)
     params = cl.parameters.union(base.parameters)
