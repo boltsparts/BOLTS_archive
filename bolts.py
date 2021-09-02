@@ -21,6 +21,7 @@ from bolttools.freecad import FreeCADData
 from bolttools.openscad import OpenSCADData
 from bolttools.drawings import DrawingsData
 # from bolttools.solidworks import SolidWorksData
+from bolttools.pythonpackage import PythonPackageData
 
 from backends.license import LICENSES_SHORT
 
@@ -40,6 +41,7 @@ def export(args):
     dbs["openscad"] = OpenSCADData(repo)
     dbs["freecad"] = FreeCADData(repo)
     dbs["drawings"] = DrawingsData(repo)
+    dbs["pythonpackage"] = PythonPackageData(repo)
     # dbs["solidworks"] = SolidWorksData(repo)
 
     license = LICENSES_SHORT[args.license]
@@ -64,6 +66,9 @@ def export(args):
     elif args.target == "website":
         from backends.webpage import WebsiteBackend
         WebsiteBackend(repo,dbs).write_output(out_path)
+    elif args.target == "pythonpackage":
+        from backends.pythonpackage import PythonPackageBackend
+        PythonPackageBackend(repo,dbs).write_output(out_path,target_license=license,version="development")
 
 
 def test(args):
@@ -294,7 +299,7 @@ subparsers = parser.add_subparsers()
 parser_export = subparsers.add_parser("export")
 parser_export.add_argument("target",
     type=str,
-    choices=["openscad","freecad","iges","website"],
+    choices=["openscad","freecad","iges","website", "pythonpackage"],
     help="the distribution to create")
 parser_export.add_argument("-l","--license",
     type=str,
