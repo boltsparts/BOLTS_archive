@@ -47,15 +47,15 @@ class BaseFunction(FreeCADGeometry):
         self.parameters = Parameters(function.get("parameters",{"types" : {}}))
 
 class FreeCADData(DataBase):
-    def __init__(self,repo):
-        DataBase.__init__(self,"freecad",repo)
+    def __init__(self,repo,backend="freecad"):
+        DataBase.__init__(self,backend,repo)
         self.bases = []
 
         self.base_classes = Links()
         self.collection_bases = Links()
 
         if not exists(self.backend_root):
-            e = MalformedRepositoryError("freecad directory does not exist")
+            e = MalformedRepositoryError("{} repo directory does not exist".format(backend))
             e.set_repo_path(repo.path)
             raise e
 
