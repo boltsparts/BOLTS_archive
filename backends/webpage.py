@@ -23,41 +23,41 @@ import sys
 from flask_frozen import Freezer
 
 class WebsiteBackend(Backend):
-	def __init__(self, repo, databases):
-		Backend.__init__(self, repo, "website", databases, ["freecad", "openscad", "drawings"])
+    def __init__(self, repo, databases):
+        Backend.__init__(self, repo, "website", databases, ["freecad", "openscad", "drawings"])
 
-	def write_output(self, out_path, **kwargs):
-		self.clear_output_dir(out_path)
-		extra_files = []
-		blog_path = os.path.join(self.repo.path,"backends", "website","blog","posts")
-		for filename in listdir(blog_path):
-			if filename.startswith('.'):
-				continue
-			extra_files.append(os.path.join(blog_path,filename))
+    def write_output(self, out_path, **kwargs):
+        self.clear_output_dir(out_path)
+        extra_files = []
+        blog_path = os.path.join(self.repo.path,"backends", "website","blog","posts")
+        for filename in listdir(blog_path):
+            if filename.startswith('.'):
+                continue
+            extra_files.append(os.path.join(blog_path,filename))
 
-		doc_path = os.path.join(self.repo.path,"backends", "website","docs","sources")
-		for dirpath,_,filenames in walk(doc_path):
-			for filename in filenames:
-				if filename.startswith('.'):
-					continue
-				extra_files.append(os.path.join(dirpath,filename))
+        doc_path = os.path.join(self.repo.path,"backends", "website","docs","sources")
+        for dirpath,_,filenames in walk(doc_path):
+            for filename in filenames:
+                if filename.startswith('.'):
+                    continue
+                extra_files.append(os.path.join(dirpath,filename))
 
-		trans_path = os.path.join(self.repo.path,"translations")
-		for dirpath,_,filenames in walk(trans_path):
-			for filename in filenames:
-				if filename.endswith('.mo'):
-					extra_files.append(os.path.join(dirpath,filename))
+        trans_path = os.path.join(self.repo.path,"translations")
+        for dirpath,_,filenames in walk(trans_path):
+            for filename in filenames:
+                if filename.endswith('.mo'):
+                    extra_files.append(os.path.join(dirpath,filename))
 
-		#templates
-		for dirpath,_,filenames in walk(self.repo.path):
-			if os.path.basename(dirpath) == "templates":
-				for filename in filenames:
-					extra_files.append(os.path.join(dirpath,filename))
+        #templates
+        for dirpath,_,filenames in walk(self.repo.path):
+            if os.path.basename(dirpath) == "templates":
+                for filename in filenames:
+                    extra_files.append(os.path.join(dirpath,filename))
 
-		app.config["FREEZER_DESTINATION"] = out_path
-		app.config["FREEZER_BASE_URL"] = "https://boltsparts.github.io"
-		app.config["FREEZER_DESTINATION_IGNORE"] = [".git*"]
-		app.config["FREEZER_STATIC_IGNORE"] = ["source/*"]
+        app.config["FREEZER_DESTINATION"] = out_path
+        app.config["FREEZER_BASE_URL"] = "https://boltsparts.github.io"
+        app.config["FREEZER_DESTINATION_IGNORE"] = [".git*"]
+        app.config["FREEZER_STATIC_IGNORE"] = ["source/*"]
 
-		freezer = Freezer(app)
-		freezer.freeze()
+        freezer = Freezer(app)
+        freezer.freeze()

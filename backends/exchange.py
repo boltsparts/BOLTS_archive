@@ -21,11 +21,11 @@ FREECADPATH = '/usr/lib/freecad/lib/'  # path to your FreeCAD.so or FreeCAD.dll 
 import sys
 sys.path.append(FREECADPATH)
 try:
-	import FreeCAD
-	import Part
-	import Sketcher
+    import FreeCAD
+    import Part
+    import Sketcher
 except:
-	raise MissingFreeCADError()
+    raise MissingFreeCADError()
 
 from os.path import join, exists
 from os import makedirs, remove
@@ -35,64 +35,64 @@ import importlib
 from common import Backend
 
 def add_part(base,params,doc):
-	module = importlib.import_module(base.module_name)
-	module.__dict__[base.name](params,doc)
+    module = importlib.import_module(base.module_name)
+    module.__dict__[base.name](params,doc)
 
 class IGESBackend(Backend):
-	def __init__(self,repo,databases):
-		Backend.__init__(self,repo,"iges",databases,["freecad"])
+    def __init__(self,repo,databases):
+        Backend.__init__(self,repo,"iges",databases,["freecad"])
 
-	def write_output(self,out_path,version,stable=False):
-		self.clear_output_dir(out_path)
+    def write_output(self,out_path,version,stable=False):
+        self.clear_output_dir(out_path)
 
-		ver_root = join(out_path,version)
-		makedirs(ver_root)
+        ver_root = join(out_path,version)
+        makedirs(ver_root)
 
-		#generate version file
-		date = datetime.now()
-		version_file = open(join(ver_root,"VERSION"),"w")
-		version_file.write("%s\n%d-%d-%d\n" %
-			(version, date.year, date.month, date.day))
-		version_file.close()
+        #generate version file
+        date = datetime.now()
+        version_file = open(join(ver_root,"VERSION"),"w")
+        version_file.write("%s\n%d-%d-%d\n" %
+            (version, date.year, date.month, date.day))
+        version_file.close()
 
-		#Disable writing bytecode to avoid littering the freecad database with pyc files
-		write_bytecode = sys.dont_write_bytecode
-		sys.dont_write_bytecode = True
+        #Disable writing bytecode to avoid littering the freecad database with pyc files
+        write_bytecode = sys.dont_write_bytecode
+        sys.dont_write_bytecode = True
 
-		for coll in self.repo.itercollections():
-			if not exists(join(ver_root,coll.id)):
-				makedirs(join(ver_root,coll.id))
+        for coll in self.repo.itercollections():
+            if not exists(join(ver_root,coll.id)):
+                makedirs(join(ver_root,coll.id))
 
-			sys.path.append(join(self.repo.path,"freecad",coll.id))
-			for cl,base in self.dbs["freecad"].iterclasses(["class","base"],filter_collection=coll):
-				if cl.parameters.common is None:
-					continue
+            sys.path.append(join(self.repo.path,"freecad",coll.id))
+            for cl,base in self.dbs["freecad"].iterclasses(["class","base"],filter_collection=coll):
+                if cl.parameters.common is None:
+                    continue
 
-				for free in cl.parameters.common:
-					try:
-						params = cl.parameters.collect(dict(zip(cl.parameters.free,free)))
-					except:
-						print("A problem occurred when parameters for %s where collected for %s" % (free,cl.id))
-						raise
+                for free in cl.parameters.common:
+                    try:
+                        params = cl.parameters.collect(dict(zip(cl.parameters.free,free)))
+                    except:
+                        print("A problem occurred when parameters for %s where collected for %s" % (free,cl.id))
+                        raise
 
-					for std, in self.dbs["freecad"].iterstandards(filter_class=cl):
-						params['name'] = std.labeling.get_nice(params)
-						filename = std.labeling.get_safe(params) + ".igs"
-						doc = FreeCAD.newDocument()
-						add_part(base,params,doc)
-						shape = doc.ActiveObject.Shape
-						shape.exportIges(join(ver_root,coll.id,filename))
-						FreeCAD.closeDocument(doc.Name)
+                    for std, in self.dbs["freecad"].iterstandards(filter_class=cl):
+                        params['name'] = std.labeling.get_nice(params)
+                        filename = std.labeling.get_safe(params) + ".igs"
+                        doc = FreeCAD.newDocument()
+                        add_part(base,params,doc)
+                        shape = doc.ActiveObject.Shape
+                        shape.exportIges(join(ver_root,coll.id,filename))
+                        FreeCAD.closeDocument(doc.Name)
 
-					for name, in self.dbs["freecad"].iternames(filter_class=cl):
-						params['name'] = name.labeling.get_nice(params)
-						filename = name.labeling.get_safe(params) + ".igs"
-						doc = FreeCAD.newDocument()
-						add_part(base,params,doc)
-						shape = doc.ActiveObject.Shape
-						shape.exportIges(join(ver_root,coll.id,filename))
-						FreeCAD.closeDocument(doc.Name)
-			sys.path.pop()
+                    for name, in self.dbs["freecad"].iternames(filter_class=cl):
+                        params['name'] = name.labeling.get_nice(params)
+                        filename = name.labeling.get_safe(params) + ".igs"
+                        doc = FreeCAD.newDocument()
+                        add_part(base,params,doc)
+                        shape = doc.ActiveObject.Shape
+                        shape.exportIges(join(ver_root,coll.id,filename))
+                        FreeCAD.closeDocument(doc.Name)
+            sys.path.pop()
 
-		#restore byte code writing
-		sys.dont_write_bytecode = write_bytecode
+        #restore byte code writing
+        sys.dont_write_bytecode = write_bytecode

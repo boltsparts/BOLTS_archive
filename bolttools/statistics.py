@@ -14,42 +14,42 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class Statistics:
-	def __init__(self,repo,databases):
-		self.repo = repo
-		self.dbs = databases
+    def __init__(self,repo,databases):
+        self.repo = repo
+        self.dbs = databases
 
-		self.stats = {}
+        self.stats = {}
 
-		self.stats["classes"] = sum(1 for _ in self.repo.iterclasses())
-		self.stats["classes_freecad"] = sum(1 for _ in self.dbs["freecad"].iterclasses())
-		self.stats["classes_openscad"] = sum(1 for _ in self.dbs["openscad"].iterclasses())
-		self.stats["collections"] = sum(1 for _ in self.repo.itercollections())
-		self.stats["standards"] = sum(1 for _ in self.repo.iterstandards())
-		self.stats["names"] = sum(1 for _ in self.repo.iternames())
-		self.stats["bodies"] = sum(1 for _ in self.repo.iterbodies())
+        self.stats["classes"] = sum(1 for _ in self.repo.iterclasses())
+        self.stats["classes_freecad"] = sum(1 for _ in self.dbs["freecad"].iterclasses())
+        self.stats["classes_openscad"] = sum(1 for _ in self.dbs["openscad"].iterclasses())
+        self.stats["collections"] = sum(1 for _ in self.repo.itercollections())
+        self.stats["standards"] = sum(1 for _ in self.repo.iterstandards())
+        self.stats["names"] = sum(1 for _ in self.repo.iternames())
+        self.stats["bodies"] = sum(1 for _ in self.repo.iterbodies())
 
-		self.contributors_names = set([])
-		for coll, in self.repo.itercollections():
-			for name in coll.author_names:
-				self.contributors_names.add(name)
-		for base, in self.dbs["freecad"].iterbases():
-			for name in base.author_names:
-				self.contributors_names.add(name)
-		for module, in self.dbs["openscad"].itermodules():
-			for name in module.author_names:
-				self.contributors_names.add(name)
-		for draw, in self.dbs["drawings"].iterdimdrawings():
-			for name in base.author_names:
-				self.contributors_names.add(name)
-		for draw, in self.dbs["drawings"].itercondrawings():
-			for name in base.author_names:
-				self.contributors_names.add(name)
-		self.contributors_names = list(self.contributors_names)
+        self.contributors_names = set([])
+        for coll, in self.repo.itercollections():
+            for name in coll.author_names:
+                self.contributors_names.add(name)
+        for base, in self.dbs["freecad"].iterbases():
+            for name in base.author_names:
+                self.contributors_names.add(name)
+        for module, in self.dbs["openscad"].itermodules():
+            for name in module.author_names:
+                self.contributors_names.add(name)
+        for draw, in self.dbs["drawings"].iterdimdrawings():
+            for name in base.author_names:
+                self.contributors_names.add(name)
+        for draw, in self.dbs["drawings"].itercondrawings():
+            for name in base.author_names:
+                self.contributors_names.add(name)
+        self.contributors_names = list(self.contributors_names)
 
-		self.stats["contributors"] = len(self.contributors_names)
+        self.stats["contributors"] = len(self.contributors_names)
 
-	def get_statistics(self):
-		return self.stats
+    def get_statistics(self):
+        return self.stats
 
-	def get_contributors(self):
-		return self.contributors_names
+    def get_contributors(self):
+        return self.contributors_names
