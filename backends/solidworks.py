@@ -25,78 +25,78 @@ from errors import *
 from common import BackendExporter
 
 class SolidWorksExporter(BackendExporter):
-	def __init__(self,repo,databases):
-		BackendExporter.__init__(self,repo,databases)
-		self.solidworks = databases["solidworks"]
+    def __init__(self,repo,databases):
+        BackendExporter.__init__(self,repo,databases)
+        self.solidworks = databases["solidworks"]
 
-	def write_output(self,out_path,version,stable=False):
-		self.clear_output_dir(out_path)
+    def write_output(self,out_path,version,stable=False):
+        self.clear_output_dir(out_path)
 
-		ver_root = join(out_path,version)
-		makedirs(ver_root)
+        ver_root = join(out_path,version)
+        makedirs(ver_root)
 
-		for designtable in self.solidworks.designtables:
-			#build class lookup, we need to search for classes by ids
-			blt_classes = {}
-			for coll in self.repo.collections:
-				if not coll.id == designtable.collection:
-					continue
-				for cl in coll.classes_by_ids():
-					if cl.id in blt_classes:
-						raise NonUniqueClassIdError(cl.id)
-					blt_classes[cl.id] = cl
+        for designtable in self.solidworks.designtables:
+            #build class lookup, we need to search for classes by ids
+            blt_classes = {}
+            for coll in self.repo.collections:
+                if not coll.id == designtable.collection:
+                    continue
+                for cl in coll.classes_by_ids():
+                    if cl.id in blt_classes:
+                        raise NonUniqueClassIdError(cl.id)
+                    blt_classes[cl.id] = cl
 
-			#create directories and copy model files
-			coll_path = join(ver_root,designtable.collection)
-			if not exists(coll_path):
-				makedirs(coll_path)
-			#check for case
-			if designtable.filename not in listdir(
-				join(self.solidworks.backend_root,designtable.collection)
-			):
-				raise FileNotFoundError(designtable.filename)
-			model_path = join(coll_path,designtable.filename)
-			if not exists(model_path):
-				copyfile(designtable.path,model_path)
+            #create directories and copy model files
+            coll_path = join(ver_root,designtable.collection)
+            if not exists(coll_path):
+                makedirs(coll_path)
+            #check for case
+            if designtable.filename not in listdir(
+                join(self.solidworks.backend_root,designtable.collection)
+            ):
+                raise FileNotFoundError(designtable.filename)
+            model_path = join(coll_path,designtable.filename)
+            if not exists(model_path):
+                copyfile(designtable.path,model_path)
 
-			#create designtable
-			workbook = xlwt.Workbook("utf8")
-			worksheet = workbook.add_sheet("Sheet1")
+            #create designtable
+            workbook = xlwt.Workbook("utf8")
+            worksheet = workbook.add_sheet("Sheet1")
 
-			#write column headers
-			col = 1
-			row = 0
-			for pname in designtable.params:
-				worksheet.write(row,col,pname)
-				col += 1
-			for mname in designtable.metadata:
-				worksheet.write(row,col,mname)
-				col += 1
+            #write column headers
+            col = 1
+            row = 0
+            for pname in designtable.params:
+                worksheet.write(row,col,pname)
+                col += 1
+            for mname in designtable.metadata:
+                worksheet.write(row,col,mname)
+                col += 1
 
-			#write configurations
-			row = 1
-			for dtcl in designtable.classes:
-				cl = blt_classes[dtcl.classid]
-				for free in cl.parameters.common:
-					params = cl.parameters.collect(dict(zip(cl.parameters.free,free)))
-					name = "undefined"
-					if name is None:
-						name = cl.naming.get_name(params)
-					else:
-						name = dtcl.naming.get_name(params)
+            #write configurations
+            row = 1
+            for dtcl in designtable.classes:
+                cl = blt_classes[dtcl.classid]
+                for free in cl.parameters.common:
+                    params = cl.parameters.collect(dict(zip(cl.parameters.free,free)))
+                    name = "undefined"
+                    if name is None:
+                        name = cl.naming.get_name(params)
+                    else:
+                        name = dtcl.naming.get_name(params)
 
-					col = 0
-					worksheet.write(row,col,name)
-					col += 1
+                    col = 0
+                    worksheet.write(row,col,name)
+                    col += 1
 
-					for pname in designtable.params.values():
-						worksheet.write(r,c,params[pname])
-						col += 1
+                    for pname in designtable.params.values():
+                        worksheet.write(r,c,params[pname])
+                        col += 1
 
-					for pname in designtable.metadata.values():
-						worksheet.write(r,c,params[pname])
-						col += 1
+                    for pname in designtable.metadata.values():
+                        worksheet.write(r,c,params[pname])
+                        col += 1
 
-					row += 1
+                    row += 1
 
-			workbook.save(join(coll_path,designtable.outname))
+            workbook.save(join(coll_path,designtable.outname))

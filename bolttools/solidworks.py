@@ -26,68 +26,68 @@ from errors import *
 from common import BaseElement, DataBase, Parameters, Substitution, check_schema
 
 class DesignTableClass:
-	def __init__(self,cl):
-		check_schema(cl,"basesolidworks",
-			["classid"],
-			["naming"]
-		)
+    def __init__(self,cl):
+        check_schema(cl,"basesolidworks",
+            ["classid"],
+            ["naming"]
+        )
 
-		self.classid = cl["classid"]
+        self.classid = cl["classid"]
 
-		self.naming = Substitution(cl.get("naming",None))
+        self.naming = Substitution(cl.get("naming",None))
 
 
 class DesignTable(BaseElement):
-	def __init__(self,designtable,collname,backend_root):
-		BaseElement.__init__(self,designtable,collname)
-		check_schema(designtable,"basesolidworks",
-			["filename","author","license","type","suffix","params","classes"],
-			["source","metadata"]
-		)
+    def __init__(self,designtable,collname,backend_root):
+        BaseElement.__init__(self,designtable,collname)
+        check_schema(designtable,"basesolidworks",
+            ["filename","author","license","type","suffix","params","classes"],
+            ["source","metadata"]
+        )
 
-		self.filename = designtable["filename"]
-		self.path = join(backend_root,collname,self.filename)
+        self.filename = designtable["filename"]
+        self.path = join(backend_root,collname,self.filename)
 
-		self.suffix = designtable["suffix"]
+        self.suffix = designtable["suffix"]
 
-		self.outname = "%s-%s.xls" % (splitext(self.filename)[0],self.suffix)
+        self.outname = "%s-%s.xls" % (splitext(self.filename)[0],self.suffix)
 
-		self.params = designtable["params"]
+        self.params = designtable["params"]
 
-		self.metadata = designtable.get("metadata",{})
+        self.metadata = designtable.get("metadata",{})
 
-		self.classes = []
-		for cl in designtable["classes"]:
-			self.classes.append(DesignTableClass(cl))
+        self.classes = []
+        for cl in designtable["classes"]:
+            self.classes.append(DesignTableClass(cl))
 
 class SolidWorksData(DataBase):
-	def __init__(self,repo):
-		DataBase.__init__(self,"solidworks",repo)
-		self.designtables = []
+    def __init__(self,repo):
+        DataBase.__init__(self,"solidworks",repo)
+        self.designtables = []
 
-		if not exists(self.backend_root):
-			e = MalformedRepositoryError("solidworks directory does not exist")
-			e.set_repo_path(repo.path)
-			raise e
+        if not exists(self.backend_root):
+            e = MalformedRepositoryError("solidworks directory does not exist")
+            e.set_repo_path(repo.path)
+            raise e
 
-		for coll in listdir(self.backend_root):
-			basefilename = join(self.backend_root,coll,"%s.base" % coll)
-			if not exists(basefilename):
-				#skip directory that is no collection
-				continue
-			try:
-				base = list(yaml.load_all(open(basefilename,"r","utf8"), Loader=yaml.SafeLoader))
-				# SafeLoader is not implemented in pyyaml < 5.1
-			except AttributeError:
-				# this is deprecated for newer pyyaml versions
-				base = list(yaml.load_all(open(basefilename,"r","utf8")))
-			if len(base) != 1:
-				raise MalformedCollectionError(
-					"No YAML document found in file %s" % basefilename
-				)
-			base = base[0]
+        for coll in listdir(self.backend_root):
+            basefilename = join(self.backend_root,coll,"%s.base" % coll)
+            if not exists(basefilename):
+                #skip directory that is no collection
+                continue
+            try:
+                base = list(yaml.load_all(open(basefilename,"r","utf8"), Loader=yaml.SafeLoader))
+                # SafeLoader is not implemented in pyyaml < 5.1
+            except AttributeError:
+                # this is deprecated for newer pyyaml versions
+                base = list(yaml.load_all(open(basefilename,"r","utf8")))
+            if len(base) != 1:
+                raise MalformedCollectionError(
+                    "No YAML document found in file %s" % basefilename
+                )
+            base = base[0]
 
-			for designtable in base:
-				if not designtable["type"] == "solidworks":
-					continue
-				self.designtables.append(DesignTable(designtable,coll,self.backend_root))
+            for designtable in base:
+                if not designtable["type"] == "solidworks":
+                    continue
+                self.designtables.append(DesignTable(designtable,coll,self.backend_root))

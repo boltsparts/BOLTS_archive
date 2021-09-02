@@ -25,56 +25,56 @@ from .errors import *
 UNITS = {"Length (mm)" : "mm", "Length (in)" : "in"}
 
 class Backend:
-	"""
-	Base class for backends.
+    """
+    Base class for backends.
 
-	takes care of validating and storing databases, clearing the output directory
-	"""
-	def __init__(self,repo,name,databases,required=[],optional={}):
-		"""
-		required and optional are list of strings for databases that
-		are required or optional for the correct function of this
-		backend
-		"""
-		self.repo = repo
-		self.name = name
-		self.dbs = {}
-		for db in required:
-			if db not in databases:
-				raise DatabaseNotAvailableError(self.name,db)
-			self.dbs[db] = databases[db]
-		for db in optional:
-			if db in databases:
-				self.dbs[db] = databases[db]
-	def clear_output_dir(self,out_dir):
-		# pylint: disable=R0201
-		if not exists(out_dir):
-			makedirs(out_dir)
-		for path in listdir(out_dir):
-			full_path = join(out_dir,path)
-			if isfile(full_path):
-				remove(full_path)
-			else:
-				rmtree(full_path)
+    takes care of validating and storing databases, clearing the output directory
+    """
+    def __init__(self,repo,name,databases,required=[],optional={}):
+        """
+        required and optional are list of strings for databases that
+        are required or optional for the correct function of this
+        backend
+        """
+        self.repo = repo
+        self.name = name
+        self.dbs = {}
+        for db in required:
+            if db not in databases:
+                raise DatabaseNotAvailableError(self.name,db)
+            self.dbs[db] = databases[db]
+        for db in optional:
+            if db in databases:
+                self.dbs[db] = databases[db]
+    def clear_output_dir(self,out_dir):
+        # pylint: disable=R0201
+        if not exists(out_dir):
+            makedirs(out_dir)
+        for path in listdir(out_dir):
+            full_path = join(out_dir,path)
+            if isfile(full_path):
+                remove(full_path)
+            else:
+                rmtree(full_path)
 
-	def validate_arguments(self,kwargs,required=[],optional={}):
-		"""
-		normalises and validates key-value arguments
-		kwargs is a dictionary
-		required is a list of keys that must be present
-		optional is a dict of optional keys, with their default value
-		args in kwargs that are not either required or optional are an error conditions
-		"""
-		res = {}
-		res.update(optional)
-		for key in kwargs:
-			if key in required:
-				res[key] = kwargs[key]
-			elif key in optional:
-				res[key] = kwargs[key]
-			else:
-				raise UnknownArgumentError(self.name,key)
-		return res
+    def validate_arguments(self,kwargs,required=[],optional={}):
+        """
+        normalises and validates key-value arguments
+        kwargs is a dictionary
+        required is a list of keys that must be present
+        optional is a dict of optional keys, with their default value
+        args in kwargs that are not either required or optional are an error conditions
+        """
+        res = {}
+        res.update(optional)
+        for key in kwargs:
+            if key in required:
+                res[key] = kwargs[key]
+            elif key in optional:
+                res[key] = kwargs[key]
+            else:
+                raise UnknownArgumentError(self.name,key)
+        return res
 
-	def write_ouput(self,out_path,**kwargs):
-		raise NotImplementedError()
+    def write_ouput(self,out_path,**kwargs):
+        raise NotImplementedError()
