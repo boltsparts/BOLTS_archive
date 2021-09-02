@@ -20,7 +20,7 @@ from bolttools.blt import Repository
 from bolttools.freecad import FreeCADData
 from bolttools.openscad import OpenSCADData
 from bolttools.drawings import DrawingsData
-#from bolttools.solidworks import SolidWorksData
+# from bolttools.solidworks import SolidWorksData
 
 from backends.license import LICENSES_SHORT
 
@@ -96,13 +96,14 @@ def test(args):
                 if filename.endswith('.mo'):
                     extra_files.append(os.path.join(dirpath,filename))
 
-        #templates
+        # templates
         for dirpath,_,filenames in walk(args.repo):
             if os.path.basename(dirpath) == "templates":
                 for filename in filenames:
                     extra_files.append(os.path.join(dirpath,filename))
 
         app.run(debug=True,extra_files=extra_files)
+
 
 def check(args):
     repo = Repository(args.repo)
@@ -118,6 +119,7 @@ def check(args):
     for check in checker.checks.values():
         print(check.print_table(),)
 
+
 def tasks(args):
     repo = Repository(args.repo)
     dbs = {}
@@ -132,6 +134,7 @@ def tasks(args):
     for task in checker.tasks.values():
         print(task.print_table(),)
 
+
 def connectors(args):
     repo = Repository(args.repo)
     dbs = {}
@@ -143,6 +146,7 @@ def connectors(args):
     from backends.connectordrawings import ConnectorDrawingsBackend
     ConnectorDrawingsBackend(repo,dbs).write_output(out_path)
 
+
 def add_lang(args):
     # from website
     _,fname = mkstemp(suffix=".pot")
@@ -150,7 +154,7 @@ def add_lang(args):
     os.system("pybabel init -D messages -d translations/ -i %s -l %s" % (fname,args.lang))
     os.remove(fname)
 
-    #from documentation
+    # from documentation
     from website.utils import Documentation
     fhandle,fname = mkstemp(suffix=".pot")
     with os.fdopen(fhandle,"w") as fid:
@@ -159,7 +163,7 @@ def add_lang(args):
     os.system("pybabel init -D docs -d translations/ -i %s -l %s" % (fname,args.lang))
     os.remove(fname)
 
-    #from parts data
+    # from parts data
     repo = Repository(args.repo)
     from backends.translations import TranslationBackend
     fhandle,fname = mkstemp(suffix=".pot")
@@ -169,15 +173,16 @@ def add_lang(args):
     os.remove(fname)
     print("Don't forget to edit website/templates/base.html and add the language to the dropdown menu")
 
+
 def translate(args):
     if args.update_translation:
-        #from website
+        # from website
         _,fname = mkstemp(suffix=".pot")
         os.system("pybabel extract -F website/babel.cfg -o %s website/" % fname)
         os.system("pybabel update -D messages -i %s -d translations/" % fname)
         os.remove(fname)
 
-        #from documentation
+        # from documentation
         from website.utils import Documentation
         fhandle,fname = mkstemp(suffix=".pot")
         with os.fdopen(fhandle,"w") as fid:
@@ -186,7 +191,7 @@ def translate(args):
         os.system("pybabel update -D docs -d translations -i %s" % fname)
         os.remove(fname)
 
-        #from parts data
+        # from parts data
         repo = Repository(args.repo)
         from backends.translations import TranslationBackend
         fhandle,fname = mkstemp(suffix=".pot")
@@ -199,6 +204,7 @@ def translate(args):
         os.system("pybabel compile -D messages -d translations/")
         os.system("pybabel compile -D parts -d translations/")
         os.system("pybabel compile -D docs -d translations/")
+
 
 def release(args):
     # check that there are no uncommitted changes
@@ -266,7 +272,7 @@ def release(args):
             return
         IGESBackend(repo,dbs).write_output(os.path.join(repo.path,"output","iges"),version=version)
 
-        #write xz file, see http://stackoverflow.com/a/13131500
+        # write xz file, see http://stackoverflow.com/a/13131500
         backend_name = backend_names["iges"]
         xz_name = "BOLTS_%s_%s.tar.xz" % (backend_name,version)
         xz_fid = lzma.LZMAFile(os.path.join(repo.path,"downloads","iges",xz_name),mode="w")
@@ -281,7 +287,9 @@ parser.add_argument("--repo",
     help="path of the BOLTS repository to work on",
     default=getcwd())
 
+
 subparsers = parser.add_subparsers()
+
 
 parser_export = subparsers.add_parser("export")
 parser_export.add_argument("target",
@@ -297,6 +305,7 @@ parser_export.add_argument("--debug", dest='debug', action="store_true",
     help="take special measures to ease debugging")
 parser_export.set_defaults(func=export)
 
+
 parser_test = subparsers.add_parser("test")
 parser_test.add_argument("target",
     type=str,
@@ -304,14 +313,18 @@ parser_test.add_argument("target",
     help="the backend to test")
 parser_test.set_defaults(func=test)
 
+
 parser_check = subparsers.add_parser("check")
 parser_check.set_defaults(func=check)
+
 
 parser_check = subparsers.add_parser("tasks")
 parser_check.set_defaults(func=tasks)
 
+
 parser_check = subparsers.add_parser("connectors")
 parser_check.set_defaults(func=connectors)
+
 
 parser_release = subparsers.add_parser("release")
 parser_release.set_defaults(func=release)
@@ -326,12 +339,14 @@ parser_release.add_argument("target",
     default="all")
 parser_release.add_argument("-v","--version",type=str)
 
+
 parser_translate = subparsers.add_parser("translate")
 parser_translate.add_argument("-u",dest='update_translation', action="store_true",
     help="update the po message catalogs from sources and parts data")
 parser_translate.add_argument("-c",dest='compile_translation', action="store_true",
     help="compile the po message catalogs into mo catalogs")
 parser_translate.set_defaults(func=translate)
+
 
 parser_add_lang = subparsers.add_parser("add_lang")
 parser_add_lang.add_argument('lang',help="add the specified language")
