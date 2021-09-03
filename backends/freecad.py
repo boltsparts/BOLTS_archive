@@ -132,6 +132,10 @@ class FreeCADBackend(Backend):
                 bolts_path, "__init__.py"
             )
         )
+        copyfile(
+            join(self.repo.path, "backends", "common", "repo_tools.py"),
+            join(bolts_path, "repo_tools.py")
+        )
         open(join(bolts_path, "gui", "__init__.py"), "w").close()
 
         for coll, in self.repo.itercollections():
