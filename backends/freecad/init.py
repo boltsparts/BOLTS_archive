@@ -116,12 +116,6 @@ def add_part_by_classid(classid, in_params=None):
             - get the default parameters by BOLTS.get_default_params(SaveClassName)
             - if the key "name" is given, this will be used as FreeCAD object name
 
-        Examples:
-            BOLTS.add_part_by_classid("ibeam_heb")
-            BOLTS.add_part_by_classid("ibeam_heb", {"type": "HEB500", "name": "my_profile"})
-            BOLTS.add_part_by_classid("ibeam_heb", {"type": "HEB500", "l" : 50, "arch" : True})
-            BOLTS.add_part_by_classid("tslot20x20", {"l": 5})
-            BOLTS.add_part_by_classid("vslot20x60", {"l": 5, "finish": "Clear anodized"})
     """
     name = repo.names[get_name(classid)]
     cl = repo.class_names.get_src(name)
@@ -137,9 +131,9 @@ def add_part_by_name(save_class_name, in_params=None):
         Add a BOLTS part by Python according the class name
 
         save_class_name:
-            - get a list of all known names by BOLTS.get_names()
-            - print all known names with BOLTS.print_names()
-            - get a name from *.blt file classid by BOLTS.get_name(ClassID)
+            - get a list of all known names by bolts.get_names()
+            - print all known names with bolts.print_names()
+            - get a name from *.blt file classid by bolts.get_name(ClassID)
 
         in_params:
             - dictionary of all free Parameters
@@ -148,12 +142,6 @@ def add_part_by_name(save_class_name, in_params=None):
             - get the default parameters by BOLTS.get_default_params(SaveClassName)
             - if the key "name" is given, this will be used as FreeCAD object name
 
-        Examples:
-            BOLTS.add_part_by_name("HEBProfile")
-            BOLTS.add_part_by_name("HEAProfile", {"type": "HEA300", "name": "my_profile"})
-            BOLTS.add_part_by_name("HEBProfile", {"type": "HEB500", "l" : 50, "arch" : True})
-            BOLTS.add_part_by_name("TSlotExtrusion20x20", {"l": 5})
-            BOLTS.add_part_by_name("V_slot20x60mm", {"l": 5, "finish": "Clear anodized"})
     """
     name = repo.names[save_class_name]
     cl = repo.class_names.get_src(name)
@@ -169,7 +157,7 @@ def add_part_by_standard(save_standard_name, in_params=None):
         Add a BOLTS part by Python according the national standard name
 
         save_standard_name:
-            - get a list of all known standards by BOLTS.get_standards()
+            - get a list of all known standards by bolts.get_standards()
             - print all known standards with BOLTS.print_standards()
             - get a standard from *.blt file classid by BOLTS.get_name(ClassID)
 
@@ -180,13 +168,6 @@ def add_part_by_standard(save_standard_name, in_params=None):
             - get the default parameters by BOLTS.get_default_params(SaveClassName)
             - if the key "name" is given, this will be used as FreeCAD object name
 
-        Examples:
-            BOLTS.add_part_by_standard("DIN1025_2")
-            BOLTS.add_part_by_standard("DIN1025_2", {"type": "HEB500", "name": "my_profile"})
-            BOLTS.add_part_by_standard("DIN1025_2", {"type": "HEB500", "l" : 50, "arch" : True})
-            BOLTS.add_part_by_standard("DINENISO4017")
-            BOLTS.add_part_by_standard("DIN933", {"name": "my_profile"})
-            BOLTS.add_part_by_standard("DIN933", {"key": "M10", "l": 120, "name": "my_profile"})
     """
     standard = repo.standards[save_standard_name]
     cl = repo.class_standards.get_src(standard)
@@ -196,9 +177,33 @@ def add_part_by_standard(save_standard_name, in_params=None):
 
 
 """
+# Examples:
+import BOLTS as bolts
+bolts.add_part_by_classid("ibeam_heb")
+bolts.add_part_by_classid("ibeam_heb", {"type": "HEB500", "name": "my_profile"})
+bolts.add_part_by_classid("ibeam_heb", {"type": "HEB500", "l" : 50, "arch" : True})
+bolts.add_part_by_classid("tslot20x20", {"l": 5})
+bolts.add_part_by_classid("vslot20x60", {"l": 5, "finish": "Clear anodized"})
+
+bolts.add_part_by_name("HEBProfile")
+bolts.add_part_by_name("HEAProfile", {"type": "HEA300", "name": "my_profile"})
+bolts.add_part_by_name("HEBProfile", {"type": "HEB500", "l" : 50, "arch" : True})
+bolts.add_part_by_name("TSlotExtrusion20x20", {"l": 5})
+bolts.add_part_by_name("V_slot20x60mm", {"l": 5, "finish": "Clear anodized"})
+
+bolts.add_part_by_standard("DIN1025_2")
+bolts.add_part_by_standard("DIN1025_2", {"type": "HEB500", "name": "my_profile"})
+bolts.add_part_by_standard("DIN1025_2", {"type": "HEB500", "l" : 50, "arch" : True})
+bolts.add_part_by_standard("DINENISO4017")
+bolts.add_part_by_standard("DIN933", {"name": "my_profile"})
+bolts.add_part_by_standard("DIN933", {"key": "M10", "l": 120, "name": "my_profile"})
+
+
+"""
+"""
 # TODO:
 # the following has errors, FIXME
-BOLTS.add_part_by_standard("DIN933")
+bolts.add_part_by_standard("DIN933")
 """
 
 
@@ -258,93 +263,6 @@ def _add_part(cl, in_params):
 
 
 # ************************************************************************************************
-# get information and data out of the repo
-# TODO this are FreeCAD independent methods to get information out of the repo
-# move to bolttools, all backends would need them
-# double check, they may exist already
-# see comment from Johannes:
-# for example the get_name method ...
-# I think I had a mechanism to do something like this efficiently,
-# but it has been long ago that I wrote this code,
-# and I can not try it right now, but I guess something like:
-"""
-repo.iternames(classid=classid)
-
-"""
-# the iterators can be found in bolttools/freecad.py and bolttools/openscad.py
-# this is for sure a better place, but some simple documentation here would be good
-# TODO: Why are the iterators duplicated in freecad and openscad
-# TODO: The yaml reader to initialize the repo seams duplicated too :-(
-
-def get_name(classid):
-    """
-    BOLTS.get_name()
-        get SaveClassName from classid (which can be retrieved from blt file)
-    """
-    for n in get_names():
-        name = repo.names[n]
-        cl = repo.class_names.get_src(name)
-        if classid == cl.id:
-            return n
+# see init of python package for more documentation and code examples to access the repo
 
 
-def get_standard(classid):
-    """
-    BOLTS.get_standard()
-        get SaveStandardName from classid (which can be retrieved from blt file)
-    """
-    for s in get_standards():
-        standard = repo.standards[s]
-        cl = repo.class_standards.get_src(standard)
-        if classid == cl.id:
-            return s
-
-
-def get_names():
-    """
-    BOLTS.get_names()
-        get all known class names
-    """
-    return sorted(list(repo.names.keys()))
-
-
-def print_names():
-    """
-    BOLTS.print_names()
-        print all known class names
-    """
-    for n in get_names():
-        print(n)
-
-
-def get_standards():
-    """
-    BOLTS.get_standards()
-        get all known class names
-    """
-    return sorted(list(repo.standards.keys()))
-
-
-def print_standards():
-    """
-    BOLTS.print_standards()
-        print all known class names
-    """
-    for n in get_standards():
-        print(n)
-
-
-def get_default_params_by_name(save_class_name):
-    """
-    BOLTS.get_default_params_by_name(save_class_name)
-    """
-    cl = repo.class_names.get_src(repo.names[save_class_name])
-    return _get_default_params(cl)
-
-
-def get_default_params_by_standard(save_standard_name):
-    """
-    BOLTS.get_default_params_by_standard(save_standard_name)
-    """
-    cl = repo.class_standards.get_src(repo.standards[save_standard_name])
-    return _get_default_params(cl)
