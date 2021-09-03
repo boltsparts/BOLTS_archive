@@ -47,7 +47,7 @@ class TranslationBackend(Backend):
         ])
 
     def write_output(self,out_path,**kwargs):
-        args = self.validate_arguments(kwargs,[],{})
+        # args = self.validate_arguments(kwargs,[],{})  # not used
 
         template = Catalog(domain="parts", project="BOLTS")
 
