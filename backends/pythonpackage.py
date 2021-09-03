@@ -61,6 +61,10 @@ class PythonPackageBackend(Backend):
             join(self.repo.path, "backends", "pythonpackage", "init.py"),
             join(bolts_path, "__init__.py")
         )
+        copyfile(
+            join(self.repo.path, "backends", "common", "repo_tools.py"),
+            join(bolts_path, "repo_tools.py")
+        )
 
         # copy part data
         if not exists(join(bolts_path, "data")):

@@ -27,6 +27,7 @@ import FreeCADGui
 # TODO check if Gui is up, in FreeCADCmd mode importing by Python should be possible
 import Part
 
+from . import repo_tools
 from .app.freecad_bolts_app import add_part_to_doc
 from .bolttools import blt
 from .bolttools import freecad
@@ -36,7 +37,7 @@ from .bolttools import freecad
 rootpath = dirname(__file__)
 repo = blt.Repository(rootpath)
 # print(repo)
-freecad_db = freecad.FreeCADData(repo)
+db_repo = freecad.FreeCADData(repo)
 widget = None
 
 
@@ -53,7 +54,7 @@ def show_widget():
         QtGui.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
         mw = FreeCADGui.getMainWindow()
         widget = QtGui.QDockWidget("BOLTS Parts Selector", mw)
-        widget.setWidget(boltsgui.BoltsWidget(repo, freecad_db))
+        widget.setWidget(boltsgui.BoltsWidget(repo, db_repo))
         mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, widget)
         QtGui.QApplication.restoreOverrideCursor()
     else:
@@ -102,7 +103,7 @@ def list_names(doc):
 #********
 def add_part_by_classid(classid, in_params=None):
     """
-    BOLTS.add_part_by_name(classid, [in_params])
+    add_part_by_name(classid, [in_params])
 
         Add a BOLTS part by Python according the classid
 
@@ -117,7 +118,7 @@ def add_part_by_classid(classid, in_params=None):
             - if the key "name" is given, this will be used as FreeCAD object name
 
     """
-    name = repo.names[get_name(classid)]
+    name = repo.names[repo_tools.get_name(repo, classid)]
     cl = repo.class_names.get_src(name)
 
     # get params and add part
@@ -126,7 +127,7 @@ def add_part_by_classid(classid, in_params=None):
 
 def add_part_by_name(save_class_name, in_params=None):
     """
-    BOLTS.add_part_by_name(save_class_name, [in_params])
+    add_part_by_name(save_class_name, [in_params])
 
         Add a BOLTS part by Python according the class name
 
@@ -152,7 +153,7 @@ def add_part_by_name(save_class_name, in_params=None):
 
 def add_part_by_standard(save_standard_name, in_params=None):
     """
-    BOLTS.add_part_by_standard(save_standard_name, [in_params])
+    add_part_by_standard(save_standard_name, [in_params])
 
         Add a BOLTS part by Python according the national standard name
 
@@ -176,8 +177,25 @@ def add_part_by_standard(save_standard_name, in_params=None):
     add_params_and_add_part(cl, in_params)
 
 
+def add_params_and_add_part(cl, in_params):
+
+    # get missing params
+    all_params = repo_tools.add_params(db_repo, repo, cl, in_params)
+
+    # add part
+    base = db_repo.base_classes.get_src(cl)
+    coll = repo.collection_classes.get_src(cl)
+    add_part_to_doc(
+        coll,
+        base,
+        all_params,
+        FreeCAD.ActiveDocument
+    )
+
+
+# ************************************************************************************************
 """
-# Examples:
+# Examples to add parts to FreeCAD by Python:
 import BOLTS as bolts
 bolts.add_part_by_classid("ibeam_heb")
 bolts.add_part_by_classid("ibeam_heb", {"type": "HEB500", "name": "my_profile"})
@@ -200,69 +218,10 @@ bolts.add_part_by_standard("DIN933", {"key": "M10", "l": 120, "name": "my_profil
 
 
 """
+
+
 """
 # TODO:
 # the following has errors, FIXME
 bolts.add_part_by_standard("DIN933")
 """
-
-
-# ************************************************************************************************
-# helper
-def _get_default_params(cl):
-
-    base = freecad_db.base_classes.get_src(cl)
-    params = cl.parameters.union(base.parameters)
-    free_params = params.free
-
-    default_params = {}
-    for p in free_params:
-        # p_type = params.types[p]  # not used
-        default_value = params.defaults[p]
-        default_params[p] = default_value
-    return default_params
-
-
-def _add_missing_inparams(cl, params):
-
-    # print(cl.id)
-    # print(params)
-    default_params = _get_default_params(cl)
-    for def_key in default_params:
-        if def_key not in params:
-            params[def_key] = default_params[def_key]
-            print(
-                "Added default parameter: {}: {}"
-                .format(def_key, default_params[def_key])
-            )
-    return params
-
-
-def add_params_and_add_part(cl, in_params):
-
-    # params
-    if not in_params:
-        in_params = _get_default_params(cl)
-    all_params = _add_missing_inparams(cl, in_params)
-    all_params = cl.parameters.collect(in_params)
-
-    # add name to all_params
-    if "name" not in all_params:
-        name = repo.names[get_name(cl.id)]
-        all_params["name"] = name.labeling.get_nice(all_params)
-
-    # add part to doc
-    base = freecad_db.base_classes.get_src(cl)
-    coll = repo.collection_classes.get_src(cl)
-    add_part_to_doc(
-        coll,
-        base,
-        all_params,
-        FreeCAD.ActiveDocument
-    )
-
-
-# ************************************************************************************************
-# see init of python package for more documentation and code examples to access the repo
-
-
