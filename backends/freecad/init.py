@@ -27,7 +27,7 @@ import FreeCADGui
 # TODO check if Gui is up, in FreeCADCmd mode importing by Python should be possible
 import Part
 
-from .app.freecad_bolts_app import add_part
+from .app.freecad_bolts_app import add_part_to_doc
 from .bolttools import blt
 from .bolttools import freecad
 
@@ -121,7 +121,7 @@ def add_part_by_classid(classid, in_params=None):
     cl = repo.class_names.get_src(name)
 
     # get params and add part
-    _add_part(cl, in_params)
+    add_params_and_add_part(cl, in_params)
 
 
 def add_part_by_name(save_class_name, in_params=None):
@@ -147,7 +147,7 @@ def add_part_by_name(save_class_name, in_params=None):
     cl = repo.class_names.get_src(name)
 
     # get params and add part
-    _add_part(cl, in_params)
+    add_params_and_add_part(cl, in_params)
 
 
 def add_part_by_standard(save_standard_name, in_params=None):
@@ -173,7 +173,7 @@ def add_part_by_standard(save_standard_name, in_params=None):
     cl = repo.class_standards.get_src(standard)
 
     # get params and add part
-    _add_part(cl, in_params)
+    add_params_and_add_part(cl, in_params)
 
 
 """
@@ -238,7 +238,7 @@ def _add_missing_inparams(cl, params):
     return params
 
 
-def _add_part(cl, in_params):
+def add_params_and_add_part(cl, in_params):
 
     # params
     if not in_params:
@@ -251,10 +251,10 @@ def _add_part(cl, in_params):
         name = repo.names[get_name(cl.id)]
         all_params["name"] = name.labeling.get_nice(all_params)
 
-    # add part
+    # add part to doc
     base = freecad_db.base_classes.get_src(cl)
     coll = repo.collection_classes.get_src(cl)
-    add_part(
+    add_part_to_doc(
         coll,
         base,
         all_params,

@@ -25,7 +25,7 @@ from ..bolttools import freecad
 #********
 
 
-def add_part(collection, base, params, doc):
+def add_part_to_doc(collection, base, params, doc):
     if isinstance(base, freecad.BaseFunction):
 
         # absolute import BOLTS hardcoded
@@ -37,17 +37,17 @@ def add_part(collection, base, params, doc):
         # use relative import
         # example: import ..freecad.profile_l.profile_l
 
-        print("{}".format(collection.id))
-        print("{}".format(base.module_name))
-        print(params)
-        print(doc.Name)
-        print(__package__)  # BOLTS.app for old style FreeCAD wb
+        # print("{}".format(collection.id))
+        # print("{}".format(base.module_name))
+        # print(params)
+        # print(doc.Name)
+        # print(__package__)  # BOLTS.app for old style FreeCAD wb
 
         module = importlib.import_module(
             ".freecad.{}.{}".format(collection.id, base.module_name),
             package=__package__.rstrip(".app")
         )
-        print(module)
+        # print(module)
         module.__dict__[base.name](params, doc)
 
     else:
