@@ -28,7 +28,7 @@ import FreeCAD
 import FreeCADGui
 from FreeCADGui import PySideUic as uic
 
-from ..app.freecad_bolts_app import add_part
+from ..app.freecad_bolts_app import add_part_to_doc
 from ..bolttools import freecad
 from ..bolttools.blt import Collection
 from ..bolttools.blt import ClassName
@@ -467,7 +467,7 @@ class BoltsWidget(QtGui.QWidget):
         try:
             base = self.dbs["freecad"].base_classes.get_src(cl)
             coll = self.repo.collection_classes.get_src(cl)
-            add_part(coll, base, params, FreeCAD.ActiveDocument)
+            add_part_to_doc(coll, base, params, FreeCAD.ActiveDocument)
             FreeCADGui.SendMsgToActiveView("ViewFit")
             FreeCAD.ActiveDocument.recompute()
         except ValueError as e:
