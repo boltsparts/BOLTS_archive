@@ -57,18 +57,43 @@ class OpenSCADBackend(Backend):
         #check for module name clashes
         modules = []
         #common.scad
-        for mod in ["BOLTS_error", "BOLTS_warning", "BOLTS_check_dimension",
-            "BOLTS_convert_to_default_unit", "get_dim", "type", "BOLTS_check_parameter_type",
-            "BOLTS_thread_external", "BOLTS_hex_head", "BOLTS_hex_socket_neg"]:
+        for mod in [
+            "BOLTS_error",
+            "BOLTS_warning",
+            "BOLTS_check_dimension",
+            "BOLTS_convert_to_default_unit",
+            "get_dim",
+            "type",
+            "BOLTS_check_parameter_type",
+            "BOLTS_thread_external",
+            "BOLTS_hex_head",
+            "BOLTS_hex_socket_neg"
+        ]:
             modules.append(mod)
         #conf.scad
         for mod in ["BOLTS_MODE", "BOLTS_DEFAULT_UNIT", "BOLTS_THREAD_COLOR"]:
             modules.append(mod)
         #local.scad
-        for mod in ["norm", "unit_vector", "clamp", "cross_product", "almost_equal",
-            "_rotation_angle", "calculate_rotation_axis", "calculate_axis", "new_cs",
-            "is_orthonromal", "unit_matrix", "tensor_product_matrix3", "cross_product_matrix3",
-            "rotation_matrix3", "show_cs", "translate_local", "in_cs", "align"]:
+        for mod in [
+            "norm",
+            "unit_vector",
+            "clamp",
+            "cross_product",
+            "almost_equal",
+            "_rotation_angle",
+            "calculate_rotation_axis",
+            "calculate_axis",
+            "new_cs",
+            "is_orthonromal",
+            "unit_matrix",
+            "tensor_product_matrix3",
+            "cross_product_matrix3",
+            "rotation_matrix3",
+            "show_cs",
+            "translate_local",
+            "in_cs",
+            "align"
+        ]:
             modules.append(mod)
         #version.scad
         for mod in ["BOLTS_version", "BOLTS_date", "BOLTS_license"]:

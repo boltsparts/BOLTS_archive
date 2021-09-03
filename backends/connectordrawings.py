@@ -25,7 +25,7 @@ class ConnectorDrawingsBackend(Backend):
         Backend.__init__(self,repo,"connectordrawings",databases,["openscad","drawings"])
 
     def write_output(self,out_path,**kwargs):
-        args = self.validate_arguments(kwargs)
+        # args = self.validate_arguments(kwargs)  # not used
 
         #clear output and copy files
         self.clear_output_dir(out_path)

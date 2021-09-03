@@ -106,7 +106,7 @@ def download(directory):
         print("Downloading {} tarball from S3...".format(cache_name))
         with timer():
             key.get_contents_to_filename(_tarball_filename_for(directory))
-    except S3ResponseError as err:
+    except S3ResponseError as err:  # noqa: F841
         mark_needs_uploading(cache_name)
         raise SystemExit("Cached {} download failed!".format(cache_name))
     print("Downloaded {}.".format(_tarball_size(directory)))
