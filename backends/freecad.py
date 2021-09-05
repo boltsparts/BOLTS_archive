@@ -55,12 +55,8 @@ class FreeCADBackend(Backend):
                 .format(args["target_license"])
             )
         copytree(
-            join(
-                self.repo.path, "bolttools"
-            ),
-            join(
-                bolts_path, "bolttools"
-            )
+            join(self.repo.path, "bolttools"),
+            join(bolts_path, "bolttools")
         )
         # remove the test suite and documentation, to save space
         rmtree(join(bolts_path, "bolttools", "test_blt"))
@@ -79,7 +75,7 @@ class FreeCADBackend(Backend):
         )
         version_file.close()
 
-        # freecad gui code
+        # freecad directory in backend
         if not license.is_combinable_with("LGPL 2.1+", args["target_license"]):
             raise IncompatibleLicenseError(
                 "FreeCAD gui files are LGPL 2.1+, "
@@ -88,49 +84,27 @@ class FreeCADBackend(Backend):
             )
         if not exists(join(bolts_path, "freecad")):
             makedirs(join(bolts_path, "freecad"))
-        if not exists(join(bolts_path, "data")):
-            makedirs(join(bolts_path, "data"))
         open(join(bolts_path, "freecad", "__init__.py"), "w").close()
 
         copytree(
-            join(
-                self.repo.path, "backends", "freecad", "app"
-            ),
-            join(
-                bolts_path, "app"
-            )
+            join(self.repo.path, "backends", "freecad", "app"),
+            join(bolts_path, "app")
         )
         copytree(
-            join(
-                self.repo.path, "backends", "freecad", "gui"
-            ),
-            join(
-                bolts_path, "gui"
-            )
+            join(self.repo.path, "backends", "freecad", "gui"),
+            join(bolts_path, "gui")
         )
         copytree(
-            join(
-                self.repo.path, "backends", "freecad", "assets"
-            ),
-            join(
-                bolts_path, "assets"
-            )
+            join(self.repo.path, "backends", "freecad", "assets"),
+            join(bolts_path, "assets")
         )
         copytree(
-            join(
-                self.repo.path, "icons"
-            ),
-            join(
-                bolts_path, "icons"
-            )
+            join(self.repo.path, "icons"),
+            join(bolts_path, "icons")
         )
         copyfile(
-            join(
-                self.repo.path, "backends", "freecad", "init.py"
-            ),
-            join(
-                bolts_path, "__init__.py"
-            )
+            join(self.repo.path, "backends", "freecad", "init.py"),
+            join(bolts_path, "__init__.py")
         )
         copyfile(
             join(self.repo.path, "backends", "common", "repo_tools.py"),
@@ -138,6 +112,9 @@ class FreeCADBackend(Backend):
         )
         open(join(bolts_path, "gui", "__init__.py"), "w").close()
 
+        # copy data
+        if not exists(join(bolts_path, "data")):
+            makedirs(join(bolts_path, "data"))
         for coll, in self.repo.itercollections():
             if (
                 not license.is_combinable_with(
@@ -147,12 +124,8 @@ class FreeCADBackend(Backend):
             ):
                 continue
             copy(
-                join(
-                    self.repo.path, "data", "%s.blt" % coll.id
-                ),
-                join(
-                    bolts_path, "data", "%s.blt" % coll.id
-                )
+                join(self.repo.path, "data", "%s.blt" % coll.id),
+                join(bolts_path, "data", "%s.blt" % coll.id)
             )
 
             if not exists(join(bolts_path, "freecad", coll.id)):
@@ -169,17 +142,11 @@ class FreeCADBackend(Backend):
                 continue
 
             copy(
-                join(
-                    self.repo.path, "freecad", coll.id, "%s.base" % coll.id
-                ),
-                join(
-                    bolts_path, "freecad", coll.id, "%s.base" % coll.id
-                )
+                join(self.repo.path, "freecad", coll.id, "%s.base" % coll.id),
+                join(bolts_path, "freecad", coll.id, "%s.base" % coll.id)
             )
 
-            open(join(
-                bolts_path, "freecad", coll.id, "__init__.py"
-            ), "w").close()
+            open(join(bolts_path, "freecad", coll.id, "__init__.py"), "w").close()
 
             for base, in self.dbs["freecad"].iterbases(filter_collection=coll):
                 if base.license_name not in license.LICENSES:
@@ -191,13 +158,6 @@ class FreeCADBackend(Backend):
                 ):
                     continue
                 copy(
-                    join(
-                        self.repo.path,
-                        "freecad",
-                        coll.id,
-                        basename(base.filename)
-                    ),
-                    join(
-                        bolts_path, "freecad", coll.id, basename(base.filename)
-                    )
+                    join(self.repo.path, "freecad", coll.id, basename(base.filename)),
+                    join(bolts_path, "freecad", coll.id, basename(base.filename))
                 )
