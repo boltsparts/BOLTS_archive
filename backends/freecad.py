@@ -36,10 +36,11 @@ class FreeCADBackend(Backend):
         Backend.__init__(self, repo, "freecad", databases, ["freecad"])
 
     def write_output(self, out_path, **kwargs):
-        args = self.validate_arguments(kwargs, ["target_license", "version"])
+        self.args = self.validate_arguments(kwargs, ["target_license", "version"])
+        self.license = license
 
         self.clear_output_dir(out_path)
-        bolts_path = join(out_path, "BOLTS")
+        self.bout_path = join(out_path, "BOLTS")
 
         # generate macro
         start_macro = open(join(out_path, "start_bolts.FCMacro"), "w")
@@ -47,117 +48,69 @@ class FreeCADBackend(Backend):
         start_macro.write("BOLTS.show_widget()\n")
         start_macro.close()
 
-        # copy files
-        # bolttools
-        if not license.is_combinable_with("LGPL 2.1+", args["target_license"]):
+        # copy files bolttools
+        if not self.license.is_combinable_with("LGPL 2.1+", self.args["target_license"]):
             raise IncompatibleLicenseError(
                 "bolttools is LGPL 2.1+, which is not compatible with {}"
-                .format(args["target_license"])
+                .format(self.args["target_license"])
             )
         copytree(
             join(self.repo.path, "bolttools"),
-            join(bolts_path, "bolttools")
+            join(self.bout_path, "bolttools")
         )
         # remove the test suite and documentation, to save space
-        rmtree(join(bolts_path, "bolttools", "test_blt"))
+        rmtree(join(self.bout_path, "bolttools", "test_blt"))
 
         # generate version file
         date = datetime.now()
-        version_file = open(join(bolts_path, "VERSION"), "w")
+        version_file = open(join(self.bout_path, "VERSION"), "w")
         version_file.write(
             "{}\n{}-{}-{}\n{}\n".format(
-                args["version"],
+                self.args["version"],
                 date.year,
                 date.month,
                 date.day,
-                args["target_license"]
+                self.args["target_license"]
             )
         )
         version_file.close()
 
-        # freecad directory in backend
-        if not license.is_combinable_with("LGPL 2.1+", args["target_license"]):
+        # copy freecad directory in backend
+        if not self.license.is_combinable_with("LGPL 2.1+", self.args["target_license"]):
             raise IncompatibleLicenseError(
                 "FreeCAD gui files are LGPL 2.1+, "
                 "which is not compatible with {}"
-                .format(args["target_license"])
+                .format(self.args["target_license"])
             )
-        if not exists(join(bolts_path, "freecad")):
-            makedirs(join(bolts_path, "freecad"))
-        open(join(bolts_path, "freecad", "__init__.py"), "w").close()
+        if not exists(join(self.bout_path, "freecad")):
+            makedirs(join(self.bout_path, "freecad"))
+        open(join(self.bout_path, "freecad", "__init__.py"), "w").close()
 
         copytree(
             join(self.repo.path, "backends", "freecad", "app"),
-            join(bolts_path, "app")
+            join(self.bout_path, "app")
         )
         copytree(
             join(self.repo.path, "backends", "freecad", "gui"),
-            join(bolts_path, "gui")
+            join(self.bout_path, "gui")
         )
         copytree(
             join(self.repo.path, "backends", "freecad", "assets"),
-            join(bolts_path, "assets")
+            join(self.bout_path, "assets")
         )
         copytree(
             join(self.repo.path, "icons"),
-            join(bolts_path, "icons")
+            join(self.bout_path, "icons")
         )
         copyfile(
             join(self.repo.path, "backends", "freecad", "init.py"),
-            join(bolts_path, "__init__.py")
+            join(self.bout_path, "__init__.py")
         )
         copyfile(
             join(self.repo.path, "backends", "common", "repo_tools.py"),
-            join(bolts_path, "repo_tools.py")
+            join(self.bout_path, "repo_tools.py")
         )
-        open(join(bolts_path, "gui", "__init__.py"), "w").close()
+        open(join(self.bout_path, "gui", "__init__.py"), "w").close()
 
-        # copy data
-        if not exists(join(bolts_path, "data")):
-            makedirs(join(bolts_path, "data"))
-        for coll, in self.repo.itercollections():
-            if (
-                not license.is_combinable_with(
-                    coll.license_name,
-                    args["target_license"]
-                )
-            ):
-                continue
-            copy(
-                join(self.repo.path, "data", "%s.blt" % coll.id),
-                join(bolts_path, "data", "%s.blt" % coll.id)
-            )
-
-            if not exists(join(bolts_path, "freecad", coll.id)):
-                makedirs(join(bolts_path, "freecad", coll.id))
-
-            if (
-                not exists(join(
-                    self.repo.path,
-                    "freecad",
-                    coll.id,
-                    "%s.base" % coll.id
-                ))
-            ):
-                continue
-
-            copy(
-                join(self.repo.path, "freecad", coll.id, "%s.base" % coll.id),
-                join(bolts_path, "freecad", coll.id, "%s.base" % coll.id)
-            )
-
-            open(join(bolts_path, "freecad", coll.id, "__init__.py"), "w").close()
-
-            for base, in self.dbs["freecad"].iterbases(filter_collection=coll):
-                if base.license_name not in license.LICENSES:
-                    continue
-                if (
-                    not license.is_combinable_with(
-                        base.license_name, args["target_license"]
-                    )
-                ):
-                    continue
-                copy(
-                    join(self.repo.path, "freecad", coll.id, basename(base.filename)),
-                    join(bolts_path, "freecad", coll.id, basename(base.filename))
-                )
+        # copy data and creator modules
+        self.copy_data_and_creator_modules()

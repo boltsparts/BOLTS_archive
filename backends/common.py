@@ -20,9 +20,14 @@
 from os import listdir
 from os import makedirs
 from os import remove
+from os.path import basename
 from os.path import exists
+from os.path import isdir
 from os.path import isfile
 from os.path import join
+from shutil import copy
+from shutil import copyfile
+from shutil import copytree
 from shutil import rmtree
 from .errors import DatabaseNotAvailableError
 from .errors import NotImplementedError
@@ -86,3 +91,79 @@ class Backend:
 
     def write_ouput(self, out_path, **kwargs):
         raise NotImplementedError()
+
+    def copy_data_and_creator_modules(self, all_data=False):
+
+        if not exists(join(self.bout_path, "data")):
+            makedirs(join(self.bout_path, "data"))
+
+        for coll, in self.repo.itercollections():
+
+            # skip if license does not fit
+            if (
+                not self.license.is_combinable_with(
+                    coll.license_name,
+                    self.args["target_license"]
+                )
+            ):
+                continue
+
+            # continue if all_data is False and no geometry creator modules exists
+            if (
+                all_data is False
+                and not exists(join(self.repo.path, self.name, coll.id, "%s.base" % coll.id))
+            ):
+                # print("Skip %s due to missing base file" % coll.id)
+                continue
+
+            # copy data structure files
+            copy(
+                join(self.repo.path, "data", "%s.blt" % coll.id),
+                join(self.bout_path, "data", "%s.blt" % coll.id)
+            )
+
+            # geoemtry data files
+            if isdir(join(self.repo.path, "data", "%s" % coll.id)):
+                copytree(
+                    join(self.repo.path, "data", "%s" % coll.id),
+                    join(self.bout_path, "data", "%s" % coll.id)
+                )
+
+            # if all data is copied no geometry creator modules are copied
+            if all_data is True:
+                continue
+
+            # copy geometry creation files
+            if not exists(join(self.bout_path, "freecad", coll.id)):
+                makedirs(join(self.bout_path, "freecad", coll.id))
+
+            if (
+                not exists(join(
+                    self.repo.path,
+                    "freecad",
+                    coll.id,
+                    "%s.base" % coll.id
+                ))
+            ):
+                continue
+
+            copy(
+                join(self.repo.path, "freecad", coll.id, "%s.base" % coll.id),
+                join(self.bout_path, "freecad", coll.id, "%s.base" % coll.id)
+            )
+
+            open(join(self.bout_path, "freecad", coll.id, "__init__.py"), "w").close()
+
+            for base, in self.dbs["freecad"].iterbases(filter_collection=coll):
+                if base.license_name not in self.license.LICENSES:
+                    continue
+                if (
+                    not self.license.is_combinable_with(
+                        base.license_name, self.args["target_license"]
+                    )
+                ):
+                    continue
+                copy(
+                    join(self.repo.path, "freecad", coll.id, basename(base.filename)),
+                    join(self.bout_path, "freecad", coll.id, basename(base.filename))
+                )
