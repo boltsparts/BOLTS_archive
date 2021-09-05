@@ -41,15 +41,9 @@ classes:
       tf: flange thickness
       tw: web thickness
       type: beam type
-    free:
-    - type
-    - l
+    free: [type, l]
     tables:
-      columns:
-      - h
-      - c1
-      - tw
-      - tf
+      columns: [h, c1, tw, tf]
       data: !include profile_z/zbeam.yaml
       index: type
     types:
