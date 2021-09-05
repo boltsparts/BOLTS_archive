@@ -30,7 +30,6 @@ from shutil import copyfile
 from shutil import copytree
 from shutil import rmtree
 from .errors import DatabaseNotAvailableError
-from .errors import NotImplementedError
 from .errors import UnknownArgumentError
 
 
