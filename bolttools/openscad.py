@@ -15,7 +15,6 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-import yaml
 from os import listdir
 from os.path import join, exists
 # pylint: disable=W0622
@@ -24,6 +23,7 @@ from codecs import open
 from .errors import *
 from .common import DataBase, BaseElement, Parameters, check_schema, Links, BijectiveLinks
 from .common import check_iterator_arguments, filter_iterator_items
+from .yaml_blt_loader import load_yaml_blt
 
 
 class SCADFile(BaseElement):
@@ -84,12 +84,7 @@ class OpenSCADData(DataBase):
             if not exists(basefilename):
                 #skip directory that is no collection
                 continue
-            try:
-                base = list(yaml.load_all(open(basefilename,"r","utf8"), Loader=yaml.SafeLoader))
-                # SafeLoader is not implemented in pyyaml < 5.1
-            except AttributeError:
-                # this is deprecated for newer pyyaml versions
-                base = list(yaml.load_all(open(basefilename,"r","utf8")))
+            base = load_yaml_blt(basefilename)
             if len(base) != 1:
                 raise MalformedCollectionError(
                     "No YAML document found in file %s" % basefilename
