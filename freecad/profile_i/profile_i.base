@@ -23,5 +23,5 @@
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
           arch: false
-      classids: [inp]
+      classids: [ibeam_inp]
 ...
