@@ -15,7 +15,6 @@
 #License along with this library; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-import yaml
 from os import listdir
 from glob import iglob
 from os.path import join, exists, splitext
@@ -24,6 +23,8 @@ from codecs import open
 
 from errors import *
 from common import BaseElement, DataBase, Parameters, Substitution, check_schema
+from .yaml_blt_loader import load_yaml_blt
+
 
 class DesignTableClass:
     def __init__(self,cl):
@@ -75,12 +76,7 @@ class SolidWorksData(DataBase):
             if not exists(basefilename):
                 #skip directory that is no collection
                 continue
-            try:
-                base = list(yaml.load_all(open(basefilename,"r","utf8"), Loader=yaml.SafeLoader))
-                # SafeLoader is not implemented in pyyaml < 5.1
-            except AttributeError:
-                # this is deprecated for newer pyyaml versions
-                base = list(yaml.load_all(open(basefilename,"r","utf8")))
+            base = load_yaml_blt(basefilename)
             if len(base) != 1:
                 raise MalformedCollectionError(
                     "No YAML document found in file %s" % basefilename

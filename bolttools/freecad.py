@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import yaml
 from os import listdir
 from os.path import basename
 from os.path import exists
@@ -35,6 +34,7 @@ from .errors import MalformedCollectionError
 from .errors import MalformedRepositoryError
 from .errors import NonUniqueBaseError
 from .errors import ParsingError
+from .yaml_blt_loader import load_yaml_blt
 
 
 class FreeCADGeometry(BaseElement):
@@ -82,14 +82,7 @@ class FreeCADData(DataBase):
             if not exists(basefilename):
                 # skip directory that is no collection
                 continue
-            try:
-                base_info = list(
-                    yaml.load_all(open(basefilename, "r", "utf8"), Loader=yaml.SafeLoader)
-                )
-                # SafeLoader is not implemented in pyyaml < 5.1
-            except AttributeError:
-                # this is deprecated for newer pyyaml versions
-                base_info = list(yaml.load_all(open(basefilename, "r", "utf8")))
+            base_info = load_yaml_blt(basefilename)
             if len(base_info) != 1:
                 raise MalformedCollectionError(
                     "Not exactly one YAML document found in file %s" % basefilename
