@@ -19,20 +19,25 @@
 
 import yaml
 
+from . import yaml_in_yaml
 
-def load_yaml_blt(basefilename):
-    try:
-        base = list(yaml.load_all(open(basefilename), Loader=yaml.SafeLoader))
-        # SafeLoader is not implemented in pyyaml < 5.1
-    except AttributeError:
-        # this is deprecated for newer pyyaml versions
-        base = list(yaml.load_all(open(basefilename)))
-    """
-    try:
-        base = list(yaml.load_all(open(basefilename,"r","utf8"), Loader=yaml.SafeLoader))
-        # SafeLoader is not implemented in pyyaml < 5.1
-    except AttributeError:
-        # this is deprecated for newer pyyaml versions
-        base = list(yaml.load_all(open(basefilename,"r","utf8")))
-    """
-    return base
+
+def load_yaml_blt(file_to_load):
+
+    data = list(yaml.load_all(open(file_to_load), Loader=yaml_in_yaml.Loader))
+
+    return data
+
+
+# readonly, utf8?
+
+# TODO copy the new separated geometric profile files
+# for all distributions
+
+
+"""
+# with open funktioniert nicht ... ?
+    with open(file_to_load) as f:
+
+        return list(yaml.load(f, yaml_in_yaml.Loader))
+"""
