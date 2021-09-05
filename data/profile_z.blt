@@ -1,58 +1,67 @@
-#BOLTS - Open Library of Technical Specifications
-#Copyright (C) 2016 Bernd Hahnebach <bernd@bimstatik.org>
+# ****************************************************************************
+# BOLTS - Open Library of Technical Specifications
+# Copyright (C) 2016 Bernd Hahnebach <bernd@bimstatik.org>
 #
-#This library is free software; you can redistribute it and/or
-#modify it under the terms of the GNU Lesser General Public
-#License as published by the Free Software Foundation; either
-#version 2.1 of the License, or any later version.
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or any later version.
 #
-#This library is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-#Lesser General Public License for more details.
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser General Public License for more details.
 #
-#You should have received a copy of the GNU Lesser General Public
-#License along with this library; if not, write to the Free Software
-#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
----
-id: profile_z
-name: Profiles Z
-description: Various hotrolled Z profiles
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+# ****************************************************************************
+
 author: Bernd Hahnebach <bernd@bimstatik.org>
-license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4
+description: Various hotrolled Z profiles
+id: profile_z
+license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+name: Profiles Z
 classes:
-  - id: zbeam
-    names:
-      name: ZNP Profile
-      labeling: "%(type)s, l=%(l)s"
-      description: metric european standard ZNP profile
-    standards:
-      body: DIN
-      standard: DIN 1027
-      labeling: DIN1027 %(type)s, l=%(l)s
-      description: Z profile, metric european standard
-    source: http://www.bauforumstahl.de/Querschnittswerte
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-    parameters:
-        free: [type,l]
-        defaults: {type: "ZNP60", l: 1000}
-        types:
-          type: Table Index
-          h: Length (mm)
-          c1: Length (mm)
-          tw: Length (mm)
-          tf: Length (mm)
-          l: Length (mm)
-        description:
-          type: beam type
-          h: beam height
-          c1: flange width
-          tw: web thickness
-          tf: flange thickness
-          l: beam length
-        tables:
-            index: type
-            columns: [h,c1,tw,tf]
-            data: !include profile_z/zbeam.yaml
-...
+- id: zbeam
+  names:
+    description: metric european standard ZNP profile
+    labeling: '%(type)s, l=%(l)s'
+    name: ZNP Profile
+  notes: http://en.wikipedia.org/wiki/Structural_steel
+  parameters:
+    defaults:
+      l: 1000
+      type: ZNP60
+    description:
+      c1: flange width
+      h: beam height
+      l: beam length
+      tf: flange thickness
+      tw: web thickness
+      type: beam type
+    free:
+    - type
+    - l
+    tables:
+      columns:
+      - h
+      - c1
+      - tw
+      - tf
+      data: !include profile_z/zbeam.yaml
+      index: type
+    types:
+      c1: Length (mm)
+      h: Length (mm)
+      l: Length (mm)
+      tf: Length (mm)
+      tw: Length (mm)
+      type: Table Index
+  source: http://www.bauforumstahl.de/Querschnittswerte
+  standards:
+    body: DIN
+    description: Z profile, metric european standard
+    labeling: DIN1027 %(type)s, l=%(l)s
+    standard: DIN 1027

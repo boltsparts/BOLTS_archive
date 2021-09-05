@@ -1,4 +1,4 @@
-# *****************************************************************************
+# ****************************************************************************
 # BOLTS - Open Library of Technical Specifications
 # Copyright (C) 2016 Bernd Hahnebach <bernd@bimstatik.org>
 #
@@ -15,84 +15,86 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-# *****************************************************************************
+# ****************************************************************************
 
----
-id: profile_l
-name: Profiles L
-description: Various hotrolled L profiles
 author: Bernd Hahnebach <bernd@bimstatik.org>
-license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 blt-version: 0.4
+description: Various hotrolled L profiles
+id: profile_l
+license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
+name: Profiles L
 classes:
-  - id: lbeam_lnp_equal
-    names:
-        name: LNP equal-sided Profile
-        labeling: "%(type)s, l=%(l)s"
-        description: metric european standard equal-sided LNP profile
-    standards:
-        body: DINEN
-        standard: DINEN10056-1 equal
-        group: DINEN10056-1
-        labeling: DINEN10056-1 %(type)s, l=%(l)s
-        description: corner profile, metric european standard equal-sided LNP profile
-    source: http://www.bauforumstahl.de/Querschnittswerte
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-    parameters:
-        free: [type,l]
-        defaults: {type: "LNP150x15", l: 1000}
-        types:
-            type: Table Index
-            a: Length (mm)
-            t: Length (mm)
-            r1: Length (mm)
-            r2: Length (mm)
-            l: Length (mm)
-        description:
-            type: beam type
-            a: beam width
-            t: thickness
-            r1: inner fillet radius
-            r2: outer fillet radius
-            l: beam length
-        tables:
-            index: type
-            columns: [a,t,r1,r2]
-            data: !include profile_l/lbeam_lnp_equal.yaml
-  - id: lbeam_lnp_unequal
-    names:
-        name: LNP unequal-sided Profile
-        labeling: "%(type)s, l=%(l)s"
-        description: metric european standard unequal-sided LNP profile
-    standards:
-        body: DINEN
-        standard: DINEN10056-1 unequal
-        group: DINEN10056-1
-        labeling: DINEN10056-1 %(type)s, l=%(l)s
-        description: corner profile, metric european standard unequal-sided LNP profile
-    source: http://www.bauforumstahl.de/Querschnittswerte
-    notes: http://en.wikipedia.org/wiki/Structural_steel
-    parameters:
-        free: [type,l]
-        defaults: {type: "LNP50x30x5", l: 1000}
-        types:
-            type: Table Index
-            a: Length (mm)
-            b: Length (mm)
-            t: Length (mm)
-            r1: Length (mm)
-            r2: Length (mm)
-            l: Length (mm)
-        description:
-            type: beam type
-            a: beam heigth
-            b: beam width
-            t: thickness
-            r1: inner fillet radius
-            r2: outer fillet radius
-            l: beam length
-        tables:
-            index: type
-            columns: [a,b,t,r1,r2]
-            data: !include profile_l/lbeam_lnp_unequal.yaml
-...
+- id: lbeam_lnp_equal
+  names:
+    description: metric european standard equal-sided LNP profile
+    labeling: '%(type)s, l=%(l)s'
+    name: LNP equal-sided Profile
+  notes: http://en.wikipedia.org/wiki/Structural_steel
+  parameters:
+    defaults:
+      l: 1000
+      type: LNP150x15
+    description:
+      a: beam width
+      l: beam length
+      r1: inner fillet radius
+      r2: outer fillet radius
+      t: thickness
+      type: beam type
+    free: [type, l]
+    tables:
+      columns: [a, t, r1, r2]
+      data: !include profile_l/lbeam_lnp_equal.yaml
+      index: type
+    types:
+      a: Length (mm)
+      l: Length (mm)
+      r1: Length (mm)
+      r2: Length (mm)
+      t: Length (mm)
+      type: Table Index
+  source: http://www.bauforumstahl.de/Querschnittswerte
+  standards:
+    body: DINEN
+    description: corner profile, metric european standard equal-sided LNP profile
+    group: DINEN10056-1
+    labeling: DINEN10056-1 %(type)s, l=%(l)s
+    standard: DINEN10056-1 equal
+- id: lbeam_lnp_unequal
+  names:
+    description: metric european standard unequal-sided LNP profile
+    labeling: '%(type)s, l=%(l)s'
+    name: LNP unequal-sided Profile
+  notes: http://en.wikipedia.org/wiki/Structural_steel
+  parameters:
+    defaults:
+      l: 1000
+      type: LNP50x30x5
+    description:
+      a: beam heigth
+      b: beam width
+      l: beam length
+      r1: inner fillet radius
+      r2: outer fillet radius
+      t: thickness
+      type: beam type
+    free: [type, l]
+    tables:
+      columns: [a, b, t, r1, r2]
+      data: !include profile_l/lbeam_lnp_unequal.yaml
+      index: type
+    types:
+      a: Length (mm)
+      b: Length (mm)
+      l: Length (mm)
+      r1: Length (mm)
+      r2: Length (mm)
+      t: Length (mm)
+      type: Table Index
+  source: http://www.bauforumstahl.de/Querschnittswerte
+  standards:
+    body: DINEN
+    description: corner profile, metric european standard unequal-sided LNP profile
+    group: DINEN10056-1
+    labeling: DINEN10056-1 %(type)s, l=%(l)s
+    standard: DINEN10056-1 unequal
