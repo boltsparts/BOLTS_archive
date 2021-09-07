@@ -41,12 +41,6 @@ def export(args):
     # load data
     repo = Repository(args.repo)
     dbs = {}
-    dbs["openscad"] = OpenSCADData(repo)
-    dbs["freecad"] = FreeCADData(repo)
-    dbs["drawings"] = DrawingsData(repo)
-    dbs["pythonpackage"] = PythonPackageData(repo)
-    # dbs["solidworks"] = SolidWorksData(repo)
-
     license = LICENSES_SHORT[args.license]
 
     out_path = os.path.join(repo.path, "output", args.target)
@@ -60,6 +54,7 @@ def export(args):
             os.path.join(out_path, "LICENSE")
         )
     elif args.target == "freecad":
+        dbs["freecad"] = FreeCADData(repo)
         from backends.freecad import FreeCADBackend
         FreeCADBackend(repo, dbs).write_output(
             out_path, target_license=license, version="development"
@@ -68,20 +63,27 @@ def export(args):
             os.path.join(repo.path, "backends", "licenses", args.license.strip("+")),
             os.path.join(out_path, "BOLTS", "LICENSE")
         )
+    elif args.target == "pythonpackage":
+        dbs["pythonpackage"] = PythonPackageData(repo)
+        from backends.pythonpackage import PythonPackageBackend
+        PythonPackageBackend(repo, dbs).write_output(
+            out_path, target_license=license, version="development"
+        )
     # elif args.target == "solidworks":
+    #     dbs["solidworks"] = SolidWorksData(repo)
     #     from backends.solidworks import SolidWorksBackend
     #     SolidWorksBackend(repo,dbs).write_output(out_path,"development")
     elif args.target == "iges":
         from backends.exchange import IGESBackend
         IGESBackend(repo, dbs).write_output(out_path, "development")
     elif args.target == "website":
+        dbs["drawings"] = DrawingsData(repo)
+        dbs["freecad"] = FreeCADData(repo)
+        dbs["openscad"] = OpenSCADData(repo)
         from backends.webpage import WebsiteBackend
         WebsiteBackend(repo, dbs).write_output(out_path)
-    elif args.target == "pythonpackage":
-        from backends.pythonpackage import PythonPackageBackend
-        PythonPackageBackend(repo, dbs).write_output(
-            out_path, target_license=license, version="development"
-        )
+    elif args.target == "drawings":
+        dbs["drawings"] = DrawingsData(repo)
 
 
 def test(args):
