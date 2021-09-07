@@ -18,11 +18,11 @@
 from os.path import dirname
 
 from .bolttools import blt
-from .bolttools.pythonpackage import PythonPackageData
+from .bolttools import pythonpackage
 
 
 # import repo
 rootpath = dirname(__file__)
 repo = blt.Repository(rootpath)
 # print(repo)
-pythonpackage_db = PythonPackageData(repo)
+db_repo = pythonpackage.PythonPackageData(repo)

@@ -252,4 +252,17 @@ cl.parameters.tables[0].columns
 for k, v in cl.parameters.tables[0].data.items():
     print("{}: {}".format(k, v))
 
+
+# ***** output data base object *****
+db = bolts.db_repo
+
+db.__dict__.keys()
+db.name
+db.repo_root
+db.backend_root
+db.bases
+
+for base in db.iterbases():
+    print(base)
+
 """
