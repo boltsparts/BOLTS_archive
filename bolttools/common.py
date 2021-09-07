@@ -17,14 +17,20 @@
 
 #common elements and baseclasses
 
-import re
-import math
-import string
 import collections
-from os.path import join
+import math
+import re
+import string
+from codecs import open
 from copy import deepcopy
+from os import listdir
+from os.path import basename
+from os.path import exists
+from os.path import join
+from os.path import splitext
 
 from .errors import *
+from .yaml_blt_loader import load_yaml_blt
 
 
 def parse_angled(string):
@@ -748,6 +754,114 @@ class DataBase:
         #TODO: rename to data_root
         self.backend_root = join(self.repo.path,name)
 
+
+class StandardDataBase(DataBase):
+    def __init__(self, repo, name, BaseFunction=None):
+
+
+        DataBase.__init__(self, name, repo)
+        self.bases = []
+
+        self.base_classes = Links()
+        self.collection_bases = Links()
+
+        if not exists(self.backend_root):
+            e = MalformedRepositoryError("{} repo directory does not exist".format(self.backend_root))
+            e.set_repo_path(repo.path)
+            raise e
+
+        for coll in listdir(self.backend_root):
+            basefilename = join(self.backend_root, coll, "%s.base" % coll)
+            if not exists(basefilename):
+                # skip directory that is no collection
+                continue
+            base_info = load_yaml_blt(basefilename)
+            if len(base_info) != 1:
+                raise MalformedCollectionError(
+                    "Not exactly one YAML document found in file %s" % basefilename
+                )
+            base_info = base_info[0]
+            for basefile in base_info:
+                if basefile["type"] == "function":
+                    basepath = join(self.backend_root, coll, basefile["filename"])
+                    if not exists(basepath):
+                        raise MalformedBaseError("Python module %s does not exist" % basepath)
+                    for func in basefile["functions"]:
+                        try:
+                            function = BaseFunction(func, basefile, coll, self.backend_root)
+                            self.bases.append(function)
+                            self.collection_bases.add_link(repo.collections[coll], function)
+                            for id in func["classids"]:
+                                if id not in repo.classes:
+                                    raise MalformedBaseError(
+                                        "Unknown class %s" % id)
+                                if self.base_classes.contains_dst(repo.classes[id]):
+                                    raise NonUniqueBaseError(id)
+                                self.base_classes.add_link(function, repo.classes[id])
+                        except ParsingError as e:
+                            e.set_base(basefile["filename"])
+                            e.set_collection(coll)
+                            raise e
+                else:
+                    raise MalformedBaseError("Unknown base type %s" % basefile["type"])
+
+    def iterclasses(self, items=["class"], **kwargs):
+        """
+        Iterator over all classes of the repo.
+
+        Possible items to request: class, collection, base
+        """
+        check_iterator_arguments(items, "class", ["collection", "base"], kwargs)
+
+        for cl, coll in self.repo.iterclasses(["class", "collection"]):
+            its = {"class": cl, "collection": coll}
+            if self.base_classes.contains_dst(cl):
+                its["base"] = self.base_classes.get_src(cl)
+
+                if filter_iterator_items(its, kwargs):
+                    yield tuple(its[key] for key in items)
+
+    def iterstandards(self, items=["standard"], **kwargs):
+        """
+        Iterator over all standards of the repo.
+
+        Possible items to request: standard, multistandard, body, collection, class, base
+        """
+        check_iterator_arguments(
+            items,
+            "standard",
+            ["multistandard", "body", "collection", "class", "base"],
+            kwargs
+        )
+
+        parent = ["standard", "multistandard", "body", "collection", "class"]
+        for tup in self.repo.iterstandards(parent):
+            its = dict(zip(parent, tup))
+            if self.base_classes.contains_dst(its["class"]):
+                its["base"] = self.base_classes.get_src(its["class"])
+                if filter_iterator_items(its, kwargs):
+                    yield tuple(its[key] for key in items)
+
+    def iternames(self, items=["name"], **kwargs):
+        """
+        Iterator over all names of the repo.
+
+        Possible items to request: name, multiname, collection, class, base
+        """
+        check_iterator_arguments(
+            items, "name",
+            ["multiname", "collection", "class", "base"],
+            kwargs
+        )
+
+        parent = ["name", "multiname", "collection", "class"]
+        for tup in self.repo.iternames(parent):
+            its = dict(zip(parent, tup))
+            if self.base_classes.contains_dst(its["class"]):
+                its["base"] = self.base_classes.get_src(its["class"])
+                if filter_iterator_items(its, kwargs):
+                    yield tuple(its[key] for key in items)
+
 class BaseElement:
     """
     Base class for representing BaseElements, yaml structures that describe
@@ -772,3 +886,32 @@ class BaseElement:
         self.type = basefile["type"]
 
         self.source = basefile.get("source","")
+        self.filename = basefile["filename"]
+
+
+class BasePathElement(BaseElement):
+    def __init__(self, basefile, collname, backend_root):
+        BaseElement.__init__(self, basefile)
+        self.path = join(backend_root, collname, self.filename)
+
+
+class BaseStandardFunction(BasePathElement):
+    def __init__(self, function, basefile, collname, backend_root):
+        check_schema(
+            function,
+            "basefunction",
+            ["name", "classids"],
+            ["parameters"]
+        )
+        check_schema(
+            basefile,
+            "basefunction",
+            ["filename", "author", "license", "type", "functions"],
+            ["source"]
+        )
+
+        BasePathElement.__init__(self, basefile, collname, backend_root)
+        self.name = function["name"]
+        self.classids = function["classids"]
+        self.module_name = splitext(basename(self.filename))[0]
+        self.parameters = Parameters(function.get("parameters", {"types": {}}))

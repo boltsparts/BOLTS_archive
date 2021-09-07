@@ -13,22 +13,20 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from . import freecad
+from .common import StandardDataBase
 
 
-class PythonPackageBase(freecad.BaseFunction):
-
-    def __init__(self, basefile, collname, backend_root):
-
-        freecad.BaseFunction.__init__(
-            self, basefile, collname, backend_root
-        )
+# PythonPackage distribution has no modules to create geometry
+# thus no base files at all
+# thus no classes for representing the data in the base files needed.
 
 
-class PythonPackageData(freecad.FreeCADData):
+# TODO is this db_repo really needed?
+# the base files ar not existent.
+# The iterators are available at the repo as well
+
+
+class PythonPackageData(StandardDataBase):
 
     def __init__(self, repo):
-
-        freecad.FreeCADData.__init__(
-            self, repo, "pythonpackage"
-        )
+        StandardDataBase.__init__(self, repo, "pythonpackage")
