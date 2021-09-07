@@ -128,18 +128,20 @@ class Backend:
                     join(self.bout_path, "data", "%s" % coll.id)
                 )
 
+            # copy geometry creation files
+            # ATM the backend directory has to be created even if it is empty
+            # like for the PythonPackage distribution
+            if not exists(join(self.bout_path, self.name, coll.id)):
+                makedirs(join(self.bout_path, self.name, coll.id))
+
             # if all data is copied no geometry creator modules are copied
             if all_data is True:
                 continue
 
-            # copy geometry creation files
-            if not exists(join(self.bout_path, "freecad", coll.id)):
-                makedirs(join(self.bout_path, "freecad", coll.id))
-
             if (
                 not exists(join(
                     self.repo.path,
-                    "freecad",
+                    self.name,
                     coll.id,
                     "%s.base" % coll.id
                 ))
@@ -147,13 +149,13 @@ class Backend:
                 continue
 
             copy(
-                join(self.repo.path, "freecad", coll.id, "%s.base" % coll.id),
-                join(self.bout_path, "freecad", coll.id, "%s.base" % coll.id)
+                join(self.repo.path, self.name, coll.id, "%s.base" % coll.id),
+                join(self.bout_path, self.name, coll.id, "%s.base" % coll.id)
             )
 
-            open(join(self.bout_path, "freecad", coll.id, "__init__.py"), "w").close()
+            open(join(self.bout_path, self.name, coll.id, "__init__.py"), "w").close()
 
-            for base, in self.dbs["freecad"].iterbases(filter_collection=coll):
+            for base, in self.dbs[self.name].iterbases(filter_collection=coll):
                 if base.license_name not in self.license.LICENSES:
                     continue
                 if (
@@ -163,6 +165,6 @@ class Backend:
                 ):
                     continue
                 copy(
-                    join(self.repo.path, "freecad", coll.id, basename(base.filename)),
-                    join(self.bout_path, "freecad", coll.id, basename(base.filename))
+                    join(self.repo.path, self.name, coll.id, basename(base.filename)),
+                    join(self.bout_path, self.name, coll.id, basename(base.filename))
                 )
