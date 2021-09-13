@@ -18,10 +18,7 @@
 from codecs import open
 from datetime import datetime
 from os import makedirs
-from os.path import basename
-from os.path import exists
 from os.path import join
-from shutil import copy
 from shutil import copyfile
 from shutil import copytree
 from shutil import rmtree
@@ -47,13 +44,23 @@ class PythonPackageBackend(Backend):
         # generate version file
         date = datetime.now()
         with open(join(self.bout_path, "VERSION"), "w") as version_file:
-            version_file.write("%s\n%d-%d-%d\n%s\n" %
-                (self.args["version"], date.year, date.month, date.day, self.args["target_license"]))
+            version_file.write(
+                "%s\n%d-%d-%d\n%s\n"
+                % (
+                    self.args["version"],
+                    date.year,
+                    date.month,
+                    date.day,
+                    self.args["target_license"]
+                )
+            )
 
         # copy bolttools files
         if not self.license.is_combinable_with("LGPL 2.1+", self.args["target_license"]):
             raise IncompatibleLicenseError(
-                "bolttools is LGPL 2.1+, which is not compatible with %s" % self.args["target_license"])
+                "bolttools is LGPL 2.1+, which is not compatible with %s"
+                % self.args["target_license"]
+            )
         copytree(join(self.repo.path, "bolttools"), join(self.bout_path, "bolttools"))
         # remove the test suite and documentation, to save space
         rmtree(join(self.bout_path, "bolttools", "test_blt"))
