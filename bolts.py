@@ -45,6 +45,7 @@ def export(args):
 
     out_path = os.path.join(repo.path, "output", args.target)
     if args.target == "openscad":
+        dbs["openscad"] = OpenSCADData(repo)
         from backends.openscad import OpenSCADBackend
         OpenSCADBackend(repo, dbs).write_output(
             out_path, target_license=license, version="development", expand=args.debug
