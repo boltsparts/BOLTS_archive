@@ -93,29 +93,40 @@ class Backend:
 
     def copy_data_and_creator_modules(self, all_data=False):
 
+        # create data directory
         if not exists(join(self.bout_path, "data")):
             makedirs(join(self.bout_path, "data"))
+
+        # create backend geometry creating modules directory
+        # ATM this is needed even if there is no module to create geometry
+        # see PythonPackage distribution
+        geom_module_path = join(self.bout_path, self.name)
+        if not exists(geom_module_path):
+            makedirs(geom_module_path)
+        if isfile(join(self.repo.path, self.name, "readme.md")):
+            copy(
+                join(self.repo.path, self.name, "readme.md"),
+                join(geom_module_path, "readme.md")
+            )
 
         for coll, in self.repo.itercollections():
 
             # skip if license does not fit
-            if (
-                not self.license.is_combinable_with(
-                    coll.license_name,
-                    self.args["target_license"]
-                )
+            if not self.license.is_combinable_with(
+                coll.license_name,
+                self.args["target_license"]
             ):
                 continue
 
-            # continue if all_data is False and no geometry creator modules exists
+            # copy data structure files
+            # skip if no geometry creator modules exists and all_data is False
             if (
                 all_data is False
                 and not exists(join(self.repo.path, self.name, coll.id, "%s.base" % coll.id))
             ):
-                # print("Skip %s due to missing base file" % coll.id)
+                print("Skip %s due to missing base file" % coll.id)
                 continue
 
-            # copy data structure files
             copy(
                 join(self.repo.path, "data", "%s.blt" % coll.id),
                 join(self.bout_path, "data", "%s.blt" % coll.id)
@@ -129,31 +140,31 @@ class Backend:
                 )
 
             # copy geometry creation files
-            # ATM the backend directory has to be created even if it is empty
-            # like for the PythonPackage distribution
-            if not exists(join(self.bout_path, self.name, coll.id)):
-                makedirs(join(self.bout_path, self.name, coll.id))
-
             # if all data is copied no geometry creator modules are copied
             if all_data is True:
+                print(
+                    "Setting all_data is: {}. Thus skip copy of "
+                    "geoemtry creation module {}.base due to "
+                    .format(all_data, coll.id)
+                )
                 continue
 
-            if (
-                not exists(join(
-                    self.repo.path,
-                    self.name,
-                    coll.id,
-                    "%s.base" % coll.id
-                ))
-            ):
+            if not exists(join(geom_module_path, coll.id)):
+                makedirs(join(geom_module_path, coll.id))
+
+            if not exists(join(geom_module_path, coll.id)):
+                print(
+                    "Does not exist: {}"
+                    .format(join(geom_module_path, coll.id, "{}.base".format(coll.id)))
+                )
                 continue
 
             copy(
                 join(self.repo.path, self.name, coll.id, "%s.base" % coll.id),
-                join(self.bout_path, self.name, coll.id, "%s.base" % coll.id)
+                join(geom_module_path, coll.id, "%s.base" % coll.id)
             )
 
-            open(join(self.bout_path, self.name, coll.id, "__init__.py"), "w").close()
+            open(join(geom_module_path, coll.id, "__init__.py"), "w").close()
 
             for base, in self.dbs[self.name].iterbases(filter_collection=coll):
                 if base.license_name not in self.license.LICENSES:
@@ -166,5 +177,5 @@ class Backend:
                     continue
                 copy(
                     join(self.repo.path, self.name, coll.id, basename(base.filename)),
-                    join(self.bout_path, self.name, coll.id, basename(base.filename))
+                    join(geom_module_path, coll.id, basename(base.filename))
                 )
