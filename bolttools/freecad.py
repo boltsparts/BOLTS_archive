@@ -31,7 +31,6 @@ class FreeCADData(StandardDataBase):
     def __init__(self, repo):
         StandardDataBase.__init__(self, repo, "freecad", BaseFunction)
 
-
     def iterbases(self, items=["base"], **kwargs):
         """
         Iterator over all freecad bases of the repo.
@@ -50,5 +49,3 @@ class FreeCADData(StandardDataBase):
 
             if filter_iterator_items(its, kwargs):
                 yield tuple(its[key] for key in items)
-
-
