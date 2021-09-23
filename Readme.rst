@@ -21,7 +21,7 @@ contained in BOLTS and quite a bit of
 `documentation <http://www.bolts-library.org/en/docs/index.html>`_.
 So if you have more questions, the chances to find answers on the webpage
 
-http://www.bolts-library.org (redirect to https://boltsparts.github.io)
+https://boltsparts.github.io
 
 are much higher than to find them here.
 
