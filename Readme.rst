@@ -10,15 +10,15 @@ the tools that are used to manage it.
 
 **If you just want to use BOLTS, then you should get the BOLTS distribution
 for the CAD tool of your choice from the**
-`download section <http://www.bolts-library.org/en/downloads.html>`_
+`download section <https://boltsparts.github.io/en/downloads.html>`_
 **of the webpage instead. Instructions on how to use the distributions can be
 found in the**
-`documentation section <http://www.bolts-library.org/en/docs/index.html>`_.
+`documentation section <https://boltsparts.github.io/en/docs/index.html>`_.
 
 The webpage contains a lot of general infos, a 
-`list of all parts <http://www.bolts-library.org/en/parts/index.html>`_ 
+`list of all parts <https://boltsparts.github.io/en/parts/index.html>`_ 
 contained in BOLTS and quite a bit of
-`documentation <http://www.bolts-library.org/en/docs/index.html>`_.
+`documentation <https://boltsparts.github.io/en/docs/index.html>`_.
 So if you have more questions, the chances to find answers on the webpage
 
 https://boltsparts.github.io
@@ -29,8 +29,8 @@ Use
 ===
 
 You should check out the 
-`documentation <http://www.bolts-library.org/en/docs/index.html>`_.
-on the `webpage <http://www.bolts-library.org/>`_ for more information on how
+`documentation <https://boltsparts.github.io/en/docs/index.html>`_.
+on the `webpage <https://boltsparts.github.io/>`_ for more information on how
 to get and use BOLTS.
 
 Dependencies for use
@@ -83,7 +83,7 @@ For BOLTS for SolidWorks
 
 To work on the website it is recommended to use a virtualenv for the python
 dependencies, see
-`the documentation <http://www.bolts-library.org/en/docs/index.html>`_ for more
+`the documentation <https://boltsparts.github.io/en/docs/index.html>`_ for more
 details. If you don't want to use a virtualenv, you can install the python
 requirements listed in `requirements.txt`. In addition you need
 
