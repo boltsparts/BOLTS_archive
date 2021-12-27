@@ -157,11 +157,11 @@ import boltspy as bolts
 
 
 # ************************************************************************************************
-# acces the repo
+# access the repo
 #
 # each *.blt file in data directory is a collection
 # a collections consists of classes
-# class and collection ids are uniqe in the entire repo
+# class and collection ids are unique in the entire repo
 # two possibilities to access them
 # the use of repo attributes or repo iterators
 

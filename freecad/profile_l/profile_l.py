@@ -47,7 +47,7 @@ equallnp(my_test_params, App.ActiveDocument)
 
 def lbeam_parallel_flange_equal(params, document):
     # use unequal method for equals too
-    # we just need te define params["b"], which equal to params["a"] for equals LNP
+    # we just need to define params["b"], which equal to params["a"] for equals LNP
     params["b"] = params["a"]
     lbeam_parallel_flange_unequal(params, document)
 

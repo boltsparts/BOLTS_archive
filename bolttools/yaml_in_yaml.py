@@ -1,5 +1,5 @@
 # ****************************************************************************
-# License only applys to this module
+# License only applies to this module
 #
 # MIT License
 #

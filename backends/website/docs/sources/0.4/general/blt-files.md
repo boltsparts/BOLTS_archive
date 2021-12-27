@@ -166,7 +166,7 @@ parameter names because they can also appear on drawings.
 
 We also give sensible default values for the free parameters.
 
-Finally, the source field should be used to explain where the informations come
+Finally, the source field should be used to explain where the information come
 from on which this class is built. In this case we do not really need it, but
 this becomes very important when building classes for standards.
 
@@ -220,7 +220,7 @@ The class for DIN11850 looks like this
         source: de.wikipedia.org/wiki/Rohr_(Technik)#Abmessungen
 
 As this class follows a standard the id is not shown to the user, so unique but
-slighly bulky id is used. The first new thing in this class is the standard
+slightly bulky id is used. The first new thing in this class is the standard
 field. The reason why not the id is used to encode the standard is that very
 often there are equivalent standards issued by different organisations. In this
 case a list of standards can be given in the standard field, which saves you

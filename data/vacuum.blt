@@ -77,8 +77,8 @@ classes:
           flangeDiameter: The diameter of the flange
           flangeSize: The thickness of the flange
           grooveRadius: The radius of the flange
-          openingDiameter: The diameter of the opening in the part visibl from the side of the flange
-          openingDepth: The depthd of the opening in the part visibl from the side of the flange
+          openingDiameter: The diameter of the opening in the part visible from the side of the flange
+          openingDepth: The depthd of the opening in the part visible from the side of the flange
           holeDiameter: The diameters of the central hole, use zero is the hole is unneeded
           holeTrDiameter: The diameter of the circumference the holes for fasteners are placed on
         tables:

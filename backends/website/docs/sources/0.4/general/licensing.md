@@ -18,7 +18,7 @@ BOLTS consists of a number of different parts that work together in different wa
 
 * [bolttools](https://github.com/jreinhardt/bolttools) is a collection of python modules that handle various tasks and aspects of the processes in BOLTS: create HTML documentation, parse the blt and base files, perform consistency checks on the parts and assemble the different distributions (BOLTS for FreeCAD, BOLTS for OpenSCAD). bolttools is developed by me and licensed under the [LGPL 2.1 or later](http://www.gnu.org/licenses/old-licenses/lgpl-2.1).
 
-* the blt files are YAML files that contain not backend specific data and metadata about the part (more precisely about classes of parts, because there is often a large amount of redundancy). These files contain among other informations the tables with dimensions, and form the foundation of BOLTS. Its license is chosen by the creator.
+* the blt files are YAML files that contain not backend specific data and metadata about the part (more precisely about classes of parts, because there is often a large amount of redundancy). These files contain among other information the tables with dimensions, and form the foundation of BOLTS. Its license is chosen by the creator.
 
 * the backend specific data is specific to the CAD application (FreeCAD or OpenSCAD at the moment), and generally comes in form of code (OpenSCAD modules or FreeCAD python functions). Its license is chosen by the creator.
 
@@ -30,7 +30,7 @@ We want to focus on open source licenses, and luckily someone who knows [explain
 
 And when we take some content with a certain license A and process it with a program with a certain license B, what license C has the result?
 
-This is much easier to answer, and again I reference [people who know](http://www.gnu.org/licenses/gpl-faq.html#GPLOutput). The result has license A, unless very specifc conditions apply.
+This is much easier to answer, and again I reference [people who know](http://www.gnu.org/licenses/gpl-faq.html#GPLOutput). The result has license A, unless very specific conditions apply.
 
 ### Consequences for BOLTS distributions
 
@@ -64,7 +64,7 @@ This would be rather drastic, as that would severely limit the choice of license
 
 #### Backend specific data in form of code
 
-In this case on can consider the part as the result of a program (BOLTS), which is not affected by the license of the programm. So parts created by code (FreeCAD python functions and OpenSCAD modules) cause no licensing related restrictions on the resulting design.
+In this case on can consider the part as the result of a program (BOLTS), which is not affected by the license of the program. So parts created by code (FreeCAD python functions and OpenSCAD modules) cause no licensing related restrictions on the resulting design.
 
 ### Consequences for BOLTS itself
 

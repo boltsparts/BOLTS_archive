@@ -23,7 +23,7 @@ result.
 
 The main purpose of drawings in BOLTS is to give a quick visual explanation of
 the meaning of the parameters of the class. It is not a full-fledged technical
-drawing, whose purpose is to provide all the informations necessary to produce
+drawing, whose purpose is to provide all the information necessary to produce
 the part. Nevertheless we borrow some conventions and techniques from technical
 drawings.
 

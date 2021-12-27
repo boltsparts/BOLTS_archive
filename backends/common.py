@@ -132,7 +132,7 @@ class Backend:
                 join(self.bout_path, "data", "%s.blt" % coll.id)
             )
 
-            # geoemtry data files
+            # geometry data files
             if isdir(join(self.repo.path, "data", "%s" % coll.id)):
                 copytree(
                     join(self.repo.path, "data", "%s" % coll.id),
@@ -144,7 +144,7 @@ class Backend:
             if all_data is True:
                 print(
                     "Setting all_data is: {}. Thus skip copy of "
-                    "geoemtry creation module {}.base due to "
+                    "geometry creation module {}.base due to "
                     .format(all_data, coll.id)
                 )
                 continue

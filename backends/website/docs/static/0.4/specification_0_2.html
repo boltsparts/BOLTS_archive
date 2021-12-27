@@ -86,7 +86,7 @@ when the distribution is regenerated.</p>
 <div class="section" id="the-backend-directories">
 <h3>The backend directories</h3>
 <p>Each backend directory can contain files and directories with additional
-informations, which  are required by the backend. Details are specified by the
+information, which  are required by the backend. Details are specified by the
 <a class="reference internal" href="#backend">backend</a>.</p>
 </div>
 </div>
@@ -101,7 +101,7 @@ backend specific data. The former is held in <a class="reference internal" href=
 data as input and has one or several files as output. The output is called the
 distribution.</p>
 <img alt="processing.png" src="processing.png" style="width: 100%;" />
-<p>A example for a backend would be a process that uses the backend indepent data
+<p>A example for a backend would be a process that uses the backend independent data
 about parts, their geometries and dimensions together with a number of
 templates and stylesheets and produces a set of HTML pages with a nicely
 rendered, browsable description of the parts. Other backends could produce data
@@ -109,12 +109,12 @@ that is suitable for use in specific CAD applications.</p>
 <p>Often backends are relatively independent and do use only their own backend
 specific data. However, this is not necessarily so, a backend may also use
 backend specific data of other backends. For example the HTML backend described
-above might add informations about how to use a part in a specific CAD
+above might add information about how to use a part in a specific CAD
 application, and this might require to access the backend specific data of the
 backend for this CAD application. However, such cross backend dependencies
 should be made optional, to keep every backend functional independently of other
 backends.</p>
-<p>There is a <a class="reference internal" href="#list-of-backends">list-of-backends</a>, where more informations about the available
+<p>There is a <a class="reference internal" href="#list-of-backends">list-of-backends</a>, where more information about the available
 backends can be found and their <a class="reference internal" href="#base-files">base-files</a> are specified.</p>
 </div>
 <div class="section" id="backend-independent-data-the-blt-file">
@@ -134,7 +134,7 @@ descriptive, as they may be visible to the user. Some names can not be
 collection ids: common, gui, template</p>
 <div class="section" id="id2">
 <span id="collection-header"></span><h4>Collection header</h4>
-<p>The collection header is an associative array that holds general informations
+<p>The collection header is an associative array that holds general information
 regarding the <a class="reference internal" href="#collection">collection</a>. It contains the following keys:</p>
 <ul class="simple">
 <li>name: optional, string. A name for the collection.</li>
@@ -179,7 +179,7 @@ specifying standard.  In the case of several identical standards, a list of
 urls has to be given.</li>
 <li>notes: optional, string. Notes for this class. Can be used to formulate
 questions or additional information.</li>
-<li>source: mandatory, string. A short description where the informations for this
+<li>source: mandatory, string. A short description where the information for this
 class originate. Should contain a URL if possible.</li>
 </ul>
 </div>
@@ -305,13 +305,13 @@ data about additional files for a collection. They consist of a list of
 <a class="reference internal" href="#base-file-element">base-file-element</a>, one for each file they describe.</p>
 <div class="section" id="id10">
 <span id="base-file-element"></span><h4>Base file element</h4>
-<p>A base file element is an associative array containing informations about a
+<p>A base file element is an associative array containing information about a
 file. Depending on the type of the file the contained keys are different.
 However, there are some keys that are present in every base file element:</p>
 <ul class="simple">
 <li>filename: mandatory, string. The filename of the file</li>
 <li>author: mandatory, string or list of strings. The author of the file with
-e-mail adress in &lt;&gt; or a list of several authors.</li>
+e-mail address in &lt;&gt; or a list of several authors.</li>
 <li>license: mandatory, string. The license of the file. Must be one of the
 <a class="reference internal" href="#supported-licenses">supported-licenses</a>.</li>
 <li>type: mandatory, string. A string describing the type of the file.</li>
@@ -326,13 +326,13 @@ e-mail adress in &lt;&gt; or a list of several authors.</li>
 <span id="list-of-backends"></span><h1>List of Backends</h1>
 <div class="section" id="openscad">
 <h2>OpenSCAD</h2>
-<p>The files containing informations required by the OpenSCAD backend reside in
+<p>The files containing information required by the OpenSCAD backend reside in
 the backend directory with the name openscad. This backend directory contains a
 folder for each <a class="reference internal" href="#collection">collection</a> that contains files related to this collection, and
 the folder is named like the collection-id.</p>
 <p>The OpenSCAD backend generates a OpenSCAD library with modules for all parts
 from the collections.</p>
-<p>To be able to do that it needs informations about base modules, which are
+<p>To be able to do that it needs information about base modules, which are
 stored in the <a class="reference internal" href="#base-files">base-files</a> of a collection. Base modules are openscad modules
 that take as parameters a subset of all  the parameters of the part (see
 <a class="reference internal" href="#parameter-collection">parameter-collection</a>), and construct the part according to these dimensions.</p>
@@ -358,7 +358,7 @@ It is an associative array that contains the following keys:</p>
 <ul class="simple">
 <li>filename: mandatory, string. The filename of the file</li>
 <li>author: mandatory, string or list of strings. The author of the file with
-e-mail adress in &lt;&gt; or a list of several authors.</li>
+e-mail address in &lt;&gt; or a list of several authors.</li>
 <li>license: mandatory, string. The license of the file. Must be one of the
 <a class="reference internal" href="#supported-licenses">supported-licenses</a></li>
 <li>type: &quot;module&quot;</li>
@@ -377,7 +377,7 @@ parameters of the class, see <a class="reference internal" href="#parameter-coll
 <li>classids: mandatory, list of string. A list of class ids for which this base
 module should be used.</li>
 <li>parameters: optional, <a class="reference internal" href="#parameter-element">parameter-element</a>: Additional basespecific parameters.
-These parameters allow to represent additional paramters, which are not
+These parameters allow to represent additional parameters, which are not
 specific to the class, but to the base. This allows e.g. to let the user
 choose  between a detailed and a schematic representation of the part.</li>
 </ul>
@@ -390,7 +390,7 @@ the STL format. It is an associative array with the following keys:</p>
 <ul class="simple">
 <li>filename: mandatory, string. The filename of the file</li>
 <li>author: mandatory, string or list of strings. The author of the file with
-e-mail adress in &lt;&gt; or a list of several authors.</li>
+e-mail address in &lt;&gt; or a list of several authors.</li>
 <li>license: mandatory, string. The license of the file. Must be either &quot;CC0
 1.0&quot; or &quot;Public Domain&quot;.</li>
 <li>type: &quot;stl&quot;</li>
@@ -406,7 +406,7 @@ associative array with the following keys:</p>
 <ul class="simple">
 <li>filename: mandatory, string. The filename of the file</li>
 <li>author: mandatory, string or list of strings. The author of the file with
-e-mail adress in &lt;&gt; or a list of several authors.</li>
+e-mail address in &lt;&gt; or a list of several authors.</li>
 <li>license: mandatory, string. The license of the file. Must be one of the
 <a class="reference internal" href="#supported-licenses">supported-licenses</a>.</li>
 <li>type: &quot;function&quot;</li>
@@ -421,7 +421,7 @@ with the following keys:</p>
 <li>classids: mandatory, list of string. A list of class ids for which this base
 module should be used.</li>
 <li>parameters: optional, <a class="reference internal" href="#parameter-element">parameter-element</a>: Additional basespecific parameters.
-These parameters allow to represent additional paramters, which are not
+These parameters allow to represent additional parameters, which are not
 specific to the class, but to the base. This allows e.g. to let the user
 choose  between a detailed and a schematic representation of the part.</li>
 </ul>
@@ -434,7 +434,7 @@ associative array with the following keys:</p>
 <ul class="simple">
 <li>filename: mandatory, string. The filename of the file</li>
 <li>author: mandatory, string or list of strings. The author of the file with
-e-mail adress in &lt;&gt; or a list of several authors.</li>
+e-mail address in &lt;&gt; or a list of several authors.</li>
 <li>license: mandatory, string. The license of the file. Must be &quot;CC0 1.0&quot; or
 &quot;Public Domain&quot;.</li>
 <li>type: &quot;fcstd&quot;</li>
@@ -449,7 +449,7 @@ Document. It has the following keys:</p>
 <li>classids: mandatory, list of string. A list of class ids for which this base
 part should be used.</li>
 <li>parameters: optional, <a class="reference internal" href="#parameter-element">parameter-element</a>: Additional basespecific parameters.
-These parameters allow to represent additional paramters, which are not
+These parameters allow to represent additional parameters, which are not
 specific to the class, but to the base. This allows e.g. to let the user
 choose  between a detailed and a schematic representation of the part.</li>
 <li>proptoparam: optional, associative array of associative arrays. This maps

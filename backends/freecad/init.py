@@ -112,7 +112,7 @@ def add_part_by_classid(classid, in_params=None):
 
         in_params:
             - dictionary of all free Parameters
-            - if ommited, the default parameters are taken (see Default in *.blt file)
+            - if omitted, the default parameters are taken (see Default in *.blt file)
             - if a key is missing in Parameter, the default is added
             - get the default parameters by BOLTS.get_default_params(SaveClassName)
             - if the key "name" is given, this will be used as FreeCAD object name
@@ -138,7 +138,7 @@ def add_part_by_name(save_class_name, in_params=None):
 
         in_params:
             - dictionary of all free Parameters
-            - if ommited, the default parameters are taken (see Default in *.blt file)
+            - if omitted, the default parameters are taken (see Default in *.blt file)
             - if a key is missing in Parameter, the default is added
             - get the default parameters by BOLTS.get_default_params(SaveClassName)
             - if the key "name" is given, this will be used as FreeCAD object name
@@ -164,7 +164,7 @@ def add_part_by_standard(save_standard_name, in_params=None):
 
         in_params:
             - dictionary of all free Parameters
-            - if ommited, the default parameters are taken (see Default in *.blt file)
+            - if omitted, the default parameters are taken (see Default in *.blt file)
             - if a key is missing in Parameter, the default is added
             - get the default parameters by BOLTS.get_default_params(SaveClassName)
             - if the key "name" is given, this will be used as FreeCAD object name

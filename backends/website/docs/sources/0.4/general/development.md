@@ -68,10 +68,10 @@ be attributed to you.
 There is a 
 [pretty good tutorial how to fork a repository](https://help.github.com/articles/fork-a-repo)
 on the [GitHub help pages](https://help.github.com/),
- where you can also find more informations about working with git and GitHub.
+ where you can also find more information about working with git and GitHub.
 
 The next steps are explained in the section about `Creating topic branches and
-commiting your work`.
+committing your work`.
 
 ### Checking out a local copy of BOLTS
 
@@ -93,9 +93,9 @@ a new directory named `BOLTS` will be created that contains the current
 development state.
 
 The next steps are explained in the section about `Creating topic branches and
-commiting your work`.
+committing your work`.
 
-### Creating topic branches and commiting your work
+### Creating topic branches and committing your work
 
 You now should have a local copy of BOLTS. Before you start making changes, you
 should create a new branch. There is a quite detailed description about
@@ -142,8 +142,8 @@ with
 
     git status
 
-you can get a list of changed files that will be commited and those that will
-not be commited. Finally, to commit the added changes use
+you can get a list of changed files that will be committed and those that will
+not be committed. Finally, to commit the added changes use
 
     git commit
 

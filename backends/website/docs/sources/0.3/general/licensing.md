@@ -18,7 +18,7 @@ BOLTS consists of a number of different parts that work together in different wa
 
 * [bolttools](https://github.com/jreinhardt/bolttools) is a collection of python modules that handle various tasks and aspects of the processes in BOLTS: create HTML documentation, parse the blt and base files, perform consistency checks on the parts and assemble the different distributions (BOLTS for FreeCAD, BOLTS for OpenSCAD). bolttools is developed by me and licensed under the [LGPL 2.1 or later](http://www.gnu.org/licenses/old-licenses/lgpl-2.1).
 
-* the blt files are YAML files that contain not backend specific data and metadata about the part (more precisely about classes of parts, because there is often a large amount of redundancy). These files contain among other informations the tables with dimensions, and form the foundation of BOLTS. Its license is chosen by the creator.
+* the blt files are YAML files that contain not backend specific data and metadata about the part (more precisely about classes of parts, because there is often a large amount of redundancy). These files contain among other information the tables with dimensions, and form the foundation of BOLTS. Its license is chosen by the creator.
 
 * the backend specific data is specific to the CAD application (FreeCAD or OpenSCAD at the moment), and can come in two forms: as code (OpenSCAD modules or FreeCAD python functions) or as data (stl files for OpenSCAD or fcstd files for FreeCAD. Its license is chosen by the creator.
 
@@ -30,7 +30,7 @@ We want to focus on open source licenses, and luckily someone who knows [explain
 
 And when we take some content with a certain license A and process it with a program with a certain license B, what license C has the result?
 
-This is much easier to answer, and again I reference [people who know](http://www.gnu.org/licenses/gpl-faq.html#GPLOutput). The result has license A, unless very specifc conditions apply.
+This is much easier to answer, and again I reference [people who know](http://www.gnu.org/licenses/gpl-faq.html#GPLOutput). The result has license A, unless very specific conditions apply.
 
 ### Consequences for BOLTS distributions
 
@@ -66,13 +66,13 @@ I mentioned earlier, that there is application specific data in form of code and
 
 #### Backend specific data in form of code
 
-In this case on can consider the part as the result of a program (BOLTS), which is not affected by the license of the programm. So parts created by code (FreeCAD python functions and OpenSCAD modules) cause no licensing related restrictions on the resulting design.
+In this case on can consider the part as the result of a program (BOLTS), which is not affected by the license of the program. So parts created by code (FreeCAD python functions and OpenSCAD modules) cause no licensing related restrictions on the resulting design.
 
 #### Backend specific data in form of data
 
 In this case on has to consider the final design as a combined work between the part (in form of a FreeCAD fcstd file or a STL file) and the rest of the design that the user created. If the BOLTS part were licensed under a fairly restrictive license like GPL, the whole design would need to be licensed under the GPL.
 
-As this is undesireable, BOLTS must not contain backend specific data in form of data that causes such restrictions. This means, that such data must be placed in the public domain, or better yet, the author must waive all rights on this content using [CC0](http://creativecommons.org/about/cc0). The latter is a legally more sound procedure, as the public domain is a legal concept that does not exist in all legislations.
+As this is undesirable, BOLTS must not contain backend specific data in form of data that causes such restrictions. This means, that such data must be placed in the public domain, or better yet, the author must waive all rights on this content using [CC0](http://creativecommons.org/about/cc0). The latter is a legally more sound procedure, as the public domain is a legal concept that does not exist in all legislations.
 
 ### Consequences for BOLTS itself
 

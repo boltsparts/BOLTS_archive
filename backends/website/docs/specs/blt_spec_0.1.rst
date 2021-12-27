@@ -24,7 +24,7 @@ These structures are specified below.
 Collection Header
 -----------------
 
-The collection header is an associative array that contains general informations regarding the Collection. It contains the following keys:
+The collection header is an associative array that contains general information regarding the Collection. It contains the following keys:
 
 - name: optional. A name for the collection.
 - description: optional. A description of the contents of this collection.
@@ -55,7 +55,7 @@ The parts list is a list of associative arrays, each describing a part. A part c
 -name: mandatory. A naming definition
 -url: optional. For standard parts the URL where the official standard can be bought.
 -table: optional. A table of dimensions.
--notes: optional. Notes for this part. This can be used to mention confusions, contradicting informations or missing data.
+-notes: optional. Notes for this part. This can be used to mention confusions, contradicting information or missing data.
 
 Names
 -----

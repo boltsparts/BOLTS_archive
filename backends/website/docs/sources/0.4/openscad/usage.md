@@ -27,7 +27,7 @@ over all parts that it provides. There one can browse through the different
 collections and check out which standards of a standardization body are
 available in BOLTS.
 
-Each part has a dedicated page, where one can find more detailed informations
+Each part has a dedicated page, where one can find more detailed information
 about this part, a drawing and tables with dimensions. The information that is
 most interesting for our purposes can be found in the section OpenSCAD. There
 it says either that the part is not available for OpenSCAD (in which case you
@@ -93,7 +93,7 @@ the [attach library](http://www.thingiverse.com/thing:30136).
 Instead of having complicated nested `translate` and `rotate` calls, this
 library allows to specify the position and orientation of a portion of a design
 using so called connectors. A connector is a data type that contains
-informations about both position and orientation.
+information about both position and orientation.
 
 A connector is created with the `new_cs` function, which takes two arguments: a
 vector with three values specifying the origin of the connector and a list of
