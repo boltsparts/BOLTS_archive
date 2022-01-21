@@ -13,7 +13,7 @@ the [FreeCAD documentation on this topic](http://freecadweb.org/wiki/index.php?t
 
 ### The function
 
-As an example we  use the follwing function to create washers:
+As an example we  use the following function to create washers:
 
     import Part
 
@@ -54,7 +54,7 @@ this collection (in this case `washer.base`).
 
 ### Write the base file
 
-The base file provides BOLTS with all the informations it needs to know about
+The base file provides BOLTS with all the information it needs to know about
 the files in a collection directory, it is a kind of manifest file. It contains
 a list of sections (more precisely 
 [base file elements]({{ spec(base-file-element) }}))
@@ -77,7 +77,7 @@ The begin of a new element is indicated by a hyphen. If there are more than
 one file in the collection directory, there would be more elements, but here
 it is only one.
 
-The base file element gives informations about the file like the filename,
+The base file element gives information about the file like the filename,
 the author and the license under which it is published.
 
 The line `type: function` indicates that it contains python functions for
@@ -86,7 +86,7 @@ follows, that describe the individual functions. In our case there is only
 one, called washer1.
 
 There is the possibility to add an optional `source` field which allows to give
-informations about the origin of the file. If there is a URL from which this
+information about the origin of the file. If there is a URL from which this
 file was downloaded, this can be included here.
 
 The `classids` field contains a list of classids to which this function
@@ -96,7 +96,7 @@ a single entry. Be careful, that the parameter names for all classes in this
 list must be the same, otherwise the parameter dict contains unexpected
 entries or names can not be found.
 
-When working on base files, pay attention to whitespace and identation and do
+When working on base files, pay attention to whitespace and indentation and do
 not use tabs.
 
 ### Testing
@@ -118,7 +118,7 @@ If BOLTS is started successfully, try adding the newly added part to the
 current document with different combinations of parameters.
 
 If nothing happens when you try to add the file, there is probably an error
-occuring during the execution of the function. Such errors are suppressed by
+occurring during the execution of the function. Such errors are suppressed by
 the gui system, so that no error messages are displayed. You can circumvent
 this by activating the `Add part` button manually. To do this type
 

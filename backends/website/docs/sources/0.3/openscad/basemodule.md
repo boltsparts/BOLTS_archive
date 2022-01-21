@@ -70,7 +70,7 @@ So in the case of the pipes collection `pipe.scad` is now in the directory
 ### Write the base file
 
 This collection directory must also contain the base file for this directory.
-The base file provides BOLTS with all the informations it needs to know about
+The base file provides BOLTS with all the information it needs to know about
 the files in a collection directory, it is a kind of manifest file. It
 contains a list of sections 
 (more precisely [base file elements]({{ spec(base-file-element) }})),
@@ -107,7 +107,7 @@ in this list must be the same, otherwise the some parameters can not be found
 for some classes.
 
 There is the possibility to add an optional `source` field which allows to give
-informations about the origin of the file. If there is a URL from which this
+information about the origin of the file. If there is a URL from which this
 file was downloaded, this can be included here.
 
 ### Testing

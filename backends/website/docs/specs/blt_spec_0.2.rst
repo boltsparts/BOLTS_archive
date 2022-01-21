@@ -104,7 +104,7 @@ The backend directories
 =======================
 
 Each backend directory can contain files and directories with additional
-informations, which  are required by the backend. Details are specified by the
+information, which  are required by the backend. Details are specified by the
 backend_.
 
 **************************************
@@ -130,7 +130,7 @@ distribution.
    :width: 100%
 
 
-A example for a backend would be a process that uses the backend indepent data
+A example for a backend would be a process that uses the backend independent data
 about parts, their geometries and dimensions together with a number of
 templates and stylesheets and produces a set of HTML pages with a nicely
 rendered, browsable description of the parts. Other backends could produce data
@@ -139,13 +139,13 @@ that is suitable for use in specific CAD applications.
 Often backends are relatively independent and do use only their own backend
 specific data. However, this is not necessarily so, a backend may also use
 backend specific data of other backends. For example the HTML backend described
-above might add informations about how to use a part in a specific CAD
+above might add information about how to use a part in a specific CAD
 application, and this might require to access the backend specific data of the
 backend for this CAD application. However, such cross backend dependencies
 should be made optional, to keep every backend functional independently of other
 backends.
 
-There is a list-of-backends_, where more informations about the available
+There is a list-of-backends_, where more information about the available
 backends can be found and their base-files_ are specified.
 
 
@@ -173,7 +173,7 @@ collection ids: common, gui, template
 Collection header
 -----------------
 
-The collection header is an associative array that holds general informations
+The collection header is an associative array that holds general information
 regarding the collection_. It contains the following keys:
 
 - name: optional, string. A name for the collection.
@@ -220,7 +220,7 @@ class_. It has the following keys:
   urls has to be given.
 - notes: optional, string. Notes for this class. Can be used to formulate
   questions or additional information.
-- source: mandatory, string. A short description where the informations for this
+- source: mandatory, string. A short description where the information for this
   class originate. Should contain a URL if possible.
 
 .. _parameter-element:
@@ -347,13 +347,13 @@ base-file-element_, one for each file they describe.
 Base file element
 -----------------
 
-A base file element is an associative array containing informations about a
+A base file element is an associative array containing information about a
 file. Depending on the type of the file the contained keys are different.
 However, there are some keys that are present in every base file element:
 
 - filename: mandatory, string. The filename of the file
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be one of the
   supported-licenses_.
 - type: mandatory, string. A string describing the type of the file.
@@ -371,7 +371,7 @@ List of Backends
 OpenSCAD
 ********
 
-The files containing informations required by the OpenSCAD backend reside in
+The files containing information required by the OpenSCAD backend reside in
 the backend directory with the name openscad. This backend directory contains a
 folder for each collection_ that contains files related to this collection, and
 the folder is named like the collection-id.
@@ -379,7 +379,7 @@ the folder is named like the collection-id.
 The OpenSCAD backend generates a OpenSCAD library with modules for all parts
 from the collections.
 
-To be able to do that it needs informations about base modules, which are
+To be able to do that it needs information about base modules, which are
 stored in the base-files_ of a collection. Base modules are openscad modules
 that take as parameters a subset of all  the parameters of the part (see
 parameter-collection_), and construct the part according to these dimensions.
@@ -417,7 +417,7 @@ It is an associative array that contains the following keys:
 
 - filename: mandatory, string. The filename of the file
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be one of the
   supported-licenses_
 - type: "module"
@@ -441,7 +441,7 @@ the following keys:
 - classids: mandatory, list of string. A list of class ids for which this base
   module should be used.
 - parameters: optional, parameter-element_: Additional basespecific parameters.
-  These parameters allow to represent additional paramters, which are not
+  These parameters allow to represent additional parameters, which are not
   specific to the class, but to the base. This allows e.g. to let the user
   choose  between a detailed and a schematic representation of the part.
 
@@ -456,7 +456,7 @@ the STL format. It is an associative array with the following keys:
 
 - filename: mandatory, string. The filename of the file
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be either "CC0
   1.0" or "Public Domain".
 - type: "stl"
@@ -474,7 +474,7 @@ associative array with the following keys:
 
 - filename: mandatory, string. The filename of the file
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be one of the
   supported-licenses_.
 - type: "function"
@@ -492,7 +492,7 @@ with the following keys:
 - classids: mandatory, list of string. A list of class ids for which this base
   module should be used.
 - parameters: optional, parameter-element_: Additional basespecific parameters.
-  These parameters allow to represent additional paramters, which are not
+  These parameters allow to represent additional parameters, which are not
   specific to the class, but to the base. This allows e.g. to let the user
   choose  between a detailed and a schematic representation of the part.
 
@@ -507,7 +507,7 @@ associative array with the following keys:
 
 - filename: mandatory, string. The filename of the file
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be "CC0 1.0" or
   "Public Domain".
 - type: "fcstd"
@@ -525,7 +525,7 @@ Document. It has the following keys:
 - classids: mandatory, list of string. A list of class ids for which this base
   part should be used.
 - parameters: optional, parameter-element_: Additional basespecific parameters.
-  These parameters allow to represent additional paramters, which are not
+  These parameters allow to represent additional parameters, which are not
   specific to the class, but to the base. This allows e.g. to let the user
   choose  between a detailed and a schematic representation of the part.
 - proptoparam: optional, associative array of associative arrays. This maps

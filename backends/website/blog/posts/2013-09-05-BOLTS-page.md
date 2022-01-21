@@ -15,6 +15,6 @@ it with an [appropriate
 picture](https://www.flickr.com/photos/dkpphotography/9468970843)
 by [Dhruv Patel](https://www.flickr.com/photos/dkpphotography/).
 
-The content of this page is mostly non-existant, this will (hopefully change in
+The content of this page is mostly non-existent, this will (hopefully change in
 the future).
 

@@ -13,9 +13,9 @@ Development hast been continued after a long time of only rare development.
 
 * A very nasty problem in the regard of imports on all operating systems
   has been fixed for FreeCAD backend.
-* A lot of code formating has taken place.
-* On a few places it was moved to some more generic aproach.
+* A lot of code formatting has taken place.
+* On a few places it was moved to some more generic approach.
   Thus duplicate code was deleted.
-* A new distribution PythonPackage for the use without any CAD has been develped.
+* A new distribution PythonPackage for the use without any CAD has been developed.
 * On osarch is a topic with lots of interesting posts.
   See [Profile Section Libraries for Structural Engineering and beyond!](https://community.osarch.org/discussion/524/profile-section-libraries-for-structural-engineering-and-beyond/)

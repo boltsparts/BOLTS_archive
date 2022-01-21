@@ -58,7 +58,7 @@ directory of the repository.
 
 ### Write the base file
 
-The base file provides BOLTS with all the informations it needs to know about
+The base file provides BOLTS with all the information it needs to know about
 the files in a collection directory.
 
 For the aluminum extrusion it looks like this:
@@ -116,11 +116,11 @@ part and the `Height` property of the feature `Box` should be set to the length
 A parameter might appear more than once if more than one feature needs to be
 adjusted.
 
-The optional source field allows to give informations about the origin of the
+The optional source field allows to give information about the origin of the
 file. So if there is a URL from which this file was downloaded, this can be
 included here.
 
-When working on base files, pay attention to whitespace and identation and do
+When working on base files, pay attention to whitespace and indentation and do
 not use tabs.
 
 ### Test it

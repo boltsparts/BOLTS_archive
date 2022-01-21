@@ -84,7 +84,7 @@ The databases
 
 A database directory is a directory that contains data about certain aspects of
 the parts or data in a specific form.Backends can access this data to
-transform the parts data into specific forms or collect informations.
+transform the parts data into specific forms or collect information.
 
 In contrast to the data in the blt-file_, the data in the database directories
 is optional. If for a class_ this data is not available, the backend_ has to be
@@ -115,7 +115,7 @@ the distribution.
    :width: 100%
 
 
-Am example for a backend would be a process that uses the backend indepent data
+Am example for a backend would be a process that uses the backend independent data
 about parts, their geometries and dimensions together with a number of
 templates and stylesheets and produces a set of HTML pages with a nicely
 rendered, browsable description of the parts. Other backends could produce data
@@ -133,7 +133,7 @@ the extension .blt. These files contain exactly one YAML document consisting of
 an associative array with the following keys:
 
 - id: mandatory, string. The id of the collection. Must be identical to the
-  filename of the blt file without the extenstion.
+  filename of the blt file without the extension.
 - name: optional, string. A name for the collection.
 - description: optional, string. A description of the contents of this
   collection.
@@ -185,7 +185,7 @@ class_. It has the following keys:
   urls has to be given.
 - notes: optional, string. Notes for this class. Can be used to keep questions
   or additional information.
-- source: mandatory, string. A short description where the informations for this
+- source: mandatory, string. A short description where the information for this
   class originate. Should contain a URL if possible.
 
 .. _parameter-element:
@@ -354,7 +354,7 @@ properties) to populate the template given in the naming-element_.
 Base Files
 ==========
 
-Base files are `yaml <http://yaml.org/>`_ files, in which informations about
+Base files are `yaml <http://yaml.org/>`_ files, in which information about
 the files for a collection in a database_ directory are stored. They consist of
 a list of base-file-element_, one for each file they describe.
 
@@ -363,13 +363,13 @@ a list of base-file-element_, one for each file they describe.
 Base file element
 -----------------
 
-A base file element is an associative array containing informations about a
+A base file element is an associative array containing information about a
 file. Depending on the type of the file the contained keys are different.
 However, there are some keys that are present in every base file element:
 
 - filename: mandatory, string. The filename of the file
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be one of the
   supported-licenses_.
 - type: mandatory, string. A string describing the type of the file.
@@ -402,13 +402,13 @@ See base-file-type-drawing-dimensions_ and base-file-type-drawing-connectors_.
 OpenSCAD
 ********
 
-The files containing all the informations necessary to build a geometrical
+The files containing all the information necessary to build a geometrical
 representation of a class in OpenSCAD  reside in the "openscad" directory. This
 database directory contains a folder for each collection_ that contains files
 related to this collection, and the folder is named like the collection-id.
 
-To be able to do that it needs informations about base modules. These
-informations are stored in the base-files_ of a collection. Base modules are
+To be able to do that it needs information about base modules. These
+information are stored in the base-files_ of a collection. Base modules are
 OpenSCAD modules that take as parameters a subset of the parameters of the
 part (see parameter-collection_), and construct the part according to these
 dimensions.
@@ -471,7 +471,7 @@ parameters of a part. It is an associative array with the following keys:
   Files with the same basename but different extensions are taken to be
   conversions to different file formats.
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be one of the
   supported-licenses_.
 - type: "drawing-dimensions"
@@ -493,7 +493,7 @@ the following keys:
   Files with the same basename but different extensions are taken to be
   conversions to different file formats.
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be one of the
   supported-licenses_.
 - type: "drawing-connectors"
@@ -513,7 +513,7 @@ It is an associative array that contains the following keys:
 
 - filename: mandatory, string. The filename of the file
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be one of the
   supported-licenses_
 - type: "module"
@@ -536,10 +536,10 @@ the following keys:
 - classids: mandatory, list of string. A list of class ids for which this base
   module should be used.
 - parameters: optional, parameter-element_: Additional basespecific parameters.
-  These parameters allow to represent additional paramters, which are not
+  These parameters allow to represent additional parameters, which are not
   specific to the class, but to the base. This allows e.g. to let the user
   choose  between a detailed and a schematic representation of the part.
-- connectors: optional, base-module-cs_. Informations about the connectors
+- connectors: optional, base-module-cs_. Information about the connectors
   attached to the part.
 
 .. _base-module-cs:
@@ -573,7 +573,7 @@ the STL format. It is an associative array with the following keys:
 
 - filename: mandatory, string. The filename of the file
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be either "CC0
   1.0" or "Public Domain".
 - type: "stl"
@@ -591,7 +591,7 @@ associative array with the following keys:
 
 - filename: mandatory, string. The filename of the file
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be one of the
   supported-licenses_.
 - type: "function"
@@ -609,7 +609,7 @@ with the following keys:
 - classids: mandatory, list of string. A list of class ids for which this base
   module should be used.
 - parameters: optional, parameter-element_: Additional basespecific parameters.
-  These parameters allow to represent additional paramters, which are not
+  These parameters allow to represent additional parameters, which are not
   specific to the class, but to the base. This allows e.g. to let the user
   choose  between a detailed and a schematic representation of the part.
 
@@ -624,7 +624,7 @@ associative array with the following keys:
 
 - filename: mandatory, string. The filename of the file
 - author: mandatory, string or list of strings. The author of the file with
-  e-mail adress in <> or a list of several authors.
+  e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be "CC0 1.0" or
   "Public Domain".
 - type: "fcstd"
@@ -642,7 +642,7 @@ Document. It has the following keys:
 - classids: mandatory, list of string. A list of class ids for which this base
   part should be used.
 - parameters: optional, parameter-element_: Additional basespecific parameters.
-  These parameters allow to represent additional paramters, which are not
+  These parameters allow to represent additional parameters, which are not
   specific to the class, but to the base. This allows e.g. to let the user
   choose  between a detailed and a schematic representation of the part.
 - proptoparam: optional, associative array of associative arrays. This maps
@@ -665,7 +665,7 @@ create a design table that can be used together with a model file to create a
 
 - filename: mandatory, string. The filename of the SolidWorks model file
 - author: mandatory, string or list of strings. The author of the model file
-  with e-mail adress in <> or a list of several authors.
+  with e-mail address in <> or a list of several authors.
 - license: mandatory, string. The license of the file. Must be one of the
   supported-licenses_.
 - type: "solidworks"

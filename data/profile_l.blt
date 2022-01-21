@@ -71,7 +71,7 @@ classes:
       l: 1000
       type: LNP50x30x5
     description:
-      a: beam heigth
+      a: beam height
       b: beam width
       l: beam length
       r1: inner fillet radius

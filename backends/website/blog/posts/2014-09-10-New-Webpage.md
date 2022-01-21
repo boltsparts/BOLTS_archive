@@ -19,7 +19,7 @@ New url
 BOLTS now has a proper and more memorable domain at
 [bolts-library.org](http://bolts-library.org), instead of a relatively
 complicated github.io url. I had to take a domain with a additional suffix, as
-bolts alone was already taken in every useful top level domain. Thats the
+bolts alone was already taken in every useful top level domain. That's the
 disadvantage if you choose an acronyme for a project that is also a real word.
 
 Responsive Design
@@ -97,11 +97,11 @@ you can easily select the result that you are interested in.
 Versioned Documentation
 -----------------------
 
-Now the documentaion for multiple versions of BOLTS can be accessed separately.
+Now the documentation for multiple versions of BOLTS can be accessed separately.
 With the old setup, a common problem was, that the documentation was updated
 for the current development version of BOLTS, and therefore differed
 significantly from what people actually had installed, which was confusing. Now
-the documentation for the stable relaease and the development version can be
+the documentation for the stable release and the development version can be
 accessed separately
 
 At the moment however, the documentation for the development version is not
@@ -123,7 +123,7 @@ the development of BOLTS.
 
 This stack will also allow for further experiments, improvements and
 extensions. For example it will be very easy to expose a REST API to all the
-data BOLTS nows about, to allow other application to easily obtain informations
+data BOLTS nows about, to allow other application to easily obtain information
 about standard parts.
 
 Better Workflow
@@ -147,6 +147,6 @@ There are a few small disadvantages though. Due to the migration all the Google
 credit that the old page had accumulated is lost, so at the moment it is a bit
 more difficult to find the new website by googling.
 
-And everytime I push an update to the homepage, there is roughly half a minute
+And every time I push an update to the homepage, there is roughly half a minute
 downtime. It is possible to avoid this, but this requires a few changes to the
 app, and I have not yet tackled that.

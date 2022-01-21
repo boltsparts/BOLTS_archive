@@ -23,7 +23,7 @@ class BackendError(Exception):
     def __str__(self):
         return "Problem in backend %s:\n" + self.msg
 
-class UncommitedChangesError(Exception):
+class UncommittedChangesError(Exception):
     def __str__(self):
         return "There are uncommitted changes in the git repo"
 

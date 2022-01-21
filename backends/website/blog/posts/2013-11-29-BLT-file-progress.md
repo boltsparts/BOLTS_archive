@@ -5,7 +5,7 @@
 
 This post should now appear on [Planet RepRap](http://planet.arcol.hu/), hi everybody reading this from there. This is the development blog for [BOLTS]({{ url(main.index) }}). BOLTS tries to build an open standard parts library for a number of CAD applications.
 
-BOLTS is a rather young project, but is already useable with [OpenSCAD](http://www.openscad.org/) and [FreeCAD](http://freecadweb.org/). Its youth is noticeable by the still relatively [small number of parts]({{ url(parts.index) }})), though. It is not difficult to add more parts and [well documented]({{ url(docs.index) }}), so if you are missing a part in BOLTS, or just think BOLTS is a good idea, [please help out with improving it]({{ url(main.contribute) }}).
+BOLTS is a rather young project, but is already usable with [OpenSCAD](http://www.openscad.org/) and [FreeCAD](http://freecadweb.org/). Its youth is noticeable by the still relatively [small number of parts]({{ url(parts.index) }})), though. It is not difficult to add more parts and [well documented]({{ url(docs.index) }}), so if you are missing a part in BOLTS, or just think BOLTS is a good idea, [please help out with improving it]({{ url(main.contribute) }}).
 
 If you want to try out BOLTS or learn more about it, you should head to its [webpage]({{ url(main.index) }}).
 

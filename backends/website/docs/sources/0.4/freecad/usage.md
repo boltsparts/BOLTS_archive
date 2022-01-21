@@ -23,7 +23,7 @@ The available parts are sorted in two ways:
 2. by the standardization organisation if standardized
 
 By expanding the tree one can browse through the available parts. In the area
-between the treeview and the button informations about the current selection
+between the treeview and the button information about the current selection
 are displayed.
 
 [<img alt="Expanded treeview" src="{{ static(partsselector2.png) }}" />]({{ static(partsselector2.png) }})
