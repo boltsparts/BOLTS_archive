@@ -231,6 +231,56 @@ classes:
                 M125:   [  125,  180,  100,    200.57  ]
                 M140:   [  140,  200,  112,    220.80  ]
     source: http://almetal.nl/en/techinfo/nut/nd934.htm
+  - id: hexagonlocknut
+    names:
+      name: Metric hexagon nut
+      labeling: Metric hexagon nut %(key)s
+      description: Hexagon nut, metric sizes
+    standards:
+      - body: ISO
+        standard: ISO 7040
+        labeling: Prevailing torque type hexagon nut ISO 7040 %(key)s
+        description: Prevailing torque type hexagon nuts, metric sizes
+      - body: DIN
+        standard: DIN 982
+        labeling: Prevailing torque type hexagon nut ISO 7040 %(key)s
+        description: Prevailing torque type hexagon nuts, metric sizes
+    parameters:
+        free: [key]
+        defaults: {key: "M3"}
+        types:
+          key: Table Index
+          d1: Length (mm)
+          s: Length (mm)
+          e_min: Length (mm)
+          m_nut: Length (mm)
+          m_max: Length (mm)
+        description:
+          key: Thread designation
+          d1: hole diameter
+          s: width across flats
+          e_min: head diameter
+          m_nut: nut thickness
+          m_max: thickness
+        tables:
+            index: key
+            columns: [d1, s, m_nut, m_max, e_min]
+            data:
+                #key    [  d1    s     m_nut  m_max   e_min   ]
+                M3:     [  3,    5.5,  2.4,   4.5,    6.01    ]
+                M4:     [  4,    7,    3.2,   6,      7.66    ]
+                M5:     [  5,    8,    4.7,   6.8,    8.79    ]
+                M6:     [  6,    10,   5.2,   8,      11.05   ]
+                M8:     [  8,    13,   6.8,   9.5,    14.38   ]
+                M10:    [  10,   16,   8.4,   11.9,   17.77   ]
+                M12:    [  12,   18,   10.8,  14.9,   20.03   ]
+                M14:    [  14,   21,   12.8,  17,     23.35   ]
+                M16:    [  16,   24,   14.8,  19,1,   26.75   ]
+                M20:    [  20,   30,   18,    22.8,   32.95   ]
+                M24:    [  24,   36,   21.5,  27.1,   39.55   ]
+                M30:    [  30,   46,   25.6,  32.6,   50.85   ]
+                M36:    [  36,   55,   31.0,  38.9,   60.79   ]
+    source: https://sklep.pkn.pl/pn-en-iso-7040-2013-06e.html
   - id: hexagonnut2
     standards:
       body: DIN
