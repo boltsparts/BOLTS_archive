@@ -24,6 +24,80 @@ id: profile_l
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 name: Profiles L
 classes:
+- id: lbeam_bluescope_equal
+  names:
+    description: corner profile, metric Australian Lysaght equal-side l-beam BlueScope profile
+    labeling: '%(type)s, l=%(l)s'
+    name: BlueScope equal-sided Profile
+  notes: http://en.wikipedia.org/wiki/Structural_steel
+  parameters:
+    defaults:
+      l: 1000
+      type: 200EA26
+    description:
+      a: beam width
+      l: beam length
+      r1: inner fillet radius
+      r2: outer fillet radius
+      t: thickness
+      type: beam type
+    free: [type, l]
+    tables:
+      columns: [t, r1, r2, a]
+      data: !include profile_l/lbeam_bluescope_equal.yaml
+      index: type
+    types:
+      a: Length (mm)
+      l: Length (mm)
+      r1: Length (mm)
+      r2: Length (mm)
+      t: Length (mm)
+      type: Table Index
+  source: https://cdn.dcs.bluescope.com.au/download/the-lysaght-referee-35th-edition#page=252
+  standards:
+    body: DINEN
+    description: corner profile, metric Australian Lysaght equal-side l-beam BlueScope profile
+    group: DINEN10056-1
+    labeling: DINEN10056-1 %(type)s, l=%(l)s
+    standard: DINEN10056-1 equal
+- id: lbeam_bluescope_unequal
+  names:
+    description: corner profile, metric Australian Lysaght unequal-side l-beam BlueScope profile
+    labeling: '%(type)s, l=%(l)s'
+    name: BlueScope unequal-sided Profile
+  notes: http://en.wikipedia.org/wiki/Structural_steel
+  parameters:
+    defaults:
+      l: 1000
+      type: 150x100UA12
+    description:
+      a: beam height
+      b: beam width
+      l: beam length
+      r1: inner fillet radius
+      r2: outer fillet radius
+      t: thickness
+      type: beam type
+    free: [type, l]
+    tables:
+      columns: [a, b, t, r1, r2]
+      data: !include profile_l/lbeam_bluescope_unequal.yaml
+      index: type
+    types:
+      a: Length (mm)
+      b: Length (mm)
+      l: Length (mm)
+      r1: Length (mm)
+      r2: Length (mm)
+      t: Length (mm)
+      type: Table Index
+  source: https://cdn.dcs.bluescope.com.au/download/the-lysaght-referee-35th-edition#page=254
+  standards:
+    body: DINEN
+    description: corner profile, metric Australian Lysaght unequal-side l-beam BlueScope profile
+    group: DINEN10056-1
+    labeling: DINEN10056-1 %(type)s, l=%(l)s
+    standard: DINEN10056-1 unequal
 - id: lbeam_lnp_equal
   names:
     description: metric european standard equal-sided LNP profile

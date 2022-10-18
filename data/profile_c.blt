@@ -24,6 +24,44 @@ id: profile_c
 license: LGPL 2.1+ <http://www.gnu.org/licenses/lgpl-2.1>
 name: Profiles C
 classes:
+- id: cbeam_bluescope
+  names:
+    description: BlueScope profile, metric Australian Lysaght c-beam profile
+    labeling: '%(type)s, l=%(l)s'
+    name: BlueScope Profile
+  notes: http://en.wikipedia.org/wiki/Structural_steel
+  parameters:
+    defaults:
+      l: 1000
+      type: 75PFC
+    description:
+      b: flange width
+      h: beam height
+      l: beam length
+      r: fillet radius
+      tf: flange thickness
+      tw: web thickness
+      type: beam type
+    free: [type, l]
+    tables:
+      columns:
+      columns: [h, b, tf, tw, r]
+      data: !include profile_c/cbeam_bluescope.yaml
+      index: type
+    types:
+      b: Length (mm)
+      h: Length (mm)
+      l: Length (mm)
+      r: Length (mm)
+      tf: Length (mm)
+      tw: Length (mm)
+      type: Table Index
+  source: https://cdn.dcs.bluescope.com.au/download/the-lysaght-referee-35th-edition#page=251
+  standards:
+    body: NFA
+    description: BlueScope profile, metric Australian Lysaght c-beam profile
+    labeling: DIN 1026-1 %(type)s, l=%(l)s
+    standard: DIN 1026-1
 - id: cbeam_upe
   names:
     description: UPE profile, metric european standard c-beam profile
