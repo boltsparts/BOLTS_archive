@@ -28,7 +28,7 @@ classes:
   names:
     description: BlueScope profile, metric Australian Lysaght i-beam profile
     labeling: '%(type)s, l=%(l)s'
-    name: BlueScope profile
+    name: BlueScope i-beam profile
   notes: http://en.wikipedia.org/wiki/I-beam
   parameters:
     defaults:
@@ -56,12 +56,6 @@ classes:
       tw: Length (mm)
       type: Table Index
   source: https://cdn.dcs.bluescope.com.au/download/the-lysaght-referee-35th-edition#page=249
-  standards:
-    body: DIN
-    description: BlueScope profile, metric Australian Lysaght i-beam profile
-    group: DIN 1025
-    labeling: DIN1025-3 %(type)s, l=%(l)s
-    standard: DIN 1025-3
 - id: ibeam_hea
   names:
     description: HEA profile, metric european standard i-beam profile
