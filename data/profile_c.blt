@@ -28,7 +28,7 @@ classes:
   names:
     description: BlueScope profile, metric Australian Lysaght c-beam profile
     labeling: '%(type)s, l=%(l)s'
-    name: BlueScope Profile
+    name: BlueScope c-beam Profile
   notes: http://en.wikipedia.org/wiki/Structural_steel
   parameters:
     defaults:
@@ -57,11 +57,6 @@ classes:
       tw: Length (mm)
       type: Table Index
   source: https://cdn.dcs.bluescope.com.au/download/the-lysaght-referee-35th-edition#page=251
-  standards:
-    body: NFA
-    description: BlueScope profile, metric Australian Lysaght c-beam profile
-    labeling: DIN 1026-1 %(type)s, l=%(l)s
-    standard: DIN 1026-1
 - id: cbeam_upe
   names:
     description: UPE profile, metric european standard c-beam profile
