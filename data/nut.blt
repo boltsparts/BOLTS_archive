@@ -233,18 +233,18 @@ classes:
     source: http://almetal.nl/en/techinfo/nut/nd934.htm
   - id: hexagonlocknut
     names:
-      name: Metric hexagon nut
-      labeling: Metric hexagon nut %(key)s
-      description: Hexagon nut, metric sizes
+      name: Metric hexagon locknut
+      labeling: Metric hexagon locknut %(key)s
+      description: Hexagon locknut, metric sizes
     standards:
       - body: ISO
         standard: ISO 7040
         labeling: Prevailing torque type hexagon nut ISO 7040 %(key)s
-        description: Prevailing torque type hexagon nuts, metric sizes
+        description: Prevailing torque type hexagon locknuts, metric sizes
       - body: DIN
         standard: DIN 982
         labeling: Prevailing torque type hexagon nut ISO 7040 %(key)s
-        description: Prevailing torque type hexagon nuts, metric sizes
+        description: Prevailing torque type hexagon locknuts, metric sizes
     parameters:
         free: [key]
         defaults: {key: "M3"}
