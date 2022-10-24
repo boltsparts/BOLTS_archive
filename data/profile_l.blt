@@ -160,3 +160,4 @@ classes:
     group: DINEN10056-1
     labeling: DINEN10056-1 %(type)s, l=%(l)s
     standard: DINEN10056-1 unequal
+    
