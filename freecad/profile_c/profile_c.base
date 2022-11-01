@@ -13,5 +13,5 @@
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
           arch: false
-      classids: [cbeam_upe, cbeam_uap, cbeam_upn]
+      classids: [cbeam_bluescope, cbeam_upe, cbeam_uap, cbeam_upn]
 ...

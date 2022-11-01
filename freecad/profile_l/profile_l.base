@@ -13,7 +13,7 @@
               arch: If true, an Arch structure is created, if false, a Part feature.
           defaults:
               arch: false
-      classids: [lbeam_lnp_equal]
+      classids: [lbeam_bluescope_equal, lbeam_lnp_equal]
     - name: lbeam_parallel_flange_unequal
       parameters:
           free: [arch]
@@ -23,5 +23,5 @@
               arch: If true, an Arch structure is created, if false, a Part feature.
           defaults:
               arch: false
-      classids: [lbeam_lnp_unequal]
+      classids: [lbeam_bluescope_unequal, lbeam_lnp_unequal]
 ...

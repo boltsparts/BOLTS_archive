@@ -13,7 +13,7 @@
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
           arch: false
-      classids: [hollow_rectangular,hollow_generic_rectangular]
+      classids: [hollow_bluescope_rectangular, hollow_rectangular, hollow_generic_rectangular]
     - name: square_hollow
       parameters:
         free: [arch]
@@ -23,7 +23,7 @@
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
           arch: false
-      classids: [hollow_square,hollow_generic_square]
+      classids: [hollow_bluescope_square, hollow_square, hollow_generic_square]
     - name: circle_hollow
       parameters:
         free: [arch]
@@ -33,5 +33,5 @@
           arch: If true, an Arch structure is created, if false, a Part feature.
         defaults:
           arch: false
-      classids: [hollow_circle,hollow_generic_circle]
+      classids: [hollow_bluescope_circle, hollow_circle, hollow_generic_circle]
 ...
