@@ -4,17 +4,17 @@
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-dimensions
   source: own work
-  classids: [hollow_generic_circle, hollow_circle]
+  classids: [hollow_bluescope_circle, hollow_circle, hollow_generic_circle]
 - filename: hollow_rectangular
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-dimensions
   source: own work
-  classids: [hollow_generic_rectangular, hollow_rectangular]
+  classids: [hollow_bluescope_rectangular, hollow_rectangular, hollow_generic_rectangular]
 - filename: hollow_square
   author: Johannes Reinhardt <jreinhardt@ist-dein-freund.de>
   license: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
   type: drawing-dimensions
   source: own work
-  classids: [hollow_generic_square, hollow_square]
+  classids: [hollow_bluescope_square, hollow_square, hollow_generic_square]
 ...
