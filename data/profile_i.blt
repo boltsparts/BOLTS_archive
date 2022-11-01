@@ -56,6 +56,12 @@ classes:
       tw: Length (mm)
       type: Table Index
   source: https://cdn.dcs.bluescope.com.au/download/the-lysaght-referee-35th-edition#page=249
+  standards:
+    body: None
+    description: BlueScope profile, metric Australia Lysaght i-beam profile
+    group: Company BlueScope
+    labeling: BlueScope %(type)s, l=%(l)s
+    standard: BlueScope i-beam
 - id: ibeam_hea
   names:
     description: HEA profile, metric european standard i-beam profile

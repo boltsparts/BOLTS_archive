@@ -57,6 +57,12 @@ classes:
       tw: Length (mm)
       type: Table Index
   source: https://cdn.dcs.bluescope.com.au/download/the-lysaght-referee-35th-edition#page=251
+  standards:
+    body: None
+    description: BlueScope profile, metric Australia Lysaght c-beam profile
+    group: Company BlueScope
+    labeling: BlueScope %(type)s, l=%(l)s
+    standard: BlueScope c-beam
 - id: cbeam_upe
   names:
     description: UPE profile, metric european standard c-beam profile

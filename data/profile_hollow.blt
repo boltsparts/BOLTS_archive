@@ -97,10 +97,15 @@ classes:
       t: Length (mm)
       type: Table Index
   source: https://cdn.dcs.bluescope.com.au/download/the-lysaght-referee-35th-edition#page=292
+  standards:
+    body: None
+    description: BlueScope hot finished structural circular hollow sections of non-alloy and fine grain steel
+    group: Company BlueScope
+    labeling: BlueScope %(type)s, l=%(l)s
+    standard: BlueScope circular hollow
 - id: hollow_bluescope_square
   names:
-    description: BlueScope hot finished structural square hollow sections of non-alloy and fine
-      grain steel
+    description: BlueScope hot finished structural square hollow sections of non-alloy and fine grain steel
     labeling: '%(type)s, l=%(l)s'
     name: BlueScope Square Hollow Section (SHS)
   notes: http://en.wikipedia.org/wiki/Structural_steel
@@ -124,10 +129,15 @@ classes:
       t: Length (mm)
       type: Table Index
   source: https://cdn.dcs.bluescope.com.au/download/the-lysaght-referee-35th-edition#page=288
+  standards:
+    body: None
+    description: BlueScope hot finished structural square hollow sections of non-alloy and fine grain steel
+    group: Company BlueScope
+    labeling: BlueScope %(type)s, l=%(l)s
+    standard: BlueScope square hollow
 - id: hollow_bluescope_rectangular
   names:
-    description: BlueScope hot finished structural rectangular hollow sections of non-alloy and
-      fine grain steel
+    description: BlueScope hot finished structural rectangular hollow sections of non-alloy and fine grain steel
     labeling: '%(type)s, l=%(l)s'
     name: BlueScope Rectangular Hollow Section (RHS)
   notes: http://en.wikipedia.org/wiki/Structural_steel
@@ -153,10 +163,15 @@ classes:
       t: Length (mm)
       type: Table Index
   source: https://cdn.dcs.bluescope.com.au/download/the-lysaght-referee-35th-edition#page=284
+  standards:
+    body: None
+    description: BlueScope hot finished structural rectangular hollow sections of non-alloy and fine grain steel
+    group: Company BlueScope
+    labeling: BlueScope %(type)s, l=%(l)s
+    standard: BlueScope rectangular hollow
 - id: hollow_circle
   names:
-    description: Hot finished structural circular hollow sections of non-alloy and
-      fine grain steel
+    description: Hot finished structural circular hollow sections of non-alloy and fine grain steel
     labeling: '%(type)s, l=%(l)s'
     name: Circular Hollow Section (CHS)
   notes: http://en.wikipedia.org/wiki/Structural_steel
