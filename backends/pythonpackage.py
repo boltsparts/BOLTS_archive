@@ -73,6 +73,10 @@ class PythonPackageBackend(Backend):
             join(self.repo.path, "backends", "common", "repo_tools.py"),
             join(self.bout_path, "repo_tools.py")
         )
+        copyfile(
+            join(self.repo.path, "backends", "common", "README.md"),
+            join(self.bout_path, "README.md")
+        )
 
         # copy data and creator modules
         self.copy_data_and_creator_modules(all_data=True)

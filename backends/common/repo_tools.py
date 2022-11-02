@@ -63,6 +63,8 @@ def add_missing_inparams(db_repo, cl, params):
 
 # ************************************************************************************************
 # get information and data out of the repo
+# See README.md in the same directory as this file
+# TODO merge all documentation together
 
 
 # TODO: Why are the iterators duplicated in freecad.py and openscad.py
