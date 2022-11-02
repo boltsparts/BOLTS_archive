@@ -1,3 +1,11 @@
+Important Information
+=====================
+
+The repository was renamed a new repository was created. For the new repository
+some not needed data was stripped and the history rewritten. Reposize went down
+from 166 MB to 46 MB. See https://github.com/boltsparts/BOLTS_archive/issues/163
+and https://github.com/boltsparts/boltsparts
+
 BOLTS
 =====
 
