@@ -458,3 +458,41 @@ classes:
     group: DIN 1025
     labeling: DIN1025-1 %(type)s, l=%(l)s
     standard: DIN 1025-1
+- id: ibeam_w_imp
+  names:
+    description: W profile, imperial US standard i-beam profile
+    labeling: '%(type)s, l=%(l)s'
+    name: W Profile
+  notes: AISC Shapes Database v15.0, November 2017, https://www.aisc.org/globalassets/aisc/manual/v15.0-shapes-database/aisc-shapes-database-v15.0.xlsx
+  parameters:
+    defaults:
+      l: 12
+      type: W10X30
+    description:
+      b: flange width
+      h: beam height
+      l: beam length
+      r: fillet radius
+      tf: flange thickness
+      tw: web thickness
+      type: beam type
+    free: [type, l]
+    tables:
+      columns:  [h, b, tw, tf, r]
+      data: !include profile_i/ibeam_w_imp.yaml
+      index: type
+    types:
+      b: Length (in)
+      h: Length (in)
+      l: Length (in)
+      r: Length (in)
+      tf: Length (in)
+      tw: Length (in)
+      type: Table Index
+  source: http://www.bauforumstahl.de/Querschnittswerte
+  standards:
+    body: AISC
+    description: W profile, imperial US standard i-beam profile
+    group: AISC 
+    labeling: AISC Shapes Database v15.0 %(type)s, l=%(l)s
+    standard: AISC Shapes Database v15.0
