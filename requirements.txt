@@ -1,7 +1,7 @@
 Babel==2.9.1
 Click==7.0
 docutils==0.14
-Flask==1.0.3
+Flask==2.3.2
 Flask-Assets==0.12
 Flask-BabelEx==0.9.3
 Frozen-Flask==0.15
